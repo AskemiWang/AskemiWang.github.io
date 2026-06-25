@@ -1384,7 +1384,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ff93ff;
+  background: #3effbf;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2849,4 +2849,74 @@ header.header {
   .sidebar-active .footer-fixed {
     left: 320px;
   }
+}
+/* ==========================================
+   美化 hexo-blog-encrypt 加密输入框
+   ========================================== */
+/* 1. 基础容器居中与间距 */
+#hexo-blog-encrypt,
+.hbe-container {
+  text-align: center;
+  padding: 2em 0;
+  margin: 2em auto;
+}
+/* 2. 输入框核心样式 (适配亮色模式) */
+.hbe-input-container {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+/* 输入内容或聚焦时，标签上浮 */
+}
+.hbe-input-container input#hbePass {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #333; /* 亮色模式文字 */
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.hbe-input-container input#hbePass:focus {
+  border-bottom-color: #37c6c0; /* 你的主题色 */
+}
+.hbe-input-container label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 16px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+.hbe-input-container input:focus ~ label,
+.hbe-input-container input:valid ~ label {
+  top: -20px;
+  font-size: 12px;
+  color: #37c6c0;
+}
+.hbe-input-container .bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #37c6c0;
+  transition: width 0.3s;
+}
+.hbe-input-container input:focus ~ .bottom-line {
+  width: 100%;
+}
+/* 3. 完美适配暗黑模式 (Darkmode) */
+.darkmode .hbe-input-container input#hbePass {
+  color: #fff; /* 暗黑模式文字变白 */
+  border-bottom-color: #555;
+}
+.darkmode .hbe-input-container label {
+  color: #888;
+}
+.darkmode .hbe-incorrect-message,
+.darkmode .hbe-error-message {
+  color: #ff7f50 !important;
 }

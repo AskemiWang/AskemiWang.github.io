@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/#37c6c0/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="Personal notes of everything.">
 <meta property="og:type" content="website">
@@ -283,7 +283,39 @@
     </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
 
     </div>
   </footer>
@@ -304,7 +336,7 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"uAskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
 <script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
