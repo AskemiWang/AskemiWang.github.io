@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/#37c6c0/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Notes on LLM.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on LLM">
+<meta property="og:url" content="https://wangyier.top/Notes-on-LLM/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Notes on LLM.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-26T12:21:34.000Z">
+<meta property="article:modified_time" content="2026-06-26T12:29:57.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="dl">
+<meta property="article:tag" content="ml">
+<meta property="article:tag" content="transformer">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/Notes-on-LLM/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/Notes-on-LLM/","path":"/Notes-on-LLM/","title":"Notes on LLM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Notes on LLM | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preparation"><span class="nav-text">Preparation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1-Overview-Tokenization"><span class="nav-text">lecture 1. Overview, Tokenization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-One-bitter-lesson"><span class="nav-text">1. One bitter lesson</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-History-of-Language-Module"><span class="nav-text">2. History of Language Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Pre-neural-before-2010s"><span class="nav-text">2.1 Pre-neural (before 2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Neural-ingredients-2010s"><span class="nav-text">2.2 Neural ingredients (2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Early-foundation-models-late-2010s"><span class="nav-text">2.3 Early foundation models (late 2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Embracing-scaling"><span class="nav-text">2.4 Embracing scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Open-models"><span class="nav-text">2.5 Open models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Credible-open-weight-models-weights-paper"><span class="nav-text">2.6 Credible open-weight models (weights + paper)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Course-Syllabus"><span class="nav-text">3. Course Syllabus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Tokenization"><span class="nav-text">3. Tokenization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-String-Token-and-Indices"><span class="nav-text">3.1 String, Token and Indices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Compression-Ratio"><span class="nav-text">3.2 Compression Ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Byte-Pair-Encoding-BPE"><span class="nav-text">3.3 Byte Pair Encoding (BPE)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wye18280075427%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;wye18280075427@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/Notes-on-LLM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Notes on LLM | The Great Library">
+      <meta itemprop="description" content="Notes on LLM.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Notes on LLM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-06-26 20:21:34 / Modified: 20:29:57" itemprop="dateCreated datePublished" datetime="2026-06-26T20:21:34+08:00">2026-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Notes on LLM.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h1><p>Visit the official website: <a target="_blank" rel="noopener" href="https://cs336.stanford.edu/">Stanford CS336 | Language Modeling from Scratch</a></p>
+<p>Watch the recordings on YouTube: <a target="_blank" rel="noopener" href="https://youtu.be/JuoVZkPBiKk?si=v8OHgfUsC6rAOgwn">CS336_Spring_2026</a></p>
+<p>Lectures Materials on GitHub: <a target="_blank" rel="noopener" href="https://github.com/AskemiWang/CS336-lectures.git">CS336_Spring_2026</a></p>
+<p>Online Lecture Materials <a target="_blank" rel="noopener" href="https://cs336.stanford.edu/lectures/?trace=lecture_01">Trace - lecture_01</a></p>
+<h1 id="lecture-1-Overview-Tokenization"><a href="#lecture-1-Overview-Tokenization" class="headerlink" title="lecture 1. Overview, Tokenization"></a>lecture 1. Overview, Tokenization</h1><h2 id="1-One-bitter-lesson"><a href="#1-One-bitter-lesson" class="headerlink" title="1. One bitter lesson"></a>1. One bitter lesson</h2><p>Wrong interpretation: Scale is all that matters, algorithms don’t matter.</p>
+<p>Right interpretation: Algorithms and scale are what matter.</p>
+<p><code>Accuracy = Efficiency * Rescources</code></p>
+<h2 id="2-History-of-Language-Module"><a href="#2-History-of-Language-Module" class="headerlink" title="2. History of Language Module"></a>2. History of Language Module</h2><h3 id="2-1-Pre-neural-before-2010s"><a href="#2-1-Pre-neural-before-2010s" class="headerlink" title="2.1 Pre-neural (before 2010s)"></a>2.1 Pre-neural (before 2010s)</h3><ul>
+<li>Language model to measure the entropy of English, shannon_1950</li>
+<li>N-gram language models (used in machine translation and speech recognition systems), brants_2007</li>
+</ul>
+<h3 id="2-2-Neural-ingredients-2010s"><a href="#2-2-Neural-ingredients-2010s" class="headerlink" title="2.2 Neural ingredients (2010s)"></a>2.2 Neural ingredients (2010s)</h3><ul>
+<li>Long-Short Term Memory (LSTM), lstm_1997</li>
+<li>First neural language model, bengio_2003</li>
+<li>Sequence-to-sequence modeling (for machine translation), seq2seq_2014</li>
+<li>Adam optimizer, adam_2014</li>
+<li>Attention mechanism (for machine translation), bahdanau_2015_attention</li>
+<li>Transformer architecture (for machine translation), transformer_2017</li>
+<li>Mixture of experts, moe_2017</li>
+<li>Model parallelism, gpipe_2018, zero_2019 and megatron_lm_2019</li>
+</ul>
+<h3 id="2-3-Early-foundation-models-late-2010s"><a href="#2-3-Early-foundation-models-late-2010s" class="headerlink" title="2.3 Early foundation models (late 2010s)"></a>2.3 Early foundation models (late 2010s)</h3><ul>
+<li>ELMo: pretraining with LSTMs, fine-tuning improves downstream tasks, elmo_2018</li>
+<li>BERT: pretraining with Transformer, fine-tuning improves downstream tasks, bert_2018</li>
+<li>Google’s T5 (11B): cast everything as text-to-text, t5_2019</li>
+</ul>
+<h3 id="2-4-Embracing-scaling"><a href="#2-4-Embracing-scaling" class="headerlink" title="2.4 Embracing scaling"></a>2.4 Embracing scaling</h3><ul>
+<li>OpenAI’s GPT-2 (1.5B): fluent text, first signs of zero-shot, gpt2_2019</li>
+<li>Scaling laws: provide hope / predictability for scaling, kaplan_scaling_laws_2020</li>
+<li>OpenAI’s GPT-3 (175B): in-context learning, gpt_3_2020</li>
+<li>Google’s PaLM (540B): massive scale, undertrained, palm_2022</li>
+<li>DeepMind’s Chinchilla (70B): compute-optimal scaling laws, chinchilla_2022</li>
+</ul>
+<h3 id="2-5-Open-models"><a href="#2-5-Open-models" class="headerlink" title="2.5 Open models"></a>2.5 Open models</h3><ul>
+<li>Early attempts (attempts to replicate GPT-3)</li>
+<li>EleutherAI’s open datasets (The Pile) and models (GPT-J), the_pile_2020 and gpt_j_2021</li>
+<li>Meta’s OPT (175B): GPT-3 replication, lots of hardware issues, opt_175b_2022</li>
+<li>Hugging Face / BigScience’s BLOOM (176B): focused on data sourcing, bloom_2022</li>
+</ul>
+<h3 id="2-6-Credible-open-weight-models-weights-paper"><a href="#2-6-Credible-open-weight-models-weights-paper" class="headerlink" title="2.6 Credible open-weight models (weights + paper)"></a>2.6 Credible open-weight models (weights + paper)</h3><ul>
+<li>Meta’s Llama models, llama_2023, llama_2_2023 and llama_3_2024</li>
+<li>Mistral's models, mistral_7b_2023 and mixtral_2024</li>
+<li>DeepSeek's models, deepseek_67b_2024, deepseek_v2_2024 and deepseek_v3_2024</li>
+<li>Alibaba's Qwen models, qwen_2_5_2024 and qwen_3_2025</li>
+<li>Moonshot’s Kimi models, kimi_1_5_2025 and kimi_k2_5_2026</li>
+<li>Z.ai’s GLM models, glm_4_5_2025 and glm_5_2026</li>
+<li>Minimax's models, minimax_m2_5_2026</li>
+<li>Xiaomi’s MIMO models, xiaomi_mimo_v2_2026</li>
+<li>These models are approaching closed models (GPT, Claude, Gemini, etc.).</li>
+</ul>
+<h2 id="3-Course-Syllabus"><a href="#3-Course-Syllabus" class="headerlink" title="3. Course Syllabus"></a>3. Course Syllabus</h2><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Assignment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>basics</td>
+<td>Assignment 1: tokenization, model architecture, training</td>
+</tr>
+<tr>
+<td>systems</td>
+<td>Assignment 2: kernels, parallelism, inference</td>
+</tr>
+<tr>
+<td>scaling_laws</td>
+<td>Assignment 3: scaling laws</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Assignment 4: evaluation, curation, transformation, filtering, deduplication, mixing</td>
+</tr>
+<tr>
+<td>alignment</td>
+<td>Assignment 5: RLHF, RL algorithms, RL systems</td>
+</tr>
+</tbody></table>
+<h2 id="3-Tokenization"><a href="#3-Tokenization" class="headerlink" title="3. Tokenization"></a>3. Tokenization</h2><h3 id="3-1-String-Token-and-Indices"><a href="#3-1-String-Token-and-Indices" class="headerlink" title="3.1 String, Token and Indices"></a>3.1 String, Token and Indices</h3><p>Raw input text is generally represented as Unicode strings.</p>
+<p>e.g.</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> = <span class="string">"Hello, world!"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>A string can be cut into smaller units called <strong>token</strong>. For example, <code>Hello</code>, <code>,</code>, <code>world</code> and <code>!</code>.</p>
+<p>A language module places a probability distribution over sequences of tokens (usually represented by integer indices).</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indices = [<span class="number">15496</span>, <span class="number">11</span>, <span class="number">995</span>, <span class="number">0</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>In fact, we have a <strong>vocabulary</strong> to convert the word(Note: not char) into an integer.</p>
+<p>To bridge strings and integers, we use a <strong>vocabulary</strong> (a mapping table) that converts <strong>tokens</strong> (not necessarily whole words!) to integer IDs.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Direction</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Encode</strong></td>
+<td>string → tokens → indices</td>
+<td><code>"Hello"</code> → <code>15496</code></td>
+</tr>
+<tr>
+<td><strong>Decode</strong></td>
+<td>indices → tokens → string</td>
+<td><code>15496</code> → <code>"Hello"</code></td>
+</tr>
+</tbody></table>
+<p>Feel how tokenizers work: <a target="_blank" rel="noopener" href="https://tiktokenizer.vercel.app/?encoder=gpt2">interplay</a></p>
+<p><strong>Observations</strong></p>
+<ul>
+<li>A word and its preceding space are part of the same token (e.g., “ world”).</li>
+<li>A word at the beginning and in the middle are represented differently (e.g., “hello hello”). This will be discussed later.</li>
+<li>Numbers are tokenized into every few digits.</li>
+</ul>
+<p>GPT-5 tokenizer from OpenAI (tiktoken) in action:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tokenizer = get_gpt5_tokenizer()</span><br><span class="line">string = <span class="string">"Hello, 🌍! 你好!"</span></span><br><span class="line"></span><br><span class="line">indices = tokenizer.encode(string)</span><br><span class="line">reconstructed_string = tokenizer.decode(indices)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> string == reconstructed_string</span><br></pre></td></tr></tbody></table></figure>
+
+<p>test code:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tiktoken</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    originString = <span class="string">"Hello world Hello"</span></span><br><span class="line">    encoder = tiktoken.encoding_for_model(<span class="string">"gpt-4"</span>)</span><br><span class="line"></span><br><span class="line">    tokens = encoder.encode(originString)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Token IDs:"</span>, tokens)</span><br><span class="line">    </span><br><span class="line">    rebuiltString = encoder.decode(tokens)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"The originString is:"</span>, originString)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"The rebuiltString is:"</span>, rebuiltString)</span><br><span class="line">    <span class="keyword">assert</span> originString == rebuiltString</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>run result:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Token IDs: [9906, 1917, 22691]</span><br><span class="line">The originString is: Hello world Hello</span><br><span class="line">The rebuiltString is: Hello world Hello</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="3-2-Compression-Ratio"><a href="#3-2-Compression-Ratio" class="headerlink" title="3.2 Compression Ratio"></a>3.2 Compression Ratio</h3><p>Compression Ratio: number of bytes per token</p>
+<p>In the UTF-8, we have 128 chars, each needs 8 bits to express. So each char takes 1 byte memory. So the string “artificial intelligence” takes 23 bytes.</p>
+<p>e.g. </p>
+<table>
+<thead>
+<tr>
+<th>Input String</th>
+<th>Vocabulary Size</th>
+<th align="left">byte_num</th>
+<th>token[]</th>
+<th>token_num</th>
+<th>Compression Ratio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“artificial intelligence”</td>
+<td>small</td>
+<td align="left">24</td>
+<td>[art, i, fic, i, al,  , in, t, el, lig, en, ce]</td>
+<td>12</td>
+<td>1.92</td>
+</tr>
+<tr>
+<td>“artificial intelligence”</td>
+<td>large</td>
+<td align="left">24</td>
+<td>[artificial,  , intelligence]</td>
+<td>3</td>
+<td>7.67</td>
+</tr>
+</tbody></table>
+<p>Besides, here are two more conceptions: Char-level compression ratio and Byte-level compression ratio.</p>
+<p>In normal English, 1 character(a, b, c…) takes one byte memory, while in other characters like Chinese characters, a character may take 2 or 3 bytes to store.</p>
+<p>For an instance, in English, ‘a’ takes 1 char and 1 byte; while in Chinese ‘你’ takes 1 char but 3 bytes. So in Char-level and Byte-level, the compression ratios are different.</p>
+<table>
+<thead>
+<tr>
+<th>Input String</th>
+<th>Vocabulary Size</th>
+<th>byte_num</th>
+<th>char_num</th>
+<th>token[]</th>
+<th>token_num</th>
+<th>Compression Ratio(Char)</th>
+<th>Compression Ratio(Byte)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“artificial intelligence”</td>
+<td>small</td>
+<td>23</td>
+<td>23</td>
+<td>[art, i, fic, i, al,  , in, t, el, lig, en, ce]</td>
+<td>12</td>
+<td>23/12 = 1.92</td>
+<td>23/12 = 1.92</td>
+</tr>
+<tr>
+<td>“artificial intelligence”</td>
+<td>large</td>
+<td>23</td>
+<td>23</td>
+<td>[artificial,  , intelligence]</td>
+<td>3</td>
+<td>23/3 = 7.67</td>
+<td>23/3 = 7.67</td>
+</tr>
+<tr>
+<td>“你好”</td>
+<td>small</td>
+<td>6</td>
+<td>2</td>
+<td>[你, 好]</td>
+<td>2</td>
+<td>2/2 = 1</td>
+<td>6/2 = 3</td>
+</tr>
+<tr>
+<td>“你好”</td>
+<td>large</td>
+<td>6</td>
+<td>2</td>
+<td>[你好]</td>
+<td>1</td>
+<td>2/1 = 2</td>
+<td>6/1 = 6</td>
+</tr>
+</tbody></table>
+<p>There approximately 150K Unicode characters now, which means it needs a super large vocabulary while most characters are quite rare(Inefficient!). <strong>And the compression ratio reflects this is not good.</strong> (Note: I don’t get it now.)</p>
+<p>In fact, to improve the compression ratio, we use the word_tokenizer(closer to what was done classically in NLP).</p>
+<p>We use methods like regex to split string into chunks.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string = <span class="string">"I'll say supercalifragilisticexpialidocious!"</span></span><br><span class="line">chunks = regex.findall(<span class="string">r"\w+|."</span>, string)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"string is:"</span>, string)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"chunks are:"</span>, chunks)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>the outputs:</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> is: I<span class="number">'ll</span> say supercalifragilisticexpialidocious!</span><br><span class="line">chunks are: [<span class="string">'I'</span>, <span class="string">"'"</span>, <span class="string">'ll'</span>, <span class="string">' '</span>, <span class="string">'say'</span>, <span class="string">' '</span>, <span class="string">'supercalifragilisticexpialidocious'</span>, <span class="string">'!'</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-3-Byte-Pair-Encoding-BPE"><a href="#3-3-Byte-Pair-Encoding-BPE" class="headerlink" title="3.3 Byte Pair Encoding (BPE)"></a>3.3 Byte Pair Encoding (BPE)</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/Notes-on-LLM/">https://wangyier.top/Notes-on-LLM/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/ai/" rel="tag"># ai</a>
+              <a href="/tags/dl/" rel="tag"># dl</a>
+              <a href="/tags/ml/" rel="tag"># ml</a>
+              <a href="/tags/transformer/" rel="tag"># transformer</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Computer-Science-System-Building-Record/" rel="prev" title="Computer Science System Building Record">
+                  <i class="fa fa-angle-left"></i> Computer Science System Building Record
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Use-of-Claude-Code/" rel="next" title="Use of Claude Code">
+                  Use of Claude Code <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

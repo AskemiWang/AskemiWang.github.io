@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/#37c6c0/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Notes on Python.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MinGW and MSYS2 Installation">
+<meta property="og:url" content="https://wangyier.top/MinGW-and-MSYS2-Installation/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Notes on Python.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-26T12:35:01.000Z">
+<meta property="article:modified_time" content="2026-06-26T12:35:04.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="compile">
+<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="software">
+<meta property="article:tag" content="tool">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/MinGW-and-MSYS2-Installation/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/MinGW-and-MSYS2-Installation/","path":"/MinGW-and-MSYS2-Installation/","title":"MinGW and MSYS2 Installation"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MinGW and MSYS2 Installation | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-What-are-MinGW-and-MSYS2"><span class="nav-text">1. What are MinGW and MSYS2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Why-do-we-install-MSYS2-instead-of-MinGW-directly"><span class="nav-text">1.1 Why do we install MSYS2 instead of MinGW directly?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Summary"><span class="nav-text">1.2 Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Install-MSYS2"><span class="nav-text">2. Install MSYS2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Configure-VS-Code"><span class="nav-text">3. Configure VS Code</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Choose-the-default-compiler-for-c-cpp"><span class="nav-text">3.1 Choose the default compiler for c&#x2F;cpp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Create-task-json-and-launch-json-file"><span class="nav-text">3.2 Create task.json and launch.json file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Test"><span class="nav-text">3.3 Test</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wye18280075427%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;wye18280075427@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/MinGW-and-MSYS2-Installation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MinGW and MSYS2 Installation | The Great Library">
+      <meta itemprop="description" content="Notes on Python.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MinGW and MSYS2 Installation
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-06-26 20:35:01 / Modified: 20:35:04" itemprop="dateCreated datePublished" datetime="2026-06-26T20:35:01+08:00">2026-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Notes on Python.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="1-What-are-MinGW-and-MSYS2"><a href="#1-What-are-MinGW-and-MSYS2" class="headerlink" title="1. What are MinGW and MSYS2"></a>1. What are MinGW and MSYS2</h1><p>MinGW is the abbreviation of “Minimalist GNU for Windows”, which contains a lot of develop tools. Now we often use the MinGW-64 version. If we need to compile some C/C++ files, the MinGW has what we need.</p>
+<p>However, install MinGW is a little cumbersome, the more common way is install MSYS2.</p>
+<p>The MSYS2 is the abbreviation of “Minimal SYStem 2”. It is a “micro Linux-like develop environment”, which contains many Linux tools includes bash, ls, grep, sed, awk, find, make, git…</p>
+<h2 id="1-1-Why-do-we-install-MSYS2-instead-of-MinGW-directly"><a href="#1-1-Why-do-we-install-MSYS2-instead-of-MinGW-directly" class="headerlink" title="1.1 Why do we install MSYS2 instead of MinGW directly?"></a>1.1 Why do we install MSYS2 instead of MinGW directly?</h2><p>After installing the MSYS2, we get a magnificent advantage: the <code>pacman(Package Manager)</code>.</p>
+<p>e.g. The traditional way to install the GCC:</p>
+<ul>
+<li>Step1. download the compressed file(zip or tar file…)</li>
+<li>Step2. decompress the file.</li>
+<li>Step3. configure the PATH</li>
+</ul>
+<p>If you need to update your GCC, you need to redownload the file and cover it .</p>
+<p>But if you use the pacman, you just need one command to finish the installation:</p>
+<p><code>pacman -S mingw-w64-ucrt-x86_64-gcc</code></p>
+<h2 id="1-2-Summary"><a href="#1-2-Summary" class="headerlink" title="1.2 Summary"></a>1.2 Summary</h2><p>So let’s conclude the COT:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">We need to compile C/C++ files</span><br><span class="line">        ↓</span><br><span class="line">We need a C/C++ compiler</span><br><span class="line">        ↓</span><br><span class="line">MinGW-w64 provides GCC/G++ compilers <span class="keyword">for</span> Windows</span><br><span class="line">        ↓</span><br><span class="line">We need to install a MinGW-w64 toolchain</span><br><span class="line">        ↓</span><br><span class="line">There are several ways to install MinGW-w64</span><br><span class="line">        ↓</span><br><span class="line">The recommended way is to install MSYS2</span><br><span class="line">        ↓</span><br><span class="line">MSYS2 provides the pacman package manager</span><br><span class="line">        ↓</span><br><span class="line">Use pacman to install the MinGW-w64 toolchain</span><br><span class="line">        ↓</span><br><span class="line">Use gcc/g++ to compile C/C++ files</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="2-Install-MSYS2"><a href="#2-Install-MSYS2" class="headerlink" title="2. Install MSYS2"></a>2. Install MSYS2</h1><p>Download <a target="_blank" rel="noopener" href="https://www.msys2.org/">MSYS2</a>.</p>
+<p>After installing this, run this command to install gcc and gdb in the UCRT64 window:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S mingw-w64-ucrt-x86_64-gcc</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S mingw-w64-ucrt-x86_64-gdb</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Check:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@ѩ▒ UCRT64 ~</span><br><span class="line">$ gcc --version</span><br><span class="line">gcc.exe (Rev5, Built by MSYS2 project) 16.1.0</span><br><span class="line">Copyright (C) 2026 Free Software Foundation, Inc.</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.  There is NO</span><br><span class="line">warranty; not even <span class="keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@ѩ▒ UCRT64 ~</span><br><span class="line">$ gdb --version</span><br><span class="line">GNU gdb (GDB) 17.2</span><br><span class="line">Copyright (C) 2025 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>check in the git bash:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@▒ѩ▒ MINGW64 ~</span><br><span class="line">$ gcc --version</span><br><span class="line">bash: gcc: <span class="built_in">command</span> not found</span><br></pre></td></tr></tbody></table></figure>
+
+<p>the gcc command is not found, so we need to add the PATH.</p>
+<p>find the  MSYS2’s urt64’s bin folder path:</p>
+<p><code>D:\softwares\MSYS2\ucrt64\bin</code></p>
+<p>add it to the Windows’ Environment Variable PATH.</p>
+<p>Then restart the git bash window, check:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@ѩ▒ MINGW64 ~</span><br><span class="line">$ g++ --version</span><br><span class="line">g++.exe (Rev5, Built by MSYS2 project) 16.1.0</span><br><span class="line">Copyright (C) 2026 Free Software Foundation, Inc.</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.  There is NO</span><br><span class="line">warranty; not even <span class="keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>@ѩ▒ MINGW64 ~</span><br><span class="line">$ gcc --version</span><br><span class="line">gcc.exe (Rev5, Built by MSYS2 project) 16.1.0</span><br><span class="line">Copyright (C) 2026 Free Software Foundation, Inc.</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.  There is NO</span><br><span class="line">warranty; not even <span class="keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>@ѩ▒ MINGW64 ~</span><br><span class="line">$ gdb --version</span><br><span class="line">GNU gdb (GDB) 17.2</span><br><span class="line">Copyright (C) 2025 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="3-Configure-VS-Code"><a href="#3-Configure-VS-Code" class="headerlink" title="3. Configure VS Code"></a>3. Configure VS Code</h1><h2 id="3-1-Choose-the-default-compiler-for-c-cpp"><a href="#3-1-Choose-the-default-compiler-for-c-cpp" class="headerlink" title="3.1 Choose the default compiler for c/cpp"></a>3.1 Choose the default compiler for c/cpp</h2><p>Open the VS Code, find the gear at the left-bottom. Click and choose the settings, then search <code>C_Cpp.default.compilerPath</code>. Open the setting.json, and fulfill the value:</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"C_Cpp.default.compilerPath"</span><span class="punctuation">:</span> <span class="string">""</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"C_Cpp.default.compilerPath"</span><span class="punctuation">:</span> <span class="string">"D:/softwares/MSYS2/ucrt64/bin/gcc.exe"</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="3-2-Create-task-json-and-launch-json-file"><a href="#3-2-Create-task-json-and-launch-json-file" class="headerlink" title="3.2 Create task.json and launch.json file"></a>3.2 Create task.json and launch.json file</h2><p>Create a new folder and open it in vscode:</p>
+<p><code>E:\test_msys2_c</code></p>
+<p>then press <code>Ctrl+Shift+P</code> search for :<code>Tasks: Configure Default Build Task</code>, select: <code>Create tasks.json file from template</code>, select: <code>Others</code>, create <code>tasks.json</code> file.</p>
+<p>Amend the json file:</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"version"</span><span class="punctuation">:</span> <span class="string">"2.0.0"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"tasks"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">{</span></span><br><span class="line">            <span class="attr">"label"</span><span class="punctuation">:</span> <span class="string">"build"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"shell"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"command"</span><span class="punctuation">:</span> <span class="string">"gcc"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">"-g"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"${file}"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"-o"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"group"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"kind"</span><span class="punctuation">:</span> <span class="string">"build"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"isDefault"</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">            <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"problemMatcher"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">"$gcc"</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"detail"</span><span class="punctuation">:</span> <span class="string">"Generated task by VSCode"</span></span><br><span class="line">        <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">{</span></span><br><span class="line">            <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"cppbuild"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"label"</span><span class="punctuation">:</span> <span class="string">"C/C++: gcc.exe build active file"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"command"</span><span class="punctuation">:</span> <span class="string">"D:/softwares/MSYS2/ucrt64/bin/gcc.exe"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">"-fdiagnostics-color=always"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"-g"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"${file}"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"-o"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">"${fileDirname}\\${fileBasenameNoExtension}.exe"</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"options"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"cwd"</span><span class="punctuation">:</span> <span class="string">"D:/softwares/MSYS2/ucrt64/bin"</span></span><br><span class="line">            <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"problemMatcher"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">"$gcc"</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"group"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"kind"</span><span class="punctuation">:</span> <span class="string">"build"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"isDefault"</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"detail"</span><span class="punctuation">:</span> <span class="string">"Task generated by Debugger."</span></span><br><span class="line">        <span class="punctuation">}</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Note: I set the git bash as the default terminal for vscode, so I change this part:</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"-g"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"${file}"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"-o"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>into:</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"-g"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"\"${file}\""</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"-o"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"\"${fileDirname}/${fileBasenameNoExtension}.exe\""</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>Press <code>Ctrl+Shift+D</code> search for :<code>create a launch.json file</code>, select: <code>C++ (GDB/LLDB)</code>, create <code>launch.json</code> file.</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"version"</span><span class="punctuation">:</span> <span class="string">"0.2.0"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"configurations"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">{</span></span><br><span class="line">            <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"C++ Launch"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"cppdbg"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"request"</span><span class="punctuation">:</span> <span class="string">"launch"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"program"</span><span class="punctuation">:</span> <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"stopAtEntry"</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"cwd"</span><span class="punctuation">:</span> <span class="string">"${workspaceFolder}"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"environment"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"externalConsole"</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"MIMode"</span><span class="punctuation">:</span> <span class="string">"gdb"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"miDebuggerPath"</span><span class="punctuation">:</span> <span class="string">"D:/softwares/MSYS2/ucrt64/bin/gdb.exe"</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"setupCommands"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">{</span></span><br><span class="line">                    <span class="attr">"description"</span><span class="punctuation">:</span> <span class="string">"Enable pretty-printing for gdb"</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">"text"</span><span class="punctuation">:</span> <span class="string">"-enable-pretty-printing"</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">"ignoreFailures"</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">                <span class="punctuation">}</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">"preLaunchTask"</span><span class="punctuation">:</span> <span class="string">"build"</span></span><br><span class="line">        <span class="punctuation">}</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="3-3-Test"><a href="#3-3-Test" class="headerlink" title="3.3 Test"></a>3.3 Test</h2><p>create a hello.c file in the last folder:</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> {</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello, World!\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/MinGW-and-MSYS2-Installation/">https://wangyier.top/MinGW-and-MSYS2-Installation/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/software/" rel="tag"># software</a>
+              <a href="/tags/tool/" rel="tag"># tool</a>
+              <a href="/tags/compile/" rel="tag"># compile</a>
+              <a href="/tags/c/" rel="tag"># c</a>
+              <a href="/tags/cpp/" rel="tag"># cpp</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Use-of-Claude-Code/" rel="prev" title="Use of Claude Code">
+                  <i class="fa fa-angle-left"></i> Use of Claude Code
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/From-Neural-Network-to-AI/" rel="next" title="Notes on Python">
+                  Notes on Python <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

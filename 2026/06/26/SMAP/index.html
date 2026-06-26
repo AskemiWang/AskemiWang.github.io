@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/#37c6c0/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="secret">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SMAP">
+<meta property="og:url" content="https://wangyier.top/2026/06/26/SMAP/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="secret">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-26T12:08:45.000Z">
+<meta property="article:modified_time" content="2026-06-26T12:10:23.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="SMAP">
+<meta property="article:tag" content="encrypted">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="memory">
+<meta property="article:tag" content="os">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/2026/06/26/SMAP/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/2026/06/26/SMAP/","path":"2026/06/26/SMAP/","title":"SMAP"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SMAP | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wye18280075427%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;wye18280075427@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/2026/06/26/SMAP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SMAP | The Great Library">
+      <meta itemprop="description" content="secret">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SMAP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-06-26 20:08:45 / Modified: 20:10:23" itemprop="dateCreated datePublished" datetime="2026-06-26T20:08:45+08:00">2026-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">secret</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><div class="hbe hbe-container" id="hexo-blog-encrypt"
+     data-hbe-format="4"
+     data-wpm="密码错误，请重新输入！"
+     data-whm="密码错误，请重新输入！"
+     data-salt="0e31bfe751050eea371bf06226d6927d75b38780b298edb6b43e3086cd4c1105"
+     data-nonce="7fc45a393a1b9d4d625a59e2"
+     data-kdf-iterations="600000"
+     data-auto-save="false">
+  <script id="hbeData" type="hbeData">
+    d9e69e91b0f90bf2465aeccaf8b2b81c58b759e8cb4fc6fb2d5867b978d6da4cd7b222a4b9d5bc56b074e61ad46f8aea6ddec9d51ae4e65743f0c7ced369b0785a1aba4b1216653920915e417c7a3bdf3be899c54db0603a3f514be3cecccf657b3cf5891263965aa43c6e0c6bdd16d4f02121d55e91c9c2bba6aea4387142ebce6b3ec80805b806379a6e1d96fe49573c776a766076e3734a2ec5567f532b43315b039c68e76083d220a6707b56c5d38b48ef11510b127a779033084d4fe4f879eca0877b662828406ae4335765e8c417201691a17637a40bcf1c8134d4c2ce17ecb49efef4f33b15fc0c1bcb301a2eb3d0cdb8fbec6b169dbf6375ba94f3f5041c8e3049daad700ccb96a53328b5ec18fd20076fb2a9d76b63219c4e5bc7d8cba86495acbe3af4725a8d7cd4558ae555487324ce42417bfb6b685a78a597d97fe42a34b903116e0de61b0cb7be4d6c5d6865fcef4f366c51a76920950bcb062ff2a4fc7e9e38308d726c9c5631b9093ec63d9b8b2ccef2e7e77b197432f3b9ec77894c7e2df88c8618c4ed6b92aba4df3fb47803f559dfbe55d3b326846d0af03a003e97f81e10f3925d6a0104d6c7f397ea128276a8293cacd5598ab897fd5a3a65ff1eab07352d7b85a3abba6ca475e2960af53f1b8e9592b1846d1d1fce14767bb3e9e499663fd8adfe00c3c31cfc5053c36ce9c6cbc28d74e44da891ee5d1810bff5af979d9976ae980ca34f3594af89cc6f4f027ce2f951d1b6f26b570ee8f02843437af2c14fc1908f770202e99a0f9c9d87f93deb78c28389d96e10e962723ce65c198559699b2d6c108d1d85f254a7a3008010fa082827844c70a3a74e5e2755ec00c3e6858e2759da1f11b42dbd310bfbd590fda1a18c4f022f311822b30fb14f3cf7df85e2121cb6393d260e97f59f0d529b5225c06485f3cc2d13f5efbe8851b70865bf1067ca956d4f0c099bcd7d2121b0c862751c7360cd5910e2e92232f98a59b516b3afb86087f69c77cc172e5313cf5ec3cde4e3692ddc4c542b2d5d5dbbd5ace68515f488b690bf61beb1924b0035a86f20e90b7163e6ab85c9dd146d79bd241d4048ed9c147d45f9b1c1cca027d39b6ae08118dccdfc24728dfd0eaeccb1bac8b2776bf98aee1ca7b2c9bd203c913925beb432a3588682b93fa0ecf1e43203d2c30432e10e49eaf279302e3f29d94292f2552573ffc0c885e03537c9793fd5251f90add5dc16e697d8d4e5efdfecb517d42b083abac45d6e99d4979fd1723490698cb8a21d6d0b958db537504472dda0676c99328ae63a126095a7df669604a092adeb5de555bdf3e5cea87dde6cd94c6214cc6f210ef9d49be0fe2adc6c9a0029bc55ca9bee17ee1850ec8bc07c106fbae95f30d713edb36e1e21f19195973dfb607eb8302f55116e387e19430ca64e7822453fc0eda72735c4c21bd648938f807cf7f66f790339e78b044b7787903e4586246552844220ec19b7ed4369cd37edc046338954f4ee53955603636345d7ebc1240a87e1f316021ea6856316ba737761af058d0491b199dc91ac29b505d8de5937c82b7838efda74200052e8b5e3ed7d407b5842608b69d8443382f755b4fa11b535bb6ffd43e25632d2e959f69aa4523a068dde839ecc4dbe388c4b67599e7458d7332a535f3a98c985dc1dd1fb5430fc4ddba63b54c743a2b0379aad4f16f60596bb92aa8717924dfaac02007eb4f08017560c998557cfd7df1750a16ea57b58d8b0befdd1bef779492b2a9ad212dc560e3a70a32f35ac44f1a28a95476fbd79c4a27dfdf9f4aa987cd9e5f1f1f9a40df718c1f1ba84d34ff6e25471ccc7efd22ddb265db25465bf7107c6127145f00bd559d0f068de5928286b9fdd19fa6dba66b0765f496cd8698f6f6f9c902ee9d305cffc14ebf5a7644b11bfdd410166696432f35501adbf007c9f73799a028a0ca52d9a85e55fa88ddd149364332c59989e540a2472f85b508359b0192d8dc98c70f6e46aaaccdfe3f5c1d81c13e50e50259cc73b172f24ee93dcca3e33ff581d905a944f559186c22fe725084a096c719ab1899d3a070ca2ad1bc4c0ed4c295d4a5e18588f94a61696bd65a505eae5ae344cd95f1388fe4b38bcd35cb1ed81bcf8b80740847589d3d5e18171ecdb153a0e712bbc80bb1fb0dc8e121c5555a85306f80f7670bcea435c0f3940cbc9a5592549db4dc0b9040b91ca4204ee9ec0c5521bea34c03f41a1fbf699755d0ba3651936ccdabbb2d58ff03caf807dc85a634ad9d60d8254437ae477c9eb942bab7000037307c0c74855287f68c69a2a47991898eaa34b553c2601a93caf5deb8c93b792bc3df377e8d1cdc42c7ac8ec379b016b32a3ec11a5df0647c9f306ce83818cc82d9be60bbc93d471f04ad0ca197199f22af457b76909179c2ef319e5c0412c5391236fcdd9c18afbd6dd80db1738340ce9ed406aeeac92c4e082e441ff227a001ffbfc0ad089da378645f8efc0ca733bf8336de1013823bb52049aad56e22db199b0bb41c9ebc7c5d1ed6228909dbe0a9758f88d5013fe48c82f1f2cc0d20a566f7aecc52b8f86ad1f0bd26b5836a060e48d56b2ae7abf074205255d52673733ea3c9fcdf4fc0f0eef684ce97cb8ab60174888ad3b6102ceedab5fb0c33a377ad1449d0f14ba4d907bf405d86166245cd9424a615abc5e7bddbcb27b07c20fefeed4e3122cf6082a50e5df1586da24e65834f812b3c2c47ec224c8dcfec370a6ea6578eafc6f9aa94780c8bd4921807dc5486bd89ff03c81f4ffbd1234089e482d0ffd7448759985b77b872f5efc57a592e11f87e819dfb0a1762606905a925e2aba5ab8e0a7bb1b61531ac881668c6da9108fb3f7c23bc002832ffacc5b0fa24eeb03acc8607f556d40ebf928230023fadfd3dfef10b563317f2679a5dc70ef018c3d86f268c224cb914ef64dccfc6fa9a7619c00ee2bad8fa6e6ec84e1c9de522468cb64dfd880a60584cb
+  </script>
+  <div class="hbe hbe-content">
+    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
+      <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入访问密码：</span>
+      </label>
+    </div>
+      <button class="hbe hbe-button" type="submit">Decrypt</button>
+      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/2026/06/26/SMAP/">https://wangyier.top/2026/06/26/SMAP/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/os/" rel="tag"># os</a>
+              <a href="/tags/memory/" rel="tag"># memory</a>
+              <a href="/tags/SMAP/" rel="tag"># SMAP</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/encrypted/" rel="tag"># encrypted</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/06/26/Typora%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" rel="prev" title="Typora 使用总结">
+                  <i class="fa fa-angle-left"></i> Typora 使用总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/06/26/POE%E7%9B%B8%E5%85%B3/" rel="next" title="POE 相关">
+                  POE 相关 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
