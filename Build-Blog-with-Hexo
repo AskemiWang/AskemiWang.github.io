@@ -27,7 +27,7 @@
     <meta name="description" content="This essay concludes the workflow of building a hexo-based blog.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Build Blog with Hexo">
-<meta property="og:url" content="https://wangyier.top/2026/06/26/Build%20Blog%20with%20Hexo/index.html">
+<meta property="og:url" content="https://wangyier.top/Build-Blog-with-Hexo">
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="This essay concludes the workflow of building a hexo-based blog.">
 <meta property="og:locale" content="en_US">
@@ -40,10 +40,10 @@
 <meta name="twitter:image" content="https://wangyier.top/images/article_images/test.png">
 
 
-<link rel="canonical" href="https://wangyier.top/2026/06/26/Build%20Blog%20with%20Hexo/">
+<link rel="canonical" href="https://wangyier.top/Build-Blog-with-Hexo">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/2026/06/26/Build%20Blog%20with%20Hexo/","path":"2026/06/26/Build Blog with Hexo/","title":"Build Blog with Hexo"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/Build-Blog-with-Hexo","path":"/Build-Blog-with-Hexo","title":"Build Blog with Hexo"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Build Blog with Hexo | The Great Library</title>
@@ -187,7 +187,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -198,7 +198,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -233,7 +233,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/2026/06/26/Build%20Blog%20with%20Hexo/">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/Build-Blog-with-Hexo">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar/avatar.png">
@@ -979,7 +979,7 @@
     
 
     <footer class="post-footer"><div class="post-copyright">
-  <p><strong>本文链接：</strong><a href="https://wangyier.top/2026/06/26/Build%20Blog%20with%20Hexo/">https://wangyier.top/2026/06/26/Build%20Blog%20with%20Hexo/</a></p>
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/Build-Blog-with-Hexo">https://wangyier.top/Build-Blog-with-Hexo</a></p>
   <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
 </div>
 
@@ -1016,6 +1016,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/Acrobat-Pro-DC2024-Install" rel="next" title="Acrobat Pro DC2024 安装">
+                  Acrobat Pro DC2024 安装 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
