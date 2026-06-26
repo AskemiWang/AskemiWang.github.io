@@ -193,7 +193,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -459,9 +459,9 @@
 <p>所以我们使用<code>A</code>记录类型, 这种类型是绑定GitHub Pages的IPV4地址.</p>
 <p>实际上的访问流程是这样工作的:</p>
 
-    <span id="mjx-d475de6">
+    <span id="mjx-ba13e888">
       <style>
-      #mjx-d475de6{
+      #mjx-ba13e888{
         display:contents;
         mjx-assistive-mml {
           user-select: text !important;
@@ -974,8 +974,8 @@ g[data-mml-node="xypic"] path {
 <p>原生的Hexo不支持latex, 需要安装插件解决:</p>
 <ol>
 <li>
-<p>安装hexo-math:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math</span><br></pre></td></tr></table></figure>
+<p>确保没有安装hexo-math(已过时):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-math mathjax --save</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>在next主题中配置文件中, 修改math字段:</p>
@@ -983,9 +983,13 @@ g[data-mml-node="xypic"] path {
 </li>
 <li>
 <p>更换一个更加友好的渲染器</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked hexo-renderer-kramed hexo-renderer-pandoc --save</span><br><span class="line"></span><br><span class="line">npm install hexo-renderer-markdown-it markdown-it-mathjax3 --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-markdown-it markdown-it-mathjax3 --save</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改Hexo的配置文件, 注意不是next的, 在文件末尾添加以下配置，告诉 Hexo 使用新的数学公式插件：</p>
 </li>
 </ol>
+   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Markdown 渲染配置</span></span><br><span class="line">markdown:</span><br><span class="line">  render:</span><br><span class="line">    html: <span class="literal">true</span>  <span class="comment"># 允许在 Markdown 中使用 HTML 标签</span></span><br><span class="line">  plugins:</span><br><span class="line">    - markdown-it-mathjax3  <span class="comment"># 启用 MathJax3 插件，完美保护 $ 和 $$ 不被破坏</span></span><br></pre></td></tr></table></figure>
 <h2 id="7-Hexo-发布新文章">7. Hexo 发布新文章</h2>
 <h3 id="7-1-Front-matter字段">7.1 Front-matter字段</h3>
 <p>使用<code>hexo new filename</code>即可在source/_posts下面创建对应的文章. 文章初始只有下面的一段:</p>
