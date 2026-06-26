@@ -78,6 +78,12 @@
 
 
 
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
 <!-- 页面点击小红心特效 -->
 <script type="text/javascript" src="/js/love.js"></script>
 
@@ -171,7 +177,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Preparation"><span class="nav-text">Chapter 1: Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Software-Setup"><span class="nav-text">1.Software Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Personalizing-Your-Terminal"><span class="nav-text">2. Personalizing Your Terminal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Implementation-of-lab00"><span class="nav-text">3. Implementation of lab00</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Key-Takeaways"><span class="nav-text">4. Key Takeaways</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-Building-Abstractions-with-Functions"><span class="nav-text">Chapter 2: Building Abstractions with Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Names"><span class="nav-text">1. Names</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Chapter 1: Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Software-Setup"><span class="nav-text">1.Software Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Personalizing-Your-Terminal"><span class="nav-text">2. Personalizing Your Terminal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Implementation-of-lab00"><span class="nav-text">3. Implementation of lab00</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Key-Takeaways"><span class="nav-text">4. Key Takeaways</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Chapter 2: Building Abstractions with Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Names"><span class="nav-text">1. Names</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -291,51 +297,64 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="Chapter-1-Preparation"><a href="#Chapter-1-Preparation" class="headerlink" title="Chapter 1: Preparation"></a>Chapter 1: Preparation</h1><p>This lecture mainly covers lab00, which guides you through setting up your Python environment configuration. </p>
-<h2 id="1-Software-Setup"><a href="#1-Software-Setup" class="headerlink" title="1.Software Setup"></a>1.Software Setup</h2><ol>
-<li><p>Terminal: </p>
+    <div class="post-body" itemprop="articleBody"><h1>Chapter 1: Preparation</h1>
+<p>This lecture mainly covers lab00, which guides you through setting up your Python environment configuration.</p>
+<h2 id="1-Software-Setup">1.Software Setup</h2>
+<ol>
+<li>
+<p>Terminal:</p>
 <p>Windows comes with Powershell, and I have installed Git Bash.</p>
 </li>
-<li><p>Python: </p>
-<p>Python 3.11 is recommended for this course. However the Microsoft Store only provides versions 3.12 and 3.13 now. So I installed  versions 3.12.(Note: The Microsoft Store version installs automatically to a protected directory, which may cause path issues later. Consider downloading the installer from python.org for more control.)</p>
+<li>
+<p>Python:</p>
+<p>Python 3.11 is recommended for this course. However the Microsoft Store only provides versions 3.12 and 3.13 now. So I installed  versions 3.12.(Note: The Microsoft Store version installs automatically to a protected directory, which may cause path issues later. Consider downloading the installer from <a target="_blank" rel="noopener" href="http://python.org">python.org</a> for more control.)</p>
 <p>Verrification:</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@▒ѩ▒ MINGW64 /e/Computer Science System Building/CS61A/lab</span><br><span class="line">$ python3 --version</span><br><span class="line">Python 3.12.10</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@▒ѩ▒ MINGW64 /e/Computer Science System Building/CS61A/lab</span><br><span class="line">$ python3 --version</span><br><span class="line">Python 3.12.10</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Text Editor:</p>
+<li>
+<p>Text Editor:</p>
 <p>The Python interpreter is used to run Python code, but we need a text editor to write Python code.</p>
 <p>VS Code is recommended for this course (thought I initially expected Pycharm  would be suggested…).</p>
 <p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/thank-you?dv=win64user">Download Link</a></p>
 <p>Note: Disable Copilot! Press Ctrl+Shift+X to open the Extensions panel and search for GitHub Copilot -&gt; click the gear -&gt; disable feature.</p>
 </li>
 </ol>
-<h2 id="2-Personalizing-Your-Terminal"><a href="#2-Personalizing-Your-Terminal" class="headerlink" title="2. Personalizing Your Terminal"></a>2. Personalizing Your Terminal</h2><p>VS Code -&gt;  Manage(gear icon in the bottom-left corner) -&gt; Settings -&gt; Features -&gt; Terminal </p>
+<h2 id="2-Personalizing-Your-Terminal">2. Personalizing Your Terminal</h2>
+<p>VS Code -&gt;  Manage(gear icon in the bottom-left corner) -&gt; Settings -&gt; Features -&gt; Terminal</p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> Enable “Integrated: Copy On Selection”</li>
-<li><input checked="" disabled="" type="checkbox"> Enable “Integrated: Cursor Blinking”</li>
+<li>[x] Enable “Integrated: Copy On Selection”</li>
+<li>[x] Enable “Integrated: Cursor Blinking”</li>
 <li>Set “Integrated: Cursor Style” to “line”</li>
 <li>Set “Terminal › Integrated › Default Profile: Windows” to “Git Bash”</li>
 </ul>
-<h2 id="3-Implementation-of-lab00"><a href="#3-Implementation-of-lab00" class="headerlink" title="3. Implementation of lab00"></a>3. Implementation of lab00</h2><ol>
-<li><p>finish the code</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">twenty_twenty_six</span>():</span><br><span class="line">    <span class="string">"""Come up with the most creative expression that evaluates to 2026</span></span><br><span class="line"><span class="string">    using only numbers and the +, *, and - operators (or ** and % if you'd like).</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; twenty_twenty_six()</span></span><br><span class="line"><span class="string">    2026</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*<span class="number">1000</span>+<span class="number">2</span>*<span class="number">10</span>+<span class="number">6</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-Implementation-of-lab00">3. Implementation of lab00</h2>
+<ol>
+<li>
+<p>finish the code</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">twenty_twenty_six</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Come up with the most creative expression that evaluates to 2026</span></span><br><span class="line"><span class="string">    using only numbers and the +, *, and - operators (or ** and % if you&#x27;d like).</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; twenty_twenty_six()</span></span><br><span class="line"><span class="string">    2026</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*<span class="number">1000</span>+<span class="number">2</span>*<span class="number">10</span>+<span class="number">6</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>test the code locally</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@□□ѩ□□□□ MINGW64 /e/Computer Science System Building/CS61A/lab/lab00</span><br><span class="line">$ python3 -m doctest -v lab00.py</span><br><span class="line">Trying:</span><br><span class="line">    twenty_twenty_six()</span><br><span class="line">Expecting:</span><br><span class="line">    2026</span><br><span class="line">ok</span><br><span class="line">1 items had no tests:</span><br><span class="line">    lab00</span><br><span class="line">1 items passed all tests:</span><br><span class="line">   1 tests <span class="keyword">in</span> lab00.twenty_twenty_six</span><br><span class="line">1 tests <span class="keyword">in</span> 2 items.</span><br><span class="line">1 passed and 0 failed.</span><br><span class="line">Test passed.</span><br></pre></td></tr></tbody></table></figure>
+<li>
+<p>test the code locally</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@□□ѩ□□□□ MINGW64 /e/Computer Science System Building/CS61A/lab/lab00</span><br><span class="line">$ python3 -m doctest -v lab00.py</span><br><span class="line">Trying:</span><br><span class="line">    twenty_twenty_six()</span><br><span class="line">Expecting:</span><br><span class="line">    2026</span><br><span class="line">ok</span><br><span class="line">1 items had no tests:</span><br><span class="line">    lab00</span><br><span class="line">1 items passed all tests:</span><br><span class="line">   1 tests <span class="keyword">in</span> lab00.twenty_twenty_six</span><br><span class="line">1 tests <span class="keyword">in</span> 2 items.</span><br><span class="line">1 passed and 0 failed.</span><br><span class="line">Test passed.</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>test by the ok program</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@□□ѩ□□□□ MINGW64 /e/Computer Science System Building/CS61A/lab/lab00</span><br><span class="line">$ python3 ok</span><br><span class="line">=====================================================================</span><br><span class="line">Assignment: Lab 0</span><br><span class="line">OK, version v1.18.1</span><br><span class="line">=====================================================================</span><br><span class="line"></span><br><span class="line">Performing authentication</span><br><span class="line">Please enter your school email (.edu):*****</span><br><span class="line">Successfully logged <span class="keyword">in</span> as wye18280075427@gmail.com</span><br><span class="line">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">Running tests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">There are still locked tests! Use the -u option to unlock them</span><br><span class="line">---------------------------------------------------------------------</span><br><span class="line">Test summary</span><br><span class="line">    Locked: 1</span><br><span class="line">    1 <span class="built_in">test</span> cases passed! No cases failed.</span><br><span class="line"></span><br><span class="line">Backup... 100% complete</span><br><span class="line">Backup past deadline by 111 days, 6 hours, 8 minutes, and 5 seconds</span><br><span class="line">Backup successful <span class="keyword">for</span> user: wye18280075427@gmail.com</span><br><span class="line">URL: https://okpy.org/cal/cs61a/sp26/lab00/backups/62QYM7</span><br><span class="line"></span><br><span class="line">OK is up to <span class="built_in">date</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>
+<p>test by the ok program</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@□□ѩ□□□□ MINGW64 /e/Computer Science System Building/CS61A/lab/lab00</span><br><span class="line">$ python3 ok</span><br><span class="line">=====================================================================</span><br><span class="line">Assignment: Lab 0</span><br><span class="line">OK, version v1.18.1</span><br><span class="line">=====================================================================</span><br><span class="line"></span><br><span class="line">Performing authentication</span><br><span class="line">Please enter your school email (.edu):*****</span><br><span class="line">Successfully logged <span class="keyword">in</span> as wye18280075427@gmail.com</span><br><span class="line">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">Running tests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">There are still locked tests! Use the -u option to unlock them</span><br><span class="line">---------------------------------------------------------------------</span><br><span class="line">Test summary</span><br><span class="line">    Locked: 1</span><br><span class="line">    1 <span class="built_in">test</span> cases passed! No cases failed.</span><br><span class="line"></span><br><span class="line">Backup... 100% complete</span><br><span class="line">Backup past deadline by 111 days, 6 hours, 8 minutes, and 5 seconds</span><br><span class="line">Backup successful <span class="keyword">for</span> user: wye18280075427@gmail.com</span><br><span class="line">URL: https://okpy.org/cal/cs61a/sp26/lab00/backups/62QYM7</span><br><span class="line"></span><br><span class="line">OK is up to <span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="4-Key-Takeaways"><a href="#4-Key-Takeaways" class="headerlink" title="4. Key Takeaways"></a>4. Key Takeaways</h2><ol>
+<h2 id="4-Key-Takeaways">4. Key Takeaways</h2>
+<ol>
 <li>Understanding the command <code>python3 -m doctest -v lab00.py</code> ?</li>
 </ol>
-<p>   <code>python3</code> invokes the Python 3 interpreter </p>
-<p>   <code>-m</code> Tells Python to run a module as a script</p>
-<p>   <code>doctest</code> The built-in module for testing docstrings</p>
-<p>   <code>-v</code>  Short for <code>--verbose</code>, outputs detailed test results</p>
-<h1 id="Chapter-2-Building-Abstractions-with-Functions"><a href="#Chapter-2-Building-Abstractions-with-Functions" class="headerlink" title="Chapter 2: Building Abstractions with Functions"></a>Chapter 2: Building Abstractions with Functions</h1><h2 id="1-Names"><a href="#1-Names" class="headerlink" title="1. Names"></a>1. Names</h2><p>Expressions representing numbers may be combined with mathematical operators to form a compound expression, which the interpreter will evaluate:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 42</span></span><br><span class="line">42</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; -1 - -1</span></span><br><span class="line">0</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 1/2 + 1/4 + 1/8 + 1/16 + 1/32 + 1/64 + 1/128</span></span><br><span class="line">0.9921875</span><br></pre></td></tr></tbody></table></figure>
-
-<p>These mathematical expressions use <em>infix</em> notation, where the <em>operator</em> (e.g., <code>+</code>, <code>-</code>, <code>*</code>, or <code>/</code>) appears in between the <em>operands</em> (numbers). </p>
+<p><code>python3</code> invokes the Python 3 interpreter</p>
+<p><code>-m</code> Tells Python to run a module as a script</p>
+<p><code>doctest</code> The built-in module for testing docstrings</p>
+<p><code>-v</code>  Short for <code>--verbose</code>, outputs detailed test results</p>
+<h1>Chapter 2: Building Abstractions with Functions</h1>
+<h2 id="1-Names">1. Names</h2>
+<p>Expressions representing numbers may be combined with mathematical operators to form a compound expression, which the interpreter will evaluate:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 42</span></span><br><span class="line">42</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; -1 - -1</span></span><br><span class="line">0</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 1/2 + 1/4 + 1/8 + 1/16 + 1/32 + 1/64 + 1/128</span></span><br><span class="line">0.9921875</span><br></pre></td></tr></table></figure>
+<p>These mathematical expressions use <em>infix</em> notation, where the <em>operator</em> (e.g., <code>+</code>, <code>-</code>, <code>*</code>, or <code>/</code>) appears in between the <em>operands</em> (numbers).</p>
 
     </div>
 
@@ -377,8 +396,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2026/06/26/POE%E7%9B%B8%E5%85%B3/" rel="prev" title="POE 相关">
-                  <i class="fa fa-angle-left"></i> POE 相关
+                <a href="/2026/06/26/POE%E7%9B%B8%E5%85%B3/" rel="prev" title="POE相关">
+                  <i class="fa fa-angle-left"></i> POE相关
                 </a>
             </div>
             <div class="post-nav-item">
