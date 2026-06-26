@@ -193,7 +193,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -459,9 +459,9 @@
 <p>所以我们使用<code>A</code>记录类型, 这种类型是绑定GitHub Pages的IPV4地址.</p>
 <p>实际上的访问流程是这样工作的:</p>
 
-    <span id="mjx-ba13e888">
+    <span id="mjx-bfa7f588">
       <style>
-      #mjx-ba13e888{
+      #mjx-bfa7f588{
         display:contents;
         mjx-assistive-mml {
           user-select: text !important;
@@ -975,7 +975,7 @@ g[data-mml-node="xypic"] path {
 <ol>
 <li>
 <p>确保没有安装hexo-math(已过时):</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-math mathjax --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked hexo-renderer-kramed hexo-renderer-pandoc --save</span><br><span class="line">npm uninstall hexo-math mathjax --save</span><br><span class="line">npm uninstall hexo-pangu --save</span><br><span class="line">npm install hexo-renderer-markdown-it markdown-it-mathjax3 --save</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>在next主题中配置文件中, 修改math字段:</p>

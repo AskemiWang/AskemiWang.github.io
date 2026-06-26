@@ -187,7 +187,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -223,121 +223,6 @@
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/2026/06/26/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar/avatar.png">
-      <meta itemprop="name" content="Askemi Wang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The Great Library">
-      <meta itemprop="description" content="Personal notes of everything.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | The Great Library">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/06/26/test/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2026-06-26 21:59:13 / Modified: 21:59:23" itemprop="dateCreated datePublished" datetime="2026-06-26T21:59:13+08:00">2026-06-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>title: From Neural Network to AI<br>
-top: 0<br>
-copyright: true<br>
-date: 2026-06-26 20:38:18<br>
-updated: 2026-06-26 20:40:31<br>
-permalink: From-Neural-Network-to-AI/<br>
-password:<br>
-comments: true<br>
-tags: [ai, dl, ml, transformer]<br>
-categories: tech<br>
-keywords:<br>
-description: This document records the main procedure of AI developent, from nuural netwrok to CNN to RNN to Transformer to LLM to agent…</p>
-<h1>From Neural Network to AI</h1>
-<h2 id="神经网络的基本结构">神经网络的基本结构</h2>
-<p>普通的函数的映射: x-&gt;y;</p>
-<p>人类可以完成的映射但是机器无法很快完成的映射: 猫的图片-&gt;猫</p>
-<p>有一组数据 (1, 8), (2, 13), (3, 18), (4, 23), 可以轻易得到映射关系: y = 5x + 3; 这是严格相等的很好找的, 然而有一些数据无法找到精确的映射, 比如:</p>
-<p>(0.7, 8.1), (2.3, 12.9), (3.1, 18.4), (3.9, 23.5) , 这时, 可以找到一个近似相等的映射 y = 5x + 3;虽然不是完全相等, 但是可以看成近似相等.</p>
-<p>上面讲的是线性函数<code>f(x) = wx + b</code>, 然而实际上的函数大多数是非线性的, 如何得到非线性的函数? 很简单, 在线性函数外层套一层非线性运算即可. 比如平方, sin, 取指函数… 这些函数统称为激活函数, 目的是将线性函数变换为非线性函数<code>f(x) = g(wx + b)</code>.</p>
-<p>上面讲的是单变量的函数, 多变量函数对应的结构是:</p>
-<p><code>f(x) = g(w1x1 + w2x2 + ... + wnxn + b)</code></p>
-<p>很多情况下, 只套一层激活函数是没有办法得到我们想要的曲线的, 这个时候, 我们可以把上面的非线性函数再进行一次<code>线性变换</code>, 再套一层<code>激活函数</code></p>
-<p><code>f(x) = g2(w3g1(w1x1 + w2x2 +b1) + b2)</code></p>
-<p><code>f(x) = g4(w3(g2(w3g1(w1x1 + w2x2 +b1) + b2) + b3))</code></p>
-<p>…可以无限变化下去, <code>理论上可以逼近任意的连续函数</code></p>
-<p>当变换的层数太多的时候, 看起来很复杂, 我们抽象出<code>输入层</code>和<code>输出层</code></p>
-<p>比如 <code>f(x) = g(w1x1 + w2x2 + b)</code>, 他的输入层可以看作有两个输入神经元x1, x2; 输出层一个输出神经元y.</p>
-<pre><code class="language-mermaid">graph LR
-    subgraph Input_Layer [Input Layer]
-        direction TB
-        x1((x1))
-        x2((x2))
-    end
-
-    subgraph Output_Layer [Output Layer]
-        y((y))
-    end
-
-    x1 ==&gt; y
-    x2 ==&gt; y
-
-    style Input_Layer fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style Output_Layer fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
-    style x1 fill:#fff,stroke:#333,stroke-width:2px
-    style x2 fill:#fff,stroke:#333,stroke-width:2px
-    style y fill:#fff,stroke:#0277bd,stroke-width:3px</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -399,7 +284,7 @@ description: This document records the main procedure of AI developent, from nuu
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>This document records the main procedure of AI developent, from nuural netwrok to CNN to RNN to Transformer to LLM to agent...</p>
+          <p>This document records the main procedure of AI development, from neural netwrok to CNN to RNN to Transformer to LLM to agent...</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/From-Neural-Network-to-AI/">
@@ -1091,6 +976,92 @@ description: This document records the main procedure of AI developent, from nuu
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2026/06/26/Typora%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/2026/06/26/Zlibrary%E4%B8%8B%E8%BD%BD%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | The Great Library">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/06/26/Zlibrary%E4%B8%8B%E8%BD%BD%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Zlibrary下载指南</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-06-26 19:59:21 / Modified: 20:02:54" itemprop="dateCreated datePublished" datetime="2026-06-26T19:59:21+08:00">2026-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>This article introduces the means to download books on Zlibrary.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/06/26/Zlibrary%E4%B8%8B%E8%BD%BD%E6%8C%87%E5%8D%97/">
                 Read more &raquo;
               </a>
             </div>
