@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/#37c6c0/pace-theme-minimal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
@@ -179,7 +179,10 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Preparation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">lecture 1. Overview, Tokenization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-One-bitter-lesson"><span class="nav-text">1. One bitter lesson</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-History-of-Language-Module"><span class="nav-text">2. History of Language Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Pre-neural-before-2010s"><span class="nav-text">2.1 Pre-neural (before 2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Neural-ingredients-2010s"><span class="nav-text">2.2 Neural ingredients (2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Early-foundation-models-late-2010s"><span class="nav-text">2.3 Early foundation models (late 2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Embracing-scaling"><span class="nav-text">2.4 Embracing scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Open-models"><span class="nav-text">2.5 Open models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Credible-open-weight-models-weights-paper"><span class="nav-text">2.6 Credible open-weight models (weights + paper)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Course-Syllabus"><span class="nav-text">3. Course Syllabus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Tokenization"><span class="nav-text">3. Tokenization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-String-Token-and-Indices"><span class="nav-text">3.1 String, Token and Indices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Compression-Ratio"><span class="nav-text">3.2 Compression Ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Byte-Pair-Encoding-BPE"><span class="nav-text">3.3 Byte Pair Encoding (BPE)</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preparation"><span class="nav-text">Preparation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1.-overview-tokenization"><span class="nav-text">lecture 1. Overview,
+Tokenization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#one-bitter-lesson"><span class="nav-text">1. One bitter lesson</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-of-language-module"><span class="nav-text">2. History of Language Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pre-neural-before-2010s"><span class="nav-text">2.1 Pre-neural (before 2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#neural-ingredients-2010s"><span class="nav-text">2.2 Neural ingredients (2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#early-foundation-models-late-2010s"><span class="nav-text">2.3 Early foundation models
+(late 2010s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#embracing-scaling"><span class="nav-text">2.4 Embracing scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-models"><span class="nav-text">2.5 Open models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#credible-open-weight-models-weights-paper"><span class="nav-text">2.6 Credible
+open-weight models (weights + paper)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#course-syllabus"><span class="nav-text">3. Course Syllabus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tokenization"><span class="nav-text">3. Tokenization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-token-and-indices"><span class="nav-text">3.1 String, Token and Indices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compression-ratio"><span class="nav-text">3.2 Compression Ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#byte-pair-encoding-bpe"><span class="nav-text">3.3 Byte Pair Encoding (BPE)</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -299,68 +302,96 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>Preparation</h1>
-<p>Visit the official website: <a target="_blank" rel="noopener" href="https://cs336.stanford.edu/">Stanford CS336 | Language Modeling from Scratch</a></p>
-<p>Watch the recordings on YouTube: <a target="_blank" rel="noopener" href="https://youtu.be/JuoVZkPBiKk?si=v8OHgfUsC6rAOgwn">CS336_Spring_2026</a></p>
-<p>Lectures Materials on GitHub: <a target="_blank" rel="noopener" href="https://github.com/AskemiWang/CS336-lectures.git">CS336_Spring_2026</a></p>
-<p>Online Lecture Materials <a target="_blank" rel="noopener" href="https://cs336.stanford.edu/lectures/?trace=lecture_01">Trace - lecture_01</a></p>
-<h1>lecture 1. Overview, Tokenization</h1>
-<h2 id="1-One-bitter-lesson">1. One bitter lesson</h2>
-<p>Wrong interpretation: Scale is all that matters, algorithms don’t matter.</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="preparation">Preparation</h1>
+<p>Visit the official website: <a
+target="_blank" rel="noopener" href="https://cs336.stanford.edu/">Stanford CS336 | Language Modeling
+from Scratch</a></p>
+<p>Watch the recordings on YouTube: <a
+target="_blank" rel="noopener" href="https://youtu.be/JuoVZkPBiKk?si=v8OHgfUsC6rAOgwn">CS336_Spring_2026</a></p>
+<p>Lectures Materials on GitHub: <a
+target="_blank" rel="noopener" href="https://github.com/AskemiWang/CS336-lectures.git">CS336_Spring_2026</a></p>
+<p>Online Lecture Materials <a
+target="_blank" rel="noopener" href="https://cs336.stanford.edu/lectures/?trace=lecture_01">Trace -
+lecture_01</a></p>
+<h1 id="lecture-1.-overview-tokenization">lecture 1. Overview,
+Tokenization</h1>
+<h2 id="one-bitter-lesson">1. One bitter lesson</h2>
+<p>Wrong interpretation: Scale is all that matters, algorithms don’t
+matter.</p>
 <p>Right interpretation: Algorithms and scale are what matter.</p>
 <p><code>Accuracy = Efficiency * Rescources</code></p>
-<h2 id="2-History-of-Language-Module">2. History of Language Module</h2>
-<h3 id="2-1-Pre-neural-before-2010s">2.1 Pre-neural (before 2010s)</h3>
+<h2 id="history-of-language-module">2. History of Language Module</h2>
+<h3 id="pre-neural-before-2010s">2.1 Pre-neural (before 2010s)</h3>
 <ul>
 <li>Language model to measure the entropy of English, shannon_1950</li>
-<li>N-gram language models (used in machine translation and speech recognition systems), brants_2007</li>
+<li>N-gram language models (used in machine translation and speech
+recognition systems), brants_2007</li>
 </ul>
-<h3 id="2-2-Neural-ingredients-2010s">2.2 Neural ingredients (2010s)</h3>
+<h3 id="neural-ingredients-2010s">2.2 Neural ingredients (2010s)</h3>
 <ul>
 <li>Long-Short Term Memory (LSTM), lstm_1997</li>
 <li>First neural language model, bengio_2003</li>
-<li>Sequence-to-sequence modeling (for machine translation), seq2seq_2014</li>
+<li>Sequence-to-sequence modeling (for machine translation),
+seq2seq_2014</li>
 <li>Adam optimizer, adam_2014</li>
-<li>Attention mechanism (for machine translation), bahdanau_2015_attention</li>
-<li>Transformer architecture (for machine translation), transformer_2017</li>
+<li>Attention mechanism (for machine translation),
+bahdanau_2015_attention</li>
+<li>Transformer architecture (for machine translation),
+transformer_2017</li>
 <li>Mixture of experts, moe_2017</li>
 <li>Model parallelism, gpipe_2018, zero_2019 and megatron_lm_2019</li>
 </ul>
-<h3 id="2-3-Early-foundation-models-late-2010s">2.3 Early foundation models (late 2010s)</h3>
+<h3 id="early-foundation-models-late-2010s">2.3 Early foundation models
+(late 2010s)</h3>
 <ul>
-<li>ELMo: pretraining with LSTMs, fine-tuning improves downstream tasks, elmo_2018</li>
-<li>BERT: pretraining with Transformer, fine-tuning improves downstream tasks, bert_2018</li>
+<li>ELMo: pretraining with LSTMs, fine-tuning improves downstream tasks,
+elmo_2018</li>
+<li>BERT: pretraining with Transformer, fine-tuning improves downstream
+tasks, bert_2018</li>
 <li>Google’s T5 (11B): cast everything as text-to-text, t5_2019</li>
 </ul>
-<h3 id="2-4-Embracing-scaling">2.4 Embracing scaling</h3>
+<h3 id="embracing-scaling">2.4 Embracing scaling</h3>
 <ul>
-<li>OpenAI’s GPT-2 (1.5B): fluent text, first signs of zero-shot, gpt2_2019</li>
-<li>Scaling laws: provide hope / predictability for scaling, kaplan_scaling_laws_2020</li>
+<li>OpenAI’s GPT-2 (1.5B): fluent text, first signs of zero-shot,
+gpt2_2019</li>
+<li>Scaling laws: provide hope / predictability for scaling,
+kaplan_scaling_laws_2020</li>
 <li>OpenAI’s GPT-3 (175B): in-context learning, gpt_3_2020</li>
 <li>Google’s PaLM (540B): massive scale, undertrained, palm_2022</li>
-<li>DeepMind’s Chinchilla (70B): compute-optimal scaling laws, chinchilla_2022</li>
+<li>DeepMind’s Chinchilla (70B): compute-optimal scaling laws,
+chinchilla_2022</li>
 </ul>
-<h3 id="2-5-Open-models">2.5 Open models</h3>
+<h3 id="open-models">2.5 Open models</h3>
 <ul>
 <li>Early attempts (attempts to replicate GPT-3)</li>
-<li>EleutherAI’s open datasets (The Pile) and models (GPT-J), the_pile_2020 and gpt_j_2021</li>
-<li>Meta’s OPT (175B): GPT-3 replication, lots of hardware issues, opt_175b_2022</li>
-<li>Hugging Face / BigScience’s BLOOM (176B): focused on data sourcing, bloom_2022</li>
+<li>EleutherAI’s open datasets (The Pile) and models (GPT-J),
+the_pile_2020 and gpt_j_2021</li>
+<li>Meta’s OPT (175B): GPT-3 replication, lots of hardware issues,
+opt_175b_2022</li>
+<li>Hugging Face / BigScience’s BLOOM (176B): focused on data sourcing,
+bloom_2022</li>
 </ul>
-<h3 id="2-6-Credible-open-weight-models-weights-paper">2.6 Credible open-weight models (weights + paper)</h3>
+<h3 id="credible-open-weight-models-weights-paper">2.6 Credible
+open-weight models (weights + paper)</h3>
 <ul>
 <li>Meta’s Llama models, llama_2023, llama_2_2023 and llama_3_2024</li>
 <li>Mistral's models, mistral_7b_2023 and mixtral_2024</li>
-<li>DeepSeek's models, deepseek_67b_2024, deepseek_v2_2024 and deepseek_v3_2024</li>
+<li>DeepSeek's models, deepseek_67b_2024, deepseek_v2_2024 and
+deepseek_v3_2024</li>
 <li>Alibaba's Qwen models, qwen_2_5_2024 and qwen_3_2025</li>
 <li>Moonshot’s Kimi models, kimi_1_5_2025 and kimi_k2_5_2026</li>
-<li><a target="_blank" rel="noopener" href="http://Z.ai">Z.ai</a>’s GLM models, glm_4_5_2025 and glm_5_2026</li>
+<li>Z.ai’s GLM models, glm_4_5_2025 and glm_5_2026</li>
 <li>Minimax's models, minimax_m2_5_2026</li>
 <li>Xiaomi’s MIMO models, xiaomi_mimo_v2_2026</li>
-<li>These models are approaching closed models (GPT, Claude, Gemini, etc.).</li>
+<li>These models are approaching closed models (GPT, Claude, Gemini,
+etc.).</li>
 </ul>
-<h2 id="3-Course-Syllabus">3. Course Syllabus</h2>
+<h2 id="course-syllabus">3. Course Syllabus</h2>
 <table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
 <thead>
 <tr>
 <th>Part</th>
@@ -382,7 +413,8 @@
 </tr>
 <tr>
 <td>data</td>
-<td>Assignment 4: evaluation, curation, transformation, filtering, deduplication, mixing</td>
+<td>Assignment 4: evaluation, curation, transformation, filtering,
+deduplication, mixing</td>
 </tr>
 <tr>
 <td>alignment</td>
@@ -390,16 +422,22 @@
 </tr>
 </tbody>
 </table>
-<h2 id="3-Tokenization">3. Tokenization</h2>
-<h3 id="3-1-String-Token-and-Indices">3.1 String, Token and Indices</h3>
+<h2 id="tokenization">3. Tokenization</h2>
+<h3 id="string-token-and-indices">3.1 String, Token and Indices</h3>
 <p>Raw input text is generally represented as Unicode strings.</p>
 <p>e.g.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> = <span class="string">&quot;Hello, world!&quot;</span></span><br></pre></td></tr></table></figure>
-<p>A string can be cut into smaller units called <strong>token</strong>. For example, <code>Hello</code>, <code>,</code>, <code>world</code> and <code>!</code>.</p>
-<p>A language module places a probability distribution over sequences of tokens (usually represented by integer indices).</p>
+<p>A string can be cut into smaller units called <strong>token</strong>.
+For example, <code>Hello</code>, <code>,</code>, <code>world</code> and
+<code>!</code>.</p>
+<p>A language module places a probability distribution over sequences of
+tokens (usually represented by integer indices).</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indices = [<span class="number">15496</span>, <span class="number">11</span>, <span class="number">995</span>, <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>In fact, we have a <strong>vocabulary</strong> to convert the word(Note: not char) into an integer.</p>
-<p>To bridge strings and integers, we use a <strong>vocabulary</strong> (a mapping table) that converts <strong>tokens</strong> (not necessarily whole words!) to integer IDs.</p>
+<p>In fact, we have a <strong>vocabulary</strong> to convert the
+word(Note: not char) into an integer.</p>
+<p>To bridge strings and integers, we use a <strong>vocabulary</strong>
+(a mapping table) that converts <strong>tokens</strong> (not necessarily
+whole words!) to integer IDs.</p>
 <table>
 <thead>
 <tr>
@@ -412,20 +450,23 @@
 <tr>
 <td><strong>Encode</strong></td>
 <td>string → tokens → indices</td>
-<td><code>&quot;Hello&quot;</code> → <code>15496</code></td>
+<td><code>"Hello"</code> → <code>15496</code></td>
 </tr>
 <tr>
 <td><strong>Decode</strong></td>
 <td>indices → tokens → string</td>
-<td><code>15496</code> → <code>&quot;Hello&quot;</code></td>
+<td><code>15496</code> → <code>"Hello"</code></td>
 </tr>
 </tbody>
 </table>
-<p>Feel how tokenizers work: <a target="_blank" rel="noopener" href="https://tiktokenizer.vercel.app/?encoder=gpt2">interplay</a></p>
+<p>Feel how tokenizers work: <a
+target="_blank" rel="noopener" href="https://tiktokenizer.vercel.app/?encoder=gpt2">interplay</a></p>
 <p><strong>Observations</strong></p>
 <ul>
-<li>A word and its preceding space are part of the same token (e.g., &quot; world&quot;).</li>
-<li>A word at the beginning and in the middle are represented differently (e.g., “hello hello”). This will be discussed later.</li>
+<li>A word and its preceding space are part of the same token (e.g., ”
+world”).</li>
+<li>A word at the beginning and in the middle are represented
+differently (e.g., “hello hello”). This will be discussed later.</li>
 <li>Numbers are tokenized into every few digits.</li>
 </ul>
 <p>GPT-5 tokenizer from OpenAI (tiktoken) in action:</p>
@@ -434,16 +475,26 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tiktoken</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    originString = <span class="string">&quot;Hello world Hello&quot;</span></span><br><span class="line">    encoder = tiktoken.encoding_for_model(<span class="string">&quot;gpt-4&quot;</span>)</span><br><span class="line"></span><br><span class="line">    tokens = encoder.encode(originString)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Token IDs:&quot;</span>, tokens)</span><br><span class="line">    </span><br><span class="line">    rebuiltString = encoder.decode(tokens)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The originString is:&quot;</span>, originString)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The rebuiltString is:&quot;</span>, rebuiltString)</span><br><span class="line">    <span class="keyword">assert</span> originString == rebuiltString</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>run result:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Token IDs: [9906, 1917, 22691]</span><br><span class="line">The originString is: Hello world Hello</span><br><span class="line">The rebuiltString is: Hello world Hello</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-Compression-Ratio">3.2 Compression Ratio</h3>
+<h3 id="compression-ratio">3.2 Compression Ratio</h3>
 <p>Compression Ratio: number of bytes per token</p>
-<p>In the UTF-8, we have 128 chars, each needs 8 bits to express. So each char takes 1 byte memory. So the string “artificial intelligence” takes 23 bytes.</p>
-<p>e.g.</p>
+<p>In the UTF-8, we have 128 chars, each needs 8 bits to express. So
+each char takes 1 byte memory. So the string “artificial intelligence”
+takes 23 bytes.</p>
+<p>e.g. </p>
 <table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 38%" />
+<col style="width: 7%" />
+<col style="width: 14%" />
+</colgroup>
 <thead>
 <tr>
 <th>Input String</th>
 <th>Vocabulary Size</th>
-<th style="text-align:left">byte_num</th>
+<th style="text-align: left;">byte_num</th>
 <th>token[]</th>
 <th>token_num</th>
 <th>Compression Ratio</th>
@@ -453,25 +504,40 @@
 <tr>
 <td>“artificial intelligence”</td>
 <td>small</td>
-<td style="text-align:left">24</td>
-<td>[art, i, fic, i, al,  , in, t, el, lig, en, ce]</td>
+<td style="text-align: left;">24</td>
+<td>[art, i, fic, i, al, , in, t, el, lig, en, ce]</td>
 <td>12</td>
 <td>1.92</td>
 </tr>
 <tr>
 <td>“artificial intelligence”</td>
 <td>large</td>
-<td style="text-align:left">24</td>
-<td>[artificial,  , intelligence]</td>
+<td style="text-align: left;">24</td>
+<td>[artificial, , intelligence]</td>
 <td>3</td>
 <td>7.67</td>
 </tr>
 </tbody>
 </table>
-<p>Besides, here are two more conceptions: Char-level compression ratio and Byte-level compression ratio.</p>
-<p>In normal English, 1 character(a, b, c…) takes one byte memory, while in other characters like Chinese characters, a character may take 2 or 3 bytes to store.</p>
-<p>For an instance, in English, ‘a’ takes 1 char and 1 byte; while in Chinese ‘你’ takes 1 char but 3 bytes. So in Char-level and Byte-level, the compression ratios are different.</p>
-<table>
+<p>Besides, here are two more conceptions: Char-level compression ratio
+and Byte-level compression ratio.</p>
+<p>In normal English, 1 character(a, b, c…) takes one byte memory, while
+in other characters like Chinese characters, a character may take 2 or 3
+bytes to store.</p>
+<p>For an instance, in English, ‘a’ takes 1 char and 1 byte; while in
+Chinese ‘你’ takes 1 char but 3 bytes. So in Char-level and Byte-level,
+the compression ratios are different.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 29%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
 <thead>
 <tr>
 <th>Input String</th>
@@ -490,7 +556,7 @@
 <td>small</td>
 <td>23</td>
 <td>23</td>
-<td>[art, i, fic, i, al,  , in, t, el, lig, en, ce]</td>
+<td>[art, i, fic, i, al, , in, t, el, lig, en, ce]</td>
 <td>12</td>
 <td>23/12 = 1.92</td>
 <td>23/12 = 1.92</td>
@@ -500,7 +566,7 @@
 <td>large</td>
 <td>23</td>
 <td>23</td>
-<td>[artificial,  , intelligence]</td>
+<td>[artificial, , intelligence]</td>
 <td>3</td>
 <td>23/3 = 7.67</td>
 <td>23/3 = 7.67</td>
@@ -527,13 +593,17 @@
 </tr>
 </tbody>
 </table>
-<p>There approximately 150K Unicode characters now, which means it needs a super large vocabulary while most characters are quite rare(Inefficient!). <strong>And the compression ratio reflects this is not good.</strong> (Note: I don’t get it now.)</p>
-<p>In fact, to improve the compression ratio, we use the word_tokenizer(closer to what was done classically in NLP).</p>
+<p>There approximately 150K Unicode characters now, which means it needs
+a super large vocabulary while most characters are quite
+rare(Inefficient!). <strong>And the compression ratio reflects this is
+not good.</strong> (Note: I don’t get it now.)</p>
+<p>In fact, to improve the compression ratio, we use the
+word_tokenizer(closer to what was done classically in NLP).</p>
 <p>We use methods like regex to split string into chunks.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string = <span class="string">&quot;I&#x27;ll say supercalifragilisticexpialidocious!&quot;</span></span><br><span class="line">chunks = regex.findall(<span class="string">r&quot;\w+|.&quot;</span>, string)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;string is:&quot;</span>, string)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;chunks are:&quot;</span>, chunks)</span><br></pre></td></tr></table></figure>
 <p>the outputs:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> is: I<span class="number">&#x27;ll</span> say supercalifragilisticexpialidocious!</span><br><span class="line">chunks are: [<span class="string">&#x27;I&#x27;</span>, <span class="string">&quot;&#x27;&quot;</span>, <span class="string">&#x27;ll&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;say&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;supercalifragilisticexpialidocious&#x27;</span>, <span class="string">&#x27;!&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="3-3-Byte-Pair-Encoding-BPE">3.3 Byte Pair Encoding (BPE)</h3>
+<h3 id="byte-pair-encoding-bpe">3.3 Byte Pair Encoding (BPE)</h3>
 
     </div>
 
