@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="too lazy to edit :)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pro Tips &amp; Commands for Essential Software &amp; Tools">
+<meta property="og:url" content="https://wangyier.top/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="too lazy to edit :)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/everything_search_01.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/everything_search_02.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/everything_search_03.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/everything_search_04.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/gif_demon.gif">
+<meta property="og:image" content="https://wangyier.top/images/article_images/pixpin_paste_demo.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/pixpin_paste_copied_demo.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/Zotero_preview.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/Zotero_translate.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/quick_timestamp.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/quick_timestamp_2.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/timestamp_example.png">
+<meta property="article:published_time" content="2026-06-27T10:57:44.000Z">
+<meta property="article:modified_time" content="2026-08-03T11:12:32.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Command">
+<meta property="article:tag" content="Operating System">
+<meta property="article:tag" content="Programming">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Tool">
+<meta property="article:tag" content="Trick">
+<meta property="article:tag" content="VS Code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/everything_search_01.png">
+
+
+<link rel="canonical" href="https://wangyier.top/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/","path":"/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/","title":"Pro Tips & Commands for Essential Software & Tools"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Pro Tips & Commands for Essential Software & Tools | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-of-this-document"><span class="nav-text">1. Introduction of This
+Document</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#essential-software"><span class="nav-text">2. Essential Software</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#everything"><span class="nav-text">2.1 Everything</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#download"><span class="nav-text">2.1.1 Download</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tricks"><span class="nav-text">2.1.2 Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#precise-research."><span class="nav-text">2.1.2.1 Precise Research.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wildcard-research"><span class="nav-text">2.1.2.2 Wildcard Research</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#search-in-specified-directory"><span class="nav-text">2.1.2.3 Search in specified
+directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#combination-research"><span class="nav-text">2.1.2.4 Combination Research</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#drawio"><span class="nav-text">2.2 Drawio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pixpin"><span class="nav-text">2.3 PixPin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#configure-the-hot-keys"><span class="nav-text">2.3.1 Configure the Hot Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#screenshot-function"><span class="nav-text">2.3.2 Screenshot Function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#long-screenshot-function"><span class="nav-text">2.3.2.1 Long Screenshot Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#screen-record-function"><span class="nav-text">2.3.2.1 Screen Record Function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#paste-function"><span class="nav-text">2.3.3 Paste Function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#paste-when-screenshot"><span class="nav-text">2.3.3.1 Paste when Screenshot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#paste-what-you-copied"><span class="nav-text">2.3.3.2 Paste What You Copied</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lock-what-you-pasted"><span class="nav-text">2.3.3.3 Lock what You pasted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#quick-close-and-restore-the-paste"><span class="nav-text">2.3.3.4 Quick Close and
+Restore the Paste</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ditto"><span class="nav-text">2.4 Ditto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hallelujah-ime-aborted"><span class="nav-text">2.5 Hallelujah IME (Aborted)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zotero"><span class="nav-text">2.6 Zotero</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-registration"><span class="nav-text">2.6.1 Install &amp; Registration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chinese-language-paper-plugin-not-necessary"><span class="nav-text">2.6.2 Chinese
+Language Paper Plugin (Not Necessary)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configure-storage-settings"><span class="nav-text">2.6.3 Configure Storage
+Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-guide"><span class="nav-text">2.6.4 Quick Guide</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popular-plugins"><span class="nav-text">2.6.5 Popular Plugins</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#configurations-tricks"><span class="nav-text">3. Configurations &amp; Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cursor-keywords"><span class="nav-text">3.1 Cursor &#x2F; Keywords</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-cursor-movement"><span class="nav-text">3.1.1 Basic Cursor Movement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-text-selection"><span class="nav-text">3.1.2 Quick Text Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-operations"><span class="nav-text">3.1.3 Line Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hot-keys"><span class="nav-text">3.1.4 Hot Keys</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo"><span class="nav-text">3.2 Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-update"><span class="nav-text">3.2.1 Quick Update</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-text">3.3 Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-tags"><span class="nav-text">3.3.1 Git Tags</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vs-code"><span class="nav-text">3.4 VS Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#recognize-.traj-files-as-.json-permanently"><span class="nav-text">3.4.1 Recognize
+.traj files as .json permanently</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extension-markdown-preview-enhanced"><span class="nav-text">3.4.1 Extension: Markdown
+Preview Enhanced</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jump-by-row-number"><span class="nav-text">3.5.2 Jump by Row Number</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xshell"><span class="nav-text">3.5 Xshell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#prevent-disconnection"><span class="nav-text">3.5.1 Prevent Disconnection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-settings"><span class="nav-text">3.5.2 Log Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#terminal-scroll-buffer-setting"><span class="nav-text">3.5.2 Terminal Scroll Buffer
+Setting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outlook-settings"><span class="nav-text">3.5.3 Outlook Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-command"><span class="nav-text">3.5.4 Quick Command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mouse-operation-setting"><span class="nav-text">3.5.5 Mouse Operation Setting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hightlight-sets"><span class="nav-text">3.5.6 Hightlight Sets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typora"><span class="nav-text">3.6 Typora</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-a-catalog"><span class="nav-text">3.6.1 Insert a Catalog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-alert-table"><span class="nav-text">3.6.2 Insert Alert Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#collapsible-block"><span class="nav-text">3.6.3 Collapsible Block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preferences"><span class="nav-text">3.6.4 Preferences</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#files"><span class="nav-text">3.6.4.1 Files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#editor"><span class="nav-text">3.6.4.2 Editor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#markdown"><span class="nav-text">3.6.4.3 Markdown</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modify-hotkey-shortcut-key"><span class="nav-text">3.6.4 Modify Hotkey &amp; Shortcut
+key</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#introduction"><span class="nav-text">3.6.4.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#file"><span class="nav-text">3.2.2.1.1 File</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#edit"><span class="nav-text">3.2.2.1.2 Edit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#paragraph"><span class="nav-text">3.2.2.1.3 Paragraph</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#format"><span class="nav-text">3.2.2.1.4 Format</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#view"><span class="nav-text">3.2.2.1.5 View</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inline-math"><span class="nav-text">3.6.4.2 Inline Math</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-bind-replace-hotkey"><span class="nav-text">3.6.4.3 Re-bind Replace Hotkey</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#highlight"><span class="nav-text">3.6.4.4 Highlight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code"><span class="nav-text">3.6.4.5 Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-select"><span class="nav-text">3.2.3 Quick Select</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows"><span class="nav-text">3.7 Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-input-timestamp"><span class="nav-text">3.7.1 Quick Input Timestamp</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Pro Tips &amp; Commands for Essential Software &amp; Tools | The Great Library">
+      <meta itemprop="description" content="too lazy to edit :)">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pro Tips & Commands for Essential Software & Tools
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-06-27 18:57:44" itemprop="dateCreated datePublished" datetime="2026-06-27T18:57:44+08:00">2026-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-08-03 19:12:32" itemprop="dateModified" datetime="2026-08-03T19:12:32+08:00">2026-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">too lazy to edit :)</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="introduction-of-this-document">1. Introduction of This
+Document</h1>
+<p>This document is used to record my personal habits of work and study.
+Many tools and tricks will be used to improve the efficiency.</p>
+<h1 id="essential-software">2. Essential Software</h1>
+<h2 id="everything">2.1 Everything</h2>
+<h3 id="download">2.1.1 Download</h3>
+<p>Everything is a software which is used to search your file
+quickly.</p>
+<p><a target="_blank" rel="noopener" href="https://www.voidtools.com/zh-cn/">Download Link</a></p>
+<h3 id="tricks">2.1.2 Tricks</h3>
+<h4 id="precise-research.">2.1.2.1 Precise Research.</h4>
+<p>For example, search for “Pro Tips &amp; Commands for Essential
+Software &amp; Tools”.</p>
+<p><img data-src="/images/article_images/everything_search_01.png" /></p>
+<h4 id="wildcard-research">2.1.2.2 Wildcard Research</h4>
+<p>For example, search for markdown file.</p>
+<p><img data-src="/images/article_images/everything_search_02.png" /></p>
+<h4 id="search-in-specified-directory">2.1.2.3 Search in specified
+directory</h4>
+<p>Add a path in front of the search content:</p>
+<p><img data-src="/images/article_images/everything_search_03.png" /></p>
+<h4 id="combination-research">2.1.2.4 Combination Research</h4>
+<p>Use different keywords to research:</p>
+<p><img data-src="/images/article_images/everything_search_04.png" /></p>
+<h2 id="drawio">2.2 Drawio</h2>
+<p>drawio-desktop is a diagramming desktop app based on Electron that
+wraps the core draw.io editor.</p>
+<p>Download built binaries from the <a
+target="_blank" rel="noopener" href="https://github.com/jgraph/drawio-desktop/releases">releases
+section</a>. Download the windows-installer.exe</p>
+<p>Double-click to start the install app.</p>
+<h2 id="pixpin">2.3 PixPin</h2>
+<p>PixPin is a free(for most functions) software for screenshot and
+paste.</p>
+<p><a target="_blank" rel="noopener" href="https://pixpin.cn/download/">Download Link</a></p>
+<h3 id="configure-the-hot-keys">2.3.1 Configure the Hot Keys</h3>
+<p>Some original hot keys comflict with the Editor like Typora and some
+functions are useless for me. So go to the settings and clear all the
+hot keys first, then configure the following hotkeys:</p>
+<ol type="1">
+<li><p>Screenshot Function:</p>
+<p><code>CTRl + ALT + A</code></p></li>
+<li><p>Paste Function</p>
+<p><code>CTRL + ALT + S</code></p></li>
+<li><p>Quick Restore the Paste</p>
+<p><code>CTRL + ALT + R</code></p></li>
+</ol>
+<h3 id="screenshot-function">2.3.2 Screenshot Function</h3>
+<p><code>CTRL + ALT + A</code>: start the screenshot function, and
+select the area you wanna screen shot.</p>
+<h4 id="long-screenshot-function">2.3.2.1 Long Screenshot Function</h4>
+<p>After starting the screenshot function, press <code>L</code> or click
+the Long Screenshot button to startup the function:</p>
+<p><img data-src="/images/article_images/pixpin_long_screenshot_button.png" /></p>
+<p>The demonstration effect is as follows:</p>
+<p><img data-src="/images/article_images/pixpin_long_screenshot_demonstartion.png" /></p>
+<h4 id="screen-record-function">2.3.2.1 Screen Record Function</h4>
+<p>After starting the screenshot function and selecting the area, press
+<code>G</code> or click the Screen Record button to startup the
+function, you can configure the countdown, volume and other selective
+configuration… Test , this is how it works. And you can choose the
+output format like gif or mp4:</p>
+<p><img data-src="/images/article_images/gif_demon.gif" /></p>
+<h3 id="paste-function">2.3.3 Paste Function</h3>
+<p>This is a core function of this tool. Which allows you to screenshot
+a picture and paste it as a floating window. I paste three screenshots
+from webpage, so I can check them when I write the article.</p>
+<h4 id="paste-when-screenshot">2.3.3.1 Paste when Screenshot</h4>
+<p>When screenshot a picture, you can choose <code>save and close</code>
+or <code>paste</code>.</p>
+<p>If you click paste directly, you can get this :</p>
+<p><img data-src="/images/article_images/pixpin_paste_demo.png" /></p>
+<h4 id="paste-what-you-copied">2.3.3.2 Paste What You Copied</h4>
+<p>If you take a screenshot and choose <code>save and close</code> , or
+you just copied some texts. You can use <code>CTRL + ALT + S</code>
+function to paste it.</p>
+<p>The balck window in the below picture is what I copied and use
+<code>CTRL + ALT + S</code> to paste it</p>
+<p><img data-src="/images/article_images/pixpin_paste_copied_demo.png" /></p>
+<h4 id="lock-what-you-pasted">2.3.3.3 Lock what You pasted</h4>
+<p>Click <code>L</code> to fix the paste’s position. And press again to
+unlock it.</p>
+<h4 id="quick-close-and-restore-the-paste">2.3.3.4 Quick Close and
+Restore the Paste</h4>
+<p>Double-click the paste to close the paste quickly.</p>
+<p><code>CTRL + ALT + R</code> to restore what you just closed.</p>
+<h2 id="ditto">2.4 Ditto</h2>
+<p>Ditto is an extension to the standard windows clipboard. It saves
+each item placed on the clipboard allowing you access to any of those
+items at a later time. Ditto allows you to save any type of information
+that can be put on the clipboard, text, images, html, custom
+formats.</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/sabrogden/Ditto/releases/download/3.25.113.0/DittoSetup_3_25_113_0.exe">Ditto
+Download Link</a></p>
+<p>Make a new cache file :
+<code>D:\softwares\Ditto\ditto_cache\Ditto.db</code></p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>Set the default hotkey of activating Ditto as ==CTRL + SHIFT +
+`==</p>
+</blockquote>
+<h2 id="hallelujah-ime-aborted">2.5 Hallelujah IME (Aborted)</h2>
+<p>Hallelujah is an English IME.</p>
+<p>The Microsoft’s original English IME is too worse. So I decide to
+replace it with Hallelujah.</p>
+<p>Install:</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/dongyuwei/Hallelujah-Windows/releases">Releases
+· dongyuwei/Hallelujah-Windows</a></p>
+<p><strong>Notice:</strong></p>
+<p>Add it in the keyboard setting of Microsoft.</p>
+<ol type="1">
+<li>具备 Text-Expander 功能(可在偏好设置Web页面 <a
+target="_blank" rel="noopener" href="http://localhost:62718/">http://localhost:62718</a> 中添加/删除)。
+用户可以定义自己常用的词组，比如
+<code>{"yem":"you expand me"}</code>，那么当输入 <code>yem</code>
+时会显示 <code>you expand me</code>。</li>
+<li>支持按拼音来输出对应英文。如输入<code>suanfa</code>，输入法会候选词中会显示
+<code>algorithm</code>。</li>
+<li>按键盘右侧<code>shift</code>
+键可以在智能英语输入模式与传统英语输入模式间切换。</li>
+<li><strong>拼音输入中文(Pinyin to
+Chinese)</strong>：按<code>右Command</code>
+键切换到拼音输入模式，输入拼音（或首字母缩写）即可打出中文汉字。例如输入
+<code>niha</code> 或首字母
+<code>nh</code>，候选词会显示”你好”、“你还”等。再次按<code>右Command</code>
+切回智能英语输入模式。</li>
+</ol>
+<h2 id="zotero">2.6 Zotero</h2>
+<p>Zotero is a free, easy-to-use tool to help you collect, organize,
+annotate, cite, and share research.</p>
+<p><a target="_blank" rel="noopener" href="https://www.zotero.org/">Zotero | Your personal research
+assistant</a></p>
+<h3 id="install-registration">2.6.1 Install &amp; Registration</h3>
+<ol type="1">
+<li><p>Install Zotero</p>
+<p>Download and install.</p>
+<p>The Zotero is bound to the browser of your pc.</p></li>
+<li><p>Install Zotero Connector, a extension for scraping data on your
+browser.</p>
+<p><a
+target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/zotero-connector/nmhdhpibnnopknkmonacoephklnflpho">Zotero
+Connector - Microsoft Edge Addons</a></p></li>
+<li><p>Register a new account on official website</p>
+<p>Register an account: <a
+target="_blank" rel="noopener" href="https://www.zotero.org/start">Register</a></p></li>
+<li><p>Log in your account on pc</p>
+<p>Open Zotero and click : ‘Edit’ ➡ ‘Setting’ ➡ ‘Sync’ and Log
+in.</p></li>
+</ol>
+<h3 id="chinese-language-paper-plugin-not-necessary">2.6.2 Chinese
+Language Paper Plugin (Not Necessary)</h3>
+<ol type="1">
+<li><p>Download the plugin market so that we can download other plugins
+within Zotero.</p>
+<p><a target="_blank" rel="noopener" href="https://zotero-chinese.com/plugins/#search=market">Zotero
+插件商店 | Zotero 中文社区</a></p>
+<p>You will download a <code>zotero-addons.xpi</code> file.</p></li>
+<li><p>Install plugin market</p>
+<p>Zotero ➡ Tools ➡ Plugins ➡ Setting Gear ➡ Install Plugin from
+File</p></li>
+<li><p>Install the Jasminum plugin.</p>
+<p>The Jasminum plugin is to support Chinese Language Papers which I
+will barely use…</p>
+<p><img data-src="/images/article_images/zotero_plugin_market.png" /></p></li>
+</ol>
+<h3 id="configure-storage-settings">2.6.3 Configure Storage
+Settings</h3>
+<p><a
+target="_blank" rel="noopener" href="https://zotero-chinese.github.io/user-guide/faqs/custom-data-directory">自定义
+Zotero 数据存储位置 | Zotero 中文社区</a></p>
+<p><code>Edit</code> ➡ <code>Settings</code> ➡ <code>Advanced</code> ➡
+<code>Data Directory Zotero</code></p>
+<p>The default directory is : <code>C:\Users\test\Zotero</code></p>
+<ol type="1">
+<li>Choose another directory manually as new Data Directory of
+Zotero.</li>
+<li>Confirm and close Zotero</li>
+<li>Copy all files of default directory to new one.</li>
+<li>Open the Zotero</li>
+</ol>
+<h3 id="quick-guide">2.6.4 Quick Guide</h3>
+<ol type="1">
+<li><p>Create a new collection for same classification papers. And you
+can create subcollections:</p>
+<p><img data-src="/images/article_images/zotero_create_colletions.png" /></p></li>
+<li><p>Add Literatures on Web Site</p>
+<p>e.g. </p>
+<p><img data-src="/images/article_images/Zotero_save_literature.png" /></p></li>
+<li><p>Check on Local Zotero</p>
+<p><img data-src="/images/article_images/Zotero_preview.png" /></p></li>
+</ol>
+<h3 id="popular-plugins">2.6.5 Popular Plugins</h3>
+<ol type="1">
+<li><p>Translate for Zotero</p>
+<p><img data-src="/images/article_images/Zotero_translate.png" /></p></li>
+<li></li>
+</ol>
+<h1 id="configurations-tricks">3. Configurations &amp; Tricks</h1>
+<h2 id="cursor-keywords">3.1 Cursor / Keywords</h2>
+<p>The tricks are not always work for different editors.</p>
+<h3 id="basic-cursor-movement">3.1.1 Basic Cursor Movement</h3>
+<p><code>Ctrl + Left/Right Arrow</code>: Move cursor one word to the
+left/right. (works in typora, git bash, vscode, vim)</p>
+<p><code>Ctrl + Up/Down Arrow</code>: Move current line up/down.</p>
+<p><code>Home/End</code>: Move cursor to the beginning/end of the line.
+(works in typora, git bash, vscode, vim)</p>
+<h3 id="quick-text-selection">3.1.2 Quick Text Selection</h3>
+<p><code>Ctrl + D</code>: Select current word. (works in typora,
+vscode)</p>
+<p><code>Ctrl + Backspace</code>: Delete the word. (works in typora,
+vscode)</p>
+<p><code>Ctrl + Shift + Left/Right Arrow</code>: Select text one word to
+the left/right. (works in typora)</p>
+<p><code>Shift + Left/Right Arrow</code>: Select text one char to the of
+the line. (works in typora)</p>
+<p><code>Shift + Home/End</code>: Select text to the beginning/end of
+the line. (works in typora)</p>
+<p><code>Ctrl + A</code>: Select all text in the document. (works in
+typora)</p>
+<h3 id="line-operations">3.1.3 Line Operations</h3>
+<p><code>Alt + Up/Down Arrow</code>: Move current line up/down. (works
+in typora)</p>
+<p><code>Shift + Alt + Up/Down Arrow</code>: Duplicate current line
+up/down.</p>
+<p><code>Ctrl + X</code> (with no selection): Cut or delete the entire
+current line.</p>
+<p><code>Ctrl + C</code> (with no selection): Copy the entire current
+line.</p>
+<p><code>Ctrl + Enter</code>: Insert a new line below the current
+line.</p>
+<p><code>Ctrl + Shift + Enter</code>: Insert a new line above the
+current line.</p>
+<h3 id="hot-keys">3.1.4 Hot Keys</h3>
+<p><code>Ctrl + F</code>: Open the Find search box. (works in
+typora)</p>
+<p><code>Ctrl + H</code>: Open the Find and Replace box. (works in
+typora)</p>
+<p><code>Ctrl + G</code>: Go to a specific line number.</p>
+<p><code>Ctrl + P</code>: Quick open a file by name. (works in
+typora)</p>
+<p><code>Ctrl + Tab</code>: Switch between recently opened tabs.</p>
+<h2 id="hexo">3.2 Hexo</h2>
+<h3 id="quick-update">3.2.1 Quick Update</h3>
+<p>Quick deploy:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /e/myBlog &amp;&amp; python compress_images.py &amp;&amp; python path_convert.py online &amp;&amp; git add . &amp;&amp; git commit -m <span class="string">&quot;update&quot;</span> &amp;&amp; git push &amp;&amp; hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<p>Re-deploy when network has problems:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &amp;&amp; hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<h2 id="git">3.3 Git</h2>
+<h3 id="git-tags">3.3.1 Git Tags</h3>
+<p>Sometimes, when the repository is stable already, we want a method to
+remember this state of repository, we can use the command:
+<code>git tag</code>.</p>
+<p>This command is used to mark the latest commit with some info, for
+example:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># give the latest commit a tag named &quot;v1.0.0&quot;</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># If you want to give the tag some introduction（recommended）</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">&quot;The first stable version, fixed ... BUG&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># push the tag to the remote GitHub repository</span></span><br><span class="line">git push origin v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># （or）push all the local tags to the remote repo</span></span><br><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+<p>When your repo is chaotic, you can go back to the tag:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show all the tags</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># method A: go back to the tag version, and keep the changes</span></span><br><span class="line">git reset v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># method B: go back to the tag version, but discard all the changes</span></span><br><span class="line">git reset --hard v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># push and cover the remote repo forcely:</span></span><br><span class="line">git push -f origin main</span><br></pre></td></tr></table></figure>
+<p>Note: Don’t use <code>git push</code> directly, the
+<code>git push</code> command won’t push the tag by default.</p>
+<p>Use <code>git push</code> to push codes:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>Use <code>git push origin 'tag name'</code> to push tag:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="string">&#x27;tag name&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>Use <code>git push origin --tags</code> to push all the tags:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+<h2 id="vs-code">3.4 VS Code</h2>
+<h3 id="recognize-.traj-files-as-.json-permanently">3.4.1 Recognize
+<code>.traj</code> files as <code>.json</code> permanently</h3>
+<p><code>.traj</code> file is in fact a <code>.json</code> file. So we
+want to make VS Code recognize it as <code>.json</code>.</p>
+<p>Press <code>Ctrl + Shift + P</code>,
+input<code>Preferences: Open User Settings (JSON)</code></p>
+<p>Add an extra item in the curly braces(Note, you should add a comma in
+the end of previous item):</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;files.associations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">       <span class="attr">&quot;*.traj&quot;</span><span class="punctuation">:</span> <span class="string">&quot;json&quot;</span></span><br><span class="line">   <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="extension-markdown-preview-enhanced">3.4.1 Extension: Markdown
+Preview Enhanced</h3>
+<p>To view markdown file, just download this extension.</p>
+<p>Press: <code>ctrl + shift + v</code> to <code>view</code>.</p>
+<h3 id="jump-by-row-number">3.5.2 Jump by Row Number</h3>
+<p>Press <code>CTRL + G</code></p>
+<h2 id="xshell">3.5 Xshell</h2>
+<h3 id="prevent-disconnection">3.5.1 Prevent Disconnection</h3>
+<p>When you run a long-time-cost job, it is common that you won’t press
+any key in several hours. To prevent the auto-disconnect, we need to
+configure some settings.</p>
+<p><code>File</code>-&gt;<code>Default Session Properties</code>-&gt;<code>Connection</code>-&gt;<code>Keep Alive</code></p>
+<p>Check the box:
+<code>Send keep alive messages while this session is connected</code>,
+set the <code>internal</code> as <code>60</code> sec.</p>
+<h3 id="log-settings">3.5.2 Log Settings</h3>
+<ol type="1">
+<li><p>Change Default Log Path:</p>
+<p><code>Tools</code> -&gt; <code>Options</code> -&gt; <code>Log</code>
+-&gt; <code>Session Log</code> -&gt; <code>Log Folder</code>:</p>
+<p>change it into: <code>D:\xshell_log</code></p></li>
+<li><p>Change Default Session Log Config:</p>
+<p><code>File</code>-&gt;<code>Default Session Properties</code>-&gt;<code>Advanced</code>-&gt;<code>Logging</code>
+-&gt; <code>Log File</code> -&gt; <code>File Path</code>:</p>
+<p>This blank is to set the format of your log file:</p>
+<p><code>%n_%Y-%m-%d.log</code> is recommended. This format will
+generate one log file per day per session.</p>
+<ul>
+<li><p>Uncheck <code>Overwrite if the file exists</code></p></li>
+<li><p>Check <code>Start logging upon_connection</code></p></li>
+<li><p>Uncheck
+<code>Prompt me to choose a file path when logging starts</code></p></li>
+<li><p><code>Encoding</code>: choose option
+<code>Unicode (UTF-8)</code></p></li>
+</ul>
+<p><code>File</code>-&gt;<code>Default Session Properties</code>-&gt;<code>Advanced</code>-&gt;<code>Logging</code>
+-&gt; <code>Timestamp</code>:</p>
+<ul>
+<li>Check <code>Write in Log File</code></li>
+<li>Format: <code>[%Y-%m-%d %h:%m:%s]</code>(Note, it is recommended to
+add an extra whitespace after the time).</li>
+</ul></li>
+</ol>
+<h3 id="terminal-scroll-buffer-setting">3.5.2 Terminal Scroll Buffer
+Setting</h3>
+<p><code>File</code>-&gt;<code>Default Session Properties</code>-&gt;<code>Terminal</code>-&gt;
+<code>Scroll Buffer</code>:</p>
+<ul>
+<li>Set <code>Buffer Size</code> as <code>20000</code>.</li>
+<li>Check <code>Push erased screen into Scroll Buffer</code></li>
+</ul>
+<h3 id="outlook-settings">3.5.3 Outlook Settings</h3>
+<p>Create a new xcs file named <code>SolarizedDarkModify</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[SolarizedDarkModify]</span><br><span class="line">text=839496</span><br><span class="line">cyan(bold)=00ffff</span><br><span class="line">text(bold)=e9e9e9</span><br><span class="line">magenta=c000c0</span><br><span class="line">green=80ff00</span><br><span class="line">green(bold)=3c5a38</span><br><span class="line">background=042028</span><br><span class="line">cyan=00c0c0</span><br><span class="line">red(bold)=ff0000</span><br><span class="line">yellow=c0c000</span><br><span class="line">magenta(bold)=ff00ff</span><br><span class="line">yellow(bold)=ffff00</span><br><span class="line">red=ff4500</span><br><span class="line">white=c0c0c0</span><br><span class="line">blue(bold)=1e90ff</span><br><span class="line">white(bold)=fdf6e3</span><br><span class="line">black=000000</span><br><span class="line">blue=00bfff</span><br><span class="line">black(bold)=808080</span><br><span class="line">[Names]</span><br><span class="line">name0=SolarizedDarkModify</span><br><span class="line">count=1</span><br></pre></td></tr></table></figure>
+<p>Click: <code>Tools</code>-&gt;<code>Color Themes</code>
+-&gt;<code>Import</code>, choose the
+<code>SolarizedDarkModify.xcs</code>. And switch to this theme.</p>
+<p>Then, <code>File</code>-&gt;<code>Default Session Properties</code>
+-&gt; <code>Appearance</code>:</p>
+<p>Select the color theme: <code>SolarizedDarkModify</code></p>
+<p>Amend font size: <code>14</code></p>
+<p>Cursor Color: choose pink one<code>RGB: 255, 121, 198</code></p>
+<p>Check: <code>Use blinking cursor</code></p>
+<p>millisec: <code>500</code></p>
+<p>Text Color: <code>White</code></p>
+<p>Appearance: <code>Vertical Line</code></p>
+<h3 id="quick-command">3.5.4 Quick Command</h3>
+<p>Check: <code>View</code> -&gt; <code>Quick Command</code> -&gt;
+<code>Quick Command Bar</code></p>
+<p>Click: <code>Quick Command Bar</code> -&gt;
+<code>Add a Button</code>, add a new quick command.</p>
+<p>For example:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Name: nvidia smi</span><br><span class="line">String: nvidia-smi \n</span><br><span class="line">Excute Destination: To ALL Xshell</span><br></pre></td></tr></table></figure>
+<h3 id="mouse-operation-setting">3.5.5 Mouse Operation Setting</h3>
+<p><code>Tools</code> -&gt; <code>Option</code> -&gt;
+<code>Terminal</code> -&gt; <code>Mouse</code> :</p>
+<p>Choose the option of <code>Right button</code>:
+<code>Paste the clipboard contents</code></p>
+<p><code>Tools</code> -&gt; <code>Option</code> -&gt;
+<code>Terminal</code> -&gt; <code>Selection</code> :</p>
+<p>Check:
+<code>Copy selected texts to the clipboard automatically</code></p>
+<p>Uncheck:
+<code>Include the last new line character when copying the selected texts</code></p>
+<h3 id="hightlight-sets">3.5.6 Hightlight Sets</h3>
+<p><code>Tools</code> -&gt; <code>Highlight Sets</code></p>
+<p>Create a new sets.</p>
+<h2 id="typora">3.6 Typora</h2>
+<h3 id="insert-a-catalog">3.6.1 Insert a Catalog</h3>
+<p>Click <code>Paragraph</code> -&gt; <code>Table of Contens</code> will
+generate a catalog which is appropriate to put at the begging of the
+article.</p>
+<h3 id="insert-alert-table">3.6.2 Insert Alert Table</h3>
+<p>Click <code>Paragraph</code> ➡ <code>Alert</code> ➡ <code>...</code>
+can generate different special blocks. The demos are as follows:</p>
+<blockquote>
+<p>[!NOTE]</p>
+</blockquote>
+<blockquote>
+<p>[!TIP]</p>
+</blockquote>
+<blockquote>
+<p>[!WARNING]</p>
+</blockquote>
+<blockquote>
+<p>[!CAUTION]</p>
+</blockquote>
+<blockquote>
+<p>[!IMPORTANT]</p>
+</blockquote>
+<h3 id="collapsible-block">3.6.3 Collapsible Block</h3>
+<p>We can use the tag <code>details</code> of <code>html5</code> to
+create a collapsible block.</p>
+<p>You can simply use <code>&lt;details&gt;</code> to create a
+collapsible block. And use a tag <code>&lt;summary&gt;</code> to add a
+name of the block.</p>
+<p>Grammar:</p>
+<ol type="1">
+<li><p>Normal Text</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">summary</span>&gt;</span>Normal Text<span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span><br><span class="line">		text</span><br><span class="line"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Effect:</p>
+<details>
+<summary>
+<p>Normal Text</p>
+</summary>
+<p>test</p>
+</details></li>
+<li><p>Code</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">summary</span>&gt;</span>Block_Name<span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span>&gt;</span></span><br><span class="line">		printf(&quot;Hello World!&quot;);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>effect:</p>
+<details>
+<summary>
+<p>Block_Name</p>
+</summary>
+<pre><code>
+     printf("Hello World!");
+     System.out.println("However, the code can't be highlighted ");
+</code></pre>
+</details></li>
+<li><p>Code Block</p>
+<details>
+<summary>
+<p>Block_Name</p>
+</summary>
+<pre><code>&lt;pre&gt;&lt;blockcode&gt;</code></pre>
+<p>printf(“Hello World!”); System.out.println(“However, the code can’t
+be highlighted”); </blockcode></p>
+</pre>
+</details></li>
+</ol>
+<h3 id="preferences">3.6.4 Preferences</h3>
+<h4 id="files">3.6.4.1 Files</h4>
+<p>File ➡ Preferences ➡ Files:</p>
+<ul>
+<li>On Lunch: <code>Restore last closed files and folders</code></li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Auto Save</label></li>
+</ul></li>
+</ul>
+<h4 id="editor">3.6.4.2 Editor</h4>
+<p>File ➡ Preferences ➡ Editor:</p>
+<ul>
+<li>Indent Size on Save: <code>2</code></li>
+<li>❌Petty Indentation</li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Auto pair brackets and
+quotes</label></li>
+</ul></li>
+<li>❌Auto pair common Markdown syntax</li>
+<li>❌Display source for simple blocks on focus</li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Copy Markdown source as
+plain text</label></li>
+</ul></li>
+</ul>
+<h4 id="markdown">3.6.4.3 Markdown</h4>
+<p>File ➡ Preferences ➡ Markdown:</p>
+<ul>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Strict Mode</label></li>
+</ul></li>
+<li>Heading Style: <code>atx (#)</code></li>
+<li>Unordered List: <code>-</code></li>
+<li>Ordered List: <code>1.2.3.</code></li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Auto Links</label></li>
+<li><label><input type="checkbox" checked="" />Inline Math</label></li>
+</ul></li>
+<li>❌Subscript</li>
+<li>❌Superscript</li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Highlight</label></li>
+<li><label><input type="checkbox" checked="" />Github Style
+Alert</label></li>
+<li><label><input type="checkbox" checked="" />Diagrams (Mermaid
+etc.)</label></li>
+</ul></li>
+<li>❌Smart Quotes</li>
+<li>❌Smart Dashes</li>
+<li>❌Remap Unicode Punctuation on Parse</li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Display line numbers for
+code fences</label></li>
+</ul></li>
+<li>❌Auto wrap long lines</li>
+<li>Use Shift+Tab to auto indent selected code</li>
+<li>Default Code Language: <code>python</code></li>
+<li>Math Related Items:
+<ul>
+<li>Check all items but <code>Enable physics package</code></li>
+</ul></li>
+<li>Auto Numbering Math Equations:
+<code>No Auto Numbering Math Equations</code></li>
+<li>Copy/export HTML (without style): <code>Use Rendered SVG</code></li>
+<li>❌Indent first line of paragraphs</li>
+<li><ul class="task-list">
+<li><label><input type="checkbox"
+checked="" /><code>visible&lt;br/&gt;</code></label></li>
+</ul></li>
+<li>When Writing:
+<code>Preserve sequential whitespace and single line break</code></li>
+<li>Export / Print:
+<code>Preserve sequential whitespace and single line break</code></li>
+</ul>
+<h3 id="modify-hotkey-shortcut-key">3.6.4 Modify Hotkey &amp; Shortcut
+key</h3>
+<h4 id="introduction">3.6.4.1 Introduction</h4>
+<p>You can use shortcut keys to quickly insert or modify styles or do
+other operations ==supported== by Typora.</p>
+<p>That means you could not add extra function that not originally
+supported by Typora.</p>
+<p>The default <code>Frequently Used Shortcut Keys</code> are as
+follows:</p>
+<h5 id="file">3.2.2.1.1 File</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Hotkey (Windows/Linux)</th>
+<th>Hotkey (macOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Ctrl + N</td>
+<td>Command + N</td>
+</tr>
+<tr>
+<td style="text-align: left;">New Window</td>
+<td style="text-align: left;">Ctrl + Shift + N</td>
+<td>Command +Shift + N</td>
+</tr>
+<tr>
+<td style="text-align: left;">New Tab</td>
+<td style="text-align: left;"><em>(Not Supported)</em></td>
+<td>Command + T</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open</td>
+<td style="text-align: left;">Ctrl + O</td>
+<td>Command + O</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open Quickly</td>
+<td style="text-align: left;">Ctrl + P</td>
+<td>Command + Shift + O</td>
+</tr>
+<tr>
+<td style="text-align: left;">Reopen Closed File</td>
+<td style="text-align: left;">Ctrl + Shift + T</td>
+<td>Command + Shift + T</td>
+</tr>
+<tr>
+<td style="text-align: left;">Save</td>
+<td style="text-align: left;">Ctrl + S</td>
+<td>Command + S</td>
+</tr>
+<tr>
+<td style="text-align: left;">Save As / Duplicate</td>
+<td style="text-align: left;">Ctrl + Shift + S</td>
+<td>Command + Shift + S</td>
+</tr>
+<tr>
+<td style="text-align: left;">Preference</td>
+<td style="text-align: left;">Ctrl + ,</td>
+<td>Command + ,</td>
+</tr>
+<tr>
+<td style="text-align: left;">Close</td>
+<td style="text-align: left;">Ctrl + W</td>
+<td>Command + W</td>
+</tr>
+</tbody>
+</table>
+<h5 id="edit">3.2.2.1.2 Edit</h5>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 25%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Hotkey (Windows/Linux)</th>
+<th>Hotkey (macOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">New Paragraph</td>
+<td style="text-align: left;">Enter</td>
+<td>Enter</td>
+</tr>
+<tr>
+<td style="text-align: left;">New Line</td>
+<td style="text-align: left;">Shift + Enter</td>
+<td>Shift + Enter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cut</td>
+<td style="text-align: left;">Ctrl + X</td>
+<td>Command + X</td>
+</tr>
+<tr>
+<td style="text-align: left;">Copy</td>
+<td style="text-align: left;">Ctrl + C</td>
+<td>Command + C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Paste</td>
+<td style="text-align: left;">Ctrl + V</td>
+<td>Command + V</td>
+</tr>
+<tr>
+<td style="text-align: left;">Copy As Markdown</td>
+<td style="text-align: left;">Ctrl + Shift + C</td>
+<td>Command + Shift + C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Paste As Plain Text</td>
+<td style="text-align: left;">Ctrl + Shift + V</td>
+<td>Command + Shift + V</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select All</td>
+<td style="text-align: left;">Ctrl + A</td>
+<td>Command + A</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select Line/Sentence Select Row (in
+table)</td>
+<td style="text-align: left;">Ctrl + L</td>
+<td>Command + L</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delete Row (in table)</td>
+<td style="text-align: left;">Ctrl + Shift + Backspace</td>
+<td>Command + Shift + Backspace</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select Style Scope Select Cell (in
+table)</td>
+<td style="text-align: left;">Ctrl + E</td>
+<td>Command + E</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select Word</td>
+<td style="text-align: left;">Ctrl + D</td>
+<td>Command + D</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delete Word</td>
+<td style="text-align: left;">Ctrl + Shift + D</td>
+<td>Command + Shift + D</td>
+</tr>
+<tr>
+<td style="text-align: left;">Jump to Top</td>
+<td style="text-align: left;">Ctrl + Home</td>
+<td>Command + ↑</td>
+</tr>
+<tr>
+<td style="text-align: left;">Jump to Selection</td>
+<td style="text-align: left;">Ctrl + J</td>
+<td>Command + J</td>
+</tr>
+<tr>
+<td style="text-align: left;">Jump to Bottom</td>
+<td style="text-align: left;">Ctrl + End</td>
+<td>Command + ↓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Find</td>
+<td style="text-align: left;">Ctrl + F</td>
+<td>Command + F</td>
+</tr>
+<tr>
+<td style="text-align: left;">Find Next</td>
+<td style="text-align: left;">F3 / Enter</td>
+<td>Command + G / Enter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Find Previous</td>
+<td style="text-align: left;">Shift + F3 / Shift + Enter</td>
+<td>Command + Shift + G / Shift + Enter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Replace</td>
+<td style="text-align: left;">Ctrl + H</td>
+<td>Command + H</td>
+</tr>
+</tbody>
+</table>
+<h5 id="paragraph">3.2.2.1.3 Paragraph</h5>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 31%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Hotkey (Windows/Linux)</th>
+<th>Hotkey (macOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Heading 1 to 6</td>
+<td style="text-align: left;">Ctrl + 1/2/3/4/5/6</td>
+<td>Command + 1/2/3/4/5/6</td>
+</tr>
+<tr>
+<td style="text-align: left;">Paragraph</td>
+<td style="text-align: left;">Ctrl + 0</td>
+<td>Command + 0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Increase Heading Level</td>
+<td style="text-align: left;">Ctrl + =</td>
+<td>Command + =</td>
+</tr>
+<tr>
+<td style="text-align: left;">Decrease Heading Level</td>
+<td style="text-align: left;">Ctrl + -</td>
+<td>Command + -</td>
+</tr>
+<tr>
+<td style="text-align: left;">Table</td>
+<td style="text-align: left;">Ctrl + T</td>
+<td>Command + Option + T</td>
+</tr>
+<tr>
+<td style="text-align: left;">Code Fences</td>
+<td style="text-align: left;">Ctrl + Shift + K</td>
+<td>Command + Option + C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Math Block</td>
+<td style="text-align: left;">Ctrl + Shift + M</td>
+<td>Command + Option + B</td>
+</tr>
+<tr>
+<td style="text-align: left;">Quote</td>
+<td style="text-align: left;">Ctrl + Shift + Q</td>
+<td>Command + Option + Q</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ordered List</td>
+<td style="text-align: left;">Ctrl + Shift + [</td>
+<td>Command + Option + O</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unordered List</td>
+<td style="text-align: left;">Ctrl + Shift + ]</td>
+<td>Command + Option + U</td>
+</tr>
+<tr>
+<td style="text-align: left;">Indent</td>
+<td style="text-align: left;">Ctrl + [ / Tab</td>
+<td>Command + [ / Tab</td>
+</tr>
+<tr>
+<td style="text-align: left;">Outdent</td>
+<td style="text-align: left;">Ctrl + ] / Shift + Tab</td>
+<td>Command + ] / Shift + Tab</td>
+</tr>
+</tbody>
+</table>
+<h5 id="format">3.2.2.1.4 Format</h5>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 57%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Hotkey (Windows/Linux)</th>
+<th>Hotkey (macOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Strong</td>
+<td style="text-align: left;">Ctrl + B</td>
+<td>Command + B</td>
+</tr>
+<tr>
+<td style="text-align: left;">Emphasis</td>
+<td style="text-align: left;">Ctrl + I</td>
+<td>Command + I</td>
+</tr>
+<tr>
+<td style="text-align: left;">Underline</td>
+<td style="text-align: left;">Ctrl + U</td>
+<td>Command + U</td>
+</tr>
+<tr>
+<td style="text-align: left;">Code</td>
+<td style="text-align: left;">Ctrl + Shift +
+<code>| Command + Shift +</code></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;">Strike</td>
+<td style="text-align: left;">Alt + Shift + 5</td>
+<td>Control + Shift + `</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hyperlink</td>
+<td style="text-align: left;">Ctrl + K</td>
+<td>Command + K</td>
+</tr>
+<tr>
+<td style="text-align: left;">Image</td>
+<td style="text-align: left;">Ctrl + Shift + I</td>
+<td>Command + Control + I</td>
+</tr>
+<tr>
+<td style="text-align: left;">Clear Format</td>
+<td style="text-align: left;">Ctrl + \</td>
+<td>Command + \</td>
+</tr>
+</tbody>
+</table>
+<h5 id="view">3.2.2.1.5 View</h5>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 29%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Hotkey (Windows/Linux)</th>
+<th>Hotkey (macOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Toggle Sidebar</td>
+<td style="text-align: left;">Ctrl + Shift + L</td>
+<td>Command + Shift + L</td>
+</tr>
+<tr>
+<td style="text-align: left;">Outline</td>
+<td style="text-align: left;">Ctrl + Shift + 1</td>
+<td>Command + Control + 1</td>
+</tr>
+<tr>
+<td style="text-align: left;">Articles</td>
+<td style="text-align: left;">Ctrl + Shift + 2</td>
+<td>Command + Control + 2</td>
+</tr>
+<tr>
+<td style="text-align: left;">File Tree</td>
+<td style="text-align: left;">Ctrl + Shift + 3</td>
+<td>Command + Control + 3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Source Code Mode</td>
+<td style="text-align: left;">Ctrl + /</td>
+<td>Command + /</td>
+</tr>
+<tr>
+<td style="text-align: left;">Focus Mode</td>
+<td style="text-align: left;">F8</td>
+<td>F8</td>
+</tr>
+<tr>
+<td style="text-align: left;">Typewriter Mode</td>
+<td style="text-align: left;">F9</td>
+<td>F9</td>
+</tr>
+<tr>
+<td style="text-align: left;">Toggle Fullscreen</td>
+<td style="text-align: left;">F11</td>
+<td>Command + Option + F</td>
+</tr>
+<tr>
+<td style="text-align: left;">Actual Size</td>
+<td style="text-align: left;">Ctrl + Shift + 0</td>
+<td><em>(Not Supported)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Zoom In</td>
+<td style="text-align: left;">Ctrl + Shift + =</td>
+<td><em>(Not Supported)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Zoom Out</td>
+<td style="text-align: left;">Ctrl + Shift + -</td>
+<td><em>(Not Supported)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Switch Between Opened Documents</td>
+<td style="text-align: left;">Ctrl + Tab</td>
+<td>Command + `</td>
+</tr>
+<tr>
+<td style="text-align: left;">Toggle DevTools</td>
+<td style="text-align: left;">Shift + F12</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="inline-math">3.6.4.2 Inline Math</h4>
+<p>This function is not in the table above, but is supported.</p>
+<p>Menu Bar:</p>
+<p>File ➡ Preferences ➡ General ➡ Advanced Settings ➡ Open Advanced
+Settings</p>
+<p>Modify <code>conf.user.json</code> :</p>
+<p>e.g. Add a new shortcut key for inline math:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;keyBinding&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// for example: </span></span><br><span class="line">    <span class="comment">// &quot;Always on Top&quot;: &quot;Ctrl+Shift+P&quot;</span></span><br><span class="line">    <span class="comment">// All other options are the menu items &#x27;text label&#x27; displayed from each typora menu</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// New Added</span></span><br><span class="line">    <span class="attr">&quot;Inline Math&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Ctrl+M&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<p>Save and restart Typora, and the shortcut key is valid <span
+class="math inline"><em>n</em><em>o</em><em>w</em></span>.</p>
+<h4 id="re-bind-replace-hotkey">3.6.4.3 Re-bind Replace Hotkey</h4>
+<p>In the table we can see that the Hotkey of ==Replace== is
+<code>CTRL + H</code></p>
+<p>Replace it by <code>CTRL + R</code> :</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\%USER%\AppData\Roaming\Typora\conf\conf.user.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;Replace&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Ctrl+R&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="highlight">3.6.4.4 Highlight</h4>
+<p>Preliminary:</p>
+<ol type="1">
+<li>File ➡ Preference ➡ Markdown ➡ Syntax Support:
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Highlight</label></li>
+</ul></li>
+<li>The hotkey <code>CTRL + H</code> is available: In fact the original
+<code>CTRL + H</code> is the hotkey of ==Replace==. So we should replace
+it in advance.</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\%USER%\AppData\Roaming\Typora\conf\conf.user.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;Highlight&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Ctrl+H&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="code">3.6.4.5 Code</h4>
+<p>The hotkey of add a code format is ==CTRL + SHIFT + `== which is
+frequently used and tedious.</p>
+<p>So I decide to replace the hotkey by ==CTRL + `==.</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>This hotkey is conflicted with Ditto’s hotkey, remember to modify the
+Ditto’s hotkey.</p>
+</blockquote>
+<h3 id="quick-select">3.2.3 Quick Select</h3>
+<p><code>CTRL + D</code> to select current word</p>
+<p>then you can use: <code>CTRL + SHIFT + ➡</code> /
+<code>CTRL + SHIFT + ⬅</code> to select more texts.</p>
+<h2 id="windows">3.7 Windows</h2>
+<h3 id="quick-input-timestamp">3.7.1 Quick Input Timestamp</h3>
+<p>Sometimes, we want to tape current timestamp but, how ?</p>
+<p>Windows Setting:</p>
+<p><code>Time &amp; language</code> ➡️
+<code>Language &amp; region</code> ➡️<code>Language options</code> ➡️
+<code>Microsoft Pinyin</code> ➡️ <code>Lexicon and self-learning</code>
+➡️<code>Add or edit user-defined phrases</code></p>
+<p><img data-src="/images/article_images/quick_timestamp.png" /></p>
+<p><img data-src="/images/article_images/quick_timestamp_2.png" /></p>
+<p>Then we add a new phrase:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pinyin: <span class="keyword">time</span></span><br><span class="line">phrase: %yyyy%-%MM%-%<span class="built_in">dd</span>% %HH%:%mm%:%ss%</span><br></pre></td></tr></table></figure>
+<p>Then we can tape pinyin and get timestamp quickly.</p>
+<p><img data-src="/images/article_images/timestamp_example.png" /></p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>The English Language doesn’t support this fucntion.</p>
+<p>And it only support one timestamp item. If two items added, the
+timestamp will be static.</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/">https://wangyier.top/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Software/" rel="tag"># Software</a>
+              <a href="/tags/Tool/" rel="tag"># Tool</a>
+              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+              <a href="/tags/Command/" rel="tag"># Command</a>
+              <a href="/tags/Trick/" rel="tag"># Trick</a>
+              <a href="/tags/VS-Code/" rel="tag"># VS Code</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/SWE-agent-traj-analysis/" rel="prev" title="SWE-agent Traj Analysis">
+                  <i class="fa fa-angle-left"></i> SWE-agent Traj Analysis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/todo-list/" rel="next" title="Todo List">
+                  Todo List <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Paper Summary of &quot;Sample-Efficient Learning from Agent Experience&quot;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Summary – Sample-Efficient Learning from Agent Experience">
+<meta property="og:url" content="https://wangyier.top/paper-summary-sample-efficient-learning-from-agent-experience/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Paper Summary of &quot;Sample-Efficient Learning from Agent Experience&quot;.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-31T13:36:00.000Z">
+<meta property="article:modified_time" content="2026-08-02T09:04:45.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Context Distillation">
+<meta property="article:tag" content="Experience Distillation">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Model Tuning">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta property="article:tag" content="SFT">
+<meta property="article:tag" content="SWE-bench">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/paper-summary-sample-efficient-learning-from-agent-experience/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-sample-efficient-learning-from-agent-experience/","path":"/paper-summary-sample-efficient-learning-from-agent-experience/","title":"Paper Summary – Sample-Efficient Learning from Agent Experience"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Paper Summary – Sample-Efficient Learning from Agent Experience | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#in-context-learning-icl"><span class="nav-text">1. In-Context Learning (ICL)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sft-with-context"><span class="nav-text">2. SFT with Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#context-distillation"><span class="nav-text">3. Context Distillation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#context-distillation-goal"><span class="nav-text">3.1 Context Distillation Goal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interactive-agent-tasks"><span class="nav-text">3.2 Interactive Agent Tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experience-distillation"><span class="nav-text">3.3 Experience Distillation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#naive-context-distillation"><span class="nav-text">3.3.1 Naive Context
+Distillation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#improvement"><span class="nav-text">3.3.2 Improvement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#teacher-student"><span class="nav-text">3.4 Teacher &amp; Student</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#experience-distillation-epd"><span class="nav-text">4. Experience Distillation
+(EPD)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#example"><span class="nav-text">4.1 Example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#epds-performance"><span class="nav-text">5. EPD’s Performance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#compare-with-icl-and-sft"><span class="nav-text">5.1 Compare with ICL and SFT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compare-with-rl"><span class="nav-text">5.2 Compare with RL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">6. Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion-1"><span class="nav-text">6.1 Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chinese-edition"><span class="nav-text">6.2 Chinese Edition</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/paper-summary-sample-efficient-learning-from-agent-experience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Paper Summary – Sample-Efficient Learning from Agent Experience | The Great Library">
+      <meta itemprop="description" content="Paper Summary of &quot;Sample-Efficient Learning from Agent Experience&quot;.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paper Summary – Sample-Efficient Learning from Agent Experience
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-07-31 21:36:00" itemprop="dateCreated datePublished" datetime="2026-07-31T21:36:00+08:00">2026-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-08-02 17:04:45" itemprop="dateModified" datetime="2026-08-02T17:04:45+08:00">2026-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Paper Summary of "Sample-Efficient Learning from Agent Experience".</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="in-context-learning-icl">1. In-Context Learning (ICL)</h1>
+<p>In-Context Learning means that:</p>
+<p>When agent is working for solving a job, the environment will
+generate lots of information including error / success info. Nowadays
+agent is a multi-turn type tool, it will collect the environment
+information, package them will other prompts and send to LLM
+together.</p>
+<p>It will give LLM extra interaction info, and LLM could perform
+better.</p>
+<p>But it has a problem:</p>
+<ul>
+<li>The environment information is not persistent: if you start a new
+task, the previous environment will be cleaned and the improvement
+disappears once the context is removed.</li>
+</ul>
+<p>So if there is a way to persist the context into model weights?</p>
+<h1 id="sft-with-context">2. SFT with Context</h1>
+<p>Use the environment information to do SFT is barely effective because
+most information is useless which shows the error information instead of
+correct information.</p>
+<h1 id="context-distillation">3. Context Distillation</h1>
+<p>Context Distillation provides a natural mechanism for consolidating
+these gains into model weights.</p>
+<h2 id="context-distillation-goal">3.1 Context Distillation Goal</h2>
+<p>Loss Function:</p>
+<p><span
+class="math inline"><em>L</em><sub><em>C</em><em>D</em></sub>(<em>θ</em>) = <em>D</em><sub><em>K</em><em>L</em></sub>(<em>p</em><sub><em>θ</em><sub>0</sub></sub>(⋅|<em>x</em>, <em>c</em>) ∥ <em>p</em><sub><em>θ</em></sub>(⋅|<em>x</em>))</span></p>
+<h2 id="interactive-agent-tasks">3.2 Interactive Agent Tasks</h2>
+<p>Definition of the trajectory of Agent at timestep t (O for
+Observation, a for Action):</p>
+<p><span
+class="math inline"><em>h</em><sub><em>t</em></sub> = (<em>o</em><sub>0</sub>, <em>a</em><sub>0</sub>, …, <em>o</em><sub><em>t</em></sub>)</span></p>
+<p><span class="math inline"><em>h</em><sub><em>t</em></sub></span> is
+input of Agent’s decision at timestep <span
+class="math inline"><em>h</em><sub><em>t</em> + 1</sub></span> ,
+e.g.</p>
+<p>h₀ = (o₀)</p>
+<p>h₁ = (o₀, a₀, o₁)</p>
+<p>h₂ = (o₀, a₀, o₁, a₁, o₂)</p>
+<p>h₃ = (o₀, a₀, o₁, a₁, o₂, a₂, o₃)</p>
+<p><span class="math inline"><em>τ</em></span> is the full trajectory of
+a Agent:</p>
+<p><span
+class="math inline"><em>τ</em> = (<em>o</em><sub>0</sub>, <em>a</em><sub>0</sub>, …, <em>a</em><sub><em>T</em> − 1</sub>, <em>o</em><sub><em>T</em></sub>)</span></p>
+<p>The Agent’s trajectory probability distribution with parameters <span
+class="math inline"><em>θ</em></span> and environment <span
+class="math inline"><em>M</em></span> :</p>
+<p><span class="math inline">$p_\theta^M(\tau) = p_M(o_0)
+\prod_{t=0}^{T-1} \pi_\theta(a_t \mid h_t) \cdot p_M(o_{t+1} \mid  h_t,
+a_t)$</span></p>
+<p><span
+class="math inline"><em>p</em><sub><em>θ</em></sub><sup><em>M</em></sup>(<em>τ</em>)</span>
+= probability of acquiring trajectory <span
+class="math inline"><em>τ</em></span> with strategy <span
+class="math inline"><em>θ</em></span> and environment <span
+class="math inline">M</span> .</p>
+<p><span
+class="math inline"><em>p</em><sub><em>M</em></sub>(<em>o</em><sub>0</sub>)</span>
+= probability of the initial environment</p>
+<p><span
+class="math inline"><em>π</em><sub><em>θ</em></sub>(<em>a</em><sub><em>t</em></sub> ∣ <em>h</em><sub><em>t</em></sub>)</span>
+= probability of choosing action <span
+class="math inline"><em>a</em><sub><em>t</em></sub></span> after seeing
+the history <span
+class="math inline"><em>h</em><sub><em>t</em></sub></span> (Decided by
+LLM)</p>
+<p><span
+class="math inline"><em>p</em><sub><em>M</em></sub>(<em>o</em><sub><em>t</em> + 1</sub> ∣ <em>h</em><sub><em>t</em></sub>, <em>a</em><sub><em>t</em></sub>)</span>
+= probability of returning <span
+class="math inline"><em>o</em><sub><em>t</em> + 1</sub></span> by
+Environment after Agent taking <span
+class="math inline"><em>a</em><sub><em>t</em></sub></span> (Decided by
+Env)</p>
+<p><span class="math inline">$\prod_{t=0}^{T-1}$</span> = accumulative
+multiplication</p>
+<h2 id="experience-distillation">3.3 Experience Distillation</h2>
+<h3 id="naive-context-distillation">3.3.1 Naive Context
+Distillation</h3>
+<p><strong>Definition</strong> Experience Distillation as a
+Trajectory-Level Context Distillation:</p>
+<p><span
+class="math inline"><em>L</em><sub><em>C</em><em>D</em></sub>(<em>θ</em>; <em>M</em>, <em>τ</em><sup>exp</sup>) = <em>D</em><sub><em>K</em><em>L</em></sub>(<em>p</em><sub><em>θ</em><sub>0</sub></sub><sup><em>M</em></sup>(<em>τ</em><sup>′</sup>|<em>τ</em><sup>exp</sup>) ∥ <em>p</em><sub><em>θ</em></sub><sup><em>M</em></sup>(<em>τ</em><sup>′</sup>))</span></p>
+<ul>
+<li><span
+class="math inline"><em>p</em><sub><em>θ</em><sub>0</sub></sub><sup><em>M</em></sup>(<em>τ</em><sup>′</sup> ∣ <em>τ</em><sup>exp</sup>)</span>
+= teacher’s probability distribution of acquiring trajectory <span
+class="math inline"><em>τ</em><sup>′</sup></span> with strategy <span
+class="math inline"><em>θ</em><sub>0</sub></span>, environment <span
+class="math inline">M</span> and experience <span
+class="math inline"><em>τ</em><sup>exp</sup></span></li>
+<li><span
+class="math inline"><em>p</em><sub><em>θ</em></sub><sup><em>M</em></sup>(<em>τ</em><sup>′</sup>)</span>
+= student’s probability distribution of acquiring trajectory <span
+class="math inline"><em>τ</em><sup>′</sup></span> with strategy <span
+class="math inline"><em>θ</em></span>, environment <span
+class="math inline">M</span></li>
+</ul>
+<p><strong>Simplification</strong> :</p>
+<p><span class="math inline">$L_{CD}(\theta; M, \tau^{\text{exp}}) =
+D_{KL}\big(p_{\theta_0}^M(\tau' \mid
+  \tau^{\text{exp}}) \parallel p_\theta^M(\tau')\big) \\ =
+\mathbb{E}{\tau' \sim
+  p{\theta_0}^M(\cdot \mid \tau^{\text{exp}})}\left[\sum_t
+D_{KL}\big(\pi_{\theta_0}(\cdot
+  \mid h_t, \tau^{\text{exp}}) \parallel \pi_\theta(\cdot \mid
+h_t)\big)\right]$</span></p>
+<p><strong>Problem</strong>:</p>
+<p><span class="math inline"><em>τ</em><sup>′</sup></span> needs teacher
+model run another time ➡ which is not sample-efficient</p>
+<h3 id="improvement">3.3.2 Improvement</h3>
+<ol type="1">
+<li><p>Use World Model to replace the real environment (Aborted because
+of the error accumulation)</p></li>
+<li><p>Branched Rollouts:</p>
+<ul>
+<li><p>Real Traj:</p>
+<p><span
+class="math inline"><em>o</em><sub>0</sub> → <em>a</em><sub>0</sub> → <em>o</em><sub>1</sub> → <em>a</em><sub>1</sub> → <em>o</em><sub>2</sub> → <em>a</em><sub>2</sub> → <em>o</em><sub>3</sub> → <em>a</em><sub>3</sub> → ...</span></p>
+<p>​ ⬆️</p>
+<p>​ branch point</p>
+<p>​ ⬇️</p>
+<pre><code>      Simulate $k$ step : $a&#39;_2 → o&#39;_3 → a&#39;_3 ... $</code></pre></li>
+<li><p>Not fabricate a new traj</p></li>
+<li><p>Simulate <span class="math inline"><em>k</em></span>
+step</p></li>
+<li><p>The smaller <span class="math inline"><em>k</em></span> is, the
+smaller the accumulated model error will be</p></li>
+</ul></li>
+<li><p><span class="math inline"><em>k</em> = 1</span></p>
+<p>If <span class="math inline"><em>k</em> = 1</span>, at <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+, teacher only make a Action decision <span
+class="math inline"><em>a</em><sub><em>t</em></sub><sup>′</sup></span>
+and stop</p>
+<p><span
+class="math inline"><em>o</em><sub>0</sub> → <em>a</em><sub>0</sub> → <em>o</em><sub>1</sub> → <em>a</em><sub>1</sub> → <em>o</em><sub>2</sub> → <em>a</em><sub>2</sub> → <em>o</em><sub>3</sub> → <em>a</em><sub>3</sub> → ...</span></p>
+<p>​ ⬆️</p>
+<p>​ teacher make one decision:</p>
+<p>​ ⬇️</p>
+<p>​ <span
+class="math inline"><em>a</em><sub>2</sub><sup>′</sup></span></p>
+<p>​</p></li>
+<li><p>Advantages of <span class="math inline"><em>k</em> = 1</span></p>
+<ul>
+<li>only need teacher <span
+class="math inline"><em>a</em><sub><em>t</em></sub><sup>′</sup></span></li>
+<li>do not need World Model to predict <span
+class="math inline"><em>o</em><sub><em>t</em></sub><sup>′</sup></span></li>
+<li><span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+is existing, <span class="math inline"><em>τ</em><sup>exp</sup></span>
+is also existing</li>
+</ul>
+<p>World Model is no more needed and no environment interaction
+added.</p></li>
+<li><p>Simplification</p>
+<p><span class="math inline">$L_{EPD}(\theta; \tau^{\text{exp}}) =
+-\sum_{t=0}^{T-1} \mathbb{E}{a't \sim
+  \pi{\theta_0}(\cdot \mid h_t^{\text{exp}},
+\tau^{\text{exp}})}\big[\log \pi\theta(a'_t \mid
+  h_t^{\text{exp}})\big]$</span></p></li>
+</ol>
+<h2 id="teacher-student">3.4 Teacher &amp; Student</h2>
+<p>Teacher and Student are the same model:</p>
+<p>Teacher: <span
+class="math inline"><em>θ</em><sub>0</sub>(<em>f</em><em>r</em><em>o</em><em>z</em><em>e</em><em>n</em>) + context</span></p>
+<p>Student: <span class="math inline"><em>θ</em></span></p>
+<h1 id="experience-distillation-epd">4. Experience Distillation
+(EPD)</h1>
+<h2 id="example">4.1 Example</h2>
+<p>trajectory(Base-0):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">t=0: o₀ = <span class="string">&quot;请修复 Geometry Filter 不刷新的 bug&quot;</span></span><br><span class="line"></span><br><span class="line">t=1: a₀ = 打开 FilterComponent.js</span><br><span class="line">      o₁ = 看到 handleClick 的代码</span><br><span class="line"></span><br><span class="line">t=2: a₁ = 修改了 <span class="keyword">if</span>(value) 这一行</span><br><span class="line">      o₂ = 跑测试 → 失败，marker 消失</span><br><span class="line"></span><br><span class="line">t=3: a₂ = 打开 SliderControl.jsx</span><br><span class="line">      o₃ = 看到 x 按钮的 disabled 逻辑</span><br><span class="line"></span><br><span class="line">t=4: a₃ = 修改了按钮重置</span><br><span class="line">      o₄ = 跑测试 → 通过一部分，地图刷新了但位置不对</span><br><span class="line"></span><br><span class="line">t=5: a₄ = 打开 QueryBuilder.js</span><br><span class="line">      o₅ = 看到 <span class="built_in">where</span> 子句过滤了 falsy 值</span><br><span class="line"></span><br><span class="line">t=6: a₅ = 修改查询管道</span><br><span class="line">      o₆ = 跑测试 → ✅ 全部通过</span><br><span class="line"></span><br><span class="line">t=7: a₆ = 打开另一个不相关的文件</span><br><span class="line">      o₇ = 翻了翻，没啥用</span><br><span class="line"></span><br><span class="line">t=8: a₇ = 写了一行多余的 <span class="built_in">log</span></span><br><span class="line">      o₈ = 终端输出一堆废话</span><br><span class="line"></span><br><span class="line">t=9: a₈ = 删掉刚才的 <span class="built_in">log</span></span><br><span class="line">      o₉ = 代码干净了</span><br><span class="line"></span><br><span class="line">t=10: o₁₀ = 最终状态</span><br></pre></td></tr></table></figure>
+<p>Pre-process(<span
+class="math inline"><em>g</em>(<em>τ</em><sup>exp</sup>)</span>):</p>
+<p>Excerpt:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;这个任务的 bug 涉及三个组件：FilterComponent 的 handleClick、SliderControl 的 clearFilter 按钮、QueryBuilder 的 where 子句。单独改任何一个都不行，必须三个一起改。t=2 测试失败就是因为只改了一个。t=4 位置不对是因为还缺查询管道的修复。t=7-9 的操作与 bug 无关。</span></span><br></pre></td></tr></table></figure>
+<p>Teacher label 9 <span
+class="math inline"><em>a</em><sub><em>t</em></sub><sup>′</sup></span>
+:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">t=0: 输入 h₀ᵉˣᵖ = (o₀: <span class="string">&quot;请修复...&quot;</span>)</span><br><span class="line">     教师 → a<span class="string">&#x27;₀ = &quot;打开 FilterComponent.js，先定位入口&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">t=1: 输入 h₁ᵉˣᵖ = (o₀, a₀: 打开 FilterComponent, o₁: 看到代码)</span></span><br><span class="line"><span class="string">     教师 → a&#x27;</span>₁ = <span class="string">&quot;修改 handleClick 的条件判断，并添加 null 的显式重置&quot;</span></span><br><span class="line">            （比原始 a₁ 多了一步 null 处理）</span><br><span class="line"></span><br><span class="line">t=2: 输入 h₂ᵉˣᵖ = (... a₁: 原始修改, o₂: 测试失败)</span><br><span class="line">     教师 → a<span class="string">&#x27;₂ = &quot;不要去翻别的文件，直接打开 SliderControl.jsx&quot;</span></span><br><span class="line"><span class="string">            （原始 a₂ 是看测试失败后才去的；</span></span><br><span class="line"><span class="string">              教师提前就知道，而且跳过了&quot;懵了乱翻&quot;的步骤）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">t=3: 输入 h₃ᵉˣᵖ = (... a₂: 打开 SliderControl, o₃: 看到按钮逻辑)</span></span><br><span class="line"><span class="string">     教师 → a&#x27;</span>₃ = <span class="string">&quot;修复 clearFilter 后按钮的 disabled 状态重置&quot;</span></span><br><span class="line">            （和原始 a₃ 差不多，但推理链更完整）</span><br><span class="line"></span><br><span class="line">t=4: 输入 h₄ᵉˣᵖ = (... a₃: 改按钮, o₄: 测试部分通过)</span><br><span class="line">     教师 → a<span class="string">&#x27;₄ = &quot;直接打开 QueryBuilder.js，还剩最后一个组件&quot;</span></span><br><span class="line"><span class="string">            （跳过原始 a₄ 中间的犹豫和乱翻）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">t=5: 输入 h₅ᵉˣᵖ = (... a₄: 打开 QueryBuilder, o₅: 看到 where 子句)</span></span><br><span class="line"><span class="string">     教师 → a&#x27;</span>₅ = <span class="string">&quot;修改 where 子句让 falsy 值也能触发刷新&quot;</span></span><br><span class="line">            （和原始 a₅ 类似）</span><br><span class="line"></span><br><span class="line">t=6: 输入 h₆ᵉˣᵖ = (... a₅: 改完查询管道, o₆: ✅ 全过)</span><br><span class="line">     教师 → a<span class="string">&#x27;₆ = &quot;任务已完成，不需要再做任何修改&quot;</span></span><br><span class="line"><span class="string">            （原始 a₆ 又去翻了一个不相关的文件——多余动作）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">t=7: 输入 h₇ᵉˣᵖ = (... a₆: 乱翻文件, o₇: 没啥用)</span></span><br><span class="line"><span class="string">     教师 → a&#x27;</span>₇ = <span class="string">&quot;这个文件跟 bug 无关，不需要在这里浪费时间&quot;</span></span><br><span class="line"></span><br><span class="line">t=8: 输入 h₈ᵉˣᵖ = (... a₇: 加 <span class="built_in">log</span>, o₈: 终端输出)</span><br><span class="line">     教师 → a<span class="string">&#x27;₈ = &quot;不需要加 log，之前的修复已经完整了&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Train Dataset (9 samples):</p>
+<p><span
+class="math inline">(<em>h</em><sub><em>t</em></sub><sup>exp</sup>, <em>a</em><sub><em>t</em></sub><sup>′</sup>)</span></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(o₀): <span class="string">&quot;a&#x27;&quot;</span></span><br><span class="line">(o₀, a₀, o₁): <span class="string">&quot;a&#x27;₁&quot;</span></span><br><span class="line">(o₀, a₀, o₁, a₁, o₂): <span class="string">&quot;a&#x27;2&quot;</span></span><br><span class="line">(o₀, a₀, o₁, a₁, o₂, a₂, o₃): <span class="string">&quot;a&#x27;3&quot;</span></span><br><span class="line">...</span><br><span class="line">(............full <span class="built_in">history</span>...........): <span class="string">&quot;a&#x27;₈&quot;</span></span><br></pre></td></tr></table></figure>
+<p>749 SWE tasks ➡ 45,301 Samples</p>
+<h1 id="epds-performance">5. EPD’s Performance</h1>
+<h2 id="compare-with-icl-and-sft">5.1 Compare with ICL and SFT</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SWE (749 Tasks)</th>
+<th>TaleSuite (6 Tasks)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zero-shot</td>
+<td>5.3%</td>
+<td>18.5</td>
+</tr>
+<tr>
+<td>ICL</td>
+<td>76.4%</td>
+<td>45.6</td>
+</tr>
+<tr>
+<td>SFT</td>
+<td>8.0%</td>
+<td>17.8</td>
+</tr>
+<tr>
+<td>EPD</td>
+<td>51.4%</td>
+<td>43.8</td>
+</tr>
+</tbody>
+</table>
+<p>Use <span
+class="math inline"><em>G</em><sub><em>I</em><em>C</em><em>L</em></sub></span>
+to evaluate “How much of the gains of by ICL has been retained”</p>
+<p><span class="math display">$$G_{ICL} = \frac{\text{Score} -
+\text{Zero-shot Score}}{\text{ICL Score} -
+  \text{Zero-shot Score}} \times 100 \% $$</span></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SWE (749 Tasks)</th>
+<th>TaleSuite (6 Tasks)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span
+class="math inline"><em>G</em><sub><em>I</em><em>C</em><em>L</em></sub><em>E</em><em>P</em><em>D</em></span></td>
+<td>64.8%</td>
+<td>93.4%</td>
+</tr>
+<tr>
+<td><span
+class="math inline"><em>G</em><sub><em>I</em><em>C</em><em>L</em></sub><em>S</em><em>F</em><em>T</em></span></td>
+<td>3.8%</td>
+<td>−2.6%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="compare-with-rl">5.2 Compare with RL</h2>
+<p>EPD can save a lot of samples compared with RL.</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 32%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>SWE/TaleSuite</th>
+<th>Environment Samples per Task</th>
+<th>EPD Fewer Environment Samples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICL + EPD(SWE)</td>
+<td>51.4% pass@1</td>
+<td>52.5</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PPO(SWE)</td>
+<td>17.7% pass@1</td>
+<td>504.9</td>
+<td>9.6×</td>
+</tr>
+<tr>
+<td>GRPO (TaleSuite)</td>
+<td>29.9</td>
+<td>448</td>
+<td>57.2×</td>
+</tr>
+</tbody>
+</table>
+<h1 id="conclusion">6. Conclusion</h1>
+<h2 id="conclusion-1">6.1 Conclusion</h2>
+<p>Core Innovations</p>
+<ol type="1">
+<li>A New Problem: Experience Distillation</li>
+</ol>
+<p>Before this paper, there were three separate lines of work:</p>
+<ul>
+<li>ICL: Highly sample-efficient, but the knowledge is temporary — once
+the context is removed, the capability vanishes</li>
+<li>Context Distillation: Can consolidate contextual knowledge into
+model weights, but requires the student and teacher to run in the same
+environment — in agent settings, this means additional environment
+interactions</li>
+<li>RL: Can permanently consolidate knowledge, but sample efficiency is
+abysmal</li>
+</ul>
+<p>The paper defines the gap at the intersection of these three as a new
+problem: how to distill what an agent learns via ICL from its own
+experience into model weights, without incurring additional environment
+interactions.</p>
+<ol start="2" type="1">
+<li>One Elegant Simplification: <span
+class="math inline"><em>k</em> = 1</span> Branched Rollout</li>
+</ol>
+<p>This is the most ingenious step in the entire paper.</p>
+<p>Trajectory-level KL → simplified to per-step policy KL (Equation 1) →
+still requires environment rollouts → replace with a world model? Error
+compounds → branched rollouts? Push to the limit <span
+class="math inline"><em>k</em> = 1</span> → world model gone,
+environment interaction gone (Equation 2).</p>
+<p>It transforms “have the teacher re-run the entire trajectory” into
+“have the teacher make a single revised decision at each
+already-recorded history point.” The cost is an approximation
+(substituting <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+for <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>′</sup></span>);
+the gain is zero additional environment interaction — and experiments
+show the approximation works perfectly well in practice.</p>
+<ol start="3" type="1">
+<li>Three Engineering Complements</li>
+</ol>
+<ul>
+<li>Experience Preprocessing: Solves the problem of raw trajectories
+being too long and noisy</li>
+<li>Enhanced Teacher Reasoning: Makes the teacher write out a reasoning
+chain, distilling the “why” alongside the “what” — nearly doubles
+performance</li>
+<li>Branch Packing: Packs independent samples into sequences, boosting
+training efficiency by over 10× with no performance loss (slight
+improvement, actually)</li>
+</ul>
+<ol start="4" type="1">
+<li>Counterintuitive Empirical Findings</li>
+</ol>
+<p>┌────────────────────────────────┬─────────────────────────────────────────────────────┐
+│ Intuition │ Reality │
+├────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ A world model should help │ Removing it helps more — error compounding
+is fatal │
+├────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ SFT on raw trajectories should │ Almost zero gain (3.8%) — raw actions
+are too │ │ do something │ low-quality │
+├────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ Student-sampled Reverse KL │ Only 9.1% — without experience context,
+the student │ │ should work │ rarely samples good trajectories │
+├────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ Longer rollouts are better │ Shorter is better — <span
+class="math inline"><em>k</em> = 1</span> is optimal │
+└────────────────────────────────┴─────────────────────────────────────────────────────┘</p>
+<p>These results demonstrate that in the agent experience setting, many
+classical intuitions are wrong.</p>
+<ol start="5" type="1">
+<li>A New Paradigm</li>
+</ol>
+<p>Rather than “ICL vs RL vs Distillation — pick one,” the paper chains
+them into a pipeline:</p>
+<p>Few-shot trial-and-error (ICL, temporary learning) → Periodic
+distillation (EPD, consolidation) → Loop (continual distillation)</p>
+<p>This combines the sample efficiency of ICL with the persistence of
+weight updates. The continual distillation result — 7.1 → 47.0 over 5
+rounds — shows the loop genuinely works.</p>
+<p>Assessment</p>
+<p>Strengths</p>
+<p>Well-defined and important problem. As agent tasks grow longer and
+environment interactions become more expensive (real laboratories, human
+feedback, enterprise codebases), the need for “learn more, interact
+less” will only intensify. The paper identifies a valuable gap at the
+intersection of ICL, distillation, and RL.</p>
+<p>Clean and elegant method. The derivation that pushes <span
+class="math inline"><em>k</em> = 1</span> to the limit and eliminates
+the world model is beautiful — the key move is subtraction, not added
+complexity. Good methods are often simple.</p>
+<p>Thorough, comprehensive experiments. Two domains, comparisons against
+SFT and RL, ablation of every component, OOD generalization, continual
+learning, qualitative case studies, diagnostic experiments (ColorButton
+explains why RL fails) — nearly every question a reader might ask is
+answered preemptively.</p>
+<p>Counterintuitive empirical conclusions are valuable. Especially
+“world models are harmful” and “SFT is nearly useless” — these findings
+offer clear guidance for follow-up work.</p>
+<p>Limitations</p>
+<p>Teacher generation cost remains the bottleneck. The paper
+acknowledges this candidly (Section 4.10). Although the distillation
+process itself requires no environment interaction, having the teacher
+generate revised decisions for all 45,301 interaction turns incurs
+substantial API costs. Scaling from 1 to 16 teacher-generated samples
+per turn raises <span
+class="math inline"><em>G</em><sub><em>I</em><em>C</em><em>L</em></sub></span>
+from 31.8% to 64.8% — suggesting more teacher data would yield further
+gains, but cost is already prohibitive.</p>
+<p>64.8% retention, not 100%. On SWE tasks, 35% of the ICL gain is lost.
+The sources of this gap are not fully characterized — is it
+approximation error from substituting <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+for <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>′</sup></span>?
+Insufficient teacher reasoning depth? Limited student capacity? No
+systematic analysis.</p>
+<p>Depends on strong ICL capability. The method presupposes that the
+base model already has sufficient ICL ability to “look at experience and
+make better decisions.” If the base model’s ICL is weak, the entire
+pipeline fails. This imposes an implicit requirement on the foundation
+model.</p>
+<p>Limited generalization. On OOD tasks, EPD improves from 4.62% to
+8.84% — a real gain, but the absolute number remains low. What gets
+distilled appears to be more “task-specific repair strategies” than
+“general programming ability.”</p>
+<p>No theoretical analysis. The paper is purely empirical. How large is
+the bias introduced by the <span
+class="math inline"><em>k</em> = 1</span> approximation? Under what
+conditions does the distribution shift between <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+and <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>′</sup></span>
+seriously harm distillation quality? Theoretical guarantees are
+absent.</p>
+<p>Overall Verdict</p>
+<p>▎ A well-defined problem, an elegant method, rigorous experiments,
+and multiple ▎ counterintuitive findings — an exemplary piece of work
+that poses a question, offers a ▎ viable solution, and leaves ample room
+for follow-up. It doesn’t solve everything, but it ▎ opens a new hole
+worth filling.</p>
+<h2 id="chinese-edition">6.2 Chinese Edition</h2>
+<ol type="1">
+<li>提出了一个新问题：Experience Distillation</li>
+</ol>
+<p>以前有三个独立的技术线：</p>
+<ul>
+<li>ICL：样本效率高，但知识是临时的（上下文一丢就没了）</li>
+<li>Context
+Distillation：能把上下文知识固化到权重，但要求学生和教师跑同一个环境——这在
+Agent 场景里意味着额外环境交互</li>
+<li>RL：能永久固化，但样本效率极低</li>
+</ul>
+<p>论文把三者之间的真空地带定义为一个新问题：如何在不增加环境交互的前提下，把
+Agent 从经验中 ICL 学到的东西蒸馏到权重？</p>
+<ol start="2" type="1">
+<li>一招关键化简：<span class="math inline"><em>k</em> = 1</span>
+分支展开</li>
+</ol>
+<p>这是整篇论文最精巧的一步。</p>
+<p>轨迹级 KL → 化简为每步策略 KL（公式 1）→ 仍需环境 rollout →
+世界模型替代？误差累积 → 分支展开？推到极限 <span
+class="math inline"><em>k</em> = 1</span> →
+世界模型没了，环境交互也没了（公式 2）。</p>
+<p>把”让教师重跑整条轨迹”变成了”让教师在已有历史的每个节点上只重新做一个决策”。代价是一种近似
+（用 <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+替代 <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>′</sup></span>），换来的是零额外环境交互——而且实验证明这个近似在实际中完全够用。</p>
+<ol start="3" type="1">
+<li>三个工程配套</li>
+</ol>
+<ul>
+<li>经验预处理：解决原始轨迹太长太嘈杂的问题</li>
+<li>增强教师推理：让教师写推理链，把”为什么”也蒸馏进去，效果翻倍</li>
+<li>分支打包：把独立样本打包成序列，训练效率提升 10×
+以上，性能不降反升</li>
+</ul>
+<ol start="4" type="1">
+<li>实证上的反直觉发现</li>
+</ol>
+<p>┌────────────────────────────────────┬──────────────────────────────────────────┐
+│ 直觉以为 │ 实际结果 │
+├────────────────────────────────────┼──────────────────────────────────────────┤
+│ 有世界模型应该更好 │ 去掉世界模型反而更好，误差累积是致命伤 │
+├────────────────────────────────────┼──────────────────────────────────────────┤
+│ SFT 模仿原始轨迹应该有点用 │ 几乎零收益（3.8%），因为原始动作质量太差
+│
+├────────────────────────────────────┼──────────────────────────────────────────┤
+│ 学生在线采样（Reverse KL）应该也行 │ 仅
+9.1%，学生没经验根本采样不到好轨迹 │
+├────────────────────────────────────┼──────────────────────────────────────────┤
+│ 完整 rollout 越长越好 │ 越短越好，<span
+class="math inline"><em>k</em> = 1</span> 最优 │
+└────────────────────────────────────┴──────────────────────────────────────────┘</p>
+<p>这些结果说明：在 Agent 经验场景下，很多经典直觉是错的。</p>
+<ol start="5" type="1">
+<li>指明了一种新范式</li>
+</ol>
+<p>不是”ICL vs RL vs Distillation 三选一”，而是把它们串成流水线：</p>
+<p>少量试错（ICL 临时学会）→ 定期蒸馏（EPD 固化）→
+循环往复（持续蒸馏）</p>
+<p>兼具 ICL 的样本高效和权重更新的持久性。持续蒸馏 5 轮从 7.1 → 47.0
+的结果证明这个循环真的能转起来。</p>
+<p>评价</p>
+<p>优点</p>
+<p>问题定义清晰且重要。 随着 Agent
+任务越来越长、环境交互越来越贵（真实实验室、人类反馈、企业
+级代码库），“少交互、多学习”的需求只会更强。论文在 ICL、蒸馏、RL
+的交叉点上找到了一个有价值的空白。</p>
+<p>方法简洁优雅。 <span class="math inline"><em>k</em> = 1</span>
+这一步推到极限、消除世界模型的推导非常漂亮——不是靠堆复杂度，而是靠做减法。好方法往往简单。</p>
+<p>实验扎实全面。 两个领域、和 SFT/RL 对比、消融每个组件、OOD
+泛化、持续学习、定性案例、诊断实验（ColorButton 解释为什么 RL
+失败）——几乎每个读者会问的问题都预先回答了。</p>
+<p>反直觉的实证结论有价值。 特别是”世界模型有害”和”SFT
+几乎无效”这两个结果，对后续研究有明确的指导意义。</p>
+<p>不足和局限</p>
+<p>教师生成成本仍是瓶颈。 论文自己坦承了这一点（4.10
+节）。虽然蒸馏过程不需要环境交互，但让教师为 45,301
+个轮次逐个生成修正决策，API 调用成本很高。从 1 个样本扩展到 16
+个样本，<span
+class="math inline"><em>G</em><sub><em>I</em><em>C</em><em>L</em></sub></span>
+从 31.8% 涨到 64.8%——说明更多教师数据还能提升，但成本已经扛不住了。</p>
+<p>保留了 64.8% 而非 100%。 SWE 上丢了 35% 的 ICL
+增益。这部分损失的来源不完全清楚——是 <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+替代 <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>′</sup></span>
+的近似误差？还是教师推理链不够长？还是学生容量不够？没有系统分析。</p>
+<p>依赖强 ICL 能力。 这个方法的前提是教师模型本身有足够的 ICL
+能力，能”看了经验之后做出更好的决策”。如果基础模型的 ICL
+能力弱，整条流水线就不工作。这意味着对基础模型有隐性要求。</p>
+<p>泛化有限。 OOD 任务上从 4.62% 到
+8.84%，确实有提升，但绝对值仍然很低。蒸馏出来的更多是”任务
+特定的修复策略”而非”通用的编程能力”。</p>
+<p>没有理论分析。 论文是纯实证的。<span
+class="math inline"><em>k</em> = 1</span>
+近似引入的偏差有多大？在什么条件下 <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>exp</sup></span>
+和 <span
+class="math inline"><em>h</em><sub><em>t</em></sub><sup>′</sup></span>
+之间的分布差异会严重影响蒸馏质量？缺少理论保证。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/paper-summary-sample-efficient-learning-from-agent-experience/">https://wangyier.top/paper-summary-sample-efficient-learning-from-agent-experience/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/Model-Tuning/" rel="tag"># Model Tuning</a>
+              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/SFT/" rel="tag"># SFT</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+              <a href="/tags/Context-Distillation/" rel="tag"># Context Distillation</a>
+              <a href="/tags/Experience-Distillation/" rel="tag"># Experience Distillation</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/in-context-learning/" rel="prev" title="In-Context Learning(ICL)">
+                  <i class="fa fa-angle-left"></i> In-Context Learning(ICL)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/notes-on-mathematics/" rel="next" title="Notes on Mathematics">
+                  Notes on Mathematics <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

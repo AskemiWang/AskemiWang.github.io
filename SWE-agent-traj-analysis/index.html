@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="A report of a traj file of SWE-agent.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SWE-agent Traj Analysis">
+<meta property="og:url" content="https://wangyier.top/SWE-agent-traj-analysis/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="A report of a traj file of SWE-agent.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-27T10:57:44.000Z">
+<meta property="article:modified_time" content="2026-06-28T07:24:41.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Performance">
+<meta property="article:tag" content="SWE-agent">
+<meta property="article:tag" content="SWE-bench">
+<meta property="article:tag" content="Trajectory">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/SWE-agent-traj-analysis/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/SWE-agent-traj-analysis/","path":"/SWE-agent-traj-analysis/","title":"SWE-agent Traj Analysis"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SWE-agent Traj Analysis | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#swe-agent-trajectory-%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A"><span class="nav-text">SWE-Agent Trajectory
+分析报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-swe-agent-%E5%92%8C-traj-%E6%96%87%E4%BB%B6"><span class="nav-text">1. 什么是 SWE-Agent 和 Traj
+文件？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#swe-agent-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">SWE-Agent 是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trajtrajectory%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">Traj（Trajectory）文件是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%AC%A1%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-text">本次使用的模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%AC%A1%E4%BB%BB%E5%8A%A1%E6%A6%82%E8%BF%B0"><span class="nav-text">2. 本次任务概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E6%9D%A5%E6%BA%90"><span class="nav-text">任务来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="nav-text">任务内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#traj-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3"><span class="nav-text">3. Traj 文件结构详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#trajectory-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%AF%8F%E4%B8%AA%E6%AD%A5%E9%AA%A4%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">3.1 trajectory
+数组中每个步骤的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-%E4%B8%AD%E7%9A%84%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.2 query 中的消息类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#info-%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E6%8C%87%E6%A0%87"><span class="nav-text">3.3 info 中的关键指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E9%80%90%E6%AD%A5%E5%88%86%E6%9E%90"><span class="nav-text">4. Agent 执行过程逐步分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80%E9%87%8D%E5%A4%8D%E7%9A%84%E9%94%99%E8%AF%AF%E5%BE%AA%E7%8E%AFstep-0-step-23%E5%85%B1-24-%E6%AD%A5"><span class="nav-text">阶段一：重复的错误循环（Step
+0 ~ Step 23，共 24 步）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%8F%E4%B8%80%E6%AD%A5%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%E5%91%A2"><span class="nav-text">每一步发生了什么呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%BB%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">画成流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98agent-%E5%9C%A8%E8%AF%B4%E4%BD%86%E4%B8%8D%E5%9C%A8%E5%81%9A"><span class="nav-text">核心问题：Agent
+在”说”但不在”做”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%E5%B0%9D%E8%AF%95%E7%9B%B4%E6%8E%A5%E6%89%A7%E8%A1%8C-python-%E4%BB%A3%E7%A0%81step-24-step-26%E5%85%B1-3-%E6%AD%A5"><span class="nav-text">阶段二：尝试直接执行
+Python 代码（Step 24 ~ Step 26，共 3 步）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%89%E7%BB%88%E6%AD%A2step-27"><span class="nav-text">阶段三：终止（Step 27）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98%E8%AF%8A%E6%96%AD"><span class="nav-text">5. 核心问题诊断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80html-%E5%AE%9E%E4%BD%93%E7%BC%96%E7%A0%81%E5%85%B3%E9%94%AE%E5%8F%91%E7%8E%B0"><span class="nav-text">5.1 问题一：HTML
+实体编码（关键发现！）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8Cagent-%E9%99%B7%E5%85%A5%E4%BA%86%E6%8F%8F%E8%BF%B0%E5%BE%AA%E7%8E%AF"><span class="nav-text">5.2 问题二：Agent
+陷入了”描述循环”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%89%E4%BB%8E%E6%9C%AA%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7"><span class="nav-text">5.3 问题三：从未使用搜索工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9B%E6%B2%A1%E6%9C%89%E5%B0%9D%E8%AF%95%E5%86%99%E6%96%87%E4%BB%B6"><span class="nav-text">5.4 问题四：没有尝试写文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-text">6. 失败原因深度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%8E%9F%E5%9B%A0%E8%A1%A8"><span class="nav-text">6.1 直接原因表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="nav-text">6.2 根本原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%8D%A2%E7%94%A8%E5%BC%BA%E6%A8%A1%E5%9E%8B%E4%BC%9A%E6%80%8E%E6%A0%B7"><span class="nav-text">6.3 如果换用强模型会怎样？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%8C%87%E6%A0%87%E4%B8%8E%E6%95%B0%E6%8D%AE"><span class="nav-text">7. 关键指标与数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E7%BB%9F%E8%AE%A1"><span class="nav-text">7.1 执行统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#token-%E6%B6%88%E8%80%97"><span class="nav-text">7.2 Token 消耗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE"><span class="nav-text">7.3 模型配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%AD%A6%E8%80%85%E9%98%85%E8%AF%BB-traj-%E7%9A%84%E6%8C%87%E5%8D%97"><span class="nav-text">8. 初学者阅读 Traj 的指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BF%E5%88%B0%E4%B8%80%E4%B8%AA-traj%E5%BA%94%E8%AF%A5%E7%9C%8B%E4%BB%80%E4%B9%88"><span class="nav-text">8.1 拿到一个 Traj，应该看什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8-traj-vs-%E5%BC%82%E5%B8%B8-traj"><span class="nav-text">8.2 正常 Traj vs 异常 Traj</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E8%AF%84%E4%BC%B0-agent-%E8%A1%A8%E7%8E%B0%E7%9A%84%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95"><span class="nav-text">8.3 快速评估 Agent
+表现的检查清单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E5%90%AF%E7%A4%BA"><span class="nav-text">9. 总结与启示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC-traj-%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="nav-text">9.1 本 Traj 的结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9-agent-%E5%BC%80%E5%8F%91%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text">9.2 对 Agent 开发的启示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9-llm-agent-%E5%AD%A6%E4%B9%A0%E8%80%85%E7%9A%84%E5%BB%BA%E8%AE%AE"><span class="nav-text">9.3 对 LLM Agent 学习者的建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%A4%8D%E7%8E%B0%E7%9A%84%E6%94%B9%E8%BF%9B%E6%96%B9%E6%A1%88"><span class="nav-text">9.4 可复现的改进方案</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/SWE-agent-traj-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SWE-agent Traj Analysis | The Great Library">
+      <meta itemprop="description" content="A report of a traj file of SWE-agent.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SWE-agent Traj Analysis
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-06-27 18:57:44" itemprop="dateCreated datePublished" datetime="2026-06-27T18:57:44+08:00">2026-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-06-28 15:24:41" itemprop="dateModified" datetime="2026-06-28T15:24:41+08:00">2026-06-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">A report of a traj file of SWE-agent.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="swe-agent-trajectory-分析报告">SWE-Agent Trajectory
+分析报告</h1>
+<blockquote>
+<p><strong>Traj 文件</strong>:
+<code>scikit-learn__scikit-learn-i25076.traj</code>
+<strong>分析日期</strong>: 2026-07-06</p>
+</blockquote>
+<hr />
+<h2 id="目录">目录</h2>
+<ol type="1">
+<li><a href="#1-什么是-swe-agent-和-traj-文件">什么是 SWE-Agent 和 Traj
+文件？</a></li>
+<li><a href="#2-本次任务概述">本次任务概述</a></li>
+<li><a href="#3-traj-文件结构详解">Traj 文件结构详解</a></li>
+<li><a href="#4-agent-执行过程逐步分析">Agent 执行过程逐步分析</a></li>
+<li><a href="#5-核心问题诊断">核心问题诊断</a></li>
+<li><a href="#6-失败原因深度分析">失败原因深度分析</a></li>
+<li><a href="#7-关键指标与数据">关键指标与数据</a></li>
+<li><a href="#8-初学者阅读-traj-的指南">初学者阅读 Traj 的指南</a></li>
+<li><a href="#9-总结与启示">总结与启示</a></li>
+</ol>
+<hr />
+<h2 id="什么是-swe-agent-和-traj-文件">1. 什么是 SWE-Agent 和 Traj
+文件？</h2>
+<h3 id="swe-agent-是什么">SWE-Agent 是什么？</h3>
+<p>SWE-Agent 是一个<strong>自动化软件工程 Agent</strong>。它像是一个 AI
+程序员，能够：</p>
+<ul>
+<li>阅读 GitHub 上的 Issue / PR 描述</li>
+<li>理解需要修改什么代码</li>
+<li>自己在代码仓库中搜索、读取文件</li>
+<li>编写脚本复现问题</li>
+<li>修改源代码来修复 Bug</li>
+<li>验证修复是否生效</li>
+</ul>
+<p>可以把 SWE-Agent 想象成一个”AI
+初级工程师”，你给它一个任务描述，它会自动尝试完成。</p>
+<h3 id="trajtrajectory文件是什么">Traj（Trajectory）文件是什么？</h3>
+<p><strong>Traj = Trajectory = 轨迹</strong>。这个文件记录了 Agent
+的<strong>每一步思考和行动</strong>，就像一个”黑匣子”：</p>
+<ul>
+<li>Agent 看到了什么（observation / 观察）</li>
+<li>Agent 想了什么（thought / 思考）</li>
+<li>Agent 做了什么（action / 动作）</li>
+<li>花了多长时间（execution_time / 执行时间）</li>
+<li>结果是什么（observation / 观察结果）</li>
+</ul>
+<p>阅读 traj 文件，就像回放 Agent
+的整个工作过程。这对于<strong>调试、分析失败原因、改进 Agent</strong>
+非常有价值。</p>
+<h3 id="本次使用的模型">本次使用的模型</h3>
+<p>从配置文件可以看到，本次使用的是
+<strong><code>openai/qwen-local</code></strong>——一个部署在本地的
+<strong>Qwen（通义千问）开源模型</strong>，通过
+<code>http://localhost:8000/v1</code> 提供 API 服务。<strong>这不是
+GPT-4 或 Claude 等高级模型，而是一个本地运行的开源小模型</strong>。</p>
+<hr />
+<h2 id="本次任务概述">2. 本次任务概述</h2>
+<h3 id="任务来源">任务来源</h3>
+<ul>
+<li><strong>仓库</strong>: <a
+target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn">scikit-learn/scikit-learn</a>（著名的
+Python 机器学习库）</li>
+<li><strong>Issue</strong>: <a
+target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn/issues/25076">#25076</a>
+→ 对应的 PR 为 <a
+target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn/pull/25024">#25024</a></li>
+</ul>
+<h3 id="任务内容">任务内容</h3>
+<blockquote>
+<p>在 scikit-learn 的文档配置文件 <code>doc/conf.py</code> 中，将以下
+URL 添加到 <code>linkcheck_ignore</code> 列表中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/joblib/threadpoolctl/#setting-the-maximum-size-of-thread-pools</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>背景说明</strong>： - scikit-learn 使用 Sphinx 构建文档 -
+Sphinx 的 <code>linkcheck</code> 功能会自动检查文档中外链的有效性 -
+但是有些链接在浏览器中可以正常打开，却因为各种原因被
+<code>linkcheck</code> 误报为”broken”（损坏的链接） -
+<code>linkcheck_ignore</code> 是一个配置列表，放在
+<code>doc/conf.py</code> 中，用来告诉 Sphinx “这些链接不用检查” - 这个
+PR 的目的就是把 threadpoolctl 的链接加入忽略列表</p>
+<p><strong>一句话总结</strong>：这个任务非常简单——找到配置文件，在已有的忽略列表里加一行
+URL。</p>
+<hr />
+<h2 id="traj-文件结构详解">3. Traj 文件结构详解</h2>
+<p>这个 traj 文件是一个 <strong>JSON
+格式</strong>的文件，包含以下几个顶层字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├── trajectory (核心) - 28 个步骤的详细记录</span><br><span class="line">├── history          - 52 条完整对话消息（系统+用户+助手）</span><br><span class="line">├── info             - 运行元数据（耗时、成本、编辑文件等）</span><br><span class="line">├── replay_config    - 完整的 Agent 配置（环境、模型、模板等）</span><br><span class="line">└── environment      - 环境标识（&quot;main&quot;）</span><br></pre></td></tr></table></figure>
+<h3 id="trajectory-数组中每个步骤的结构">3.1 trajectory
+数组中每个步骤的结构</h3>
+<p>每一步（step）都是一个 JSON 对象：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;python test_link.py\n&quot;</span><span class="punctuation">,</span>       <span class="comment">// Agent 执行的命令</span></span><br><span class="line">  <span class="attr">&quot;observation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;python: can&#x27;t open...&quot;</span><span class="punctuation">,</span>  <span class="comment">// 命令执行后的输出</span></span><br><span class="line">  <span class="attr">&quot;response&quot;</span><span class="punctuation">:</span> <span class="string">&quot;To address the issue...&quot;</span><span class="punctuation">,</span>   <span class="comment">// Agent 的文字回复（给用户看的）</span></span><br><span class="line">  <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;To address the issue...&quot;</span><span class="punctuation">,</span>    <span class="comment">// Agent 的内心思考</span></span><br><span class="line">  <span class="attr">&quot;execution_time&quot;</span><span class="punctuation">:</span> <span class="number">0.1352</span><span class="punctuation">,</span>               <span class="comment">// 执行耗时（秒）</span></span><br><span class="line">  <span class="attr">&quot;state&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;working_dir&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span>         <span class="comment">// 当前工作目录</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> ... <span class="punctuation">]</span><span class="punctuation">,</span>                        <span class="comment">// 发送给 LLM 的完整对话上下文</span></span><br><span class="line">  <span class="attr">&quot;extra_info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span>                         <span class="comment">// 额外信息</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>重要字段说明</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>谁看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td>Agent 决定执行的 bash 命令</td>
+<td>环境执行</td>
+</tr>
+<tr>
+<td><code>observation</code></td>
+<td>命令的 stdout/stderr 输出</td>
+<td>反馈给 Agent</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td>Agent 生成的自然语言回复</td>
+<td>用户看到</td>
+</tr>
+<tr>
+<td><code>thought</code></td>
+<td>Agent 的推理过程</td>
+<td>用户看到</td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td>发送给 LLM 的完整 prompt</td>
+<td>模型处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="query-中的消息类型">3.2 query 中的消息类型</h3>
+<p>每条 query 消息都有 <code>message_type</code> 标识：</p>
+<table>
+<thead>
+<tr>
+<th>message_type</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>system_prompt</code></td>
+<td>系统提示词，定义 Agent 的角色</td>
+</tr>
+<tr>
+<td><code>observation</code></td>
+<td>环境反馈（用户消息形式，包含执行结果）</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>Agent 的决策结果（模型输出）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="info-中的关键指标">3.3 info 中的关键指标</h3>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;exit_status&quot;</span><span class="punctuation">:</span> <span class="string">&quot;exit_format&quot;</span><span class="punctuation">,</span>       <span class="comment">// 退出原因</span></span><br><span class="line">  <span class="attr">&quot;edited_files30&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Empty...&quot;</span><span class="punctuation">,</span>       <span class="comment">// 编辑的文件（30次采样）</span></span><br><span class="line">  <span class="attr">&quot;edited_files50&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Empty...&quot;</span><span class="punctuation">,</span>       <span class="comment">// 编辑的文件（50次采样）</span></span><br><span class="line">  <span class="attr">&quot;edited_files70&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Empty...&quot;</span><span class="punctuation">,</span>       <span class="comment">// 编辑的文件（70次采样）</span></span><br><span class="line">  <span class="attr">&quot;submission&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span>                 <span class="comment">// 提交状态</span></span><br><span class="line">  <span class="attr">&quot;model_stats&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;instance_cost&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span>               <span class="comment">// 花费：0（本地模型免费）</span></span><br><span class="line">    <span class="attr">&quot;tokens_sent&quot;</span><span class="punctuation">:</span> <span class="number">236887</span><span class="punctuation">,</span>           <span class="comment">// 发送给模型的 token 数</span></span><br><span class="line">    <span class="attr">&quot;tokens_received&quot;</span><span class="punctuation">:</span> <span class="number">15035</span><span class="punctuation">,</span>        <span class="comment">// 模型返回的 token 数</span></span><br><span class="line">    <span class="attr">&quot;api_calls&quot;</span><span class="punctuation">:</span> <span class="number">27</span>                   <span class="comment">// API 调用次数</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="agent-执行过程逐步分析">4. Agent 执行过程逐步分析</h2>
+<p>整个轨迹共有 <strong>28 步</strong>（Step 0 ~ Step
+27）。下面按照不同阶段来分析。</p>
+<h3
+id="阶段一重复的错误循环step-0-step-23共-24-步">阶段一：重复的错误循环（Step
+0 ~ Step 23，共 24 步）</h3>
+<p>这是整个轨迹最显著的特征——Agent 在 <strong>24
+个连续步骤中做的是完全相同的事情</strong>。</p>
+<h4 id="每一步发生了什么呢">每一步发生了什么呢？</h4>
+<p><strong>Agent 的 Action（动作）</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test_link.py</span><br></pre></td></tr></table></figure>
+<p><strong>Environment 的 Observation（反馈）</strong>：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python: can&#x27;t open file &#x27;//test_link.py&#x27;: [Errno 2] No such file or directory</span><br></pre></td></tr></table></figure></p>
+<p><strong>Agent 的 Response（回复）</strong> - 每次都几乎一样：</p>
+<blockquote>
+<p>“To address the issue described in the PR description, we need to add
+the specified URL to the <code>linkcheck_ignore</code> list…”</p>
+<p>然后 Agent 会重复说明一个 5 步方案： 1. 找到并阅读相关代码 2.
+创建一个 <code>test_link.py</code> 脚本来复现错误 3. 编辑
+<code>conf.py</code> 文件，添加 URL 4. 重新运行脚本验证修复 5.
+考虑边缘情况</p>
+</blockquote>
+<h4 id="画成流程图">画成流程图</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────┐</span><br><span class="line">│ Step 0: Agent → 运行 python test_link.py        │</span><br><span class="line">│         环境 → 错误：文件不存在                   │</span><br><span class="line">│         Agent → 「让我来告诉你该怎么做…」         │</span><br><span class="line">├─────────────────────────────────────────────────┤</span><br><span class="line">│ Step 1: Agent → 运行 python test_link.py        │</span><br><span class="line">│         环境 → 错误：文件不存在                   │</span><br><span class="line">│         Agent → 「让我来告诉你该怎么做…」         │</span><br><span class="line">├─────────────────────────────────────────────────┤</span><br><span class="line">│ ... 重复 22 次 ...                              │</span><br><span class="line">├─────────────────────────────────────────────────┤</span><br><span class="line">│ Step 23: Agent → 运行 python test_link.py       │</span><br><span class="line">│          环境 → 错误：文件不存在                  │</span><br><span class="line">│          Agent → 「让我来告诉你该怎么做…」        │</span><br><span class="line">└─────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<h4 id="核心问题agent-在说但不在做">核心问题：Agent
+在”说”但不在”做”</h4>
+<p>Agent 的 <code>response</code> 和 <code>thought</code>
+中描述了要做的事情，但它的 <code>action</code> 从未跟进： - 它说”创建
+test_link.py”但从不执行 <code>echo '...' &gt; test_link.py</code> 或
+<code>cat &gt; test_link.py</code> - 它说”编辑 conf.py”但从不使用
+<code>str_replace_editor</code> 工具 - 它说了 24
+次”让我们找到配置文件”，但从未执行过 <code>find</code> 或
+<code>grep</code> 命令</p>
+<h3
+id="阶段二尝试直接执行-python-代码step-24-step-26共-3-步">阶段二：尝试直接执行
+Python 代码（Step 24 ~ Step 26，共 3 步）</h3>
+<p>在 Step 24-26 中，Agent 改变了行为——但仍然不对：</p>
+<p><strong>Step 24 的 Action</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_linkcheck</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = subprocess.run([<span class="string">&#x27;make&#x27;</span>, <span class="string">&#x27;linkcheck&#x27;</span>], capture_output=<span class="literal">True</span>, text=<span class="literal">True</span>)</span><br><span class="line">        <span class="built_in">print</span>(result.stdout)</span><br><span class="line">        <span class="built_in">print</span>(result.stderr)</span><br><span class="line">      ...</span><br></pre></td></tr></table></figure>
+<p>Agent 开始尝试把 <strong>Python 代码直接当作 bash
+命令执行</strong>。Bash 当然无法理解
+<code>import subprocess</code>，所以这次更是毫无效果。</p>
+<p><strong>关键观察</strong>：Step 24-26 的 <code>observation</code>
+都是<strong>空字符串</strong>，这说明命令可能： 1.
+根本没有被执行（因为格式错误被拦截） 2. 执行了但不产生任何输出（比如
+Python 解释器因为语法错误静默退出）</p>
+<h3 id="阶段三终止step-27">阶段三：终止（Step 27）</h3>
+<p><strong>Step 27</strong>： - <code>action</code>: 空字符串 -
+<code>observation</code>: 空字符串 - <code>response</code>: “Exit due to
+repeated format/blocklist/bash syntax errors”</p>
+<p><strong>exit_status</strong> = <code>exit_format</code></p>
+<p>这表示 SWE-Agent 框架检测到 Agent
+一直在产生格式错误（也许是输出无法被正确解析为 “讨论+命令”
+的格式），达到了最大重试次数，<strong>强制终止了 Agent</strong>。</p>
+<hr />
+<h2 id="核心问题诊断">5. 核心问题诊断</h2>
+<h3 id="问题一html-实体编码关键发现">5.1 问题一：HTML
+实体编码（关键发现！）</h3>
+<p>仔细查看 action 中的内容，你会发现一个重大问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;action&quot;: &quot;python test_link.py\n&quot;</span><br></pre></td></tr></table></figure>
+<p>再看 response 中 Python 代码的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = subprocess.run([&amp;<span class="comment">#x27;make&amp;#x27;, &amp;#x27;linkcheck&amp;#x27;], capture_output=True, text=True)</span></span><br></pre></td></tr></table></figure>
+<p><code>&amp;#x27;</code> 是 HTML 实体编码，代表单引号
+<code>'</code>。这意味着：</p>
+<blockquote>
+<p><strong>Agent 的输出被 HTML 实体编码污染了！</strong></p>
+</blockquote>
+<p>当 Agent 尝试写文件时，如果内容中包含 <code>&amp;#x27;</code> 等 HTML
+实体，那么写出来的 Python 代码就会是<strong>语法错误</strong>的。</p>
+<p>这是 SWE-Agent 框架输出解析的问题，也可能是本地 Qwen
+模型输出格式不规范导致解析器进行了错误的转义处理。</p>
+<h3 id="问题二agent-陷入了描述循环">5.2 问题二：Agent
+陷入了”描述循环”</h3>
+<p>这是典型的 LLM Agent 失败模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Agent 发现错误 → Agent 描述解决方案 → Agent 不执行方案 → 再次遇到同样错误 → 再次描述方案 → ...</span><br></pre></td></tr></table></figure>
+<p><strong>为什么会这样？</strong></p>
+<p>可能的原因： 1. <strong>模型能力不足</strong>：Qwen-local
+是开源小模型，工具调用能力远不如 GPT-4/Claude 2.
+<strong>上下文混乱</strong>：随着对话越来越长（52
+条消息），模型迷失在上下文中 3.
+<strong>缺乏工具使用训练</strong>：模型更擅长”解释怎么做”而不是”实际去做”
+4. <strong>框架格式限制</strong>：SWE-Agent 要求特定格式（DISCUSSION +
+代码块），模型可能无法稳定生成</p>
+<h3 id="问题三从未使用搜索工具">5.3 问题三：从未使用搜索工具</h3>
+<p>优秀的 SWE-Agent 执行流程应该是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. find / -name &quot;conf.py&quot;        ← 找到配置文件</span><br><span class="line">2. cat doc/conf.py                ← 读取文件内容</span><br><span class="line">3. grep &quot;linkcheck_ignore&quot; ...    ← 找到需要修改的位置</span><br><span class="line">4. str_replace_editor ...         ← 精确编辑</span><br><span class="line">5. python test_link.py            ← 验证修复</span><br></pre></td></tr></table></figure>
+<p>但本 Agent 的实际流程是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. python test_link.py  ← 跳过所有搜索，直接运行不存在的脚本</span><br><span class="line">2. python test_link.py  ← 重试</span><br><span class="line">3. python test_link.py  ← 重试 × 24</span><br></pre></td></tr></table></figure>
+<p><strong>Agent 从未执行过以下关键命令</strong>： - <code>find</code> —
+搜索文件 - <code>grep</code> — 搜索内容 - <code>ls</code> — 列出目录 -
+<code>cat</code> — 读取文件内容 - <code>str_replace_editor</code> —
+编辑文件</p>
+<h3 id="问题四没有尝试写文件">5.4 问题四：没有尝试写文件</h3>
+<p>即使 Agent 知道要创建
+<code>test_link.py</code>，它从未执行过真正的文件创建操作，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; test_link.py &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">import subprocess</span><br><span class="line">...</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>或使用 <code>str_replace_editor create /test_link.py</code>。</p>
+<hr />
+<h2 id="失败原因深度分析">6. 失败原因深度分析</h2>
+<h3 id="直接原因表">6.1 直接原因表</h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>直接原因</th>
+<th>严重程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Agent 重复执行不存在文件的命令 24 次</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>从未创建 <code>test_link.py</code> 脚本文件</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>从未使用搜索命令查找配置文件</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>从未编辑任何源代码文件</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>HTML 实体编码污染 action 内容</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Step 24-26 试图在 bash 中运行 Python 代码</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>被框架因”格式错误”强制终止</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="根本原因分析">6.2 根本原因分析</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────────────────────────────┐</span><br><span class="line">│                    根本原因层                      │</span><br><span class="line">├──────────────────────────────────────────────────┤</span><br><span class="line">│                                                    │</span><br><span class="line">│  1. 模型能力瓶颈                                   │</span><br><span class="line">│     ├─ Qwen-local（开源小模型）                     │</span><br><span class="line">│     ├─ 工具调用（function calling）能力弱           │</span><br><span class="line">│     └─ 计划→执行转化能力差                         │</span><br><span class="line">│                                                    │</span><br><span class="line">│  2. 框架输出解析问题                               │</span><br><span class="line">│     ├─ HTML 实体编码污染                           │</span><br><span class="line">│     ├─ 格式解析要求严格                            │</span><br><span class="line">│     └─ 与开源模型的兼容性不佳                       │</span><br><span class="line">│                                                    │</span><br><span class="line">│  3. Prompt 设计问题                                │</span><br><span class="line">│     ├─ 步骤指导过于抽象（&quot;找到相关代码&quot;）          │</span><br><span class="line">│     ├─ 未提供工具使用的具体示例                    │</span><br><span class="line">│     └─ 系统提示太简单（只有一句话）                 │</span><br><span class="line">│                                                    │</span><br><span class="line">│  4. Agent 循环检测机制缺失                          │</span><br><span class="line">│     ├─ 24 次相同操作未被检测                       │</span><br><span class="line">│     ├─ 没有&quot;陷入循环&quot;的自动终止                    │</span><br><span class="line">│     └─ 浪费了大量 token 和时间                     │</span><br><span class="line">│                                                    │</span><br><span class="line">└──────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<h3 id="如果换用强模型会怎样">6.3 如果换用强模型会怎样？</h3>
+<p>假设相同的任务给 GPT-4 或 Claude，典型的正确执行路径可能是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Step 1: find / -name &quot;conf.py&quot; -type f</span><br><span class="line">        → 找到 /doc/conf.py, /examples/.../conf.py 等</span><br><span class="line"></span><br><span class="line">Step 2: grep -n &quot;linkcheck_ignore&quot; /doc/conf.py</span><br><span class="line">        → 显示 linkcheck_ignore 列表的当前位置</span><br><span class="line"></span><br><span class="line">Step 3: str_replace_editor str_replace /doc/conf.py</span><br><span class="line">        old_str: linkcheck_ignore = [</span><br><span class="line">        new_str: linkcheck_ignore = [</span><br><span class="line">                     &quot;https://github.com/joblib/threadpoolctl/#setting-the-maximum-size-of-thread-pools&quot;,</span><br><span class="line"></span><br><span class="line">Step 4: python -c &quot;import sphinx; ...&quot;  # 验证配置</span><br><span class="line">        或: grep &quot;threadpoolctl&quot; /doc/conf.py  # 确认修改</span><br><span class="line"></span><br><span class="line">Step 5: 删除临时文件（如有），提交</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="关键指标与数据">7. 关键指标与数据</h2>
+<h3 id="执行统计">7.1 执行统计</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总步数</td>
+<td>28</td>
+<td>包括最后的空步骤</td>
+</tr>
+<tr>
+<td>有效步骤</td>
+<td>0</td>
+<td>没有任何一步产生了有意义的文件修改</td>
+</tr>
+<tr>
+<td>重复操作</td>
+<td>24 次</td>
+<td><code>python test_link.py</code> × 24</td>
+</tr>
+<tr>
+<td>总执行时间</td>
+<td>~3.8 秒</td>
+<td>所有步骤的 execution_time 总和</td>
+</tr>
+<tr>
+<td>实际修改文件数</td>
+<td>0</td>
+<td>没有编辑任何文件</td>
+</tr>
+<tr>
+<td>退出状态</td>
+<td><code>exit_format</code></td>
+<td>因格式错误被强制退出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="token-消耗">7.2 Token 消耗</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送 Token</td>
+<td>236,887</td>
+</tr>
+<tr>
+<td>接收 Token</td>
+<td>15,035</td>
+</tr>
+<tr>
+<td>总共 Token</td>
+<td>251,922</td>
+</tr>
+<tr>
+<td>API 调用次数</td>
+<td>27</td>
+</tr>
+<tr>
+<td>花费</td>
+<td>$0（本地模型）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>思考</strong>：23.7 万 token 全部浪费在重复循环中。如果 Agent
+在第一步就正确工作，可能只需要 5000-10000 token
+就能完成这个简单任务。</p>
+</blockquote>
+<h3 id="模型配置">7.3 模型配置</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型名称</td>
+<td><code>openai/qwen-local</code></td>
+</tr>
+<tr>
+<td>温度</td>
+<td>0.0（确定性输出）</td>
+</tr>
+<tr>
+<td>Top P</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>API 地址</td>
+<td><code>http://localhost:8000/v1</code></td>
+</tr>
+<tr>
+<td>执行超时</td>
+<td>30 秒/命令</td>
+</tr>
+<tr>
+<td>总超时</td>
+<td>1800 秒（30 分钟）</td>
+</tr>
+<tr>
+<td>重试次数</td>
+<td>最多 20 次</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="初学者阅读-traj-的指南">8. 初学者阅读 Traj 的指南</h2>
+<h3 id="拿到一个-traj应该看什么">8.1 拿到一个 Traj，应该看什么？</h3>
+<p><strong>第一步：看概览</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统计总步数和 exit_status</span></span><br><span class="line">python3 -c <span class="string">&quot;import json; d=json.load(open(&#x27;xxx.traj&#x27;)); print(len(d[&#x27;trajectory&#x27;]), d[&#x27;info&#x27;][&#x27;exit_status&#x27;])&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>第二步：扫描步骤摘要</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 看每一步的 action 和 observation</span></span><br><span class="line">python3 -c <span class="string">&quot;</span></span><br><span class="line"><span class="string">import json</span></span><br><span class="line"><span class="string">d=json.load(open(&#x27;xxx.traj&#x27;))</span></span><br><span class="line"><span class="string">for i, s in enumerate(d[&#x27;trajectory&#x27;]):</span></span><br><span class="line"><span class="string">    print(f&#x27;Step &#123;i&#125;: &#123;s[\&quot;action\&quot;][:80]&#125; | &#123;s[\&quot;observation\&quot;][:80]&#125;&#x27;)</span></span><br><span class="line"><span class="string">&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>第三步：看关键信息</strong> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// info 中的关键字段</span></span><br><span class="line">exit_status<span class="punctuation">:</span>  <span class="string">&quot;exit_format&quot;</span> | <span class="string">&quot;exit_context&quot;</span> | <span class="string">&quot;exit_cost&quot;</span> | ...</span><br><span class="line">edited_files<span class="punctuation">:</span> 实际修改了哪些文件</span><br><span class="line">submission<span class="punctuation">:</span>   是否成功提交</span><br><span class="line">model_stats<span class="punctuation">:</span>  token 消耗和成本</span><br></pre></td></tr></table></figure></p>
+<p><strong>第四步：定位问题步骤</strong> - 如果发现连续的相同 action →
+可能陷入循环 - 如果发现 observation 为空 → 命令可能格式错误 - 如果发现
+action 中有 HTML 实体 → 存在编码问题 - 如果 response 和 action 不匹配 →
+模型执行能力差</p>
+<h3 id="正常-traj-vs-异常-traj">8.2 正常 Traj vs 异常 Traj</h3>
+<p><strong>正常的 Traj 特征</strong>： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Step 0:  action=find ... ; observation=找到多个文件</span><br><span class="line">Step 1:  action=cat /path/to/file ; observation=显示文件内容</span><br><span class="line">Step 2:  action=str_replace_editor ... ; observation=文件已修改</span><br><span class="line">Step 3:  action=python test.py ; observation=测试通过</span><br><span class="line">Step 4:  action=submit ; observation=提交成功</span><br></pre></td></tr></table></figure></p>
+<p><strong>异常的 Traj 特征</strong>（本次）： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Step 0:  action=python test.py ; observation=文件不存在</span><br><span class="line">Step 1:  action=python test.py ; observation=文件不存在</span><br><span class="line">...</span><br><span class="line">Step 23: action=python test.py ; observation=文件不存在  ← 重复24次！</span><br><span class="line">Step 27: action=&quot;&quot; ; exit_status=exit_format            ← 强制退出</span><br></pre></td></tr></table></figure></p>
+<h3 id="快速评估-agent-表现的检查清单">8.3 快速评估 Agent
+表现的检查清单</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Agent
+是否使用了搜索命令（<code>find</code>, <code>grep</code>,
+<code>ls</code>）？</label></li>
+<li><label><input type="checkbox" />Agent
+是否读取了相关文件（<code>cat</code>, <code>view</code>）？</label></li>
+<li><label><input type="checkbox" />Agent
+是否使用了编辑工具（<code>str_replace_editor</code>）？</label></li>
+<li><label><input type="checkbox" />Agent
+的操作是否有推进（每步不同）还是循环（重复）？</label></li>
+<li><label><input type="checkbox" />Agent
+最终是否修改了目标文件？</label></li>
+<li><label><input type="checkbox" />Agent 是否进行了验证？</label></li>
+<li><label><input type="checkbox" />exit_status 是什么？</label></li>
+</ul>
+<hr />
+<h2 id="总结与启示">9. 总结与启示</h2>
+<h3 id="本-traj-的结论">9.1 本 Traj 的结论</h3>
+<p>这是一个<strong>完全失败</strong>的 SWE-Agent 执行案例：</p>
+<ol type="1">
+<li><strong>任务本身极其简单</strong>：在配置文件的列表里加一行 URL</li>
+<li><strong>Agent 的表现非常差</strong>：28
+步中零进展，没有编辑任何文件</li>
+<li><strong>核心失败模式</strong>：Agent 能”说”不能”做”——描述了 24
+次解决方案但从未执行</li>
+<li><strong>根本原因</strong>：开源小模型（Qwen-local）的工具调用能力不足
++ HTML 实体编码问题 + 缺少循环检测机制</li>
+</ol>
+<h3 id="对-agent-开发的启示">9.2 对 Agent 开发的启示</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>启示</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>模型选型至关重要</strong></td>
+<td>开源小模型和前沿模型的差距在 Agent 场景下被放大</td>
+</tr>
+<tr>
+<td><strong>需要更好的格式解析</strong></td>
+<td>HTML 实体编码污染是框架层面的 bug</td>
+</tr>
+<tr>
+<td><strong>需要循环检测</strong></td>
+<td>检测到重复 action 应当终止并尝试不同策略</td>
+</tr>
+<tr>
+<td><strong>Prompt 可以更具体</strong></td>
+<td>提供具体命令示例比抽象指导更有效</td>
+</tr>
+<tr>
+<td><strong>工具描述要清晰</strong></td>
+<td>确保模型真正理解如何使用每个工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对-llm-agent-学习者的建议">9.3 对 LLM Agent 学习者的建议</h3>
+<ol type="1">
+<li><strong>从分析 Traj 开始学习</strong>：通过回放 Agent
+的”思维过程”，能最直观地理解 Agent 的能力边界</li>
+<li><strong>注意 “说” 和 “做” 的差距</strong>：这是当前 LLM Agent
+最常见的失败模式</li>
+<li><strong>模型能力是第一要素</strong>：同样的 SWE-Agent 框架 +
+不同模型 = 天壤之别的结果</li>
+<li><strong>Debug Agent 时先看 action</strong>：observation
+是结果，action 才是 Agent 的决策，两者对比能快速定位问题</li>
+</ol>
+<h3 id="可复现的改进方案">9.4 可复现的改进方案</h3>
+<p>如果想让这个 Agent 成功，可以尝试：</p>
+<ol type="1">
+<li><strong>换更强的模型</strong>：使用 GPT-4、Claude 等强模型</li>
+<li><strong>修复 HTML 编码问题</strong>：在框架层对 action 进行 HTML
+解码</li>
+<li><strong>优化 Prompt</strong>：添加具体的工具使用示例</li>
+<li><strong>添加循环检测</strong>：连续 3 次相同 action →
+自动切换策略</li>
+<li><strong>提供更详细的实例模板</strong>：在 prompt
+中展示正确的执行流程</li>
+</ol>
+<hr />
+<blockquote>
+<p><strong>文件信息</strong> - 源文件:
+<code>scikit-learn__scikit-learn-i25076.traj</code> - Traj 文件大小:
+~2.4 MB - 总步数: 28 - 框架版本: SWE-Agent 1.1.0 / SWE-Rex 1.4.0 - 模型:
+openai/qwen-local - 结果: ❌ 完全失败（exit_format）</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/SWE-agent-traj-analysis/">https://wangyier.top/SWE-agent-traj-analysis/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/SWE-agent/" rel="tag"># SWE-agent</a>
+              <a href="/tags/Performance/" rel="tag"># Performance</a>
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
+              <a href="/tags/Trajectory/" rel="tag"># Trajectory</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/from-neural-network-to-ai/" rel="prev" title="From Neural Network to AI">
+                  <i class="fa fa-angle-left"></i> From Neural Network to AI
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Pro-Tips-&-Commands-for-Essential-Software-&-Tools/" rel="next" title="Pro Tips &amp; Commands for Essential Software &amp; Tools">
+                  Pro Tips & Commands for Essential Software & Tools <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

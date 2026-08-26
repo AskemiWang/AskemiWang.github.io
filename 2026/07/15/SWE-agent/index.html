@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="SWE-agent relative">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SWE-agent">
+<meta property="og:url" content="https://wangyier.top/2026/07/15/SWE-agent/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="SWE-agent relative">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/SWE-agent_whole_picture.png">
+<meta property="article:published_time" content="2026-07-15T07:53:54.000Z">
+<meta property="article:modified_time" content="2026-07-15T07:53:54.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="SWE-agent">
+<meta property="article:tag" content="SWE-bench">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/SWE-agent_whole_picture.png">
+
+
+<link rel="canonical" href="https://wangyier.top/2026/07/15/SWE-agent/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/2026/07/15/SWE-agent/","path":"2026/07/15/SWE-agent/","title":"SWE-agent"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SWE-agent | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#code-analysis"><span class="nav-text">1. Code Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#whole-picture"><span class="nav-text">1.1 Whole Picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client-layer"><span class="nav-text">1.2 Client Layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#runsingle"><span class="nav-text">1.3 RunSingle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#runsingle-main"><span class="nav-text">1.3.1 RunSingle Main</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook"><span class="nav-text">1.3.2 Hook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-system"><span class="nav-text">1.3.3 Log System</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-layer"><span class="nav-text">1.4 Agent Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#default-agent"><span class="nav-text">1.4.1 Default Agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retry-agentactor-critic"><span class="nav-text">1.4.2 Retry Agent(Actor-Critic)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#env-layer"><span class="nav-text">1.5 Env Layer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-text">2.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan-execute"><span class="nav-text">2.1 Plan &amp; Execute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#actor-critic"><span class="nav-text">2.2 Actor-Critic</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/2026/07/15/SWE-agent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SWE-agent | The Great Library">
+      <meta itemprop="description" content="SWE-agent relative">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SWE-agent
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-07-15 15:53:54" itemprop="dateCreated datePublished" datetime="2026-07-15T15:53:54+08:00">2026-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">SWE-agent relative</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>[TOC]</p>
+<h1 id="code-analysis">1. Code Analysis</h1>
+<h2 id="whole-picture">1.1 Whole Picture</h2>
+<p>Orchestrating、Agent Logic、Tool Parsing、Env Execution、LLM Call
+——each layer has its own class，assembled by YAML。</p>
+<p><img data-src="/images/article_images/SWE-agent_whole_picture.png" /></p>
+<p>File Structure:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">sweagent/</span><br><span class="line">├── __main__.py              <span class="comment"># Entrance: python -m sweagent</span></span><br><span class="line">├── run/</span><br><span class="line">│   ├── run.py               <span class="comment"># CLI Command (&quot;sweagent run/r/batch/...&quot;)</span></span><br><span class="line">│   ├── run_single.py        <span class="comment"># RunSingle: Start Env → Run Agent → Save Results</span></span><br><span class="line">│   └── run_batch.py         <span class="comment"># RunBatch (SWE-Bench)</span></span><br><span class="line">├── agent/</span><br><span class="line">│   ├── agents.py            <span class="comment"># DefaultAgent (ReAct), RetryAgent (Actor-Critic)</span></span><br><span class="line">│   ├── models.py            <span class="comment"># LLM abstract layer (litellm, encapsulation, retry, cost tracking</span></span><br><span class="line">)</span><br><span class="line">│   ├── history_processors.py <span class="comment"># Context Compression (cache_control, truncation)</span></span><br><span class="line">│   ├── reviewer.py          <span class="comment"># Critic: Reviewer, ScoreRetryLoop, ChooserRetryLoop</span></span><br><span class="line">│   └── problem_statement.py <span class="comment"># problem statement (GitHub issue)</span></span><br><span class="line">├── tools/</span><br><span class="line">│   ├── tools.py             <span class="comment"># ToolConfig, ToolHandler, blocklist, bundles</span></span><br><span class="line">│   ├── parsing.py           <span class="comment"># LLM output : ThoughtActionParser, FunctionCallingParser</span></span><br><span class="line">│   └── commands.py          <span class="comment"># Commands Definition (bash, str_replace_editor, submit)</span></span><br><span class="line">├── environment/</span><br><span class="line">│   ├── swe_env.py           <span class="comment"># SWEEnv: Docker Lifecycle + Command Communication</span></span><br><span class="line">│   └── repo.py              <span class="comment"># Code Repo Mananage(clone, checkout)</span></span><br><span class="line">└── utils/</span><br><span class="line">    ├── log.py               <span class="comment"># Log System (.info/.debug/.trace)</span></span><br><span class="line">    └── config.py            <span class="comment"># YAML Conf</span></span><br></pre></td></tr></table></figure>
+<h2 id="client-layer">1.2 Client Layer</h2>
+<h2 id="runsingle">1.3 RunSingle</h2>
+<h3 id="runsingle-main">1.3.1 RunSingle Main</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RunSingle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>._chooks.on_start()                    <span class="comment"># Hook: befroe start</span></span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.logger.info(<span class="string">&quot;Starting environment&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.env.start()                           <span class="comment"># 1. strat Docker + tool installation</span></span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.logger.info(<span class="string">&quot;Running agent&quot;</span>)</span><br><span class="line">        output_dir = <span class="variable language_">self</span>.output_dir / <span class="variable language_">self</span>.problem_statement.<span class="built_in">id</span></span><br><span class="line">        output_dir.mkdir(parents=<span class="literal">True</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line">        (output_dir / <span class="string">&quot;config.yaml&quot;</span>).write_text(   <span class="comment"># Persistent Configuration</span></span><br><span class="line">            yaml.dump(<span class="variable language_">self</span>.agent.replay_config.model_dump_json())</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        result = <span class="variable language_">self</span>.agent.run(                   <span class="comment"># 2. run Agent</span></span><br><span class="line">            problem_statement=<span class="variable language_">self</span>.problem_statement,</span><br><span class="line">            env=<span class="variable language_">self</span>.env,</span><br><span class="line">            output_dir=output_dir,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>._chooks.on_instance_completed(result=result)  <span class="comment"># Hook: complete</span></span><br><span class="line">        save_predictions(<span class="variable language_">self</span>.output_dir,           <span class="comment"># 3. Save patch + .pred</span></span><br><span class="line">                        <span class="variable language_">self</span>.problem_statement.<span class="built_in">id</span>, result)</span><br><span class="line">        <span class="variable language_">self</span>.env.close()                           <span class="comment"># 4. Destroy Docker</span></span><br></pre></td></tr></table></figure>
+<h3 id="hook">1.3.2 Hook</h3>
+<h3 id="log-system">1.3.3 Log System</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># run_single.py:141-147</span></span><br><span class="line"><span class="keyword">for</span> level <span class="keyword">in</span> [<span class="string">&quot;trace&quot;</span>, <span class="string">&quot;debug&quot;</span>, <span class="string">&quot;info&quot;</span>]:</span><br><span class="line">    add_file_handler(</span><br><span class="line">        output_dir / <span class="string">f&quot;<span class="subst">&#123;instance_id&#125;</span>.&#123;&#123;level&#125;&#125;.log&quot;</span>,</span><br><span class="line">        level=level,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>.info.log: Key decisions made by the Agent(STEP, THOUGHT, ACTION,
+submit)</li>
+<li>.debug.log: Docker commands, file uploads, and details of tool
+installation</li>
+<li>.trace.log: Every command executed within the container and its
+corresponding output</li>
+</ul>
+<h2 id="agent-layer">1.4 Agent Layer</h2>
+<p>SWE-bench designs a two-layer agent system.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RetryAgent (Outer Layer — multiple attempts)</span><br><span class="line">    │</span><br><span class="line">    └── DefaultAgent (Inner Layer — Single ReAct Execution)</span><br></pre></td></tr></table></figure>
+<h3 id="default-agent">1.4.1 Default Agent</h3>
+<ol type="1">
+<li><p>Setup: Assemble 5 parts of prompt,</p>
+<ul>
+<li>system_template</li>
+<li>Inject demonstrations</li>
+<li>Render instance_template</li>
+<li>Install tools</li>
+<li>Get the initial state。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># agents.py:561-606</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">setup</span>(<span class="params">...</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">	<span class="comment"># apply template configuration to multimodal problem statements</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">hasattr</span>(problem_statement, <span class="string">&quot;type&quot;</span>) <span class="keyword">and</span> problem_statement.<span class="built_in">type</span> == <span class="string">&quot;swe_bench_multimodal&quot;</span>:</span><br><span class="line">		<span class="keyword">from</span> sweagent.agent.problem_statement <span class="keyword">import</span> SWEBenchMultimodalProblemStatement</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">isinstance</span>(problem_statement, SWEBenchMultimodalProblemStatement):</span><br><span class="line">			<span class="comment"># apply the global disable_image_processing setting if it&#x27;s not explicitly set</span></span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> problem_statement.disable_image_processing <span class="keyword">and</span> <span class="variable language_">self</span>.templates.disable_image_processing:</span><br><span class="line">				problem_statement.disable_image_processing = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">	<span class="comment"># 1. install tools (upload bundle to docker, execute install.sh)</span></span><br><span class="line">    <span class="variable language_">self</span>.tools.install(<span class="variable language_">self</span>._env)</span><br><span class="line">    <span class="comment"># 2. add system message to history</span></span><br><span class="line">    <span class="variable language_">self</span>.add_system_message_to_history()</span><br><span class="line">    <span class="comment"># 3. add demonstrations to history (optional few-shot)</span></span><br><span class="line">    <span class="variable language_">self</span>.add_demonstrations_to_history()</span><br><span class="line">    <span class="comment"># 4. add instance to history (including &#123;&#123;problem_statement&#125;&#125;)</span></span><br><span class="line">    <span class="variable language_">self</span>.add_instance_template_to_history(state=<span class="variable language_">self</span>.tools.get_state(<span class="variable language_">self</span>._env))</span><br></pre></td></tr></table></figure></li>
+<li><p>step(): Single-step execution</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># agents.py:1235-1263</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">step</span>(<span class="params">self</span>):</span><br><span class="line">    n_step = <span class="built_in">len</span>(<span class="variable language_">self</span>.trajectory) + <span class="number">1</span></span><br><span class="line">    <span class="variable language_">self</span>.logger.info(<span class="string">&quot;=&quot;</span> * <span class="number">25</span> + <span class="string">f&quot; STEP <span class="subst">&#123;n_step&#125;</span> &quot;</span> + <span class="string">&quot;=&quot;</span> * <span class="number">25</span>)</span><br><span class="line">    step_output = <span class="variable language_">self</span>.forward_with_handling(<span class="variable language_">self</span>.messages)  <span class="comment"># Think + Act</span></span><br><span class="line">    <span class="variable language_">self</span>.add_step_to_history(step_output)                     <span class="comment"># add output to history, </span></span><br><span class="line">    <span class="variable language_">self</span>.add_step_to_trajectory(step_output)                  <span class="comment"># add to trajectory</span></span><br><span class="line">    <span class="keyword">return</span> step_output</span><br></pre></td></tr></table></figure></li>
+<li><p>forward(): Think-Act</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># agents.py:1006-1060</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, history: <span class="built_in">list</span>[<span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]]</span>) -&gt; StepOutput:</span><br><span class="line">    step = StepOutput()</span><br><span class="line">    step.query = copy.deepcopy(history)     </span><br><span class="line"></span><br><span class="line">    output = <span class="variable language_">self</span>.model.query(history)      <span class="comment"># Think: Call LLM (line 1042)</span></span><br><span class="line">    step.output = output[<span class="string">&quot;message&quot;</span>]</span><br><span class="line">    step.thought, step.action = \</span><br><span class="line">        <span class="variable language_">self</span>.tools.parse_actions(output)    <span class="comment"># Parse: extract thought + action from output of LLM</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">self</span>.handle_action(step)         <span class="comment"># Act: execution action</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>forward_with_handling</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">forward_with_handling</span>(<span class="params">self, history: <span class="built_in">list</span>[<span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]]</span>) -&gt; StepOutput:</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">handle_error_with_autosubmission</span>(<span class="params">exit_status: <span class="built_in">str</span>, message: <span class="built_in">str</span></span>) -&gt; StepOutput:</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">	 <span class="keyword">def</span> <span class="title function_">handle_error_with_retry</span>(<span class="params">exception: Exception, template: <span class="built_in">str</span>, n_requeries: <span class="built_in">int</span></span>) -&gt; <span class="built_in">list</span>[<span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]]:</span><br><span class="line">        ...</span><br><span class="line">        </span><br><span class="line">	n_format_fails = <span class="number">0</span></span><br><span class="line">	<span class="keyword">while</span> n_format_fails &lt; <span class="variable language_">self</span>.max_requeries:</span><br><span class="line">		<span class="keyword">try</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="variable language_">self</span>.forward(history)</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure></li>
+<li><p>run(): main loop</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># agents.py:1265-1294</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self, env, problem_statement, output_dir</span>):</span><br><span class="line">    <span class="variable language_">self</span>.setup(env, problem_statement, output_dir)</span><br><span class="line">    step_output = StepOutput()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> step_output.done:</span><br><span class="line">        step_output = <span class="variable language_">self</span>.step()</span><br><span class="line">        <span class="variable language_">self</span>.save_trajectory()          <span class="comment"># save trajectory</span></span><br><span class="line">    <span class="keyword">return</span> AgentRunResult(...)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="retry-agentactor-critic">1.4.2 Retry Agent(Actor-Critic)</h3>
+<p><strong>Actor(agent_encapsulation)</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># agents.py:303-319</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_setup_agent</span>(<span class="params">self</span>):</span><br><span class="line">    agent_config = <span class="variable language_">self</span>.config.agent_configs[</span><br><span class="line">        <span class="variable language_">self</span>._i_attempt % <span class="built_in">len</span>(<span class="variable language_">self</span>.config.agent_configs)  <span class="comment"># 轮换不同配置</span></span><br><span class="line">    ]</span><br><span class="line">    <span class="comment"># 动态调整 cost limit</span></span><br><span class="line">    remaining_budget = <span class="variable language_">self</span>.config.retry_loop.cost_limit - <span class="variable language_">self</span>._total_instance_stats.instance_cost</span><br><span class="line">    <span class="keyword">if</span> remaining_budget &lt; agent_config.model.per_instance_cost_limit:</span><br><span class="line">        agent_config.model.per_instance_cost_limit = remaining_budget</span><br><span class="line">    <span class="variable language_">self</span>._agent = DefaultAgent.from_config(agent_config)</span><br><span class="line">    <span class="variable language_">self</span>._agent.setup(env=..., problem_statement=..., output_dir=...)</span><br></pre></td></tr></table></figure>
+<p><strong>Critic (Reviewer):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reviewer.py:416-449</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Reviewer</span>(<span class="title class_ inherited__">AbstractReviewer</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">review</span>(<span class="params">self, instance, submission</span>) -&gt; ReviewerResult:</span><br><span class="line">        <span class="comment"># 1. Abnormal Exit → Penalty Points</span></span><br><span class="line">        penalty = <span class="variable language_">self</span>._config.failure_score_penalty <span class="keyword">if</span> exit_status != <span class="string">&quot;submitted&quot;</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. n_sample=5, Take 5 samples and calculate the average score</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="variable language_">self</span>._config.n_sample):</span><br><span class="line">            answer = <span class="variable language_">self</span>._model.query(messages)[<span class="string">&quot;message&quot;</span>]</span><br><span class="line">            score = <span class="variable language_">self</span>.interpret(answer)       <span class="comment"># get score from LLM output</span></span><br><span class="line">            accepts.append(score)</span><br><span class="line"></span><br><span class="line">        accept = <span class="built_in">sum</span>(accepts) / <span class="built_in">len</span>(accepts) - penalty</span><br><span class="line">        std = np.std(accepts).item()</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>._config.reduce_by_std &gt; <span class="number">0</span>:</span><br><span class="line">            accept -= std * <span class="variable language_">self</span>._config.reduce_by_std  <span class="comment"># High Variance → Penalty</span></span><br><span class="line">        <span class="keyword">return</span> ReviewerResult(accept=accept, ...)</span><br></pre></td></tr></table></figure>
+<h2 id="env-layer">1.5 Env Layer</h2>
+<p>…</p>
+<h1 id="section">2.</h1>
+<h2 id="plan-execute">2.1 Plan &amp; Execute</h2>
+<p>Plan:</p>
+<p><code>config/default.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config/default.yaml</span></span><br><span class="line">  <span class="attr">agent:</span></span><br><span class="line">    <span class="attr">templates:</span></span><br><span class="line">      <span class="attr">instance_template:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">        &lt;uploaded_files&gt;</span></span><br><span class="line"><span class="string">        &#123;&#123;working_dir&#125;&#125;</span></span><br><span class="line"><span class="string">        &lt;/uploaded_files&gt;</span></span><br><span class="line"><span class="string">        I&#x27;ve uploaded a python code repository in the directory &#123;&#123;working_dir&#125;&#125;.</span></span><br><span class="line"><span class="string">        ...</span></span><br><span class="line"><span class="string">        Can you help me implement the necessary changes...</span></span><br><span class="line"><span class="string">        Follow these steps to resolve the issue:</span></span><br><span class="line"><span class="string">        1. As a first step, it might be a good idea to find and read code...</span></span><br><span class="line"><span class="string">        2. Create a script to reproduce the error...</span></span><br><span class="line"><span class="string">        3. Edit the sourcecode of the repo to resolve the issue</span></span><br><span class="line"><span class="string">        4. Rerun your reproduce script...</span></span><br><span class="line"><span class="string">        5. Think about edgecases...</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<h2 id="actor-critic">2.2 Actor-Critic</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RetryAgent (Orchestrator)</span><br><span class="line">      │</span><br><span class="line">      ├── DefaultAgent (Actor)    — Solve problem, generate patch</span><br><span class="line">      │</span><br><span class="line">      └── Reviewer (Critic)       — Score the Actor<span class="string">&#x27;s output</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<p>When Actor finished, package all outputs of Actor:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> step_output.done:</span><br><span class="line">	<span class="variable language_">self</span>._rloop.on_submit(</span><br><span class="line">		ReviewSubmission(</span><br><span class="line">			trajectory=<span class="variable language_">self</span>._agent.trajectory,</span><br><span class="line">			info=<span class="variable language_">self</span>._agent.info,</span><br><span class="line">			model_stats=<span class="variable language_">self</span>._agent.model.stats, <span class="comment"># Call times ...</span></span><br><span class="line">		)</span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
+<p>Reviewer to get a score:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RetryAgent.run()</span><br><span class="line">   │</span><br><span class="line">   └─ submission = ReviewSubmission(</span><br><span class="line">        trajectory = Acto<span class="string">r&#x27;s info</span></span><br><span class="line"><span class="string">        info       = exit_status + patch,</span></span><br><span class="line"><span class="string">        model_stats = API call tims...</span></span><br><span class="line"><span class="string">      )</span></span><br><span class="line"><span class="string">      │</span></span><br><span class="line"><span class="string">      └─ _rloop.on_submit(submission)</span></span><br><span class="line"><span class="string">           │</span></span><br><span class="line"><span class="string">           ├─ ScoreRetryLoop:</span></span><br><span class="line"><span class="string">           │</span></span><br><span class="line"><span class="string">           └─ ChooserRetryLoop:</span></span><br></pre></td></tr></table></figure>
+<p>ScoreRetryLoop:</p>
+<p>Attempt 1: Actor Finish → Reviewer: Review trajectory + patch → “0.3
+points” → fail Attempt 2: Actor Finish → Reviewer: Review new trajectory
++ new patch → “0.7 points” → not enough Attempt 3: Actor Finish →
+Reviewer: Review new trajectory + new patch → “0.85 points” → Pass and
+Stop</p>
+<p>ChooserRetryLoop:</p>
+<p>Attempt 1 → save</p>
+<p>Attempt 1 → save</p>
+<p>….</p>
+<p>Attempt 10 → save</p>
+<p>Chooser Receive 10 patches + edited_files： Submission 0: (patch_0)
+Submission 1: (patch_1) … “The third is best” → Return index 3</p>
+<p>Critic Prompt:</p>
+<p><code>config/benchmarks/250212_sweagent_heavy_sbl.yaml</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">retry_loop:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">chooser</span></span><br><span class="line">    <span class="attr">cost_limit:</span> <span class="number">6.0</span></span><br><span class="line">    <span class="attr">max_attempts:</span> <span class="number">10</span></span><br><span class="line">    <span class="attr">min_budget_for_new_attempt:</span> <span class="number">1.0</span></span><br><span class="line">    <span class="attr">chooser:</span></span><br><span class="line">      <span class="attr">system_template:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        You are an expert software engineer reviewing code. Your thinking is very thorough, so it is ok if its very long.</span></span><br><span class="line"><span class="string"></span>      <span class="attr">instance_template:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        You will be given a problem statement and a list of patch submissions.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">        <span class="string">Pick</span> <span class="string">the</span> <span class="string">most</span> <span class="string">reasonable</span> <span class="string">patch.</span></span><br><span class="line">        <span class="string">The</span> <span class="string">patch</span> <span class="string">should</span> <span class="string">solve</span> <span class="string">the</span> <span class="string">problem</span> <span class="string">described</span> <span class="string">in</span> <span class="string">the</span> <span class="string">problem</span> <span class="string">statement</span> <span class="string">in</span> <span class="string">a</span> <span class="string">way</span> <span class="string">that</span> <span class="string">is</span> <span class="string">consistent</span> <span class="string">with</span> <span class="string">the</span> <span class="string">rest</span> <span class="string">of</span> <span class="string">the</span> <span class="string">codebase</span> <span class="string">and</span> <span class="string">the</span> <span class="string">conventions</span> <span class="string">of</span> <span class="string">the</span> <span class="string">codebase.</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">Note:</span> <span class="string">Disregard</span> <span class="string">all</span> <span class="string">testing</span> <span class="string">code</span> <span class="string">in</span> <span class="string">the</span> <span class="string">patch,</span> <span class="string">as</span> <span class="string">testing</span> <span class="string">was</span> <span class="string">already</span> <span class="string">done</span> <span class="string">in</span> <span class="string">a</span> <span class="string">separate</span> <span class="string">step.</span></span><br><span class="line">        <span class="string">Having</span> <span class="string">a</span> <span class="string">test</span> <span class="string">in</span> <span class="string">the</span> <span class="string">patch</span> <span class="string">does</span> <span class="string">not</span> <span class="string">make</span> <span class="string">it</span> <span class="string">any</span> <span class="string">better.</span></span><br><span class="line"></span><br><span class="line">        <span class="string">&lt;IMPORTANT&gt;The</span> <span class="string">last</span> <span class="string">line</span> <span class="string">of</span> <span class="string">your</span> <span class="string">response</span> <span class="string">should</span> <span class="string">be</span> <span class="string">the</span> <span class="string">index</span> <span class="string">of</span> <span class="string">the</span> <span class="string">patch</span> <span class="string">you</span> <span class="string">chose.</span></span><br><span class="line">        <span class="string">You</span> <span class="string">must</span> <span class="string">choose</span> <span class="string">a</span> <span class="string">single</span> <span class="string">index</span> <span class="literal">no</span> <span class="string">matter</span> <span class="string">what.</span> <span class="string">If</span> <span class="string">you</span> <span class="string">cannot</span> <span class="string">decide</span> <span class="string">between</span> <span class="string">two</span> <span class="string">or</span> <span class="string">more</span></span><br><span class="line">        <span class="string">submissions,</span> <span class="string">choose</span> <span class="string">the</span> <span class="string">first</span> <span class="string">one</span> <span class="string">of</span> <span class="string">these.</span></span><br><span class="line">        <span class="string">&lt;/IMPORTANT&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">Problem statement:</span></span><br><span class="line">        &#123;&#123;<span class="string">problem_statement</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="attr">Submissions:</span></span><br><span class="line">        &#123;<span class="string">%</span> <span class="string">for</span> <span class="string">submission</span> <span class="string">in</span> <span class="string">submissions</span> <span class="string">%</span>&#125;</span><br><span class="line">        <span class="string">Submission</span> &#123;&#123;<span class="string">loop.index0</span>&#125;&#125;<span class="string">:</span></span><br><span class="line"></span><br><span class="line">        &#123;&#123;<span class="string">submission</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="string">%</span> <span class="string">endfor</span> <span class="string">%</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="string">&lt;IMPORTANT&gt;The</span> <span class="string">last</span> <span class="string">line</span> <span class="string">of</span> <span class="string">your</span> <span class="string">response</span> <span class="string">should</span> <span class="string">be</span> <span class="string">the</span> <span class="string">index</span> <span class="string">of</span> <span class="string">the</span> <span class="string">patch</span> <span class="string">you</span> <span class="string">chose</span> <span class="string">without</span> <span class="string">any</span> <span class="string">other</span> <span class="string">text.&lt;/IMPORTANT&gt;</span></span><br><span class="line">      <span class="attr">submission_template:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        Patch:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">        <span class="string">```python</span></span><br><span class="line">        &#123;&#123;<span class="string">submission</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>    The final edited file with 30 lines of context:
+
+    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;edited_files30&#125;&#125;</span><br></pre></td></tr></table></figure></code></pre>
+<p>```</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/2026/07/15/SWE-agent/">https://wangyier.top/2026/07/15/SWE-agent/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/SWE-agent/" rel="tag"># SWE-agent</a>
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/15/SWE-bench/" rel="prev" title="SWE-bench">
+                  <i class="fa fa-angle-left"></i> SWE-bench
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/" rel="next" title="Notes on Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
+                  Notes on Machine Learning & Deep Learning & Reinforcement Learning <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

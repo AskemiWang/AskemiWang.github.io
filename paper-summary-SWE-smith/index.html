@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Paper Summary of &quot;SWE-smith: Scaling Data for Software Engineering Agents&quot;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Summary – SWE-smith">
+<meta property="og:url" content="https://wangyier.top/paper-summary-SWE-smith/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Paper Summary of &quot;SWE-smith: Scaling Data for Software Engineering Agents&quot;.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/SWE-smith_generate_traj.png">
+<meta property="article:published_time" content="2026-08-04T10:11:35.000Z">
+<meta property="article:modified_time" content="2026-08-04T15:15:06.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Data Generation">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Model Fine-Tuning">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta property="article:tag" content="SWE">
+<meta property="article:tag" content="SWE-agent">
+<meta property="article:tag" content="SWE-bench">
+<meta property="article:tag" content="SWE-smith">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/SWE-smith_generate_traj.png">
+
+
+<link rel="canonical" href="https://wangyier.top/paper-summary-SWE-smith/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-SWE-smith/","path":"/paper-summary-SWE-smith/","title":"Paper Summary – SWE-smith"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Paper Summary – SWE-smith | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#main-workgenerate-bug.diff"><span class="nav-text">2. Main Work(Generate bug.diff)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#choose-install-repository"><span class="nav-text">2.1 Choose &amp; Install
+Repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#creating-task-instance-candidates"><span class="nav-text">2.2 Creating Task Instance
+Candidates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#execution-based-validation-of-candidates"><span class="nav-text">2.3 Execution-based
+Validation of Candidates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-problem-statements"><span class="nav-text">2.4 Generating problem
+statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#end-to-end-demonstration"><span class="nav-text">End to End Demonstration</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-process-tuning-model"><span class="nav-text">3. Data Process &amp; Tuning
+Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#verification-bug.diff-is-effective"><span class="nav-text">3.1 Verification bug.diff is
+Effective</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assemble-swe-bench-format-test-dataset"><span class="nav-text">3.2 Assemble SWE-bench
+Format Test Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generate-problem_statement-by-llm-issue_gengenerate.py"><span class="nav-text">3.3
+Generate problem_statement by LLM (issue_gen&#x2F;generate.py)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collect-traj-by-expert-model-rejection-sampling-fine-tuning-_gen_trajs.sh"><span class="nav-text">3.4
+Collect traj by Expert Model ( Rejection Sampling Fine-Tuning)
+(_gen_trajs.sh)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter-success-patches-swesmithharnesseval.py"><span class="nav-text">3.5 Filter
+Success Patches (swesmith&#x2F;harness&#x2F;eval.py)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trans-.traj-into-openai-messages"><span class="nav-text">3.6 Trans .traj into OpenAI
+messages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#full-tuning"><span class="nav-text">3.7 Full Tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#train_on_input-false"><span class="nav-text">3.7.1 train_on_input: False</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss-between-steps-teacher-forcing"><span class="nav-text">3.7.2 Loss Between Steps
+(Teacher Forcing)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed-false"><span class="nav-text">3.7.3 packed: False</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supplements"><span class="nav-text">4. Supplements</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flowchart"><span class="nav-text">4.1 Flowchart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swe"><span class="nav-text">4.2 SWE</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/paper-summary-SWE-smith/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Paper Summary – SWE-smith | The Great Library">
+      <meta itemprop="description" content="Paper Summary of &quot;SWE-smith: Scaling Data for Software Engineering Agents&quot;.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paper Summary – SWE-smith
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-08-04 18:11:35 / Modified: 23:15:06" itemprop="dateCreated datePublished" datetime="2026-08-04T18:11:35+08:00">2026-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Paper Summary of "SWE-smith: Scaling Data for Software Engineering Agents".</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="introduction">1. Introduction</h1>
+<p>However, the most effective agents still rely on proprietary LMs, as
+building open source LMs for SE remains bottlenecked by the lack of
+large-scale, high-quality training data. This article creates,
+==SWE-smith==, a novel pipeline for generating software engineering
+training data at scale.</p>
+<p>SWE-bench:</p>
+<ul>
+<li>Find real bug</li>
+<li>Build up environment</li>
+<li>Verification</li>
+</ul>
+<p>SWE-smith:</p>
+<ul>
+<li>Build up environment</li>
+<li>Create bug</li>
+<li>Verification</li>
+</ul>
+<p>Contribution:</p>
+<ul>
+<li>4 kinds bug generation strategies
+<ul>
+<li>LM Generation</li>
+<li>Procedural Modification</li>
+<li>Combine Bugs</li>
+<li>Invert PRs</li>
+</ul></li>
+</ul>
+<h1 id="main-workgenerate-bug.diff">2. Main Work(Generate bug.diff)</h1>
+<h2 id="choose-install-repository">2.1 Choose &amp; Install
+Repository</h2>
+<p>SWE-smith requires ==Python== projects with ==unit tests==.</p>
+<p>Filter Repository:</p>
+<ol type="1">
+<li>Target repositories for the 5, 000 most downloaded packages listed
+in the ==Python Package Index== (PyPI) as of November 18, 2024</li>
+<li>Sort the PyPI packages by GitHub stars</li>
+<li>Remove any PyPI package with less than 1, 000 stars, as well as all
+12 SWE-bench test repositories from consideration.</li>
+</ol>
+<p>Creaete corresponding image:</p>
+<ol type="1">
+<li>Get the newest ==commit== and ==SWE-agent== to automatically attempt
+to install and run tests in 100 steps.</li>
+<li>Manually Check:
+<ul>
+<li>Are the installation steps reasonable (without damaging the system
+environment) ?</li>
+<li>Are the test commands correct (have they actually run a complete
+test instead of a dummy run) ?</li>
+</ul></li>
+<li>Check if more than 80% of existing tests pass</li>
+<li>Create a ==Docker Image== for the repository</li>
+</ol>
+<h2 id="creating-task-instance-candidates">2.2 Creating Task Instance
+Candidates</h2>
+<p>4 methods to create task instances:</p>
+<ol type="1">
+<li>LM Generations</li>
+<li>Procedural Modification</li>
+<li>Combine Bugs</li>
+<li>Invert PRs (Most effective)</li>
+</ol>
+<h2 id="execution-based-validation-of-candidates">2.3 Execution-based
+Validation of Candidates</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin-code</span><br><span class="line">⬇️</span><br><span class="line">run tests ➡️ full pass</span><br><span class="line">⬇️</span><br><span class="line">git apply bug_patch.diff</span><br><span class="line">⬇️</span><br><span class="line">run tests ➡️ at least one <span class="built_in">test</span> <span class="keyword">case</span> fails </span><br><span class="line">⬇️</span><br><span class="line">FAIL_TO_PASS &gt; 0 ✅</span><br><span class="line">FAIL_TO_PASS = 0 ❌</span><br><span class="line">Timeout ➡️ ⚠️Skip</span><br></pre></td></tr></table></figure>
+<h2 id="generating-problem-statements">2.4 Generating problem
+statements</h2>
+<h2 id="end-to-end-demonstration">End to End Demonstration</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">完整的端到端示例</span><br><span class="line"></span><br><span class="line">以 pandas 的 PyArrow 索引 bug 为例：</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>] 环境搭建</span><br><span class="line">    <span class="number">128</span>个仓库之一: pandas-dev/pandas@<span class="number">95280573</span></span><br><span class="line">    → Docker镜像: swesmith.x86_64.pandas-dev__pandas<span class="number">.95280573</span></span><br><span class="line"></span><br><span class="line">[<span class="number">2</span>] Bug生成 (以PR Mirror为例)</span><br><span class="line">    找到PR <span class="comment">#53652 (修复PyArrow timestamp索引的bug)</span></span><br><span class="line">    → 反转PR的diff → 得到引入bug的patch</span><br><span class="line">    → 产出: bug__pr_mirror__7znr0kum.diff</span><br><span class="line"></span><br><span class="line">[<span class="number">3</span>] Docker验证</span><br><span class="line">    pre-gold:  原始代码 → pytest → test_getitem_pyarrow_index PASS ✅</span><br><span class="line">    post-gold: 应用bug → pytest → test_getitem_pyarrow_index FAIL ❌</span><br><span class="line">    → FAIL_TO_PASS = [test_getitem_pyarrow_index]</span><br><span class="line">    → ✅ bug有效</span><br><span class="line"></span><br><span class="line">[<span class="number">4</span>] 生成训练实例</span><br><span class="line">    instance_id: <span class="string">&quot;pandas-dev__pandas.95280573.pr_53652&quot;</span></span><br><span class="line">    patch:       引入bug的diff</span><br><span class="line">    problem_statement: <span class="string">&quot;PyArrow timestamp indexes not working with .loc indexing&quot;</span></span><br><span class="line">    FAIL_TO_PASS: [test_getitem_pyarrow_index]</span><br><span class="line"></span><br><span class="line">[<span class="number">5</span>] 收集专家Trajectory</span><br><span class="line">    Claude <span class="number">3.7</span> Sonnet + SWE-agent 在该实例上运行</span><br><span class="line">    → Agent通过多轮交互成功修复bug</span><br><span class="line">    → 完整interaction记录转为messages格式 (.jsonl)</span><br><span class="line"></span><br><span class="line">[<span class="number">6</span>] 训练</span><br><span class="line">    Qwen <span class="number">2.5</span> Coder 32B + <span class="number">5016</span>条成功trajectory</span><br><span class="line">    → torch.tune full_finetune_distributed</span><br><span class="line">    → SWE-agent-LM-32B (SWE-bench Verified <span class="number">40.2</span>%)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="data-process-tuning-model">3. Data Process &amp; Tuning
+Model</h1>
+<h2 id="verification-bug.diff-is-effective">3.1 Verification bug.diff is
+Effective</h2>
+<ol type="1">
+<li><p>Run pre-gold test before applying patch, test log:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">test_get_loc_naive_dti_aware_str_deprecated PASSED</span><br><span class="line">test_indexing_with_datetime_tz PASSED</span><br><span class="line">test_indexing_fast_xs PASSED</span><br><span class="line">test_consistency_with_tz_aware_scalar PASSED</span><br><span class="line">test_indexing_with_datetimeindex_tz[setitem] PASSED</span><br><span class="line">test_indexing_with_datetimeindex_tz[loc] PASSED</span><br><span class="line">test_nanosecond_getitem_setitem_with_tz PASSED</span><br><span class="line">test_getitem_str_slice_millisecond_resolution[DataFrame] PASSED</span><br><span class="line">test_getitem_str_slice_millisecond_resolution[Series] PASSED</span><br><span class="line">test_getitem_pyarrow_index[DataFrame] PASSED    ← Notice ⚠️</span><br><span class="line">test_getitem_pyarrow_index[Series] PASSED       ← Notice ⚠️</span><br><span class="line">   </span><br></pre></td></tr></table></figure></li>
+<li><p>Apply bug.diff file, then run test again</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test_get_loc_naive_dti_aware_str_deprecated PASSED</span><br><span class="line">test_indexing_with_datetime_tz PASSED</span><br><span class="line">test_indexing_fast_xs PASSED</span><br><span class="line">test_consistency_with_tz_aware_scalar PASSED</span><br><span class="line">test_indexing_with_datetimeindex_tz[setitem] PASSED</span><br><span class="line">test_indexing_with_datetimeindex_tz[loc] PASSED</span><br><span class="line">test_nanosecond_getitem_setitem_with_tz PASSED</span><br><span class="line">test_getitem_str_slice_millisecond_resolution[DataFrame] PASSED</span><br><span class="line">test_getitem_str_slice_millisecond_resolution[Series] PASSED</span><br><span class="line">test_getitem_pyarrow_index[DataFrame] FAILED    ← ❗</span><br><span class="line">test_getitem_pyarrow_index[Series] FAILED       ← ❗</span><br></pre></td></tr></table></figure></li>
+<li><p>Create report.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;FAIL_TO_PASS&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;pandas/tests/indexing/test_datetime.py::TestDatetimeIndex::test_getitem_pyarrow_index[DataFrame]&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;pandas/tests/indexing/test_datetime.py::TestDatetimeIndex::test_getitem_pyarrow_index[Series]&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;PASS_TO_PASS&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="string">&quot;pandas/tests/indexing/test_datetime.py::TestDatetimeIndex::test_get_loc_naive_dti_aware_str_deprecated&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;pandas/tests/indexing/test_datetime.py::TestDatetimeIndex::test_indexing_with_datetime_tz&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;... total 9 ...&quot;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;FAIL_TO_FAIL&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;PASS_TO_FAIL&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 40%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Failed</th>
+<th>Meaning</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FAIL_TO_PASS</td>
+<td>Pre-gold PASS → Post-gold FAIL</td>
+<td>2 testcases disrupted by bug ✅</td>
+</tr>
+<tr>
+<td>PASS_TO_PASS</td>
+<td>Pre-gold PASS → Post-gold PASS</td>
+<td>9 testcases are not be affected ✅</td>
+</tr>
+<tr>
+<td>FAIL_TO_FAIL</td>
+<td>Pre-gold PASS → Post-gold FAIL</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PASS_TO_FAIL</td>
+<td>Pre-gold PASS → Post-gold FAIL</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Judge Code (<strong>valid.py:144</strong>):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(report[FAIL_TO_PASS]) == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;0_f2p&quot;</span>&#125;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;1+_f2p&quot;</span>&#125; <span class="comment"># ✅ Valid Bug</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="assemble-swe-bench-format-test-dataset">3.2 Assemble SWE-bench
+Format Test Dataset</h2>
+<ol type="1">
+<li><p>Read report and verify result (harness/gather.py :316-339)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read report.json</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(path_results) <span class="keyword">as</span> f:</span><br><span class="line">    results = json.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 conditions needed</span></span><br><span class="line">n_f2p = <span class="built_in">len</span>(results[PASS_TO_FAIL])</span><br><span class="line">n_p2p = <span class="built_in">len</span>(results[PASS_TO_PASS])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. not timeout</span></span><br><span class="line"><span class="comment"># 2. at least one testcase is disrupted</span></span><br><span class="line"><span class="comment"># 3. at least one testcase is passed</span></span><br><span class="line"><span class="keyword">if</span> KEY_TIMED_OUT <span class="keyword">in</span> results <span class="keyword">or</span> n_f2p == <span class="number">0</span> <span class="keyword">or</span> n_p2p == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">return</span> SKIP   <span class="comment"># ← abort</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Assemble ==task_instance== (harness/gather.py :341-353) :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">task_instance = &#123;</span><br><span class="line">      <span class="string">&quot;instance_id&quot;</span>:   subfolder,              <span class="comment"># e.g. &quot;pandas-dev__pandas.95280573.pr_53652&quot;</span></span><br><span class="line">      <span class="string">&quot;patch&quot;</span>:         patch_content,           <span class="comment"># bug diff contents</span></span><br><span class="line">      <span class="string">&quot;FAIL_TO_PASS&quot;</span>:  results[PASS_TO_FAIL],   <span class="comment"># from report.json, note the task_instance[f2p] is from result[p2f] beacuse of the rule of SWE-bench is f2p.</span></span><br><span class="line">      <span class="string">&quot;PASS_TO_PASS&quot;</span>:  results[PASS_TO_PASS],   <span class="comment"># from report.json</span></span><br><span class="line">      <span class="string">&quot;image_name&quot;</span>:    rp.image_name,           <span class="comment"># Docker Image name</span></span><br><span class="line">      <span class="string">&quot;repo&quot;</span>:          rp.mirror_name,          <span class="comment"># GitHub repo name</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Create new Git branch (harness/gather.py :466-569) :</p></li>
+</ol>
+<p>Create new branch for each valid instance on Github, then:</p>
+<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> repo</span><br><span class="line">git checkout main</span><br><span class="line">git apply bug.diff			<span class="comment"># apply bug.diff</span></span><br><span class="line">git commit -m <span class="string">&quot;Bug Patch&quot;</span>	<span class="comment"># commit bug code</span></span><br><span class="line"></span><br><span class="line">remove the testcases that will fail</span><br><span class="line"> git commit -m <span class="string">&quot;Remove F2P Tests&quot;</span>  <span class="comment"># commit </span></span><br></pre></td></tr></table></figure></p>
+<p>Delete the testcase that will fail:</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f2p_test_files, _ = rp.get_test_files(task_instance)</span><br><span class="line"><span class="keyword">if</span> f2p_test_files:</span><br><span class="line">    <span class="keyword">for</span> test_file <span class="keyword">in</span> f2p_test_files:</span><br><span class="line">        os.remove(test_file_path)  <span class="comment"># delete the test that will fail</span></span><br><span class="line"></span><br><span class="line">	git add . &amp;&amp; git commit -m <span class="string">&quot;Remove F2P Tests&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>Why delete this file ?</p>
+<ul>
+<li><p>This way SWE-agent can find the tests need to be repaired by git
+diff.</p></li>
+<li><p>git diff main -&gt; deleted file -&gt; bug position</p></li>
+<li><p>```sh Agent git checkout → testcase not exist Agent git log:
+commit 1: “Bug Patch” commit 2: “Remove Tests” Agent inference: Deleted
+files in commit 2 is used to verify bug Agent git checkout main –
+test_xxx.py -&gt; Restore testcase … <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - ==I don&#x27;t think it make sense.==</span><br><span class="line"></span><br><span class="line">4. Assemble all instances (harness/gather.py :269-273) :</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   task_instances_path = LOG_DIR_TASKS / f&quot;&#123;run_id&#125;.json&quot;</span><br><span class="line">   json.dump(task_instances, f, indent=4)</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="generate-problem_statement-by-llm-issue_gengenerate.py">3.3
+Generate problem_statement by LLM (issue_gen/generate.py)</h2>
+<p>Input for LLM:</p>
+<ol type="1">
+<li><p>Demonstration :</p>
+<p>Randomly select 2 genuine GitHub issues from the SWE-bench Verified
+as style references.</p></li>
+<li><p>Patch (&lt;patch&gt; label) :</p>
+<p>Content of bug.diff</p></li>
+<li><p>test_output (&lt;test_output&gt; label) :</p>
+<p>Testcases that failed in post-gold. (Introducing by
+bug.diff)</p></li>
+<li><p>test_source_code (&lt;test_source_code&gt; label) :</p>
+<p>Analyze the failed testcases’ source code by Python AST. Gather the
+full test source code.</p></li>
+</ol>
+<p>LLM constrains (ig_v2.yaml) :</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">instance:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">  &lt;IMPORTANT&gt;</span></span><br><span class="line"><span class="string">  - DO NOT GIVE AWAY THE FIX!</span></span><br><span class="line"><span class="string">  - DO NOT SAY THAT EXISTING TEST(s) FAILED.</span></span><br><span class="line"><span class="string">  - DO NOT SUGGEST RUNNING TESTING COMMANDS (e.g., pytest).</span></span><br><span class="line"><span class="string">  - Mimic the style of the demonstration issues.</span></span><br><span class="line"><span class="string">  &lt;/IMPORTANT&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">  <span class="string">&lt;patch&gt;</span></span><br><span class="line">  &#123;&#123;<span class="string">patch</span>&#125;&#125;</span><br><span class="line">  <span class="string">&lt;/patch&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&lt;test_output&gt;</span></span><br><span class="line">  &#123;&#123;<span class="string">test_output</span>&#125;&#125;</span><br><span class="line">  <span class="string">&lt;/test_output&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&lt;test_source_code&gt;</span></span><br><span class="line">  &#123;<span class="string">%</span> <span class="string">for</span> <span class="string">test</span> <span class="string">in</span> <span class="string">test_funcs</span>[<span class="string">:5</span>] <span class="string">%</span>&#125;</span><br><span class="line">  &#123;&#123;<span class="string">test</span>&#125;&#125;</span><br><span class="line">  &#123;<span class="string">%</span> <span class="string">endfor</span> <span class="string">%</span>&#125;</span><br><span class="line">  <span class="string">&lt;/test_source_code&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Generate problem_statement (generate.py :376-387) :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="variable language_">self</span>.portkey_model:</span><br><span class="line">      response = <span class="variable language_">self</span>.portkey_model.query(</span><br><span class="line">          messages, n=<span class="variable language_">self</span>.n_instructions, stream=<span class="literal">False</span></span><br><span class="line">      )</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">      response = completion(</span><br><span class="line">          model=<span class="variable language_">self</span>.model,</span><br><span class="line">          messages=messages,        <span class="comment"># ← prompt</span></span><br><span class="line">          n=<span class="variable language_">self</span>.n_instructions,     <span class="comment"># ← generate several indicates</span></span><br><span class="line">          temperature=<span class="number">0</span>,</span><br><span class="line">      )</span><br></pre></td></tr></table></figure>
+<p>Extract statement (generate.py :398-401):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">problem_statements = [</span><br><span class="line">      choice.message.content</span><br><span class="line">      <span class="keyword">for</span> choice <span class="keyword">in</span> response.choices</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<p>Now the instances:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;instance_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;patch&quot;</span><span class="punctuation">:</span> <span class="string">&quot;diff --git ...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;FAIL_TO_PASS&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;PASS_TO_PASS&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;image_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;repo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;problem_statement&quot;</span><span class="punctuation">:</span> <span class="string">&quot;### Bug Description\n\n  When using PyArrow-backed timestamp indexes with .loc indexing, an AttributeError is  raised because the &#x27;freq&#x27; attribute doesn&#x27;t exist on PyArrow-backed Index objects...\n\n ### Steps to Reproduce\n\n ```python\nimport pandas as pd\n...&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2
+id="collect-traj-by-expert-model-rejection-sampling-fine-tuning-_gen_trajs.sh">3.4
+Collect traj by Expert Model ( Rejection Sampling Fine-Tuning)
+(_gen_trajs.sh)</h2>
+<p>SWE-smith aims to train a student model (Qwen 2.5 Coder 32B)</p>
+<ul>
+<li>If use student to solve the issues, the success rate is too low
+(~11%), and we cannot collect enough “successful trajectories”.</li>
+<li>Running with ==Claude 3.7 Sonnet== (success rate ~36%) can collect a
+large number of high-quality “correct answer demonstrations”.</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sweagent run-batch \</span><br><span class="line">	--config agent/swesmith_gen_claude.yaml \</span><br><span class="line">	--instances.path &lt;xxx.json&gt;</span><br><span class="line">	--output_dir trajectories</span><br><span class="line">	--agent.model.temperature 0.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;trajectory&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;step&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;I&#x27;ll help you implement the necessary changes...&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;find /testbed -type f -name &#x27;*.py&#x27; | grep -v test_&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;observation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OBSERVATION:\n/testbed/pandas/core/indexes/base.py\n...&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;step&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Let&#x27;s look at the specific code in base.py...&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cat -n /testbed/pandas/core/indexes/base.py | head -6077&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;observation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OBSERVATION:\n6077  and key.freq is None...&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="comment">// ... multi turns</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;step&quot;</span><span class="punctuation">:</span> N<span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The fix is working. Let&#x27;s submit.&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;submit&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;observation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Task completed.&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;claude-3-7-sonnet-20250219&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">0.0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;cost&quot;</span><span class="punctuation">:</span> <span class="number">2.34</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">trajectories/&lt;run_id&gt;/</span><br><span class="line">├── pandas-dev__pandas.95280573.pr_53652/</span><br><span class="line">│   ├── pandas-dev__pandas.95280573.pr_53652.traj    ← Traj</span><br><span class="line">│   └── pandas-dev__pandas.95280573.pr_53652.patch   ← Funal Patch</span><br><span class="line">├── getmoto__moto.694ce1f4.pr_7331/</span><br><span class="line">│   ├── getmoto__moto.694ce1f4.pr_7331.traj</span><br><span class="line">│   └── getmoto__moto.694ce1f4.pr_7331.patch</span><br><span class="line">├── ...</span><br><span class="line">└── ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="filter-success-patches-swesmithharnesseval.py">3.5 Filter
+Success Patches (swesmith/harness/eval.py)</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -m swesmith.harness.eval \</span><br><span class="line">	--dataset_path &lt;instances_with_statement&gt; \</span><br><span class="line">	--predictions_path &lt;path.diff&gt; \</span><br><span class="line">	--run_id &lt;run_id&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">run_evaluation</span>(<span class="params">pred, instance, run_id, ...</span>):</span><br><span class="line">     <span class="comment"># 1. Apply patch.diff and run test in docker.</span></span><br><span class="line">     run_patch_in_container(</span><br><span class="line">         instance, ..., patch=pred[KEY_PREDICTION]</span><br><span class="line">     )</span><br><span class="line"></span><br><span class="line">     <span class="comment"># 2. Read log，check if all f2p testcases go PASSED.</span></span><br><span class="line">     report = get_eval_report(pred, instance, test_log_path)</span><br><span class="line"></span><br><span class="line">     <span class="comment"># 3. return resolved or not.</span></span><br><span class="line">     resolved = report.get(<span class="string">&quot;resolved&quot;</span>, <span class="literal">False</span>)</span><br><span class="line">     <span class="keyword">return</span> &#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;completed&quot;</span>, <span class="string">&quot;resolved&quot;</span>: resolved&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">logs/run_evaluation/&lt;run_id&gt;/</span><br><span class="line">├── &lt;instance_id1&gt;/</span><br><span class="line">│   ├── test_output.txt     ← full <span class="built_in">test</span> <span class="built_in">log</span></span><br><span class="line">│   └── report.json         ← &#123;<span class="string">&quot;resolved&quot;</span>: <span class="literal">true</span>, <span class="string">&quot;tests_status&quot;</span>: &#123;...&#125;&#125;</span><br><span class="line">├── &lt;instance_id2&gt;/</span><br><span class="line">│   ├── test_output.txt     ← full <span class="built_in">test</span> <span class="built_in">log</span></span><br><span class="line">│   └── report.json         ← &#123;<span class="string">&quot;resolved&quot;</span>: <span class="literal">false</span>, <span class="string">&quot;tests_status&quot;</span>: &#123;...&#125;&#125;</span><br><span class="line">....</span><br><span class="line">│</span><br><span class="line">│</span><br><span class="line">└── report.json             ← Summary Report</span><br></pre></td></tr></table></figure>
+<p>Summary Report:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;resolved&quot;</span><span class="punctuation">:</span> <span class="number">1813</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;unresolved&quot;</span><span class="punctuation">:</span> <span class="number">3237</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total&quot;</span><span class="punctuation">:</span> <span class="number">5050</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ids_resolved&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;pandas-dev__pandas.95280573.pr_53652&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;getmoto__moto.694ce1f4.pr_7331&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;...&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ids_unresolved&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;modin-project__modin.8c7799fd.combine__...&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;...&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="trans-.traj-into-openai-messages">3.6 Trans .traj into OpenAI
+messages</h2>
+<ol type="1">
+<li><p>Filter success trajectories (collect_trajs.py : 57-58) :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">report = json.loads(report_path.read_text())</span><br><span class="line">is_resolved = report.get(<span class="string">&quot;resolved&quot;</span>, <span class="literal">False</span>) </span><br><span class="line">...</span><br><span class="line">traj[<span class="string">&quot;resolved&quot;</span>] = is_resolved</span><br></pre></td></tr></table></figure></li>
+<li><p>Format Conversion (utils.py : 81-111) :</p>
+<p>Package <code>thought</code> and <code>action</code> as content:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">transform_traj_xml</span>(<span class="params">traj</span>):</span><br><span class="line">    <span class="keyword">for</span> message <span class="keyword">in</span> get_messages(traj):</span><br><span class="line">        <span class="keyword">if</span> message[<span class="string">&quot;role&quot;</span>] == <span class="string">&quot;assistant&quot;</span>:</span><br><span class="line">            content = message[<span class="string">&quot;thought&quot;</span>]</span><br><span class="line">            content += <span class="string">&quot;\n\n&quot;</span> + tool_call_to_action(message[<span class="string">&quot;tool_calls&quot;</span>])</span><br><span class="line">		<span class="keyword">elif</span> message[<span class="string">&quot;role&quot;</span>] == <span class="string">&quot;system&quot;</span>:</span><br><span class="line">            content = SYSTEM_PROMPT</span><br><span class="line">		<span class="keyword">else</span>:  <span class="comment"># tool / user</span></span><br><span class="line">            content = message[<span class="string">&quot;content&quot;</span>][<span class="number">0</span>][<span class="string">&quot;text&quot;</span>]</span><br><span class="line">		new_traj.append(&#123;<span class="string">&quot;role&quot;</span>: role, <span class="string">&quot;content&quot;</span>: content&#125;)</span><br><span class="line">	<span class="keyword">return</span> &#123;<span class="string">&quot;messages&quot;</span>: new_traj&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>e.g. </p>
+<p>Unconverted .traj:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;history&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;SETTING: You are an autonomous programmer, and you&#x27;re working directly in the command line with a special interface.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system_prompt&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;We&#x27;re currently solving the following issue within our repository. Here&#x27;s the issue text:\nISSUE:\nSyntaxError: invalid syntax\nI&#x27;m running `missing_colon.py` as follows:\r\n\r\n```python\r\ndivision(23, 0)\r\n```\r\n\r\nbut I get the following error:\r\n\r\n```\r\n  File \&quot;/Users/fuchur/Documents/24/git_sync/swe-agent-test-repo/tests/./missing_colon.py\&quot;, line 4\r\n    def division(a: float, b: float) -&gt; float\r\n                                             ^\r\nSyntaxError: invalid syntax\r\n```\n\n\nINSTRUCTIONS:\nNow, you&#x27;re going to solve this issue on your own. Your terminal session has started and you&#x27;re in the repository&#x27;s root directory. You can use any bash commands or the special interface to help you. Edit all the files you need to and run any checks or tests that you want.\nRemember, YOU SHOULD ALWAYS INCLUDE EXACTLY ONE TOOL CALL/FUNCTION CALL PER RESPONSE.\nWhen you&#x27;re satisfied with all of the changes you&#x27;ve made, you can submit your changes to the code base by simply running the submit command.\nNote however that you cannot use any interactive session commands (e.g. python, vim) in this environment, but you can write scripts and run them. E.g. you can write a python script and then run it with the python command.\n\nNOTE ABOUT THE EDIT COMMAND: Indentation really matters! When editing a file, make sure to insert appropriate indentation before each line!\n\nGENERAL IMPORTANT TIPS:\n\n1. If you run a command and it doesn&#x27;t work, try running a different command. A command that did not work once will not work the second time unless you modify it!\n\n2. If you open a file and need to get to an area around a specific line that is not in the first 100 lines, say line 583, don&#x27;t just use the scroll_down command multiple times. Instead, use the goto 583 command. It&#x27;s much quicker.\n\n3. If the bug reproduction script requires inputting/reading a specific file, such as buggy-input.png, and you&#x27;d like to understand how to input that file, conduct a search in the existing repo code, to see whether someone else has already done that. Do this by running the command: find_file \&quot;buggy-input.png\&quot; If that doesn&#x27;t work, use the linux &#x27;find&#x27; command.\n\n4. Always make sure to look at the currently open file and the current working directory (which appears right after the currently open file). The currently open file might be in a different directory than the working directory! Note that some commands, such as &#x27;create&#x27;, open files, so they might change the current open file.\n\n5. When editing files, it is easy to accidentally to write code with incorrect indentation or make other mistakes. Always check the code after you issue an edit to make sure that it reflects what you wanted to accomplish. If it didn&#x27;t, issue another command to fix it.\n\n6. When editing files, first explain the code you want to edit and why it is causing the problem. Then explain the edit you want to make and how it fixes the problem. Explain how the edit does not break existing functionality.\n\n7. Do not try to install any packages with `pip`, `conda`, or any other way. This will usually not work. If the environment is not set up correctly, try to fix the issue without executing python code or running any tests that require the package installed.\n\nSTRATEGY:\n\n1. Locate relevant files using the find and search commands, then read the code related to the issue.\n\n2. Try to replicate the bug that the issues discusses.\n  If the issue includes code for reproducing the bug, we recommend that you re-implement that in your environment, and run it to make sure you can reproduce the bug.\n  Then start trying to fix it.\n\n  If the bug reproduction script does not print anything when it successfully runs, we recommend adding a print(\&quot;Script completed successfully, no errors.\&quot;) command at the end of the file,\n  so that you can be sure that the script indeed ran fine all the way through.\n\n3. Use the `edit` command to perform edits on the files that cause the issue.\n\n4. When you think you&#x27;ve fixed the bug, re-run the bug reproduction script to make sure that the bug has indeed been fixed.\n\n5. Create additional tests to verify the fix in a style similar to the existing reproduction script. In particular, make sure to test edge cases.\n   If you find any issues, go back to the file you edited and perform further edits.\n\n(Open file: n/a)\n(Current directory: /SWE-agent__test-repo)\nbash-$&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;observation&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The `SyntaxError` in `missing_colon.py` is likely due to a missing colon at the end of the function definition line. To resolve this, we need to locate and edit the file to add the missing colon at the end of the function definition. Let&#x27;s start by searching for `missing_colon.py` to locate it.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The `SyntaxError` in `missing_colon.py` is likely due to a missing colon at the end of the function definition line. To resolve this, we need to locate and edit the file to add the missing colon at the end of the function definition. Let&#x27;s start by searching for `missing_colon.py` to locate it.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;find_file missing_colon.py&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\&quot;file_name\&quot;:\&quot;missing_colon.py\&quot;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;find_file&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;call_PbWErNIge3YTrli3fiVvmIid&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;function&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;action&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Found 1 matches for \&quot;missing_colon.py\&quot; in /SWE-agent__test-repo:\r\n/SWE-agent__test-repo/tests/missing_colon.py\n(Open file: n/a)\n(Current directory: /SWE-agent__test-repo)\nbash-$&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;observation&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_call_ids&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;call_PbWErNIge3YTrli3fiVvmIid&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;We have found the `missing_colon.py` file in the `tests` directory. Let&#x27;s open it to review and make necessary edits.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;We have found the `missing_colon.py` file in the `tests` directory. Let&#x27;s open it to review and make necessary edits.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;open \&quot;tests/missing_colon.py\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\&quot;path\&quot;:\&quot;tests/missing_colon.py\&quot;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;open&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;call_upNLxh7rBcDH9w5XiNdoAS0I&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;function&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;action&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;[File: tests/missing_colon.py (10 lines total)]\r\n1:#!/usr/bin/env python3\r\n2:\r\n3:\r\n4:def division(a: float, b: float) -&gt; float\r\n5:    return a/b\r\n6:\r\n7:\r\n8:if __name__ == \&quot;__main__\&quot;:\r\n9:    print(division(123, 15))\r\n10:\n(Open file: /SWE-agent__test-repo/tests/missing_colon.py)\n(Current directory: /SWE-agent__test-repo)\nbash-$&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;observation&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_call_ids&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;call_upNLxh7rBcDH9w5XiNdoAS0I&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The issue is indeed caused by a missing colon at the end of the function definition line for `division`. We should add a colon at the end of the `def division(a: float, b: float) -&gt; float` line. Let&#x27;s fix this by editing the file.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The issue is indeed caused by a missing colon at the end of the function definition line for `division`. We should add a colon at the end of the `def division(a: float, b: float) -&gt; float` line. Let&#x27;s fix this by editing the file.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;edit &#x27;def division(a: float, b: float) -&gt; float&#x27; &#x27;def division(a: float, b: float) -&gt; float:&#x27;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\&quot;search\&quot;:\&quot;def division(a: float, b: float) -&gt; float\&quot;,\&quot;replace\&quot;:\&quot;def division(a: float, b: float) -&gt; float:\&quot;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;edit&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;call_hIiDKXAXZl4qMHV6RRXvil4u&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;function&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;action&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Text replaced. Please review the changes and make sure they are correct:\r\n\r\n1. The edited file is correctly indented\r\n2. The edited file does not contain duplicate lines\r\n3. The edit does not break existing functionality\r\n\r\nEdit the file again if necessary.\r\n[File: /SWE-agent__test-repo/tests/missing_colon.py (10 lines total)]\r\n1:#!/usr/bin/env python3\r\n2:\r\n3:\r\n4:def division(a: float, b: float) -&gt; float:\r\n5:    return a/b\r\n6:\r\n7:\r\n8:if __name__ == \&quot;__main__\&quot;:\r\n9:    print(division(123, 15))\r\n10:\n(Open file: /SWE-agent__test-repo/tests/missing_colon.py)\n(Current directory: /SWE-agent__test-repo)\nbash-$&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;observation&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_call_ids&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;call_hIiDKXAXZl4qMHV6RRXvil4u&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The missing colon has been added successfully. Now, we can run the script to ensure that the SyntaxError is resolved.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The missing colon has been added successfully. Now, we can run the script to ensure that the SyntaxError is resolved.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;python tests/missing_colon.py&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\&quot;command\&quot;:\&quot;python tests/missing_colon.py\&quot;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bash&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;call_5O339epJ3rKjEal3Kuvpj9bM&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;function&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;action&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8.2\n(Open file: /SWE-agent__test-repo/tests/missing_colon.py)\n(Current directory: /SWE-agent__test-repo)\nbash-$&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;observation&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_call_ids&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;call_5O339epJ3rKjEal3Kuvpj9bM&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The script ran successfully, printing the result `8.2`, and the syntax error is resolved. Now that the fix is verified, let&#x27;s submit our changes.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;thought&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The script ran successfully, printing the result `8.2`, and the syntax error is resolved. Now that the fix is verified, let&#x27;s submit our changes.&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;submit&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;submit&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;call_6zuFhIfpOAi1jAiD2QHMmh6S&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;function&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;action&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\r\ndiff --git a/tests/missing_colon.py b/tests/missing_colon.py\r\nindex 20edef5..5857437 100755\r\n--- a/tests/missing_colon.py\r\n+++ b/tests/missing_colon.py\r\n@@ -1,7 +1,7 @@\r\n #!/usr/bin/env python3\r\n \r\n \r\n-def division(a: float, b: float) -&gt; float\r\n+def division(a: float, b: float) -&gt; float:\r\n     return a/b\r\n \r\n \r\n\n(Open file: /SWE-agent__test-repo/tests/missing_colon.py)\n(Current directory: /SWE-agent__test-repo)\nbash-$&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;message_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;observation&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tool_call_ids&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;call_6zuFhIfpOAi1jAiD2QHMmh6S&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>transform_traj_xml;</p>
+<p>Converted .jsonl:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;messages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;You are an autonomous programmer...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ISSUE: SyntaxError...\nINSTRUCTIONS...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Let&#x27;s search...&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;find_file&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span>    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Found 1: .../missing_colon.py&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;tool_call_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Let&#x27;s open...&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;open&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span>    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;[File: missing_colon.py...]&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;tool_call_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Fix colon...&quot;</span><span class="punctuation">,</span>    <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;edit&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span>    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Text replaced...&quot;</span><span class="punctuation">,</span>  <span class="attr">&quot;tool_call_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Run script...&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bash&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tool&quot;</span><span class="punctuation">,</span>    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8.2&quot;</span><span class="punctuation">,</span>               <span class="attr">&quot;tool_call_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Submit...&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;tool_calls&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;function&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;submit&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;arguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;&#125;&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;resolved&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;instance_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="full-tuning">3.7 Full Tuning</h2>
+<p><code>train/run/ft_torchtune.py</code></p>
+<p><code>configs/train/full_ft_qwen_32b.yml</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">modal run swesmith/train/run/ft_torchtune.py \</span><br><span class="line">	--config configs/train/full_ft_qwen_32b.yml</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.function(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="meta">      gpu=<span class="string">f&quot;H100:<span class="subst">&#123;N_GPUS&#125;</span>&quot;</span>,        <span class="comment"># 2 H100 GPU by default</span></span></span></span><br><span class="line"><span class="params"><span class="meta">      timeout=N_HOURS * HOURS,     <span class="comment"># default 10 hours</span></span></span></span><br><span class="line"><span class="params"><span class="meta">  </span>)</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">run_train</span>(<span class="params">config_name, config, n_gpus</span>):</span><br><span class="line">      <span class="comment"># write in temp conf file</span></span><br><span class="line">      <span class="keyword">with</span> <span class="built_in">open</span>(config_path, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">          yaml.dump(config, f)</span><br><span class="line"></span><br><span class="line">      <span class="comment"># run full tuning</span></span><br><span class="line">      command = <span class="string">&quot;tune run full_finetune_distributed --config &#123;config_path&#125;&quot;</span></span><br><span class="line">      subprocess.run(command.split(), ...)</span><br></pre></td></tr></table></figure>
+<p>Train config (full_ft_qwen_32b.yml) :</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">model:</span></span><br><span class="line">    <span class="attr">_component_:</span> <span class="string">torchtune.models.qwen2_5.qwen2_5_32b_instruct</span>   <span class="comment"># Qwen 2.5 Coder 32B</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dataset:</span></span><br><span class="line">    <span class="attr">_component_:</span> <span class="string">torchtune.datasets.chat_dataset</span></span><br><span class="line">    <span class="attr">source:</span> <span class="string">json</span></span><br><span class="line">    <span class="attr">data_files:</span> <span class="string">/data/archive/swesmith.trajs.250413.jsonl</span></span><br><span class="line">    <span class="attr">conversation_column:</span> <span class="string">messages</span>		<span class="comment"># read field: messages</span></span><br><span class="line">    <span class="attr">conversation_style:</span> <span class="string">openai</span>			<span class="comment"># OpenAI format</span></span><br><span class="line">    <span class="attr">train_on_input:</span> <span class="literal">False</span>            <span class="comment"># Only calculate Loss of the assistant token</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># ===== Train Config =====</span></span><br><span class="line">  <span class="attr">epochs:</span> <span class="number">3</span>                          <span class="comment"># 3 轮</span></span><br><span class="line">  <span class="attr">batch_size:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">lr:</span> <span class="number">1e-4</span>                           <span class="comment"># Learning Rate</span></span><br><span class="line">  <span class="attr">optimizer:</span> <span class="string">AdamW</span>                   <span class="comment"># Optimizor</span></span><br><span class="line">  <span class="attr">lr_scheduler:</span> <span class="string">cosine_warmup</span>        <span class="comment"># Cosine Annealing + warmup</span></span><br><span class="line">  <span class="attr">max_seq_len:</span> <span class="number">32768</span>                 <span class="comment"># 32K token context</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># ===== 精度和显存优化 =====</span></span><br><span class="line">  <span class="attr">dtype:</span> <span class="string">bf16</span></span><br><span class="line">  <span class="attr">enable_activation_checkpointing:</span> <span class="literal">True</span></span><br><span class="line">  <span class="attr">compile:</span> <span class="literal">True</span>                           <span class="comment"># torch.compile</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 61%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>message #</th>
+<th>role</th>
+<th>content</th>
+<th>Calculate Loss?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>system<br>user</td>
+<td>“You are a helpful assistant…” <br>“I’ve uploaded a python code
+repository…”</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>assistant</td>
+<td>“I’ll help you…&lt;function=bash&gt;…”</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>user</td>
+<td>“OBSERVATION:/testbed/pandas/…”</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>assistant</td>
+<td>“The PR description mentions…&lt;function=bash&gt;”</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4</td>
+<td>user</td>
+<td>“OBSERVATION: if keyarr…”</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>assistant</td>
+<td>“I see the issue…Let me create a script…</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>6</td>
+<td>user</td>
+<td>“OBSERVATION:created successfully.”</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>assistant</td>
+<td>“Now let me run the script…</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>8</td>
+<td>user</td>
+<td>“OBSERVATION:: ’Inde…</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>assistant</td>
+<td>“Confirmed. Now I’ll fix…</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>10</td>
+<td>user</td>
+<td>“OBSERVATION:executed</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>assistant</td>
+<td>“Let me rerun…&lt;</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>12</td>
+<td>user</td>
+<td>“OBSERVATION:values…”</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>assistant</td>
+<td>“The fix works. Let me submit.&lt;function=submit&gt;”</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>e.g.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">assistant: <span class="string">&quot;I see the issue. Let me create a script.</span></span><br><span class="line"><span class="string">			&lt;function=bash&gt;</span></span><br><span class="line"><span class="string">			&lt;parameter=command&gt;cat &gt; reproduce.py &lt;&lt; &#x27;EOF&#x27;</span></span><br><span class="line"><span class="string">			import pandas as pd</span></span><br><span class="line"><span class="string">			...</span></span><br><span class="line"><span class="string">			EOF&lt;/parameter&gt;</span></span><br><span class="line"><span class="string">			&lt;/function&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Model Input: &quot;...OBSERVATION:\nFile created.\n I see the issue. Let me create&quot;</span><br><span class="line">Next token prediction: next token is ?</span><br><span class="line">Right Answer: &quot;a&quot;</span><br><span class="line">CE Loss: -log P(&quot;a&quot; | Input)</span><br></pre></td></tr></table></figure>
+<h3 id="train_on_input-false">3.7.1 train_on_input: False</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">system:   You are a helpful assistant that can interact with a computer...</span><br><span class="line">user:     ISSUE: SyntaxError... missing colon... /SWE-agent__test-repo...</span><br><span class="line">assist:   Let<span class="string">&#x27;s search for the file.        ← ① 模型说</span></span><br><span class="line"><span class="string">          &lt;function=find_file&gt;</span></span><br><span class="line"><span class="string">          &lt;parameter=file_name&gt;missing_colon.py&lt;/parameter&gt;</span></span><br><span class="line"><span class="string">          &lt;/function&gt;</span></span><br><span class="line"><span class="string">tool:     Found 1: .../missing_colon.py</span></span><br><span class="line"><span class="string">assist:   Let&#x27;</span>s open it.                   ← ② 模型说</span><br><span class="line">          &lt;<span class="keyword">function</span>=open&gt;</span><br><span class="line">          &lt;parameter=path&gt;tests/missing_colon.py&lt;/parameter&gt;</span><br><span class="line">          &lt;/function&gt;</span><br><span class="line">tool:     [File: missing_colon.py...  def division(a: <span class="built_in">float</span>, b: <span class="built_in">float</span>) -&gt; <span class="built_in">float</span> ...]</span><br><span class="line">assist:   Missing colon. Fixing.           ← ③ 模型说</span><br><span class="line">          &lt;<span class="keyword">function</span>=edit&gt;...&lt;/function&gt;</span><br><span class="line">tool:     Text replaced.</span><br><span class="line">assist:   Let<span class="string">&#x27;s run the script.            ← ④ 模型说</span></span><br><span class="line"><span class="string">          &lt;function=bash&gt;...&lt;/function&gt;</span></span><br><span class="line"><span class="string">tool:     8.2</span></span><br><span class="line"><span class="string">assist:   Script worked. Submitting.       ← ⑤ 模型说</span></span><br><span class="line"><span class="string">          &lt;function=submit&gt;&lt;/function&gt;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<p>❌If train_on_input: True, the Model need to study too much meaning
+less information:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">system: You▁are▁a▁helpful▁assistant...   ← ✅ calculate loss</span><br><span class="line">user:   ISSUE:▁SyntaxError...              ← ✅ calculate loss</span><br><span class="line">assist: Let<span class="string">&#x27;s▁search▁for▁the▁file.	   ← ✅ calculate loss</span></span><br><span class="line"><span class="string">        &lt;function=find_file&gt;...             ← ✅ calculate loss</span></span><br><span class="line"><span class="string">tool:   Found▁1:▁...                       ← ✅ calculate loss</span></span><br><span class="line"><span class="string">assist: Let&#x27;</span>s▁<span class="built_in">open</span>▁it.                     ← ✅ calculate loss</span><br><span class="line">        &lt;function=<span class="built_in">open</span>&gt;...                  ← ✅ calculate loss</span><br></pre></td></tr></table></figure>
+<p>✅train_on_input: False: Only calculate Loss the assistant’s:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">system: You▁are▁a▁helpful▁assistant...    ❌ mask</span><br><span class="line">user:   ISSUE:▁SyntaxError...               ❌ mask</span><br><span class="line">assist: Let<span class="string">&#x27;s▁search▁for▁the▁file.        ✅ Calculate loss</span></span><br><span class="line"><span class="string">        &lt;function=find_file&gt;...              ✅ Calculate loss</span></span><br><span class="line"><span class="string">tool:   Found▁1:▁...                        ❌ mask</span></span><br><span class="line"><span class="string">assist: Let&#x27;</span>s▁<span class="built_in">open</span>▁it.                      ✅ Calculate loss</span><br><span class="line">        &lt;function=<span class="built_in">open</span>&gt;...                   ✅ Calculate loss</span><br><span class="line">tool:   [File: missing_colon.py...]        	❌ mask</span><br><span class="line">assist: Missing▁colon.▁Fixing.               ✅ Calculate loss</span><br><span class="line">        &lt;function=edit&gt;...                 	✅ Calculate loss</span><br><span class="line">tool:   Text▁replaced.                        ❌ mask</span><br><span class="line">assist: Let<span class="string">&#x27;s▁run▁the▁script.               ✅ Calculate loss</span></span><br><span class="line"><span class="string">        &lt;function=bash&gt;...                    ✅ Calculate loss</span></span><br><span class="line"><span class="string">tool:   8.2                                	❌ mask</span></span><br><span class="line"><span class="string">assist: Script▁worked.▁Submitting.           ✅ Calculate loss</span></span><br><span class="line"><span class="string">        &lt;function=submit&gt;...               	✅ Calculate loss</span></span><br></pre></td></tr></table></figure>
+<h3 id="loss-between-steps-teacher-forcing">3.7.2 Loss Between Steps
+(Teacher Forcing)</h3>
+<p>traj:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[0] system:  <span class="string">&quot;You are a helpful assistant...&quot;</span></span><br><span class="line">[1] user:    <span class="string">&quot;ISSUE: SyntaxError... solve it...&quot;</span></span><br><span class="line">[2] assist:  <span class="string">&quot;search...\n&lt;function=find_file&gt;...&quot;</span>        ← turn 1</span><br><span class="line">[3] user:    <span class="string">&quot;Found 1: .../missing_colon.py&quot;</span></span><br><span class="line">[4] assist:  <span class="string">&quot;open...\n&lt;function=open&gt;...&quot;</span>               ← turn 2</span><br><span class="line">[5] user:    <span class="string">&quot;[File: ... line 4 no colon]&quot;</span></span><br><span class="line">[6] assist:  <span class="string">&quot;fix colon...\n&lt;function=edit&gt;...&quot;</span>          ← turn 3</span><br><span class="line">[7] user:    <span class="string">&quot;Text replaced.&quot;</span></span><br><span class="line">[8] assist:  <span class="string">&quot;run...\n&lt;function=bash&gt;...&quot;</span>                ← turn 4</span><br><span class="line">[9] user:    <span class="string">&quot;8.2&quot;</span></span><br><span class="line">[10] assist: <span class="string">&quot;submit...\n&lt;function=submit&gt;...&quot;</span>           ← turn 5</span><br></pre></td></tr></table></figure>
+<p>tokenization:</p>
+<p><span class="math display">$$
+\text{sys}_0,\text{user}_0,\textcolor{green}{assistant}_0
+,\text{user}_1,\textcolor{green}{assistant}_1,\text{user}_2,\textcolor{green}{assistant}_3,\text{user}_3,\textcolor{green}{assistant}_3,\text{user}_4,\textcolor{green}{assistant}_4
+$$</span></p>
+<p>Causal Attention Mask:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">           sys₀  user₀  assist₀  user₁  assist₁  user₂  assist₂</span><br><span class="line">sys₀       ✅    ❌     ❌       ❌     ❌       ❌     ❌</span><br><span class="line">user₀      ✅    ✅     ❌       ❌     ❌       ❌     ❌</span><br><span class="line">assist₀    ✅    ✅     ✅       ❌     ❌       ❌     ❌</span><br><span class="line">user₁      ✅    ✅     ✅       ✅     ❌       ❌     ❌</span><br><span class="line">assist₁    ✅    ✅     ✅       ✅     ✅       ❌     ❌    ← 能看到 assist₀！</span><br><span class="line">user₂      ✅    ✅     ✅       ✅     ✅       ✅     ❌</span><br><span class="line">assist₂    ✅    ✅     ✅       ✅     ✅       ✅     ✅    ← 能看到之前所有 assist</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="packed-false">3.7.3 packed: False</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">packed: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>Means that SWE-smith trains the model with ==serial== method.</p>
+<p>No concatenation !</p>
+<p>If concatenated, the latter one’s tokens can see all tokens of the
+one.</p>
+<h1 id="supplements">4. Supplements</h1>
+<h2 id="flowchart">4.1 Flowchart</h2>
+<p><img data-src="/images/article_images/SWE-smith_generate_traj.png" /></p>
+<h2 id="swe">4.2 SWE</h2>
+<p>2025 SWE-Bench Verified</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 7%" />
+<col style="width: 37%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Model</th>
+<th>Pass@1</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scale-SWE-Agent (30B)</td>
+<td>64%</td>
+<td>100K 真实 PR trajectory</td>
+<td>纯 SFT</td>
+</tr>
+<tr>
+<td>CoderForge-Preview-32B</td>
+<td>59.4%</td>
+<td>多源 trajectory 混合</td>
+<td>纯 SFT</td>
+</tr>
+<tr>
+<td>NVIDIA Nemotron (14B)</td>
+<td>43.1%</td>
+<td>SWE-Fixer+Smith 混合</td>
+<td>SFT → GRPO RL</td>
+</tr>
+<tr>
+<td>SWE-agent-LM-32B</td>
+<td>40.2%</td>
+<td>5,016 条 SWE-smith trajectory</td>
+<td>纯 SFT</td>
+</tr>
+<tr>
+<td>==SWE-RL (Llama 3.3 70B)==</td>
+<td>41%</td>
+<td>11M PR（不含 trajectory）</td>
+<td>纯离线 RL（GRPO）</td>
+</tr>
+<tr>
+<td>SWE-Gym 32B + Verifier</td>
+<td>32%</td>
+<td>491 条 trajectory</td>
+<td>SFT + Verifier</td>
+</tr>
+<tr>
+<td>RepoForge-8B</td>
+<td>17.4%</td>
+<td>7,304 条自制 trajectory</td>
+<td>SFT → RL</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 12%" />
+<col style="width: 32%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Method</th>
+<th>trajectory ?</th>
+<th>Representative</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>纯 SFT</td>
+<td>✅</td>
+<td>SWE-smith, Scale-SWE, CoderForge</td>
+<td>teacher sample trajectories, SFT student</td>
+</tr>
+<tr>
+<td>SFT → RL</td>
+<td>✅</td>
+<td>Nemotron, RepoForge</td>
+<td>SFT + RL</td>
+</tr>
+<tr>
+<td>纯 RL（离线）</td>
+<td>❌</td>
+<td>SWE-RL</td>
+<td>Use Text-Similarity to RL</td>
+</tr>
+<tr>
+<td>SFT → Verifier</td>
+<td>✅</td>
+<td>SWE-Gym</td>
+<td>SFT 一个生成器 + 训练一个打分器</td>
+</tr>
+</tbody>
+</table>
+<p>Q: teacher sample 后, SFT自己, 会不会效果更好?</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/paper-summary-SWE-smith/">https://wangyier.top/paper-summary-SWE-smith/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/SWE-agent/" rel="tag"># SWE-agent</a>
+              <a href="/tags/SWE-smith/" rel="tag"># SWE-smith</a>
+              <a href="/tags/SWE/" rel="tag"># SWE</a>
+              <a href="/tags/Model-Fine-Tuning/" rel="tag"># Model Fine-Tuning</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+              <a href="/tags/Data-Generation/" rel="tag"># Data Generation</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/notes-on-mathematics/" rel="prev" title="Notes on Mathematics">
+                  <i class="fa fa-angle-left"></i> Notes on Mathematics
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/model-post-training/" rel="next" title="Model Post-Training">
+                  Model Post-Training <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

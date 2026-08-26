@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Describe the mechanism of Transformer architecture.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mechanism of Transformer">
+<meta property="og:url" content="https://wangyier.top/mechanism-of-transformer/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Describe the mechanism of Transformer architecture.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/transformer_architecture.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/transformer_true_input.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/transformer_encoder.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/one-hot_example.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/one-hot_embedded.png">
+<meta property="article:published_time" content="2026-06-30T07:09:14.000Z">
+<meta property="article:modified_time" content="2026-07-07T08:18:16.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Transformer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/transformer_architecture.png">
+
+
+<link rel="canonical" href="https://wangyier.top/mechanism-of-transformer/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/mechanism-of-transformer/","path":"/mechanism-of-transformer/","title":"Mechanism of Transformer"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Mechanism of Transformer | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-of-transformer"><span class="nav-text">1. Introduction of Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#goals-of-transformer"><span class="nav-text">1.1 Goals of Transformer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#structure-of-transformer"><span class="nav-text">1.2 Structure of Transformer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gross-workflow-of-transformer"><span class="nav-text">1.3 Gross Workflow of
+Transformer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#input-data-process"><span class="nav-text">2. Input Data Process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#collect-enough-text-data"><span class="nav-text">2.1 Collect Enough Text Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tokenization"><span class="nav-text">2.2 Tokenization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-token-by-frequence-one-hot-encode"><span class="nav-text">2.3 Sort Token by
+Frequence &amp; One Hot Encode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bpe"><span class="nav-text">2.4 BPE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#similarity"><span class="nav-text">2.7 Similarity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#word-embedding"><span class="nav-text">2.6 Word Embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#note-how-does-embedding-table-work"><span class="nav-text">2.6.1 Note: How does
+Embedding Table work?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recognize-the-notion-of-embedding-table-and-token-embeddings"><span class="nav-text">2.6.2
+Recognize the Notion of Embedding Table and Token Embeddings</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#positional-encoding"><span class="nav-text">2.7 Positional Encoding</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/mechanism-of-transformer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Mechanism of Transformer | The Great Library">
+      <meta itemprop="description" content="Describe the mechanism of Transformer architecture.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mechanism of Transformer
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-06-30 15:09:14" itemprop="dateCreated datePublished" datetime="2026-06-30T15:09:14+08:00">2026-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-07-07 16:18:16" itemprop="dateModified" datetime="2026-07-07T16:18:16+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Describe the mechanism of Transformer architecture.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="introduction-of-transformer">1. Introduction of Transformer</h1>
+<h2 id="goals-of-transformer">1.1 Goals of Transformer</h2>
+<p>主要致力于在<code>序列建模</code>中提升<code>并行性</code>与<code>长距离依赖建模能力</code>，摆脱对循环与卷积的依赖。</p>
+<p><code>时序建模</code>是一个很重要的输入特性, 比如我们打一段话,
+后面的输入和前面的输入都有联系.</p>
+<p><code>并行性</code>, 是针对RNN的提升, RNN, LSTM
+的特点是前面的迭代进后面的, 是一种串行计算, 效率低下.</p>
+<p><code>长距离依赖建模能力</code>, 也是针对传统RNN的提升,
+早期的RNN类算法中, 后续时间序列可能会遗忘很前面的输入,
+导致结果不准确.</p>
+<h2 id="structure-of-transformer">1.2 Structure of Transformer</h2>
+<p>Transformer 使用了 Encoder + Decoder 的结构.</p>
+<p>Transformer 拥有三种注意力机制(本质上都是多头注意力机制):</p>
+<ul>
+<li>编码器多头自注意力</li>
+<li>交叉注意力</li>
+<li>解码器多头自注意力</li>
+</ul>
+<p>Transformer 采用了<code>位置编码</code> 的机制,
+赋予了词向量<code>序列信息</code>.</p>
+<p>Transformer 采用了 <code>残差连接</code> + <code>层归一化</code> +
+<code>前馈网络</code>的形式, 形成标准块, 稳定深层训练.</p>
+<p>Transformer 整体的架构如下:</p>
+<p><img data-src="/images/article_images/transformer_architecture.png" /></p>
+<h2 id="gross-workflow-of-transformer">1.3 Gross Workflow of
+Transformer</h2>
+<p>以最经典的机器翻译任务为例: 输入英文符串<code>I love you</code>,
+进行翻译任务, transformer的粗略工作流程如下:</p>
+<p>首先输入的英文符串<code>I love you</code> ,
+需要通过<code>输入嵌入</code>的过程, 将这些输入转化为向量形式,
+也就是输入向量(输出是逆过程):</p>
+<p><img data-src="/images/article_images/transformer_input&amp;output_embedding.png" /></p>
+<p>然后, 为了体现输入向量的时序信息, 要给这个输入向量加上一个位置编码,
+这样就得到了我们完整的输入向量:</p>
+<p><img data-src="/images/article_images/transformer_true_input.png" /></p>
+<p>然后是Encoder模块, 开始使用神经网络对我们的输入向量做处理:</p>
+<p><img data-src="/images/article_images/transformer_encoder.png" /></p>
+<p>里面经过了:多头注意力机制, 残差连接, 层归一化… 先不管内部实现,
+我们可以认为, Encoder的输出是输入向量的一些有用信息,
+这些信息被传入Decoder中进行处理</p>
+<p>这个时候, 注意到, Decoder中还有一个输入: Outputs shifted right.
+你可能会疑惑, 为什么还有一个输入?
+Decoder不是处理刚刚Encoder传过来的信息就行了吗.</p>
+<p>从结果来说, 我们的输入是<code>I love you</code>,
+输出应该是<code>我爱你</code>.</p>
+<p>实际上, 我们送进transformer的<code>I love you</code>是并行送进去的,
+但是输出是迭代串行的, 并不是一次性输出<code>我爱你</code>的.
+流程简述:</p>
+<ul>
+<li><p>Encoder信息提取完毕后</p></li>
+<li><table>
+<thead>
+<tr>
+<th>Decoder Inputs</th>
+<th>Decoder Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“S”, 表示开始</td>
+<td>“我”, 传回 Decoder Inputs</td>
+</tr>
+<tr>
+<td>“S”+“我”</td>
+<td>“我”+“爱”, 传回 Decoder Inputs</td>
+</tr>
+<tr>
+<td>“S”+“我”+“爱”</td>
+<td>“我”+“爱”+“你”, 传回 Decoder Inputs</td>
+</tr>
+<tr>
+<td>“S”+“我”+“爱”+“你”</td>
+<td>“我”+“爱”+“你”+“end”, 传回 Decoder Inputs</td>
+</tr>
+<tr>
+<td>收到”end”, 结束</td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>这种不断迭代生成输出的过程, 叫: Auto-Regressive Generate</p>
+<p><img data-src="/images/article_images/transformer_auto-regressive.png" /></p>
+<h1 id="input-data-process">2. Input Data Process</h1>
+<p>首先来到第一部分, 对输入数据进行处理.</p>
+<p>我们的输入是自然语言, 比如翻译任务, 翻译”我是一条狗”.
+我们是不可能用字符或者字符串的形式来进行训练的, 最后一定是用数字的形式,
+所以我们的输入和输出一定要是数字的形式.</p>
+<h2 id="collect-enough-text-data">2.1 Collect Enough Text Data</h2>
+<p>我们要对文本进行处理, 一定要有足够多的文本量,
+不然的话可能会出现识别不了的问题.</p>
+<h2 id="tokenization">2.2 Tokenization</h2>
+<p>Transformer或者说大模型, 可以当成一个黑盒,
+他的输入和输出都是不同的文本. 这些文本是由不同的基本元素组成的,
+比如英文的基本组成是ASCII表里面那些字符, 中文是一个一个字.
+我们输入这些变量, 经过transformer后, 再输出这些变量的其它组合.</p>
+<p>不过这里有一个问题, 如果拿26个字母或者普通的中文字符来做, 最小变量,
+效率太低了, 如果组成单词来作为 比如:</p>
+<ul>
+<li><p>“I am a dog”, 拆解成”I” “am” “a” “dog”, 效率上一定是优于”I” “a”
+“m” “a” “d” “o” “g”的,</p></li>
+<li><p>中文里: “我” “是” “一条” “狗”, 效率一定是比 “我” “是” “一” “条”
+“狗” 高.</p></li>
+</ul>
+<p>这种拆解出来的最小变量单元”dog”, “一条”… 就叫token.
+这些<code>基本变量</code>, 放在一起就是我们<code>Vocabulary</code>,
+也就是词表.</p>
+<p>思考, token和word(单词)的区别? 他们一样吗?</p>
+<p>当然不一样, 不然token为什么不直接叫单词算了?
+看起来我们是按单词(word)为单位, 来切割实际上并不是.</p>
+<p>按word为单位进行token化的话, 有两个主要问题:</p>
+<ol type="1">
+<li>词表爆炸, 因为有很多生僻词和复杂的组合词,
+同一单词的不同形式…会导致我们的词表<code>Vocabulary Size</code>非常大</li>
+<li>未登陆词问题(OOV, Out of Vocabulary),
+如果遇到一个词典里没有的新词（比如人名 “Elon Musk”，或者新造词
+“Qwen”），按“单词”处理，模型会直接懵掉，显示为
+<code>&lt;UNK&gt;</code>（未知）。</li>
+</ol>
+<p>所以我们要找到一个平衡, 让效率高的同时, 词表尽量小.</p>
+<p>比如: “The unbelievable cat is running.”这个句子,
+按照单词分就是5个单词, 然而按照token分, 可能会分成7个 Token:</p>
+<ol type="1">
+<li><code>The</code> (完整单词)</li>
+<li><code>▁un</code> (unbelievable 的前缀)</li>
+<li><code>believ</code> (unbelievable 的词根)</li>
+<li><code>able</code> (unbelievable 的后缀)</li>
+<li><code>▁cat</code> (完整单词，<code>▁</code>代表前面的空格)</li>
+<li><code>▁is</code> (完整单词)</li>
+<li><code>▁running</code> (完整单词)</li>
+</ol>
+<p>对于简单的词（如 cat），Token 就是单词；但对于长词或生僻词（如
+unbelievable），Token
+会被拆成<strong>单词的碎片（子词）</strong>。乍一看,
+5个单词能搞定的事情, 分成了7个token, 这不是更复杂了吗? 实际上,
+假如有一些新的语句, 其中有<code>believable</code>
+<code>unfortune</code></p>
+<p><code>disable</code>…这些单词, 如果按照word划分的话, 这些都是一个新的
+Vocabulary 项, 但是如果按token划分, 会发现,
+他们很多部分已经存储在已知的token中了, 所以语料库足够大的时候,
+Vocabulary Size实际上是减小的.</p>
+<h2 id="sort-token-by-frequence-one-hot-encode">2.3 Sort Token by
+Frequence &amp; One Hot Encode</h2>
+<p>当我们把所有文本token化后, 可以按照出现的频次进行一个排序, 比如:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[我 是 一条 狗 篮球 鸡 ...]</span><br></pre></td></tr></table></figure>
+<p>排序后, 实际上每个token都有一个数字信息了, 比如:</p>
+<p>我 = 1, 是 = 2, 一条 = 3, 狗 = 4, 篮球 = 5 , 鸡 = 6</p>
+<p>有这个数字信息, 理论上就可以进行运算了, 比如:</p>
+<p>“1 + 2”, 对应的是 “我是”, 然而 “3”对应的是”一条”,
+这种计算是没有意义的.</p>
+<p>如何让他们的数字计算有意义呢? 这里引入了独热编码(One Hot
+Encode).也就是把每一个token向量化, 且和其它token都正交:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Vector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我</td>
+<td>[1, 0, 0, 0, 0, 0]</td>
+</tr>
+<tr>
+<td>是</td>
+<td>[0, 1, 0, 0, 0, 0]</td>
+</tr>
+<tr>
+<td>一条</td>
+<td>[0, 0, 1, 0, 0, 0]</td>
+</tr>
+<tr>
+<td>狗</td>
+<td>[0, 0, 0, 1, 0, 0]</td>
+</tr>
+<tr>
+<td>篮球</td>
+<td>[0, 0, 0, 0, 1, 0]</td>
+</tr>
+<tr>
+<td>鸡</td>
+<td>[0, 0, 0, 0, 0, 1]</td>
+</tr>
+</tbody>
+</table>
+<p>此时 “我 + 是” = [1, 1, 0, 0, 0, 0], 并不等于”一条([[0, 0, 1, 0, 0,
+0]])“, 这样的组合是有一定意义的.</p>
+<p>但是One Hot Encode有两个严重的问题:</p>
+<ol type="1">
+<li>独热向量值维度巨大, 假设词表大小V, V=50k 时每个词, 是 50k 维、只有 1
+个非零。</li>
+<li>每个词都是独立的, 他们正交,
+因为当时设计的时候就是想要让他们单独表示, 然而大模型时代,
+我们需要找到不同token之间的相关性, 不能让他们完全正交.</li>
+</ol>
+<h2 id="bpe">2.4 BPE</h2>
+<p>占位后面补充</p>
+<h2 id="similarity">2.7 Similarity</h2>
+<p><strong>相似度”（Similarity）本质上是衡量两个向量在多维空间中“有多接近”或“方向有多一致”的数值指标。</strong></p>
+<p>前面提到的one-hot 编码, 向量全部是正交的,
+所以表示向量的语义完全无关.</p>
+<p>为了计算相似度，我们通常会将其转化为计算两个向量之间的
+<strong>“距离”</strong> 或 <strong>“夹角”</strong>。</p>
+<p>下面是两种常用的相似度:</p>
+<ol type="1">
+<li><p>余弦相似度(Cosine Similarity)</p>
+<p>它不看两个向量的“长度”（模长），只看它们的“方向”（夹角）。</p>
+<p>分子是点积，分母是两个向量长度的乘积:</p>
+<p>$(, ) = () = = $</p>
+<ul>
+<li>1：夹角为 0°，方向完全一致（语义完全相同）。</li>
+<li>0：夹角为 90°，正交（语义完全无关，比如“猫”和“拖拉机”）。</li>
+<li>−1：夹角为 180°，方向完全相反（语义相反，比如“好”和“坏”）。</li>
+</ul>
+<p>这种表示法在NLP领域中应用很广泛.</p></li>
+<li><p>点积(Dot Product)</p>
+<p><span class="math inline">Dot
+Product(<strong>A</strong>, <strong>B</strong>) = Cosine
+Similarity(<strong>A</strong>, <strong>B</strong>) × (∥<strong>A</strong>∥∥<strong>B</strong>∥)</span></p>
+<p>从几何上来看:</p>
+<p>cos(θ)代表了方向一致性, |A||B|代表了信号强度,
+说明这个向量在空间中的“存在感”越强，或者它代表的特征越显著。</p>
+<p>点积衡量的是两个向量在同一个方向的重叠度,
+同时它还叠加了向量自身的“信号强度（长度）.</p>
+<p><span class="math inline">$\text{Dot Product}(\mathbf{A}, \mathbf{B})
+= \mathbf{A} \cdot \mathbf{B} = \sum_{i=1}^{n} A_i B_i$</span></p>
+<p>在词嵌入中，每一个维度代表一种潜在的语义特征（比如“是否为动物”、“情感是正面还是负面”）。</p>
+<ul>
+<li>如果词 A 和词 B
+在某个特征上<strong>都是高分（同为正数）</strong>，它们相乘就是<strong>大正数</strong>。</li>
+<li>如果它们在某个特征上<strong>都是低分/负向（同为负数）</strong>，负负得正，相乘也是<strong>正数</strong>。</li>
+<li>如果一个高分一个低分（一正一负），相乘就是<strong>负数</strong>（抵消了相似度）。</li>
+</ul>
+<p><strong>代数直觉</strong>：把所有维度上“同向”的特征得分乘起来并累加。<strong>累加的正数越多、越大，说明这两个词在越多的特征上“同频共振”，自然就越相似。</strong></p></li>
+</ol>
+<h2 id="word-embedding">2.6 Word Embedding</h2>
+<p>前文说过, One-Hot Encode, 功能是将token映射为相互独立(正交)的向量,
+由于v个向量要正交, 那么每个向量都应该是v维的, 所以One-Hot 矩阵是V ×
+V的:</p>
+<p><img data-src="/images/article_images/one-hot_example.png" /></p>
+<p>假如这个矩阵维度非常高, 比如是100000 × 100000 的, 信息含量其实非常少,
+我们有没有什么方法可以减少无用信息? 有的兄弟有的!
+用它乘一个低维矩阵就可以降维了.</p>
+<p>我们用一个低维矩阵乘这个One-Hot编码矩阵可以达到降维的目的, 比如,
+用一个D×V的矩阵:</p>
+<p><span
+class="math display"><em>M</em><sub><em>V</em> × <em>V</em></sub> × <em>M</em><sub><em>V</em> × <em>D</em></sub> = <em>M</em><em>a</em><em>t</em><em>r</em><em>i</em><em>x</em><sub><em>V</em> × <em>D</em></sub></span></p>
+<p>如图, 通过对一个6维的one-hot词表乘上一个6×3的低维矩阵,
+我们将这个矩阵降维到了6x3, 也就是把6维的向量降到了3维.</p>
+<p>之前的每个词向量都是线性无关的, 现在降维之后, 变得线性相关.</p>
+<p>Note: 实际上, 有没有发现, 其实这个one-hot矩阵是一个单位矩阵,
+进行完了运算之后, 实际上最后的结果和这个低维矩阵是一样的.</p>
+<p><img data-src="/images/article_images/one-hot_embedded.png" /></p>
+<p>在大模型/transformer中, 降维采取的维度一般是512维,
+降维矩阵的初始值是随机的, 通过训练, 正向传播(以提高相似度为目标),
+进行训练.</p>
+<p>代码实现:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line">torch.manual_seed(<span class="number">1234</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SimpleModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, vocab_size, embedding_dim</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.embedding_matrix = nn.Embedding(vocab_size, embedding_dim)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, ids</span>):</span><br><span class="line">        token_embeddings = <span class="variable language_">self</span>.embedding_matrix(ids)</span><br><span class="line">        <span class="keyword">return</span> token_embeddings</span><br><span class="line"></span><br><span class="line">vocab_size = <span class="number">50275</span></span><br><span class="line">embedding_dim = <span class="number">768</span></span><br><span class="line">model = SimpleModel(vocab_size, embedding_dim)</span><br><span class="line"></span><br><span class="line">ids = torch.tensor([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line">token_embeddings = model(ids)</span><br><span class="line"><span class="built_in">print</span>(token_embeddings)</span><br></pre></td></tr></table></figure>
+<h3 id="note-how-does-embedding-table-work">2.6.1 Note: How does
+Embedding Table work?</h3>
+<p>前面说到,
+<code>V * V</code>的one-hot矩阵去乘一个<code>V * D</code>的矩阵来降维</p>
+<p>在实际工程中, 这是一个非常蠢的做法,
+因为<code>V * V</code>的出示矩阵中, 每个元素都是单位正交的,
+存储起来很大, 实际有用的元素只有那一个1, 而这个词向量, 与矩阵做乘法:</p>
+<p><span
+class="math inline"><em>V</em><em>e</em><em>c</em><em>t</em><em>o</em><em>r</em><sub>1 * <em>V</em></sub> * <em>E</em><em>m</em><em>b</em><em>e</em><em>d</em><em>d</em><em>i</em><em>n</em><em>g</em><em>T</em><em>a</em><em>b</em><em>l</em><em>e</em><sub><em>V</em> * <em>D</em></sub></span></p>
+<p>假设词向量的第i个元素为1, 其余为0, 这个运算的实质上是取出了<span
+class="math inline"><em>E</em><em>m</em><em>b</em><em>e</em><em>d</em><em>d</em><em>i</em><em>n</em><em>g</em><em>M</em><em>a</em><em>t</em><em>r</em><em>i</em><em>x</em><sub><em>V</em> * <em>D</em></sub></span>的第i行.</p>
+<h3
+id="recognize-the-notion-of-embedding-table-and-token-embeddings">2.6.2
+Recognize the Notion of Embedding Table and Token Embeddings</h3>
+<p>事实上, transformer架构中有一个全局的嵌入矩阵, 也叫权重矩阵,
+(<code>Embedding Table</code>), 包含了所有的词向量的嵌入矩阵,
+规格为<code>V x D</code></p>
+<p>而我们每次向大模型输入一段token的时候, 只会输入很少的几个token,
+这个时候难道我们还要走一遍全局的词嵌入吗?</p>
+<p>当然不会, 假如我们只输入了6个token,
+那么实际操作是从全局的<code>Embedding Table</code>中,
+抽取这6个token的词向量, 组成一个<code>Token Embedding</code>矩阵.
+然后同时对这6个向量生成一个位置编码矩阵, 两者相加,
+就是我们对整个token序列的处理了.</p>
+<h2 id="positional-encoding">2.7 Positional Encoding</h2>
+<p>位置编码有什么用?</p>
+<p>在我们输入的数据中, 比如翻译任务, 翻译一句话,
+这句话的token实际上是有先后顺序的, 位置编码就是为了给我们的输入向量,
+添加位置信息, 下面是公式:</p>
+<p><span class="math display">$$
+\begin{equation}
+\begin{aligned}
+PE_{(pos, 2i)} &amp;=
+\sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right) \\
+PE_{(pos, 2i+1)} &amp;=
+\cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+\end{aligned}
+\end{equation}
+$$</span></p>
+<p>以”我 爱 深度 学习 模型 啊”为输入token举例:</p>
+<ul>
+<li><p>pos代表输入token的位置, 从0开始计数</p>
+<p><span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>我</em></sub> = 0</span>,
+<span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>爱</em></sub> = 1</span>,
+<span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>深</em><em>度</em></sub> = 2</span>,
+<span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>学</em><em>习</em></sub> = 3</span>,
+<span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>模</em><em>型</em></sub> = 4</span>,
+<span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>啊</em></sub> = 5</span></p></li>
+<li><p><span
+class="math inline"><em>d</em><sub>model</sub></span>代表前面嵌入矩阵的d,
+比如常用的transformer的d是512维</p></li>
+<li><p>i是指, 当前token序列中, token的</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/mechanism-of-transformer/">https://wangyier.top/mechanism-of-transformer/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Transformer/" rel="tag"># Transformer</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/some-info/" rel="prev" title="Information">
+                  <i class="fa fa-angle-left"></i> Information
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/labs-server-instruction/" rel="next" title="Lab&#39;s Server Instruction">
+                  Lab's Server Instruction <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

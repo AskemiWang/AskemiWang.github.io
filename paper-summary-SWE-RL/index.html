@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Paper Summary of &quot;SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution&quot;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Summary – SWE-RL">
+<meta property="og:url" content="https://wangyier.top/paper-summary-SWE-RL/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Paper Summary of &quot;SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution&quot;.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/SWE-RL_flowchart.png">
+<meta property="article:published_time" content="2026-08-04T15:25:58.000Z">
+<meta property="article:modified_time" content="2026-08-04T15:15:06.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Full Fine-Tuning">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Model Fine-Tuning">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta property="article:tag" content="SWE">
+<meta property="article:tag" content="SWE-RL">
+<meta property="article:tag" content="SWE-agent">
+<meta property="article:tag" content="SWE-bench">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/SWE-RL_flowchart.png">
+
+
+<link rel="canonical" href="https://wangyier.top/paper-summary-SWE-RL/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-SWE-RL/","path":"/paper-summary-SWE-RL/","title":"Paper Summary – SWE-RL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Paper Summary – SWE-RL | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#implementation"><span class="nav-text">2. Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#whole-picture"><span class="nav-text">2.2 Whole Picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#priliminary-pr-data-preparation"><span class="nav-text">2.1 Priliminary PR Data
+Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-aggregation"><span class="nav-text">2.1.1 Data Aggregation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exclude-swe-bench-repos"><span class="nav-text">2.1.2 Exclude SWE-bench Repos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#correct-bias-behavior"><span class="nav-text">2.1.3 Correct Bias Behavior</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-prs"><span class="nav-text">2.1.4 Filter PRs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rl"><span class="nav-text">2.2 RL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-a-batch-of-training-dataset"><span class="nav-text">2.2.1 Sample a Batch of
+Training Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sampling-16-rollouts-from-each-of-the-32-problems-in-every-batch"><span class="nav-text">2.2.2
+Sampling 16 Rollouts from Each of the 32 Problems in Every Batch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calculate-reward"><span class="nav-text">2.2.3 Calculate Reward</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#input"><span class="nav-text">2.2.3.1 Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-change-change-code-according-to-search-and-replace"><span class="nav-text">2.2.3.3
+Apply Change (Change code according to search and replace)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#calculate-reward-by-comparing-text-similarity"><span class="nav-text">2.2.3.4 Calculate
+Reward by Comparing Text Similarity</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group-normalization"><span class="nav-text">2.2.4 Group Normalization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grpo"><span class="nav-text">2.2.5 GRPO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#possibility-ratio"><span class="nav-text">2.2.5.1 Possibility Ratio</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clip"><span class="nav-text">2.2.5.2 Clip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loss"><span class="nav-text">2.2.5.3 Loss</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supplements"><span class="nav-text">3. Supplements</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#original-pr-format"><span class="nav-text">3.1 Original PR Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flowchart"><span class="nav-text">3.2 Flowchart</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/paper-summary-SWE-RL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Paper Summary – SWE-RL | The Great Library">
+      <meta itemprop="description" content="Paper Summary of &quot;SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution&quot;.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paper Summary – SWE-RL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-08-04 23:25:58 / Modified: 23:15:06" itemprop="dateCreated datePublished" datetime="2026-08-04T23:25:58+08:00">2026-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Paper Summary of "SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution".</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="introduction">1. Introduction</h1>
+<p>This paper introduces SWE-RL, the first approach to scale RL-based
+LLM reasoning for real-world software engineering.</p>
+<p>Leveraging a lightweight rule-based ==reward== (e.g., the similarity
+score between ground-truth and LLM-generated solutions), SWE-RL enables
+LLMs to autonomously recover a developer’s reasoning processes and
+solutions by learning from extensive open-source software evolution
+data—the record of entire software development cycles, including code
+snapshots, code changes, and events such as issues and pull
+requests.</p>
+<p>Surprisingly, despite performing RL solely on software evolution
+data, Llama3-SWE-RL has even emerged with ==generalized reasoning
+skills==. For example, it shows improved results on five out-of-domain
+tasks, namely, ==function coding==, ==library use==, ==code reasoning==,
+==mathematics==, and ==general language understanding==, whereas a
+supervised-finetuning baseline even leads to performance degradation on
+average.</p>
+<h1 id="implementation">2. Implementation</h1>
+<h2 id="whole-picture">2.2 Whole Picture</h2>
+<p>This paper aims to use GitHub existing PRs data to tune model.</p>
+<p>So we should collect enough PRs data as training materials.</p>
+<p>Then we should tune model with the dataset, and evaluate the
+effect.</p>
+<p>PR data structure:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">main branch</span><br><span class="line">  │</span><br><span class="line">  ├── commit A</span><br><span class="line">  ├── commit B</span><br><span class="line">  ├── commit C ← merge base（developer create new branch to fix bug）</span><br><span class="line">  │                    │</span><br><span class="line">  │                    ├── commit D</span><br><span class="line">  │                    ├── commit E</span><br><span class="line">  │                    │</span><br><span class="line">  │                    ├── <span class="built_in">head</span> commit(Final State before merging PR )</span><br><span class="line">  │                    │</span><br><span class="line">  ├── commit F ← main after merging PR</span><br></pre></td></tr></table></figure>
+<p>The author wanna train model with dataset including:</p>
+<ul>
+<li>Code before fixing: merge base (commit C)</li>
+<li>Code after fixing: head commit</li>
+<li>Intervening commits (commit D, E)</li>
+</ul>
+<p>Only clone whole repo can get the full commits we need.</p>
+<h2 id="priliminary-pr-data-preparation">2.1 Priliminary PR Data
+Preparation</h2>
+<p>Data Source:</p>
+<ol type="1">
+<li>GH Archive records all GitHub events (PR creation, Comment, Merge…)
+between 2015/01/01 and 2024/08/31;</li>
+<li>Git clone about 4, 600, 000 repos;</li>
+</ol>
+<h3 id="data-aggregation">2.1.1 Data Aggregation</h3>
+<p>Aggregate data from GH Archive and GitHub repo.</p>
+<p>Then get about 24,000,000 PRs.</p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 42%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pr_id</td>
+<td>Github PR number</td>
+<td>unique mark</td>
+</tr>
+<tr>
+<td>base_commit <br>head_commit</td>
+<td>base.sha <br>head.sha</td>
+<td>locate code state</td>
+</tr>
+<tr>
+<td>==issue_text==</td>
+<td>the issue statement in PR</td>
+<td>RL input</td>
+</tr>
+<tr>
+<td>conversation</td>
+<td>all comments, review,<br/>commit events of the PR</td>
+<td>records developers’ discussion of the PR</td>
+</tr>
+<tr>
+<td>==code_at_merge_base==</td>
+<td>code after<br>git checkout base_commit</td>
+<td>RL input</td>
+</tr>
+<tr>
+<td>==code_after_fix==</td>
+<td>code after<br/>git checkout head_commit</td>
+<td>ground-truth</td>
+</tr>
+<tr>
+<td>intermediate_commits</td>
+<td>all commits in git log base_commit..head_commit</td>
+<td>record</td>
+</tr>
+<tr>
+<td>cumulative_patch</td>
+<td>git diff base_commit..head_commit</td>
+<td>alternative format for reward calculate</td>
+</tr>
+</tbody>
+</table>
+<p>The core fields are:</p>
+<ul>
+<li>issue_text: model input: “Please fix the issue”</li>
+<li>code_at_merge_base: model input: “This is current code”</li>
+<li>code_after_fix: ground-truth: “Correct code is like this”</li>
+</ul>
+<h3 id="exclude-swe-bench-repos">2.1.2 Exclude SWE-bench Repos</h3>
+<p>SWE-bench includes 12
+repos(pandas、django、flask、sympy、matplotlib…)</p>
+<p>The relative PRs should be excluded.</p>
+<h3 id="correct-bias-behavior">2.1.3 Correct Bias Behavior</h3>
+<p>In earlier phase, the authot finds out that the model learns to fix
+every files mentioned in code_at_merge_base field.</p>
+<p>e.g.</p>
+<p>Train Data:</p>
+<ul>
+<li>Input: issue + file_A.py + file_B.py</li>
+<li>Output: fix file_A.py and file_B.py</li>
+<li>Model learns: All given files should be modified to fix bug.</li>
+</ul>
+<p>Evaluate Phase(SWE-bench):</p>
+<ul>
+<li>Input: issue + file_A.py + file_B.py + file_C.py + file_D.py</li>
+<li>Output: Modify all 4 files … Generate extra bugs.</li>
+</ul>
+<p>How to ==correct== this bias behavior?</p>
+<ul>
+<li><p>“To mitigate this problem, we ==prompt== Llama-3.1-70B-Instruct
+to ==generate== a list of relevant but unmodified files given each ==PR
+description== and the changed files, and include the contents of these
+files in our final dataset.”</p></li>
+<li><p>e.g. </p>
+<ul>
+<li><p>original code_at_merge_base:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">code_at_merge_base = <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;pandas/core/indexes/base.py&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>fixed code_at_merge_base:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">code_at_merge_base = <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;pandas/core/indexes/base.py&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pandas/core/indexes/datetimelike.py&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pandas/core/indexes/datetimes.py&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pandas/io/parquet.py&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h3 id="filter-prs">2.1.4 Filter PRs</h3>
+<p>There are too many low-quality and meaningless PRs in the 24,000,000
+PRs set. So the author take some steps to filter out high-quality
+PRs.</p>
+<ol type="1">
+<li><p>Exclude Bot PRs</p>
+<p>The author says: “We remove the bot-generated PRs whose title,
+description, or username contains keywords ‘==[bot]==’,
+‘==dependabot==’, ‘==renovate==’, ‘==bump==’, or ‘==automerge==’.”</p>
+<p>e.g:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Fix PyArrow timestamp index .loc bug&quot;</span> (author: johndoe) ✅ Keep</span><br><span class="line"><span class="string">&quot;Bump django from 3.2 to 4.0&quot;</span>           (author: dependabot)	❌ Delete</span><br><span class="line"><span class="string">&quot;Update package versions [bot]&quot;</span>         (title includes [bot])	❌ Delete</span><br><span class="line"><span class="string">&quot;chore(deps): bump requests to 2.31.0&quot;</span>  (description includes bump)	❌ Delete</span><br></pre></td></tr></table></figure></li>
+<li><p>Exclude extreme PRs</p>
+<p>The core thought is to exclude PRs not for bug repairment.</p>
+<p>Two exteme PRs:</p>
+<ol type="1">
+<li>empty PRs: diff with 0 lines ➡️ Model learns nothinng</li>
+<li>extremely large PRs: diff with &gt; 100, 000 lines ➡️ Developer may
+upload data file by mistake. It’s a noisy PR.</li>
+</ol></li>
+<li><p>CodeLlama hunk level filter</p>
+<p>Hunk means a paragraph of codes, the minimal unit of git diff.</p>
+<p>CodeLlama (Rozière et al., 2023) finds out that many hunks in PR is
+valueless in Model Tuning. So CodeLlama defines a set of rules to mark
+these valueless hunks.</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@@ -6070,7 +6070,8 @@</span>                ← First hunk</span><br><span class="line">           if isinstance(key, list) or (</span><br><span class="line">               isinstance(key, type(self))</span><br><span class="line">  -            and key.freq is None</span><br><span class="line">  +            and (not hasattr(key, &#x27;freq&#x27;) or key.freq is None)</span><br><span class="line">           ):</span><br><span class="line">  -            keyarr = keyarr._with_freq(None)</span><br><span class="line">  +            if hasattr(keyarr, &#x27;_with_freq&#x27;):</span><br><span class="line">  +                keyarr = keyarr._with_freq(None)</span><br><span class="line"><span class="meta">@@ -6120,6 +6121,10 @@</span>				 ← Second hunk</span><br><span class="line">       def take(self, indexer):</span><br><span class="line">           keyarr = super().take(indexer)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 41%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lock file update</strong></td>
+<td>“msvc-extension”: “^1.3” →<br> “msvc-extension”: “^1.4”</td>
+<td>Mechanical version number change; no logic involved</td>
+</tr>
+<tr>
+<td><strong>Dependency version change</strong></td>
+<td>numpy&gt;=1.24<br>numpy&gt;=1.26</td>
+<td>Same as above</td>
+</tr>
+<tr>
+<td><strong>Configuration file modification</strong></td>
+<td>timeout: 30<br>timeout: 60</td>
+<td>Parameter tuning; no code reasoning involved</td>
+</tr>
+<tr>
+<td><strong>Pure whitespace / formatting</strong></td>
+<td>Indentation adjustments,<br> newline character normalization</td>
+<td>No semantic change</td>
+</tr>
+<tr>
+<td><strong>Comment addition/removal</strong></td>
+<td>Only added a single line <code># TODO</code></td>
+<td>Does not affect program behavior</td>
+</tr>
+</tbody>
+</table>
+<p>“We then ==removed== any PRs where these filters flagged all code
+changes.”</p>
+<p>If a PR’s all hunks are the flagged hunk type, this PR will be
+deleted.</p></li>
+<li><p>Filter with rules:</p>
+<p>Filter out final 273 PRs with the following 3 rules:</p>
+<ul>
+<li>PR has least one linked issue</li>
+<li>PR’s issue should describe a bug-fixing request</li>
+<li>PR’s code changes should involve programming files</li>
+</ul></li>
+</ol>
+<h2 id="rl">2.2 RL</h2>
+<p>The basic framework of reinforcement learning is that:</p>
+<p>Agent takes actions in environment;</p>
+<p>Environment gives agent rewards;</p>
+<p>Agent maxmize the cumulative rewards by adjusting policy.</p>
+<h3 id="sample-a-batch-of-training-dataset">2.2.1 Sample a Batch of
+Training Dataset</h3>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D_batch = <span class="punctuation">&#123;</span>(issue_1<span class="punctuation">,</span> code_1<span class="punctuation">,</span> gt_1)<span class="punctuation">,</span> (issue_2<span class="punctuation">,</span> code_2<span class="punctuation">,</span> gt_2)<span class="punctuation">,</span> ...<span class="punctuation">,</span> (issue_32<span class="punctuation">,</span> code_32<span class="punctuation">,</span> gt_32)<span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Each piece of data (PRs) contains :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">isssue</span><br><span class="line">code_code_at_merge_base</span><br><span class="line">code_after_fix</span><br></pre></td></tr></table></figure>
+<h3
+id="sampling-16-rollouts-from-each-of-the-32-problems-in-every-batch">2.2.2
+Sampling 16 Rollouts from Each of the 32 Problems in Every Batch</h3>
+<p>For 1 PR:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prompt = SYSTEM_PROMPT + <span class="string">&quot;This is issue: &#123;issue_text&#125;&quot;</span> + <span class="string">&quot;This is source code: &#123;code_at_merge_base&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Ask LLM to generate 16 rollouts:</p>
+<p>Rollout is a plain string with format. The rollout is composed of 2
+parts: think and solution. Solution uses ==search/replace== format (not
+unified diff) which is more stable for LLM geneartion.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;think&gt;</span><br><span class="line">model thinging process...</span><br><span class="line">&lt;/think&gt;</span><br><span class="line"></span><br><span class="line">&lt;solution&gt;</span><br><span class="line">```python</span><br><span class="line"><span class="comment">### pandas/core/indexes/base.py</span></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH</span><br><span class="line">	<span class="keyword">and</span> key.freq <span class="keyword">is</span> <span class="literal">None</span></span><br><span class="line">	....</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; REPLACE</span><br><span class="line">&lt;/solution&gt;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rollout_1:<span class="string">&quot;&lt;think&gt;problem occurs in base.py...&lt;/think&gt;&lt;solution&gt;### base.py\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH\n...&lt;/solution&gt;&quot;</span></span><br><span class="line">rollout_2:  <span class="string">&quot;&lt;think&gt;let me analyze first...&lt;/think&gt;&lt;solution&gt;### base.py\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH\n...&lt;/solution&gt;&quot;</span></span><br><span class="line">...</span><br><span class="line">rollout_16: <span class="string">&quot;&lt;think&gt;maybe some other files should be modified...&lt;/think&gt;&lt;solution&gt;### datetimelike.py\n...&lt;/solution&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>temperature=1</code> means that during each generation, the
+model introduces randomness when selecting the next token.</p>
+<h3 id="calculate-reward">2.2.3 Calculate Reward</h3>
+<p>Now we have <span class="math inline">32 × 16 = 512</span>
+rollouts</p>
+<h4 id="input">2.2.3.1 Input</h4>
+<p>Input (code_context equals to code_at_merge_base):</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">code_context = &#123;						//code_at_merge_base</span><br><span class="line">     <span class="string">&quot;pandas/core/indexes/base.py&quot;</span>: <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"> class Index:</span></span><br><span class="line"><span class="string">     def take(self, indexer):</span></span><br><span class="line"><span class="string">         ...</span></span><br><span class="line"><span class="string">         if keyarr.dtype.kind in &quot;mM&quot;:</span></span><br><span class="line"><span class="string">             if isinstance(key, list) or (</span></span><br><span class="line"><span class="string">                 isinstance(key, type(self))</span></span><br><span class="line"><span class="string">                 and key.freq is None          # ← bug 在这里</span></span><br><span class="line"><span class="string">             ):</span></span><br><span class="line"><span class="string">                 keyarr = keyarr._with_freq(None)</span></span><br><span class="line"><span class="string">         return keyarr, indexer</span></span><br><span class="line"><span class="string"> &quot;&quot;&quot;</span>.strip()</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oracle_new_content = &#123;			//code_after_fix(ground-truth)</span><br><span class="line">      <span class="string">&quot;pandas/core/indexes/base.py&quot;</span>: <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  class Index:</span></span><br><span class="line"><span class="string">      def take(self, indexer):</span></span><br><span class="line"><span class="string">          ...</span></span><br><span class="line"><span class="string">          if keyarr.dtype.kind in &quot;mM&quot;:</span></span><br><span class="line"><span class="string">              if isinstance(key, list) or (</span></span><br><span class="line"><span class="string">                  isinstance(key, type(self))</span></span><br><span class="line"><span class="string">                  and (not hasattr(key, &quot;freq&quot;) or key.freq is None)</span></span><br><span class="line"><span class="string">              ):</span></span><br><span class="line"><span class="string">                  if hasattr(keyarr, &quot;_with_freq&quot;):</span></span><br><span class="line"><span class="string">                      keyarr = keyarr._with_freq(None)</span></span><br><span class="line"><span class="string">          return keyarr, indexer</span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span>.strip()</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">output = 					// Rollout</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  &lt;think&gt;</span></span><br><span class="line"><span class="string">  The bug is that PyArrow-backed Index doesn&#x27;t have `freq` attribute.</span></span><br><span class="line"><span class="string">  Need to add hasattr check. Also `_with_freq` may not exist.</span></span><br><span class="line"><span class="string">  &lt;/think&gt;</span></span><br><span class="line"><span class="string">  &lt;solution&gt;</span></span><br><span class="line"><span class="string">  ```python</span></span><br><span class="line"><span class="string">  ### pandas/core/indexes/base.py</span></span><br><span class="line"><span class="string">  &lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH</span></span><br><span class="line"><span class="string">              and key.freq is None</span></span><br><span class="line"><span class="string">          ):</span></span><br><span class="line"><span class="string">              keyarr = keyarr._with_freq(None)</span></span><br><span class="line"><span class="string">  =======</span></span><br><span class="line"><span class="string">              and (not hasattr(key, &quot;freq&quot;) or key.freq is None)</span></span><br><span class="line"><span class="string">          ):</span></span><br><span class="line"><span class="string">              if hasattr(keyarr, &quot;_with_freq&quot;):</span></span><br><span class="line"><span class="string">                  keyarr = keyarr._with_freq(None)</span></span><br><span class="line"><span class="string">  &gt;&gt;&gt;&gt;&gt;&gt;&gt; REPLACE</span></span><br><span class="line"><span class="string">  &lt;/solution&gt;</span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 2.2.3.2 Handle Rollout (Extract modified codes)</span><br><span class="line"></span><br><span class="line">1. Format check and extract :</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   for tag in [&quot;&lt;think&gt;&quot;, &quot;&lt;/think&gt;&quot;, &quot;&lt;solution&gt;&quot;, &quot;&lt;/solution&gt;&quot;]:</span><br><span class="line">         if output.count(tag) != 1: # each label must appear 1 time</span><br><span class="line">             raise FormatError</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">thought = output.split(<span class="string">&quot;&lt;think&gt;&quot;</span>)[<span class="number">1</span>].split(<span class="string">&quot;&lt;/think&gt;&quot;</span>)[<span class="number">0</span>].strip()</span><br><span class="line">answer  = output.split(<span class="string">&quot;&lt;solution&gt;&quot;</span>)[<span class="number">1</span>].split(<span class="string">&quot;&lt;/solution&gt;&quot;</span>)[<span class="number">0</span>].strip()</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(thought) == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">raise</span> FormatError	<span class="comment"># &lt;think&gt; can&#x27;t be empty</span></span><br></pre></td></tr></table></figure></p>
+<p>output of this step:</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thought = <span class="string">&quot;The bug is that PyArrow-backed Index doesn&#x27;t have `freq` attribute...&quot;</span></span><br><span class="line">answer  = <span class="string">&quot;```python\n### pandas/core/indexes/base.py\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH\n...&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p>If any check goes failed, <code>reward = -1.0</code> and skip other
+steps.</p></li>
+</ul>
+<ol start="2" type="1">
+<li><p>Parse search/replace</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pred_search_replaces = parse_search_replace(answer)</span><br><span class="line"></span><br><span class="line">SEARCH_REPLACE_REGEX = <span class="string">r&quot;```.*?\n### (.*)\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH\n([\s\S]*?)\n=======\n([\s\S]*?)\n&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span><br><span class="line"><span class="string">  REPLACE\n```&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Perform regular expression matching on the answer. Extract matching
+group:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;pandas/core/indexes/base.py&quot;</span></span><br><span class="line"><span class="string">&quot;            and key.freq is None\n        ):\n            keyarr = keyarr._with_freq(None)&quot;</span></span><br><span class="line"><span class="string">&quot;            and (not hasattr(key, \&quot;freq\&quot;) or key.freq is None)\n        ):\n            if</span></span><br><span class="line"><span class="string">  hasattr(keyarr, \&quot;_with_freq\&quot;):\n                keyarr = keyarr._with_freq(None)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pred_search_replaces = &#123;</span><br><span class="line">      <span class="string">&quot;pandas/core/indexes/base.py&quot;</span>: [</span><br><span class="line">          (<span class="string">&quot;and key.freq is None\n        ):\n            keyarr = keyarr._with_freq(None)&quot;</span>,</span><br><span class="line">           <span class="string">&quot;and (not hasattr(key, \&quot;freq\&quot;) or key.freq is None)\n        ):\n            if hasattr(keyarr,</span></span><br><span class="line"><span class="string">  \&quot;_with_freq\&quot;):\n                keyarr = keyarr._with_freq(None)&quot;</span>)</span><br><span class="line">      ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If not matched, <code>→ FormatError → reward = -1.0</code></p></li>
+</ol>
+<h4
+id="apply-change-change-code-according-to-search-and-replace">2.2.3.3
+Apply Change (Change code according to search and replace)</h4>
+<p>reward.py: 262:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pred_new_content = apply_code_change(code_context, pred_search_replaces)</span><br></pre></td></tr></table></figure>
+<p>reward.py: 95-126:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">new_content = <span class="string">&quot;\n&quot;</span> + code_context[path]</span><br><span class="line"><span class="keyword">for</span> search, replace <span class="keyword">in</span> search_replaces:</span><br><span class="line">    <span class="keyword">if</span> search == replace:</span><br><span class="line">        <span class="keyword">raise</span> FormatError</span><br><span class="line">	search  = <span class="string">&quot;\n&quot;</span> + search</span><br><span class="line">    replace = <span class="string">&quot;\n&quot;</span> + replace</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> search <span class="keyword">not</span> <span class="keyword">in</span> new_content:</span><br><span class="line">        <span class="keyword">raise</span> FormatError</span><br><span class="line">	</span><br><span class="line">    new_content = new_content.replace(search, replace)</span><br><span class="line">pred_new_content[path] = new_content[<span class="number">1</span>:]</span><br></pre></td></tr></table></figure>
+<h4 id="calculate-reward-by-comparing-text-similarity">2.2.3.4 Calculate
+Reward by Comparing Text Similarity</h4>
+<p>After <code>apply_code_change</code>, we can regard the rollout
+answer (<code>pred_new_content</code>) is a available answer, we can
+evaluate its goodness or badness by comparing the text similarity.</p>
+<p>We should compare the diff files’ similarity instead of full codes’.
+This is because most code of the two files are the same. These
+==identical== parts will ==dilute== the similarity. The only truly
+==distinctive== parts are those few lines of changes.</p>
+<p>reward.py : 263</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reward, metadata = calculate_reward(code_context, oracle_new_content, pred_new_content)</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><p>Generate unified diff file for ground-truth answer and rollout
+answer.</p>
+<p>reward.py : 129-152:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oracle_patch = get_normalized_patch(code_context, oracle_new_content)</span><br><span class="line">pred_patch   = get_normalized_patch(code_context, pred_new_content)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># oracle_patch: diff of ground-truth file and original file</span></span><br><span class="line">  get_normalized_patch(</span><br><span class="line">      code_context,         <span class="comment"># code_at_merge_base: &quot;and key.freq is None...&quot;</span></span><br><span class="line">      oracle_new_content    <span class="comment"># code_after_fix: &quot;and (not hasattr(key, &#x27;freq&#x27;)...&quot;</span></span><br><span class="line">  )</span><br><span class="line">  <span class="comment"># generation:</span></span><br><span class="line">  <span class="comment"># &#123;&quot;base.py&quot;: &quot;-and key.freq is None\n+and (not hasattr...\n-    keyarr = keyarr._with_freq(None)\n+    if hasattr...\n+        keyarr...&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pred_patch: diff of ground-truth file and rollout file</span></span><br><span class="line">  get_normalized_patch(</span><br><span class="line">      code_context,         <span class="comment"># code_at_merge_base: &quot;and key.freq is None...&quot;</span></span><br><span class="line">      pred_new_content      <span class="comment"># rollout: &quot;and (not hasattr(key, &#x27;freq&#x27;)...&quot;</span></span><br><span class="line">  )</span><br><span class="line">  <span class="comment"># generation:</span></span><br><span class="line">  <span class="comment"># &#123;&quot;base.py&quot;: &quot;-and key.freq is None\n+and (not hasattr...\n-    keyarr = keyarr._with_freq(None)\n+    if hasattr...\n+        keyarr...&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Compare similarity of each file</p>
+<p>compute_change_similarities:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> path <span class="keyword">in</span> &#123;<span class="string">&quot;pandas/core/indexes/base.py&quot;</span>&#125;:</span><br><span class="line">    pred_change   = pred_patch[path]</span><br><span class="line">    oracle_change = oracle_patch[path]</span><br><span class="line">    </span><br><span class="line">    similarity = difflib.SequenceMatcher(<span class="literal">None</span>, pred_change, oracle_change).ratio()</span><br></pre></td></tr></table></figure></li>
+<li><p>Get average similarity of all similarities</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reward = <span class="built_in">sum</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x[<span class="string">&quot;similarity&quot;</span>], similarities)) / <span class="built_in">len</span>(similarities)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="group-normalization">2.2.4 Group Normalization</h3>
+<p>In the last phase, we generate rewards for each rollout.(<span
+class="math inline">32 × 16 = 512 Rewards</span> )</p>
+<p>The absolute reward value is meaningless:</p>
+<ul>
+<li>PR_1: Simple bug, e.g. fix a function sign, reward = [0.92, 0.88,
+0.95, 0.91, …], average reward is approximately 0.9.</li>
+<li>PR_2: Difficult bug, e.g. fix a corss-file bug, reward = [0.12,
+-1.0, -1.0, 0.08, …], average reward is approximately 0.1.</li>
+<li>A reward value 0.5 in PR_1 should be rewarded, in PR_2 should be
+punished.</li>
+</ul>
+<p>The ==group normalization== turns absolute reward value into relative
+rank in group.</p>
+<p><span class="math display">$$
+\text{Advantage}_i = \frac{\text{reward}_i -
+\text{mean}(r_1+r_2+...+r_G)}{\text{std}(r_1+r_2+...+r_G)}
+$$</span></p>
+<p><span class="math inline">$\text{std} = \sqrt()$</span></p>
+<p>…</p>
+<p>Advantages shows if the modification is right.</p>
+<p>e.g.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">rollout#   reward   decription</span><br><span class="line">────────   ──────   ──────────</span><br><span class="line">   1       0.95     almost perfect</span><br><span class="line">   2       0.88     almost perfect</span><br><span class="line">   3      -1.00     format error</span><br><span class="line">   4       0.42     miss modification</span><br><span class="line">   5       0.91     almost perfect</span><br><span class="line">   6       0.15     wrong modification</span><br><span class="line">   7      -1.00     illusion</span><br><span class="line">   8       0.97     almost perfect</span><br><span class="line">   9       0.56     not precise enough</span><br><span class="line">  10      -1.00     empty output</span><br><span class="line">  11       0.73     almost perfect</span><br><span class="line">  12       0.34     almost perfect</span><br><span class="line">  13       0.89     almost perfect</span><br><span class="line">  14      -1.00     no modification</span><br><span class="line">  15       0.61     normal modification</span><br><span class="line">  16       0.82     almost perfect</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">rollout   reward    advantage   decription</span><br><span class="line">───────   ──────    ─────────   ─────────</span><br><span class="line">   8       0.97      +0.82      best in group</span><br><span class="line">   1       0.95      +0.79      second in group</span><br><span class="line">   5       0.91      +0.73      very good</span><br><span class="line">  13       0.89      +0.70      good</span><br><span class="line">   2       0.88      +0.69      good</span><br><span class="line">  16       0.82      +0.61      good</span><br><span class="line">  11       0.73      +0.48      medium</span><br><span class="line">  15       0.61      +0.31      medium</span><br><span class="line">   9       0.56      +0.24      above average</span><br><span class="line">   4       0.42      +0.04      above average</span><br><span class="line">─────── ───────────────── ─────── average line (advantage ≈ 0)</span><br><span class="line">   6       0.15      -0.34      bad</span><br><span class="line">  12       0.34      -0.07      bad</span><br><span class="line">   7      -1.00      -1.96      very bad</span><br><span class="line">   3      -1.00      -1.96      very bad</span><br><span class="line">  10      -1.00      -1.96      very bad</span><br><span class="line">  14      -1.00      -1.96      very bad</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Cross-group comparation is meaning less.</p>
+<h3 id="grpo">2.2.5 GRPO</h3>
+<p>Group Relative Policy Optimization</p>
+<p>Before GRPO updating, forzen one current weights <span
+class="math inline"><em>π</em><sub><em>θ</em><sub><em>o</em><em>l</em><em>d</em></sub></sub></span></p>
+<h4 id="possibility-ratio">2.2.5.1 Possibility Ratio</h4>
+<p>For same prompt <span class="math inline"><em>q</em></span>. same
+rollout <span
+class="math inline"><em>o</em><sub><em>i</em></sub></span></p>
+<ul>
+<li>Old Policy: <span
+class="math inline"><em>π</em><sub><em>θ</em><sub><em>o</em><em>l</em><em>d</em></sub></sub>(<em>o</em><sub><em>i</em></sub>|<em>q</em>)</span></li>
+<li>New Policy: <span
+class="math inline"><em>π</em><sub><em>θ</em>(<em>o</em><sub><em>i</em></sub>|<em>q</em>)</sub></span></li>
+</ul>
+<p>Possibility Ratio: <span class="math inline">$\frac{\pi_{\theta
+(o_i|q)}}{\pi_{\theta_{old}}(o_i|q)}$</span></p>
+<ul>
+<li>ratio = 2.0 : The new model believes that this output should have a
+2-fold probability → the model is ==learning== in this direction.</li>
+<li>ratio = 0.5 : The new model believes that this output has only a 50%
+probability → the model is ==suppressing== this direction</li>
+<li>ratio = 1.0 : The new and old models have the same view on this
+output → no change</li>
+</ul>
+<h4 id="clip">2.2.5.2 Clip</h4>
+<p>Clip ensures that the contribution of any rollout to the gradient
+during each parameter update will not exceed the range of <span
+class="math inline">[0.8, 1.2] × advantage</span>.</p>
+<p>The model can be steadily and gradually improved, rather than being
+led by the nose by individual extreme rollouts.</p>
+<p><span class="math inline">clip(Possibility
+Rate, 1 − <em>ϵ</em>, 1 + <em>ϵ</em>), (<em>ϵ</em> = 0.2)</span></p>
+<p>If the ration exceeds the limition, it will be truncated.</p>
+<p>e.g. </p>
+<ul>
+<li>ratio = 7.0 ➡ trucated as 1.2</li>
+<li>ratio = 0.1 ➡ trucated as 0.8</li>
+<li>ratio = 1.1 ➡ no trucation</li>
+</ul>
+<h4 id="loss">2.2.5.3 Loss</h4>
+<p>The original model is <code>Llama 3.3 70B Instruct</code>. We use
+reward to train the ability of fixing the PRs we provided.</p>
+<p>However, if we don’t limit it, the model will go overfitting: The PRs
+dealing ability improve while the other abilities descend.</p>
+<p>$$ <em>i = -( <em>i A_i,; (<em>i, 1-, 1+) A_i ) +
+D</em>{}(</em></em>{})\ = _{i=1}^{N} _i\ _i = </p>
+<p>A_i = </p>
+<p>r_i = R(o_i),G = 16,N = 512 $$</p>
+<h1 id="supplements">3. Supplements</h1>
+<h2 id="original-pr-format">3.1 Original PR Format</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GitHub Pull Request: django/django <span class="comment">#12345</span></span><br><span class="line">State: merged ✓</span><br><span class="line">Author: human (<span class="keyword">not</span> a bot)</span><br></pre></td></tr></table></figure>
+<p>Title:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Title:</span><br><span class="line">    Fixed incorrect timezone handling <span class="keyword">in</span> QuerySet.dates() <span class="keyword">with</span> spatialite backend</span><br></pre></td></tr></table></figure>
+<p>Body:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Body:</span><br><span class="line">    When using the spatialite backend, QuerySet.dates()returns incorrect results because the datetime <span class="keyword">is</span> <span class="keyword">not</span> properly converted to UTC before truncation.</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#### Steps to reproduce:</span></span><br><span class="line">    <span class="number">1.</span> Create a model <span class="keyword">with</span> a DateTimeField</span><br><span class="line">    <span class="number">2.</span> Use spatialite <span class="keyword">as</span> the database backend</span><br><span class="line">    <span class="number">3.</span> Run `Model.objects.dates(<span class="string">&#x27;timestamp&#x27;</span>, <span class="string">&#x27;day&#x27;</span>)`</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#### Expected behavior:</span></span><br><span class="line">    Returns distinct dates <span class="keyword">in</span> UTC</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#### Actual behavior:</span></span><br><span class="line">    Returns dates shifted by local timezone offset</span><br><span class="line">    </span><br><span class="line">    Changed files: <span class="number">1</span></span><br><span class="line">    	django/db/models/functions/datetime.py</span><br></pre></td></tr></table></figure>
+<p>Diff:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">diff --git a/django/db/models/functions/datetime.py</span></span><br><span class="line"><span class="comment">--- a/django/db/models/functions/datetime.py</span></span><br><span class="line"><span class="comment">+++ b/django/db/models/functions/datetime.py</span></span><br><span class="line"><span class="meta">@@ -45,7 +45,8 @@</span> class TruncDate(TruncBase):</span><br><span class="line">	def as_sql(self, compiler, connection):</span><br><span class="line">		sql, params = super().as_sql(compiler, connection)</span><br><span class="line">		if connection.vendor == &#x27;sqlite&#x27;:</span><br><span class="line"><span class="deletion">-            return f&quot;django_datetime_cast_date(&#123;sql&#125;)&quot;, params</span></span><br><span class="line"><span class="addition">+            sql = f&quot;django_datetime_cast_date(&#123;sql&#125;, &quot;</span></span><br><span class="line"><span class="addition">+                  f&quot;&#x27;&#123;connection.timezone_name&#125;&#x27;)&quot;</span></span><br><span class="line"><span class="addition">+            return sql, params</span></span><br><span class="line">	return sql, params</span><br></pre></td></tr></table></figure>
+<h2 id="flowchart">3.2 Flowchart</h2>
+<p><img data-src="/images/article_images/SWE-RL_flowchart.png" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/paper-summary-SWE-RL/">https://wangyier.top/paper-summary-SWE-RL/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/SWE-agent/" rel="tag"># SWE-agent</a>
+              <a href="/tags/SWE-RL/" rel="tag"># SWE-RL</a>
+              <a href="/tags/SWE/" rel="tag"># SWE</a>
+              <a href="/tags/Model-Fine-Tuning/" rel="tag"># Model Fine-Tuning</a>
+              <a href="/tags/Full-Fine-Tuning/" rel="tag"># Full Fine-Tuning</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/model-post-training/" rel="prev" title="Model Post-Training">
+                  <i class="fa fa-angle-left"></i> Model Post-Training
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/encode-&-Format/" rel="next" title="Encode &amp; Format">
+                  Encode & Format <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

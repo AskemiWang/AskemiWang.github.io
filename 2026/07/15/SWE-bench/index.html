@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Analysis of SWE-bench">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SWE-bench">
+<meta property="og:url" content="https://wangyier.top/2026/07/15/SWE-bench/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Analysis of SWE-bench">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/corss_entropy_image.png">
+<meta property="article:published_time" content="2026-07-15T07:53:54.000Z">
+<meta property="article:modified_time" content="2026-07-30T13:57:42.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="SWE-bench">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/corss_entropy_image.png">
+
+
+<link rel="canonical" href="https://wangyier.top/2026/07/15/SWE-bench/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/2026/07/15/SWE-bench/","path":"2026/07/15/SWE-bench/","title":"SWE-bench"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SWE-bench | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#code-analysis"><span class="nav-text">1. Code Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#architecture"><span class="nav-text">1.1 Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#core-data-structure"><span class="nav-text">1.2 Core Data Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#swebenchinstance-swe-bench-instance"><span class="nav-text">1.2.1 SWEbenchInstance
+(SWE-bench Instance)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#testspec-test-specification"><span class="nav-text">1.2.2 TestSpec (Test
+Specification)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#three-layer-structure-of-docker-image"><span class="nav-text">1.3.3 Three-Layer
+Structure of Docker Image</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference-pipeline"><span class="nav-text">1.3 Inference Pipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#default-inference-not-available-now"><span class="nav-text">1.3.1 Default Inference
+(Not Available Now)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#how-did-the-original-inference-scripts-work"><span class="nav-text">1.3.1.1 How Did The
+Original Inference Scripts Work?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-inference-personally"><span class="nav-text">1.3.2 How to Inference
+Personally</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prepare-for-the-env"><span class="nav-text">1.3.2.2 Prepare for the Env</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#start-a-local-llm-by-vllm-this-section-should-be-moved-to-part-2"><span class="nav-text">1.3.2.1
+Start a local LLM by vLLM (This section should be moved to Part 2 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#full-run_local_vllm.py-file"><span class="nav-text">1.3.2.2 Full run_local_vllm.py
+file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inference-commnds"><span class="nav-text">1.3.2.3 Inference Commnds</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-pipeline"><span class="nav-text">1.4 Evaluation Pipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#main"><span class="nav-text">1.4.1 main</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run_instance"><span class="nav-text">1.4.2 run_instance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#whole-picture"><span class="nav-text">1.4.2.1 whole picture</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#preparation"><span class="nav-text">1.4.2.1.1 Preparation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply-patch-run-eval.sh"><span class="nav-text">1.4.2.1.2 Apply Patch &amp; Run
+eval.sh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#grading"><span class="nav-text">1.4.2.1.3 Grading</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#exception-dealing-clear-env"><span class="nav-text">1.4.2.1.4 Exception Dealing &amp;
+Clear Env</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eval.sh"><span class="nav-text">1.4.2.2 eval.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get_eval_report"><span class="nav-text">1.4.2.3 get_eval_report</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get_resolution_status"><span class="nav-text">1.4.2.4 get_resolution_status</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get_eval_tests_report"><span class="nav-text">1.4.2.5 get_eval_tests_report</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run_instances"><span class="nav-text">1.4.3 run_instances</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#make_run_report"><span class="nav-text">1.4.4 make_run_report</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#training"><span class="nav-text">2. Training</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sft-supervised-fine-tuning"><span class="nav-text">2.1 SFT (Supervised Fine
+Tuning)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mathematical-essence-of-sft"><span class="nav-text">2.1.1 Mathematical Essence of
+SFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy"><span class="nav-text">2.1.2 Cross Entropy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#introduction"><span class="nav-text">2.1.2.1 Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-use-the-cross-entropy"><span class="nav-text">2.1.2.2 Why Use the Cross
+Entropy?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#workflow-of-processing-one-piece-of-sft-data"><span class="nav-text">2.1.3 Workflow of
+Processing One Piece of SFT Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#step-1-concatenation-tokenization-build-input"><span class="nav-text">2.1.3.1 Step 1:
+Concatenation &amp; Tokenization (Build Input)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-2-build-labels"><span class="nav-text">2.1.3.2 Step 2: Build Labels</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-3-loss-masking"><span class="nav-text">2.1.3.3 Step 3: Loss Masking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-4-forward-propagation-loss-computing"><span class="nav-text">2.1.3.4 Step 4:
+Forward Propagation &amp; Loss Computing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#appendix-gradient"><span class="nav-text">2.1.3.4 Appendix: Gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-5-backward-propagation-parameters-update"><span class="nav-text">2.1.3.5 Step 5:
+Backward Propagation &amp; Parameters Update</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/2026/07/15/SWE-bench/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SWE-bench | The Great Library">
+      <meta itemprop="description" content="Analysis of SWE-bench">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SWE-bench
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-07-15 15:53:54" itemprop="dateCreated datePublished" datetime="2026-07-15T15:53:54+08:00">2026-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-07-30 21:57:42" itemprop="dateModified" datetime="2026-07-30T21:57:42+08:00">2026-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Analysis of SWE-bench</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>[TOC]</p>
+<h1 id="code-analysis">1. Code Analysis</h1>
+<h2 id="architecture">1.1 Architecture</h2>
+<p>The architecture of this benchmark can be divided into 4 layer:</p>
+<ol type="1">
+<li>Entry Layer</li>
+<li>Inference Layer &amp; Harness Layer</li>
+<li>Core Engine Layer</li>
+<li>Data Collection Layer</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">┌───────────────────────────────────────────────────────────────┐</span><br><span class="line">│  Entry Layer: Entry Points                                    │</span><br><span class="line">│  Command Line / Python API / Modal Cloud                      │</span><br><span class="line">│  Layer that interplays with User Directly					    │</span><br><span class="line">├───────────────────────────────────────────────────────────────┤</span><br><span class="line">│  Inference Layer             	  │  Harness Layer              │</span><br><span class="line">│  Generate Patch              	  │  Evaluate the patch	    	│</span><br><span class="line">│																│</span><br><span class="line">│  - run_api.py (Call LLM)     	  │  - run_evaluation.py        │</span><br><span class="line">│  - run_llama.py (Local Llama)   │  - prepare_images.py        │</span><br><span class="line">│  - run_live.py (GitHub Issue)   │  - reporting.py             │</span><br><span class="line">├───────────────────────────────────────────────────────────────┤</span><br><span class="line">│  Docker Layer                               					│</span><br><span class="line">│  Docker Building / Test Execuation  / Evaluation / Log Parsing│</span><br><span class="line">│																│</span><br><span class="line">│  - docker_build.py    - grading.py                            │</span><br><span class="line">│  - docker_utils.py    - test_spec/                            │</span><br><span class="line">│  - log_parsers/       - constants/                            │</span><br><span class="line">├───────────────────────────────────────────────────────────────┤</span><br><span class="line">│  Data Collection Layer                                	    │</span><br><span class="line">│																│</span><br><span class="line">│  Collect Issue from Github → Build Test Dataset				│</span><br><span class="line">│  - collect/   - versioning/                                   │</span><br><span class="line">└───────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<h2 id="core-data-structure">1.2 Core Data Structure</h2>
+<h3 id="swebenchinstance-swe-bench-instance">1.2.1 SWEbenchInstance
+(SWE-bench Instance)</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SWEbenchInstance</span>(<span class="title class_ inherited__">TypedDict</span>):</span><br><span class="line">    repo: <span class="built_in">str</span>              <span class="comment"># repo name, e.g. &quot;sympy/sympy&quot;</span></span><br><span class="line">    instance_id: <span class="built_in">str</span>       <span class="comment"># Unique ID, e.g. &quot;sympy__sympy-20590&quot;</span></span><br><span class="line">    base_commit: <span class="built_in">str</span>       <span class="comment"># git commit SHA where the issue exists</span></span><br><span class="line">    patch: <span class="built_in">str</span>             <span class="comment"># patch from GitHub PR, standard answer</span></span><br><span class="line">    test_patch: <span class="built_in">str</span>        <span class="comment"># patch that includes testcases</span></span><br><span class="line">    problem_statement: <span class="built_in">str</span> <span class="comment"># statement of the issue</span></span><br><span class="line">    hints_text: <span class="built_in">str</span>        <span class="comment"># hint text</span></span><br><span class="line">    created_at: <span class="built_in">str</span>        <span class="comment"># time when issue created</span></span><br><span class="line">    version: <span class="built_in">str</span>           <span class="comment"># version</span></span><br><span class="line">    FAIL_TO_PASS: <span class="built_in">str</span>      <span class="comment"># JSON: test list that should maintain a &quot;fail→pass&quot; status after repairing </span></span><br><span class="line">    PASS_TO_PASS: <span class="built_in">str</span>      <span class="comment"># JSON: test list that should maintain a &quot;pass→pass&quot; status after repairing </span></span><br></pre></td></tr></table></figure>
+<p>The core judgement of the evaluation process are
+<code>FAIL_TO_PASS</code> and <code>PASS_TO_PASS</code>.</p>
+<p><code>FAIL_TO_PASS</code>: Tests that fail when the bug exists and
+pass when the bug is repaired.</p>
+<p><code>PASS_TO_PASS</code>: Tests that should pass when the bug both
+exists and is repaired.</p>
+<h3 id="testspec-test-specification">1.2.2 TestSpec (Test
+Specification)</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@dataclass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestSpec</span>:</span><br><span class="line">    instance_id: <span class="built_in">str</span>        <span class="comment"># Instance ID</span></span><br><span class="line">    repo: <span class="built_in">str</span>               <span class="comment"># repo name</span></span><br><span class="line">    version: <span class="built_in">str</span>            <span class="comment"># version</span></span><br><span class="line">    repo_script_list: <span class="built_in">list</span>  <span class="comment"># Bash Commands List: to install repo code</span></span><br><span class="line">    eval_script_list: <span class="built_in">list</span>  <span class="comment"># Bash Commands List: to evaluate result</span></span><br><span class="line">    env_script_list: <span class="built_in">list</span>   <span class="comment"># Bash Commands List: to configurate env</span></span><br><span class="line">    arch: <span class="built_in">str</span>               <span class="comment"># CPU arch: arm &amp; x64</span></span><br><span class="line">    FAIL_TO_PASS: <span class="built_in">list</span>      <span class="comment"># ditto</span></span><br><span class="line">    PASS_TO_PASS: <span class="built_in">list</span>      <span class="comment"># ditto</span></span><br><span class="line">    language: <span class="built_in">str</span>           <span class="comment"># language: py, java, js, go, rust...</span></span><br><span class="line">    docker_specs: <span class="built_in">dict</span>      <span class="comment"># Docker specifications</span></span><br><span class="line">    namespace: <span class="built_in">str</span>          <span class="comment"># DockerHub namespace</span></span><br></pre></td></tr></table></figure>
+<h3 id="three-layer-structure-of-docker-image">1.3.3 Three-Layer
+Structure of Docker Image</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sweb.eval.x86_64.sympy__sympy-20590:latest    ← Instance Image</span><br><span class="line">  │  each task instance contains one, including specific repo code</span><br><span class="line">  │</span><br><span class="line">  └─ sweb.env.py.x86_64.a1b2c3...:latest      ← Environment Image</span><br><span class="line">       │  each repo version has one, including pip/apt dependencies</span><br><span class="line">       │</span><br><span class="line">       └─ sweb.base.py.x86_64:latest          ← Base Image</span><br><span class="line">            │  each language contains one, including Python/Java/...</span><br><span class="line">            │</span><br><span class="line">            └─ ubuntu:22.04                     ← OS</span><br></pre></td></tr></table></figure>
+<p>Image Naming Rule :</p>
+<p><code>sweb.{Layer}.{Language}.{Arch}.{Hash}:{Lable}</code></p>
+<p>e.g. Test 3 different Django Issues</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">django__django-15022  (Django 4.1, Python 3.11)</span><br><span class="line">django__django-15277  (Django 4.1, Python 3.11)</span><br><span class="line">django__django-11333  (Django 3.2, Python 3.9)</span><br></pre></td></tr></table></figure>
+<p>If the docker is not layered, it is needed to create 3 different
+docker images:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">django-15022 image ──── Ubuntu + Python + Django 4.1 + Code → 2GB</span><br><span class="line">django-15277 image ──── Ubuntu + Python + Django 4.1 + Code → 2GB</span><br><span class="line">django-11333 image ──── Ubuntu + Python + Django 3.2 + Code → 2GB</span><br></pre></td></tr></table></figure>
+<p>Totally 6 GB needed.</p>
+<p>But if we layer the image:</p>
+<ol type="1">
+<li>Base Layer: we need 2 images for Python 3.9 and Python 3.11, total 2
+* 1 = 2GB.</li>
+<li>Env Layer: we need 2 images for Django 3.2 and Django 4.1, total 2 *
+2 = 4GB</li>
+<li>Instance Layer: we need 3 images for each issue, total 50MB × 3 ≈
+0.15GB</li>
+<li>total 6.15 GB</li>
+</ol>
+<p>It seems that the cost of 2 plans seem similar. But if we have 2294
+instance, what will happen ?</p>
+<ul>
+<li>No layer: 2294 * 2GB = 4588 GB</li>
+<li>8 images of Base Layer + 200 images of Env Layer + 2294 images of
+instance Layer = 8 * 1GB + 200 * 2GB + 0.15GB * 2294 ≈ 523 GB</li>
+<li>88.60% Memory are saved !</li>
+</ul>
+<h2 id="inference-pipeline">1.3 Inference Pipeline</h2>
+<h3 id="default-inference-not-available-now">1.3.1 Default Inference
+(Not Available Now)</h3>
+<p>In fact, the main function of SWE-bench is to evaluate the score of
+patch generated by LLM. It doesn’t care about how you generate the
+patch. There are three original scripts to call LLM to generate patch.
+However there are a lot of limits of these scripts because they were
+just created for the paper demonstration.</p>
+<p>There are three ways of run interference command:</p>
+<ol type="1">
+<li><p>Call cloud LLM API (OpenAI ChatGPT / Ahthropic Claude)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_api \</span><br><span class="line">    --dataset_name_or_path princeton-nlp/SWE-bench_oracle \</span><br><span class="line">    --model_name_or_path gpt-4 \</span><br><span class="line">    --output_dir ./outputs</span><br></pre></td></tr></table></figure></li>
+<li><p>Local LLM</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_llama \</span><br><span class="line">    --model_name_or_path princeton-nlp/SWE-Llama-13b \</span><br><span class="line">    --dataset_path princeton-nlp/SWE-bench_oracle \</span><br><span class="line">    --output_dir ./outputs</span><br></pre></td></tr></table></figure></li>
+<li><p>Reason about issues that appear in real-time on GitHub</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_live \</span><br><span class="line">    --model_name gpt-3.5-turbo-1106 \</span><br><span class="line">    --issue_url https://github.com/some/repo/issues/123</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="how-did-the-original-inference-scripts-work">1.3.1.1 How Did The
+Original Inference Scripts Work?</h4>
+<h3 id="how-to-inference-personally">1.3.2 How to Inference
+Personally</h3>
+<h4 id="prepare-for-the-env">1.3.2.2 Prepare for the Env</h4>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate /</span><br></pre></td></tr></table></figure>
+<h4
+id="start-a-local-llm-by-vllm-this-section-should-be-moved-to-part-2">1.3.2.1
+Start a local LLM by vLLM (This section should be moved to Part 2 )</h4>
+<p>A local LLM has been deployed and is driven by vLLM:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name vllm_server --gpus all \</span><br><span class="line">    -v /data/disk2/wye/models:/models \</span><br><span class="line">    -p 8000:8000 \</span><br><span class="line">    --ipc=host \</span><br><span class="line">    vllm/vllm-openai:latest \</span><br><span class="line">    --model /models/Qwen2.5-Coder-7B-Instruct \</span><br><span class="line">    --dtype auto \</span><br><span class="line">    --max-model-len 16384 \</span><br><span class="line">    --gpu-memory-utilization 0.9 \</span><br><span class="line">    --port 8000</span><br></pre></td></tr></table></figure>
+<h4 id="full-run_local_vllm.py-file">1.3.2.2 Full run_local_vllm.py
+file</h4>
+<p>A inference script has been added:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swebench/inference/run_local_vllm.py</span><br></pre></td></tr></table></figure>
+<p>Parameters:</p>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 3%" />
+<col style="width: 32%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–dataset_name</td>
+<td>str</td>
+<td>princeton-nlp/SWE-bench_Lite</td>
+<td>Dataset:<br>princeton-nlp/SWE-bench_Lite
+(300)<br/>princeton-nlp/SWE-bench_verified
+(500)<br>princeton-nlp/SWE-bench (2249)</td>
+</tr>
+<tr>
+<td>–split</td>
+<td>str</td>
+<td>test</td>
+<td>数据集分割：test</td>
+</tr>
+<tr>
+<td>–output_dir</td>
+<td>str</td>
+<td>/data/disk2/wye/SWE-bench/patches_by_llm</td>
+<td>JSONL output directory, auto-create if not exist</td>
+</tr>
+<tr>
+<td>–model_short_name</td>
+<td>str</td>
+<td>None (Auto-Detect)</td>
+<td>If not setted, auto-get from vLLM/v1/models</td>
+</tr>
+<tr>
+<td>–max_instances</td>
+<td>int</td>
+<td>None(Run all instances)</td>
+<td>Limit to only run the first N instances; 3 = test</td>
+</tr>
+<tr>
+<td>–vllm_url</td>
+<td>str</td>
+<td>http://localhost:8000/v1</td>
+<td>vLLM server URL</td>
+</tr>
+<tr>
+<td>–model_name</td>
+<td>str</td>
+<td>/models/Qwen2.5-Coder-7B-Instruct</td>
+<td>the model’s name for vLLM</td>
+</tr>
+<tr>
+<td>–max_context_files</td>
+<td>int</td>
+<td>5</td>
+<td>context file nums for phase2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="inference-commnds">1.3.2.3 Inference Commnds</h4>
+<p>Start vLLM:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name vllm_wye_swebench --gpus all \</span><br><span class="line">    -v /data/disk2/wye/models:/models \</span><br><span class="line">    -p 8000:8000 \</span><br><span class="line">    --ipc=host \</span><br><span class="line">    vllm/vllm-openai:latest \</span><br><span class="line">    --model /models/Qwen2.5-Coder-7B-Instruct \</span><br><span class="line">    --dtype auto \</span><br><span class="line">    --max-model-len 16384 \</span><br><span class="line">    --gpu-memory-utilization 0.9 \</span><br><span class="line">    --port 8000</span><br></pre></td></tr></table></figure>
+<p>Check if the vLLM is started:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f vllm_wye_swebench</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data/disk2/wye/SWE-bench</span><br></pre></td></tr></table></figure>
+<p>Run test:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_local_vllm --max_instances 3</span><br></pre></td></tr></table></figure>
+<p>Run SWE-bench_Lite(default):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_local_vllm</span><br></pre></td></tr></table></figure>
+<p>Run SWE-bench_Verified:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_local_vllm \</span><br><span class="line">      --dataset_name princeton-nlp/SWE-bench_Verified</span><br></pre></td></tr></table></figure>
+<p>Run Full:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.inference.run_local_vllm \</span><br><span class="line">      --dataset_name princeton-nlp/SWE-bench</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[!NOTE]</p>
+<p>The inference script will catch the dataset automatically.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(base) ubuntu@ubuntu:/data/disk2/wye/SWE-bench$ ll /home/ubuntu/.cache/huggingface/datasets/</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">drwxrwxr-x  3 ubuntu ubuntu  4096 Jul  1 12:06 princeton-nlp___swe-bench_lite/</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="evaluation-pipeline">1.4 Evaluation Pipeline</h2>
+<p>If you run the main test command:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python -m swebench.harness.run_evaluation \</span><br><span class="line">    --dataset_name princeton-nlp/SWE-bench_Lite \</span><br><span class="line">    --predictions_path predictions.jsonl \</span><br><span class="line">    --max_workers 4 \</span><br><span class="line">    --run_id my_run</span><br></pre></td></tr></table></figure>
+<p>The actual functions call chain:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">main()                                    <span class="comment"># run_evaluation.py:main()</span></span><br><span class="line">  ├─ get_predictions_from_file()          <span class="comment"># 读取模型预测的 patch</span></span><br><span class="line">  ├─ load_swebench_dataset()              <span class="comment"># 从 HuggingFace 下载/加载数据集</span></span><br><span class="line">  ├─ get_dataset_from_preds()             <span class="comment"># 匹配合并: 哪些实例有预测结果</span></span><br><span class="line">  │</span><br><span class="line">  ├─ build_env_images()                   <span class="comment"># 【阶段1】构建 Docker 环境镜像</span></span><br><span class="line">  │   ├─ build_base_images()              <span class="comment">#   先构建基础镜像 (Python/Java运行时)</span></span><br><span class="line">  │   ├─ get_env_configs_to_build()       <span class="comment">#   找出需要构建的环境镜像</span></span><br><span class="line">  │   └─ run_threadpool(build_image)      <span class="comment">#   多线程并行构建</span></span><br><span class="line">  │</span><br><span class="line">  ├─ run_instances()                      <span class="comment"># 【阶段2】并行跑所有实例</span></span><br><span class="line">  │   └─ <span class="keyword">for</span> each instance (多线程):</span><br><span class="line">  │       └─ run_instance()               <span class="comment">#   单个实例的评测</span></span><br><span class="line">  │           ├─ build_container()        <span class="comment">#     创建 Docker 容器</span></span><br><span class="line">  │           ├─ container.start()        <span class="comment">#     启动容器</span></span><br><span class="line">  │           ├─ copy_to_container()      <span class="comment">#     把 patch.diff 拷进容器</span></span><br><span class="line">  │           ├─ git apply patch.diff     <span class="comment">#     尝试打补丁</span></span><br><span class="line">  │           ├─ copy_to_container()      <span class="comment">#     把 eval.sh 拷进容器</span></span><br><span class="line">  │           ├─ exec_run_with_timeout()  <span class="comment">#     执行 /bin/bash /eval.sh</span></span><br><span class="line">  │           ├─ get_eval_report()        <span class="comment">#     解析测试输出, 评分</span></span><br><span class="line">  │           └─ cleanup_container()      <span class="comment">#     清理容器</span></span><br><span class="line">  │</span><br><span class="line">  ├─ clean_images()                       <span class="comment"># 【阶段3】清理 Docker 镜像</span></span><br><span class="line">  └─ make_run_report()                    <span class="comment"># 【阶段4】生成最终评测报告</span></span><br></pre></td></tr></table></figure>
+<h3 id="main">1.4.1 main</h3>
+<p><code>test split</code> of SWE-bench Multimodal does not support the
+local evaluation because of the vast cost of memory.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> dataset_name == <span class="string">&quot;SWE-bench/SWE-bench_Multimodal&quot;</span> <span class="keyword">and</span> split == <span class="string">&quot;test&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(</span><br><span class="line">            <span class="string">&quot;⚠️ Local evaluation for the test split of SWE-bench Multimodal &quot;</span></span><br><span class="line">            <span class="string">&quot;is not supported. Please check out sb-cli &quot;</span></span><br><span class="line">            <span class="string">&quot;(https://github.com/swe-bench/sb-cli/) for instructions on how &quot;</span></span><br><span class="line">            <span class="string">&quot;to submit predictions.&quot;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>Check ID length:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> <span class="built_in">len</span>(run_id) &gt; <span class="number">0</span>, <span class="string">&quot;Run ID must be provided&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Check / Create report_path:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> report_dir <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        report_dir = Path(report_dir)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> report_dir.exists():</span><br><span class="line">            report_dir.mkdir(parents=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>SWE-bench’s docker image has 2 pulling ways (DockerHub or Local):</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr>
+<th>namespace</th>
+<th>Image Source</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“swebench” (default)</td>
+<td>DockerHub</td>
+<td>docker pull swebench/sweb.eval.xxx</td>
+</tr>
+<tr>
+<td>None (pass -n none)</td>
+<td>Local</td>
+<td>docker build -t sweb.eval.xxx .</td>
+</tr>
+</tbody>
+</table>
+<p><strong>force_rebuild</strong>: Only works when you use local build.
+It will delete the old image and re-run <code>docker build</code>
+command.</p>
+<p>Load <code>predictions</code> (records including patches generated by
+LLM for solving the issues).</p>
+<p>And trans the list into hash map:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">predictions = get_predictions_from_file(predictions_path, dataset_name, split)</span><br><span class="line">predictions = &#123;pred[KEY_INSTANCE_ID]: pred <span class="keyword">for</span> pred <span class="keyword">in</span> predictions&#125;</span><br></pre></td></tr></table></figure>
+<p>Import dataset tested:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dataset = get_dataset_from_preds(</span><br><span class="line">        dataset_name, split, instance_ids, predictions, run_id, rewrite_reports</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>Full dataset including skipped test instances:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">full_dataset = load_swebench_dataset(dataset_name, split, instance_ids)</span><br></pre></td></tr></table></figure>
+<p>Evaluating in the cloud:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> modal:</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> dataset:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;No instances to run.&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">        validate_modal_credentials()</span><br><span class="line">        run_instances_modal(predictions, dataset, full_dataset, run_id, timeout)</span><br><span class="line">	<span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>Evaluating locally:</p>
+<ol type="1">
+<li><p>Set the maximum number of file descriptors (fds) that can be
+opened by a process. Docker APi opens several sockets/fds for each
+container. The default fds num 1024 might be insufficient.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> platform.system() == <span class="string">&quot;Linux&quot;</span>:</span><br><span class="line">        <span class="comment"># resource.setrlimit: equal to setrlimit(2) sys call</span></span><br><span class="line">        resource.setrlimit(resource.RLIMIT_NOFILE, (open_file_limit, open_file_limit))</span><br><span class="line">    client = docker.from_env()</span><br></pre></td></tr></table></figure></li>
+<li><p>recording the existing images before evaluating:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">existing_images = list_images(client)</span><br></pre></td></tr></table></figure></li>
+<li><p>Dataset comes from <code>get_dataset_from_preds</code>, it might
+be empty. The evaluation will go on only when it’s not empty. If it’s
+local docker image and it’s not a re-grading process, create shared
+dockers(base + env) for all instances:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">build_env_images(</span><br><span class="line">                client,</span><br><span class="line">                dataset,</span><br><span class="line">                force_rebuild,</span><br><span class="line">                max_workers,</span><br><span class="line">                namespace,</span><br><span class="line">                instance_image_tag,</span><br><span class="line">                env_image_tag,</span><br><span class="line">            )</span><br></pre></td></tr></table></figure></li>
+<li><p>Run all the instances(Here, each instance will generate an
+independent docker based on the env_images):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">run_instances(</span><br><span class="line">            predictions,</span><br><span class="line">            dataset,</span><br><span class="line">            cache_level,</span><br><span class="line">            clean,</span><br><span class="line">            force_rebuild,</span><br><span class="line">            max_workers,</span><br><span class="line">            run_id,</span><br><span class="line">            timeout,</span><br><span class="line">            namespace=namespace,</span><br><span class="line">            instance_image_tag=instance_image_tag,</span><br><span class="line">            env_image_tag=env_image_tag,</span><br><span class="line">            rewrite_reports=rewrite_reports,</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></li>
+<li><p>Clean images and generate report:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">clean_images(client, existing_images, cache_level, clean)</span><br><span class="line">    <span class="keyword">return</span> make_run_report(</span><br><span class="line">        predictions,</span><br><span class="line">        full_dataset,</span><br><span class="line">        run_id,</span><br><span class="line">        client,</span><br><span class="line">        namespace,</span><br><span class="line">        instance_image_tag,</span><br><span class="line">        env_image_tag,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="run_instance">1.4.2 run_instance</h3>
+<h4 id="whole-picture">1.4.2.1 whole picture</h4>
+<h5 id="preparation">1.4.2.1.1 Preparation</h5>
+<p>入参:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def run_instance(</span><br><span class="line">    test_spec: TestSpec,          <span class="comment"># test specification</span></span><br><span class="line">    pred: dict,                   <span class="comment"># prediction &#123;instance_id, model_name_or_path, model_patch&#125;</span></span><br><span class="line">    rm_image: bool,               <span class="comment"># rm image after run_instance?</span></span><br><span class="line">    force_rebuild: bool,          <span class="comment"># rebuild image forcely?</span></span><br><span class="line">    client: docker.DockerClient,  <span class="comment"># Docker client</span></span><br><span class="line">    run_id: str,                  <span class="comment"># unique run_id </span></span><br><span class="line">    <span class="built_in">timeout</span>: int | None = None,   <span class="comment"># timeout</span></span><br><span class="line">    rewrite_reports: bool = False,# True = don<span class="string">&#x27;t run test again, re-generate report.json from existing test_output.txt</span></span><br><span class="line"><span class="string">) -&gt; dict:</span></span><br></pre></td></tr></table></figure>
+<p>Initialization:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">instance_id = test_spec.instance_id</span><br><span class="line">model_name_or_path = pred.get(KEY_MODEL, <span class="string">&quot;None&quot;</span>).replace(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;__&quot;</span>)</span><br><span class="line">log_dir = RUN_EVALUATION_LOG_DIR / run_id / model_name_or_path / instance_id</span><br><span class="line">report_path = log_dir / LOG_REPORT</span><br></pre></td></tr></table></figure>
+<p>rewrite_reports method (existing test_output.txt) :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> rewrite_reports:</span><br><span class="line">        test_output_path = log_dir / LOG_TEST_OUTPUT</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> test_output_path.exists():</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">f&quot;Test output file <span class="subst">&#123;test_output_path&#125;</span> does not exist&quot;</span>)</span><br><span class="line">        <span class="comment"># re-generate a new report from existing test_output file</span></span><br><span class="line">        report = get_eval_report(</span><br><span class="line">            test_spec=test_spec,</span><br><span class="line">            prediction=pred,</span><br><span class="line">            test_log_path=test_output_path,</span><br><span class="line">            include_tests_status=<span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(report_path, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            <span class="comment"># change report into a JSON	 string.</span></span><br><span class="line">            f.write(json.dumps(report, indent=<span class="number">4</span>))</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&quot;completed&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">            <span class="string">&quot;resolved&quot;</span>: report[instance_id][<span class="string">&quot;resolved&quot;</span>],</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>If evaluation is interrupted mid-run, any instances whose
+<strong>report.json</strong> has already been written are automatically
+skipped on restart. This means you can safely kill the process (Ctrl+C,
+crash, etc.) and rerun it later — only unfinished instances will be
+evaluated, without duplicating completed work.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> report_path.exists():</span><br><span class="line">        report = json.loads(report_path.read_text())</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&quot;completed&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">            <span class="string">&quot;resolved&quot;</span>: report[instance_id][<span class="string">&quot;resolved&quot;</span>],</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>Create a shortcut in the logs directory, pointing to the image’s
+build directory. The purpose is to facilitate debugging - when you view
+the logs of a specific instance, you can follow this link to directly
+locate the corresponding Docker build files (Docker file, build logs,
+etc.).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> test_spec.is_remote_image:</span><br><span class="line">        build_dir = INSTANCE_IMAGE_BUILD_DIR / test_spec.instance_image_key.replace(</span><br><span class="line">            <span class="string">&quot;:&quot;</span>, <span class="string">&quot;__&quot;</span></span><br><span class="line">        )</span><br><span class="line">        image_build_link = log_dir / <span class="string">&quot;image_build_dir&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> image_build_link.exists():</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># symlink_to(): equal to ln -s &lt;build_dir&gt; &lt;image_build_link&gt;</span></span><br><span class="line">                image_build_link.symlink_to(</span><br><span class="line">                    build_dir.absolute(), target_is_directory=<span class="literal">True</span></span><br><span class="line">                )</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>log:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_dir.mkdir(parents=<span class="literal">True</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line">    log_file = log_dir / LOG_INSTANCE</span><br><span class="line">    logger = setup_logger(instance_id, log_file)</span><br></pre></td></tr></table></figure>
+<h5 id="apply-patch-run-eval.sh">1.4.2.1.2 Apply Patch &amp; Run
+eval.sh</h5>
+<p>Env &amp; Variable:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">container = <span class="literal">None</span></span><br><span class="line">eval_completed = <span class="literal">False</span></span><br><span class="line">report = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># If instance&#x27;s image does not exist, trigger build_instance_image ()... run command `docker create` not `docker run`</span></span><br><span class="line">    container = build_container(</span><br><span class="line">        test_spec, client, run_id, logger, rm_image, force_rebuild</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># container.start() equals to docker start &lt;container_id&gt;</span></span><br><span class="line">    container.start()</span><br><span class="line">    logger.info(<span class="string">f&quot;Container for <span class="subst">&#123;instance_id&#125;</span> started: <span class="subst">&#123;container.<span class="built_in">id</span>&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Apply patch phase:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Create a local patch.diff file</span></span><br><span class="line">    patch_file = Path(log_dir / <span class="string">&quot;patch.diff&quot;</span>)</span><br><span class="line">    patch_file.write_text(pred[KEY_PREDICTION] <span class="keyword">or</span> <span class="string">&quot;&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    logger.info(</span><br><span class="line">            <span class="string">f&quot;Intermediate patch for <span class="subst">&#123;instance_id&#125;</span> written to <span class="subst">&#123;patch_file&#125;</span>, &quot;</span></span><br><span class="line">            <span class="string">f&quot;now applying to container...&quot;</span></span><br><span class="line">        )</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Copy the diff file to docker</span></span><br><span class="line">    copy_to_container(container, patch_file, PurePosixPath(DOCKER_PATCHDOCKER_PATCH))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Try to apply the diff file</span></span><br><span class="line">    <span class="comment"># Try tree times. The three commands are in descending order of strictness.</span></span><br><span class="line">    <span class="comment"># Break if one of three commands succeed.</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    e.g.</span></span><br><span class="line"><span class="string">    workdir = &quot;testbed&quot;</span></span><br><span class="line"><span class="string">    user = &quot;root&quot;</span></span><br><span class="line"><span class="string">    git_apply_cmd = &quot;git apply --verbose&quot;</span></span><br><span class="line"><span class="string">    DOCKER_PATCH = &quot;/tmp/patch.diff&quot;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Full Command:</span></span><br><span class="line"><span class="string">    docker exec -w /testbed -u root &lt;container&gt; git apply --verbose /tmp/patch.diff</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    applied_patch = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> git_apply_cmd <span class="keyword">in</span> GIT_APPLY_CMDS:</span><br><span class="line">        val = container.exec_run(</span><br><span class="line">            <span class="string">f&quot;<span class="subst">&#123;git_apply_cmd&#125;</span> <span class="subst">&#123;DOCKER_PATCH&#125;</span>&quot;</span>,</span><br><span class="line">            workdir=DOCKER_WORKDIR,</span><br><span class="line">            user=DOCKER_USER,  </span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># val.exit_code == 0 means apply successful.</span></span><br><span class="line">        <span class="keyword">if</span> val.exit_code == <span class="number">0</span>:</span><br><span class="line">            logger.info(<span class="string">f&quot;<span class="subst">&#123;APPLY_PATCH_PASS&#125;</span>:\n<span class="subst">&#123;val.output.decode(UTF8)&#125;</span>&quot;</span>)</span><br><span class="line">            applied_patch = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            logger.info(<span class="string">f&quot;Failed to apply patch to container: <span class="subst">&#123;git_apply_cmd&#125;</span>&quot;</span>)</span><br><span class="line">            </span><br><span class="line">	<span class="comment"># If all three git apply commands fail: </span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> applied_patch:</span><br><span class="line">        logger.info(<span class="string">f&quot;<span class="subst">&#123;APPLY_PATCH_FAIL&#125;</span>:\n<span class="subst">&#123;val.output.decode(UTF8)&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">raise</span> EvaluationError(</span><br><span class="line">            instance_id,</span><br><span class="line">            <span class="string">f&quot;<span class="subst">&#123;APPLY_PATCH_FAIL&#125;</span>:\n<span class="subst">&#123;val.output.decode(UTF8)&#125;</span>&quot;</span>,</span><br><span class="line">            logger,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">	<span class="comment"># Record the status of repo before executing eval.sh</span></span><br><span class="line">    <span class="comment"># git -c core.fileMode=false diff: Ignore the permission changes (Only track the diff of contents)</span></span><br><span class="line">    git_diff_output_before = (</span><br><span class="line">        container.exec_run(</span><br><span class="line">            <span class="string">&quot;git -c core.fileMode=false diff&quot;</span>, workdir=DOCKER_WORKDIR</span><br><span class="line">        )</span><br><span class="line">        .output.decode(UTF8)</span><br><span class="line">        .strip()</span><br><span class="line">    )</span><br><span class="line">    logger.info(<span class="string">f&quot;Git diff before:\n<span class="subst">&#123;git_diff_output_before&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>Prepare the eval.sh file:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># eval.sh is generated dynamically by properites of TestSpec.eval_script, including:</span></span><br><span class="line"><span class="comment"># - apply test_patch</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">	test_patch is a diff file provided by the issue provider, which includes the test item that will trigger the isssue.</span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># - run test commands</span></span><br><span class="line"><span class="comment"># - restore test file</span></span><br><span class="line"></span><br><span class="line">eval_file = Path(log_dir / <span class="string">&quot;eval.sh&quot;</span>)</span><br><span class="line">eval_file.write_text(test_spec.eval_script)</span><br><span class="line">logger.info(</span><br><span class="line">    <span class="string">f&quot;Eval script for <span class="subst">&#123;instance_id&#125;</span> written to <span class="subst">&#123;eval_file&#125;</span>; &quot;</span></span><br><span class="line">    <span class="string">f&quot;copying to container...&quot;</span></span><br><span class="line">)</span><br><span class="line">copy_to_container(container, eval_file, PurePosixPath(<span class="string">&quot;/eval.sh&quot;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Run eval.sh:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># record the test_output, timed_out, total_runtime</span></span><br><span class="line">test_output, timed_out, total_runtime = exec_run_with_timeout(</span><br><span class="line">    container, <span class="string">&quot;/bin/bash /eval.sh&quot;</span>, timeout</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test_output_path = log_dir / LOG_TEST_OUTPUT</span><br><span class="line">logger.info(<span class="string">f&quot;Test runtime: <span class="subst">&#123;total_runtime:_<span class="number">.2</span>f&#125;</span> seconds&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># write test_output into a local file</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(test_output_path, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(test_output)</span><br><span class="line">    logger.info(<span class="string">f&quot;Test output for <span class="subst">&#123;instance_id&#125;</span> written to <span class="subst">&#123;test_output_path&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> timed_out:</span><br><span class="line">        f.write(<span class="string">f&quot;\n\nTimeout error: <span class="subst">&#123;timeout&#125;</span> seconds exceeded.&quot;</span>)</span><br><span class="line">        <span class="keyword">raise</span> EvaluationError(</span><br><span class="line">            instance_id,</span><br><span class="line">            <span class="string">f&quot;Test timed out after <span class="subst">&#123;timeout&#125;</span> seconds.&quot;</span>,</span><br><span class="line">            logger,</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+<p>Record the repo status( Check if the eval.sh changed the repo
+accidently):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git_diff_output_after = (</span><br><span class="line">    container.exec_run(</span><br><span class="line">        <span class="string">&quot;git -c core.fileMode=false diff&quot;</span>, workdir=DOCKER_WORKDIR</span><br><span class="line">    )</span><br><span class="line">    .output.decode(UTF8)</span><br><span class="line">    .strip()</span><br><span class="line">)</span><br><span class="line">logger.info(<span class="string">f&quot;Git diff after:\n<span class="subst">&#123;git_diff_output_after&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> git_diff_output_after != git_diff_output_before:</span><br><span class="line">    logger.info(<span class="string">&quot;Git diff changed after running eval script&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="grading">1.4.2.1.3 Grading</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">logger.info(<span class="string">f&quot;Grading answer for <span class="subst">&#123;instance_id&#125;</span>...&quot;</span>)</span><br><span class="line">report = get_eval_report(</span><br><span class="line">            test_spec=test_spec,</span><br><span class="line">            prediction=pred,</span><br><span class="line">            test_log_path=test_output_path,</span><br><span class="line">            include_tests_status=<span class="literal">True</span>,  <span class="comment"># True = including state of each instance&#x27;s test case</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">logger.info(</span><br><span class="line">	<span class="string">f&quot;report: <span class="subst">&#123;report&#125;</span>\n&quot;</span></span><br><span class="line">	<span class="string">f&quot;Result for <span class="subst">&#123;instance_id&#125;</span>: resolved: <span class="subst">&#123;report[instance_id][<span class="string">&#x27;resolved&#x27;</span>]&#125;</span>&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(report_path, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	f.write(json.dumps(report, indent=<span class="number">4</span>))</span><br><span class="line">eval_completed = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<h5 id="exception-dealing-clear-env">1.4.2.1.4 Exception Dealing &amp;
+Clear Env</h5>
+<p>Exception:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">except</span> (EvaluationError, BuildImageError) <span class="keyword">as</span> e:</span><br><span class="line">    error_msg = traceback.format_exc()</span><br><span class="line">    logger.info(error_msg)</span><br><span class="line">    <span class="built_in">print</span>(e)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    error_msg = (</span><br><span class="line">        <span class="string">f&quot;Error in evaluating model for <span class="subst">&#123;instance_id&#125;</span>: <span class="subst">&#123;e&#125;</span>\n&quot;</span></span><br><span class="line">        <span class="string">f&quot;<span class="subst">&#123;traceback.format_exc()&#125;</span>\n&quot;</span></span><br><span class="line">        <span class="string">f&quot;Check (<span class="subst">&#123;logger.log_file&#125;</span>) for more information.&quot;</span></span><br><span class="line">    )</span><br><span class="line">    logger.error(error_msg)</span><br></pre></td></tr></table></figure>
+<p>Clear Env:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    cleanup_container(client, container, logger)</span><br><span class="line">    <span class="comment"># optional</span></span><br><span class="line">    <span class="keyword">if</span> rm_image:</span><br><span class="line">        remove_image(client, test_spec.instance_image_key, logger)</span><br><span class="line">        </span><br><span class="line">	<span class="comment"># close logger system</span></span><br><span class="line">    close_logger(logger)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;completed&quot;</span>: eval_completed,</span><br><span class="line">        <span class="string">&quot;resolved&quot;</span>: report.get(instance_id, &#123;&#125;).get(<span class="string">&quot;resolved&quot;</span>, <span class="literal">False</span>),</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="eval.sh">1.4.2.2 eval.sh</h4>
+<p>eval.sh is generated dynamically:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval_file = Path(log_dir / <span class="string">&quot;eval.sh&quot;</span>)</span><br><span class="line">eval_file.write_text(test_spec.eval_script)</span><br></pre></td></tr></table></figure>
+<p>e.g:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">set</span> -uxo pipefail</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ① activate conda env</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="built_in">source</span> /opt/miniconda3/bin/activate</span><br><span class="line">conda activate testbed</span><br><span class="line"><span class="built_in">cd</span> /testbed</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ② Language Setting (from specs[&quot;eval_commands&quot;])</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="built_in">export</span> LANG=en_US.UTF-8</span><br><span class="line"><span class="built_in">export</span> LC_ALL=en_US.UTF-8</span><br><span class="line"><span class="built_in">export</span> PYTHONIOENCODING=utf8</span><br><span class="line"><span class="built_in">export</span> LANGUAGE=en_US:en</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ③ safety directory + state recording</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line">git config --global --add safe.directory /testbed</span><br><span class="line"><span class="built_in">cd</span> /testbed</span><br><span class="line"></span><br><span class="line"><span class="comment"># print current repo status</span></span><br><span class="line">git status</span><br><span class="line">git show</span><br><span class="line">git -c core.fileMode=<span class="literal">false</span> diff abc123def456...</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ④ re-activate env</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="built_in">source</span> /opt/miniconda3/bin/activate</span><br><span class="line">conda activate testbed</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ⑤ install (from specs[&quot;install&quot;])</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line">python -m pip install -e .</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ⑥ restore test project to the state of base_commit</span></span><br><span class="line"><span class="comment">#   	then apply test_patch</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># test_patch modified tests/validators/test_email.py</span></span><br><span class="line"><span class="comment"># no newly added file </span></span><br><span class="line"><span class="comment"># → reset_commands = [&quot;git checkout abc123def456... tests/validators/test_email.py&quot;]</span></span><br><span class="line">git checkout abc123def456... tests/validators/test_email.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#  trans test_patch&#x27;s content to git apply by heredoc</span></span><br><span class="line">git apply -v - &lt;&lt;<span class="string">&#x27;EOF_114329324912&#x27;</span></span><br><span class="line">diff --git a/tests/validators/test_email.py b/tests/validators/test_email.py</span><br><span class="line">--- a/tests/validators/test_email.py</span><br><span class="line">+++ b/tests/validators/test_email.py</span><br><span class="line">@@ -45,6 +45,12 @@ class EmailValidatorTest(TestCase):</span><br><span class="line">         self.assertIsNone(validate_email(<span class="string">&quot;user@domain.com&quot;</span>))</span><br><span class="line"></span><br><span class="line">+    def test_email_with_trailing_dot_fails(self):</span><br><span class="line">+        <span class="string">&quot;&quot;</span><span class="string">&quot;Email with trailing dot should raise ValidationError.&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">+        with self.assertRaises(ValidationError):</span><br><span class="line">+            validate_email(<span class="string">&quot;user@domain.com.&quot;</span>)</span><br><span class="line">+</span><br><span class="line">     def test_email_with_ipv4_address(self):</span><br><span class="line">         <span class="string">&quot;&quot;</span><span class="string">&quot;Email with IPv4 address should be valid.&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">EOF_114329324912</span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ⑦ run test command (核心步骤)</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line">: <span class="string">&#x27;&gt;&gt;&gt;&gt;&gt; Start Test Output&#x27;</span></span><br><span class="line">./tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1 validators.test_email</span><br><span class="line">: <span class="string">&#x27;&gt;&gt;&gt;&gt;&gt; End Test Output&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line"><span class="comment"># ⑧ restore test file</span></span><br><span class="line"><span class="comment"># ============================================================</span></span><br><span class="line">git checkout abc123def456... tests/validators/test_email.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="get_eval_report">1.4.2.3 get_eval_report</h4>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_eval_report</span>(<span class="params"></span></span><br><span class="line"><span class="params">      test_spec,        <span class="comment"># including FAIL_TO_PASS / PASS_TO_PASS / repo...</span></span></span><br><span class="line"><span class="params">      prediction,       <span class="comment"># &#123;&quot;instance_id&quot;: &quot;...&quot;, &quot;model_patch&quot;: &quot;diff --git ...&quot;, ...&#125;</span></span></span><br><span class="line"><span class="params">      test_log_path,    <span class="comment"># &quot;logs/.../test_output.txt&quot;</span></span></span><br><span class="line"><span class="params">      include_tests_status,</span></span><br><span class="line"><span class="params">  </span>) -&gt; <span class="built_in">dict</span>:</span><br></pre></td></tr></table></figure>
+<p>Step 1 : initialize report_map</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">report_map = &#123;&#125;</span><br><span class="line">instance_id = prediction[KEY_INSTANCE_ID]          <span class="comment"># &quot;django__django-11815&quot;</span></span><br><span class="line">report_map[instance_id] = &#123;</span><br><span class="line">    <span class="string">&quot;patch_is_None&quot;</span>:              <span class="literal">False</span>,</span><br><span class="line">    <span class="string">&quot;patch_exists&quot;</span>:               <span class="literal">False</span>,</span><br><span class="line">    <span class="string">&quot;patch_successfully_applied&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">    <span class="string">&quot;resolved&quot;</span>:                   <span class="literal">False</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>now the report_map:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">report_map = &#123;</span><br><span class="line">    <span class="string">&quot;django__django-11815&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;patch_is_None&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">        <span class="string">&quot;patch_exists&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">        <span class="string">&quot;patch_successfully_applied&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">        <span class="string">&quot;resolved&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Step 2 : Check if patch exists</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> prediction[KEY_PREDICTION] <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    report_map[instance_id][<span class="string">&quot;patch_is_None&quot;</span>] = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> report_map                          <span class="comment"># return, all False</span></span><br><span class="line">report_map[instance_id][<span class="string">&quot;patch_exists&quot;</span>] = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>Step 3 : Parse test_output.txt ➡ eval_status_map</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">eval_status_map, found = get_logs_eval(test_spec, test_log_path)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> found:</span><br><span class="line">    <span class="keyword">return</span> report_map          <span class="comment"># Parse failed，patch_successfully_applied keeps False</span></span><br><span class="line">report_map[instance_id][<span class="string">&quot;patch_successfully_applied&quot;</span>] = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>what did get_logs_eval() do ?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">① Open test_output.txt</span><br><span class="line">② Find <span class="keyword">if</span> there<span class="string">&#x27;s any error sign (APPLY_PATCH_FAIL / TESTS_ERROR / TESTS_TIMEOUT)</span></span><br><span class="line"><span class="string">     → Yes？return (&#123;&#125;, False)</span></span><br><span class="line"><span class="string">③ Find contents between &quot;&gt;&gt;&gt;&gt;&gt; Start Test Output&quot; and &quot;&gt;&gt;&gt;&gt;&gt; End Test Output&quot;</span></span><br><span class="line"><span class="string">④ Call log_parser (e.g. parse_log_django) parse the log into dict:</span></span><br><span class="line"><span class="string">     &quot;test_foo ... ok&quot;      → &#123;&quot;test_foo&quot;: &quot;PASSED&quot;&#125;</span></span><br><span class="line"><span class="string">     &quot;test_bar ... FAIL&quot;    → &#123;&quot;test_bar&quot;: &quot;FAILED&quot;&#125;</span></span><br><span class="line"><span class="string">     &quot;test_baz ... ok&quot;      → &#123;&quot;test_baz&quot;: &quot;PASSED&quot;&#125;</span></span><br><span class="line"><span class="string">⑤ return (&#123;&quot;test_foo&quot;: &quot;PASSED&quot;, &quot;test_bar&quot;: &quot;FAILED&quot;, &quot;test_baz&quot;: &quot;PASSED&quot;&#125;, True)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<p>Step 4 : Build gold standard reference:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">eval_ref = &#123;</span><br><span class="line">    <span class="string">&quot;instance_id&quot;</span>: test_spec.instance_id,</span><br><span class="line">    <span class="string">&quot;FAIL_TO_PASS&quot;</span>: test_spec.FAIL_TO_PASS,   <span class="comment"># [&quot;test_bar&quot;] — should be PASS after repairing</span></span><br><span class="line">    <span class="string">&quot;PASS_TO_PASS&quot;</span>: test_spec.PASS_TO_PASS,   <span class="comment"># [&quot;test_foo&quot;, &quot;test_baz&quot;] — should keep PASS</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Step 5 : Compare item by item</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">eval_type = EvalType.PASS_AND_FAIL</span><br><span class="line">report = get_eval_tests_report(eval_status_map, eval_ref, eval_type=eval_type)</span><br><span class="line"></span><br><span class="line"><span class="comment"># inner logic:</span></span><br><span class="line"><span class="comment"># FAIL_TO_PASS: gold said the [test_bar] should FAIL -&gt; PASS</span></span><br><span class="line"><span class="keyword">for</span> test_case <span class="keyword">in</span> [<span class="string">&quot;test_F2P&quot;</span>]:</span><br><span class="line">    <span class="keyword">if</span> test_case <span class="keyword">in</span> eval_status_map &amp;&amp; test_case.stat <span class="keyword">is</span> PASSED:</span><br><span class="line">        f2p_success.append(test_case) <span class="comment"># ✅</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">        f2p_failure.append(test_case) <span class="comment"># ❌</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PASS_TO_PASS: gold said the [test_bar] should PASS -&gt; PASS</span></span><br><span class="line"><span class="keyword">for</span> test_case <span class="keyword">in</span> [<span class="string">&quot;test_P2P_A&quot;</span>, <span class="string">&quot;test_P2P_B&quot;</span>]:</span><br><span class="line">    <span class="keyword">if</span> test_case <span class="keyword">in</span> eval_status_map &amp;&amp; test_case.stat <span class="keyword">is</span> PASSED:</span><br><span class="line">        f2p_success.append(test_case) <span class="comment"># ✅</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        f2p_failure.append(test_case) <span class="comment"># ❌</span></span><br></pre></td></tr></table></figure>
+<p>report:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">report = &#123;</span><br><span class="line">    <span class="string">&quot;FAIL_TO_PASS&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;SUCCESS&quot;</span>: [<span class="string">&quot;test_F2P&quot;</span>], <span class="comment"># BUG fixed</span></span><br><span class="line">        <span class="string">&quot;FAILURE&quot;</span>: [],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;PASS_TO_PASS&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;SUCCESS&quot;</span>: [<span class="string">&quot;test_P2P_A&quot;</span>, <span class="string">&quot;test_P2P_B&quot;</span>], <span class="comment"># existing fucntions not modified</span></span><br><span class="line">        <span class="string">&quot;FAILURE&quot;</span>: [],</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>Step 6 : Final Judgement</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> get_resolution_status(report) == ResolvedStatus.FULL.value:</span><br><span class="line">    report_map[instance_id][<span class="string">&quot;resolved&quot;</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># inner part of get_resolution_status:</span></span><br><span class="line">f2p = <span class="number">1</span>/<span class="number">1</span> = <span class="number">1.0</span>    <span class="comment"># FAIL_TO_PASS success / total = 100%</span></span><br><span class="line">p2p = <span class="number">2</span>/<span class="number">2</span> = <span class="number">1.0</span>    <span class="comment"># PASS_TO_PASS success / total = 100%</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> f2p == <span class="number">1</span> <span class="keyword">and</span> p2p == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">return</span> ResolvedStatus.FULL.value <span class="comment"># → resolved = True</span></span><br></pre></td></tr></table></figure>
+<p>Final Return:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">report_map = &#123;</span><br><span class="line">      <span class="string">&quot;django__django-11815&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;patch_is_None&quot;</span>:              <span class="literal">False</span>,</span><br><span class="line">          <span class="string">&quot;patch_exists&quot;</span>:               <span class="literal">True</span>,</span><br><span class="line">          <span class="string">&quot;patch_successfully_applied&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">          <span class="string">&quot;resolved&quot;</span>:                   <span class="literal">True</span>,   <span class="comment"># ← answer：this issue is resolved</span></span><br><span class="line">          <span class="string">&quot;tests_status&quot;</span>: &#123;                      <span class="comment"># ← exists when include_tests_status=True</span></span><br><span class="line">              <span class="string">&quot;FAIL_TO_PASS&quot;</span>: &#123;<span class="string">&quot;success&quot;</span>: [<span class="string">&quot;test_bar&quot;</span>], <span class="string">&quot;failure&quot;</span>: []&#125;,</span><br><span class="line">              <span class="string">&quot;PASS_TO_PASS&quot;</span>: &#123;<span class="string">&quot;success&quot;</span>: [<span class="string">&quot;test_foo&quot;</span>, <span class="string">&quot;test_baz&quot;</span>], <span class="string">&quot;failure&quot;</span>: []&#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="get_resolution_status">1.4.2.4 get_resolution_status</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_resolution_status</span>(<span class="params">report: <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="type">Any</span>]]</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Determine resolved status of an evaluation instance</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Criteria:</span></span><br><span class="line"><span class="string">        - If fail-to-pass (Resolution) = 1 and pass-to-pass (Maintenance) = 1 -&gt; FULL</span></span><br><span class="line"><span class="string">        - If (fail-to-pass (Resolution) &lt; 1 and &gt; 0) and pass-to-pass (Maintenance) = 1 -&gt; PARTIAL</span></span><br><span class="line"><span class="string">        - Otherwise -&gt; NO</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    f2p = compute_fail_to_pass(report)</span><br><span class="line">    p2p = compute_pass_to_pass(report)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> f2p == <span class="number">1</span> <span class="keyword">and</span> p2p == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> ResolvedStatus.FULL.value</span><br><span class="line">    <span class="keyword">elif</span> f2p &lt; <span class="number">1</span> <span class="keyword">and</span> f2p &gt; <span class="number">0</span> <span class="keyword">and</span> p2p == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> ResolvedStatus.PARTIAL.value</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> ResolvedStatus.NO.value</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_fail_to_pass</span>(<span class="params">report: <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="type">Any</span>]]</span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Compute fail-to-pass metric. Accepts single report as argument.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total = <span class="built_in">len</span>(report[FAIL_TO_PASS][<span class="string">&quot;success&quot;</span>]) + <span class="built_in">len</span>(report[FAIL_TO_PASS][<span class="string">&quot;failure&quot;</span>])</span><br><span class="line">    <span class="keyword">if</span> total == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(report[FAIL_TO_PASS][<span class="string">&quot;success&quot;</span>]) / total</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compute_pass_to_pass</span>(<span class="params">report: <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="type">Any</span>]]</span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Compute pass-to-pass metric. Accepts single report as argument.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total = <span class="built_in">len</span>(report[PASS_TO_PASS][<span class="string">&quot;success&quot;</span>]) + <span class="built_in">len</span>(report[PASS_TO_PASS][<span class="string">&quot;failure&quot;</span>])</span><br><span class="line">    <span class="keyword">if</span> total == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> Don&#x27;t factor in p2p metrics</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(report[PASS_TO_PASS][<span class="string">&quot;success&quot;</span>]) / total</span><br></pre></td></tr></table></figure>
+<h4 id="get_eval_tests_report">1.4.2.5 get_eval_tests_report</h4>
+<p>The function aims to do one thing: Classify the test cases into two
+categories:</p>
+<p><strong>FAIL_TO_PASS</strong> and <strong>PASS_TO_PASS</strong>.</p>
+<p>Input:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># real results:</span></span><br><span class="line">eval_status_map = &#123;</span><br><span class="line">	<span class="string">&quot;test_A&quot;</span>: <span class="string">&quot;PASSED&quot;</span>,</span><br><span class="line">    <span class="string">&quot;test_B&quot;</span>: <span class="string">&quot;FAILED&quot;</span>,</span><br><span class="line">    <span class="string">&quot;test_C&quot;</span>: <span class="string">&quot;FAILED&quot;</span>,</span><br><span class="line">    <span class="string">&quot;test_D&quot;</span>: <span class="string">&quot;PASSED&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># the gold references:</span></span><br><span class="line">gold_results = &#123;</span><br><span class="line">    <span class="string">&quot;FAIL_TO_PASS&quot;</span>: [<span class="string">&quot;test_A&quot;</span>, <span class="string">&quot;test_B&quot;</span>]</span><br><span class="line">    <span class="string">&quot;PASS_TO_PASS&quot;</span>: [<span class="string">&quot;test_C&quot;</span>, <span class="string">&quot;test_D&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;FAIL_TO_PASS&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;success&quot;</span>: [<span class="string">&quot;test_B&quot;</span>],</span><br><span class="line">        <span class="string">&quot;failure&quot;</span>: [<span class="string">&quot;test_A&quot;</span>],</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="string">&quot;PASS_TO_PASS&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;success&quot;</span>: [<span class="string">&quot;test_D&quot;</span>],</span><br><span class="line">        <span class="string">&quot;failure&quot;</span>: [<span class="string">&quot;test_C&quot;</span>],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="run_instances">1.4.3 run_instances</h3>
+<p><strong>Step 1</strong>: instance → TestSpec</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_specs = <span class="built_in">list</span>(<span class="built_in">map</span>(</span><br><span class="line">      <span class="keyword">lambda</span> instance: make_test_spec(instance, namespace=...),</span><br><span class="line">      instances,</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p>trans JSON into TestSpec; generate all the scripts, and images’
+tag;</p>
+<p>300 instance -&gt; 300 TestSpec.</p>
+<p><strong>Step 2</strong>: Check existing images</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">existing_images = &#123;</span><br><span class="line">    tag</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> client.images.<span class="built_in">list</span>(<span class="built_in">all</span>=<span class="literal">True</span>)    <span class="comment"># 本地所有 Docker 镜像</span></span><br><span class="line">    <span class="keyword">for</span> tag <span class="keyword">in</span> i.tags</span><br><span class="line">    <span class="keyword">if</span> tag <span class="keyword">in</span> instance_image_ids              <span class="comment"># 只保留本次需要的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Found 150 existing instance images. Will reuse them.&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Step 3</strong>: Package payloads</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">payloads = []</span><br><span class="line"><span class="keyword">for</span> test_spec <span class="keyword">in</span> test_specs:</span><br><span class="line">    payloads.append((</span><br><span class="line">        test_spec,</span><br><span class="line">        predictions[test_spec.instance_id],</span><br><span class="line">        should_remove(...),</span><br><span class="line">        force_rebuild,</span><br><span class="line">        client,</span><br><span class="line">        run_id,</span><br><span class="line">        timeout,</span><br><span class="line">        rewrite_reports,</span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
+<p><strong>Step 4:</strong> Thread Pool Parallelization &amp; progress
+bar</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">stats = &#123;<span class="string">&quot;✓&quot;</span>: <span class="number">0</span>, <span class="string">&quot;✖&quot;</span>: <span class="number">0</span>, <span class="string">&quot;error&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">pbar = tqdm(total=<span class="built_in">len</span>(payloads), desc=<span class="string">&quot;Evaluation&quot;</span>, postfix=stats)</span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_evaluation_with_progress</span>(<span class="params">*args</span>):</span><br><span class="line">    result = run_instance(*args)</span><br><span class="line">    <span class="keyword">with</span> lock:</span><br><span class="line">        <span class="keyword">if</span> result[<span class="string">&quot;completed&quot;</span>]:</span><br><span class="line">            <span class="keyword">if</span> result[<span class="string">&quot;resolved&quot;</span>]:</span><br><span class="line">                stats[<span class="string">&quot;✓&quot;</span>] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                stats[<span class="string">&quot;✖&quot;</span>] += <span class="number">1</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">            stats[<span class="string">&quot;error&quot;</span>] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        pbar.set_postfix(stats)</span><br><span class="line">        pbar.update()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">run_threadpool(run_evaluation_with_progress, payloads, max_workers)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;All instances run.&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="make_run_report">1.4.4 make_run_report</h3>
+<p>This function will traverse all instances’ report.json</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> instance <span class="keyword">in</span> full_dataset:</span><br><span class="line">    instance_id = instance[<span class="string">&quot;instance_id&quot;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Does ths instance have prediction ？</span></span><br><span class="line">    <span class="keyword">if</span> instance_id <span class="keyword">not</span> <span class="keyword">in</span> predictions:</span><br><span class="line">        incomplete_ids.add(instance_id)        <span class="comment"># didn&#x27;t run</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Is prediction empty？</span></span><br><span class="line">    <span class="keyword">if</span> prediction[<span class="string">&quot;model_patch&quot;</span>] <span class="keyword">in</span> [<span class="string">&quot;&quot;</span>, <span class="literal">None</span>]:</span><br><span class="line">        empty_patch_ids.add(instance_id)       <span class="comment"># empty prediction</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Does report.json exist？</span></span><br><span class="line">    report_file = logs/.../django__django-<span class="number">11099</span>/report.json</span><br><span class="line">    <span class="keyword">if</span> report_file.exists():					 <span class="comment"># Test Completed</span></span><br><span class="line">        completed_ids.add(instance_id)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span>: </span><br><span class="line">            content = report_file.read_text().strip() </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> content:		<span class="comment"># empty report, error</span></span><br><span class="line">            	error_ids.add(instance_id)</span><br><span class="line">            	<span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">            report = json.loads(content)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> report[instance_id][<span class="string">&quot;resolved&quot;</span>]:</span><br><span class="line">                resolved_ids.add(instance_id)	<span class="comment"># ✅</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                unresolved_ids.add(instance_id) <span class="comment"># ❌</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">except</span> (json.JSONDecodeError, KeyError):</span><br><span class="line">            error_ids.add(instance_id)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        error_ids.add(instance_id)</span><br></pre></td></tr></table></figure>
+<p>Clean env:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> client:</span><br><span class="line">        <span class="comment"># get remaining images and containers</span></span><br><span class="line">        images = list_images(client)</span><br><span class="line">        test_specs = <span class="built_in">list</span>(</span><br><span class="line">            <span class="built_in">map</span>(</span><br><span class="line">                <span class="keyword">lambda</span> x: make_test_spec(</span><br><span class="line">                    x,</span><br><span class="line">                    namespace=namespace,</span><br><span class="line">                    instance_image_tag=instance_image_tag,</span><br><span class="line">                    env_image_tag=env_image_tag,</span><br><span class="line">                ),</span><br><span class="line">                full_dataset,</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">for</span> spec <span class="keyword">in</span> test_specs:</span><br><span class="line">            image_name = spec.instance_image_key</span><br><span class="line">            <span class="keyword">if</span> image_name <span class="keyword">in</span> images:</span><br><span class="line">                unremoved_images.add(image_name)</span><br><span class="line">        containers = client.containers.<span class="built_in">list</span>(<span class="built_in">all</span>=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">for</span> container <span class="keyword">in</span> containers:</span><br><span class="line">            <span class="keyword">if</span> run_id <span class="keyword">in</span> container.name:</span><br><span class="line">                unstopped_containers.add(container.name)</span><br></pre></td></tr></table></figure>
+<p>Generate Final Report:</p>
+<p>e.g</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">report = &#123;</span><br><span class="line">      <span class="string">&quot;total_instances&quot;</span>: <span class="number">300</span>,</span><br><span class="line">      <span class="string">&quot;submitted_instances&quot;</span>: <span class="number">298</span>,</span><br><span class="line">      <span class="string">&quot;completed_instances&quot;</span>: <span class="number">285</span>,</span><br><span class="line">      <span class="string">&quot;resolved_instances&quot;</span>: <span class="number">134</span>,</span><br><span class="line">      <span class="string">&quot;unresolved_instances&quot;</span>: <span class="number">151</span>,</span><br><span class="line">      <span class="string">&quot;empty_patch_instances&quot;</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="string">&quot;error_instances&quot;</span>: <span class="number">8</span>,</span><br><span class="line">      <span class="string">&quot;resolved_ids&quot;</span>: [<span class="string">&quot;django__django-11099&quot;</span>, <span class="string">&quot;sympy__sympy-12481&quot;</span>, ...],  <span class="comment"># detailed list</span></span><br><span class="line">      <span class="string">&quot;unresolved_ids&quot;</span>: [...],</span><br><span class="line">      <span class="string">&quot;error_ids&quot;</span>: [...],</span><br><span class="line">      ...</span><br><span class="line">  &#125;</span><br><span class="line">  report_file = <span class="string">&quot;gpt-4.my_run.json&quot;</span></span><br><span class="line">  <span class="keyword">with</span> <span class="built_in">open</span>(report_file, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">      json.dump(report, f, indent=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="training">2. Training</h1>
+<p>We can train a model to make it perform better on specific tasks like
+SWE-bench.</p>
+<p>On SWE-bench, we usually use SFT + LoRA to train the model.</p>
+<h2 id="sft-supervised-fine-tuning">2.1 SFT (Supervised Fine
+Tuning)</h2>
+<p>The essence of SFT is that give LLM a set of [input - output] data.
+Then train it to imitate.</p>
+<p>e.g. We have a 10000 pieces of data which includes:</p>
+<ul>
+<li>The Problem (issue description + relative code file)</li>
+<li>The Solution (repair patch)</li>
+</ul>
+<p>By repeating studying those problems and solutions, the LLM will
+learn the ability:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">See similary problem -&gt; Inference correct solution</span><br></pre></td></tr></table></figure>
+<h3 id="mathematical-essence-of-sft">2.1.1 Mathematical Essence of
+SFT</h3>
+<p>We know that the LLM’s core thought is
+<code>Next Token Prediction</code>. The LLM outputs token according to
+the probability.</p>
+<p>The SFT’s mathematical essence is maximizing the
+<strong><code>conditional probability</code></strong>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Training Objective:</span><br><span class="line">	Maximize the (completion|prompt)</span><br><span class="line">i.e.</span><br><span class="line">	Given specified prompt, the LLM should output the completion tokens with highest probability.</span><br></pre></td></tr></table></figure>
+<p><strong>Next Token Prediction</strong></p>
+<ol type="1">
+<li><p>LLM see prompt, predict 1st token, compare the token with then
+one in completion -&gt; calculate error.</p></li>
+<li><p>LLM see prompt + 1st token, predict 2nd token, compare the token
+with then one in completion -&gt; calculate error.</p></li>
+<li><p>LLM see prompt + 1st +2nd token, predict 3rd token, compare the
+token with then one in completion -&gt; calculate error.</p>
+<p>…</p></li>
+<li><p>LLM see prompt + 1st +2nd + … (n-1)-th token, predict n-th token,
+compare the token with then one in completion -&gt; calculate
+error.</p></li>
+</ol>
+<p>Total loss = average of sum of the all errors.</p>
+<p>In fact, the error is something to evaluation the gap between the
+real-token and predict-token whose real name is
+<code>Cross-Entropy</code>.</p>
+<h3 id="cross-entropy">2.1.2 Cross Entropy</h3>
+<h4 id="introduction">2.1.2.1 Introduction</h4>
+<p>Each time the LLM predicts the next token, it will give each token in
+vocabulary a probability.</p>
+<p>e.g. At one moment, the LLM’s input:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;&lt;issue&gt;fix devide zero bug in foo.py&lt;/issue&gt;\n&lt;code&gt;\ndef div(a,b):\n    return</span><br><span class="line">  a/b\n&lt;/code&gt;\n\ndiff --git a/foo.py b/foo.py\n@@ -1,2 +1,4 @@\n&quot;</span><br></pre></td></tr></table></figure>
+<p>The LLM will predict the next token, and give the candidates a
+probability:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot; def&quot;</span>  → 0.72</span><br><span class="line"><span class="string">&quot; foo&quot;</span>  → 0.08</span><br><span class="line"><span class="string">&quot; div&quot;</span>  → 0.03</span><br><span class="line"><span class="string">&quot; the&quot;</span>  → 0.01</span><br><span class="line">...</span><br><span class="line">(totally 150 K token candidates)</span><br></pre></td></tr></table></figure>
+<p>This is the probability. But how do we
+<strong><code>evaluate</code></strong> the
+<code>quality of the prediction</code> ?</p>
+<p>We use the <code>Cross Entropy</code>:</p>
+<p><span class="math display">$$
+\boxed{\ell = -\ln P\bigl(x_t \;\big|\; x_{&lt;t}\bigr)}
+$$</span></p>
+<ul>
+<li><span
+class="math inline"><em>x</em><sub> &lt; <em>t</em></sub></span> = all
+context before <span
+class="math inline"><em>p</em><em>o</em><em>s</em><em>i</em><em>t</em><em>i</em><em>o</em><em>n</em> − <em>t</em></span></li>
+<li><span class="math inline"><em>x</em><sub><em>t</em></sub></span> =
+real token of <span
+class="math inline"><em>p</em><em>o</em><em>s</em><em>i</em><em>t</em><em>i</em><em>o</em><em>n</em> − <em>t</em></span>（comes
+from the <code>real answer</code> of completion ）</li>
+<li><span
+class="math inline"><em>P</em>(<em>x</em><sub><em>t</em></sub> ∣ <em>x</em><sub> &lt; <em>t</em></sub>)</span>
+= LLM’s Prediction Probability to <span
+class="math inline"><em>p</em><em>o</em><em>s</em><em>i</em><em>t</em><em>i</em><em>o</em><em>n</em> − <em>t</em></span>
+with context</li>
+<li><span class="math inline"><em>ℓ</em></span> = this step’s cross
+entropy</li>
+</ul>
+<p>This formula’s essence is a <code>Penalty Mechanism</code>. It will
+give high probability a low penalty(loss), give low probability a high
+penalty (loss).</p>
+<p>The probability <span
+class="math inline"><em>P</em>(<em>x</em><sub><em>t</em></sub> | <em>x</em><sub> &lt; <em>t</em></sub>)</span>
+is between 0 and 1. So <span
+class="math inline">ln <em>P</em>(<em>x</em><sub><em>t</em></sub> | <em>x</em><sub> &lt; <em>t</em></sub>)</span>
+is between <span class="math inline">−∞</span> and 0. So we can take the
+negative to have a positive interval: <span
+class="math inline">−ln <em>P</em>(<em>x</em><sub><em>t</em></sub> | <em>x</em><sub> &lt; <em>t</em></sub>)</span>.</p>
+<p>How do the cross entropy work?</p>
+<p>Example 1:</p>
+<ol type="1">
+<li>$ P = 0.95 $</li>
+<li><span class="math inline">ln (0.95) ≈ −0.051</span></li>
+<li><span class="math inline"><em>ℓ</em> = 0.051</span></li>
+<li>In Optimizer’s view, the loss is very low, the prediction is very
+perfect. The weights is nearly needed to adjust.</li>
+</ol>
+<p>Example 2:</p>
+<ol type="1">
+<li>$ P = 0.01 $</li>
+<li><span class="math inline">ln (0.01) ≈ −4.605</span></li>
+<li><span class="math inline"><em>ℓ</em> = 4.605</span></li>
+<li>Optimizer will notice that <code>4.605</code> is a pretty huge
+penalty, the weights should be adjusted substantially.</li>
+</ol>
+<h4 id="why-use-the-cross-entropy">2.1.2.2 Why Use the Cross
+Entropy?</h4>
+<p>Why we use <span class="math inline">−ln </span> as loss instead of
+using simply <span class="math inline">1 − <em>P</em></span>?</p>
+<p>The core thought of Cross Entropy is to Penalty the low probability.
+So we hope the penalty(Loss) of the low probability is extremely high.
+From math’s perspective, Function <span class="math inline">ln </span>
+has many properties:</p>
+<p>$ Loss = - (P)$</p>
+<p><span class="math inline">$\frac{d\ell}{dp} = -
+\frac{1}{P}$</span></p>
+<p>The <span class="math inline">ln </span>’s slope will tend towards
+infinity when <span
+class="math inline"><em>P</em> → 0<sup>+</sup></span>.</p>
+<p>This means that if the model is very confident in a wrong prediction
+(for example, P=0.0001), the loss will instantly soar above 9.29.2, and
+the gradient of backpropagation will also be extremely large, thereby
+forcing the model to quickly correct those “outrageous” errors.</p>
+<p><img data-src="/images/article_images/corss_entropy_image.png" /></p>
+<h3 id="workflow-of-processing-one-piece-of-sft-data">2.1.3 Workflow of
+Processing One Piece of SFT Data</h3>
+<p>SFT’s training data is assembled by
+<code>Prompt + Completion</code>.</p>
+<p>Assume we have one piece of data:
+<strong><code>Prompt</code></strong>: <code>"Q: Hello"</code>
+<strong><code>Completion</code></strong>: <code>"A: Hi"</code>; Assume
+their token id:</p>
+<ul>
+<li><code>"Q"</code> = 10, <code>":"</code> = 11, <code>"Hello"</code> =
+12</li>
+<li><code>"A"</code> = 20, <code>":"</code> = 21, <code>"Hi"</code> =
+22</li>
+<li><code>&lt;EOS&gt;</code> = 50</li>
+</ul>
+<h4 id="step-1-concatenation-tokenization-build-input">2.1.3.1 Step 1:
+Concatenation &amp; Tokenization (Build Input)</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tokens:  	 [Q,    :,    Hello,  A,    :,    Hi,   &lt;EOS&gt;]</span><br><span class="line">token_ids:   [10,   11,   12,    20,   21,   22,   50  ]</span><br><span class="line">Index: 		   0     1     2      3     4     5     6</span><br></pre></td></tr></table></figure>
+<h4 id="step-2-build-labels">2.1.3.2 Step 2: Build Labels</h4>
+<p><code>Label</code> in machine learning area means the
+<code>Standard Answer</code>.</p>
+<p>LLM is a Next-Token-Prediction model. At <span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>t</em></sub></span>
+predict the <span
+class="math inline"><em>p</em><em>o</em><em>s</em><sub><em>t</em> + 1</sub></span>
+token.</p>
+<p>Here the labels come from original token_ids we build:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">token_ids:  [10,   11,   12,    20,   21,   22,   50  ]</span><br><span class="line">             ↓      ↓     ↓      ↓     ↓     ↓     ↓</span><br><span class="line">labels: 	[11,   12,   20,    21,   22,   50,  -100 ]</span><br><span class="line">Index: 		  0     1     2      3     4     5     6</span><br></pre></td></tr></table></figure>
+<p>At index 6, no more token need to be predicted, so use
+<code>-100</code> as label.</p>
+<h4 id="step-3-loss-masking">2.1.3.3 Step 3: Loss Masking</h4>
+<p>The loss we discussed earlier, is a criterion to evaluate the gap
+between the <code>predicted token</code> and
+<code>standard answer</code>.</p>
+<p>In SFT, we train the LLM to enhance the ability to predict the
+<code>standard answer</code> ( The <code>Completion</code>).</p>
+<p>The full input text to LLM is <code>Prompt + Completion</code>, we
+should take the loss of <code>Completion</code> into consideration. So
+the ability to predict the <code>Completion</code> will improve.</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>However, we should <code>not</code> take the loss of original
+“<code>Prompt</code>” into consideration. We just want LLM learn how to
+predict the “<code>Completion</code>” part instead of
+“<code>Prompt</code>” part.</p>
+<p>If LLM take the loss of <code>Prompt</code> into consideration, it
+will repeat the <code>Prompt</code> very well.</p>
+</blockquote>
+<p>So we should remove the effect of <code>Prompt's Loss</code>. Modify
+the labels:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tokens:     [Q,    :,    Hello, A,    :,    Hi,   &lt;EOS&gt;]</span><br><span class="line">token_ids:  [10,   11,   12,    20,   21,   22,   50  ]</span><br><span class="line">             ↓      ↓     ↓      ↓     ↓     ↓     ↓</span><br><span class="line">labels: 	[11,   12,   20,    21,   22,   50,  -100 ]</span><br><span class="line">             ↓      ↓     ↓      ↓     ↓     ↓     ↓</span><br><span class="line">labels: 	[-100, -100,  20,   21,   22,   50,  -100 ]</span><br><span class="line"></span><br><span class="line">Index: 		  0     1     2      3     4     5     6</span><br></pre></td></tr></table></figure>
+<p>We mask the labels of prediction to “<code>Prompt</code>”,
+e.g. label(0), and label(1).</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>Notice that the label(2), is to predict the first token of
+“<code>Completion</code>, do not mask it.”</p>
+</blockquote>
+<h4 id="step-4-forward-propagation-loss-computing">2.1.3.4 Step 4:
+Forward Propagation &amp; Loss Computing</h4>
+<p>Input of LLM:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&quot;Q&quot;</span>, <span class="string">&quot;:&quot;</span>, <span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;A&quot;</span>, <span class="string">&quot;:&quot;</span>, <span class="string">&quot;Hi&quot;</span>, <span class="string">&quot;&lt;EOS&gt;&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>After calculating by transformer, the transformer output 7
+predictions, each prediction is a set of candidates’ probability:</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 35%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr>
+<th>Position</th>
+<th>Context</th>
+<th>Probability Distribution (Top 3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>["Q"]</code></td>
+<td><code>":"</code> → 0.85<br> <code>"Q"</code> → 0.05<br/>
+<code>"A"</code> → 0.02</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>["Q", ":"]</code></td>
+<td><code>"Hello"</code> → 0.70<br/><code>"Hi"</code> →
+0.15<br/><code>"How"</code> → 0.05</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>["Q", ":", "Hello"]</code></td>
+<td><strong><code>"A"</code> → 0.60</strong><br/><code>"How"</code> →
+0.10<br/><code>"Hi"</code> → 0.08</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>["Q", ":", "Hello", "A"]</code></td>
+<td><strong><code>":"</code> → 0.90</strong><br/><code>" "</code> →
+0.04<br/><code>"nswer"</code> → 0.02</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>["Q", ":", "Hello", "A", ":"]</code></td>
+<td><strong><code>"Hi"</code> → 0.80</strong><br/><code>"Hello"</code> →
+0.10<br/><code>"Hey"</code> → 0.05</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>["Q", ":", "Hello", "A", ":", "Hi"]</code></td>
+<td><strong><code>"&lt;EOS&gt;"</code> →
+0.95</strong><br/><code>"!"</code> → 0.02<br/><code>"there"</code> →
+0.01</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>["...", "&lt;EOS&gt;"]</code></td>
+<td><code>"The"</code> → 0.10<br/><code>"A"</code> → 0.05<br/>…</td>
+</tr>
+</tbody>
+</table>
+<p>Now we have the answer of LLM, we should grade homework by
+calculating <code>Cross Entropy</code> according the
+<code>Masked Labels</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Label</th>
+<th>Action</th>
+<th>Calculation</th>
+<th>Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>-100</code></td>
+<td>Skip</td>
+<td>—</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>-100</code></td>
+<td>Skip</td>
+<td>—</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>"A"</code></td>
+<td>P → 0.60</td>
+<td>−log⁡(0.60)</td>
+<td><strong>0.511</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>":"</code></td>
+<td>P → 0.90</td>
+<td>−log⁡(0.90)</td>
+<td><strong>0.105</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>"Hi"</code></td>
+<td>P → 0.80</td>
+<td>−log⁡(0.80)</td>
+<td><strong>0.223</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>"&lt;EOS&gt;"</code></td>
+<td>P → 0.95</td>
+<td>−log⁡(0.95)</td>
+<td><strong>0.051</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>-100</code></td>
+<td>Skip</td>
+<td>—</td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>All loss:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0, 0, 0.511, 0.105, 0.223, 0.051, 0]</span><br></pre></td></tr></table></figure>
+<p><strong>Mean Reduction</strong>:</p>
+<p>We should sum the loss and get an average loss to represent the loss
+of the whole answer. Notice that we should not take items of
+<code>ignore_index=-100</code> into the calculation.</p>
+<p><span class="math display">$$
+\begin{align}
+\mathcal{L}_{total} &amp;=
+\text{MeanReduction}(\mathcal{L}_{elementwise}) \\
+&amp;= \frac{\sum_{i \in \text{Valid}} \mathcal{L}_i}{N_{\text{valid}}}
+\\
+&amp;= \frac{0 + 0 + 0.511 + 0.105 + 0.223 + 0.051 + 0}{4} \\
+&amp;= 0.2225
+\end{align}
+$$</span></p>
+<h4 id="appendix-gradient">2.1.3.4 Appendix: Gradient</h4>
+<p>In a neural network, Loss Function has many independent
+variables.</p>
+<p><span
+class="math inline"><em>L</em> = <em>f</em>(<em>w</em><sub>1</sub>, <em>w</em><sub>2</sub>, ...<em>w</em><sub><em>n</em></sub>)</span></p>
+<p>Gradient is a column vector includes all partial derivatives all
+L:</p>
+<p><span class="math display">$$
+\begin{equation}
+\nabla L = \begin{bmatrix}
+\frac{\partial L}{\partial w_1} \\
+\frac{\partial L}{\partial w_2} \\
+\vdots \\
+\frac{\partial L}{\partial w_n}
+\end{bmatrix}
+\end{equation}
+$$</span></p>
+<p><strong>Directional Derivative :</strong></p>
+<p><span class="math inline">Partial Derivative</span> like <span
+class="math inline">$\frac{\partial L}{\partial w_1}$</span>, means the
+rate of change of <span class="math inline"><em>L</em></span> along
+variable <span class="math inline"><em>w</em><sub>1</sub></span>.</p>
+<p><span class="math inline">Directional Derivative</span> : rate of
+change of the function <span class="math inline"><em>L</em></span> along
+any specified direction in space.</p>
+<p>Assume that we want to calculate the function:</p>
+<p><span
+class="math inline"><em>L</em>(<em>w</em><sub>1</sub>, <em>w</em><sub>2</sub>, ...<em>w</em><sub><em>n</em></sub>)’s
+Directional Derivative</span></p>
+<p>along unit direction vector <span
+class="math inline"><em>u</em></span> at point <span
+class="math inline"><em>P</em></span>, denoted as <span
+class="math inline"><em>D</em><sub><em>u⃗</em></sub><em>L</em></span>
+.</p>
+<p><strong><code>Core Theorem</code></strong>: Directional Derivative is
+equal to the dot product Gradient Vector and Unit Direction
+Vector(Length == 1).</p>
+<p><span
+class="math display"><em>D</em><sub><em>u⃗</em></sub><em>L</em> = ∇<em>L</em> ⋅ <em>u⃗</em></span></p>
+<ul>
+<li><p><span class="math inline">Direction</span> of the gradient is
+“<span class="math inline">Direction</span> that makes <span
+class="math inline">L</span> grow fastest”.</p></li>
+<li><p><span class="math inline">Negative Direction</span></p></li>
+</ul>
+<p>…. to be continued</p>
+<h4 id="step-5-backward-propagation-parameters-update">2.1.3.5 Step 5:
+Backward Propagation &amp; Parameters Update</h4>
+<p>Now we have the loss of this ground of generation. We should adjust
+our weights according to reduce the <span
+class="math inline"><em>L</em><em>o</em><em>s</em><em>s</em></span>.</p>
+<ol type="1">
+<li><p>Clear the gradient</p>
+<p>The default design of PyTorch is gradient
+<strong>accumulation</strong>. If not manually reset to zero, the newly
+calculated gradients will be accumulated on top of the old ones, leading
+to a “schizophrenic” model and completely chaotic parameter updates.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer.zero_grad()</span><br></pre></td></tr></table></figure></li>
+<li><p>Backward Propagation</p></li>
+</ol>
+<p>We want to reduce the value of <span class="math inline">Loss</span>,
+so we should calculate its gradient and calculate its direction.</p>
+<p>Because of the setting-zero to the <span
+class="math inline">Loss</span> of <code>Prompt</code> part, the
+gradient component of the parameter directly related to the prediction
+is also strictly 0.</p>
+<p>Although the model “sees” the <code>Prompt</code> during forward
+propagation, the input from the <code>Prompt</code> part does not make
+any direct gradient contribution to the update of model parameters
+during <code>Backward propagation</code>.</p>
+<ol type="1">
+<li><p>Update Weights</p>
+<p>After calculating the gradient, the <code>Optimizer</code> will
+update weights according to the gradient.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+<p><span
+class="math inline"><em>θ</em><sub><em>t</em></sub> = <em>θ</em><sub><em>t</em> − 1</sub> − <em>η</em> ⋅ ∇<sub><em>θ</em></sub>ℒ(<em>θ</em><sub><em>t</em> − 1</sub>)</span></p></li>
+</ol>
+<p>AdamW:</p>
+<p><span class="math display">$$
+\begin{align}
+% 1. 计算一阶矩估计（动量 Momentum）
+m_t &amp;= \beta_1 m_{t-1} + (1 - \beta_1) g_t \\
+% 2. 计算二阶矩估计（未中心化的方差）
+v_t &amp;= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2 \\
+% 3. 偏差修正（Bias Correction），防止初始阶段估计偏小
+\hat{m}_t &amp;= \frac{m_t}{1 - \beta_1^t} \\
+\hat{v}_t &amp;= \frac{v_t}{1 - \beta_2^t} \\
+% 4. 最终参数更新（包含自适应步长和权重衰减）
+\theta_t &amp;= \theta_{t-1} - \eta \left(
+\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_{t-1}
+\right)
+\end{align}
+$$</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/2026/07/15/SWE-bench/">https://wangyier.top/2026/07/15/SWE-bench/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/15/%E5%BC%80%E5%AD%A6%E5%BE%85%E5%8A%9E%E4%BA%8B%E9%A1%B9/" rel="prev" title="开学待办事项">
+                  <i class="fa fa-angle-left"></i> 开学待办事项
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/07/15/SWE-agent/" rel="next" title="SWE-agent">
+                  SWE-agent <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

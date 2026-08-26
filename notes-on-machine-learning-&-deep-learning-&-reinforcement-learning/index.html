@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
+<meta property="og:url" content="https://wangyier.top/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/rl_grid_world.png">
+<meta property="og:image" content="e:\myBlog\source\images\article_images\rl_deterministic_policy.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/rl_traj_from_policy.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/rl_stochastic_policy.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/rl_two_trajectories.png">
+<meta property="article:published_time" content="2026-07-27T05:56:56.000Z">
+<meta property="article:modified_time" content="2026-07-31T13:51:44.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/rl_grid_world.png">
+
+
+<link rel="canonical" href="https://wangyier.top/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/","path":"/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/","title":"Notes on Machine Learning & Deep Learning & Reinforcement Learning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Notes on Machine Learning & Deep Learning & Reinforcement Learning | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#reference-notice"><span class="nav-text">0. Reference &amp; Notice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-text">0.1 References</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repository"><span class="nav-text">0.2 Repository</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#machine-learning"><span class="nav-text">1. Machine Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning"><span class="nav-text">2. Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#preparation"><span class="nav-text">2.1 Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-miniconda"><span class="nav-text">2.1.1 Install MiniConda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#install-for-windows"><span class="nav-text">2.1.1.1 Install for Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configuration-for-gitbash"><span class="nav-text">2.1.1.2 Configuration for
+GitBash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#initialize-a-new-env"><span class="nav-text">2.1.2.3 Initialize a New Env</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-a-deep-learning-framework"><span class="nav-text">2.1.2 Install a Deep Learning
+Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ideal-installation-of-d2l-package"><span class="nav-text">2.1.2.1 Ideal Installation of
+d2l package</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actual-installation"><span class="nav-text">2.1.2.2 Actual Installation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-the-notebook"><span class="nav-text">2.1.3 Open the Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notational-conventions"><span class="nav-text">2.1.4 Notational Conventions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#preliminaries"><span class="nav-text">2.2 Preliminaries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-manipulation"><span class="nav-text">2.2.1 Data Manipulation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#start-with-tensor"><span class="nav-text">2.2.1.1 Start with Tensor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-processing"><span class="nav-text">2.2.2 Data Processing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-algebra"><span class="nav-text">2.2.3 Linear Algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calculus"><span class="nav-text">2.2.4 Calculus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#probability-and-statistics"><span class="nav-text">2.2.5 Probability and
+Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#documentation"><span class="nav-text">2.2.6 Documentation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reinforcement-learning"><span class="nav-text">3. Reinforcement Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#preparation-1"><span class="nav-text">3.1 Preparation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts"><span class="nav-text">3.2 Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-grid-world-example"><span class="nav-text">3.2.1 A Grid World Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-action"><span class="nav-text">3.2.2 State &amp; Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-transition"><span class="nav-text">3.2.3 State Transition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#policy"><span class="nav-text">3.2.4 Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reward"><span class="nav-text">3.2.5 Reward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trajectories-returns-and-episodes"><span class="nav-text">3.2.6 Trajectories, Returns
+and Episodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markov-decision-processes"><span class="nav-text">3.2.7 Markov Decision Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qa"><span class="nav-text">3.2.8 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-equaltion"><span class="nav-text">3.3 Bellman Equaltion</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Notes on Machine Learning &amp; Deep Learning &amp; Reinforcement Learning | The Great Library">
+      <meta itemprop="description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Notes on Machine Learning & Deep Learning & Reinforcement Learning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-07-27 13:56:56" itemprop="dateCreated datePublished" datetime="2026-07-27T13:56:56+08:00">2026-07-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-07-31 21:51:44" itemprop="dateModified" datetime="2026-07-31T21:51:44+08:00">2026-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Theory of Machine Learning & Deep Learning & Reinforcement Learning</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="reference-notice">0. Reference &amp; Notice</h1>
+<h2 id="references">0.1 References</h2>
+<p>Learning Path Reference: <a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/667435151/answer/1935385587625465167">Machine
+Learning Path</a></p>
+<p>Main Story (Parallelism)</p>
+<ol type="1">
+<li><p>Stanford CS229 (Andrew Ng)</p>
+<blockquote>
+<p>[!NOTE]</p>
+<ol type="1">
+<li>Download / Save the <strong>notes</strong> of this course, read
+repeatedly.</li>
+<li>Solve the “<strong>Problem Sets</strong>”.</li>
+</ol>
+</blockquote></li>
+<li><p>Dive into Deep Learning</p>
+<p><a target="_blank" rel="noopener" href="https://d2l.ai/">Dive into Deep Learning — Dive into Deep
+Learning 1.0.3 documentation</a></p></li>
+</ol>
+<p>Combination:</p>
+<p>​ When learn some knowledge points in CS229, find them in the d2l, and
+implement in PyTorch.</p>
+<p>Reference Books:</p>
+<ol type="1">
+<li>Machine Learning, ISBN 9787302423287 (西瓜书)</li>
+<li>Deep Learning : Adaptive Computation and Machine Learning series,
+ISBN 9780262035613 (花书)</li>
+</ol>
+<h2 id="repository">0.2 Repository</h2>
+<p>Local Repository:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/e/Computer Science System Building/Deep Learning</span><br><span class="line">/e/Computer Science System Building/Machine Learning</span><br><span class="line">/e/Computer Science System Building/Reinforcement Learning</span><br></pre></td></tr></table></figure>
+<h1 id="machine-learning">1. Machine Learning</h1>
+<h1 id="deep-learning">2. Deep Learning</h1>
+<h2 id="preparation">2.1 Preparation</h2>
+<p>It is planned to study with <code>Dive into Deep Learning</code>.</p>
+<p><a target="_blank" rel="noopener" href="https://d2l.ai/index.html">Dive into Deep Learning — Dive
+into Deep Learning 1.0.3 documentation</a></p>
+<h3 id="install-miniconda">2.1.1 Install MiniConda</h3>
+<h4 id="install-for-windows">2.1.1.1 Install for Windows</h4>
+<p>I choose to install manually, so I download the graphical
+installer:</p>
+<p><a target="_blank" rel="noopener" href="https://www.anaconda.com/download/success">Download Success
+| Anaconda</a></p>
+<p>Check the 1st, 3rd item:</p>
+<ul>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Create shortcuts
+(supported packages only).</label></li>
+</ul></li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" />Register Miniconda3 as the system
+Python 3.14 Allows other programs, such as VSCode, PyCharm, etc. to
+automatically detectMiniconda3 as the primary Python 3. 14 on the
+system.</label></li>
+</ul></li>
+<li><ul class="task-list">
+<li><label><input type="checkbox" checked="" />Clear the package cache
+upon completion Recommended. Recovers some disk space without harming
+functionality.</label></li>
+</ul></li>
+</ul>
+<h4 id="configuration-for-gitbash">2.1.1.2 Configuration for
+GitBash</h4>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/d/softwares/MiniConda/Scripts/conda init</span><br></pre></td></tr></table></figure>
+<p>After initiation, the terminal displays:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==&gt; For changes to take effect, close and re-open your current shell. &lt;==</span><br></pre></td></tr></table></figure>
+<p>However, when I restart the GitBash, the bash can’t find the command
+<code>conda</code>, while the PowerShell can find it:</p>
+<ul>
+<li><p>GitBash:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@□□ѩ□□□□ MINGW64 /e/Computer Science System Building</span><br><span class="line">$ conda</span><br><span class="line">bash: conda: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure></li>
+<li><p>PowerShell:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) PS E:\Computer Science System Building&gt; conda --version</span><br><span class="line">conda 26.5.3</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>This because the <code>conda init</code> for windows writes some
+configuration for PowerShell only.</p>
+<p>So we need to write the configuration manually:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">  # &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span></span><br><span class="line"><span class="string">  if [ -f &quot;/d/softwares/MiniConda/etc/profile.d/conda.sh&quot; ]; then</span></span><br><span class="line"><span class="string">      . &quot;/d/softwares/MiniConda/etc/profile.d/conda.sh&quot;</span></span><br><span class="line"><span class="string">  fi</span></span><br><span class="line"><span class="string">  # &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span></span><br><span class="line"><span class="string">  &#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>Then restart the GitBash:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@□□ѩ□□□□ MINGW64 /e/Computer Science System Building</span><br><span class="line">$ conda --version</span><br><span class="line">conda 26.5.3</span><br></pre></td></tr></table></figure>
+<h4 id="initialize-a-new-env">2.1.2.3 Initialize a New Env</h4>
+<p>Accept new terms:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main</span><br><span class="line">conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r</span><br><span class="line">conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/msys2</span><br></pre></td></tr></table></figure>
+<p>Create new env:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name d2l python=3.9 -y</span><br></pre></td></tr></table></figure>
+<p>Switch to new env:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate d2l</span><br></pre></td></tr></table></figure>
+<h3 id="install-a-deep-learning-framework">2.1.2 Install a Deep Learning
+Framework</h3>
+<p>Determine to install PyTorch with CUDA version 12.6 (remember to
+switch the env to d2l) :</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126</span><br></pre></td></tr></table></figure>
+<p>Check:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python -c <span class="string">&quot;import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))&quot;</span></span><br><span class="line">True</span><br><span class="line">NVIDIA GeForce RTX 4070 Laptop GPU</span><br></pre></td></tr></table></figure>
+<h4 id="ideal-installation-of-d2l-package">2.1.2.1 Ideal Installation of
+d2l package</h4>
+<p>Install d2l package:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install d2l</span><br></pre></td></tr></table></figure>
+<p>If there’s an error when you install d2l due to the high version of
+python (like python 13.x):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">$ python -m pip install d2l</span><br><span class="line">WARNING: Retrying (Retry(total=4, connect=None, <span class="built_in">read</span>=None, redirect=None, status=None)) after connection broken by <span class="string">&#x27;SSLEOFError(8, &#x27;</span>[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred <span class="keyword">in</span> violation of protocol (_ssl.c:1010)<span class="string">&#x27;)&#x27;</span>: /simple/d2l/</span><br><span class="line">Collecting d2l</span><br><span class="line">  Using cached d2l-1.0.3-py3-none-any.whl.metadata (556 bytes)</span><br><span class="line">Collecting jupyter==1.0.0 (from d2l)</span><br><span class="line">  Using cached jupyter-1.0.0-py2.py3-none-any.whl.metadata (995 bytes)</span><br><span class="line">Collecting numpy==1.23.5 (from d2l)</span><br><span class="line">  Using cached numpy-1.23.5.tar.gz (10.7 MB)</span><br><span class="line">  Installing build dependencies ... <span class="keyword">done</span></span><br><span class="line">  Getting requirements to build wheel ... error</span><br><span class="line">  error: subprocess-exited-with-error</span><br><span class="line">  </span><br><span class="line">  × Getting requirements to build wheel did not run successfully.</span><br><span class="line">  │ <span class="built_in">exit</span> code: 1</span><br><span class="line">  ╰─&gt; [33 lines of output]</span><br><span class="line">      Traceback (most recent call last):</span><br><span class="line">        File <span class="string">&quot;D:\softwares\MiniConda\envs\d2l\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py&quot;</span>, line 389, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">          main()</span><br><span class="line">        File <span class="string">&quot;D:\softwares\MiniConda\envs\d2l\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py&quot;</span>, line 373, <span class="keyword">in</span> main</span><br><span class="line">          json_out[<span class="string">&quot;return_val&quot;</span>] = hook(**hook_input[<span class="string">&quot;kwargs&quot;</span>])</span><br><span class="line">                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span><br><span class="line">        File <span class="string">&quot;D:\softwares\MiniConda\envs\d2l\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py&quot;</span>, line 137, <span class="keyword">in</span> get_requires_for_build_wheel</span><br><span class="line">          backend = _build_backend()</span><br><span class="line">                    ^^^^^^^^^^^^^^^^</span><br><span class="line">        File <span class="string">&quot;D:\softwares\MiniConda\envs\d2l\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py&quot;</span>, line 70, <span class="keyword">in</span> _build_backend</span><br><span class="line">          obj = import_module(mod_path)</span><br><span class="line">                ^^^^^^^^^^^^^^^^^^^^^^^</span><br><span class="line">        File <span class="string">&quot;D:\softwares\MiniConda\envs\d2l\Lib\importlib\__init__.py&quot;</span>, line 90, <span class="keyword">in</span> import_module</span><br><span class="line">          <span class="built_in">return</span> _bootstrap._gcd_import(name[level:], package, level)</span><br><span class="line">                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 1387, <span class="keyword">in</span> _gcd_import</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 1360, <span class="keyword">in</span> _find_and_load</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 1310, <span class="keyword">in</span> _find_and_load_unlocked</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 488, <span class="keyword">in</span> _call_with_frames_removed</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 1387, <span class="keyword">in</span> _gcd_import</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 1360, <span class="keyword">in</span> _find_and_load</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 1331, <span class="keyword">in</span> _find_and_load_unlocked</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 935, <span class="keyword">in</span> _load_unlocked</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line 999, <span class="keyword">in</span> exec_module</span><br><span class="line">        File <span class="string">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line 488, <span class="keyword">in</span> _call_with_frames_removed</span><br><span class="line">        File <span class="string">&quot;C:\Users\test\AppData\Local\Temp\pip-build-env-b_gnacsy\overlay\Lib\site-packages\setuptools\__init__.py&quot;</span>, line 16, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">          import setuptools.version</span><br><span class="line">        File <span class="string">&quot;C:\Users\test\AppData\Local\Temp\pip-build-env-b_gnacsy\overlay\Lib\site-packages\setuptools\version.py&quot;</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">          import pkg_resources</span><br><span class="line">        File <span class="string">&quot;C:\Users\test\AppData\Local\Temp\pip-build-env-b_gnacsy\overlay\Lib\site-packages\pkg_resources\__init__.py&quot;</span>, line 2172, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">          register_finder(pkgutil.ImpImporter, find_on_path)</span><br><span class="line">                          ^^^^^^^^^^^^^^^^^^^</span><br><span class="line">      AttributeError: module <span class="string">&#x27;pkgutil&#x27;</span> has no attribute <span class="string">&#x27;ImpImporter&#x27;</span>. Did you mean: <span class="string">&#x27;zipimporter&#x27;</span>?</span><br><span class="line">      [end of output]</span><br><span class="line">  </span><br><span class="line">  note: This error originates from a subprocess, and is likely not a problem with pip.</span><br><span class="line">ERROR: Failed to build <span class="string">&#x27;numpy&#x27;</span> when getting requirements to build wheel</span><br></pre></td></tr></table></figure>
+<h4 id="actual-installation">2.1.2.2 Actual Installation</h4>
+<p>I run those commands to avoid:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install d2l --no-deps</span><br><span class="line">python -m pip install jupyter numpy matplotlib scipy pandas</span><br></pre></td></tr></table></figure>
+<p>there are some warnings that can be ignored:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Installing collected packages: webencodings, pure-eval, fastjsonschema, widgetsnbextension, websocket-client, webcolors, wcwidth, urllib3, uri-template, tzdata, traitlets, tornado, tinycss2, soupsieve, six, send2trash, rpds-py, rfc3986-validator, pyzmq, pyyaml, pywinpty, python-json-logger, pyparsing, pygments, pycparser, psutil, prometheus-client, platformdirs, parso, pandocfilters, nest-asyncio2, mistune, lark, kiwisolver, jupyterlab_widgets, jupyterlab-pygments, jsonpointer, json5, idna, h11, fqdn, fonttools, executing, defusedxml, decorator, debugpy, cycler, contourpy, <span class="built_in">comm</span>, colorama, charset_normalizer, certifi, bleach, babel, attrs, async-lru, asttokens, terminado, stack_data, rfc3987-syntax, rfc3339-validator, requests, referencing, python-dateutil, prompt_toolkit, matplotlib-inline, jupyter-core, jedi, ipython-pygments-lexers, httpcore, cffi, beautifulsoup4, anyio, pandas, matplotlib, jupyter-server-terminals, jupyter-client, jupyter-builder, jsonschema-specifications, ipython, httpx, arrow, argon2-cffi-bindings, jsonschema, isoduration, ipywidgets, ipykernel, argon2-cffi, nbformat, jupyter-console, nbclient, jupyter-events, nbconvert, jupyter-server, notebook-shim, jupyterlab-server, jupyter-lsp, jupyterlab, notebook, jupyter</span><br><span class="line">ERROR: pip<span class="string">&#x27;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires scipy==1.10.1, but you have scipy 1.18.0 which is incompatible.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires jupyter==1.0.0, but you have jupyter 1.1.1 which is incompatible.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires matplotlib==3.7.2, but you have matplotlib 3.11.1 which is incompatible.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires matplotlib-inline==0.1.6, but you have matplotlib-inline 0.2.2 which is incompatible.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires numpy==1.23.5, but you have numpy 2.5.1 which is incompatible.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires pandas==2.0.3, but you have pandas 3.0.5 which is incompatible.</span></span><br><span class="line"><span class="string">d2l 1.0.3 requires requests==2.31.0, but you have requests 2.34.2 which is incompatible.</span></span><br></pre></td></tr></table></figure>
+<h3 id="open-the-notebook">2.1.3 Open the Notebook</h3>
+<ol type="1">
+<li><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> d2l-en &amp;&amp; <span class="built_in">cd</span> d2l-en</span><br><span class="line">curl https://d2l.ai/d2l-en-1.0.3.zip -o d2l-en.zip</span><br><span class="line">unzip d2l-en.zip &amp;&amp; <span class="built_in">rm</span> d2l-en.zip</span><br></pre></td></tr></table></figure></li>
+<li><p>Each time you should activate the env and run :</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda activate d2l</span><br><span class="line"><span class="built_in">cd</span> pytorch</span><br><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure></li>
+<li><p>Then, a progress will start on your port: <a
+target="_blank" rel="noopener" href="http://localhost:8888/">http://localhost:8888</a> You can an run
+the code for each section of the book.</p></li>
+<li><p>Whenever you open a new command line window, you will need to
+execute <code>conda activate d2l</code> to activate the runtime
+environment before running the D2L notebooks, or updating your packages
+(either the deep learning framework or the <code>d2l</code> package). To
+exit the environment, run <code>conda deactivate</code>.</p></li>
+</ol>
+<h3 id="notational-conventions">2.1.4 Notational Conventions</h3>
+<p><strong>Numerical Objects</strong></p>
+<ul>
+<li><span class="math inline"><em>x</em></span>: a scalar</li>
+<li><span class="math inline"><strong>x</strong></span>: a vector</li>
+<li><span class="math inline"><strong>X</strong></span>: a matrix</li>
+<li><span class="math inline">X</span>: a general tensor</li>
+<li><span class="math inline"><strong>I</strong></span>: the identity
+matrix (of some given dimension), i.e., a square matrix with 1 on all
+diagonal entries and 0 on all off-diagonals</li>
+<li><span
+class="math inline"><em>x</em><sub><em>i</em></sub>, [<strong>x</strong>]<sub><em>i</em></sub></span>:
+the <span class="math inline"><em>i</em><sup>th</sup></span> element of
+vector <span class="math inline"><strong>x</strong></span></li>
+<li><span
+class="math inline"><em>x</em><sub><em>i</em><em>j</em></sub>, <em>x</em><sub><em>i</em>, <em>j</em></sub>, [<strong>X</strong>]<sub><em>i</em><em>j</em></sub>, [<strong>X</strong>]<sub><em>i</em>, <em>j</em></sub></span>:
+the element of matrix <span
+class="math inline"><strong>X</strong></span> at row <span
+class="math inline"><em>i</em></span> and column <span
+class="math inline"><em>j</em></span>.</li>
+</ul>
+<p><strong>Set Theory</strong></p>
+<ul>
+<li><span class="math inline">𝒳</span>: a set</li>
+<li><span class="math inline">ℤ</span>: the set of integers</li>
+<li><span class="math inline">ℤ<sup>+</sup></span>: the set of positive
+integers</li>
+<li><span class="math inline">ℝ</span>: the set of real numbers</li>
+<li><span class="math inline">ℝ<sup><em>n</em></sup></span>: the set of
+<span class="math inline"><em>n</em></span>-dimensional vectors of real
+numbers</li>
+<li><span
+class="math inline">ℝ<sup><em>a</em> × <em>b</em></sup></span>: The set
+of matrices of real numbers with <span
+class="math inline"><em>a</em></span> rows and <span
+class="math inline"><em>b</em></span> columns</li>
+<li><span class="math inline">|𝒳|</span>: cardinality (number of
+elements) of set <span class="math inline">𝒳</span></li>
+<li><span class="math inline">𝒜 ∪ ℬ</span>: union of sets <span
+class="math inline">𝒜</span> and <span class="math inline">ℬ</span></li>
+<li><span class="math inline">𝒜 ∩ ℬ</span>: intersection of sets <span
+class="math inline">𝒜</span> and <span class="math inline">ℬ</span></li>
+<li><span class="math inline">𝒜 \ ℬ</span>: set subtraction of <span
+class="math inline">ℬ</span> from <span class="math inline">𝒜</span>
+(contains only those elements of <span class="math inline">𝒜</span> that
+do not belong to <span class="math inline">ℬ</span>)</li>
+</ul>
+<p><strong>Functions and Operators</strong> - <span
+class="math inline"><em>f</em>(⋅)</span>: a function - <span
+class="math inline">log (⋅)</span>: the natural logarithm (base <span
+class="math inline"><em>e</em></span>) - <span
+class="math inline">log<sub>2</sub>(⋅)</span>: logarithm to base 2 -
+<span class="math inline">exp (⋅)</span>: the exponential function -
+<span class="math inline"><strong>1</strong>(⋅)</span>: the indicator
+function; evaluates to 1 if the boolean argument is true, and 0
+otherwise - <span
+class="math inline"><strong>1</strong><sub>𝒳</sub>(<em>z</em>)</span>:
+the set-membership indicator function; evaluates to 1 if the element
+<span class="math inline"><em>z</em></span> belongs to the set <span
+class="math inline">𝒳</span> and 0 otherwise - <span
+class="math inline">(⋅)<sup>⊤</sup></span>: transpose of a vector or a
+matrix - <span
+class="math inline"><strong>X</strong><sup>−1</sup></span>: inverse of
+matrix <span class="math inline"><strong>X</strong></span> - <span
+class="math inline">⊙</span>: Hadamard (elementwise) product - <span
+class="math inline">[⋅, ⋅]</span>: concatenation - <span
+class="math inline">∥ ⋅ ∥<sub><em>p</em></sub></span>: <span
+class="math inline"><em>ℓ</em><sub><em>p</em></sub></span> norm - <span
+class="math inline">∥⋅∥</span>: <span
+class="math inline"><em>ℓ</em><sub>2</sub></span> norm - <span
+class="math inline">⟨<strong>x</strong>, <strong>y</strong>⟩</span>:
+inner (dot) product of vectors <span
+class="math inline"><strong>x</strong></span> and <span
+class="math inline"><strong>y</strong></span> - <span
+class="math inline">∑</span>: summation over a collection of elements -
+<span class="math inline">∏</span>: product over a collection of
+elements - <span class="math inline">$\stackrel{\text{def}}{=}$</span>:
+an equality asserted as a definition of the symbol on the left-hand
+side</p>
+<p><strong>Calculus</strong> - <span
+class="math inline">$\frac{dy}{dx}$</span>: derivative of <span
+class="math inline"><em>y</em></span> with respect to <span
+class="math inline"><em>x</em></span> - <span
+class="math inline">$\frac{\partial y}{\partial x}$</span>: partial
+derivative of <span class="math inline"><em>y</em></span> with respect
+to <span class="math inline"><em>x</em></span> - <span
+class="math inline">∇<sub><strong>x</strong></sub><em>y</em></span>:
+gradient of <span class="math inline"><em>y</em></span> with respect to
+<span class="math inline"><strong>x</strong></span> - <span
+class="math inline">∫<sub><em>a</em></sub><sup><em>b</em></sup><em>f</em>(<em>x</em>) <em>d</em><em>x</em></span>:
+definite integral of <span class="math inline"><em>f</em></span> from
+<span class="math inline"><em>a</em></span> to <span
+class="math inline"><em>b</em></span> with respect to <span
+class="math inline"><em>x</em></span> - <span
+class="math inline">∫<em>f</em>(<em>x</em>) <em>d</em><em>x</em></span>:
+indefinite integral of <span class="math inline"><em>f</em></span> with
+respect to <span class="math inline"><em>x</em></span></p>
+<p><strong>Probability and Information Theory</strong> - <span
+class="math inline"><em>X</em></span>: a random variable - <span
+class="math inline"><em>P</em></span>: a probability distribution -
+<span class="math inline"><em>X</em> ∼ <em>P</em></span>: the random
+variable <span class="math inline"><em>X</em></span> follows
+distribution <span class="math inline"><em>P</em></span> - <span
+class="math inline"><em>P</em>(<em>X</em> = <em>x</em>)</span>: the
+probability assigned to the event where random variable <span
+class="math inline"><em>X</em></span> takes value <span
+class="math inline"><em>x</em></span> - <span
+class="math inline"><em>P</em>(<em>X</em> ∣ <em>Y</em>)</span>: the
+conditional probability distribution of <span
+class="math inline"><em>X</em></span> given <span
+class="math inline"><em>Y</em></span> - <span
+class="math inline"><em>p</em>(⋅)</span>: a probability density function
+(PDF) associated with distribution <span
+class="math inline"><em>P</em></span> - <span
+class="math inline"><em>E</em>[<em>X</em>]</span>: expectation of a
+random variable <span class="math inline"><em>X</em></span> - <span
+class="math inline"><em>X</em> ⟂ <em>Y</em></span>: random variables
+<span class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span> are independent - <span
+class="math inline"><em>X</em> ⟂ <em>Y</em> ∣ <em>Z</em></span>: random
+variables <span class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span> are conditionally independent
+given <span class="math inline"><em>Z</em></span> - <span
+class="math inline"><em>σ</em><sub><em>X</em></sub></span>: standard
+deviation of random variable <span class="math inline"><em>X</em></span>
+- <span class="math inline">Var(<em>X</em>)</span>: variance of random
+variable <span class="math inline"><em>X</em></span>, equal to <span
+class="math inline"><em>σ</em><sub><em>X</em></sub><sup>2</sup></span> -
+<span class="math inline">Cov(<em>X</em>, <em>Y</em>)</span>: covariance
+of random variables <span class="math inline"><em>X</em></span> and
+<span class="math inline"><em>Y</em></span> - <span
+class="math inline"><em>ρ</em>(<em>X</em>, <em>Y</em>)</span>: the
+Pearson correlation coefficient between <span
+class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span>, equals <span
+class="math inline">$\frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}$</span> -
+<span class="math inline"><em>H</em>(<em>X</em>)</span>: entropy of
+random variable <span class="math inline"><em>X</em></span> - <span
+class="math inline"><em>D</em><sub>KL</sub>(<em>P</em>∥<em>Q</em>)</span>:
+the KL-divergence (or relative entropy) from distribution <span
+class="math inline"><em>Q</em></span> to distribution <span
+class="math inline"><em>P</em></span></p>
+<h2 id="preliminaries">2.2 Preliminaries</h2>
+<p>To prepare for your dive into deep learning, we will need a few
+survival skills:</p>
+<ol type="1">
+<li>techniques for <strong>storing</strong> and
+<strong>manipulating</strong> data;</li>
+<li>libraries for <strong>ingesting</strong> and
+<strong>preprocessing</strong> data from a variety of sources;</li>
+<li>knowledge of the basic <strong>linear algebraic</strong> operations
+that we apply to <strong>high-dimensional</strong> data elements;</li>
+<li>just enough <strong>calculus</strong> to determine which
+<strong>direction</strong> to adjust each parameter in order to
+<strong>decrease the loss</strong> function;</li>
+<li>the ability to automatically compute derivatives so that you can
+forget much of the calculus you just learned;</li>
+<li>some basic fluency in <strong>probability</strong>, our primary
+language for <strong>reasoning</strong> under uncertainty.</li>
+<li>some aptitude for finding answers in the official documentation when
+you get stuck.</li>
+</ol>
+<h3 id="data-manipulation">2.2.1 Data Manipulation</h3>
+<p>Generally, there are two important things we need to do with
+data:</p>
+<ol type="1">
+<li>acquire them</li>
+<li>process them once they are inside the computer</li>
+</ol>
+<p>There is <strong>no point</strong> in acquiring data without some way
+to store it, so to start, let’s get our hands dirty with n-dimensional
+arrays, which we also call <strong><em>tensors</em></strong>.</p>
+<p>If you already know the <strong>NumPy</strong> scientific computing
+package, this will be a breeze. For all modern deep learning frameworks,
+the <em><strong>tensor</strong> class</em> (<code>ndarray</code> in
+MXNet, <code>Tensor</code> in <strong>PyTorch</strong> and
+<strong>TensorFlow</strong>) resembles NumPy’s <code>ndarray</code>,
+with a few killer features added.</p>
+<p>First, the tensor class supports automatic
+<strong>differentiation</strong>.</p>
+<p>Second, it leverages GPUs to accelerate numerical computation,
+whereas NumPy only runs on CPUs.</p>
+<p>These properties make neural networks both easy to code and fast to
+run.</p>
+<h4 id="start-with-tensor">2.2.1.1 Start with Tensor</h4>
+<p>A <strong>tensor</strong> represents a (possibly multidimensional)
+array of numerical values.</p>
+<p>In the one-dimensional case, i.e., when only one axis is needed for
+the data, a <strong>tensor</strong> is called a
+<strong><em>vector</em></strong>. With two axes, a tensor is called a
+<strong><em>matrix</em></strong>.</p>
+<p>With <span class="math inline"><em>K</em> &gt; 2</span> axes, we drop
+the specialized names and just refer to the object as a</p>
+<p>$ K^{th}-order$ tensor.</p>
+<p>PyTorch provides a variety of functions for creating new tensors
+prepopulated with values.</p>
+<p>For example, by invoking <code>arange(n)</code>, we can create a
+vector of evenly spaced values, starting at <code>0</code> (included)
+and ending at <code>n</code> (not included). By default, the interval
+size is <code>1</code>.</p>
+<p>Unless otherwise specified, new tensors are stored in main memory and
+designated for CPU-based computation.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">x = torch.arange(<span class="number">12</span>, dtype=torch.float32)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9., 10., 11.])</span><br></pre></td></tr></table></figure>
+<p>Each of these values is called an <em>element</em> of the tensor. The
+tensor <code>x</code> contains 12 elements. We can inspect the total
+number of elements in a tensor via its <code>numel</code> method.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;nums of elements is:&quot;</span>, x.numel())</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums of elements is: 12</span><br></pre></td></tr></table></figure>
+<p>We can access a tensor’s <em>shape</em> (the length along each axis)
+by inspecting its <code>shape</code> attribute. Because we are dealing
+with a vector here, the <code>shape</code> contains just a single
+element and is identical to the size.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;shape of x is:&quot;</span>, x.shape)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shape of x is: torch.Size([12])</span><br></pre></td></tr></table></figure>
+<p>We can change the shape of a tensor without altering its size or
+values, by invoking <code>reshape</code>.</p>
+<p>For example, we can transform our vector <code>x</code> whose shape
+is (12,) to a matrix <code>X</code> with shape (3, 4).</p>
+<p>This new tensor retains all elements but reconfigures them into a
+matrix. Notice that the elements of our vector are laid out one row at a
+time and thus <code>x[3] == X[0, 3]</code> (3rd element in x equals to
+x[row 0, column 3]).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> (<span class="string">&quot;reshape x to 3 rows and 4 columns&quot;</span>)</span><br><span class="line">reshaped_x = x.reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;reshaped x is:&quot;</span>, reshaped_x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x[3] = &quot;</span>, x[<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;reshaped_x[0, 3] = &quot;</span>, reshaped_x[<span class="number">0</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x[3] =  tensor(3.)</span><br><span class="line">reshaped_x[0, 3] =  tensor(3.)</span><br></pre></td></tr></table></figure>
+<h3 id="data-processing">2.2.2 Data Processing</h3>
+<h3 id="linear-algebra">2.2.3 Linear Algebra</h3>
+<h3 id="calculus">2.2.4 Calculus</h3>
+<h3 id="probability-and-statistics">2.2.5 Probability and
+Statistics</h3>
+<h3 id="documentation">2.2.6 Documentation</h3>
+<h1 id="reinforcement-learning">3. Reinforcement Learning</h1>
+<h2 id="preparation-1">3.1 Preparation</h2>
+<p>References Books:</p>
+<ol type="1">
+<li>强化学习的数学原理, 西湖大学 赵世钰</li>
+</ol>
+<p>Courses:</p>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sd4y167NS/?share_source=copy_web&amp;vd_source=f1b82d9a04761767c81efc4c32c482d5">强化学习的数学原理</a></li>
+</ol>
+<h2 id="basic-concepts">3.2 Basic Concepts</h2>
+<h3 id="a-grid-world-example">3.2.1 A Grid World Example</h3>
+<p>Consider an example as shown in Figure, where a robot moves in a grid
+world. The robot, called ==agent==, can move across adjacent cells in
+the grid. At each time step, it can only occupy a single cell. The white
+cells are ==accessible== for entry, and the orange cells are
+==forbidden==.</p>
+<p>There is a ==target== cell that the robot would like to reach. We
+will use such grid world examples throughout this book since they are
+intuitive for illustrating new concepts and algorithms.</p>
+<p><img data-src="/images/article_images/rl_grid_world.png" /></p>
+<p>The ultimate ==goal== of the agent is to find a “good” policy that
+enables it to reach the target cell when starting from any initial
+cell.</p>
+<p>How can the “goodness” of a policy be defined?</p>
+<ul>
+<li>The idea is that the agent should reach the target without entering
+any forbidden cells, taking unnecessary detours, or colliding with the
+boundary of the grid.</li>
+</ul>
+<p>It would be ==trivial== to plan a path to reach the target cell if
+the agent knew the map of the grid world.</p>
+<p>The task becomes ==nontrivial== if the agent does not know any
+information about the environment in advance.</p>
+<p>Then, the agent must interact with the environment to find a good
+policy by trial and error. To do that, the concepts presented in the
+rest of the chapter are necessary.</p>
+<h3 id="state-action">3.2.2 State &amp; Action</h3>
+<p>State describes the ==Agent’s Status== with respect to the
+environment.</p>
+<p>In the grid world example, the state corresponds to the agent’s
+location. Since there are nine cells, there are nine states as well.</p>
+<p>They are indexed as <span
+class="math inline"><em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub>9</sub></span></p>
+<p>The set of all the states is called the ==State Space==, denoted
+as:</p>
+<p><span
+class="math inline">𝒮 = {<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub>9</sub>}</span></p>
+<p><img data-src="/images/article_images/rl_state_&amp;_action_state.png" /></p>
+<p>For each state, the agent can take five possible ==Actions==:</p>
+<ol type="1">
+<li>moving upward</li>
+<li>moving rightward</li>
+<li>moving downward</li>
+<li>moving leftward</li>
+<li>staying still</li>
+</ol>
+<p>These five actions are denoted as <span
+class="math inline"><em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a</em><sub>5</sub></span></p>
+<p>The set of all actions is called the ==Action Space==, denoted
+as:</p>
+<p><span
+class="math inline">𝒜 = {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a</em><sub>5</sub>}</span></p>
+<p>Different states can have different action spaces.</p>
+<p><img data-src="/images/article_images/rl_state_&amp;_action_action.png" /></p>
+<p>For instance, considering that taking <span
+class="math inline"><em>a</em><sub>1</sub></span> or <span
+class="math inline"><em>a</em><sub>4</sub></span> in state <span
+class="math inline"><em>s</em><sub>1</sub></span> would lead to a
+collision with the boundary, we can set the action space for state <span
+class="math inline"><em>s</em><sub>1</sub></span> as:</p>
+<p><span
+class="math inline">𝒜<sub>(<em>s</em><sub>1</sub>)</sub> = {<em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>, <em>a</em><sub>5</sub>}</span></p>
+<p>It is considered as the most general case for all <span
+class="math inline"><em>i</em></span> :</p>
+<p><span
+class="math inline">𝒜<sub>(<em>s</em><sub><em>i</em></sub>)</sub> = {<em>a</em><sub>1</sub>, ...<em>a</em><sub>5</sub>}</span></p>
+<h3 id="state-transition">3.2.3 State Transition</h3>
+<p>When taking an action, the agent may move from one state to
+another.</p>
+<p>Such a process is called ==State Transition==.</p>
+<p>For example, if the agent is in state <span
+class="math inline"><em>s</em><sub>1</sub></span> and selects action
+<span class="math inline"><em>a</em><sub>2</sub></span> (that is, moving
+rightward), then the agent moves to state <span
+class="math inline"><em>s</em><sub>2</sub></span>. Such a process can be
+expressed as:</p>
+<p><span class="math inline">$s_1 \overset{a_2}\rightarrow
+s_2$</span></p>
+<p>2 important examples:</p>
+<ol type="1">
+<li><p>What’s the next ==state== when when the agent attempts to go
+beyond the boundary, for example, taking action <span
+class="math inline"><em>a</em><sub>1</sub></span> in state <span
+class="math inline"><em>s</em><sub>1</sub></span>?</p>
+<p>The answer is that the agent will be bounced back because it is
+impossible for the agent to exit the state space. Hence, we have:</p>
+<p><span class="math inline">$s_1 \overset{a_1}\rightarrow
+s_1$</span></p></li>
+<li><p>What is the next state when the agent attempts to enter a
+==forbidden cell==, for example, taking action <span
+class="math inline"><em>a</em><sub>2</sub></span> in state <span
+class="math inline"><em>s</em><sub>5</sub></span>?</p>
+<p>Two different scenarios may be encountered.</p>
+<ul>
+<li><p>Scenario 1: Although <span
+class="math inline"><em>s</em><sub>6</sub></span> is forbidden, it is
+still accessible.</p>
+<p>In this case, the next state is <span
+class="math inline"><em>s</em><sub>6</sub></span>; hence, the state
+transition process is:</p>
+<p><span class="math inline">$s_5 \overset{a_2}\rightarrow
+s_6$</span></p></li>
+<li><p>Scenario 2: <span
+class="math inline"><em>s</em><sub>6</sub></span> is ==not accessible==
+because, for example, it is surrounded by walls.</p>
+<p>In this case, the agent is bounced back to <span
+class="math inline"><em>s</em><sub>5</sub></span> if it attempts to move
+rightward; hence, the state transition process is:</p>
+<p><span class="math inline">$s_5 \overset{a_2}\rightarrow
+s_5$</span></p></li>
+</ul>
+<p>Which scenario should we consider? The answer depends on the physical
+environment. In this book, we consider the ==first scenario== where the
+forbidden cells ==are accessible==, although stepping into them may get
+==punished==.</p></li>
+</ol>
+<p>The state transition process is defined for each state and its
+associated actions. This process can be described by a table as shown in
+Table 1.1.</p>
+<p>In this table, each row corresponds to a state, and each column
+corresponds to an action. Each cell indicates the next state to
+transition to after the agent takes an action at the corresponding
+state.</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><span
+class="math inline"><em>a</em><sub>1</sub>(<em>u</em><em>p</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>2</sub>(<em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>3</sub>(<em>d</em><em>o</em><em>w</em><em>n</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>4</sub>(<em>l</em><em>e</em><em>f</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</em><em>l</em>)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+</tr>
+</tbody>
+</table>
+<p>Mathematically, the state transition process can be described by
+==conditional probabilities==.</p>
+<p>For example, for <span
+class="math inline"><em>s</em><sub>1</sub></span> and <span
+class="math inline"><em>a</em><sub>2</sub></span>, the conditional
+probability distribution is:</p>
+<p><span class="math display">$$
+p(s_1\mid s_1, a_2) = 0 \\
+p(s_2\mid s_1, a_2) = 1 \\
+p(s_3\mid s_1, a_2) = 0 \\
+p(s_4\mid s_1, a_2) = 0 \\
+p(s_5\mid s_1, a_2) = 0 \\
+$$</span></p>
+<p>The tabular representation is only able to describe ==deterministic==
+state transitions.</p>
+<p>In general, state transitions can be ==stochastic== and must be
+described by conditional probability distributions.</p>
+<p>For instance, when random wind gusts are applied across the grid, if
+taking action <span class="math inline"><em>a</em><sub>2</sub></span> at
+<span class="math inline"><em>s</em><sub>1</sub></span>, the agent may
+be blown to <span class="math inline"><em>s</em><sub>5</sub></span>
+instead of <span class="math inline"><em>s</em><sub>2</sub></span>.</p>
+<p>We have <span
+class="math inline"><em>p</em>(<em>s</em><sub>5</sub> ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>2</sub>) &gt; 0</span>
+in this case.</p>
+<p>Nevertheless, we merely consider ==deterministic state== transitions
+in the grid world examples for simplicity in this book.</p>
+<h3 id="policy">3.2.4 Policy</h3>
+<p>A ==policy== tells the agent which actions to take at every
+state.</p>
+<p>Intuitively, policies can be depicted as arrows. Following a policy,
+the agent can generate a trajectory starting from an initial state.</p>
+<p><img data-src="E:\myBlog\source\images\article_images\rl_deterministic_policy.png" style="zoom:50%;" /></p>
+<p><img data-src="/images/article_images/rl_traj_from_policy.png" /></p>
+<p>Mathematically, policies can be described by conditional
+probabilities.</p>
+<p>Denote the policy as <span
+class="math inline"><em>π</em>(<em>a</em> ∣ <em>s</em>)</span>, which is
+a conditional probability distribution function defined for every
+state.</p>
+<p>For example, the policy for <span
+class="math inline"><em>s</em><sub>1</sub></span> is:</p>
+<p><span class="math display">$$
+\pi (a_1\mid s_1)= 0 \\
+\pi (a_2\mid s_1)= 1 \\
+\pi (a_3\mid s_1)= 0 \\
+\pi (a_4\mid s_1)= 0 \\
+\pi (a_5\mid s_1)= 0 \\
+$$</span></p>
+<p>The above policy is ==deterministic==. Policies may be ==stochastic==
+in general.</p>
+<p>For example, the policy shown is stochastic: in state <span
+class="math inline"><em>s</em><sub>1</sub></span>, the agent may take
+actions to go either rightward or downward. The probabilities of taking
+these two actions are the same (both are 0.5).</p>
+<p><img data-src="/images/article_images/rl_stochastic_policy.png" /></p>
+<p>In this case, the policy for <span
+class="math inline"><em>s</em><sub>1</sub></span> is:</p>
+<p><span class="math display">$$
+\begin{aligned}
+&amp;\pi (a_1\mid s_1)= 0 \\
+&amp;\pi (a_2\mid s_1)= 0.5 \\
+&amp;\pi (a_3\mid s_1)= 0.5 \\
+&amp;\pi (a_4\mid s_1)= 0 \\
+&amp;\pi (a_5\mid s_1)= 0
+\end{aligned}
+$$</span></p>
+<p>Policies represented by conditional probabilities can be stored as
+tables.</p>
+<p>Table represents the stochastic policy depicted in the figure
+above.</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><span
+class="math inline"><em>a</em><sub>1</sub>(<em>u</em><em>p</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>2</sub>(<em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>3</sub>(<em>d</em><em>o</em><em>w</em><em>n</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>4</sub>(<em>l</em><em>e</em><em>f</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</em><em>l</em>)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td>0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reward">3.2.5 Reward</h3>
+<p>==Reward== is one of the most unique concepts in reinforcement
+learning.</p>
+<p>After executing an action at a state, the agent obtains a ==reward==,
+denoted as <span class="math inline"><em>r</em></span>, as ==feedback==
+from the environment.</p>
+<p>The reward is a function of the ==state== <span
+class="math inline"><em>s</em></span> and ==action== <span
+class="math inline"><em>a</em></span>.</p>
+<p>Hence, it is also denoted as <span
+class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>.</p>
+<p>Its value can be a ==positive== or ==negative== real number or
+==zero==.</p>
+<p>Generally speaking, with a ==positive== reward, we ==encourage== the
+agent to take the corresponding action. With a ==negative== reward, we
+==discourage== the agent from taking that action.</p>
+<p>In the grid world example, the rewards are designed as follows:</p>
+<ul>
+<li>If the agent attempts to exit the boundary, <span
+class="math inline"><em>r</em><sub>boundary</sub> = −1</span></li>
+<li>If the agent attempts to enter a forbidden cell, <span
+class="math inline"><em>r</em><sub>forbidden</sub> = −1</span></li>
+<li>If the agent reaches the target state, <span
+class="math inline"><em>r</em><sub>target</sub> = 1</span></li>
+<li>Otherwise, the agent obtains a reward of <span
+class="math inline"><em>r</em><sub>other</sub> = 0</span></li>
+</ul>
+<p>Special attention should be given to the target state <span
+class="math inline"><em>s</em><sub>9</sub></span>.</p>
+<p>The reward process does not have to terminate after the agent reaches
+s9.</p>
+<ul>
+<li>If the agent takes action <span
+class="math inline"><em>a</em><sub>5</sub></span> at <span
+class="math inline"><em>s</em><sub>9</sub></span>, the next state is
+again <span class="math inline"><em>s</em><sub>9</sub></span>, and the
+reward is <span
+class="math inline"><em>r</em><sub>target</sub> = +1</span> .</li>
+<li>If the agent takes action <span
+class="math inline"><em>a</em><sub>2</sub></span>, the next state is
+also <span class="math inline"><em>s</em><sub>9</sub></span>, but the
+reward is <span
+class="math inline"><em>r</em><sub>boundary</sub> = −1</span>.</li>
+</ul>
+<p>A reward can be interpreted as a ==human-machine interface==, with
+which we can guide the agent to behave as we expect.</p>
+<p>For example, with the rewards designed above, we can expect that the
+agent tends to avoid exiting the boundary or stepping into the forbidden
+cells.</p>
+<p>Designing ==appropriate rewards== is an important step in
+reinforcement learning.</p>
+<p>The process of getting a reward after executing an action can be
+intuitively represented as a table, as shown in Table below. Each row of
+the table corresponds to a state, and each column corresponds to an
+action. The value in each cell of the table indicates the reward that
+can be obtained by taking an action at a state.</p>
+<p>One question that beginners may ask is as follows:</p>
+<ul>
+<li>If given the table of rewards, can we find good policies by simply
+selecting the actions with the greatest rewards?</li>
+<li>The answer is ==no==.</li>
+</ul>
+<p>That is because these rewards are ==immediate== rewards that can be
+obtained after taking an action. To determine a good policy, we must
+consider the ==total reward== obtained in the long run.</p>
+<p>An action with the greatest ==immediate reward== may not lead to the
+greatest ==total reward==.</p>
+<p><span class="math inline">Local Optimum ≠ Global Optimum</span></p>
+<p>Although intuitive, the ==tabular representation== is only able to
+describe ==deterministic== reward processes. A more general approach is
+to use conditional probabilities <span
+class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>
+to describe reward processes. For example, for state <span
+class="math inline"><em>s</em><sub>1</sub></span>, we have:</p>
+<p><span
+class="math inline"><em>p</em>(<em>r</em> = −1 ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>1</sub>) = 1</span></p>
+<p><span
+class="math inline"><em>p</em>(<em>r</em> ≠ −1 ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>1</sub>) = 0</span></p>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><span
+class="math inline"><em>a</em><sub>1</sub>(<em>u</em><em>p</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>2</sub>(<em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>3</sub>(<em>d</em><em>o</em><em>w</em><em>n</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>4</sub>(<em>l</em><em>e</em><em>f</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
+<th><span
+class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</em><em>l</em>)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>target</sub></span></td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td>0</td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>target</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td>0</td>
+<td><span class="math inline"><em>r</em><sub>target</sub></span></td>
+</tr>
+</tbody>
+</table>
+<p>In this example, the reward process is ==deterministic==. In general,
+it can be ==stochastic==. For example, if a student studies hard, he or
+she would receive a positive reward (e.g., higher grades on exams), but
+the specific value of the reward may be uncertain.</p>
+<h3 id="trajectories-returns-and-episodes">3.2.6 Trajectories, Returns
+and Episodes</h3>
+<p>A trajectory is a ==state-action-reward== chain.</p>
+<p>Trajectories obtained by following two policies. The trajectories are
+indicated by red dashed lines.</p>
+<p><img data-src="/images/article_images/rl_two_trajectories.png" /></p>
+<p>For example, given the policy shown in Figure (a), the agent can move
+along a trajectory as follows:</p>
+<p><span class="math inline">$s_1 \xrightarrow[r_0]{a_1} s_2
+\xrightarrow[r_0]{a_3} s_5 \xrightarrow[r_0]{a_3} s_8
+\xrightarrow[r_{target}]{a_2} s_9$</span></p>
+<p>==Return==:</p>
+<p>Returns are also called <strong>total rewards</strong> or cumulative
+rewards.</p>
+<p>Ther return of the trajectory above is:</p>
+<p><span class="math inline">return = 0 + 0 + 0 + 1 = 1</span></p>
+<p>Returns can be used to ==evaluate== policies.</p>
+<p>For example, we can evaluate the two policies in Figure by comparing
+their returns.</p>
+<ul>
+<li><p>Left policy: 1</p></li>
+<li><p>Right policy:</p>
+<p><span class="math inline">$s_1 \xrightarrow[r_0]{a_3} s_4
+\xrightarrow[{r=-1}]{a_3} s_7 \xrightarrow[r_0]{a_2} s_8
+\xrightarrow[r_{target}]{a_2} s_9$</span></p>
+<p>$ = 0 - 1 + 0 +1 = 0 $</p></li>
+</ul>
+<p>The returns in (1.1) and (1.2) indicate that the left policy is
+better than the right one since its return is greater.</p>
+<p>A return consists of an ==immediate reward== and future rewards.
+Here, the immediate reward is the reward obtained after taking an action
+at the initial state; the future rewards refer to the rewards obtained
+after leaving the initial state.</p>
+<p>It is possible that the immediate reward is negative while the future
+reward is positive. Thus, which actions to take should be determined by
+the ==return== (i.e., the total reward) rather than the immediate reward
+to avoid short-sighted decisions.</p>
+<p>Return can also be defined for ==infinitely long trajectories==.</p>
+<p>For example, the trajectory in Figure stops after reaching <span
+class="math inline"><em>s</em><sub>9</sub></span>. Since the policy is
+well defined for <span
+class="math inline"><em>s</em><sub>9</sub></span>, the process does not
+have to stop after the agent reaches <span
+class="math inline"><em>s</em><sub>9</sub></span>.</p>
+<p>We can design a policy so that the agent stays still after reaching
+<span class="math inline"><em>s</em><sub>9</sub></span>. Then, the
+policy would generate the following infinitely long trajectory:</p>
+<p><span class="math inline">$s_1 \xrightarrow[r_0]{a_1} s_2
+\xrightarrow[r_0]{a_3} s_5 \xrightarrow[r_0]{a_3} s_8
+\xrightarrow[r_{target}]{a_2} s_9 \xrightarrow[{r=1}]{a_5}s_9
+\xrightarrow[{r=1}]{a_5}s_9...$</span></p>
+<p>The direct sum of the rewards along this trajectory is:</p>
+<p><span class="math inline">$return = 0 +
+0+0+1+1+1...=\infin$</span></p>
+<p>Therefore, we must introduce the ==discounted return== concept for
+infinitely long trajectories. In particular, the discounted return is
+the sum of the discounted rewards:</p>
+<p>==Discount Rate==, <span class="math inline"><em>γ</em></span>:</p>
+<p><span class="math inline"><em>γ</em> ∈ (0, 1)</span></p>
+<p>==Discounted Return==:</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{Return} =&amp; \ 0 + 0 + 0 + 1 + 1 + 1 +... \\
+\text{Discounted Return} =&amp; \gamma^0\cdot0 + \gamma^1\cdot0 +
+\gamma^2\cdot0 + \gamma^3\cdot1+\gamma^4\cdot1 + \gamma^5\cdot1+...\\
+=&amp; \gamma^3(1+\gamma+\gamma^2+...)\\
+=&amp; \gamma^3\frac{1}{1-\gamma}
+\end{aligned}
+$$</span> By introduce ==Dicounted Rate==, we make the return become
+==finite==.</p>
+<p>And we can ==balance== the far rewards and near rewards:</p>
+<p><span class="math inline">Discounted
+Return = <em>γ</em><sup>0</sup> ⋅ 0 + <em>γ</em><sup>1</sup> ⋅ 0 + <em>γ</em><sup>2</sup> ⋅ 0 + <em>γ</em><sup>3</sup> ⋅ 1 + <em>γ</em><sup>4</sup> ⋅ 1 + <em>γ</em><sup>5</sup> ⋅ 1 + ...</span></p>
+<ol type="1">
+<li><span class="math inline"><em>γ</em></span> is close to <span
+class="math inline">0</span>: the high-order terms like(<span
+class="math inline"><em>γ</em><sup>5</sup>, <em>γ</em><sup>6</sup>...</span>)
+will converge rapidly.</li>
+<li><span class="math inline"><em>γ</em></span> is close to <span
+class="math inline">1</span>: the high-order terms like(<span
+class="math inline"><em>γ</em><sup>5</sup>, <em>γ</em><sup>6</sup>...</span>)
+will accumulate more, and the weights will increase.</li>
+</ol>
+<p>In a nutshell:</p>
+<p>By control the <span class="math inline"><em>γ</em></span>, we can
+determine the agent is more short-sight or long-sight</p>
+<p>Now let’s talk about Episodes:</p>
+<p>When interacting with the environment by following a policy, the
+agent may stop at some terminal states. The resulting trajectory is
+called an ==episode== (or a ==trial== ).</p>
+<p>If the environment or policy is ==stochastic==, we obtain
+<strong>different</strong> episodes when starting from the same
+state.</p>
+<p>However, if everything is ==deterministic==, we always obtain the
+same episode when starting from the same state.</p>
+<p>An episode is usually assumed to be a finite trajectory. Tasks with
+episodes are called ==episodic tasks==. However, some tasks may have
+<strong>no</strong> terminal states, meaning that the process of
+interacting with the environment will <strong>never</strong> end. uch
+tasks are called ==continuing tasks==.</p>
+<p>In fact, we can treat episodic and continuing tasks in a unified
+mathematical manner by converting episodic tasks to continuing ones.
+Specifically, after reaching the terminal state in an episodic task, the
+agent can continue taking actions in the following two ways.</p>
+<ol type="1">
+<li><p>If we treat the terminal state as a special state, we can
+specifically design its action space or state transition so that the
+agent stays in this state forever. Such states are called ==absorbing
+states==, meaning that the agent never leaves a state once reached.</p>
+<p>For example, for the target state <span
+class="math inline"><em>s</em><sub>9</sub></span>, we can specify <span
+class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>5</sub>}</span>
+or set <span
+class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>1</sub>, ..., <em>a</em><sub>5</sub>}
+with
+<em>p</em>(<em>s</em><sub>9</sub>|<em>s</em><sub>9</sub>, <em>a</em><sub><em>i</em></sub>) = 1
+for all i = 1,...,5</span></p></li>
+<li><p>Second, if we treat the terminal state as a normal state, we can
+simply set its action space to the same as the other states, and the
+agent may leave the state and come back again.</p>
+<p>Since a positive reward of <span
+class="math inline"><em>r</em> = 1</span> can be obtained every time
+<span class="math inline"><em>s</em><sub>9</sub></span> is reached, the
+agent will eventually learn to stay at <span
+class="math inline"><em>s</em><sub>9</sub></span> forever to collect
+more rewards.</p>
+<p>Notably, when an episode is infinitely long and the reward received
+for staying at <span class="math inline"><em>s</em><sub>9</sub></span>
+is positive, a ==discount rate== must be used to calculate the
+==discounted return== to avoid ==divergence==.</p></li>
+</ol>
+<p>In this book, we consider the ==second scenario== where the target
+state is treated as a normal state whose action space is <span
+class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>1</sub>, ..., <em>a</em><sub>5</sub>}</span>.</p>
+<h3 id="markov-decision-processes">3.2.7 Markov Decision Processes</h3>
+<p>==Markov Decision Processes== is a general framework for describing
+==stochastic dynamical systems==. The key ingredients of an MDP are
+listed below:</p>
+<p>==Sets==:</p>
+<ul>
+<li>State Space: the set of all states, denoted as <span
+class="math inline">𝒮</span>.</li>
+<li>Action Space: a set of actions, denoted as <span
+class="math inline">𝒜(<em>s</em>)</span>, associated with each state
+<span class="math inline"><em>s</em> ∈ <em>S</em></span>.</li>
+<li>Reward Set: a set of rewards, denoted as <span
+class="math inline">ℛ(<em>s</em>, <em>a</em>)</span>, associated with
+each state-action pair <span
+class="math inline">(<em>s</em>, <em>a</em>)</span></li>
+</ul>
+<p>==Model==:</p>
+<ul>
+<li>State transition probability: In state s, when taking action a, the
+probability of transitioning to state <span
+class="math inline"><em>s</em><sup>′</sup></span> is <span
+class="math inline"><em>p</em>(<em>s</em> ∣ <em>s</em>, <em>a</em>)</span>.
+It holds that <span
+class="math inline">∑<sub><em>s</em><sup>′</sup> ∈ 𝒮</sub><em>p</em>(<em>s</em><sup>′</sup> ∣ <em>s</em>, <em>a</em>) = 1</span>
+for any <span class="math inline">(<em>s</em>, <em>a</em>)</span>.</li>
+<li>Reward probability: In state s, when taking action a, the
+probability of obtaining reward <span
+class="math inline"><em>r</em></span> is <span
+class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>.
+It holds that <span
+class="math inline">∑<sub><em>r</em> ∈ ℛ</sub><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>) = 1</span>
+for any <span class="math inline">(<em>s</em>, <em>a</em>)</span>.</li>
+</ul>
+<p>==Markov Property==: The Markov Property refers to the ==memoryless==
+property of a stochastic process. Mathematically, it means that:</p>
+<p><span class="math display">$$
+p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(s_{t+1}|s_t,a_t)\\
+p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(r_{t+1}|s_t,a_t)
+$$</span></p>
+<p>Where <span class="math inline"><em>t</em></span> represents the
+current time step and <span class="math inline"><em>t</em> + 1</span>
+represents the next time step. The next state or reward depends
+==merely== on the current state and action and is independent of the
+previous ones.</p>
+<p>The Markov property is important for deriving the fundamental
+==Bellman equation of MDPs==.</p>
+<p>Here, <span
+class="math inline"><em>p</em>(<em>s</em>′ ∣ <em>s</em>, <em>a</em>)</span>
+and <span
+class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>
+for all <span class="math inline">(<em>s</em>, <em>a</em>)</span> are
+called the ==model== or ==dynamics==</p>
+<p>The model can be either ==stationary== or ==nonstationary== (or in
+other words, time-invariant or time-variant).</p>
+<p>A stationary model does not change over time; a nonstationary model
+may vary over time. For instance, in the grid world example, if a
+forbidden area may pop up or disappear sometimes, the model is
+nonstationary. In this book, we only consider ==stationary models==.</p>
+<p>One may have heard about the ==Markov Processes== (MPs). What is the
+difference between an ==MDP== and an ==MP==?</p>
+<p>The answer is that, once the ==policy== in an ==MDP== is fixed, the
+MDP degenerates into an MP.</p>
+<p>The ==agent== is a ==decision-maker== that can sense its state,
+maintain policies, and execute actions. Everything outside of the agent
+is regarded as the ==environment==.</p>
+<h3 id="qa">3.2.8 Q&amp;A</h3>
+<p>==Q==: Can we set all the rewards as negative or positive?</p>
+<p>==A==: In fact, it is the ==relative== reward values instead of the
+==absolute== values that determine encouragement or discouragement. More
+specifically, we set:</p>
+<p><span class="math display">$$
+\begin{aligned}
+r_\text{boundary} =&amp; -1 \\
+r_\text{forbidden} =&amp; -1 \\
+r_\text{target} =&amp; +1 \\
+r_\text{other} =&amp; 0
+\end{aligned}
+$$</span></p>
+<p>We can also add a common value to all these values without changing
+the resulting optimal policy. For example, we can add <span
+class="math inline">−2</span> to all the rewards to obtain:</p>
+<p><span class="math display">$$
+\begin{aligned}
+r_\text{boundary} =&amp; -3 \\
+r_\text{forbidden} =&amp; -3 \\
+r_\text{target} =&amp; -1 \\
+r_\text{other} =&amp; -2
+\end{aligned}
+$$</span></p>
+<p>Although the rewards are all negative, the resulting optimal policy
+is unchanged. That is because optimal policies are ==invariant== to
+affine transformations of the rewards.</p>
+<p>==Q==: Is the ==reward== a function of the next state?</p>
+<p>==A==: We mentioned that the reward <span
+class="math inline"><em>r</em></span> depends only on <span
+class="math inline"><em>s</em></span> and a but not the next state <span
+class="math inline"><em>s</em><sup>′</sup></span>. However, this may be
+<strong>counterintuitive</strong> since it is the ==next state== that
+determines the reward in many cases.</p>
+<p>For example, the reward is ==positive== when the next state is the
+==target state==. As a result, a question that naturally follows is
+whether a reward should depend on the next state.</p>
+<p>A mathematical rephrasing of this question is whether we should use
+<span
+class="math inline"><em>p</em>(<em>r</em>|<em>s</em>, <em>a</em>, <em>s</em>′)</span>
+where <span class="math inline"><em>s</em>′</span> is the next state
+rather than <span
+class="math inline"><em>p</em>(<em>r</em>|<em>s</em>, <em>a</em></span>).</p>
+<p>The answer is that <span class="math inline"><em>r</em></span>
+depends on <span class="math inline"><em>s</em></span>, <span
+class="math inline"><em>a</em></span>, and <span
+class="math inline"><em>s</em>′</span>.</p>
+<p>However, since <span class="math inline"><em>s</em>′</span> also
+depends on <span class="math inline"><em>s</em></span> and <span
+class="math inline"><em>a</em></span>, we can equivalently write <span
+class="math inline"><em>r</em></span> as a function of <span
+class="math inline"><em>s</em></span> and <span
+class="math inline"><em>a</em></span>:</p>
+<p><span
+class="math display"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>) = ∑<sub><em>s</em><sup>′</sup></sub><em>p</em>(<em>r</em>|<em>s</em>, <em>a</em>, <em>s</em><sup>′</sup>)<em>p</em>(<em>s</em><sup>′</sup>|<em>s</em>, <em>a</em>)</span></p>
+<p>In a stochastic environment, specified <span
+class="math inline"><em>s</em></span> and <span
+class="math inline"><em>a</em></span> might induce different <span
+class="math inline"><em>s</em><sup>′</sup></span>; The final reward is
+dependent on the previous <span
+class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em></span>
+and <span
+class="math inline"><em>a</em><em>c</em><em>t</em><em>i</em><em>o</em><em>n</em></span>
+by ==Total Probability Theorem==.</p>
+<h2 id="bellman-equaltion">3.3 Bellman Equaltion</h2>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/">https://wangyier.top/notes-on-machine-learning-&-deep-learning-&-reinforcement-learning/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/15/SWE-agent/" rel="prev" title="SWE-agent">
+                  <i class="fa fa-angle-left"></i> SWE-agent
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/in-context-learning/" rel="next" title="In-Context Learning(ICL)">
+                  In-Context Learning(ICL) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
