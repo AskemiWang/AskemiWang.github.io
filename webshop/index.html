@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="About Webshop Benchmark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebShop">
+<meta property="og:url" content="https://wangyier.top/webshop/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="About Webshop Benchmark">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/webshop-state.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/WebShop_actions.png">
+<meta property="article:published_time" content="2026-09-01T05:44:43.000Z">
+<meta property="article:modified_time" content="2026-09-01T05:45:25.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta property="article:tag" content="WebShop">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/webshop-state.png">
+
+
+<link rel="canonical" href="https://wangyier.top/webshop/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/webshop/","path":"/webshop/","title":"WebShop"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WebShop | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#paper-reading"><span class="nav-text">1. Paper Reading</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#task"><span class="nav-text">1.1 Task</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#state-action"><span class="nav-text">1.1.1 State &amp; Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#observation"><span class="nav-text">1.1.2 Observation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instruction-reward"><span class="nav-text">1.1.3 Instruction &amp; Reward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#evaluation-metrics"><span class="nav-text">1.1.4 Evaluation Metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#environment"><span class="nav-text">1.2 Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-scraping"><span class="nav-text">1.2.1 Data Scraping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#search-engine"><span class="nav-text">1.2.2 Search Engine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attribute-mining-and-annotation"><span class="nav-text">1.2.3 Attribute Mining and
+Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-language-instructions"><span class="nav-text">1.2.4 Natural Language
+Instructions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#human-demonstrations"><span class="nav-text">1.2.5 Human Demonstrations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#training"><span class="nav-text">1.3 Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experiments"><span class="nav-text">1.4 Experiments</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#engineering"><span class="nav-text">2. Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#start-webshop"><span class="nav-text">2.1 Start WebShop</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/webshop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WebShop | The Great Library">
+      <meta itemprop="description" content="About Webshop Benchmark">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WebShop
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-09-01 13:44:43 / Modified: 13:45:25" itemprop="dateCreated datePublished" datetime="2026-09-01T13:44:43+08:00">2026-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">About Webshop Benchmark</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="paper-reading">1. Paper Reading</h1>
+<p>What is WebShop?</p>
+<p>WebShop is a large-scale web-based ==interactive environment== with
+over 1.1 million real-world products scraped from amazon.com.</p>
+<h2 id="task">1.1 Task</h2>
+<p>WebShop can be formulated as a partially observable Markov decision
+process.</p>
+<ul>
+<li>State Space: <span class="math inline">𝒮</span></li>
+<li>Action Space: <span class="math inline">𝒜</span></li>
+<li>Deterministic Decision Function: <span
+class="math inline">𝒯 : 𝒮 × 𝒜 → 𝒮</span></li>
+<li>Reward Function: <span
+class="math inline">ℛ : 𝒮 × 𝒜 → [0, 1]</span></li>
+<li>Instruction Space: <span class="math inline">𝒰</span></li>
+<li>State Observation Space: <span class="math inline">𝒪</span></li>
+</ul>
+<p><img data-src="/images/article_images/webshop-state.png" /></p>
+<h3 id="state-action">1.1.1 State &amp; Action</h3>
+<p>A state <span class="math inline">𝓈 ∈ 𝒮</span> represents a web page,
+which falls into one of the four types:</p>
+<ul>
+<li><span class="math inline">𝓈ℯ𝒶𝓇𝒸𝒽</span> page: contains a research
+bar.</li>
+<li><span class="math inline">𝓇ℯ𝓈𝓊𝓁𝓉𝓈</span> page: lists a set of
+products returned by research engine.</li>
+<li><span class="math inline">𝒾𝓉ℯ𝓂</span> page: describes a
+product.</li>
+<li><span class="math inline">𝒾𝓉ℯ𝓂 − 𝒹ℯ𝓉𝒶𝒾𝓁</span> page: shows further
+information about the product.</li>
+</ul>
+<p>For a product <span class="math inline">𝓎</span>, author denotes:</p>
+<ul>
+<li><span class="math inline">𝓎̂</span>: aggregation of the various text
+fields including product title, description, and overview</li>
+<li><span class="math inline">𝓎<sub>𝓅</sub>𝓇𝒾𝒸ℯ</span>: price</li>
+<li><span
+class="math inline"><em>Y</em><sub><em>o</em><em>p</em><em>t</em></sub></span>:
+set of buying options</li>
+<li><span class="math inline"><em>I</em></span>: images, each
+corresponding to a specific option</li>
+<li><span
+class="math inline"><em>Y</em><sub><em>a</em><em>t</em><em>t</em></sub></span>:
+set of attributes hidden from the agent which is extracted from the
+title and the <span
+class="math inline"><em>i</em><em>t</em><em>e</em><em>m</em> − <em>d</em><em>e</em><em>t</em><em>a</em><em>i</em><em>l</em></span>
+pages</li>
+</ul>
+<p>Available actions <span class="math inline">𝒶 ∈ 𝒜(𝓈)</span> :</p>
+<p><img data-src="/images/article_images/WebShop_actions.png" /></p>
+<p>Generally, there are two action types: <code>search</code> and
+<code>choose</code>. When agent is at search page, the only action
+allowed is <code>search</code>. On other pages, click is the only action
+choice.</p>
+<p>The chosen action argument (button) will be clicked as a web link as
+opposed to the low-level mouse-click actions in previous environments
+such as World of Bits.</p>
+<p>The transitions initiated by clicks deterministically redirect the
+web page to one of the four page types (Table 1). The transition
+initiated by search is based on a deterministic search engine.</p>
+<h3 id="observation">1.1.2 Observation</h3>
+<p>Using Flask and OpenAI Gym, author provides two parallel observation
+modes to render the state and instruction <span
+class="math inline">𝒮 × ℐ = 𝒪</span>.</p>
+<ol type="1">
+<li>HTML Mode: contains the HTML of the web page, allowing for
+interaction in a web browser.</li>
+<li>Simple Mode: strips away extraneous meta-data from raw HTML into a
+simpler format.</li>
+</ol>
+<p>Human Performance Scores are collected in HTML mode, while all models
+are trained and trained and evaluated in the simple mode.</p>
+<p>==Note==:</p>
+<p>​ Though environment allows for training reinforcement learning agents
+on raw pixels in HTML mode. Author believes that it provides a very
+low-level non-semantic action space.</p>
+<p>​ Moreover, it is straightforward to write a translator that converts
+any new HTML page into simple format for use with trained agents, which
+enables sim-to-real transfer.</p>
+<h3 id="instruction-reward">1.1.3 Instruction &amp; Reward</h3>
+<p>Each natural language instruction <span
+class="math inline">𝓊 ∈ 𝒰</span> contains the following information: a
+non-empty set of attributes <span
+class="math inline"><em>U</em><sub><em>a</em><em>t</em><em>t</em></sub></span>,
+a set of options <span
+class="math inline"><em>U</em><sub><em>o</em><em>p</em><em>t</em></sub></span>,
+and a price <span
+class="math inline"><em>u</em><sub><em>p</em><em>r</em><em>i</em><em>c</em><em>e</em></sub></span>.
+The instruction is generated based on a target product <span
+class="math inline"><em>ŷ</em></span> by human annotators.</p>
+<p>Concretely,</p>
+<ul>
+<li><span
+class="math inline"><em>U</em><sub><em>a</em><em>t</em><em>t</em></sub> ⊆ <em>Y</em><sub><em>a</em><em>t</em><em>t</em></sub><sup>*</sup></span>
+is a subset of the product attributes</li>
+<li><span
+class="math inline"><em>U</em><sub><em>o</em><em>p</em><em>t</em></sub> ⊆ <em>Y</em><sub><em>o</em><em>p</em><em>t</em></sub><sup>*</sup></span>
+is a subset of the product option field-value pairs</li>
+<li><span
+class="math inline"><em>u</em><sub><em>p</em><em>r</em><em>i</em><em>c</em><em>e</em></sub> &gt; <em>y</em><sub><em>p</em><em>r</em><em>i</em><em>c</em><em>e</em></sub><sup>*</sup></span>
+is a price set to be higher than the target product price</li>
+</ul>
+<p>e.g.</p>
+<p>Instruction:</p>
+<blockquote>
+<p>“Can you find me a pair of black-and-blue sneaker that is good in
+rain weather? I want it to have puffy soles, and price less than 90
+dollars.”</p>
+</blockquote>
+<p>The instruction contains the aforementioned attributes and
+options:</p>
+<ul>
+<li><span
+class="math inline"><em>U</em><sub><em>a</em></sub><em>t</em><em>t</em> = “waterproof”,
+“soft sole”</span></li>
+<li><span
+class="math inline"><em>U</em><sub><em>o</em><em>p</em><em>t</em></sub> = {“color”:
+“black and blue”}</span></li>
+</ul>
+<p>In each episode, the agent receives a reward <span
+class="math inline">𝓇 = ℛ(𝓈<sub>𝒯</sub>, 𝒶)</span> in the end at
+timestep <span class="math inline"><em>T</em></span>, where <span
+class="math inline"><em>a</em> = choose[buy]</span>, <span
+class="math inline"><em>y</em></span> is the product chosen by the agent
+in the final state <span
+class="math inline"><em>s</em><sub><em>T</em></sub></span>, and <span
+class="math inline"><em>Y</em><sub><em>a</em><em>t</em><em>t</em></sub></span>
+and <span
+class="math inline"><em>Y</em><sub><em>o</em><em>p</em><em>t</em></sub></span>
+are its corresponding attributes and options. The reward is defined
+as:</p>
+<p><span class="math display">$$
+r = r_{\mathrm{type}} \cdot
+\frac{
+|U_{\mathrm{att}} \cap Y_{\mathrm{att}}|
++
+|U_{\mathrm{opt}} \cap Y_{\mathrm{opt}}|
++
+\mathbf{1}[y_{\mathrm{price}} \leq u_{\mathrm{price}}]
+}{
+|U_{\mathrm{att}}|
++
+|U_{\mathrm{opt}}|
++
+1
+}
+$$</span></p>
+<p>In fact the reward is designed to calculate the ==fraction of
+constraints satisfied==.</p>
+<p><span class="math display">$$
+r = r_\mathrm{type} \cdot
+\frac
+{\mathrm{satisfied\ attributes}+\mathrm{satisfied\
+options}+\mathbf{1}[\mathrm{price\ satisfied}]}
+{\mathrm{attributes + options + 1}}
+$$</span></p>
+<p>The type reward <span class="math inline">$r_\mathrm{type} =
+\text{TextMatch}(\overline y, \overline y^*)$</span> is based on text
+matching heuristics to assign low reward when <span
+class="math inline"><em>y</em></span> and <span
+class="math inline"><em>y</em><sup>*</sup></span> have similar
+attributes and options but are obviously different types of products.
+For example, “butter” and “plant-based meat” differ in types but may
+both contain attributes “cruelty-free”, “non-GMO”, and an option “size:
+pack of 2”.</p>
+<h3 id="evaluation-metrics">1.1.4 Evaluation Metrics</h3>
+<p>There are 2 evaluation metrics:</p>
+<ul>
+<li><ol type="1">
+<li><strong>Task Score</strong> defined as <span
+class="math inline">100 × avg.reward</span>, which captures the average
+reward obtained across episodes;</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><strong>Success Rate</strong> defined as the portion of instructions
+where <span class="math inline"><em>r</em> = 1</span>. ==Note== that it
+is possible to obtain <span class="math inline"><em>r</em> = 1</span>
+for an episode even if the final product is not <span
+class="math inline"><em>y</em><sup>*</sup></span> — there could be many
+items that satisfy the goal “I want a red shirt”, even if the goal is
+generated from a specific red shirt item.</li>
+</ol></li>
+</ul>
+<h2 id="environment">1.2 Environment</h2>
+<h3 id="data-scraping">1.2.1 Data Scraping</h3>
+<p>Author uses ==ScraperAPI== to scrape 1, 181, 436 products from
+amazon.com across 5 categories (fashion, makeup, electronics, furniture,
+and food) using 113 sub-category names as queries. The product texts
+(title and item details) have an average length of 262.9 and a
+vocabulary size 224, 041 (word frequency higher than 10). In addition,
+the products have a total of 842, 849 unique options, reflecting the
+scale and complexity of the data. More details about product scraping is
+in the Appendix §A.1.</p>
+<h3 id="search-engine">1.2.2 Search Engine</h3>
+<p>Author uses ==Pyserini== for the search engine, where indices are
+built offline using a ==BM25== sparse retriever with text for each
+product concatenated from the title, description, overview, and
+customization options. The search engine is deterministic, which eases
+imitation learning and result reproducibility. More details in A.3.</p>
+<h3 id="attribute-mining-and-annotation">1.2.3 Attribute Mining and
+Annotation</h3>
+<p>Each product is annotated with a set of hidden <span
+class="math inline"><em>a</em><em>t</em><em>t</em><em>r</em><em>i</em><em>b</em><em>u</em><em>t</em><em>e</em><em>s</em></span>,
+which are used to represent its latent characteristics as well as to
+calculate the reward as detailed in §3. An attribute is a short natural
+language phrase that describes the property of the product (see examples
+in Figure 1). Author mines the attributes by calculating ==TF-IDF==
+scores for all bi-grams in the concatenated titles and descriptions
+based on each product category. Author reviews the top 200 bi-grams for
+each category, remove the noisy ones by inspection (decide based on
+whether the bi-gram is human understandable), and assign them to the
+products. Author consolidates a pool of 670 attributes. See more details
+in the Appendix §A.2.</p>
+<h4 id="natural-language-instructions">1.2.4 Natural Language
+Instructions</h4>
+<p>Author uses ==Amazon Mechanical Turk== (AMT) to collect natural
+language instructions that specify goal products with appropriate
+options. Specifically, an AMT worker is presented with a sampled goal
+product, including the product title, category, attributes, and the
+buying options, and asked to write a command to instruct an automatic
+shopping agent to find the target. Workers are instructed to ==avoid==
+being too specific such as including the entire title in the
+instruction, but stay faithful to describing the target product. Author
+collects a total of 12, 087 linguistically diverse instructions with an
+overall vocabulary size of 9, 036 words and an average length of 15.9
+words. Author provides the detailed annotation process and interface in
+the Appendix §A.4.</p>
+<h3 id="human-demonstrations">1.2.5 Human Demonstrations</h3>
+<p>Author collects trajectories from humans performing the task in the
+HTML mode of WebShop to understand the task difficulty for humans and to
+analyze how humans would solve the task. Author uses qualification tests
+to train and select motivated workers to perform the task. Author
+recruits and train a total of 13 workers for data collection, and among
+them author selects the top 7 performing workers to be “experts” (see
+Appendix §A.6 for examples). Author also leverages this data to perform
+imitation learning (described in §4.2).</p>
+<h2 id="training">1.3 Training</h2>
+<p>Omit.</p>
+<h2 id="experiments">1.4 Experiments</h2>
+<p>Omit.</p>
+<h1 id="engineering">2. Engineering</h1>
+<h2 id="start-webshop">2.1 Start WebShop</h2>
+<p>run_envs/run_web_agent_text_env.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env = WebAgentTextEnv(observation_mode=<span class="string">&#x27;text&#x27;</span>, num_products=<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">WebAgentTextEnv(observation_mode=<span class="string">&#x27;text&#x27;</span>, num_products=1000)</span><br><span class="line">     │</span><br><span class="line">     │  ┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">     │  │  Step 1: wear a `gym` shell(WebAgentTextEnv)        		  │</span><br><span class="line">     │  │  Record Parameters: Observation with <span class="string">&quot;text&quot;</span>,load 1000 items  │</span><br><span class="line">     │  └──────────────────────────────────────────────────────────────┘</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">     │  ┌───────────────────────────────────────────────────────────────────────────┐</span><br><span class="line">     │  │  Step 2: Build <span class="string">&quot;World&quot;</span> (SimServer)                                        │</span><br><span class="line">     │  │                                                                           │</span><br><span class="line">     │  │  ① Read data/items_shuffle_1000.json ...                                 │</span><br><span class="line">     │  │     → Get item list (1000 items  )                                        │</span><br><span class="line">     │  │  ② Open search_engine/indexes_1k                                         │</span><br><span class="line">     │  │     → install <span class="string">&quot;search engine&quot;</span>                                             │</span><br><span class="line">     │  │  ③ Genearate goal pool(Shopping Tasks)+ shuffle                          │</span><br><span class="line">     │  │     → This is <span class="string">&quot;task list&quot;</span>，each episode draw a task from the list         │</span><br><span class="line">     │  │  ④ 准备一本空白的<span class="string">&quot;顾客登记表&quot;</span> user_sessions                                  │</span><br><span class="line">     │  │     → 现在还没顾客，先空着                                                   │</span><br><span class="line">     │  └───────────────────────────────────────────────────────────────────────────┘</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">     │  ┌─────────────────────────────────────────────┐</span><br><span class="line">     │  │  Step 3: Build a <span class="string">&quot;Browser&quot;</span>（SimBrowser）    │</span><br><span class="line">     │  │  Record 2 things:                     	 	 │</span><br><span class="line">     │  │    current_url、 page_source 			    │</span><br><span class="line">     │  └─────────────────────────────────────────────┘</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">     │  ┌───────────────────────────────────────────────────┐</span><br><span class="line">     │  │  Step 4: Start Task (resetz)                      │</span><br><span class="line">     │  │  ① Randonly generate a customer number           │</span><br><span class="line">     │  │  ② Browser open homepage → render homepage HTML  │</span><br><span class="line">     │  │  ③ Reading <span class="string">&quot;current shopping task&quot;</span>               │</span><br><span class="line">     │  │  ④ <span class="built_in">return</span> as observation		                  │</span><br><span class="line">     │  └───────────────────────────────────────────────────┘</span><br><span class="line">     ▼</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/webshop/">https://wangyier.top/webshop/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+              <a href="/tags/WebShop/" rel="tag"># WebShop</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/deepseek-harness/" rel="prev" title="DeepSeek Harness">
+                  <i class="fa fa-angle-left"></i> DeepSeek Harness
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

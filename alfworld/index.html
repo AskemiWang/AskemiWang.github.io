@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="About ALFWorld Benchmark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ALFWorld">
+<meta property="og:url" content="https://wangyier.top/alfworld/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="About ALFWorld Benchmark">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/ALFWorld_flow.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/ai2thor_example.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/alfworld_traj_data.png">
+<meta property="article:published_time" content="2026-08-23T09:13:14.000Z">
+<meta property="article:modified_time" content="2026-09-01T05:45:19.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="ALFworld">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/ALFWorld_flow.png">
+
+
+<link rel="canonical" href="https://wangyier.top/alfworld/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/alfworld/","path":"/alfworld/","title":"ALFWorld"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ALFWorld | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#paper-reading"><span class="nav-text">1. Paper Reading</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#engineering"><span class="nav-text">2. Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">2.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#brief"><span class="nav-text">2.1.1 Brief</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#virtual-envs"><span class="nav-text">2.1.2 Virtual Envs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task-structure"><span class="nav-text">2.2 Task Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#alfred-ai2-thor"><span class="nav-text">2.2.1 ALFRED &amp; AI2-THOR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#traj_data.json"><span class="nav-text">2.2.2 traj_data.json</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#images"><span class="nav-text">2.2.2.1 images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pddl_params"><span class="nav-text">2.2.2.2 pddl_params</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#plan"><span class="nav-text">2.2.2.3 plan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scene"><span class="nav-text">2.2.2.4 scene</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#turk_annotations"><span class="nav-text">2.2.2.5 turk_annotations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initial_state.pddl"><span class="nav-text">2.2.3 initial_state.pddl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#game.tw-pddl"><span class="nav-text">2.2.4 game.tw-pddl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-text">2.2.5 Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task-workflow"><span class="nav-text">2.3 Task Workflow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#entrance"><span class="nav-text">2.3.1 Entrance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#collect-game-list"><span class="nav-text">2.3.2 Collect Game List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-textworld"><span class="nav-text">2.3.3 Start TextWorld</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#evaluation"><span class="nav-text">2.3.4 Evaluation</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/alfworld/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ALFWorld | The Great Library">
+      <meta itemprop="description" content="About ALFWorld Benchmark">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ALFWorld
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-08-23 17:13:14" itemprop="dateCreated datePublished" datetime="2026-08-23T17:13:14+08:00">2026-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-09-01 13:45:19" itemprop="dateModified" datetime="2026-09-01T13:45:19+08:00">2026-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">About ALFWorld Benchmark</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="paper-reading">1. Paper Reading</h1>
+<h1 id="engineering">2. Engineering</h1>
+<p><img data-src="/images/article_images/ALFWorld_flow.png" /></p>
+<h2 id="introduction">2.1 Introduction</h2>
+<h3 id="brief">2.1.1 Brief</h3>
+<p>Repo URL: <a
+target="_blank" rel="noopener" href="https://github.com/alfworld/alfworld">ALFWorld</a></p>
+<p>ALFWorld is a Text-based interaction household task benchmark.</p>
+<p>Agent/LLM may receive a text-descripted task:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Your task is to:</span><br><span class="line">put a clean apple <span class="keyword">in</span> the fridge.</span><br></pre></td></tr></table></figure>
+<p>The Environment will feedback continually:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">You are <span class="keyword">in</span> the kitchen.</span><br><span class="line">You see a countertop 1.</span><br><span class="line">You see a fridge 1.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Agent Step 1:</span><br><span class="line">	go to countertop 1</span><br><span class="line">Envrionment Feedback:</span><br><span class="line">	You arrive at countertop 1.</span><br><span class="line">	You see an apple 1.</span><br><span class="line"></span><br><span class="line">Agent Step 2:</span><br><span class="line">	take apple 1</span><br><span class="line">Envrionment Feedback:</span><br><span class="line">	You pick up the apple 1.</span><br><span class="line"></span><br><span class="line">Agent Step 3:</span><br><span class="line">	go to fridge 1</span><br><span class="line">Envrionment Feedback:</span><br><span class="line">	Your arrive at fridge 1</span><br><span class="line"></span><br><span class="line">Agent Step 4:</span><br><span class="line">	put apple 1 <span class="keyword">in</span> fridge 1</span><br><span class="line">Envrionment Feedback:</span><br><span class="line">	You Won!</span><br></pre></td></tr></table></figure>
+<h3 id="virtual-envs">2.1.2 Virtual Envs</h3>
+<p>ALFWorld supports 2 kinds of test: TextWorld and THOR.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">                   ALFWorld</span><br><span class="line">                      │</span><br><span class="line">       ┌──────────────┴──────────────┐</span><br><span class="line">       │                             │</span><br><span class="line">       ▼                             ▼</span><br><span class="line">  TextWorld                       THOR</span><br><span class="line">AlfredTWEnv                  AlfredThorEnv</span><br><span class="line">       │                             │</span><br><span class="line">       ▼                             ▼</span><br><span class="line">Text Observation                  Images</span><br><span class="line">       │                             │</span><br><span class="line">       ▼                             ▼</span><br><span class="line"> Text LLM Agent               Vision Agent</span><br><span class="line">       │                             │</span><br><span class="line">       ▼                             ▼</span><br><span class="line"> Planning / RL /              Embodied /</span><br><span class="line"> Memory / ReAct               Visual Control</span><br></pre></td></tr></table></figure>
+<h2 id="task-structure">2.2 Task Structure</h2>
+<p>Download task dataset (Windows):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">conda create -n alfworld python=3.10</span><br><span class="line">conda activate alfworld</span><br><span class="line">python -m pip install requests tqdm</span><br><span class="line"><span class="built_in">export</span> PYTHONPATH=<span class="string">&quot;<span class="variable">$PWD</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PYTHONPATH</span></span><br><span class="line">python -c <span class="string">&quot;import alfworld; print(alfworld.__file__)&quot;</span></span><br><span class="line">python -c <span class="string">&quot;from alfworld.info import ALFWORLD_DATA; print(ALFWORLD_DATA)&quot;</span></span><br><span class="line"><span class="built_in">mkdir</span> -p /e/Agent/Datasets/ALFWorld</span><br><span class="line"></span><br><span class="line">PYTHONPATH=<span class="string">&quot;<span class="variable">$PWD</span>&quot;</span> python scripts/alfworld-download     --data-dir /e/Agent/Datasets/ALFWorld</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@▒ѩ▒ MINGW64 /e/Agent/Datasets</span><br><span class="line">$ tree -A -a -L 3</span><br><span class="line">.</span><br><span class="line">└── ALFWorld</span><br><span class="line">    ├── detectors</span><br><span class="line">    │   └── mrcnn_alfred_objects_sep13_004.pth</span><br><span class="line">    ├── json_2.1.1</span><br><span class="line">    │   ├── train</span><br><span class="line">    │   ├── valid_seen</span><br><span class="line">    │   ├── valid_train</span><br><span class="line">    │   └── valid_unseen</span><br><span class="line">    └── logic</span><br><span class="line">        ├── alfred.pddl</span><br><span class="line">        └── alfred.twl2</span><br></pre></td></tr></table></figure>
+<p>The main tasks are 2 kinds: valid_seen and valid_unseen</p>
+<p>A concrete instance:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@ѩ▒ MINGW64 /e/Agent/Datasets/ALFWorld/json_2.1.1/valid_seen/look_at_obj_in_light-AlarmClock-None-DeskLamp-323</span><br><span class="line">$ tree -A</span><br><span class="line">.</span><br><span class="line">└── trial_T20190909_044715_250790</span><br><span class="line">    ├── game.tw-pddl</span><br><span class="line">    ├── initial_state.pddl</span><br><span class="line">    └── traj_data.json</span><br></pre></td></tr></table></figure>
+<h3 id="alfred-ai2-thor">2.2.1 ALFRED &amp; AI2-THOR</h3>
+<p>ALFRED(Action Learning From Realistic Environments and Directives),
+is a benchmark for ==Embodied Agent==, based on AI2-THOR.</p>
+<p>The benchmark is to solve the kind of problem:</p>
+<blockquote>
+<p>Give the Agent a natural-language instruction and have it complete
+the task through a sequence of actions in a virtual 3D household
+environment.</p>
+</blockquote>
+<p>e.g. </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Instruction:</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;Put the clean mug in the cabinet.&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Agent:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Kitchen</span><br><span class="line">  ├── Find the mug</span><br><span class="line">  ├── Find the cabinet</span><br><span class="line">  ├── Pick up the mug</span><br><span class="line">  ├── Walk to the cabinet</span><br><span class="line">  ├── Open the cabinet</span><br><span class="line">  └── Put the mug inside</span><br></pre></td></tr></table></figure>
+<p>The ==core feature== of ALFRED is:</p>
+<blockquote>
+<p><strong>Demonstrations of humans actually completing tasks in the
+AI2-THOR environment.</strong></p>
+</blockquote>
+<p>AI2-THOR demonstration:</p>
+<p><img data-src="/images/article_images/ai2thor_example.png" /></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Human Expert</span><br><span class="line">      │</span><br><span class="line">      │ Complete the task</span><br><span class="line">      ▼</span><br><span class="line">AI2-THOR 3D Environment</span><br><span class="line">      │</span><br><span class="line">      ▼</span><br><span class="line">Expert Trajectory</span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<ul>
+<li><p>Task</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Put the alarm clock <span class="keyword">in</span> the drawer.</span><br></pre></td></tr></table></figure></li>
+<li><p>Expert Trajectory:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Step 0</span><br><span class="line">Observation:</span><br><span class="line">Bedroom</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line">go to desk</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 1</span><br><span class="line">Observation:</span><br><span class="line">Alarm clock is on desk</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line">pickup alarm clock</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 2</span><br><span class="line">Observation:</span><br><span class="line">Holding alarm clock</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line">go to drawer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 3</span><br><span class="line">Observation:</span><br><span class="line">Drawer is closed</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line">open drawer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 4</span><br><span class="line">Observation:</span><br><span class="line">Drawer is open</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line">put alarm clock <span class="keyword">in</span> drawer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 5</span><br><span class="line">Goal achieved</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>The task data of ALFWorld comes from ALFRED:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">                 ALFRED</span><br><span class="line">                    │</span><br><span class="line">           Human Expert Demo</span><br><span class="line">                    │</span><br><span class="line">                    ▼</span><br><span class="line">           Expert Trajectory</span><br><span class="line">                    │</span><br><span class="line">   ┌────────────────┼────────────────┐</span><br><span class="line">   │                │                │</span><br><span class="line">   ▼                ▼                ▼</span><br><span class="line">Images            Actions          States</span><br><span class="line">   │                │                │</span><br><span class="line">   └────────────────┼────────────────┘</span><br><span class="line">                    │</span><br><span class="line">                    ▼</span><br><span class="line">             ALFRED Task Data</span><br><span class="line">                    │</span><br><span class="line">                    ▼</span><br><span class="line">             ALFWorld Processing</span><br><span class="line">                    │</span><br><span class="line">      ┌─────────────┴─────────────┐</span><br><span class="line">      ▼                           ▼</span><br><span class="line"> TextWorld                    AI2-THOR</span><br><span class="line">      │                           │</span><br><span class="line">      ▼                           ▼</span><br><span class="line">Text Observation            Visual Observation</span><br><span class="line">      │                           │</span><br><span class="line">      ▼                           ▼</span><br><span class="line">  Your Agent                  Your Agent</span><br><span class="line">      │                           │</span><br><span class="line">      └─────────────┬─────────────┘</span><br><span class="line">                    ▼</span><br><span class="line">             Agent Trajectory</span><br><span class="line">                    │</span><br><span class="line">                    ▼</span><br><span class="line">             Goal Satisfied?</span><br><span class="line">                    │</span><br><span class="line">              ┌─────┴─────┐</span><br><span class="line">              ▼           ▼</span><br><span class="line">           Success      Failure</span><br></pre></td></tr></table></figure>
+<h3 id="traj_data.json">2.2.2 traj_data.json</h3>
+<blockquote>
+<p>To describe what the task is, including its task type, goal
+parameters, scene, expert trajectory, etc.</p>
+</blockquote>
+<p>The traj_data.json can be divided into following parts:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">traj_data.json</span><br><span class="line">└───────</span><br><span class="line">	   ├── images</span><br><span class="line">	   ├── pddl_params</span><br><span class="line">	   ├── plan</span><br><span class="line">	   ├── scene</span><br><span class="line">	   ├── turk_annotations</span><br><span class="line">	   └── task_id &amp; task</span><br></pre></td></tr></table></figure>
+<p><img data-src="/images/article_images/alfworld_traj_data.png" /></p>
+<h4 id="images">2.2.2.1 images</h4>
+<ul>
+<li><p>images structure:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;images&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    	...</span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;high_idx&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;image_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;000000000.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;low_idx&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">		...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="pddl_params">2.2.2.2 pddl_params</h4>
+<ul>
+<li><p>pddl_params structure:</p>
+<p>PDDL(Planning Domain Definition Language) is used to generate a text
+world.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;pddl_params&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;mrecep_target&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;object_sliced&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;object_target&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AlarmClock&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;parent_target&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;toggle_target&quot;</span><span class="punctuation">:</span> <span class="string">&quot;DeskLamp&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>mrecep_target: movable receptacle</li>
+<li>object_sliced: If object should be sliced</li>
+<li>object_target: target object</li>
+<li>parent_target: parent target</li>
+<li>toggle_target: The switch should be toggled</li>
+</ul></li>
+</ul>
+<h4 id="plan">2.2.2.3 plan</h4>
+<ul>
+<li><p>plan main structure:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;plan&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;high_pddl&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;low_actions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>high_pddl is to describe high-level of expert trajectory. e.g .
+<ul>
+<li>GotoLocation / PickupObject / PutObject /…</li>
+</ul></li>
+<li>low_actions is to describe concrete actions e.g.
+<ul>
+<li>LookDown / Forward / RotateLeft /</li>
+</ul></li>
+</ul></li>
+<li><p>high_pddl and low_actions are corresonding</p>
+<p>e.g.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">high_pddl[0]</span><br><span class="line">    │</span><br><span class="line">    ├── low_actions[0]</span><br><span class="line">    ├── low_actions[1]</span><br><span class="line">    ├── low_actions[2]</span><br><span class="line">    ├── ...</span><br><span class="line">    └── low_actions[n]</span><br><span class="line"></span><br><span class="line">high_pddl[1]</span><br><span class="line">    │</span><br><span class="line">    ├── low_actions[n+1]</span><br><span class="line">    ├── low_actions[n+2]</span><br><span class="line">    └── ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">high_pddl</span><br><span class="line">│</span><br><span class="line">├── [0] GotoLocation(dresser)</span><br><span class="line">│       │</span><br><span class="line">│       │ high_idx = 0</span><br><span class="line">│       ▼</span><br><span class="line">│   low_actions</span><br><span class="line">│       ├── LookDown_15</span><br><span class="line">│       ├── RotateLeft_90</span><br><span class="line">│       ├── MoveAhead</span><br><span class="line">│       ├── MoveAhead</span><br><span class="line">│       └── ...</span><br><span class="line">│</span><br><span class="line">├── [1] PickupObject(mug)</span><br><span class="line">│       │</span><br><span class="line">│       │ high_idx = 1</span><br><span class="line">│       ▼</span><br><span class="line">│   low_actions</span><br><span class="line">│       ├── ...</span><br><span class="line">│       └── PickupObject</span><br><span class="line">│</span><br><span class="line">└── [2] ...</span><br></pre></td></tr></table></figure></li>
+<li><p>A action description may includes many visual information but
+TextWorld do not need:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;api_action&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ToggleObjectOn&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;objectId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;DeskLamp|...&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;discrete_action&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;action&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ToggleObjectOn&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;bbox&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;mask&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;point&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">88</span><span class="punctuation">,</span> <span class="number">111</span><span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;high_idx&quot;</span><span class="punctuation">:</span> <span class="number">3</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="scene">2.2.2.4 scene</h4>
+<p>“==scene==” is to what is the state of the world when the task
+begins.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scene&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;dirty_and_empty&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&quot;floor_plan&quot;</span>: <span class="string">&quot;FloorPlan323&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;init_action&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;action&quot;</span>: <span class="string">&quot;TeleportFull&quot;</span>,</span><br><span class="line">        <span class="string">&quot;horizon&quot;</span>: 30,</span><br><span class="line">        <span class="string">&quot;rotateOnTeleport&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;rotation&quot;</span>: 90,</span><br><span class="line">        <span class="string">&quot;x&quot;</span>: 0.25,</span><br><span class="line">        <span class="string">&quot;y&quot;</span>: 0.9009992,</span><br><span class="line">        <span class="string">&quot;z&quot;</span>: 1.0</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;object_poses&quot;</span>: [...],</span><br><span class="line">    <span class="string">&quot;object_toggles&quot;</span>: [...],</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;random_seed&quot;</span>: 3619629972,</span><br><span class="line">    <span class="string">&quot;scene_num&quot;</span>: 323</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="turk_annotations">2.2.2.5 turk_annotations</h4>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">turk_annotations</span><br><span class="line">└── anns</span><br><span class="line">    ├── annotation 1</span><br><span class="line">    ├── annotation 2</span><br><span class="line">    └── annotation 3</span><br></pre></td></tr></table></figure>
+<p>For one same task, there may exists many different annotations:</p>
+<p>e.g. <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Look at an alarm clock by the light of a lamp.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Look at the clock under the lamp.</span><br></pre></td></tr></table></figure>
+<p>For a concrete annotations:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;assignment_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;A3UF6XXFFRR237_3I0BTBYZA0CU1NAVSL6DC5BBKB0Y0X&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;high_descs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;go to the table with the safe &quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;pick up the clock&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;take the clock to the desk&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;turn on the lamp&quot;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;task_desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;look at the clock under the lamp&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;votes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="number">1</span></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="initial_state.pddl">2.2.3 initial_state.pddl</h3>
+<blockquote>
+<p>Describe the initial world state of the task.</p>
+</blockquote>
+<p>The initial_state.pddl can be divided into 3 main parts:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">initial_state.pddl</span><br><span class="line">│</span><br><span class="line">├── 1. :objects</span><br><span class="line">│      └── Define: <span class="string">&quot;What do the Env have&quot;</span></span><br><span class="line">│</span><br><span class="line">├── 2. :init</span><br><span class="line">│      └── Define: <span class="string">&quot;What is the state of Env now&quot;</span></span><br><span class="line">│</span><br><span class="line">└── 3. :goal</span><br><span class="line">       └── Define: <span class="string">&quot;Final State of the Env&quot;</span></span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<ul>
+<li><p>object:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">agent1 - agent</span><br><span class="line">Mug_xxx - object</span><br><span class="line">MugType - otype</span><br><span class="line">Desk_xxx - receptacle</span><br><span class="line">DeskType - rtype</span><br><span class="line">loc_xxx - location</span><br></pre></td></tr></table></figure></li>
+<li><p>init:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">atLocation</span> agent1 loc_xxx)</span><br><span class="line">(<span class="name">inReceptacle</span> Mug_xxx Desk_xxx)</span><br><span class="line">(<span class="name">pickupable</span> Mug_xxx)</span><br><span class="line">(<span class="name">openable</span> Drawer_xxx)</span><br></pre></td></tr></table></figure></li>
+<li><p>goal:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(<span class="symbol">:goal</span></span><br><span class="line">             (<span class="name">and</span></span><br><span class="line">                 (<span class="name">exists</span> (?ot - object</span><br><span class="line">                          ?r - receptacle</span><br><span class="line">                          ?a - agent</span><br><span class="line">                          ?l - location)</span><br><span class="line">                     (<span class="name">and</span></span><br><span class="line">                         (<span class="name">objectType</span> ?ot DeskLampType)</span><br><span class="line">                         (<span class="name">toggleable</span> ?ot)</span><br><span class="line">                         (<span class="name">isToggled</span> ?ot)</span><br><span class="line">                         (<span class="name">receptacleAtLocation</span> ?r ?l)</span><br><span class="line">                         (<span class="name">atLocation</span> ?a ?l)</span><br><span class="line">                         (<span class="name">inReceptacle</span> ?ot ?r)</span><br><span class="line">                     )</span><br><span class="line">                 )</span><br><span class="line">                 (<span class="name">exists</span> (?o - object</span><br><span class="line">                          ?a - agent)</span><br><span class="line">                     (<span class="name">and</span></span><br><span class="line">                         (<span class="name">objectType</span> ?o AlarmClockType)</span><br><span class="line">                         (<span class="name">holds</span> ?a ?o)</span><br><span class="line">                     )</span><br><span class="line">                 )</span><br><span class="line">             )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="game.tw-pddl">2.2.4 game.tw-pddl</h3>
+<blockquote>
+<p>Convert the task into game rules that can be executed by
+TextWorld.</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">game.tw-pddl</span><br><span class="line">│</span><br><span class="line">├── pddl_domain</span><br><span class="line">│      └── Defines the <span class="string">&quot;game rules&quot;</span></span><br><span class="line">│</span><br><span class="line">├── grammar</span><br><span class="line">│      └── Defines the interface between <span class="string">&quot;PDDL ↔ natural language&quot;</span></span><br><span class="line">│</span><br><span class="line">├── pddl_problem</span><br><span class="line">│      └── Defines the <span class="string">&quot;world, initial state, and goal&quot;</span> of this specific task</span><br><span class="line">│</span><br><span class="line">├── solvable</span><br><span class="line">│      └── Indicates whether this task is solvable</span><br><span class="line">│</span><br><span class="line">└── walkthrough</span><br><span class="line">       └── A known feasible expert solution path</span><br></pre></td></tr></table></figure>
+<p>The game.tw-ddl is composed of different parts:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import json; d=json.load(open(&#x27;game.tw-pddl&#x27;, encoding=&#x27;utf-8&#x27;), strict=False); open(&#x27;domain.pddl&#x27;,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;).write(d[&#x27;pddl_domain&#x27;]); open(&#x27;problem.pddl&#x27;,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;).write(d[&#x27;pddl_problem&#x27;]); open(&#x27;grammar.txt&#x27;,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;).write(str(d[&#x27;grammar&#x27;])); open(&#x27;walkthrough.txt&#x27;,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;).write(str(d[&#x27;walkthrough&#x27;])); print(&#x27;solvable =&#x27;, d[&#x27;solvable&#x27;])&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="summary">2.2.5 Summary</h3>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 37%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr>
+<th>File</th>
+<th>Function</th>
+<th>Child Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>traj_data.json</code></td>
+<td><strong>Task / Expert Trajectory</strong></td>
+<td><code>task</code>、<code>pddl_params</code>、<code>scene</code>、<code>plan</code>、<code>turk_annotations</code>、<code>images</code>
+…</td>
+</tr>
+<tr>
+<td><code>initial_state.pddl</code></td>
+<td>****The symbolic state and goal of the task****</td>
+<td><code>:objects</code>、<code>:init</code>、<code>:goal</code></td>
+</tr>
+<tr>
+<td><code>game.tw-pddl</code></td>
+<td><strong>Change Task into TextWorld Game</strong></td>
+<td><code>pddl_domain</code>、<code>pddl_problem</code>、<code>grammar</code>、<code>solvable</code>、<code>walkthrough</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="task-workflow">2.3 Task Workflow</h2>
+<h3 id="entrance">2.3.1 Entrance</h3>
+<p>alfworld/scripts/run_eval.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">run_eval</span>():</span><br><span class="line">    <span class="comment"># Load Config</span></span><br><span class="line">    config = generic.load_config()</span><br><span class="line">    <span class="comment"># Create Agent</span></span><br><span class="line">    agent = TextDAggerAgent(config)</span><br><span class="line">	<span class="comment"># Create Output Direction</span></span><br><span class="line">    output_dir = os.path.expandvars(config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;save_path&quot;</span>])</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># load trained model from checkpoint</span></span><br><span class="line">    data_dir = os.path.expandvars(config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;save_path&quot;</span>])</span><br><span class="line">    <span class="keyword">if</span> agent.load_pretrained:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Checking &#123;&#125; for &#123;&#125;&quot;</span>.<span class="built_in">format</span>(data_dir, agent.load_from_tag))</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(data_dir + <span class="string">&quot;/&quot;</span> + agent.load_from_tag + <span class="string">&quot;.pt&quot;</span>):</span><br><span class="line">            agent.load_pretrained_model(data_dir + <span class="string">&quot;/&quot;</span> + agent.load_from_tag + <span class="string">&quot;.pt&quot;</span>)</span><br><span class="line">            agent.update_target_net()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># Dagger &amp; DQN</span></span><br><span class="line">    training_method = config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;training_method&quot;</span>]</span><br><span class="line">    <span class="comment"># Testdata Paths</span></span><br><span class="line">    eval_paths = config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;eval_paths&quot;</span>]</span><br><span class="line">    <span class="comment">#TextWorld or Thor</span></span><br><span class="line">    eval_envs = config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;envs&quot;</span>]</span><br><span class="line">    <span class="comment"># for Thor</span></span><br><span class="line">    controllers = config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;controllers&quot;</span>]</span><br><span class="line">    <span class="comment"># repeat times</span></span><br><span class="line">    repeats = config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;repeats&quot;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># iterate through all environments</span></span><br><span class="line">    <span class="keyword">for</span> eval_env_type <span class="keyword">in</span> eval_envs:</span><br><span class="line">        <span class="comment"># iterate through all controllers</span></span><br><span class="line">        <span class="keyword">for</span> controller_type <span class="keyword">in</span> (controllers <span class="keyword">if</span> eval_env_type == <span class="string">&quot;AlfredThorEnv&quot;</span> <span class="keyword">else</span> [<span class="string">&quot;tw&quot;</span>]):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Setting controller: %s&quot;</span> % controller_type)</span><br><span class="line">            <span class="comment"># iterate through all splits</span></span><br><span class="line">            <span class="keyword">for</span> eval_path <span class="keyword">in</span> eval_paths:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Evaluating: %s&quot;</span> % eval_path)</span><br><span class="line">                config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;env&quot;</span>][<span class="string">&quot;type&quot;</span>] = eval_env_type</span><br><span class="line">                config[<span class="string">&quot;dataset&quot;</span>][<span class="string">&quot;eval_ood_data_path&quot;</span>] = eval_path</span><br><span class="line">                config[<span class="string">&quot;controller&quot;</span>][<span class="string">&quot;type&quot;</span>] = controller_type</span><br><span class="line"></span><br><span class="line">                alfred_env = get_environment(config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;env&quot;</span>][<span class="string">&quot;type&quot;</span>])(config, train_eval=<span class="string">&quot;eval_out_of_distribution&quot;</span>)</span><br><span class="line">                eval_env = alfred_env.init_env(batch_size=agent.eval_batch_size)</span><br><span class="line"></span><br><span class="line">                <span class="comment"># evaluate method</span></span><br><span class="line">                <span class="keyword">if</span> training_method == <span class="string">&quot;dagger&quot;</span>:</span><br><span class="line">                    results = evaluate_dagger(eval_env, agent, alfred_env.num_games*repeats)</span><br><span class="line">                <span class="keyword">elif</span> training_method == <span class="string">&quot;dqn&quot;</span>:</span><br><span class="line">                    results = evaluate_dqn(eval_env, agent, alfred_env.num_games*repeats)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># save results to json</span></span><br><span class="line">                split_name = eval_path.split(<span class="string">&quot;/&quot;</span>)[-<span class="number">1</span>]</span><br><span class="line">                experiment_name = config[<span class="string">&quot;general&quot;</span>][<span class="string">&quot;evaluate&quot;</span>][<span class="string">&quot;eval_experiment_tag&quot;</span>]</span><br><span class="line">                results_json = os.path.join(output_dir, <span class="string">&quot;&#123;&#125;_&#123;&#125;_&#123;&#125;_&#123;&#125;.json&quot;</span>.<span class="built_in">format</span>(experiment_name, eval_env_type.lower(), controller_type, split_name))</span><br><span class="line"></span><br><span class="line">                <span class="keyword">with</span> <span class="built_in">open</span>(results_json, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                    json.dump(results, f, indent=<span class="number">4</span>, sort_keys=<span class="literal">True</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Saved %s&quot;</span> % results_json)</span><br><span class="line"></span><br><span class="line">                eval_env.close()</span><br></pre></td></tr></table></figure>
+<h3 id="collect-game-list">2.3.2 Collect Game List</h3>
+<p>alfworld/alfworld/agents/environment/alfred_tw_env.py:118</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config, train_eval=<span class="string">&quot;train&quot;</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Initializing AlfredTWEnv...&quot;</span>)</span><br><span class="line">    <span class="variable language_">self</span>.config = config</span><br><span class="line">    <span class="variable language_">self</span>.train_eval = train_eval</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> config[<span class="string">&quot;env&quot;</span>][<span class="string">&quot;goal_desc_human_anns_prob&quot;</span>] &gt; <span class="number">0</span>:</span><br><span class="line">        msg = (<span class="string">&quot;Warning! Changing `goal_desc_human_anns_prob` should be done with&quot;</span></span><br><span class="line">               <span class="string">&quot; the script `alfworld-generate`. Ignoring it and loading games as they are.&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(colored(msg, <span class="string">&quot;yellow&quot;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.collect_game_files()</span><br></pre></td></tr></table></figure>
+<h3 id="start-textworld">2.3.3 Start TextWorld</h3>
+<p>alfworld/alfworld/agents/environment/alfred_tw_env.py:245</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">def</span> <span class="title function_">init_env</span>(<span class="params">self, batch_size</span>):</span><br><span class="line">      <span class="comment"># Randomization is available when training</span></span><br><span class="line">      <span class="comment"># not available when evaluating</span></span><br><span class="line">      domain_randomization = <span class="variable language_">self</span>.config[<span class="string">&quot;env&quot;</span>][<span class="string">&quot;domain_randomization&quot;</span>]</span><br><span class="line">      <span class="keyword">if</span> <span class="variable language_">self</span>.train_eval != <span class="string">&quot;train&quot;</span>:</span><br><span class="line">          domain_randomization = <span class="literal">False</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment"># Register a new Gym environment.</span></span><br><span class="line">      <span class="comment"># Hope environment return info including &#x27;won&#x27;</span></span><br><span class="line">      <span class="comment"># admissible_commands</span></span><br><span class="line">      request_infos = textworld.EnvInfos(won=<span class="literal">True</span>, admissible_commands=<span class="literal">True</span>, extras=[<span class="string">&quot;gamefile&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">      </span><br><span class="line">      env_id = textworld.gym.register_games(<span class="variable language_">self</span>.game_files, request_infos,</span><br><span class="line">                                            batch_size=batch_size,</span><br><span class="line">                                            asynchronous=<span class="literal">True</span>,</span><br><span class="line">                                            max_episode_steps=max_nb_steps_per_episode,</span><br><span class="line">                                            wrappers=wrappers)</span><br><span class="line">      <span class="comment"># Launch Gym environment.</span></span><br><span class="line">      env = textworld.gym.make(env_id)</span><br><span class="line">      <span class="keyword">return</span> env</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Core code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">env_id = textworld.gym.register_games(</span><br><span class="line">    <span class="variable language_">self</span>.game_files,</span><br><span class="line">    request_infos,</span><br><span class="line">    batch_size=batch_size,</span><br><span class="line">    asynchronous=<span class="literal">True</span>,</span><br><span class="line">    max_episode_steps=max_nb_steps_per_episode,</span><br><span class="line">    wrappers=wrappers</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><code>game_files</code> is the set of game.tw-pddl</p>
+<p><code>Gym</code> is a standardized environment for agents to interact
+with.</p>
+<h3 id="evaluation">2.3.4 Evaluation</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_dagger</span>(<span class="params">env, agent, num_games, debug=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="comment"># fixed seed, 42</span></span><br><span class="line">    env.seed(<span class="number">42</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># obs = observation, infos = extra info</span></span><br><span class="line">    obs, infos = env.reset()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># current test item</span></span><br><span class="line">    game_names = infos[<span class="string">&quot;extra.gamefile&quot;</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># reset agent&#x27;s information</span></span><br><span class="line">    agent.init(batch_size)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># previous action + current observation</span></span><br><span class="line">    execute_actions = []</span><br><span class="line">	...</span><br><span class="line">	execute_actions.append(<span class="string">&quot;restart&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># task description</span></span><br><span class="line">    observation_strings = <span class="built_in">list</span>(obs)</span><br><span class="line"></span><br><span class="line">	task_desc_strings, observation_strings = \</span><br><span class="line">    agent.get_task_and_obs(observation_strings)</span><br><span class="line"></span><br><span class="line">	task_desc_strings = agent.preprocess_task(task_desc_strings)</span><br><span class="line">	observation_strings = agent.preprocess_observation(observation_strings)</span><br></pre></td></tr></table></figure>
+<p>Input for Agent like:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Task:</span><br><span class="line">look at the alarm clock under the lamp</span><br><span class="line"></span><br><span class="line">Observation:</span><br><span class="line">You are <span class="keyword">in</span> the bedroom.</span><br><span class="line">You see a dresser...</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">action_candidate_list = <span class="built_in">list</span>(infos[<span class="string">&quot;admissible_commands&quot;</span>])</span><br></pre></td></tr></table></figure>
+<p>Start Loop:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> step_no <span class="keyword">in</span> <span class="built_in">range</span>(agent.max_nb_steps_per_episode):</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">    obs, _, dones, infos = env.step(execute_actions)</span><br><span class="line">    <span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/alfworld/">https://wangyier.top/alfworld/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+          <div class="post-tags">
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+              <a href="/tags/ALFworld/" rel="tag"># ALFworld</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/panorama-of-agent/" rel="prev" title="Panorama of Agent">
+                  <i class="fa fa-angle-left"></i> Panorama of Agent
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/deepseek-harness/" rel="next" title="DeepSeek Harness">
+                  DeepSeek Harness <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
