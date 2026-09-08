@@ -324,8 +324,8 @@ messages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" hre
 <p>However, the most effective agents still rely on proprietary LMs, as
 building open source LMs for SE remains bottlenecked by the lack of
 large-scale, high-quality training data. This article creates,
-==SWE-smith==, a novel pipeline for generating software engineering
-training data at scale.</p>
+<mark>SWE-smith</mark>, a novel pipeline for generating software
+engineering training data at scale.</p>
 <p>SWE-bench:</p>
 <ul>
 <li>Find real bug</li>
@@ -351,19 +351,21 @@ training data at scale.</p>
 <h1 id="main-workgenerate-bug.diff">2. Main Work(Generate bug.diff)</h1>
 <h2 id="choose-install-repository">2.1 Choose &amp; Install
 Repository</h2>
-<p>SWE-smith requires ==Python== projects with ==unit tests==.</p>
+<p>SWE-smith requires <mark>Python</mark> projects with <mark>unit
+tests</mark>.</p>
 <p>Filter Repository:</p>
 <ol type="1">
 <li>Target repositories for the 5, 000 most downloaded packages listed
-in the ==Python Package Index== (PyPI) as of November 18, 2024</li>
+in the <mark>Python Package Index</mark> (PyPI) as of November 18,
+2024</li>
 <li>Sort the PyPI packages by GitHub stars</li>
 <li>Remove any PyPI package with less than 1, 000 stars, as well as all
 12 SWE-bench test repositories from consideration.</li>
 </ol>
 <p>Creaete corresponding image:</p>
 <ol type="1">
-<li>Get the newest ==commit== and ==SWE-agent== to automatically attempt
-to install and run tests in 100 steps.</li>
+<li>Get the newest <mark>commit</mark> and <mark>SWE-agent</mark> to
+automatically attempt to install and run tests in 100 steps.</li>
 <li>Manually Check:
 <ul>
 <li>Are the installation steps reasonable (without damaging the system
@@ -372,7 +374,7 @@ environment) ?</li>
 test instead of a dummy run) ?</li>
 </ul></li>
 <li>Check if more than 80% of existing tests pass</li>
-<li>Create a ==Docker Image== for the repository</li>
+<li>Create a <mark>Docker Image</mark> for the repository</li>
 </ol>
 <h2 id="creating-task-instance-candidates">2.2 Creating Task Instance
 Candidates</h2>
@@ -445,7 +447,8 @@ Format Test Dataset</h2>
 <ol type="1">
 <li><p>Read report and verify result (harness/gather.py :316-339)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read report.json</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(path_results) <span class="keyword">as</span> f:</span><br><span class="line">    results = json.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 conditions needed</span></span><br><span class="line">n_f2p = <span class="built_in">len</span>(results[PASS_TO_FAIL])</span><br><span class="line">n_p2p = <span class="built_in">len</span>(results[PASS_TO_PASS])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. not timeout</span></span><br><span class="line"><span class="comment"># 2. at least one testcase is disrupted</span></span><br><span class="line"><span class="comment"># 3. at least one testcase is passed</span></span><br><span class="line"><span class="keyword">if</span> KEY_TIMED_OUT <span class="keyword">in</span> results <span class="keyword">or</span> n_f2p == <span class="number">0</span> <span class="keyword">or</span> n_p2p == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">return</span> SKIP   <span class="comment"># ← abort</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Assemble ==task_instance== (harness/gather.py :341-353) :</p>
+<li><p>Assemble <mark>task_instance</mark> (harness/gather.py :341-353)
+:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">task_instance = &#123;</span><br><span class="line">      <span class="string">&quot;instance_id&quot;</span>:   subfolder,              <span class="comment"># e.g. &quot;pandas-dev__pandas.95280573.pr_53652&quot;</span></span><br><span class="line">      <span class="string">&quot;patch&quot;</span>:         patch_content,           <span class="comment"># bug diff contents</span></span><br><span class="line">      <span class="string">&quot;FAIL_TO_PASS&quot;</span>:  results[PASS_TO_FAIL],   <span class="comment"># from report.json, note the task_instance[f2p] is from result[p2f] beacuse of the rule of SWE-bench is f2p.</span></span><br><span class="line">      <span class="string">&quot;PASS_TO_PASS&quot;</span>:  results[PASS_TO_PASS],   <span class="comment"># from report.json</span></span><br><span class="line">      <span class="string">&quot;image_name&quot;</span>:    rp.image_name,           <span class="comment"># Docker Image name</span></span><br><span class="line">      <span class="string">&quot;repo&quot;</span>:          rp.mirror_name,          <span class="comment"># GitHub repo name</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>Create new Git branch (harness/gather.py :466-569) :</p></li>
 </ol>

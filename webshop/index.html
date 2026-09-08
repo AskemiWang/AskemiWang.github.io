@@ -314,8 +314,9 @@ Metrics</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-lev
     
     <div class="post-body" itemprop="articleBody"><h1 id="paper-reading">1. Paper Reading</h1>
 <p>What is WebShop?</p>
-<p>WebShop is a large-scale web-based ==interactive environment== with
-over 1.1 million real-world products scraped from amazon.com.</p>
+<p>WebShop is a large-scale web-based <mark>interactive
+environment</mark> with over 1.1 million real-world products scraped
+from amazon.com.</p>
 <h2 id="task">1.1 Task</h2>
 <p>WebShop can be formulated as a partially observable Markov decision
 process.</p>
@@ -384,7 +385,7 @@ simpler format.</li>
 </ol>
 <p>Human Performance Scores are collected in HTML mode, while all models
 are trained and trained and evaluated in the simple mode.</p>
-<p>==Note==:</p>
+<p><mark>Note</mark>:</p>
 <p>​ Though environment allows for training reinforcement learning agents
 on raw pixels in HTML mode. Author believes that it provides a very
 low-level non-semantic action space.</p>
@@ -459,8 +460,8 @@ r = r_{\mathrm{type}} \cdot
 1
 }
 $$</span></p>
-<p>In fact the reward is designed to calculate the ==fraction of
-constraints satisfied==.</p>
+<p>In fact the reward is designed to calculate the <mark>fraction of
+constraints satisfied</mark>.</p>
 <p><span class="math display">$$
 r = r_\mathrm{type} \cdot
 \frac
@@ -487,9 +488,10 @@ reward obtained across episodes;</li>
 </ol></li>
 <li><ol start="2" type="1">
 <li><strong>Success Rate</strong> defined as the portion of instructions
-where <span class="math inline"><em>r</em> = 1</span>. ==Note== that it
-is possible to obtain <span class="math inline"><em>r</em> = 1</span>
-for an episode even if the final product is not <span
+where <span class="math inline"><em>r</em> = 1</span>. <mark>Note</mark>
+that it is possible to obtain <span
+class="math inline"><em>r</em> = 1</span> for an episode even if the
+final product is not <span
 class="math inline"><em>y</em><sup>*</sup></span> — there could be many
 items that satisfy the goal “I want a red shirt”, even if the goal is
 generated from a specific red shirt item.</li>
@@ -497,20 +499,21 @@ generated from a specific red shirt item.</li>
 </ul>
 <h2 id="environment">1.2 Environment</h2>
 <h3 id="data-scraping">1.2.1 Data Scraping</h3>
-<p>Author uses ==ScraperAPI== to scrape 1, 181, 436 products from
-amazon.com across 5 categories (fashion, makeup, electronics, furniture,
-and food) using 113 sub-category names as queries. The product texts
-(title and item details) have an average length of 262.9 and a
-vocabulary size 224, 041 (word frequency higher than 10). In addition,
-the products have a total of 842, 849 unique options, reflecting the
-scale and complexity of the data. More details about product scraping is
-in the Appendix §A.1.</p>
+<p>Author uses <mark>ScraperAPI</mark> to scrape 1, 181, 436 products
+from amazon.com across 5 categories (fashion, makeup, electronics,
+furniture, and food) using 113 sub-category names as queries. The
+product texts (title and item details) have an average length of 262.9
+and a vocabulary size 224, 041 (word frequency higher than 10). In
+addition, the products have a total of 842, 849 unique options,
+reflecting the scale and complexity of the data. More details about
+product scraping is in the Appendix §A.1.</p>
 <h3 id="search-engine">1.2.2 Search Engine</h3>
-<p>Author uses ==Pyserini== for the search engine, where indices are
-built offline using a ==BM25== sparse retriever with text for each
-product concatenated from the title, description, overview, and
-customization options. The search engine is deterministic, which eases
-imitation learning and result reproducibility. More details in A.3.</p>
+<p>Author uses <mark>Pyserini</mark> for the search engine, where
+indices are built offline using a <mark>BM25</mark> sparse retriever
+with text for each product concatenated from the title, description,
+overview, and customization options. The search engine is deterministic,
+which eases imitation learning and result reproducibility. More details
+in A.3.</p>
 <h3 id="attribute-mining-and-annotation">1.2.3 Attribute Mining and
 Annotation</h3>
 <p>Each product is annotated with a set of hidden <span
@@ -518,27 +521,27 @@ class="math inline"><em>a</em><em>t</em><em>t</em><em>r</em><em>i</em><em>b</em>
 which are used to represent its latent characteristics as well as to
 calculate the reward as detailed in §3. An attribute is a short natural
 language phrase that describes the property of the product (see examples
-in Figure 1). Author mines the attributes by calculating ==TF-IDF==
-scores for all bi-grams in the concatenated titles and descriptions
-based on each product category. Author reviews the top 200 bi-grams for
-each category, remove the noisy ones by inspection (decide based on
-whether the bi-gram is human understandable), and assign them to the
-products. Author consolidates a pool of 670 attributes. See more details
-in the Appendix §A.2.</p>
+in Figure 1). Author mines the attributes by calculating
+<mark>TF-IDF</mark> scores for all bi-grams in the concatenated titles
+and descriptions based on each product category. Author reviews the top
+200 bi-grams for each category, remove the noisy ones by inspection
+(decide based on whether the bi-gram is human understandable), and
+assign them to the products. Author consolidates a pool of 670
+attributes. See more details in the Appendix §A.2.</p>
 <h3 id="natural-language-instructions">1.2.4 Natural Language
 Instructions</h3>
-<p>Author uses ==Amazon Mechanical Turk== (AMT) to collect natural
-language instructions that specify goal products with appropriate
-options. Specifically, an AMT worker is presented with a sampled goal
-product, including the product title, category, attributes, and the
-buying options, and asked to write a command to instruct an automatic
-shopping agent to find the target. Workers are instructed to ==avoid==
-being too specific such as including the entire title in the
-instruction, but stay faithful to describing the target product. Author
-collects a total of 12, 087 linguistically diverse instructions with an
-overall vocabulary size of 9, 036 words and an average length of 15.9
-words. Author provides the detailed annotation process and interface in
-the Appendix §A.4.</p>
+<p>Author uses <mark>Amazon Mechanical Turk</mark> (AMT) to collect
+natural language instructions that specify goal products with
+appropriate options. Specifically, an AMT worker is presented with a
+sampled goal product, including the product title, category, attributes,
+and the buying options, and asked to write a command to instruct an
+automatic shopping agent to find the target. Workers are instructed to
+<mark>avoid</mark> being too specific such as including the entire title
+in the instruction, but stay faithful to describing the target product.
+Author collects a total of 12, 087 linguistically diverse instructions
+with an overall vocabulary size of 9, 036 words and an average length of
+15.9 words. Author provides the detailed annotation process and
+interface in the Appendix §A.4.</p>
 <h3 id="human-demonstrations">1.2.5 Human Demonstrations</h3>
 <p>Author collects trajectories from humans performing the task in the
 HTML mode of WebShop to understand the task difficulty for humans and to
@@ -742,10 +745,10 @@ read.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">tag_visible</span>(<span class="params">element</span>):</span><br><span class="line">    ignore = &#123;<span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;script&#x27;</span>, <span class="string">&#x27;head&#x27;</span>, <span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;meta&#x27;</span>, <span class="string">&#x27;[document]&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        element.parent.name <span class="keyword">not</span> <span class="keyword">in</span> ignore <span class="keyword">and</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(element, Comment)</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
 <h4 id="env-internals">2.1.3.2 Env Internals</h4>
 <h5 id="simserver">2.1.3.2.1 SimServer</h5>
-<p>==SimServer== simulates the entire Flask shopping website within a
-process - it holds all the resources and session states of the “world”
-and is responsible for answering the question: “Given an action, which
-page should the website turn into?”</p>
+<p><mark>SimServer</mark> simulates the entire Flask shopping website
+within a process - it holds all the resources and session states of the
+“world” and is responsible for answering the question: “Given an action,
+which page should the website turn into?”</p>
 <p>web_agent_site/envs/web_agent_text_env.py:276</p>
 <ul>
 <li><p>Initiation</p>

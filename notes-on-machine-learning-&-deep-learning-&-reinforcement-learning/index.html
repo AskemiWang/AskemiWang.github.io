@@ -37,6 +37,8 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_stochastic_policy.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_two_trajectories.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_returns_example.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/rl_bellman_introduction.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/rl_state_value_example.png">
 <meta property="article:published_time" content="2026-07-27T05:56:56.000Z">
 <meta property="article:modified_time" content="2026-09-08T05:29:04.000Z">
 <meta property="article:author" content="Askemi Wang">
@@ -191,7 +193,9 @@ GitBash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href
 Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ideal-installation-of-d2l-package"><span class="nav-text">2.1.2.1 Ideal Installation of
 d2l package</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actual-installation"><span class="nav-text">2.1.2.2 Actual Installation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-the-notebook"><span class="nav-text">2.1.3 Open the Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notational-conventions"><span class="nav-text">2.1.4 Notational Conventions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#preliminaries"><span class="nav-text">2.2 Preliminaries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-manipulation"><span class="nav-text">2.2.1 Data Manipulation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#start-with-tensor"><span class="nav-text">2.2.1.1 Start with Tensor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-processing"><span class="nav-text">2.2.2 Data Processing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-algebra"><span class="nav-text">2.2.3 Linear Algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calculus"><span class="nav-text">2.2.4 Calculus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#probability-and-statistics"><span class="nav-text">2.2.5 Probability and
 Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#documentation"><span class="nav-text">2.2.6 Documentation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reinforcement-learning"><span class="nav-text">3. Reinforcement Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#preparation-1"><span class="nav-text">3.1 Preparation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts"><span class="nav-text">3.2 Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-grid-world-example"><span class="nav-text">3.2.1 A Grid World Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-action"><span class="nav-text">3.2.2 State &amp; Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-transition"><span class="nav-text">3.2.3 State Transition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#policy"><span class="nav-text">3.2.4 Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reward"><span class="nav-text">3.2.5 Reward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trajectories-returns-and-episodes"><span class="nav-text">3.2.6 Trajectories, Returns
-and Episodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markov-decision-processes"><span class="nav-text">3.2.7 Markov Decision Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qa"><span class="nav-text">3.2.8 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-equaltion"><span class="nav-text">3.3 Bellman Equaltion</span></a></li></ol></li></ol></div>
+and Episodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markov-decision-processes"><span class="nav-text">3.2.7 Markov Decision Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qa"><span class="nav-text">3.2.8 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-equation"><span class="nav-text">3.3 Bellman Equation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#returns"><span class="nav-text">3.3.1 returns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calculate-returns"><span class="nav-text">3.3.2 Calculate Returns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-value"><span class="nav-text">3.3.3 State Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bellman-equation-1"><span class="nav-text">3.3.4 Bellman Equation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bellman-equation-derive"><span class="nav-text">3.3.4.1 Bellman Equation: Derive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bellman-equation-matrix-vector-form"><span class="nav-text">3.3.4.2 Bellman Equation:
+Matrix-Vector Form</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bellman-equation-solve-the-state-values"><span class="nav-text">3.3.4.3 Bellman
+Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -683,43 +687,44 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sd4y167NS
 <h2 id="basic-concepts">3.2 Basic Concepts</h2>
 <h3 id="a-grid-world-example">3.2.1 A Grid World Example</h3>
 <p>Consider an example as shown in Figure, where a robot moves in a grid
-world. The robot, called ==agent==, can move across adjacent cells in
-the grid. At each time step, it can only occupy a single cell. The white
-cells are ==accessible== for entry, and the orange cells are
-==forbidden==.</p>
-<p>There is a ==target== cell that the robot would like to reach. We
-will use such grid world examples throughout this book since they are
-intuitive for illustrating new concepts and algorithms.</p>
+world. The robot, called <mark>agent</mark>, can move across adjacent
+cells in the grid. At each time step, it can only occupy a single cell.
+The white cells are <mark>accessible</mark> for entry, and the orange
+cells are <mark>forbidden</mark>.</p>
+<p>There is a <mark>target</mark> cell that the robot would like to
+reach. We will use such grid world examples throughout this book since
+they are intuitive for illustrating new concepts and algorithms.</p>
 <p><img data-src="/images/article_images/rl_grid_world.png" /></p>
-<p>The ultimate ==goal== of the agent is to find a “good” policy that
-enables it to reach the target cell when starting from any initial
-cell.</p>
+<p>The ultimate <mark>goal</mark> of the agent is to find a “good”
+policy that enables it to reach the target cell when starting from any
+initial cell.</p>
 <p>How can the “goodness” of a policy be defined?</p>
 <ul>
 <li>The idea is that the agent should reach the target without entering
 any forbidden cells, taking unnecessary detours, or colliding with the
 boundary of the grid.</li>
 </ul>
-<p>It would be ==trivial== to plan a path to reach the target cell if
-the agent knew the map of the grid world.</p>
-<p>The task becomes ==nontrivial== if the agent does not know any
-information about the environment in advance.</p>
+<p>It would be <mark>trivial</mark> to plan a path to reach the target
+cell if the agent knew the map of the grid world.</p>
+<p>The task becomes <mark>nontrivial</mark> if the agent does not know
+any information about the environment in advance.</p>
 <p>Then, the agent must interact with the environment to find a good
 policy by trial and error. To do that, the concepts presented in the
 rest of the chapter are necessary.</p>
 <h3 id="state-action">3.2.2 State &amp; Action</h3>
-<p>State describes the ==Agent’s Status== with respect to the
+<p>State describes the <mark>Agent’s Status</mark> with respect to the
 environment.</p>
 <p>In the grid world example, the state corresponds to the agent’s
 location. Since there are nine cells, there are nine states as well.</p>
 <p>They are indexed as <span
 class="math inline"><em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub>9</sub></span></p>
-<p>The set of all the states is called the ==State Space==, denoted
-as:</p>
+<p>The set of all the states is called the <mark>State Space</mark>,
+denoted as:</p>
 <p><span
 class="math inline">𝒮 = {<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub>9</sub>}</span></p>
 <p><img data-src="/images/article_images/rl_state_&amp;_action_state.png" /></p>
-<p>For each state, the agent can take five possible ==Actions==:</p>
+<p>For each state, the agent can take five possible
+<mark>Actions</mark>:</p>
 <ol type="1">
 <li>moving upward</li>
 <li>moving rightward</li>
@@ -729,8 +734,8 @@ class="math inline">𝒮 = {<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>
 </ol>
 <p>These five actions are denoted as <span
 class="math inline"><em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a</em><sub>5</sub></span></p>
-<p>The set of all actions is called the ==Action Space==, denoted
-as:</p>
+<p>The set of all actions is called the <mark>Action Space</mark>,
+denoted as:</p>
 <p><span
 class="math inline">𝒜 = {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a</em><sub>5</sub>}</span></p>
 <p>Different states can have different action spaces.</p>
@@ -750,7 +755,7 @@ class="math inline">𝒜<sub>(<em>s</em><sub><em>i</em></sub>)</sub> = {<em>
 <h3 id="state-transition">3.2.3 State Transition</h3>
 <p>When taking an action, the agent may move from one state to
 another.</p>
-<p>Such a process is called ==State Transition==.</p>
+<p>Such a process is called <mark>State Transition</mark>.</p>
 <p>For example, if the agent is in state <span
 class="math inline"><em>s</em><sub>1</sub></span> and selects action
 <span class="math inline"><em>a</em><sub>2</sub></span> (that is, moving
@@ -761,8 +766,8 @@ expressed as:</p>
 s_2$</span></p>
 <p>2 important examples:</p>
 <ol type="1">
-<li><p>What’s the next ==state== when when the agent attempts to go
-beyond the boundary, for example, taking action <span
+<li><p>What’s the next <mark>state</mark> when when the agent attempts
+to go beyond the boundary, for example, taking action <span
 class="math inline"><em>a</em><sub>1</sub></span> in state <span
 class="math inline"><em>s</em><sub>1</sub></span>?</p>
 <p>The answer is that the agent will be bounced back because it is
@@ -770,7 +775,7 @@ impossible for the agent to exit the state space. Hence, we have:</p>
 <p><span class="math inline">$s_1 \overset{a_1}\rightarrow
 s_1$</span></p></li>
 <li><p>What is the next state when the agent attempts to enter a
-==forbidden cell==, for example, taking action <span
+<mark>forbidden cell</mark>, for example, taking action <span
 class="math inline"><em>a</em><sub>2</sub></span> in state <span
 class="math inline"><em>s</em><sub>5</sub></span>?</p>
 <p>Two different scenarios may be encountered.</p>
@@ -784,19 +789,19 @@ transition process is:</p>
 <p><span class="math inline">$s_5 \overset{a_2}\rightarrow
 s_6$</span></p></li>
 <li><p>Scenario 2: <span
-class="math inline"><em>s</em><sub>6</sub></span> is ==not accessible==
-because, for example, it is surrounded by walls.</p>
+class="math inline"><em>s</em><sub>6</sub></span> is <mark>not
+accessible</mark> because, for example, it is surrounded by walls.</p>
 <p>In this case, the agent is bounced back to <span
 class="math inline"><em>s</em><sub>5</sub></span> if it attempts to move
 rightward; hence, the state transition process is:</p>
 <p><span class="math inline">$s_5 \overset{a_2}\rightarrow
 s_5$</span></p></li>
-</ul>
-<p>Which scenario should we consider? The answer depends on the physical
-environment. In this book, we consider the ==first scenario== where the
-forbidden cells ==are accessible==, although stepping into them may get
-==punished==.</p></li>
+</ul></li>
 </ol>
+<p>Which scenario should we consider? The answer depends on the physical
+environment. In this book, we consider the <mark>first scenario</mark>
+where the forbidden cells are <mark>accessible</mark>, although stepping
+into them may get <mark>punished</mark>.</p>
 <p>The state transition process is defined for each state and its
 associated actions. This process can be described by a table as shown in
 Table 1.1.</p>
@@ -904,7 +909,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 </tbody>
 </table>
 <p>Mathematically, the state transition process can be described by
-==conditional probabilities==.</p>
+<mark>conditional probabilities</mark>.</p>
 <p>For example, for <span
 class="math inline"><em>s</em><sub>1</sub></span> and <span
 class="math inline"><em>a</em><sub>2</sub></span>, the conditional
@@ -916,10 +921,10 @@ p(s_3\mid s_1, a_2) = 0 \\
 p(s_4\mid s_1, a_2) = 0 \\
 p(s_5\mid s_1, a_2) = 0 \\
 $$</span></p>
-<p>The tabular representation is only able to describe ==deterministic==
-state transitions.</p>
-<p>In general, state transitions can be ==stochastic== and must be
-described by conditional probability distributions.</p>
+<p>The tabular representation is only able to describe
+<mark>deterministic</mark> state transitions.</p>
+<p>In general, state transitions can be <mark>stochastic</mark> and must
+be described by conditional probability distributions.</p>
 <p>For instance, when random wind gusts are applied across the grid, if
 taking action <span class="math inline"><em>a</em><sub>2</sub></span> at
 <span class="math inline"><em>s</em><sub>1</sub></span>, the agent may
@@ -928,10 +933,10 @@ instead of <span class="math inline"><em>s</em><sub>2</sub></span>.</p>
 <p>We have <span
 class="math inline"><em>p</em>(<em>s</em><sub>5</sub> ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>2</sub>) &gt; 0</span>
 in this case.</p>
-<p>Nevertheless, we merely consider ==deterministic state== transitions
-in the grid world examples for simplicity in this book.</p>
+<p>Nevertheless, we merely consider <mark>deterministic state</mark>
+transitions in the grid world examples for simplicity in this book.</p>
 <h3 id="policy">3.2.4 Policy</h3>
-<p>A ==policy== tells the agent which actions to take at every
+<p>A <mark>policy</mark> tells the agent which actions to take at every
 state.</p>
 <p>Intuitively, policies can be depicted as arrows. Following a policy,
 the agent can generate a trajectory starting from an initial state.</p>
@@ -952,8 +957,8 @@ class="math inline"><em>s</em><sub>1</sub></span> is:</p>
 \pi (a_4\mid s_1)= 0 \\
 \pi (a_5\mid s_1)= 0 \\
 $$</span></p>
-<p>The above policy is ==deterministic==. Policies may be ==stochastic==
-in general.</p>
+<p>The above policy is <mark>deterministic</mark>. Policies may be
+<mark>stochastic</mark> in general.</p>
 <p>For example, the policy shown is stochastic: in state <span
 class="math inline"><em>s</em><sub>1</sub></span>, the agent may take
 actions to go either rightward or downward. The probabilities of taking
@@ -1517,14 +1522,198 @@ class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em></span>
 and <span
 class="math inline"><em>a</em><em>c</em><em>t</em><em>i</em><em>o</em><em>n</em></span>
 by ==Total Probability Theorem==.</p>
-<h2 id="bellman-equaltion">3.3 Bellman Equaltion</h2>
+<h2 id="bellman-equation">3.3 Bellman Equation</h2>
+<h3 id="returns">3.3.1 returns</h3>
 <p>In fact, returns play a fundamental role in reinforcement learning
 since they can <mark>evaluate</mark> whether a policy is good or not.
 This is demonstrated by the following examples.</p>
 <p><img data-src="/images/article_images/rl_returns_example.png" /></p>
 <p>There are three policies shown above. We can use <span
-class="math inline">𝓇ℯ𝓉𝓊𝓇𝓃𝓈</span> to evalue the policies’ goodness or
-badness.</p>
+class="math inline">𝓇ℯ𝓉𝓊𝓇𝓃𝓈</span> to evaluate the policies’
+quality.</p>
+<p><span class="math display">$$
+\begin{align*}
+\text{return}_1 &amp;= 0+\gamma\cdot 1+\gamma^2\cdot 1+\gamma^3\cdot
+1+\cdots \\
+               &amp;= \frac{\gamma}{1-\gamma} \\[2ex]
+\text{return}_2 &amp;= -1+\gamma\cdot 1+\gamma^2\cdot 1+\gamma^3\cdot
+1+\cdots \\
+               &amp;= \frac{\gamma}{1-\gamma}-1 \\[2ex]
+\text{return}_3 &amp;= 0.5 \left(\frac{\gamma}{1-\gamma}\right)
+                 +0.5 \left(\frac{\gamma}{1-\gamma}-1\right) \\
+               &amp;= \frac{\gamma}{1-\gamma}-0.5
+\end{align*}
+$$</span></p>
+<p>So it is obviously that the qualities are:</p>
+<p><span
+class="math display">return<sub>1</sub> &gt; return<sub>3</sub> &gt; return<sub>2</sub></span></p>
+<h3 id="calculate-returns">3.3.2 Calculate Returns</h3>
+<p>Here’s a state transition illustration:</p>
+<p><img data-src="/images/article_images/rl_bellman_introduction.png" /></p>
+<p>The returns from different start position can are denoted as <span
+class="math inline"><em>v</em><sub><em>i</em></sub></span>:</p>
+<p><span class="math display">$$
+\begin{aligned}
+v_1 &amp;= r_1 + \gamma \cdot r_2 + \gamma^2 \cdot r_3 + \gamma^3 \cdot
+r_4 + \cdots \\
+v_2 &amp;= r_2 + \gamma \cdot r_3 + \gamma^2 \cdot r_4 + \gamma^3 \cdot
+r_1 + \cdots \\
+v_3 &amp;= r_3 + \gamma \cdot r_4 + \gamma^2 \cdot r_1 + \gamma^3 \cdot
+r_2 + \cdots \\
+v_4 &amp;= r_4 + \gamma \cdot r_1 + \gamma^2 \cdot r_2 + \gamma^3 \cdot
+r_3 + \cdots
+\end{aligned}
+$$</span></p>
+<p>Obviously, the equation can be written as:</p>
+<p><span class="math display">$$
+\begin{align*}
+v_1 &amp;= r_1 + \gamma \cdot r_2 + \gamma ^2 \cdot r_3 + \gamma ^3
+\cdot r_4 + \dots = r_1 + \gamma \left(v_2\right) \\
+v_2 &amp;= r_2 + \gamma \cdot r_3 + \gamma ^2 \cdot r_4 + \gamma ^3
+\cdot r_1 + \dots = r_2 + \gamma \left(v_3\right) \\
+v_3 &amp;= r_3 + \gamma \cdot r_4 + \gamma ^2 \cdot r_1 + \gamma ^3
+\cdot r_2 + \dots = r_3 + \gamma \left(v_4\right) \\
+v_4 &amp;= r_4 + \gamma \cdot r_1 + \gamma ^2 \cdot r_2 + \gamma ^3
+\cdot r_3 + \dots = r_4 + \gamma \left(v_1\right) \\
+\end{align*}
+$$</span></p>
+<p>We can transform the equation into a matrix-vector format:</p>
+<p><span class="math display">$$
+\begin{aligned}
+\begin{pmatrix}v_1\\v_2\\v_3\\v_4\end{pmatrix}
+&amp;= \begin{pmatrix}r_1\\r_2\\r_3\\r_4\end{pmatrix}
++ \gamma
+\begin{pmatrix}v_2\\v_3\\v_4\\v_1\end{pmatrix} \\
+&amp;= \begin{pmatrix}r_1\\r_2\\r_3\\r_4\end{pmatrix} + \gamma
+\begin{pmatrix}
+0&amp;1&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+1&amp;0&amp;0&amp;0
+\end{pmatrix}
+\begin{pmatrix}v_1\\v_2\\v_3\\v_4\end{pmatrix}
+\end{aligned}
+$$</span></p>
+<p>Denote:</p>
+<p><span class="math display">$$
+\Pi =
+\begin{pmatrix}
+0&amp;1&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+1&amp;0&amp;0&amp;0
+\end{pmatrix}
+$$</span></p>
+<p>Then we have:</p>
+<p><span
+class="math display"><strong>v</strong> = <strong>r</strong> + <em>γ</em> <em>Π</em> <strong>v</strong></span></p>
+<p>This is the basic bellman equation.</p>
+<p>Solution:</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathbf{v}&amp;=\mathbf{r}+\gamma\,\Pi\,\mathbf{v} \\
+\left(\mathbf{E}-\gamma\,\Pi\right)\,\mathbf{v} &amp;= \mathbf{r}\\
+\mathbf{v} &amp;= \mathbf{r}\,\left(\mathbf{E}-\gamma\,\Pi\right)^{-1}
+\end{aligned}
+$$</span></p>
+<h3 id="state-value">3.3.3 State Value</h3>
+<p>Consider a single-step process:</p>
+<p><span class="math display">$$
+S_t \xrightarrow{A_t} R_{t+1},S_{t+1}
+$$</span></p>
+<ul>
+<li><span class="math inline"><em>t</em>, <em>t</em> + 1</span>:
+discrete time instances</li>
+<li><span class="math inline"><em>S</em><sub><em>t</em></sub></span>:
+State at time <span class="math inline"><em>t</em></span></li>
+<li><span class="math inline"><em>A</em><sub><em>t</em></sub></span>:
+Action at time <span class="math inline"><em>t</em></span></li>
+<li><span
+class="math inline"><em>R</em><sub><em>t</em> + 1</sub></span>: Reward
+obtained after taking action <span
+class="math inline"><em>A</em><sub><em>t</em></sub></span></li>
+<li><span
+class="math inline"><em>S</em><sub><em>t</em> + 1</sub></span>: State
+transited after taking action <span
+class="math inline"><em>A</em><sub><em>t</em></sub></span></li>
+</ul>
+<p>Note: the <span
+class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em> + 1</sub>, <em>S</em><sub><em>t</em> + 1</sub></span>
+are all ==random variables==.</p>
+<p>This step is governed by the following ==probability
+distribution==:</p>
+<ul>
+<li><span
+class="math inline"><em>S</em><sub><em>t</em></sub> → <em>A</em><sub><em>t</em></sub></span>
+is governed by <span
+class="math inline"><em>π</em>(<em>A</em><sub><em>t</em></sub> = <em>a</em> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>)</span></li>
+<li><span
+class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub> → <em>R</em><sub><em>t</em> + 1</sub></span>
+is governed by <span
+class="math inline"><em>p</em>(<em>R</em><sub><em>t</em> + 1</sub> = <em>r</em> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>t</em>)</span></li>
+<li><span
+class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub> → <em>S</em><sub><em>t</em> + 1</sub></span>
+is governed by <span
+class="math inline"><em>p</em>(<em>S</em><sub><em>t</em> + 1</sub> = <em>s</em><sup>′</sup> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>t</em>)</span></li>
+</ul>
+<p>For a multi-step trajectory:</p>
+<p><span class="math display">$$
+S_t \xrightarrow {A_t}R_{t+1}, S_{t+1}\xrightarrow {A_{t+1}}R_{t+2},
+S_{t+2}\xrightarrow {A_{t+2}}R_{t+3}, S_{t+3} \cdots
+$$</span></p>
+<p>The discounted return is:</p>
+<p><span
+class="math display"><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em> + 1</sub> + <em>γ</em> <em>R</em><sub><em>t</em> + 2</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em> + 3</sub>…</span></p>
+<ul>
+<li><span class="math inline"><em>γ</em> ∈ (0, 1)</span> is a discount
+rate.</li>
+<li><span class="math inline"><em>G</em><sub><em>t</em></sub></span> is
+also a random variable since <span
+class="math inline"><em>R</em><sub><em>t</em> + 1</sub>, <em>R</em><sub><em>t</em> + 2</sub></span>
+are random variables.</li>
+</ul>
+<p>The ==expectation== ( or called expected value or mean ) of <span
+class="math inline"><em>G</em><sub><em>t</em></sub></span> is defined as
+the state-value function or simply <span
+class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em> <em>v</em><em>a</em><em>l</em><em>u</em><em>e</em></span>:</p>
+<p><span
+class="math display"><em>v</em><sub><em>π</em></sub>(<em>s</em>) = 𝔼[<em>G</em><sub><em>t</em></sub> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>]</span></p>
+<ul>
+<li>It is a function of <span class="math inline"><em>s</em></span>. It
+is a conditional expectation with the condition that the state starts
+from <span class="math inline"><em>s</em></span>.</li>
+<li>It is based on policy <span class="math inline"><em>π</em></span>.
+The <span
+class="math inline"><em>v</em><sub><em>π</em></sub>(<em>s</em>)</span>
+also can be written as <span
+class="math inline"><em>v</em>(<em>π</em>, <em>s</em>)</span>.</li>
+</ul>
+<p>Q: What is the difference between return and state value?</p>
+<p>A: return is result of a single trajectory, while the state value is
+a expectation of many different trajectories. If everything including
+<span
+class="math inline"><em>π</em>(<em>a</em> ∣ <em>s</em>), <em>p</em>(<em>r</em> ∣ <em>a</em>, <em>s</em>), <em>p</em>(<em>s</em><sup>′</sup> ∣ <em>a</em>, <em>s</em>)</span>
+us ==deterministic==, the state value is the same as the return.</p>
+<p><img data-src="/images/article_images/rl_state_value_example.png" /></p>
+<p>The three pictures have corresponding policies $_1, _2, _3 $.</p>
+<p>The corresponding state values are:</p>
+<p><span class="math display">$$
+\begin{aligned}
+v_{\pi}(s_1) &amp;= 0 + \gamma\cdot1+\gamma^2\cdot1\dots =
+\gamma\left(1+1^2+\dots\right) = \gamma\,\frac{1-\gamma^n}{1-\gamma} =
+\frac{\gamma}{1-\gamma} \\
+v_{\pi}(s_2) &amp;= -1 + \gamma\cdot1+\gamma^2\cdot1\dots = -1
++\gamma\,\frac{1-\gamma^n}{1-\gamma} = \frac{\gamma}{1-\gamma}-1 \\
+v_{\pi}(s_3) &amp;= 0.5 \times\frac{\gamma}{1-\gamma}+0.5 \times
+\left(\frac{\gamma}{1-\gamma}-1\right) = \frac{\gamma}{1-\gamma}-0.5
+\end{aligned}
+$$</span></p>
+<h3 id="bellman-equation-1">3.3.4 Bellman Equation</h3>
+<h4 id="bellman-equation-derive">3.3.4.1 Bellman Equation: Derive</h4>
+<h4 id="bellman-equation-matrix-vector-form">3.3.4.2 Bellman Equation:
+Matrix-Vector Form</h4>
+<h4 id="bellman-equation-solve-the-state-values">3.3.4.3 Bellman
+Equation: Solve the State Values</h4>
 
     </div>
 

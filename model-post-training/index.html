@@ -333,8 +333,9 @@ DPO)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#
 following abilities:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">language patterns</span><br><span class="line">knowledge</span><br><span class="line">syntax</span><br><span class="line">semantic representations</span><br><span class="line">code patterns</span><br><span class="line">reasoning patterns</span><br></pre></td></tr></table></figure>
 <p>You give LLM a string of token and it will output other tokens. This
-is called ==next-token prediction==. After pretraining, the LLM learns
-basic ability. And we call LLM in this phase ==Base Model==.</p>
+is called <mark>next-token prediction</mark>. After pretraining, the LLM
+learns basic ability. And we call LLM in this phase <mark>Base
+Model</mark>.</p>
 <p>The training goal is:</p>
 <p><span class="math display">max
 log<em>P</em><sub><em>θ</em></sub>(<em>x</em><sub><em>t</em></sub>|<em>x</em><sub> &lt; <em>t</em></sub>)</span></p>
@@ -376,8 +377,8 @@ data it learned.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2x = <span class="number">4</span></span><br><span class="line">x = <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p>The LLM didn’t try other ways. It just imitate the expert
 trajectory.</p>
-<p>We use ==Chain-of-Thought== to solve this problem: Not only train the
-answer, but also train the reasoning process.</p>
+<p>We use <mark>Chain-of-Thought</mark> to solve this problem: Not only
+train the answer, but also train the reasoning process.</p>
 <p>e.g. </p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Question:</span><br><span class="line">Roger has 5 apples and buys 3 more.</span><br><span class="line">How many apples does he have?</span><br><span class="line"></span><br><span class="line">Answer:</span><br><span class="line">He starts with 5.</span><br><span class="line">He buys 3.</span><br><span class="line">5 + 3 = 8.</span><br><span class="line">Therefore he has 8 apples.</span><br></pre></td></tr></table></figure>
 <p>So the SFT data is now:</p>
@@ -404,8 +405,8 @@ trajectory, it never knows that if the trajectory is best.</p>
 <p>Which answer is better?</p>
 <p>Obviously most people will choose latter, so we can collect:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Question</span><br><span class="line">   │</span><br><span class="line">   ├── Answer A</span><br><span class="line">   │</span><br><span class="line">   └── Answer B</span><br><span class="line"></span><br><span class="line">Human:</span><br><span class="line">B &gt; A</span><br></pre></td></tr></table></figure>
-<p>This data is called ==Preference Data==.</p>
-<p>Why we need ==Preference Learning==?</p>
+<p>This data is called <mark>Preference Data</mark>.</p>
+<p>Why we need <mark>Preference Learning</mark>?</p>
 <p>e.g. problem:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Explain what is mutex?</span><br></pre></td></tr></table></figure>
 <p>LLM:</p>
@@ -417,8 +418,8 @@ trajectory, it never knows that if the trajectory is best.</p>
 Alignment</h1>
 <h2 id="rlhf-reinforcement-learning-from-human-feedback">4.1 RLHF
 (Reinforcement Learning from Human Feedback)</h2>
-<p>==RLHF== (Reinforcement Learning from Human Feedback) makes LLM
-output answers more approach to human preference.</p>
+<p><mark>RLHF</mark> (Reinforcement Learning from Human Feedback) makes
+LLM output answers more approach to human preference.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Human Preference</span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line">  Reward Model</span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line">   RL Training</span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line">   LLM Policy</span><br></pre></td></tr></table></figure>
 <p>It can be divided into 3 steps:</p>
 <h3 id="train-a-reward-model">4.1.1 Train a Reward Model</h3>
@@ -559,8 +560,8 @@ there’s a research direction is to compose Synthetic Trajectory.</p>
 <li>SWE-smith, Synthetic Trajectory</li>
 </ul>
 <h3 id="distillation">6.1.4 Distillation</h3>
-<p>Distillation is to extract ==reasoning trajectories== form different
-teachers and distill into a student model.</p>
+<p>Distillation is to extract <mark>reasoning trajectories</mark> form
+different teachers and distill into a student model.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Teacher A</span><br><span class="line">  │</span><br><span class="line">  ├── Tool-based reasoning</span><br><span class="line">  │</span><br><span class="line">Teacher B</span><br><span class="line">  │</span><br><span class="line">  └── Text reasoning</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">     Distill</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">Student Agent</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Agentic-R1 (EMNLP 2025)</li>
@@ -610,7 +611,7 @@ because many engineering problems are verifiable.</p>
 <li>SWE-RL (NeurIPS 2025)</li>
 <li>WebAgent-R1 (EMNLP 2025)</li>
 </ul>
-<p>==Process Reward== is to solve a problem:</p>
+<p><mark>Process Reward</mark> is to solve a problem:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Step 1</span><br><span class="line">Step 2</span><br><span class="line">Step 3</span><br><span class="line">...</span><br><span class="line">Step 50</span><br><span class="line"> ↓</span><br><span class="line">Success</span><br><span class="line"> ↓</span><br><span class="line">Reward = 1</span><br></pre></td></tr></table></figure>
 <p>The final answer is correct, but LLM doesn’t know if step 3 is
 important.</p>

@@ -315,18 +315,19 @@ Reward by Comparing Text Similarity</span></a></li></ol></li><li class="nav-item
     <div class="post-body" itemprop="articleBody"><h1 id="introduction">1. Introduction</h1>
 <p>This paper introduces SWE-RL, the first approach to scale RL-based
 LLM reasoning for real-world software engineering.</p>
-<p>Leveraging a lightweight rule-based ==reward== (e.g., the similarity
-score between ground-truth and LLM-generated solutions), SWE-RL enables
-LLMs to autonomously recover a developer’s reasoning processes and
-solutions by learning from extensive open-source software evolution
-data—the record of entire software development cycles, including code
-snapshots, code changes, and events such as issues and pull
-requests.</p>
+<p>Leveraging a lightweight rule-based <mark>reward</mark> (e.g., the
+similarity score between ground-truth and LLM-generated solutions),
+SWE-RL enables LLMs to autonomously recover a developer’s reasoning
+processes and solutions by learning from extensive open-source software
+evolution data—the record of entire software development cycles,
+including code snapshots, code changes, and events such as issues and
+pull requests.</p>
 <p>Surprisingly, despite performing RL solely on software evolution
-data, Llama3-SWE-RL has even emerged with ==generalized reasoning
-skills==. For example, it shows improved results on five out-of-domain
-tasks, namely, ==function coding==, ==library use==, ==code reasoning==,
-==mathematics==, and ==general language understanding==, whereas a
+data, Llama3-SWE-RL has even emerged with <mark>generalized reasoning
+skills</mark>. For example, it shows improved results on five
+out-of-domain tasks, namely, <mark>function coding</mark>, <mark>library
+use</mark>, <mark>code reasoning</mark>, <mark>mathematics</mark>, and
+<mark>general language understanding</mark>, whereas a
 supervised-finetuning baseline even leads to performance degradation on
 average.</p>
 <h1 id="implementation">2. Implementation</h1>
@@ -380,7 +381,7 @@ between 2015/01/01 and 2024/08/31;</li>
 <td>locate code state</td>
 </tr>
 <tr>
-<td>==issue_text==</td>
+<td><mark>issue_text</mark></td>
 <td>the issue statement in PR</td>
 <td>RL input</td>
 </tr>
@@ -390,12 +391,12 @@ between 2015/01/01 and 2024/08/31;</li>
 <td>records developers’ discussion of the PR</td>
 </tr>
 <tr>
-<td>==code_at_merge_base==</td>
+<td><mark>code_at_merge_base</mark></td>
 <td>code after<br>git checkout base_commit</td>
 <td>RL input</td>
 </tr>
 <tr>
-<td>==code_after_fix==</td>
+<td><mark>code_after_fix</mark></td>
 <td>code after<br/>git checkout head_commit</td>
 <td>ground-truth</td>
 </tr>
@@ -436,12 +437,13 @@ every files mentioned in code_at_merge_base field.</p>
 <li>Input: issue + file_A.py + file_B.py + file_C.py + file_D.py</li>
 <li>Output: Modify all 4 files … Generate extra bugs.</li>
 </ul>
-<p>How to ==correct== this bias behavior?</p>
+<p>How to <mark>correct</mark> this bias behavior?</p>
 <ul>
-<li><p>“To mitigate this problem, we ==prompt== Llama-3.1-70B-Instruct
-to ==generate== a list of relevant but unmodified files given each ==PR
-description== and the changed files, and include the contents of these
-files in our final dataset.”</p></li>
+<li><p>“To mitigate this problem, we <mark>prompt</mark>
+Llama-3.1-70B-Instruct to <mark>generate</mark> a list of relevant but
+unmodified files given each <mark>PR description</mark> and the changed
+files, and include the contents of these files in our final
+dataset.”</p></li>
 <li><p>e.g. </p>
 <ul>
 <li><p>original code_at_merge_base:</p>
@@ -457,8 +459,9 @@ PRs.</p>
 <ol type="1">
 <li><p>Exclude Bot PRs</p>
 <p>The author says: “We remove the bot-generated PRs whose title,
-description, or username contains keywords ‘==[bot]==’,
-‘==dependabot==’, ‘==renovate==’, ‘==bump==’, or ‘==automerge==’.”</p>
+description, or username contains keywords ‘<mark>[bot]</mark>’,
+‘<mark>dependabot</mark>’, ‘<mark>renovate</mark>’, ‘<mark>bump</mark>’,
+or ‘<mark>automerge</mark>’.”</p>
 <p>e.g:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Fix PyArrow timestamp index .loc bug&quot;</span> (author: johndoe) ✅ Keep</span><br><span class="line"><span class="string">&quot;Bump django from 3.2 to 4.0&quot;</span>           (author: dependabot)	❌ Delete</span><br><span class="line"><span class="string">&quot;Update package versions [bot]&quot;</span>         (title includes [bot])	❌ Delete</span><br><span class="line"><span class="string">&quot;chore(deps): bump requests to 2.31.0&quot;</span>  (description includes bump)	❌ Delete</span><br></pre></td></tr></table></figure></li>
 <li><p>Exclude extreme PRs</p>
@@ -516,8 +519,8 @@ these valueless hunks.</p>
 </tr>
 </tbody>
 </table>
-<p>“We then ==removed== any PRs where these filters flagged all code
-changes.”</p>
+<p>“We then <mark>removed</mark> any PRs where these filters flagged all
+code changes.”</p>
 <p>If a PR’s all hunks are the flagged hunk type, this PR will be
 deleted.</p></li>
 <li><p>Filter with rules:</p>
@@ -545,8 +548,8 @@ Sampling 16 Rollouts from Each of the 32 Problems in Every Batch</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prompt = SYSTEM_PROMPT + <span class="string">&quot;This is issue: &#123;issue_text&#125;&quot;</span> + <span class="string">&quot;This is source code: &#123;code_at_merge_base&#125;&quot;</span></span><br></pre></td></tr></table></figure>
 <p>Ask LLM to generate 16 rollouts:</p>
 <p>Rollout is a plain string with format. The rollout is composed of 2
-parts: think and solution. Solution uses ==search/replace== format (not
-unified diff) which is more stable for LLM geneartion.</p>
+parts: think and solution. Solution uses <mark>search/replace</mark>
+format (not unified diff) which is more stable for LLM geneartion.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;think&gt;</span><br><span class="line">model thinging process...</span><br><span class="line">&lt;/think&gt;</span><br><span class="line"></span><br><span class="line">&lt;solution&gt;</span><br><span class="line">```python</span><br><span class="line"><span class="comment">### pandas/core/indexes/base.py</span></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH</span><br><span class="line">	<span class="keyword">and</span> key.freq <span class="keyword">is</span> <span class="literal">None</span></span><br><span class="line">	....</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; REPLACE</span><br><span class="line">&lt;/solution&gt;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rollout_1:<span class="string">&quot;&lt;think&gt;problem occurs in base.py...&lt;/think&gt;&lt;solution&gt;### base.py\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH\n...&lt;/solution&gt;&quot;</span></span><br><span class="line">rollout_2:  <span class="string">&quot;&lt;think&gt;let me analyze first...&lt;/think&gt;&lt;solution&gt;### base.py\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH\n...&lt;/solution&gt;&quot;</span></span><br><span class="line">...</span><br><span class="line">rollout_16: <span class="string">&quot;&lt;think&gt;maybe some other files should be modified...&lt;/think&gt;&lt;solution&gt;### datetimelike.py\n...&lt;/solution&gt;&quot;</span></span><br></pre></td></tr></table></figure>
 <p><code>temperature=1</code> means that during each generation, the

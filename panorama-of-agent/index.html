@@ -337,9 +337,10 @@ independently. For example, you can ask LLM how to create a new folder
 on PC and it can give you an answer. However, the LLM cannot create the
 folder directly because the only thing it can do is output tokens.</p>
 <p>Now we have LLM to describe the workflow of a job. But we need to
-finish the workflow ourselves. ==Agent== is the software that can
-resolve problems independently.</p>
-<p>==Agent== is usually composed two parts: ==LLM== and ==Harness==.</p>
+finish the workflow ourselves. <mark>Agent</mark> is the software that
+can resolve problems independently.</p>
+<p><mark>Agent</mark> is usually composed two parts: <mark>LLM</mark>
+and <mark>Harness</mark>.</p>
 <p><span class="math display">Agent ≈ LLM-based
 Policy + Harness</span></p>
 <p>The LLM provides the main reasoning/policy capability, while the
@@ -402,8 +403,8 @@ there’s a research direction is to compose Synthetic Trajectory.</p>
 <li>SWE-smith, Synthetic Trajectory</li>
 </ul>
 <h4 id="distillation">3.1.1.4 Distillation</h4>
-<p>Distillation is to extract ==reasoning trajectories== form different
-teachers and distill into a student model.</p>
+<p>Distillation is to extract <mark>reasoning trajectories</mark> form
+different teachers and distill into a student model.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Teacher A</span><br><span class="line">  │</span><br><span class="line">  ├── Tool-based reasoning</span><br><span class="line">  │</span><br><span class="line">Teacher B</span><br><span class="line">  │</span><br><span class="line">  └── Text reasoning</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">     Distill</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">Student Agent</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Agentic-R1 (EMNLP 2025)</li>
