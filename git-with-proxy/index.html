@@ -300,7 +300,7 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="problem-description">1. Problem Description</h1>
 <p>When you enable a proxy, you can visit GitHub but your git operation
-like <code>git push</code> failed. Some info reminds you:</p>
+like <code>git push</code> fails. Some info reminds you:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh: connect to host github.com port 22: Connection refused</span><br><span class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
 <p>This means, you enabled the proxy, but the git, didn’t connect
 network with proxy.</p>
