@@ -201,7 +201,7 @@ tag_map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -212,7 +212,7 @@ tag_map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1284,7 +1284,10 @@ Proxy按钮.</p>
 </tr>
 <tr>
 <td><code>.update_logs/</code></td>
-<td>每次运行的日志目录(已加入.gitignore), 成功失败都能在这里复盘</td>
+<td>每次运行的日志目录(已加入.gitignore): <code>update_*.log</code>
+逐次明细、<code>summary.log</code>
+单文件一行索引(时间/结果/行数)、<code>highlight.log</code>
+高亮转换审计</td>
 </tr>
 <tr>
 <td><code>.auto_update.lock</code></td>
