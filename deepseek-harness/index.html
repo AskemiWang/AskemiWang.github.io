@@ -180,7 +180,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#use-of-deepseek-harness"><span class="nav-text">1.Use of DeepSeek Harness</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#install-and-start"><span class="nav-text">1.1 Install and Start</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#update-deepseek-harness"><span class="nav-text">1.2 Update DeepSeek Harness</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#search-on-deepseek-harness"><span class="nav-text">2. Search on DeepSeek Harness</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#use-of-deepseek-harness"><span class="nav-text">1. Use of DeepSeek Harness</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#install-and-start"><span class="nav-text">1.1 Install and Start</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#update-deepseek-harness"><span class="nav-text">1.2 Update DeepSeek Harness</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#research-on-deepseek-harness"><span class="nav-text">2. Research on DeepSeek
+Harness</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -300,7 +301,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="use-of-deepseek-harness">1.Use of DeepSeek Harness</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="use-of-deepseek-harness">1. Use of DeepSeek Harness</h1>
 <h2 id="install-and-start">1.1 Install and Start</h2>
 <p>Download Source Code:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/deepseek-ai/deepseek-harness.git</span><br></pre></td></tr></table></figure>
@@ -312,9 +313,11 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> deepseek-harness</span><br><span class="line">pnpm install</span><br><span class="line">pnpm run build</span><br><span class="line">pnpm dsh web</span><br></pre></td></tr></table></figure>
 <p><img data-src="/images/article_images/deepseek_harness_web.png" /></p>
 <h2 id="update-deepseek-harness">1.2 Update DeepSeek Harness</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /e/Agent/deepseek-harness</span><br><span class="line">git pull</span><br><span class="line">pnpm install</span><br><span class="line">pnpm run build</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /e/Agent/deepseek-harness</span><br><span class="line">git pull upstream master</span><br><span class="line">pnpm run clean</span><br><span class="line">pnpm install</span><br><span class="line">pnpm run build</span><br></pre></td></tr></table></figure>
+<p>Run DeepSeek Harness:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm dsh web</span><br></pre></td></tr></table></figure>
-<h1 id="search-on-deepseek-harness">2. Search on DeepSeek Harness</h1>
+<h1 id="research-on-deepseek-harness">2. Research on DeepSeek
+Harness</h1>
 
     </div>
 
