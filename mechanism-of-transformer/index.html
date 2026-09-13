@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/one-hot_example.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/one-hot_embedded.png">
 <meta property="article:published_time" content="2026-06-30T07:09:14.000Z">
-<meta property="article:modified_time" content="2026-07-07T08:18:16.000Z">
+<meta property="article:modified_time" content="2026-09-13T14:48:28.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="LLM">
@@ -286,7 +286,7 @@ Recognize the Notion of Embedding Table and Token Embeddings</span></a></li></ol
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-07-07 16:18:16" itemprop="dateModified" datetime="2026-07-07T16:18:16+08:00">2026-07-07</time>
+      <time title="Modified: 2026-09-13 22:48:28" itemprop="dateModified" datetime="2026-09-13T22:48:28+08:00">2026-09-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -524,7 +524,11 @@ Encode).也就是把每一个token向量化, 且和其它token都正交:</p>
 <li><p>余弦相似度(Cosine Similarity)</p>
 <p>它不看两个向量的“长度”（模长），只看它们的“方向”（夹角）。</p>
 <p>分子是点积，分母是两个向量长度的乘积:</p>
-<p>$(, ) = () = = $</p>
+<p><span class="math inline">$\text{Cosine Similarity}(\mathbf{A},
+\mathbf{B}) = \cos(\theta) = \frac{\mathbf{A} \cdot
+\mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|} = \frac{\sum_{i=1}^{n} A_i
+B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \sqrt{\sum_{i=1}^{n}
+B_i^2}}$</span></p>
 <ul>
 <li>1：夹角为 0°，方向完全一致（语义完全相同）。</li>
 <li>0：夹角为 90°，正交（语义完全无关，比如“猫”和“拖拉机”）。</li>

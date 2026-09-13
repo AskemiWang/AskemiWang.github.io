@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/corss_entropy_image.png">
 <meta property="article:published_time" content="2026-07-15T07:53:54.000Z">
-<meta property="article:modified_time" content="2026-07-30T13:57:42.000Z">
+<meta property="article:modified_time" content="2026-09-13T14:48:28.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Benchmark">
@@ -295,7 +295,7 @@ Backward Propagation &amp; Parameters Update</span></a></li></ol></li></ol></li>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-07-30 21:57:42" itemprop="dateModified" datetime="2026-07-30T21:57:42+08:00">2026-07-30</time>
+      <time title="Modified: 2026-09-13 22:48:28" itemprop="dateModified" datetime="2026-09-13T22:48:28+08:00">2026-09-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -758,7 +758,7 @@ class="math inline">−ln <em>P</em>(<em>x</em><sub><em>t</em></sub> | <em
 <p>How do the cross entropy work?</p>
 <p>Example 1:</p>
 <ol type="1">
-<li>$ P = 0.95 $</li>
+<li><span class="math inline"><em>P</em> = 0.95</span></li>
 <li><span class="math inline">ln (0.95) ≈ −0.051</span></li>
 <li><span class="math inline"><em>ℓ</em> = 0.051</span></li>
 <li>In Optimizer’s view, the loss is very low, the prediction is very
@@ -766,7 +766,7 @@ perfect. The weights is nearly needed to adjust.</li>
 </ol>
 <p>Example 2:</p>
 <ol type="1">
-<li>$ P = 0.01 $</li>
+<li><span class="math inline"><em>P</em> = 0.01</span></li>
 <li><span class="math inline">ln (0.01) ≈ −4.605</span></li>
 <li><span class="math inline"><em>ℓ</em> = 4.605</span></li>
 <li>Optimizer will notice that <code>4.605</code> is a pretty huge
@@ -780,7 +780,8 @@ using simply <span class="math inline">1 − <em>P</em></span>?</p>
 So we hope the penalty(Loss) of the low probability is extremely high.
 From math’s perspective, Function <span class="math inline">ln </span>
 has many properties:</p>
-<p>$ Loss = - (P)$</p>
+<p><span
+class="math inline"><em>L</em><em>o</em><em>s</em><em>s</em> = −ln (<em>P</em>)</span></p>
 <p><span class="math inline">$\frac{d\ell}{dp} = -
 \frac{1}{P}$</span></p>
 <p>The <span class="math inline">ln </span>’s slope will tend towards
@@ -1070,7 +1071,7 @@ during <code>Backward propagation</code>.</p>
 update weights according to the gradient.</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
 <p><span
-class="math inline"><em>θ</em><sub><em>t</em></sub> = <em>θ</em><sub><em>t</em> − 1</sub> − <em>η</em> ⋅ ∇<sub><em>θ</em></sub>ℒ(<em>θ</em><sub><em>t</em> − 1</sub>)</span></p></li>
+class="math display"><em>θ</em><sub><em>t</em></sub> = <em>θ</em><sub><em>t</em> − 1</sub> − <em>η</em> ⋅ ∇<sub><em>θ</em></sub>ℒ(<em>θ</em><sub><em>t</em> − 1</sub>)</span></p></li>
 </ol>
 <p>AdamW:</p>
 <p><span class="math display">$$
