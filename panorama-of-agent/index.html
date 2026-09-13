@@ -578,7 +578,7 @@ information should be retained ?</p>
 <p>The Context &amp; Memory is not just ‘Chat Log’. It store the Agent
 State.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Current Context</span><br><span class="line">+</span><br><span class="line">Working Memory</span><br><span class="line">+</span><br><span class="line">Long-term Memory</span><br><span class="line">+</span><br><span class="line">Retrieved Experience</span><br><span class="line">+</span><br><span class="line">Compressed History</span><br></pre></td></tr></table></figure>
-<p>The ==tradition memory system==:</p>
+<p>The <mark>tradition memory system</mark>:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Memory</span><br><span class="line">=</span><br><span class="line">Vector DB + Embedding + Retrieval</span><br></pre></td></tr></table></figure>
 <p>Nowadays:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Agent decides:</span><br><span class="line">    store?</span><br><span class="line">    update?</span><br><span class="line">    delete?</span><br><span class="line">    retrieve?</span><br><span class="line">    summarize?</span><br></pre></td></tr></table></figure>
@@ -885,8 +885,8 @@ efficiency, cost, generalization</td>
 Benchmark</h4>
 <p>Generalist benchmarks evaluate whether an agent can combine
 reasoning, tool use, information gathering, and multi-step execution
-across heterogeneous tasks. ==GAIA== is a representative benchmark in
-this category.</p>
+across heterogeneous tasks. <mark>GAIA</mark> is a representative
+benchmark in this category.</p>
 <p>The agent workflow nowadays can look like:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Goal</span><br><span class="line"> ↓</span><br><span class="line">Planning</span><br><span class="line"> ↓</span><br><span class="line">Tool calls</span><br><span class="line"> ↓</span><br><span class="line">Environment interaction</span><br><span class="line"> ↓</span><br><span class="line">State changes</span><br><span class="line"> ↓</span><br><span class="line">Observation</span><br><span class="line"> ↓</span><br><span class="line">Recovery</span><br><span class="line"> ↓</span><br><span class="line">More tool calls</span><br><span class="line"> ↓</span><br><span class="line">Final artifact</span><br></pre></td></tr></table></figure>
 <p>Traditional benchmarks often judge if the final answer is
@@ -944,7 +944,7 @@ Engineering Agent Benchmark</h4>
 <li><p>SWE-Bench Pro, ICLR 2026 submission.</p>
 <p>For Long-Horizon software engineering.</p></li>
 </ul>
-<p>There’s a problem: ==Contamination==.</p>
+<p>There’s a problem: <mark>Contamination</mark>.</p>
 <p>The paper finds that some models’ performance on SWE-bench Verified
 may be affected by training data contamination:</p>
 <p><a

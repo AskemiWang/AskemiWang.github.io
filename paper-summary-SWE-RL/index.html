@@ -594,8 +594,9 @@ answer (<code>pred_new_content</code>) is a available answer, we can
 evaluate its goodness or badness by comparing the text similarity.</p>
 <p>We should compare the diff files’ similarity instead of full codes’.
 This is because most code of the two files are the same. These
-==identical== parts will ==dilute== the similarity. The only truly
-==distinctive== parts are those few lines of changes.</p>
+<mark>identical</mark> parts will <mark>dilute</mark> the similarity.
+The only truly <mark>distinctive</mark> parts are those few lines of
+changes.</p>
 <p>reward.py : 263</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reward, metadata = calculate_reward(code_context, oracle_new_content, pred_new_content)</span><br></pre></td></tr></table></figure>
 <ol type="1">
@@ -623,8 +624,8 @@ class="math inline">32 × 16 = 512 Rewards</span> )</p>
 <li>A reward value 0.5 in PR_1 should be rewarded, in PR_2 should be
 punished.</li>
 </ul>
-<p>The ==group normalization== turns absolute reward value into relative
-rank in group.</p>
+<p>The <mark>group normalization</mark> turns absolute reward value into
+relative rank in group.</p>
 <p><span class="math display">$$
 \text{Advantage}_i = \frac{\text{reward}_i -
 \text{mean}(r_1+r_2+...+r_G)}{\text{std}(r_1+r_2+...+r_G)}
@@ -654,9 +655,10 @@ class="math inline"><em>π</em><sub><em>θ</em>(<em>o</em><sub><em>i</em></sub>|
 (o_i|q)}}{\pi_{\theta_{old}}(o_i|q)}$</span></p>
 <ul>
 <li>ratio = 2.0 : The new model believes that this output should have a
-2-fold probability → the model is ==learning== in this direction.</li>
+2-fold probability → the model is <mark>learning</mark> in this
+direction.</li>
 <li>ratio = 0.5 : The new model believes that this output has only a 50%
-probability → the model is ==suppressing== this direction</li>
+probability → the model is <mark>suppressing</mark> this direction</li>
 <li>ratio = 1.0 : The new and old models have the same view on this
 output → no change</li>
 </ul>

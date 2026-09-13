@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_bellman_introduction.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_state_value_example.png">
 <meta property="article:published_time" content="2026-07-27T05:56:56.000Z">
-<meta property="article:modified_time" content="2026-09-08T05:29:04.000Z">
+<meta property="article:modified_time" content="2026-09-13T14:43:49.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="Machine Learning">
@@ -292,7 +292,7 @@ Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-08 13:29:04" itemprop="dateModified" datetime="2026-09-08T13:29:04+08:00">2026-09-08</time>
+      <time title="Modified: 2026-09-13 22:43:49" itemprop="dateModified" datetime="2026-09-13T22:43:49+08:00">2026-09-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1079,21 +1079,23 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 </tbody>
 </table>
 <h3 id="reward">3.2.5 Reward</h3>
-<p>==Reward== is one of the most unique concepts in reinforcement
-learning.</p>
-<p>After executing an action at a state, the agent obtains a ==reward==,
-denoted as <span class="math inline"><em>r</em></span>, as ==feedback==
-from the environment.</p>
-<p>The reward is a function of the ==state== <span
-class="math inline"><em>s</em></span> and ==action== <span
+<p><mark>Reward</mark> is one of the most unique concepts in
+reinforcement learning.</p>
+<p>After executing an action at a state, the agent obtains a
+<mark>reward</mark>, denoted as <span
+class="math inline"><em>r</em></span>, as <mark>feedback</mark> from the
+environment.</p>
+<p>The reward is a function of the <mark>state</mark> <span
+class="math inline"><em>s</em></span> and <mark>action</mark> <span
 class="math inline"><em>a</em></span>.</p>
 <p>Hence, it is also denoted as <span
 class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>.</p>
-<p>Its value can be a ==positive== or ==negative== real number or
-==zero==.</p>
-<p>Generally speaking, with a ==positive== reward, we ==encourage== the
-agent to take the corresponding action. With a ==negative== reward, we
-==discourage== the agent from taking that action.</p>
+<p>Its value can be a <mark>positive</mark> or <mark>negative</mark>
+real number or <mark>zero</mark>.</p>
+<p>Generally speaking, with a <mark>positive</mark> reward, we
+<mark>encourage</mark> the agent to take the corresponding action. With
+a <mark>negative</mark> reward, we <mark>discourage</mark> the agent
+from taking that action.</p>
 <p>In the grid world example, the rewards are designed as follows:</p>
 <ul>
 <li>If the agent attempts to exit the boundary, <span
@@ -1122,12 +1124,13 @@ also <span class="math inline"><em>s</em><sub>9</sub></span>, but the
 reward is <span
 class="math inline"><em>r</em><sub>boundary</sub> = −1</span>.</li>
 </ul>
-<p>A reward can be interpreted as a ==human-machine interface==, with
-which we can guide the agent to behave as we expect.</p>
+<p>A reward can be interpreted as a <mark>human-machine
+interface</mark>, with which we can guide the agent to behave as we
+expect.</p>
 <p>For example, with the rewards designed above, we can expect that the
 agent tends to avoid exiting the boundary or stepping into the forbidden
 cells.</p>
-<p>Designing ==appropriate rewards== is an important step in
+<p>Designing <mark>appropriate rewards</mark> is an important step in
 reinforcement learning.</p>
 <p>The process of getting a reward after executing an action can be
 intuitively represented as a table, as shown in Table below. Each row of
@@ -1138,17 +1141,18 @@ can be obtained by taking an action at a state.</p>
 <ul>
 <li>If given the table of rewards, can we find good policies by simply
 selecting the actions with the greatest rewards?</li>
-<li>The answer is ==no==.</li>
+<li>The answer is <mark>no</mark>.</li>
 </ul>
-<p>That is because these rewards are ==immediate== rewards that can be
-obtained after taking an action. To determine a good policy, we must
-consider the ==total reward== obtained in the long run.</p>
-<p>An action with the greatest ==immediate reward== may not lead to the
-greatest ==total reward==.</p>
+<p>That is because these rewards are <mark>immediate</mark> rewards that
+can be obtained after taking an action. To determine a good policy, we
+must consider the <mark>total reward</mark> obtained in the long
+run.</p>
+<p>An action with the greatest <mark>immediate reward</mark> may not
+lead to the greatest <mark>total reward</mark>.</p>
 <p><span class="math inline">Local Optimum ≠ Global Optimum</span></p>
-<p>Although intuitive, the ==tabular representation== is only able to
-describe ==deterministic== reward processes. A more general approach is
-to use conditional probabilities <span
+<p>Although intuitive, the <mark>tabular representation</mark> is only
+able to describe <mark>deterministic</mark> reward processes. A more
+general approach is to use conditional probabilities <span
 class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>
 to describe reward processes. For example, for state <span
 class="math inline"><em>s</em><sub>1</sub></span>, we have:</p>
@@ -1255,13 +1259,14 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 </tr>
 </tbody>
 </table>
-<p>In this example, the reward process is ==deterministic==. In general,
-it can be ==stochastic==. For example, if a student studies hard, he or
-she would receive a positive reward (e.g., higher grades on exams), but
-the specific value of the reward may be uncertain.</p>
+<p>In this example, the reward process is <mark>deterministic</mark>. In
+general, it can be <mark>stochastic</mark>. For example, if a student
+studies hard, he or she would receive a positive reward (e.g., higher
+grades on exams), but the specific value of the reward may be
+uncertain.</p>
 <h3 id="trajectories-returns-and-episodes">3.2.6 Trajectories, Returns
 and Episodes</h3>
-<p>A trajectory is a ==state-action-reward== chain.</p>
+<p>A trajectory is a <mark>state-action-reward</mark> chain.</p>
 <p>Trajectories obtained by following two policies. The trajectories are
 indicated by red dashed lines.</p>
 <p><img data-src="/images/article_images/rl_two_trajectories.png" /></p>
@@ -1270,12 +1275,12 @@ along a trajectory as follows:</p>
 <p><span class="math inline">$s_1 \xrightarrow[r_0]{a_1} s_2
 \xrightarrow[r_0]{a_3} s_5 \xrightarrow[r_0]{a_3} s_8
 \xrightarrow[r_{target}]{a_2} s_9$</span></p>
-<p>==Return==:</p>
+<p><mark>Return</mark>:</p>
 <p>Returns are also called <strong>total rewards</strong> or cumulative
 rewards.</p>
 <p>Ther return of the trajectory above is:</p>
 <p><span class="math inline">return = 0 + 0 + 0 + 1 = 1</span></p>
-<p>Returns can be used to ==evaluate== policies.</p>
+<p>Returns can be used to <mark>evaluate</mark> policies.</p>
 <p>For example, we can evaluate the two policies in Figure by comparing
 their returns.</p>
 <ul>
@@ -1288,15 +1293,16 @@ their returns.</p>
 </ul>
 <p>The returns in (1.1) and (1.2) indicate that the left policy is
 better than the right one since its return is greater.</p>
-<p>A return consists of an ==immediate reward== and future rewards.
-Here, the immediate reward is the reward obtained after taking an action
-at the initial state; the future rewards refer to the rewards obtained
-after leaving the initial state.</p>
+<p>A return consists of an <mark>immediate reward</mark> and future
+rewards. Here, the immediate reward is the reward obtained after taking
+an action at the initial state; the future rewards refer to the rewards
+obtained after leaving the initial state.</p>
 <p>It is possible that the immediate reward is negative while the future
 reward is positive. Thus, which actions to take should be determined by
-the ==return== (i.e., the total reward) rather than the immediate reward
-to avoid short-sighted decisions.</p>
-<p>Return can also be defined for ==infinitely long trajectories==.</p>
+the <mark>return</mark> (i.e., the total reward) rather than the
+immediate reward to avoid short-sighted decisions.</p>
+<p>Return can also be defined for <mark>infinitely long
+trajectories</mark>.</p>
 <p>For example, the trajectory in Figure stops after reaching <span
 class="math inline"><em>s</em><sub>9</sub></span>. Since the policy is
 well defined for <span
@@ -1311,14 +1317,14 @@ policy would generate the following infinitely long trajectory:</p>
 \xrightarrow[r_{target}]{a_2} s_9 \xrightarrow[{r=1}]{a_5}s_9
 \xrightarrow[{r=1}]{a_5}s_9...$</span></p>
 <p>The direct sum of the rewards along this trajectory is:</p>
-<p><span class="math inline">$return = 0 +
-0+0+1+1+1...=\infin$</span></p>
-<p>Therefore, we must introduce the ==discounted return== concept for
-infinitely long trajectories. In particular, the discounted return is
-the sum of the discounted rewards:</p>
-<p>==Discount Rate==, <span class="math inline"><em>γ</em></span>:</p>
+<p>$return = 0 + 0+0+1+1+1…= $</p>
+<p>Therefore, we must introduce the <mark>discounted return</mark>
+concept for infinitely long trajectories. In particular, the discounted
+return is the sum of the discounted rewards:</p>
+<p><mark>Discount Rate</mark>, <span
+class="math inline"><em>γ</em></span>:</p>
 <p><span class="math inline"><em>γ</em> ∈ (0, 1)</span></p>
-<p>==Discounted Return==:</p>
+<p><mark>Discounted Return</mark>:</p>
 <p><span class="math display">$$
 \begin{aligned}
 \text{Return} =&amp; \ 0 + 0 + 0 + 1 + 1 + 1 +... \\
@@ -1327,9 +1333,10 @@ the sum of the discounted rewards:</p>
 =&amp; \gamma^3(1+\gamma+\gamma^2+...)\\
 =&amp; \gamma^3\frac{1}{1-\gamma}
 \end{aligned}
-$$</span> By introduce ==Dicounted Rate==, we make the return become
-==finite==.</p>
-<p>And we can ==balance== the far rewards and near rewards:</p>
+$$</span></p>
+<p>By introduce <mark>Dicounted Rate</mark>, we make the return become
+<mark>finite</mark>.</p>
+<p>And we can <mark>balance</mark> the far rewards and near rewards:</p>
 <p><span class="math inline">Discounted
 Return = <em>γ</em><sup>0</sup> ⋅ 0 + <em>γ</em><sup>1</sup> ⋅ 0 + <em>γ</em><sup>2</sup> ⋅ 0 + <em>γ</em><sup>3</sup> ⋅ 1 + <em>γ</em><sup>4</sup> ⋅ 1 + <em>γ</em><sup>5</sup> ⋅ 1 + ...</span></p>
 <ol type="1">
@@ -1348,17 +1355,17 @@ determine the agent is more short-sight or long-sight</p>
 <p>Now let’s talk about Episodes:</p>
 <p>When interacting with the environment by following a policy, the
 agent may stop at some terminal states. The resulting trajectory is
-called an ==episode== (or a ==trial== ).</p>
-<p>If the environment or policy is ==stochastic==, we obtain
+called an <mark>episode</mark> (or a <mark>trial</mark> ).</p>
+<p>If the environment or policy is <mark>stochastic</mark>, we obtain
 <strong>different</strong> episodes when starting from the same
 state.</p>
-<p>However, if everything is ==deterministic==, we always obtain the
-same episode when starting from the same state.</p>
+<p>However, if everything is <mark>deterministic</mark>, we always
+obtain the same episode when starting from the same state.</p>
 <p>An episode is usually assumed to be a finite trajectory. Tasks with
-episodes are called ==episodic tasks==. However, some tasks may have
-<strong>no</strong> terminal states, meaning that the process of
+episodes are called <mark>episodic tasks</mark>. However, some tasks may
+have <strong>no</strong> terminal states, meaning that the process of
 interacting with the environment will <strong>never</strong> end. uch
-tasks are called ==continuing tasks==.</p>
+tasks are called <mark>continuing tasks</mark>.</p>
 <p>In fact, we can treat episodic and continuing tasks in a unified
 mathematical manner by converting episodic tasks to continuing ones.
 Specifically, after reaching the terminal state in an episodic task, the
@@ -1366,8 +1373,9 @@ agent can continue taking actions in the following two ways.</p>
 <ol type="1">
 <li><p>If we treat the terminal state as a special state, we can
 specifically design its action space or state transition so that the
-agent stays in this state forever. Such states are called ==absorbing
-states==, meaning that the agent never leaves a state once reached.</p>
+agent stays in this state forever. Such states are called
+<mark>absorbing states</mark>, meaning that the agent never leaves a
+state once reached.</p>
 <p>For example, for the target state <span
 class="math inline"><em>s</em><sub>9</sub></span>, we can specify <span
 class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>5</sub>}</span>
@@ -1387,17 +1395,18 @@ class="math inline"><em>s</em><sub>9</sub></span> forever to collect
 more rewards.</p>
 <p>Notably, when an episode is infinitely long and the reward received
 for staying at <span class="math inline"><em>s</em><sub>9</sub></span>
-is positive, a ==discount rate== must be used to calculate the
-==discounted return== to avoid ==divergence==.</p></li>
+is positive, a <mark>discount rate</mark> must be used to calculate the
+<mark>discounted return</mark> to avoid
+<mark>divergence</mark>.</p></li>
 </ol>
-<p>In this book, we consider the ==second scenario== where the target
-state is treated as a normal state whose action space is <span
+<p>In this book, we consider the <mark>second scenario</mark> where the
+target state is treated as a normal state whose action space is <span
 class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>1</sub>, ..., <em>a</em><sub>5</sub>}</span>.</p>
 <h3 id="markov-decision-processes">3.2.7 Markov Decision Processes</h3>
-<p>==Markov Decision Processes== is a general framework for describing
-==stochastic dynamical systems==. The key ingredients of an MDP are
-listed below:</p>
-<p>==Sets==:</p>
+<p><mark>Markov Decision Processes</mark> is a general framework for
+describing <mark>stochastic dynamical systems</mark>. The key
+ingredients of an MDP are listed below:</p>
+<p><mark>Sets</mark>:</p>
 <ul>
 <li>State Space: the set of all states, denoted as <span
 class="math inline">𝒮</span>.</li>
@@ -1409,7 +1418,7 @@ class="math inline">ℛ(<em>s</em>, <em>a</em>)</span>, associated with
 each state-action pair <span
 class="math inline">(<em>s</em>, <em>a</em>)</span></li>
 </ul>
-<p>==Model==:</p>
+<p><mark>Model</mark>:</p>
 <ul>
 <li>State transition probability: In state s, when taking action a, the
 probability of transitioning to state <span
@@ -1426,8 +1435,9 @@ It holds that <span
 class="math inline">∑<sub><em>r</em> ∈ ℛ</sub><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>) = 1</span>
 for any <span class="math inline">(<em>s</em>, <em>a</em>)</span>.</li>
 </ul>
-<p>==Markov Property==: The Markov Property refers to the ==memoryless==
-property of a stochastic process. Mathematically, it means that:</p>
+<p><mark>Markov Property</mark>: The Markov Property refers to the
+<mark>memoryless</mark> property of a stochastic process.
+Mathematically, it means that:</p>
 <p><span class="math display">$$
 p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(s_{t+1}|s_t,a_t)\\
 p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(r_{t+1}|s_t,a_t)
@@ -1435,34 +1445,38 @@ $$</span></p>
 <p>Where <span class="math inline"><em>t</em></span> represents the
 current time step and <span class="math inline"><em>t</em> + 1</span>
 represents the next time step. The next state or reward depends
-==merely== on the current state and action and is independent of the
-previous ones.</p>
+<mark>merely</mark> on the current state and action and is independent
+of the previous ones.</p>
 <p>The Markov property is important for deriving the fundamental
-==Bellman equation of MDPs==.</p>
+<mark>Bellman equation of MDPs</mark>.</p>
 <p>Here, <span
 class="math inline"><em>p</em>(<em>s</em>′ ∣ <em>s</em>, <em>a</em>)</span>
 and <span
 class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>
 for all <span class="math inline">(<em>s</em>, <em>a</em>)</span> are
-called the ==model== or ==dynamics==</p>
-<p>The model can be either ==stationary== or ==nonstationary== (or in
-other words, time-invariant or time-variant).</p>
+called the <mark>model</mark> or <mark>dynamics</mark></p>
+<p>The model can be either <mark>stationary</mark> or
+<mark>nonstationary</mark> (or in other words, time-invariant or
+time-variant).</p>
 <p>A stationary model does not change over time; a nonstationary model
 may vary over time. For instance, in the grid world example, if a
 forbidden area may pop up or disappear sometimes, the model is
-nonstationary. In this book, we only consider ==stationary models==.</p>
-<p>One may have heard about the ==Markov Processes== (MPs). What is the
-difference between an ==MDP== and an ==MP==?</p>
-<p>The answer is that, once the ==policy== in an ==MDP== is fixed, the
-MDP degenerates into an MP.</p>
-<p>The ==agent== is a ==decision-maker== that can sense its state,
-maintain policies, and execute actions. Everything outside of the agent
-is regarded as the ==environment==.</p>
+nonstationary. In this book, we only consider <mark>stationary
+models</mark>.</p>
+<p>One may have heard about the <mark>Markov Processes</mark> (MPs).
+What is the difference between an <mark>MDP</mark> and an
+<mark>MP</mark>?</p>
+<p>The answer is that, once the <mark>policy</mark> in an
+<mark>MDP</mark> is fixed, the MDP degenerates into an MP.</p>
+<p>The <mark>agent</mark> is a <mark>decision-maker</mark> that can
+sense its state, maintain policies, and execute actions. Everything
+outside of the agent is regarded as the <mark>environment</mark>.</p>
 <h3 id="qa">3.2.8 Q&amp;A</h3>
-<p>==Q==: Can we set all the rewards as negative or positive?</p>
-<p>==A==: In fact, it is the ==relative== reward values instead of the
-==absolute== values that determine encouragement or discouragement. More
-specifically, we set:</p>
+<p><mark>Q</mark>: Can we set all the rewards as negative or
+positive?</p>
+<p><mark>A</mark>: In fact, it is the <mark>relative</mark> reward
+values instead of the <mark>absolute</mark> values that determine
+encouragement or discouragement. More specifically, we set:</p>
 <p><span class="math display">$$
 \begin{aligned}
 r_\text{boundary} =&amp; -1 \\
@@ -1483,18 +1497,19 @@ r_\text{other} =&amp; -2
 \end{aligned}
 $$</span></p>
 <p>Although the rewards are all negative, the resulting optimal policy
-is unchanged. That is because optimal policies are ==invariant== to
-affine transformations of the rewards.</p>
-<p>==Q==: Is the ==reward== a function of the next state?</p>
-<p>==A==: We mentioned that the reward <span
+is unchanged. That is because optimal policies are
+<mark>invariant</mark> to affine transformations of the rewards.</p>
+<p><mark>Q</mark>: Is the <mark>reward</mark> a function of the next
+state?</p>
+<p><mark>A</mark>: We mentioned that the reward <span
 class="math inline"><em>r</em></span> depends only on <span
 class="math inline"><em>s</em></span> and a but not the next state <span
 class="math inline"><em>s</em><sup>′</sup></span>. However, this may be
-<strong>counterintuitive</strong> since it is the ==next state== that
-determines the reward in many cases.</p>
-<p>For example, the reward is ==positive== when the next state is the
-==target state==. As a result, a question that naturally follows is
-whether a reward should depend on the next state.</p>
+<strong>counterintuitive</strong> since it is the <mark>next
+state</mark> that determines the reward in many cases.</p>
+<p>For example, the reward is <mark>positive</mark> when the next state
+is the <mark>target state</mark>. As a result, a question that naturally
+follows is whether a reward should depend on the next state.</p>
 <p>A mathematical rephrasing of this question is whether we should use
 <span
 class="math inline"><em>p</em>(<em>r</em>|<em>s</em>, <em>a</em>, <em>s</em>′)</span>
@@ -1521,7 +1536,7 @@ dependent on the previous <span
 class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em></span>
 and <span
 class="math inline"><em>a</em><em>c</em><em>t</em><em>i</em><em>o</em><em>n</em></span>
-by ==Total Probability Theorem==.</p>
+by <mark>Total Probability Theorem</mark>.</p>
 <h2 id="bellman-equation">3.3 Bellman Equation</h2>
 <h3 id="returns">3.3.1 returns</h3>
 <p>In fact, returns play a fundamental role in reinforcement learning
@@ -1639,9 +1654,9 @@ class="math inline"><em>A</em><sub><em>t</em></sub></span></li>
 </ul>
 <p>Note: the <span
 class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em> + 1</sub>, <em>S</em><sub><em>t</em> + 1</sub></span>
-are all ==random variables==.</p>
-<p>This step is governed by the following ==probability
-distribution==:</p>
+are all <mark>random variables</mark>.</p>
+<p>This step is governed by the following <mark>probability
+distribution</mark>:</p>
 <ul>
 <li><span
 class="math inline"><em>S</em><sub><em>t</em></sub> → <em>A</em><sub><em>t</em></sub></span>
@@ -1672,9 +1687,9 @@ also a random variable since <span
 class="math inline"><em>R</em><sub><em>t</em> + 1</sub>, <em>R</em><sub><em>t</em> + 2</sub></span>
 are random variables.</li>
 </ul>
-<p>The ==expectation== ( or called expected value or mean ) of <span
-class="math inline"><em>G</em><sub><em>t</em></sub></span> is defined as
-the state-value function or simply <span
+<p>The <mark>expectation</mark> ( or called expected value or mean ) of
+<span class="math inline"><em>G</em><sub><em>t</em></sub></span> is
+defined as the state-value function or simply <span
 class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em> <em>v</em><em>a</em><em>l</em><em>u</em><em>e</em></span>:</p>
 <p><span
 class="math display"><em>v</em><sub><em>π</em></sub>(<em>s</em>) = 𝔼[<em>G</em><sub><em>t</em></sub> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>]</span></p>
@@ -1693,7 +1708,8 @@ class="math inline"><em>v</em>(<em>π</em>, <em>s</em>)</span>.</li>
 a expectation of many different trajectories. If everything including
 <span
 class="math inline"><em>π</em>(<em>a</em> ∣ <em>s</em>), <em>p</em>(<em>r</em> ∣ <em>a</em>, <em>s</em>), <em>p</em>(<em>s</em><sup>′</sup> ∣ <em>a</em>, <em>s</em>)</span>
-us ==deterministic==, the state value is the same as the return.</p>
+us <mark>deterministic</mark>, the state value is the same as the
+return.</p>
 <p><img data-src="/images/article_images/rl_state_value_example.png" /></p>
 <p>The three pictures have corresponding policies $_1, _2, _3 $.</p>
 <p>The corresponding state values are:</p>

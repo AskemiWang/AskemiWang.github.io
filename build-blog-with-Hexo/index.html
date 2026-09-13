@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/test.png">
 <meta property="article:published_time" content="2026-06-26T05:02:12.000Z">
-<meta property="article:modified_time" content="2026-09-13T14:29:16.000Z">
+<meta property="article:modified_time" content="2026-09-13T14:43:49.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -286,7 +286,7 @@ top里混入不可见字符的坑</span></a></li></ol></li></ol></li><li class="
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-13 22:29:16" itemprop="dateModified" datetime="2026-09-13T22:29:16+08:00">2026-09-13</time>
+      <time title="Modified: 2026-09-13 22:43:49" itemprop="dateModified" datetime="2026-09-13T22:43:49+08:00">2026-09-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1410,7 +1410,17 @@ matter不可见字符与top值/首页顺序预览/触发预览)</td>
 Typora 的 <code>==高亮==</code> 转成 <code>&lt;mark&gt;</code> 再部署,
 因为博客的 pandoc 渲染默认不解析 <code>==</code>;
 该脚本自带反引号守恒与幂等护栏, 护栏不过会失败通知而不会带伤提交),
-只是把第14节的一整条命令链变成了自动判断+自动执行.</p>
+只是把第14节的一整条命令链变成了自动判断+自动执行.
+高亮脚本的<strong>代码围栏判定按 CommonMark 规则</strong>:
+开围栏是”行首最多3个空格 + 3个以上反引号/波浪号(可带语言名)“,
+<strong>闭围栏必须同字符、不短于开围栏且不能带语言名</strong> —— 所以
+<code>```sh</code>
+这种带语言名的行只能开启围栏、不能闭合它(早期实现没区分这一点,
+配对错位后整段正文被当成代码块跳过转换, 实测漏转96处高亮);
+另外若某篇文章<strong>有未闭合的围栏</strong>,
+脚本与<code>--selfcheck</code>都会告警 ——
+因为那之后的正文会被当代码块渲染, 需要手动补上闭合的
+<code>```</code>.</p>
 <blockquote>
 <p>Python脚本统一放在<code>tools/</code>,
 <strong>不要放回<code>scripts/</code></strong>:
