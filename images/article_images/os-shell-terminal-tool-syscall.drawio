@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Tool-Syscall" id="tool-syscall">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="工具执行时的 System Call　（以 &lt;code&gt;ls -l&lt;/code&gt; 为例）" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="150" y="30" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="reg1" value="用户态" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6c8ebf;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="100" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="reg2" value="内核态" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#d79b00;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="20" y="420" width="100" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="reg3" value="用户态" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#6c8ebf;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="20" y="740" width="100" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a1" value="Shell 已拿到命令：ls -l　（终端与 Shell 的前置步骤略）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#666666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="150" y="120" width="600" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Shell：fork() + execve(&quot;/usr/bin/ls&quot;)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="150" y="210" width="600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="ls 进程开始运行，进入 main()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="150" y="310" width="600" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dv1" value="" style="rounded=0;html=1;dashed=1;dashPattern=8 4;strokeColor=#999999;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="390" width="600" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="dv1t" value="以下是工具自己的系统调用" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#999999;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="760" y="383" width="180" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s1" value="openat(&quot;/tmp&quot;, O_RDONLY | O_DIRECTORY)　打开目录" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="420" width="600" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="getdents64()　逐个读取目录项" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="500" width="600" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="statx() / lstat()　读取每个文件的属性（-l 需要）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="580" width="600" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="write(1, ...)　把结果写到 stdout" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="660" width="600" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="close()　关闭目录 fd" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="740" width="600" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dv2" value="" style="rounded=0;html=1;dashed=1;dashPattern=8 4;strokeColor=#999999;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="820" width="600" height="10" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a4" value="exit_group(0)　ls 退出，Shell 的 waitpid() 返回" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="150" y="850" width="600" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note" value="这些都是普通系统调用：ls 没有任何特权，只能通过它们请求内核。" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="150" y="930" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="a1" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="a2" target="a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="a3" target="s1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s1" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s2" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s3" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s4" target="s5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s5" target="a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

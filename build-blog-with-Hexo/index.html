@@ -201,7 +201,7 @@ tag_map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -212,7 +212,7 @@ tag_map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1093,7 +1093,7 @@ file”（保持空仓库）。</p></li>
 <li><p>点击 <strong>Create repository</strong>。</p></li>
 <li><p>在本地的blog根目录下添加或修改<code>.gitignore</code>文件,
 保证文件中拥有以下内容:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hexo 生成和部署的临时目录</span></span><br><span class="line">public/</span><br><span class="line">.deploy_git/</span><br><span class="line">db.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># Node.js 依赖包（体积巨大，随时可以通过 npm install 恢复）</span></span><br><span class="line">node_modules/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统生成的垃圾文件</span></span><br><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hexo 生成和部署的临时目录</span></span><br><span class="line">public/</span><br><span class="line">.deploy_git/</span><br><span class="line">db.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># Node.js 依赖包（体积巨大，随时可以通过 npm install 恢复）</span></span><br><span class="line">node_modules/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统生成的垃圾文件</span></span><br><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">*.<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动更新任务的日志与锁文件</span></span><br><span class="line">.update_logs/</span><br><span class="line">.auto_update.lock</span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 缓存</span></span><br><span class="line">__pycache__/</span><br><span class="line">*.pyc</span><br><span class="line"></span><br><span class="line"><span class="comment"># drawio 临时备份 / 编辑器临时文件</span></span><br><span class="line">.$*</span><br><span class="line">*.bkp</span><br></pre></td></tr></table></figure></li>
 <li><p>将源码推送到私有仓库, 在myBlog文件夹中使用以下命令, 注意,
 由于我们next主题是用git下载的, 所以要删掉他的.git文件避免冲突:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 核心操作：删除 Next 主题内部的 .git 目录（解决嵌套仓库问题）</span></span><br><span class="line"><span class="built_in">rm</span> -rf themes/next/.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 初始化本地 Git 仓库（如果之前已经 init 过，提示已存在则忽略）</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 将所有源码添加到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 提交到本地仓库</span></span><br><span class="line">git commit -m <span class="string">&quot;Initial commit: Backup hexo source code&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 关联你的 GitHub 私有仓库（使用你提供的地址）</span></span><br><span class="line">git remote add origin https://github.com/AskemiWang/hexo-blog-source.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 重命名主分支并推送到 GitHub</span></span><br><span class="line">git branch -M main</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure></li>
@@ -1215,7 +1215,7 @@ file”（保持空仓库）。</p></li>
 有实质内容变化就自动完成整个更新流程</strong>, 全程不需要人工干预.</p>
 <h3 id="工作流程">15.2 工作流程</h3>
 <p>整体流程如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">每天 21:00 (电脑开机且用户已登录时触发, 锁屏不影响, 睡眠/关机则跳过)</span><br><span class="line">-&gt;</span><br><span class="line">检查改动规模 (只统计文本增删行; 图片不计入)</span><br><span class="line">-&gt;</span><br><span class="line">无删除改动 且 不超过500行: 撤销暂存, 安静退出 (只记日志, 不弹通知)</span><br><span class="line">超过500行 或 存在删除类改动: 继续</span><br><span class="line">-&gt;</span><br><span class="line">网络自检 (HTTPS私有仓库通道 + SSH公开仓库通道)</span><br><span class="line">-&gt;</span><br><span class="line">两条通道都通: 继续</span><br><span class="line">不通: 重启Jamjams (先杀进程, 修复长时间运行断连的bug)</span><br><span class="line">      -&gt; 等待7897代理端口 -&gt; 确保系统代理和git代理 -&gt; 重测</span><br><span class="line">      (最多两轮, 仍不通则报错停止并弹通知)</span><br><span class="line">-&gt;</span><br><span class="line">执行更新流程:</span><br><span class="line">压缩图片 -&gt; 转换相对路径 -&gt; 高亮转换(==高亮==转&lt;mark&gt;, 带护栏) -&gt; git commit(自动总结) -&gt; push私有仓库 -&gt; hexo clean &amp;&amp; hexo g -d -&gt; 转回local(本地预览模式)</span><br><span class="line">-&gt;</span><br><span class="line">写入日志, 弹桌面通知</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">每天 21:00 (电脑开机且用户已登录时触发, 锁屏不影响, 睡眠/关机则跳过)</span><br><span class="line">-&gt;</span><br><span class="line">检查改动规模 (只统计文本增删行; 图片不计入)</span><br><span class="line">-&gt;</span><br><span class="line">无删除改动 且 不超过500行: 撤销暂存, 安静退出 (只记日志, 不弹通知)</span><br><span class="line">超过500行 或 存在删除类改动: 继续</span><br><span class="line">-&gt;</span><br><span class="line">网络自检 (HTTPS私有仓库通道 + SSH公开仓库通道)</span><br><span class="line">-&gt;</span><br><span class="line">两条通道都通: 继续</span><br><span class="line">不通: 重启Jamjams (先杀进程, 修复长时间运行断连的bug)</span><br><span class="line">      -&gt; 等待7897代理端口 -&gt; 快速探测隧道是否真正连通</span><br><span class="line">      -&gt; 仍不通则环形轮换服务器(最多6台, 不留黑名单)</span><br><span class="line">      (全部失败则报错停止并弹通知)</span><br><span class="line">-&gt;</span><br><span class="line">执行更新流程:</span><br><span class="line">压缩图片 -&gt; 转换相对路径 -&gt; 高亮转换(==高亮==转&lt;mark&gt;, 带护栏) -&gt; git commit(自动总结) -&gt; push私有仓库 -&gt; hexo clean &amp;&amp; hexo g -d -&gt; 转回local(本地预览模式)</span><br><span class="line">-&gt;</span><br><span class="line">写入日志, 弹桌面通知</span><br></pre></td></tr></table></figure>
 <p>下面逐步说明:</p>
 <h4 id="改动检查">15.2.1 改动检查</h4>
 <p>这一步的目的是<strong>防止”无意义”的更新</strong>.
@@ -1242,8 +1242,13 @@ file”（保持空仓库）。</p></li>
 </ul>
 <p>如果检测到网络不通, 脚本会自动<strong>重启Jamjams</strong>:
 先强制结束进程(Jamjams长时间运行会断连, 只有杀掉进程重连才行),
-重新启动后等待代理端口恢复, 再确认系统代理和git代理配置, 然后重测.
-最多尝试两轮, 如果还是不通, 就报错停止并弹桌面通知,
+重新启动后等待代理端口恢复, 再确认系统代理和git代理配置.
+随后它会<strong>快速探测隧道是否真正连通</strong>(端口监听不等于隧道可用).
+如果仍不通(常见原因是当前选中的服务器故障, Jamjams 共 6 台可选),
+脚本会<strong>环形轮换服务器</strong>: 依次把 <code>state.json</code>
+里的 <code>account.selectedServer</code> 改成下一台并重启,
+找出当前可用的那台并保留该选择(不留任何永久黑名单,
+服务器恢复后下次仍会参与轮换). 6 台全部失败才报错停止并弹桌面通知,
 避免在断网状态下执行半截流程.</p>
 <blockquote>
 <p>注意: Jamjams要在设置里勾选 <strong>connect on start</strong>,
@@ -1271,10 +1276,17 @@ Proxy按钮.</p>
 <tbody>
 <tr>
 <td><code>scripts/auto_update_blog.py</code></td>
-<td>scripts目录下的总控脚本, 实现上面完整流程. 支持三个调试参数:
+<td>scripts目录下的总控脚本, 实现上面完整流程. 支持四个调试参数:
 <code>--dry-run</code>(只检查不改动),
 <code>--test-notify</code>(测试桌面通知),
-<code>--test-repair</code>(测试Jamjams重启修复)</td>
+<code>--test-repair</code>(测试Jamjams重启修复),
+<code>--selfcheck</code>(离线自检)</td>
+</tr>
+<tr>
+<td><code>scripts/jamjams_server.py</code></td>
+<td>【手动工具】查看/切换 Jamjams 服务器: <code>--list</code> 列出 6
+台与当前选择, <code>--use S3</code> 切换(停应用→备份→改
+<code>state.json</code>→启动). 网络故障时手动救急用</td>
 </tr>
 <tr>
 <td>Windows任务计划程序</td>
@@ -1302,7 +1314,7 @@ Typora 的 <code>==高亮==</code> 转成 <code>&lt;mark&gt;</code> 再部署,
 只是把第14节的一整条命令链变成了自动判断+自动执行.</p>
 <h3 id="使用方法">15.4 使用方法</h3>
 <p>手动测试或者排查问题时, 在博客根目录下执行:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 预览: 只做本地检查并生成提交信息, 不做任何修改</span></span><br><span class="line">python scripts/auto_update_blog.py --dry-run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试桌面通知</span></span><br><span class="line">python scripts/auto_update_blog.py --test-notify</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试Jamjams重启与网络修复流程</span></span><br><span class="line">python scripts/auto_update_blog.py --test-repair</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 预览: 只做本地检查并生成提交信息, 不做任何修改</span></span><br><span class="line">python scripts/auto_update_blog.py --dry-run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试桌面通知</span></span><br><span class="line">python scripts/auto_update_blog.py --test-notify</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试Jamjams重启与网络修复流程(必要时会轮换服务器)</span></span><br><span class="line">python scripts/auto_update_blog.py --test-repair</span><br><span class="line"></span><br><span class="line"><span class="comment"># 离线自检: 路径/工具/高亮护栏单测/触发预览</span></span><br><span class="line">python scripts/auto_update_blog.py --selfcheck</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 / 手动切换 Jamjams 服务器(网络故障时救急)</span></span><br><span class="line">python scripts/jamjams_server.py --list</span><br><span class="line">python scripts/jamjams_server.py --use S3</span><br></pre></td></tr></table></figure>
 <p>任务运行结果在<code>.update_logs/</code>目录下,
 成功/失败都会弹桌面通知. 想要暂停自动更新,
 在任务计划程序中禁用<code>BlogAutoUpdate</code>任务即可.</p>
