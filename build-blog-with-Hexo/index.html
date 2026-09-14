@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/test.png">
 <meta property="article:published_time" content="2026-06-26T05:02:12.000Z">
-<meta property="article:modified_time" content="2026-09-14T01:28:24.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:36:36.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -290,7 +290,7 @@ top里混入不可见字符的坑</span></a></li></ol></li></ol></li><li class="
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-14 09:28:24" itemprop="dateModified" datetime="2026-09-14T09:28:24+08:00">2026-09-14</time>
+      <time title="Modified: 2026-09-14 09:36:36" itemprop="dateModified" datetime="2026-09-14T09:36:36+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1554,10 +1554,14 @@ Hexo的<code>script_dir</code>在源码里写死为<code>&lt;博客根&gt;/scrip
 </ul>
 <p><strong>对应提交</strong>:
 <code>3f2496d</code>(生成器+第4步+目录迁移) →
-<code>6b8296c</code>(换行修复) → <code>f8849b1</code>(文档+自检) →
-<code>d9816ba</code>(忽略<code>top</code>) →
-<code>b28214a</code>(手动开关+CHANGELOG+文档),
-标签<code>2.0.0</code>指向<code>b28214a</code>。</p>
+<code>6b8296c</code>(换行修复) →
+<code>f8849b1</code>/<code>d9816ba</code>/<code>b28214a</code>(文档、自检、忽略<code>top</code>、手动开关)
+→ <code>c6f136f</code>(围栏规则 + 找回96处高亮) →
+<code>9939fc0</code>(公式与围栏内容修复) →
+<code>db461c8</code>(第17章《问题处理》) →
+<code>8984082</code>(批量渲染修复 + 渲染风险体检) →
+<code>7a30a97</code>(标题改写) → 本文档同步提交;
+标签<code>2.0.0</code>指向<strong>本版本最后完成的那次提交</strong>(具体提交号用<code>git rev-list -n1 2.0.0</code>查看)。</p>
 <blockquote>
 <p>1.0.0 到 2.0.0
 之间陆续加入的自动化能力(图片压缩、图片路径local/online切换、<code>==高亮==</code>→<code>&lt;mark&gt;</code>转换、每天21:00定时更新、网络自检与Jamjams服务器轮换、自动提交信息、桌面通知)在本文件第10、11、14、15章里描述,
@@ -1794,13 +1798,10 @@ TeX 命令<strong>丢弃</strong>(行内代码或代码块里则安全)</td>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/about-mentors/" rel="prev" title="About Mentors">
-                  <i class="fa fa-angle-left"></i> About Mentors
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Acrobat-Pro-DC-2024-installation/" rel="next" title="Acrobat Pro DC 2024 Installation">
-                  Acrobat Pro DC 2024 Installation <i class="fa fa-angle-right"></i>
+                <a href="/about-mentors/" rel="next" title="About Mentors">
+                  About Mentors <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
