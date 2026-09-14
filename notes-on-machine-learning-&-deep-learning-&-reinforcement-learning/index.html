@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_bellman_introduction.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_state_value_example.png">
 <meta property="article:published_time" content="2026-07-27T05:56:56.000Z">
-<meta property="article:modified_time" content="2026-09-13T14:48:28.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:41:59.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="Machine Learning">
@@ -292,7 +292,7 @@ Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-13 22:48:28" itemprop="dateModified" datetime="2026-09-13T22:48:28+08:00">2026-09-13</time>
+      <time title="Modified: 2026-09-14 09:41:59" itemprop="dateModified" datetime="2026-09-14T09:41:59+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -917,11 +917,13 @@ class="math inline"><em>s</em><sub>1</sub></span> and <span
 class="math inline"><em>a</em><sub>2</sub></span>, the conditional
 probability distribution is:</p>
 <p><span class="math display">$$
+\begin{aligned}
 p(s_1\mid s_1, a_2) = 0 \\
 p(s_2\mid s_1, a_2) = 1 \\
 p(s_3\mid s_1, a_2) = 0 \\
 p(s_4\mid s_1, a_2) = 0 \\
 p(s_5\mid s_1, a_2) = 0 \\
+\end{aligned}
 $$</span></p>
 <p>The tabular representation is only able to describe
 <mark>deterministic</mark> state transitions.</p>
@@ -953,11 +955,13 @@ state.</p>
 <p>For example, the policy for <span
 class="math inline"><em>s</em><sub>1</sub></span> is:</p>
 <p><span class="math display">$$
+\begin{aligned}
 \pi (a_1\mid s_1)= 0 \\
 \pi (a_2\mid s_1)= 1 \\
 \pi (a_3\mid s_1)= 0 \\
 \pi (a_4\mid s_1)= 0 \\
 \pi (a_5\mid s_1)= 0 \\
+\end{aligned}
 $$</span></p>
 <p>The above policy is <mark>deterministic</mark>. Policies may be
 <mark>stochastic</mark> in general.</p>
@@ -1442,8 +1446,10 @@ for any <span class="math inline">(<em>s</em>, <em>a</em>)</span>.</li>
 <mark>memoryless</mark> property of a stochastic process.
 Mathematically, it means that:</p>
 <p><span class="math display">$$
+\begin{aligned}
 p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(s_{t+1}|s_t,a_t)\\
 p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(r_{t+1}|s_t,a_t)
+\end{aligned}
 $$</span></p>
 <p>Where <span class="math inline"><em>t</em></span> represents the
 current time step and <span class="math inline"><em>t</em> + 1</span>

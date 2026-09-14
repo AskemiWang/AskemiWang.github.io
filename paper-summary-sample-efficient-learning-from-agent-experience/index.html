@@ -32,7 +32,7 @@
 <meta property="og:description" content="Paper Summary of &quot;Sample-Efficient Learning from Agent Experience&quot;.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-07-31T13:36:00.000Z">
-<meta property="article:modified_time" content="2026-09-13T14:48:28.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:41:59.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Context Distillation">
@@ -283,7 +283,7 @@ Distillation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-13 22:48:28" itemprop="dateModified" datetime="2026-09-13T22:48:28+08:00">2026-09-13</time>
+      <time title="Modified: 2026-09-14 09:41:59" itemprop="dateModified" datetime="2026-09-14T09:41:59+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -411,6 +411,7 @@ class="math inline">M</span></li>
 </ul>
 <p><strong>Simplification</strong> :</p>
 <p><span class="math display">$$
+\begin{aligned}
 L_{CD}(\theta; M, \tau^{\text{exp}}) = D_{KL}\big(p_{\theta_0}^M(\tau'
 \mid
   \tau^{\text{exp}}) \parallel p_\theta^M(\tau')\big) \\ =
@@ -419,6 +420,7 @@ L_{CD}(\theta; M, \tau^{\text{exp}}) = D_{KL}\big(p_{\theta_0}^M(\tau'
 D_{KL}\big(\pi_{\theta_0}(\cdot
   \mid h_t, \tau^{\text{exp}}) \parallel \pi_\theta(\cdot \mid
 h_t)\big)\right]
+\end{aligned}
 $$</span></p>
 <p><strong>Problem</strong>:</p>
 <p><span class="math inline"><em>τ</em><sup>′</sup></span> needs teacher
