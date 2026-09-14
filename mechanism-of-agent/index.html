@@ -54,7 +54,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_actor-critic.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_Agent-as-a-tool.png">
 <meta property="article:published_time" content="2026-07-07T08:17:40.000Z">
-<meta property="article:modified_time" content="2026-09-13T14:48:28.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Deep Learning">
@@ -365,7 +365,7 @@ Passing Mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-13 22:48:28" itemprop="dateModified" datetime="2026-09-13T22:48:28+08:00">2026-09-13</time>
+      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2057,8 +2057,8 @@ results</li>
 <h3 id="augment-stage">4.3.4 Augment Stage</h3>
 <h4 id="augmentation-pattern">4.3.4.1 Augmentation Pattern</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># BEFORE augmentation (no RAG)</span></span><br><span class="line">prompt = <span class="string">f&quot;System: You are a helpful assistant.\nUser: <span class="subst">&#123;query&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># AFTER augmentation (with RAG)</span></span><br><span class="line">prompt = <span class="string">f&quot;&quot;&quot;System: You are a helpful assistant.</span></span><br><span class="line"><span class="string">Relevant context:</span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string"><span class="subst">&#123;doc1&#125;</span></span></span><br><span class="line"><span class="string"><span class="subst">&#123;doc2&#125;</span></span></span><br><span class="line"><span class="string"><span class="subst">&#123;doc3&#125;</span></span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string">Use the context above to answer. If the context doesn&#x27;t help, say so.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">User: <span class="subst">&#123;query&#125;</span>&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-<p>The retrieved documents are <strong><em>*injected into the system
-prompt or a dedicated context block*</em></strong>, before the user
+<p>The retrieved documents are <strong><em>injected into the system
+prompt or a dedicated context block</em></strong>, before the user
 query.</p>
 <h4 id="context-window-budgeting">4.3.4.2 Context Window Budgeting</h4>
 <p>You can’t stuff everything. You must budget the context window:</p>
@@ -2126,9 +2126,9 @@ Hallucination</h4>
 </tr>
 </tbody>
 </table>
-<p>The key insight: <strong><em>*hallucination happens in the gap
-between the LLM’s training data and the specific facts it needs. RAG
-closes that gap.*</em></strong></p>
+<p>The key insight: <strong><em>hallucination happens in the gap between
+the LLM’s training data and the specific facts it needs. RAG closes that
+gap.</em></strong></p>
 <h4 id="instruction-design-for-grounded-generation">4.3.5.2 Instruction
 Design for Grounded Generation</h4>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Instructions <span class="keyword">for</span> grounded generation:</span><br><span class="line">1. Answer ONLY from the provided context when possible</span><br><span class="line">2. If the context is insufficient, SAY SO explicitly</span><br><span class="line">3. Cite sources using [N] notation</span><br><span class="line">4. Do NOT fabricate details not present <span class="keyword">in</span> the context</span><br></pre></td></tr></table></figure>
@@ -2227,9 +2227,9 @@ generating, the Agent should store new knowledge:</p>
 </table>
 <p><strong>Relevance-Quality Tradeoffs:</strong></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Precision ↑  →  Fewer, more relevant results  →  Risk of missing context</span><br><span class="line">Recall    ↑  →  More results, everything captured  →  Risk of noise and wasted context</span><br></pre></td></tr></table></figure>
-<p><strong><em>*The rule of thumb:*</em></strong> tune for precision
-when the LLM can handle missing context gracefully (“I don’t know”).
-Tune for recall when missing context means wrong answers.</p>
+<p><strong><em>The rule of thumb:</em></strong> tune for precision when
+the LLM can handle missing context gracefully (“I don’t know”). Tune for
+recall when missing context means wrong answers.</p>
 <p><strong>Evaluation:</strong></p>
 <ul>
 <li><strong>Retrieval quality</strong>: precision@K, recall@K, MRR (Mean
@@ -2459,9 +2459,9 @@ dynamically:</p>
 </table>
 <p>This is an example:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">allocate_budget</span>(<span class="params">query: <span class="built_in">str</span>, available_tokens: <span class="built_in">int</span></span>) -&gt; ContextBudget:</span><br><span class="line">    complexity = estimate_complexity(query)  <span class="comment"># LLM call or heuristic</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> complexity == <span class="string">&quot;simple&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> ContextBudget(system=<span class="number">0.15</span>, context=<span class="number">0.10</span>, history=<span class="number">0.20</span>, reserve=<span class="number">0.55</span>)</span><br><span class="line">    <span class="keyword">elif</span> complexity == <span class="string">&quot;medium&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> ContextBudget(system=<span class="number">0.12</span>, context=<span class="number">0.35</span>, history=<span class="number">0.40</span>, reserve=<span class="number">0.13</span>)</span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment"># complex</span></span><br><span class="line">        <span class="keyword">return</span> ContextBudget(system=<span class="number">0.10</span>, context=<span class="number">0.50</span>, history=<span class="number">0.35</span>, reserve=<span class="number">0.05</span>)</span><br></pre></td></tr></table></figure>
-<p><strong><em>*Why more reserve for simple tasks?*</em></strong>
-Because the LLM answer will be short — it doesn’t need elaborate
-generation. The reserve mostly goes unused.</p>
+<p><strong><em>Why more reserve for simple tasks?</em></strong> Because
+the LLM answer will be short — it doesn’t need elaborate generation. The
+reserve mostly goes unused.</p>
 <h3 id="optimization-checklist">4.4.9 Optimization Checklist</h3>
 <p>Before sending to the LLM, ask:</p>
 <ul class="task-list">

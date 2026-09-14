@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/SWE-smith_generate_traj.png">
 <meta property="article:published_time" content="2026-08-04T10:11:35.000Z">
-<meta property="article:modified_time" content="2026-08-04T15:15:06.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Data Generation">
@@ -289,9 +289,15 @@ messages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" hre
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2026-08-04 18:11:35 / Modified: 23:15:06" itemprop="dateCreated datePublished" datetime="2026-08-04T18:11:35+08:00">2026-08-04</time>
+      <time title="Created: 2026-08-04 18:11:35" itemprop="dateCreated datePublished" datetime="2026-08-04T18:11:35+08:00">2026-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -460,12 +466,14 @@ Format Test Dataset</h2>
 <ul>
 <li><p>This way SWE-agent can find the tests need to be repaired by git
 diff.</p></li>
-<li><p>git diff main -&gt; deleted file -&gt; bug position</p></li>
-<li><p>```sh Agent git checkout → testcase not exist Agent git log:
-commit 1: “Bug Patch” commit 2: “Remove Tests” Agent inference: Deleted
-files in commit 2 is used to verify bug Agent git checkout main –
-test_xxx.py -&gt; Restore testcase … <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - &lt;mark&gt;I don&#x27;t think it make sense.&lt;/mark&gt;</span><br><span class="line"></span><br><span class="line">4. Assemble all instances (harness/gather.py :269-273) :</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   task_instances_path = LOG_DIR_TASKS / f&quot;&#123;run_id&#125;.json&quot;</span><br><span class="line">   json.dump(task_instances, f, indent=4)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>git diff main -&gt; deleted file -&gt; bug position</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Agent git checkout → testcase not exist</span><br><span class="line">Agent git <span class="built_in">log</span>:</span><br><span class="line">	commit 1: <span class="string">&quot;Bug Patch&quot;</span></span><br><span class="line">	commit 2: <span class="string">&quot;Remove Tests&quot;</span></span><br><span class="line">Agent inference: Deleted files <span class="keyword">in</span> commit 2 is used to verify bug</span><br><span class="line">Agent git checkout main -- test_xxx.py -&gt; Restore testcase</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li><p><mark>I don’t think it make sense.</mark></p></li>
 </ul>
+<ol start="4" type="1">
+<li><p>Assemble all instances (harness/gather.py :269-273) :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">task_instances_path = LOG_DIR_TASKS / <span class="string">f&quot;<span class="subst">&#123;run_id&#125;</span>.json&quot;</span></span><br><span class="line">json.dump(task_instances, f, indent=<span class="number">4</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="generate-problem_statement-by-llm-issue_gengenerate.py">3.3
 Generate problem_statement by LLM (issue_gen/generate.py)</h2>
 <p>Input for LLM:</p>
@@ -560,25 +568,25 @@ repository…”</td>
 <tr>
 <td>1</td>
 <td>assistant</td>
-<td>“I’ll help you…&lt;function=bash&gt;…”</td>
+<td>“I’ll help you…\n&lt;function=bash&gt;…”</td>
 <td>✅</td>
 </tr>
 <tr>
 <td>2</td>
 <td>user</td>
-<td>“OBSERVATION:/testbed/pandas/…”</td>
+<td>“OBSERVATION:\n/testbed/pandas/…”</td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
 <td>assistant</td>
-<td>“The PR description mentions…&lt;function=bash&gt;”</td>
+<td>“The PR description mentions…\n&lt;function=bash&gt;”</td>
 <td>✅</td>
 </tr>
 <tr>
 <td>4</td>
 <td>user</td>
-<td>“OBSERVATION: if keyarr…”</td>
+<td>“OBSERVATION:\n6070 if keyarr…”</td>
 <td></td>
 </tr>
 <tr>
@@ -590,7 +598,7 @@ repository…”</td>
 <tr>
 <td>6</td>
 <td>user</td>
-<td>“OBSERVATION:created successfully.”</td>
+<td>“OBSERVATION:\nFile created successfully.”</td>
 <td></td>
 </tr>
 <tr>
@@ -602,7 +610,7 @@ repository…”</td>
 <tr>
 <td>8</td>
 <td>user</td>
-<td>“OBSERVATION:: ’Inde…</td>
+<td>“OBSERVATION:\nAttributeError: ’Inde…</td>
 <td></td>
 </tr>
 <tr>
@@ -614,25 +622,25 @@ repository…”</td>
 <tr>
 <td>10</td>
 <td>user</td>
-<td>“OBSERVATION:executed</td>
+<td>“OBSERVATION:\nCommand executed</td>
 <td></td>
 </tr>
 <tr>
 <td>11</td>
 <td>assistant</td>
-<td>“Let me rerun…&lt;</td>
+<td>“Let me rerun…\n&lt;</td>
 <td>✅</td>
 </tr>
 <tr>
 <td>12</td>
 <td>user</td>
-<td>“OBSERVATION:values…”</td>
+<td>“OBSERVATION:\n values…”</td>
 <td></td>
 </tr>
 <tr>
 <td>13</td>
 <td>assistant</td>
-<td>“The fix works. Let me submit.&lt;function=submit&gt;”</td>
+<td>“The fix works. Let me submit.\n&lt;function=submit&gt;”</td>
 <td>✅</td>
 </tr>
 </tbody>

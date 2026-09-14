@@ -32,7 +32,7 @@
 <meta property="og:description" content="Info of running SWE-bench.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-07-01T11:46:36.000Z">
-<meta property="article:modified_time" content="2026-07-02T06:10:44.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Benchmark">
@@ -284,7 +284,7 @@ Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-07-02 14:10:44" itemprop="dateModified" datetime="2026-07-02T14:10:44+08:00">2026-07-02</time>
+      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -318,8 +318,8 @@ Test LLM’s Performance</h1>
 <h2 id="host-environment-preparation-prerequisites">1. Host Environment
 Preparation (Prerequisites)</h2>
 <p>Since we are using Docker to deploy vLLM, the host machine
-<strong><em>*does not need to install CUDA Toolkit*</em></strong>. It
-only requires the NVIDIA Driver and NVIDIA Container Toolkit.</p>
+<strong><em>does not need to install CUDA Toolkit</em></strong>. It only
+requires the NVIDIA Driver and NVIDIA Container Toolkit.</p>
 <p>Ensure your host machine has the NVIDIA driver installed. You can
 verify it by running:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
@@ -336,12 +336,11 @@ verify it by running:</p>
 host environment is fully ready!</em></p>
 <h2 id="create-a-virtual-environment-for-swe">2. Create a Virtual
 Environment for SWE</h2>
-<p><strong><em>* Note on CUDA Version:*</em></strong> The system’s
-default CUDA version (e.g., CUDA 13.0) is often too new and causes
-<code>flashinfer</code> JIT compilation errors (like
-<code>has no member "FlagHeads"</code>). It is highly recommend to use
-Docker for vLLM deployment later, but if you prefer Conda, ensure you
-pin the CUDA version.</p>
+<p>*** Note on CUDA Version:*** The system’s default CUDA version (e.g.,
+CUDA 13.0) is often too new and causes <code>flashinfer</code> JIT
+compilation errors (like <code>has no member "FlagHeads"</code>). It is
+highly recommend to use Docker for vLLM deployment later, but if you
+prefer Conda, ensure you pin the CUDA version.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /data/disk2/wye</span><br><span class="line"><span class="built_in">cd</span> /data/disk2/wye</span><br><span class="line">conda create --prefix /data/disk2/wye/swe_env_cu124 python=3.10 -y</span><br></pre></td></tr></table></figure>
 <p>Active Conda Environment:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate /data/disk2/wye/swe_env_cu124/</span><br></pre></td></tr></table></figure>

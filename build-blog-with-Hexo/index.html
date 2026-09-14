@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/test.png">
 <meta property="article:published_time" content="2026-06-26T05:02:12.000Z">
-<meta property="article:modified_time" content="2026-09-13T14:51:55.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,8 @@ top里混入不可见字符的坑</span></a></li></ol></li></ol></li><li class="
 从某一节起不再被替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F%E6%98%BE%E7%A4%BA%E6%88%90%E5%AD%97%E9%9D%A2-...-%E6%88%96%E6%8A%A5-undefined-control-sequence"><span class="nav-text">17.2
 公式显示成字面 $...$ 或报
 Undefined control sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E7%BD%AE%E9%A1%B6%E4%B8%8E%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%9D%91"><span class="nav-text">17.3
-首页置顶与”更新时间”的两个坑</span></a></li></ol></li></ol></div>
+首页置顶与”更新时间”的两个坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%89%B9%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98%E4%B8%8E%E4%BF%AE%E6%B3%95%E4%BD%93%E6%A3%80%E5%90%8E%E9%9B%86%E4%B8%AD%E4%BF%AE%E5%A4%8D"><span class="nav-text">17.4
+一批渲染问题与修法(体检后集中修复)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -290,7 +291,7 @@ Undefined control sequence</span></a></li><li class="nav-item nav-level-3"><a cl
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-13 22:51:55" itemprop="dateModified" datetime="2026-09-13T22:51:55+08:00">2026-09-13</time>
+      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -396,10 +397,12 @@ shell为了兼容所以能用. 而tree命令这种Windows原生自带的, 两者
 <ol type="1">
 <li><p>系统变量-&gt;新建:</p>
 <p>变量名: <strong>NODE_PATH</strong></p>
-<p>变量值: **D:_global_modules**</p>
+<p>变量值:
+<strong><code>D:\softwares\nodejs\node_global\node_modules</code></strong></p>
 <p>注意, 变量值后面加了一级子目录 node_modules</p></li>
 <li><p>用户变量中Path项-&gt;编辑-&gt;新建:</p>
-<p>添加项: **D:_global**</p></li>
+<p>添加项:
+<strong><code>D:\softwares\nodejs\node_global</code></strong></p></li>
 <li><p>系统变量-&gt;编辑-&gt;新建:</p>
 <p>添加项: <strong>%NODE_PATH%</strong></p></li>
 </ol>
@@ -1686,6 +1689,73 @@ git 里存 LF、工作区是 CRLF; 拿工作区文本与
 <p><strong>预防</strong>: 任何”工作区 vs
 提交历史”的文本比对都必须先归一化; <code>--selfcheck</code> 第 5
 节会预览”哪些文章会被刷新”, 上线前看一眼就能避免意外。</p>
+<h3 id="一批渲染问题与修法体检后集中修复">17.4
+一批渲染问题与修法(体检后集中修复)</h3>
+<p>用脚本把线上全部文章抓下来逐页体检(未渲染的公式/高亮、Markdown
+外泄、代码围栏、图片与内部链接、以及用同版本 MathJax 做命令级校验)后,
+集中修了下面几类:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>现象</th>
+<th>根因</th>
+<th>修法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正文里的 Windows 路径被吃掉:
+<code>主题文件夹(C:)</code>、<code>**D:_global_modules**</code></td>
+<td>博客给 pandoc 开了 <code>raw_tex</code>,
+正文里的”反斜杠+字母”(<code>\softwares</code>、<code>\nodejs</code>)被当成原始
+TeX 命令<strong>丢弃</strong>(行内代码或代码块里则安全)</td>
+<td>路径一律写成行内代码:
+<code>`D:\softwares\nodejs\node_global`</code>; 单独的反斜杠用
+<code>\\</code> 转义</td>
+</tr>
+<tr>
+<td><code>$$...$$</code> 显示公式被拆成几段、<code>_i</code>
+变成斜体、TeX 命令丢失</td>
+<td><strong><code>$$</code> 块内不能有空行</strong>, 空行会提前结束公式,
+其后内容按 Markdown 解析</td>
+<td>删掉块内空行(长公式改用 <code>\begin{aligned}</code>,
+同样不留空行)</td>
+</tr>
+<tr>
+<td>正文出现字面 <code>```</code>, 列表里的代码块结构错乱</td>
+<td>围栏写在列表标记后面(<code>- ```sh</code>)不算开围栏;
+内层字面围栏的缩进又落在”允许闭合”的范围内, 会把外层块提前闭合</td>
+<td>围栏<strong>独立成行</strong>并与列表内容对齐; <strong>外层围栏用 4
+个反引号</strong>, 内层字面 <code>```</code> 就永远无法闭合它</td>
+</tr>
+<tr>
+<td>表格/正文里出现多余星号:
+<code>****粗体****</code>、<code>***\*粗斜体\****</code></td>
+<td>四个以上星号、或”星号+转义星号”会被解析成”粗斜体里再带一个字面星号”</td>
+<td>统一写成 <code>**粗体**</code> / <code>***粗斜体***</code></td>
+</tr>
+<tr>
+<td>表格单元格里的 <code>\n</code> 丢失(<code>OBSERVATION:\nFile</code>
+→ <code>OBSERVATION:File</code>)</td>
+<td>同 <code>raw_tex</code>: <code>\n</code> 被当命令丢弃</td>
+<td>写 <code>\\n</code>(显示为 <code>\n</code>), 或套行内代码</td>
+</tr>
+<tr>
+<td>文章开头多出一行 <code>[TOC]</code></td>
+<td>pandoc 不认 <code>[TOC]</code> 标记(那是别的渲染器语法),
+会原样输出</td>
+<td>不要写 <code>[TOC]</code>; 目录由主题侧边栏提供</td>
+</tr>
+</tbody>
+</table>
+<p>体检顺手加进了<code>--selfcheck</code>(只告警、不阻断流程):
+<strong>①<code>$$</code> 块内含空行;
+②正文里的反斜杠命令</strong>(自动跳过代码块、行内代码、图片链接与公式)。</p>
 
     </div>
 

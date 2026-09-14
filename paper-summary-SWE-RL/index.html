@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/SWE-RL_flowchart.png">
 <meta property="article:published_time" content="2026-08-04T15:25:58.000Z">
-<meta property="article:modified_time" content="2026-08-04T15:15:06.000Z">
+<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Full Fine-Tuning">
@@ -281,9 +281,15 @@ Reward by Comparing Text Similarity</span></a></li></ol></li><li class="nav-item
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2026-08-04 23:25:58 / Modified: 23:15:06" itemprop="dateCreated datePublished" datetime="2026-08-04T23:25:58+08:00">2026-08-04</time>
+      <time title="Created: 2026-08-04 23:25:58" itemprop="dateCreated datePublished" datetime="2026-08-04T23:25:58+08:00">2026-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -682,10 +688,18 @@ Rate, 1 − <em>ϵ</em>, 1 + <em>ϵ</em>), (<em>ϵ</em> = 0.2)
 reward to train the ability of fixing the PRs we provided.</p>
 <p>However, if we don’t limit it, the model will go overfitting: The PRs
 dealing ability improve while the other abilities descend.</p>
-<p>$$ <em>i = -( <em>i A_i,; (<em>i, 1-, 1+) A_i ) +
-D</em>{}(</em></em>{})\ = _{i=1}^{N} _i\ _i = </p>
-<p>A_i = </p>
-<p>r_i = R(o_i),G = 16,N = 512 $$</p>
+<p><span class="math display">$$
+\mathcal{L}_i = -\min\left( \rho_i \cdot A_i,\;
+\operatorname{clip}(\rho_i, 1-\varepsilon, 1+\varepsilon) \cdot A_i
+  \right) + \beta \cdot D_{\mathrm{KL}}(\pi_\theta \parallel
+\pi_{\mathrm{ref}})\\
+  \mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}_i\\
+   \rho_i = \frac{\pi_\theta(o_i \mid
+q)}{\pi_{\theta_{\mathrm{old}}}(o_i \mid q)}
+  A_i = \frac{r_i - \operatorname{mean}(r_1, \ldots,
+r_G)}{\operatorname{std}(r_1, \ldots, r_G)}
+  r_i = R(o_i),\quad G = 16,\quad N = 512
+$$</span></p>
 <h1 id="supplements">3. Supplements</h1>
 <h2 id="original-pr-format">3.1 Original PR Format</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GitHub Pull Request: django/django <span class="comment">#12345</span></span><br><span class="line">State: merged ✓</span><br><span class="line">Author: human (<span class="keyword">not</span> a bot)</span><br></pre></td></tr></table></figure>
