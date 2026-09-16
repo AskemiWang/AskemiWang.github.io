@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/test.png">
 <meta property="article:published_time" content="2026-06-26T05:02:12.000Z">
-<meta property="article:modified_time" content="2026-09-14T01:42:14.000Z">
+<meta property="article:modified_time" content="2026-09-16T11:25:40.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -290,7 +290,7 @@ top里混入不可见字符的坑</span></a></li></ol></li></ol></li><li class="
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-14 09:42:14" itemprop="dateModified" datetime="2026-09-14T09:42:14+08:00">2026-09-14</time>
+      <time title="Modified: 2026-09-16 19:25:40" itemprop="dateModified" datetime="2026-09-16T19:25:40+08:00">2026-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1463,6 +1463,10 @@ tag。各版本做了什么、为什么改, 统一记在下一章《16. 版本�
 在原标签上追加提交即可(需要改指向时:
 <code>git tag -d &lt;tag&gt; &amp;&amp; git push origin :refs/tags/&lt;tag&gt;</code>
 后重建)。</li>
+<li><strong>标签只在博主明确要求时改动</strong>:
+即使之后又提交了若干次(修 bug、补文档),
+也不要因为”有更新提交了”就自动把标签前移 ——
+打标签、改指向、推送标签都必须以博主的指示为准。</li>
 <li>版本号语义: 主版本号变化 =
 排序/流程等<strong>行为</strong>发生变化(如2.0.0改了首页排序); 次版本号
 = 新增能力(如新增某条自检); 修订号 = 只修缺陷或文档。</li>

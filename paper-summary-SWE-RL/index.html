@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/SWE-RL_flowchart.png">
 <meta property="article:published_time" content="2026-08-04T15:25:58.000Z">
-<meta property="article:modified_time" content="2026-09-14T01:41:59.000Z">
+<meta property="article:modified_time" content="2026-09-16T11:25:40.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Full Fine-Tuning">
@@ -289,7 +289,7 @@ Reward by Comparing Text Similarity</span></a></li></ol></li><li class="nav-item
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-14 09:41:59" itemprop="dateModified" datetime="2026-09-14T09:41:59+08:00">2026-09-14</time>
+      <time title="Modified: 2026-09-16 19:25:40" itemprop="dateModified" datetime="2026-09-16T19:25:40+08:00">2026-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -690,16 +690,16 @@ reward to train the ability of fixing the PRs we provided.</p>
 dealing ability improve while the other abilities descend.</p>
 <p><span class="math display">$$
 \begin{aligned}
-\mathcal{L}_i = -\min\left( \rho_i \cdot A_i,\;
+\mathcal{L}_i &amp;= -\min\left( \rho_i \cdot A_i,\;
 \operatorname{clip}(\rho_i, 1-\varepsilon, 1+\varepsilon) \cdot A_i
   \right) + \beta \cdot D_{\mathrm{KL}}(\pi_\theta \parallel
 \pi_{\mathrm{ref}})\\
-  \mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}_i\\
-   \rho_i = \frac{\pi_\theta(o_i \mid
-q)}{\pi_{\theta_{\mathrm{old}}}(o_i \mid q)}
-  A_i = \frac{r_i - \operatorname{mean}(r_1, \ldots,
-r_G)}{\operatorname{std}(r_1, \ldots, r_G)}
-  r_i = R(o_i),\quad G = 16,\quad N = 512
+  \mathcal{L} &amp;= \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}_i\\
+   \rho_i &amp;= \frac{\pi_\theta(o_i \mid
+q)}{\pi_{\theta_{\mathrm{old}}}(o_i \mid q)}\\
+  A_i &amp;= \frac{r_i - \operatorname{mean}(r_1, \ldots,
+r_G)}{\operatorname{std}(r_1, \ldots, r_G)}\\
+  r_i &amp;= R(o_i),\quad G = 16,\quad N = 512
 \end{aligned}
 $$</span></p>
 <h1 id="supplements">3. Supplements</h1>
