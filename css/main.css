@@ -1384,7 +1384,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ff2dff;
+  background: #f1cbff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2860,12 +2860,21 @@ header.header {
 /* ==========================================
    美化 hexo-blog-encrypt 加密输入框
    ========================================== */
-/* 1. 基础容器居中与间距 */
-#hexo-blog-encrypt,
+/* 1. 基础容器居中与间距
+   注意: 只作用于"未解锁"状态。hexo-blog-encrypt 解密成功后会用一个新容器替换原容器,
+   新容器的 class 变成 "hbe hbe-decrypted-content", 但 **id 仍然是 hexo-blog-encrypt**,
+   所以这里必须用 :not() 把解密后的正文排除掉, 否则整篇正文会继承 text-align: center。 */
+#hexo-blog-encrypt:not(.hbe-decrypted-content),
 .hbe-container {
   text-align: center;
   padding: 2em 0;
   margin: 2em auto;
+}
+/* 解密后的正文恢复常规排版 (与主题正文一致) */
+#hexo-blog-encrypt.hbe-decrypted-content {
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 /* 2. 输入框核心样式 (适配亮色模式) */
 .hbe-input-container {

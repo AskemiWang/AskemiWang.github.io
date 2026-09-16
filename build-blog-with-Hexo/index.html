@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/test.png">
 <meta property="article:published_time" content="2026-06-26T05:02:12.000Z">
-<meta property="article:modified_time" content="2026-09-16T11:25:40.000Z">
+<meta property="article:modified_time" content="2026-09-16T12:42:01.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,8 @@ top里混入不可见字符的坑</span></a></li></ol></li></ol></li><li class="
 高亮标记从某一节起不再被替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8-%E5%AD%97%E9%9D%A2%E7%BE%8E%E5%85%83%E7%AC%A6%E5%8F%B7%E4%B8%8E%E6%9C%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E4%BB%A4"><span class="nav-text">17.2 公式显示异常:
 字面美元符号与未定义命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E7%BD%AE%E9%A1%B6%E4%B8%8E%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%9D%91"><span class="nav-text">17.3
 首页置顶与”更新时间”的两个坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%89%B9%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98%E4%B8%8E%E4%BF%AE%E6%B3%95%E4%BD%93%E6%A3%80%E5%90%8E%E9%9B%86%E4%B8%AD%E4%BF%AE%E5%A4%8D"><span class="nav-text">17.4
-一批渲染问题与修法(体检后集中修复)</span></a></li></ol></li></ol></div>
+一批渲染问题与修法(体检后集中修复)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%9D%91hexo-blog-encrypt"><span class="nav-text">17.5
+加密文章的两个坑(hexo-blog-encrypt)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -290,7 +291,7 @@ top里混入不可见字符的坑</span></a></li></ol></li></ol></li><li class="
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-16 19:25:40" itemprop="dateModified" datetime="2026-09-16T19:25:40+08:00">2026-09-16</time>
+      <time title="Modified: 2026-09-16 20:42:01" itemprop="dateModified" datetime="2026-09-16T20:42:01+08:00">2026-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1768,6 +1769,33 @@ TeX 命令<strong>丢弃</strong>(行内代码或代码块里则安全)</td>
 </tr>
 </tbody>
 </table>
+<h3 id="加密文章的两个坑hexo-blog-encrypt">17.5
+加密文章的两个坑(hexo-blog-encrypt)</h3>
+<p><strong>现象 A</strong>: 加密文章输入密码解锁后,
+整篇正文变成<strong>居中</strong>(普通文章正常)。</p>
+<p><strong>原因</strong>: <code>source/_data/styles.styl</code>
+里为了美化密码框写了
+<code>#hexo-blog-encrypt { text-align: center; }</code>; 而
+hexo-blog-encrypt 解密成功后会<strong>复用同一个
+id</strong>新建容器(<code>class="hbe hbe-decrypted-content"</code>)替换原容器
+—— 于是解密后的正文也继承了居中。</p>
+<p><strong>解决</strong>:
+把居中规则限定在”未解锁”状态(<code>#hexo-blog-encrypt:not(.hbe-decrypted-content)</code>),
+再给解密后的容器显式 <code>text-align: left</code>。</p>
+<p><strong>现象 B</strong>: 加密文章解锁后, 末尾的图片不显示(空白),
+但图片 URL 本身是 200。</p>
+<p><strong>原因</strong>: NexT 用 lozad 做图片懒加载(构建时把
+<code>&lt;img src&gt;</code> 改写成 <code>data-src</code>), 而
+<code>next-boot.js</code> 只在<strong>页面启动时</strong>执行一次
+<code>window.lozad('.post-body img').observe()</code>;
+解密是”点击后才把正文插入页面”, 新插入的图片永远不会被 observe,
+也就不会补上真正的 <code>src</code>。</p>
+<p><strong>解决</strong>: 在 <code>source/_data/post-body-end.njk</code>
+里加一段脚本(仅当页面存在未解锁容器时才生效): 用
+<code>MutationObserver</code> 监听 <code>.post-body</code>,
+在解密容器被替换后重新执行一次
+<code>lozad('.post-body img').observe()</code>; 另加一个最多约 60
+秒的兜底轮询。</p>
 <p>体检顺手加进了<code>--selfcheck</code>(只告警、不阻断流程):
 <strong>①<code>$$</code> 块内含空行; ②<code>$$</code> 块里用了
 <code>\\</code> 换行却没有对齐环境;
@@ -1804,6 +1832,45 @@ TeX 命令<strong>丢弃</strong>(行内代码或代码块里则安全)</td>
     text-decoration: underline;
   }
 </style>
+
+<!-- 加密文章解密后重新触发 lozad 懒加载。
+     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
+     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
+     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
+     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
+<script>
+  (function () {
+    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
+    if (!locked) return;   // 非加密文章
+
+    function refreshLazy() {
+      if (typeof window.lozad !== 'function') return;
+      var imgs = document.querySelectorAll('.post-body img[data-src]');
+      if (!imgs.length) return;
+      window.lozad('.post-body img').observe();
+    }
+
+    var body = document.querySelector('.post-body');
+    if (body && window.MutationObserver) {
+      var pending = null;
+      new MutationObserver(function () {
+        if (pending) return;
+        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
+      }).observe(body, { childList: true, subtree: true });
+    }
+
+    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
+        refreshLazy();
+        clearInterval(timer);
+      } else if (++tries > 150) {   // 最多约 60 秒
+        clearInterval(timer);
+      }
+    }, 400);
+  })();
+</script>
           <div class="post-tags">
               <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           </div>

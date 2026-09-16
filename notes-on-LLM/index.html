@@ -636,6 +636,45 @@ word_tokenizer(closer to what was done classically in NLP).</p>
     text-decoration: underline;
   }
 </style>
+
+<!-- 加密文章解密后重新触发 lozad 懒加载。
+     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
+     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
+     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
+     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
+<script>
+  (function () {
+    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
+    if (!locked) return;   // 非加密文章
+
+    function refreshLazy() {
+      if (typeof window.lozad !== 'function') return;
+      var imgs = document.querySelectorAll('.post-body img[data-src]');
+      if (!imgs.length) return;
+      window.lozad('.post-body img').observe();
+    }
+
+    var body = document.querySelector('.post-body');
+    if (body && window.MutationObserver) {
+      var pending = null;
+      new MutationObserver(function () {
+        if (pending) return;
+        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
+      }).observe(body, { childList: true, subtree: true });
+    }
+
+    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
+        refreshLazy();
+        clearInterval(timer);
+      } else if (++tries > 150) {   // 最多约 60 秒
+        clearInterval(timer);
+      }
+    }, 400);
+  })();
+</script>
           <div class="post-tags">
               <a href="/tags/Artificial-Intelligence/" rel="tag"># Artificial Intelligence</a>
               <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
