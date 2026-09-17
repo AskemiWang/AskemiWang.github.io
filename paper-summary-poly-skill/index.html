@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Paper Summary of &quot;PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)&quot;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Summary – PolySkill">
+<meta property="og:url" content="https://wangyier.top/paper-summary-poly-skill/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Paper Summary of &quot;PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)&quot;.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/polyskill_amazon_website.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/PolySkill_Mind2Web.png">
+<meta property="article:published_time" content="2026-08-04T10:11:35.000Z">
+<meta property="article:modified_time" content="2026-09-17T13:06:01.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Continual Learning">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="Skill">
+<meta property="article:tag" content="Skill Induction">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/polyskill_amazon_website.png">
+
+
+<link rel="canonical" href="https://wangyier.top/paper-summary-poly-skill/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-poly-skill/","path":"/paper-summary-poly-skill/","title":"Paper Summary – PolySkill"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Paper Summary – PolySkill | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#abstract"><span class="nav-text">1. Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">2. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#implementation"><span class="nav-text">3. Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#preliminary"><span class="nav-text">3.1 Preliminary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-formulation"><span class="nav-text">3.1.1 Problem Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lm-based-agent-policy"><span class="nav-text">3.1.2 LM-based Agent Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-execution-and-objective"><span class="nav-text">3.1.3 Task Execution and
+Objective</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polyskill-framework"><span class="nav-text">3.2 PolySkill Framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-induction-process"><span class="nav-text">3.3 Skill Induction Process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#base-of-skill-induction-pipeline"><span class="nav-text">3.3.1 Base of Skill Induction
+Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innovation-via-polymorphic-skill-induction"><span class="nav-text">3.3.2 Innovation via
+Polymorphic Skill Induction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-learning-on-unseen-websites"><span class="nav-text">3.3.3 Skill Learning on
+Unseen Websites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-setup"><span class="nav-text">3.4 Evaluation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-metrics"><span class="nav-text">3.5 Evaluation Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#success-rate"><span class="nav-text">3.5.1 Success Rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number-of-steps"><span class="nav-text">3.5.2 Number of Steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-reusability"><span class="nav-text">3.5.3 Skill Reusability:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-coverage-skill-adoption-rate"><span class="nav-text">3.5.4 Task Coverage &#x2F; Skill
+Adoption Rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-compositionality"><span class="nav-text">3.5.5 Skill Compositionality</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#experiments"><span class="nav-text">4. Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#standard-benchmark-evaluation"><span class="nav-text">4.1 Standard Benchmark
+Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-analysis"><span class="nav-text">5. Code Analysis</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/paper-summary-poly-skill/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Paper Summary – PolySkill | The Great Library">
+      <meta itemprop="description" content="Paper Summary of &quot;PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)&quot;.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paper Summary – PolySkill
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-08-04 18:11:35" itemprop="dateCreated datePublished" datetime="2026-08-04T18:11:35+08:00">2026-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-09-17 21:06:01" itemprop="dateModified" datetime="2026-09-17T21:06:01+08:00">2026-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Paper Summary of "PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)".</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="abstract">1. Abstract</h1>
+<p>Existing methods for <mark>skill learning</mark> often create skills
+that are <mark>over-specialized</mark> to a single website/task and fail
+to generalize.</p>
+<p>This paper creates a new framework that enables agents to learn
+generalizable and compositional skills. The core idea, inspired by
+<mark>polymorphism</mark> in software engineering, is to
+<mark>decouple</mark> a skill’s abstract goal (what it accomplishes) and
+its concrete implementation (how it is executed).</p>
+<p>Their findings show that <mark>separating</mark> a skill’s goal from
+its execution is a crucial step toward developing autonomous agents that
+can learn and generalize across the open web continuously.</p>
+<h1 id="introduction">2. Introduction</h1>
+<p>Nowadays a promising direction is <mark>skill induction</mark>. Agent
+Skill Induction (Wang et al., 2025) and SkillWeaver (Zheng et al., 2025)
+made these skills more robust by structuring them as code.</p>
+<p>However, these methods primarily focus on same website, cross-task
+settings. They generate over-specialized skills that fail to generalize,
+leaving the critical challenge of cross-website generalization
+under-explored.</p>
+<ul>
+<li>First, how can we induce skills that are transferable across diverse
+websites?</li>
+<li>Second, beyond task success, how can we quantitatively measure skill
+transfer and reuse?</li>
+</ul>
+<p>PolySkill, a framework that grounds agent skill learning in the
+principle of <mark>polymorphic abstraction</mark>, a cornerstone of
+<mark>object-oriented</mark> design from software engineering.</p>
+<p>Defining:</p>
+<ol type="1">
+<li>Abstract class (e.g., ‘AbstractShoppingSite‘) that serves as a
+common interface for a domain, specifying high-level goals like the
+method “search(query, filter)”.</li>
+<li>Concrete subclasses (e.g., ‘AmazonSite‘, ‘TargetSite‘) then provide
+the distinct, website-specific implementations.</li>
+</ol>
+<p>This allows the agent to operate at an abstract level and create
+<mark>compositional skills</mark> that are <mark>not tied</mark> to any
+specific website’s functionality, decoupling them from brittle UI
+changes across websites.</p>
+<p>This approach also enhances better composition, allowing the agent to
+<mark>chain together</mark> abstract operations in the parent class like
+search <code>product()</code>, <code>addToCart()</code>, and
+<code>checkout()</code> to execute complex, multi-step tasks; while
+preventing the need to implement the compositional skills per
+website.</p>
+<h1 id="implementation">3. Implementation</h1>
+<p>The authors propose a hierarchical framework that separates
+<mark>skill learning</mark> into three complementary stages:</p>
+<ul>
+<li>skill discovery through polymorphic abstraction</li>
+<li>skill refinement through compositional verification</li>
+<li>skill deployment through adaptive execution.</li>
+</ul>
+<h2 id="preliminary">3.1 Preliminary</h2>
+<h3 id="problem-formulation">3.1.1 Problem Formulation</h3>
+<p>The authors model the web agent’s interaction environment as a
+Partially Observable Markov Decision Process (POMDP), defined by the
+tuple <span
+class="math inline">⟨𝒮, 𝒜<sub><em>p</em></sub>, 𝒯, <em>Ω</em>, 𝒪⟩</span>.</p>
+<ul>
+<li><span class="math inline">𝒮</span> : is the latent state space
+representing the full underlying state of the web application</li>
+<li><span class="math inline">𝒜<sub>𝓅</sub></span> : is the set of
+<mark>primitive actions</mark> the agent can execute on a webpage (e.g.,
+click(element), type(text)).</li>
+<li><span class="math inline">𝒯 : 𝒮 × 𝒜<sub>𝓅</sub> → Δ(𝒮)</span>: is
+the stochastic state transition function.</li>
+<li><span class="math inline"><em>Ω</em>, 𝒪</span>: Since agent cannot
+perceive the entire state <span class="math inline"><em>S</em></span>,
+it receives an observation <span
+class="math inline"><em>o</em><sub><em>t</em></sub> ∈ <em>Ω</em></span>
+at each timestep <span class="math inline"><em>t</em></span> through the
+observation function <span
+class="math inline">𝒪 : 𝒮→<em>Δ</em>(<em>Ω</em>)</span></li>
+</ul>
+<h3 id="lm-based-agent-policy">3.1.2 LM-based Agent Policy</h3>
+<p>The authors consider an agent driven by a large language model (<span
+class="math inline">LM</span>) backbone, L.</p>
+<p>The agent’s <mark>policy</mark>, <span
+class="math inline"><em>π</em><sub>ℒ</sub></span>, determines the next
+action based on its current context.</p>
+<p>This context consists of :</p>
+<ul>
+<li>a working memory <span class="math inline">ℳ</span>, which stores
+the high-level task instruction and the history of observations and
+actions.</li>
+<li>a dynamic skill library <span
+class="math inline">𝒦<sub>𝓉</sub></span>. The skill library contains
+reusable skills that expand the agent’s full action space to <span
+class="math inline">𝒜<sub>𝓉</sub> = 𝒜<sub>𝓅</sub> ∪ 𝒦<sub>𝓉</sub></span></li>
+</ul>
+<p>Here the authors define:</p>
+<ul>
+<li>Each skill <span
+class="math inline"><em>k</em> ∈ 𝒦<sub>𝓉</sub></span> is a
+<mark>parameterized sequence</mark> of actions: <span
+class="math inline"><em>k</em>(args) := <em>a</em><sub>1</sub> ⊕ <em>a</em><sub>2</sub> ⊕ <em>a</em><sub>3</sub>...</span></li>
+<li>This menas that a skill <span class="math inline"><em>k</em></span>
+is a combination of a sequence of basic actions. e.g. A skill to
+implement a specific product search may be composed of actions like
+<code>move(mouse)</code>,<code>click(element</code> ,
+<code>type(text)</code> and <code>click(element)</code>.</li>
+</ul>
+<p>The policy is denoted as:</p>
+<ul>
+<li><span
+class="math inline"><em>π</em><sub>ℒ</sub>(<em>a</em><sub><em>t</em></sub> ∣ <em>o</em><sub><em>t</em></sub>, ℳ<sub>𝓉</sub>, 𝒦<sub>𝓉</sub>)</span></li>
+</ul>
+<h3 id="task-execution-and-objective">3.1.3 Task Execution and
+Objective</h3>
+<p>The agent’s goal is to complete a task specified by a <mark>natural
+language instruction</mark> <span
+class="math inline"><em>q</em></span>.</p>
+<p>At each timestep <span class="math inline"><em>t</em></span>, the
+agent receives an observation <span
+class="math inline"><em>o</em><sub><em>t</em></sub></span>, updates its
+memory <span class="math inline">ℳ<sub>𝓉</sub></span>, and selects an
+action <span
+class="math inline"><em>a</em><sub><em>t</em></sub> ∈ <em>A</em><sub><em>t</em></sub></span>
+using its policy.</p>
+<p>Trajectory at timestep <span class="math inline"><em>H</em></span>:
+<span
+class="math inline"><em>τ</em> = (<em>o</em><sub>0</sub>, <em>a</em><sub>0</sub>, <em>o</em><sub>1</sub>, <em>a</em><sub>1</sub>, <em>o</em><sub>2</sub>, <em>a</em><sub>2</sub>, …, <em>o</em><sub><em>H</em> − 1</sub>, <em>a</em><sub><em>H</em> − 1</sub>,)</span></p>
+<p>A task is considered <mark>successful</mark> if the trajectory
+satisfies a goal condition, indicated by a success function: <span
+class="math inline"><em>g</em>(<em>τ</em>, <em>q</em>) = 1</span>.</p>
+<p>The authors formalize this by maximizing an efficiency-aware reward
+expectation:</p>
+<p><span
+class="math display">max<sub><em>π</em><sub><em>L</em></sub>, <em>K</em></sub> 𝔼<sub><em>q</em> ∼ <em>Q</em></sub>[ <em>g</em>(<em>τ</em>, <em>q</em>) − <em>γ</em>|<em>τ</em>| ]</span></p>
+<ul>
+<li>judge a trajectory: is the task complete? and how many steps it
+takes
+<ul>
+<li>task_reward: <span
+class="math inline"><em>g</em>(<em>τ</em>, <em>q</em>)</span></li>
+<li>step_num: <span class="math inline"><em>τ</em></span></li>
+<li>penalty coefficient: <span
+class="math inline"><em>γ</em></span></li>
+</ul></li>
+<li>Expectation:
+<ul>
+<li>this is to</li>
+</ul></li>
+<li>Variables:
+<ul>
+<li>policy: <span
+class="math inline"><em>π</em><sub><em>L</em></sub></span></li>
+<li>Skill Library: <span class="math inline"><em>K</em></span></li>
+</ul></li>
+</ul>
+<p>While this objective could be optimized as a loss function, the
+authors instead use this efficiency principle to guide our agent’s
+prompting.</p>
+<h2 id="polyskill-framework">3.2 PolySkill Framework</h2>
+<p>The authors introduce <mark>PolySkill</mark>, a framework that solves
+this problem by learning a domain-driven skill hierarchy. Instead of
+treating skills as isolated scripts, the authors organize them into
+classes based on a website’s category.</p>
+<p>For example, skills for Amazon and Target are treated as concrete
+implementations of an abstract <code>AbstractShoppingSite</code>
+class.</p>
+<p>This structure allows the agent to learn a general ”schema” for a
+type of website and then fill in the specific, reliable implementations
+for each new site it encounters.</p>
+<ul>
+<li><p>Abstract Class:</p>
+<p><img data-src="/images/article_images/polyskill_abstract_domian_class.png" /></p></li>
+<li><p>Concrete implementations:</p>
+<p><img data-src="/images/article_images/polyskill_amazon_website.png" /></p>
+<p><img data-src="/images/article_images/polyskill_target_website.png" /></p></li>
+</ul>
+<h2 id="skill-induction-process">3.3 Skill Induction Process</h2>
+<h3 id="base-of-skill-induction-pipeline">3.3.1 Base of Skill Induction
+Pipeline</h3>
+<p>The PolySkill induction process is built on the pipeline established
+by ASI (Wang et al., 2025). In their framework, skill creation begins
+after a task is successfully completed using a sequence of primitive
+actions.</p>
+<p>An LLM-based induction module analyzes this successful trajectory to
+propose one or more programmatic skills that encapsulate reusable parts
+of the workflow (Pan et al., 2024).</p>
+<p>Before the skills are added to the library, a verification phase is
+done where the agent attempts to solve the same task again, this time by
+executing the newly generated skill.</p>
+<p>Only if this new execution is deemed as successful is the skill
+considered validated and added to the agent’s library for future
+use.</p>
+<h3 id="innovation-via-polymorphic-skill-induction">3.3.2 Innovation via
+Polymorphic Skill Induction</h3>
+<p>A critical preliminary step in our framework is that if the agent is
+operating on its first shopping website, it must first induce the
+high-level <mark>abstract class</mark>, AbstractShoppingSite, which
+provides a common ground of skills signature across shopping-related
+skills.</p>
+<p>Subsequently, during the skill induction phase, as the agent induces
+new skills on a <mark>specific</mark> site (e.g., amazon.com), it is
+guided to first register the corresponding function signature within the
+abstract class, and then define the concrete implementation within the
+site-specific class (e.g., AmazonWebsite, which inherits the
+AbstractShoppingSite).</p>
+<p>This encourages the agent to learn skills that are not just locally
+effective but are structurally consistent implementations of a shared,
+domain-wide concept.</p>
+<h3 id="skill-learning-on-unseen-websites">3.3.3 Skill Learning on
+Unseen Websites</h3>
+<p>Imagine the agent has already formed the AbstractShoppingSite class
+derived from its initial interaction with amazon.com, and now visits
+walmart.com for the first time. It immediately recognizes Walmart as a
+shopping site and retrieves the abstract blueprint.</p>
+<p>This blueprint provides the agent with a clear set of exploration
+goals. Instead of randomly trying actions, it knows it needs to figure
+out how to concretely implement abstract skills
+like<code>search product</code> and <code>add to cart</code> on this new
+site.</p>
+<p>Once the agent successfully searches for an item, it follows the
+standard induction process to create a new WalmartWebsite class, filling
+in the search product method with the specific actions that worked.</p>
+<p><img data-src="/images/article_images/polyskill_skill_induction_algorithm.png" /></p>
+<h2 id="evaluation-setup">3.4 Evaluation Setup</h2>
+<p>We evaluate our induction process over baseline, in two different
+settings:</p>
+<ol type="1">
+<li><mark>Task-Defined Benchmarks</mark> In standard benchmark settings,
+we apply this process within controlled environments, including
+<mark>Mind2Web</mark> (Deng et al., 2023) and <mark>WebArena</mark>
+(Zhou et al., 2024a). Here, the agent is presented with a predefined
+curriculum of tasks. Each successful trajectory provides the
+<mark>validated</mark> sequence of actions needed to implement a
+concrete skill method.</li>
+<li><mark>Task-Free Continual Learning</mark>: To assess the ultimate
+goal of agent <mark>autonomy</mark>, we also apply our framework in a
+task-free setting, similar to settings as <mark>Voyager (Wang et al.,
+2023)</mark> and <mark>SkillWeaver (Zheng et al., 2025)</mark>.<br />
+</li>
+</ol>
+<h2 id="evaluation-metrics">3.5 Evaluation Metrics</h2>
+<p>Five key metrics:</p>
+<h3 id="success-rate">3.5.1 Success Rate</h3>
+<p>This is the fraction of tasks in the evaluation set, <span
+class="math inline">𝒯<sub>𝓉ℯ𝓈𝓉</sub></span>, that the agent completed
+successfully. <span class="math display">$$
+\mathrm{SR} = \frac{1}{\lvert{\mathcal{T_{test}}}\rvert}\sum_{T_j\in
+\mathcal T_test}{} \mathbb I\left(\text{Task } T_j \text{ is
+successful}\right)
+$$</span></p>
+<ul>
+<li><span class="math inline">𝕀</span> is the indicator function which
+returns 1 if a task is successful and 0 otherwise.</li>
+</ul>
+<h3 id="number-of-steps">3.5.2 Number of Steps</h3>
+<p>This is the average number of actions the agent takes to complete a
+task, calculated exclusively over successful trajectories to measure
+efficiency.</p>
+<p>Let <span
+class="math inline">𝒟<sub><em>s</em><em>u</em><em>c</em><em>c</em><em>e</em><em>s</em><em>s</em></sub></span>
+be the set of trajectories for successfully completed tasks. For each
+trajectory <span
+class="math inline"><em>τ</em> ∈ 𝒟<sub><em>s</em><em>u</em><em>c</em><em>c</em><em>e</em><em>s</em><em>s</em></sub></span>,
+let <span class="math inline">|<em>τ</em>|</span> denote its length
+(number of actions). The average number of steps is: <span
+class="math display">$$
+\mathrm{Number\ of \ Steps} =
+\frac{1}{\lvert \mathcal D_{test} \rvert}
+\sum_{\tau \in \mathcal D_{test}}
+{\lvert \tau \rvert}
+$$</span></p>
+<h3 id="skill-reusability">3.5.3 Skill Reusability:</h3>
+<p>This metric measures the efficiency of the skill library itself by
+calculating the fraction of learned skills that were used at least
+once.</p>
+<p>Let <span class="math inline">𝒦</span> be the final library of
+learned skills and <span
+class="math inline">𝒟<sub><em>t</em><em>e</em><em>s</em><em>t</em></sub></span>
+be the set of all trajectories from the evaluation. The utilization is
+the fraction of skills <span class="math inline"><em>k</em> ∈ 𝒦</span>
+that appear in at least one trajectory <span
+class="math inline"><em>τ</em> ∈ 𝒟<sub><em>t</em><em>e</em><em>s</em><em>t</em></sub></span>.
+<span class="math display">$$
+\mathrm {Skill \ Resuability} = \frac
+{\lvert\{k \in \mathcal K \mid \exists \tau \in \mathcal D_{test}, k \in
+\tau\} \rvert}
+{\lvert \mathcal K \rvert}
+$$</span></p>
+<ul>
+<li>How many skill in skill library are used in trajectories?</li>
+<li>Low metric value means most skill have not been called. Only a few
+skills have been called.</li>
+</ul>
+<h3 id="task-coverage-skill-adoption-rate">3.5.4 Task Coverage / Skill
+Adoption Rate</h3>
+<p>This metric measures the prevalence of skill-based behavior.</p>
+<p>Let <span
+class="math inline">𝒟<sub><em>t</em><em>e</em><em>s</em><em>t</em></sub></span>
+be the set of all test task trajectories and <span
+class="math inline">𝒦</span> be the library of induced skills.</p>
+<p>The adoption rate is the fraction of trajectories <span
+class="math inline"><em>τ</em> ∈ 𝒟<sub><em>t</em><em>e</em><em>s</em><em>t</em></sub></span>
+in which at least one skill <span
+class="math inline"><em>k</em> ∈ 𝒦</span> was invoked: <span
+class="math display">$$
+\mathrm{Skill\ Adoption\ Rate} =
+\frac{\bigl\lvert\{\,\tau \in \mathcal{D}_{\mathrm{test}}
+      \mid \exists\, k \in \mathcal{K},\ k \in \tau\,\}\bigr\rvert}
+     {\lvert \mathcal{D}_{\mathrm{test}} \rvert}
+$$</span></p>
+<ul>
+<li>How many trajectories in test really used skill in library ?</li>
+<li>Low metric value means most skill is helpless.</li>
+</ul>
+<h3 id="skill-compositionality">3.5.5 Skill Compositionality</h3>
+<p>This metric evaluates the hierarchical structure of the skill
+library. Let the final skill library be an ordered set <span
+class="math inline">𝒦 = {<em>k</em><sub>1</sub>, …, <em>K</em><sub><em>N</em></sub>}</span>
+of N skills, where the index indicates creation time.</p>
+<p>For each skill <span
+class="math inline"><em>k</em><sub><em>i</em></sub></span> be the set of
+non-primitive actions in its implementation. The compositionality is the
+average number of previously learned skills reused in each new skill:
+<span class="math display">$$
+\mathrm{Skill\ Compositionality} = \frac{1}{N} \sum_{i=1}^{N}
+  \bigl\lvert \{\, k_j \in \mathrm{body}(k_i) \mid j &lt; i \,\}
+\bigr\rvert
+$$</span></p>
+<ul>
+<li>The average number of earlier-learned skills that each skill is
+composed of.</li>
+</ul>
+<h1 id="experiments">4. Experiments</h1>
+<h2 id="standard-benchmark-evaluation">4.1 Standard Benchmark
+Evaluation</h2>
+<p>Benchmark:</p>
+<ul>
+<li>Mind2Web</li>
+<li>WebArena</li>
+</ul>
+<p>Model:</p>
+<ul>
+<li>Closed-source Model:
+<ul>
+<li>GPT-4.1</li>
+<li>Claude-3.7-Sonnet</li>
+</ul></li>
+<li>Open-source Model:
+<ul>
+<li>Qwen3-Coder-480B-A35B</li>
+<li>GLM-4.5</li>
+</ul></li>
+</ul>
+<p>Baseline:</p>
+<ul>
+<li>Base</li>
+<li>ASI</li>
+<li>SkillWeaver</li>
+</ul>
+<p><img data-src="/images/article_images/PolySkill_Mind2Web.png" /></p>
+<p>What is <code>+ Update</code> model?</p>
+<p>There are 2 types model for ASI and PolySkill: the static and the
+update one.</p>
+<ul>
+<li>Static: Train a skill library, then frozen the skill library and use
+it to test the benchmark.</li>
+<li>Update: After training the skill library, use it to test benchmark,
+but do not frozen it, let it update during the test.</li>
+</ul>
+<h1 id="code-analysis">5. Code Analysis</h1>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/paper-summary-poly-skill/">https://wangyier.top/paper-summary-poly-skill/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- 加密文章解密后重新触发 lozad 懒加载。
+     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
+     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
+     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
+     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
+<script>
+  (function () {
+    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
+    if (!locked) return;   // 非加密文章
+
+    function refreshLazy() {
+      if (typeof window.lozad !== 'function') return;
+      var imgs = document.querySelectorAll('.post-body img[data-src]');
+      if (!imgs.length) return;
+      window.lozad('.post-body img').observe();
+    }
+
+    var body = document.querySelector('.post-body');
+    if (body && window.MutationObserver) {
+      var pending = null;
+      new MutationObserver(function () {
+        if (pending) return;
+        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
+      }).observe(body, { childList: true, subtree: true });
+    }
+
+    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
+        refreshLazy();
+        clearInterval(timer);
+      } else if (++tries > 150) {   // 最多约 60 秒
+        clearInterval(timer);
+      }
+    }, 400);
+  })();
+</script>
+          <div class="post-tags">
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+              <a href="/tags/Continual-Learning/" rel="tag"># Continual Learning</a>
+              <a href="/tags/Skill/" rel="tag"># Skill</a>
+              <a href="/tags/Skill-Induction/" rel="tag"># Skill Induction</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/paper-summary-SWE-smith/" rel="prev" title="Paper Summary – SWE-smith">
+                  <i class="fa fa-angle-left"></i> Paper Summary – SWE-smith
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/model-post-training/" rel="next" title="Model Post-Training">
+                  Model Post-Training <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
