@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron">
+  
+
+  <diagram name="Page-1" id="catfig">
+    
+
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1240" pageHeight="700" math="0" shadow="0">
+      
+
+      <root>
+        
+
+        <mxCell id="0"/>
+        
+
+        <mxCell id="1" parent="0"/>
+        
+
+        <mxCell id="t1" value="Software Engineering Agent: curated commands in a sandbox, verified by tests" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="120" y="14" width="1000" height="28" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v2" value="Agent   (LLM + Harness)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="500" height="62" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v3" value="Execution Sandbox   (container, filesystem-scoped)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="175" width="500" height="380" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v4" value="Curated Command Set&lt;br&gt;open · search_file · search_dir · edit · goto" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="460" height="60" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v5" value="Shell escape hatch&lt;br&gt;(anything the model can script)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="215" height="62" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v6" value="write repro.py → run it&lt;br&gt;(a tool that did not exist yet)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="325" y="300" width="215" height="62" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v7" value="stdout / stderr / exit code / diff" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="385" width="460" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v8" value="Test Suite" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="575" width="200" height="45" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v9" value="One fix-and-retry cycle" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="175" width="460" height="32" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v10" value="localise:  read the traceback, grep the symbol" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="220" width="460" height="46" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v11" value="edit:  change the smallest possible region" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="276" width="460" height="46" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v12" value="re-run the failing test" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="332" width="460" height="46" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v13" value="green?  →  run the full suite before finishing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="388" width="460" height="46" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e14" value="command" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v2" target="v4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v4" target="v7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e16" value="run tests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v7" target="v8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v10" target="v11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v11" target="v12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v12" target="v13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e20" value="fix &amp; retry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;dashed=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v8" target="v2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="34" y="597"/>
+              <mxPoint x="34" y="101"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+
+        <mxCell id="n21" value="Observation is token-thrifty:&lt;br&gt;grep · head · tail · truncation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n22" value="Tests give a free pass/fail reward&lt;br&gt;→ this is why RLVR works here" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="433" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n23" value="Everything inside the sandbox panel&lt;br&gt;is the Agent-Computer Interface" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="806" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+      </root>
+      
+
+    </mxGraphModel>
+    
+
+  </diagram>
+  
+
+</mxfile>

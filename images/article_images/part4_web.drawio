@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron">
+  
+
+  <diagram name="Page-1" id="catfig">
+    
+
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1240" pageHeight="700" math="0" shadow="0">
+      
+
+      <root>
+        
+
+        <mxCell id="0"/>
+        
+
+        <mxCell id="1" parent="0"/>
+        
+
+        <mxCell id="t1" value="Web / Browser Agent: expensive observation, closed actions, grounding" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="120" y="14" width="1000" height="28" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v2" value="Agent" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="70" width="200" height="60" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v3" value="Action Executor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="210" y="175" width="200" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v4" value="Grounding&lt;br&gt;target → element / (x, y)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="270" width="200" height="60" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v5" value="Observation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="370" width="200" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v6" value="Website" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="465" width="200" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n7" value="observation formats" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="205" width="480" height="24" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v8" value="DOM tree" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="232" width="230" height="42" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v9" value="Accessibility tree" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="280" width="230" height="42" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v10" value="Screenshot (+ Set-of-Mark)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="950" y="232" width="230" height="42" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v11" value="click(element)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="340" width="230" height="42" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v12" value="type(element, text)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="388" width="230" height="42" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v13" value="scroll · goto(url)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="950" y="340" width="230" height="42" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v14" value="Observation must be compressed:&lt;br&gt;DOM pruning, AX-tree only,&lt;br&gt;or Set-of-Mark" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="455" width="480" height="70" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e15" value="act" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v2" target="v3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v3" target="v4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v4" target="v5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e18" value="render" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v5" target="v6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e19" value="next step" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9999ff;strokeWidth=2;dashed=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v6" target="v2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="492"/>
+              <mxPoint x="640" y="100"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+
+        <mxCell id="n20" value="Observation cannot be filtered like stdout:&lt;br&gt;a page state costs thousands of tokens" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n21" value="Closed action vocabulary —&lt;br&gt;the Agent cannot add new actions" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="433" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n22" value="Grounding is the dominant error source:&lt;br&gt;small or dynamic elements cause drift" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="806" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+      </root>
+      
+
+    </mxGraphModel>
+    
+
+  </diagram>
+  
+
+</mxfile>

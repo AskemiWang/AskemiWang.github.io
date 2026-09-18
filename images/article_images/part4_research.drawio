@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron">
+  
+
+  <diagram name="Page-1" id="catfig">
+    
+
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1240" pageHeight="700" math="0" shadow="0">
+      
+
+      <root>
+        
+
+        <mxCell id="0"/>
+        
+
+        <mxCell id="1" parent="0"/>
+        
+
+        <mxCell id="t1" value="Deep Research Agent: context isolation, document cache, gap detection" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="120" y="14" width="1000" height="28" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v2" value="Agent&lt;br&gt;decompose · synthesise · cite" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="420" height="70" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n3" value="Context Isolation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#333333;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="85" y="175" width="260" height="28" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v4" value="Sub-agent A  &quot;sub-question 1&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="85" y="210" width="250" height="50" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v5" value="Sub-agent B  &quot;sub-question 2&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="85" y="272" width="250" height="50" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v6" value="Sub-agent N  ..." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="85" y="334" width="250" height="50" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v7" value="returns: conclusions + citations only&lt;br&gt;(never full documents)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="85" y="410" width="250" height="60" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v8" value="Raw pages never enter context —&lt;br&gt;they are cached on disk" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="85" y="490" width="250" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n9" value="retrieval pipeline" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#333333;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="190" width="460" height="28" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v10" value="Document Cache on disk" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="225" width="460" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v11" value="Search + Fetch" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="295" width="460" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v12" value="Cross-check sources" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="365" width="460" height="55" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="v13" value="Identify Information Gaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="435" width="460" height="60" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e14" value="sub-questions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v2" target="v4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="105"/>
+              <mxPoint x="690" y="235"/>
+              <mxPoint x="40" y="235"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+
+        <mxCell id="e15" value="digest" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v4" target="v7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="45" y="235"/>
+              <mxPoint x="45" y="440"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+
+        <mxCell id="e16" value="conclusions + citations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v7" target="v2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="440"/>
+              <mxPoint x="660" y="105"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+
+        <mxCell id="e17" value="fetch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v10" target="v11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v11" target="v12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v12" target="v13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="e20" value="still missing something?" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;dashed=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;fontSize=11;fontColor=#333333;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="v13" target="v2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="465"/>
+              <mxPoint x="600" y="140"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+
+        <mxCell id="n21" value="Each sub-question gets its own context;&lt;br&gt;the writer never sees raw pages" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n22" value="Raw pages never enter context —&lt;br&gt;they are cached on disk" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="433" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+        <mxCell id="n23" value="Read-only, but no test suite and no end state:&lt;br&gt;LLM-as-judge is the only signal" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=#666666;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="806" y="632" width="349" height="58" as="geometry"/>
+        </mxCell>
+        
+
+      </root>
+      
+
+    </mxGraphModel>
+    
+
+  </diagram>
+  
+
+</mxfile>

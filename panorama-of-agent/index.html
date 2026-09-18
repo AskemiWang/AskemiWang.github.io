@@ -33,15 +33,18 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/panorama%20of%20agent.png">
 <meta property="article:published_time" content="2026-08-23T09:13:14.000Z">
-<meta property="article:modified_time" content="2026-08-26T11:48:09.000Z">
+<meta property="article:modified_time" content="2026-09-18T13:00:11.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Bash">
 <meta property="article:tag" content="LLM">
 <meta property="article:tag" content="Model Fine-Tuning">
 <meta property="article:tag" content="Reinforcement Learning">
 <meta property="article:tag" content="SWE">
 <meta property="article:tag" content="SWE-agent">
 <meta property="article:tag" content="SWE-bench">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="Skill">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wangyier.top/images/article_images/panorama%20of%20agent.png">
 
@@ -185,22 +188,24 @@
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-agent-harness"><span class="nav-text">1. What is Agent &amp; Harness?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#agents-pursuit"><span class="nav-text">2. Agent’s Pursuit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#agent-area-panorama"><span class="nav-text">3. Agent Area Panorama</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#llm-tuning"><span class="nav-text">3.1 LLM Tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#imitation-learning-sft"><span class="nav-text">3.1.1 Imitation Learning (SFT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#trajectory-sft"><span class="nav-text">3.1.1.1 Trajectory SFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-step-sft"><span class="nav-text">3.1.1.2 Critical-Step SFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synthetic-trajectory"><span class="nav-text">3.1.1.3 Synthetic Trajectory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#distillation"><span class="nav-text">3.1.1.4 Distillation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#online-rl"><span class="nav-text">3.1.2 Online RL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reward-design"><span class="nav-text">3.1.2.1 Reward Design</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rl-optimization-algorithm"><span class="nav-text">3.1.2.2 RL Optimization
-Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#grpo"><span class="nav-text">3.1.2.2.1 GRPO</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ppo"><span class="nav-text">3.1.2.2.2 PPO</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offline-rl"><span class="nav-text">3.1.3 Offline RL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preference-learning-dpo"><span class="nav-text">3.1.4 Preference Learning (DPO)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#harness-structure"><span class="nav-text">3.2 Harness Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orchestration-control"><span class="nav-text">3.2.1 Orchestration &#x2F; Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#context-memory-state"><span class="nav-text">3.2.2 Context &amp; Memory &#x2F; State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tools-actions-action"><span class="nav-text">3.2.3 Tools &amp; Actions &#x2F; Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#aci-environment-interface"><span class="nav-text">3.2.4 ACI &amp; Environment &#x2F;
-Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skills-composition-capability"><span class="nav-text">3.2.5 Skills &amp; Composition &#x2F;
-Capability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protocol-interoperability-interoperability"><span class="nav-text">3.2.6 Protocol &amp;
-Interoperability &#x2F; Interoperability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#runtime-safety-runtime-governance"><span class="nav-text">3.2.7 Runtime &amp; Safety ——
-Runtime &amp; Governance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conclusion"><span class="nav-text">3.2.8 Conclusion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#benchmark"><span class="nav-text">3.3 Benchmark</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-does-an-agent-benchmark-evaluate"><span class="nav-text">3.3.1 What Does an Agent
-Benchmark Evaluate?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popular-categories"><span class="nav-text">3.3.2 Popular Categories</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#generalist-agent-benchmark"><span class="nav-text">3.3.2.1 Generalist Agent
-Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#long-horizon-real-world-agent-benchmark"><span class="nav-text">3.3.2.2 Long-Horizon &#x2F;
-Real-World Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#computer-use-gui-agent-benchmark"><span class="nav-text">3.3.2.3 Computer-Use &#x2F; GUI
-Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tool-use-function-calling-mcp-benchmark"><span class="nav-text">3.3.2.4 Tool Use &#x2F;
-Function Calling &#x2F; MCP Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#software-engineering-agent-benchmark"><span class="nav-text">3.3.2.5 Software
-Engineering Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-browser-agent-benchmark"><span class="nav-text">3.3.2.6 Web &#x2F; Browser Agent
-Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deep-research-research-agent-benchmark"><span class="nav-text">3.3.2.7 Deep Research &#x2F;
-Research Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multi-agent-benchmark"><span class="nav-text">3.3.2.8 Multi-Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#agent-safety-security-benchmark"><span class="nav-text">3.3.2.9 Agent Safety &#x2F; Security
-Benchmark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#benchmark-methodology"><span class="nav-text">3.3.3 Benchmark Methodology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popular-benchmarks"><span class="nav-text">3.3.4 Popular Benchmarks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#swe-bench-swe-bench-verified"><span class="nav-text">3.3.4.1 SWE-bench &#x2F; SWE-bench
+Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#grpo"><span class="nav-text">3.1.2.2.1 GRPO</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ppo"><span class="nav-text">3.1.2.2.2 PPO</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offline-rl"><span class="nav-text">3.1.3 Offline RL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preference-learning-dpo"><span class="nav-text">3.1.4 Preference Learning (DPO)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#harness-structure"><span class="nav-text">3.2 Harness Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#environment-classes-the-first-order-classification"><span class="nav-text">3.2.1
+Environment Classes —— The First-Order Classification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orchestration-control"><span class="nav-text">3.2.2 Orchestration &#x2F; Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#context-memory-state"><span class="nav-text">3.2.3 Context &amp; Memory &#x2F; State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tools-actions-action"><span class="nav-text">3.2.4 Tools &amp; Actions &#x2F; Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#aci-environment-interface"><span class="nav-text">3.2.5 ACI &amp; Environment &#x2F;
+Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skills-composition-capability"><span class="nav-text">3.2.6 Skills &amp; Composition &#x2F;
+Capability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protocol-interoperability-interoperability"><span class="nav-text">3.2.7 Protocol &amp;
+Interoperability &#x2F; Interoperability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#runtime-safety"><span class="nav-text">3.2.8 Runtime &amp; Safety</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conclusion"><span class="nav-text">3.2.9 Conclusion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#benchmark"><span class="nav-text">3.3 Benchmark</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-does-an-agent-benchmark-evaluate"><span class="nav-text">3.3.1 What Does an Agent
+Benchmark Evaluate?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popular-categories"><span class="nav-text">3.3.2 Popular Categories</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#environment-classes-and-their-benchmarks"><span class="nav-text">3.3.2.1 Environment
+Classes and Their Benchmarks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cross-environment-structures-and-evaluation-axes"><span class="nav-text">3.3.2.2
+Cross-Environment Structures and Evaluation Axes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#generalist-agent-benchmark"><span class="nav-text">3.3.2.3 Generalist Agent
+Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#long-horizon-real-world-agent-benchmark"><span class="nav-text">3.3.2.4 Long-Horizon &#x2F;
+Real-World Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#computer-use-gui-agent-benchmark"><span class="nav-text">3.3.2.5 Computer-Use &#x2F; GUI
+Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tool-use-function-calling-mcp-benchmark"><span class="nav-text">3.3.2.6 Tool Use &#x2F;
+Function Calling &#x2F; MCP Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#software-engineering-agent-benchmark"><span class="nav-text">3.3.2.7 Software
+Engineering Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-browser-agent-benchmark"><span class="nav-text">3.3.2.8 Web &#x2F; Browser Agent
+Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deep-research-research-agent-benchmark"><span class="nav-text">3.3.2.9 Deep Research &#x2F;
+Research Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multi-agent-benchmark"><span class="nav-text">3.3.2.10 Multi-Agent Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#agent-safety-security-benchmark"><span class="nav-text">3.3.2.11 Agent Safety &#x2F;
+Security Benchmark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#benchmark-methodology"><span class="nav-text">3.3.3 Benchmark Methodology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popular-benchmarks"><span class="nav-text">3.3.4 Popular Benchmarks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#swe-bench-swe-bench-verified"><span class="nav-text">3.3.4.1 SWE-bench &#x2F; SWE-bench
 Verified</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gaia"><span class="nav-text">3.3.4.2 GAIA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webarena"><span class="nav-text">3.3.4.3 WebArena</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#osworld-verified-osworld-2.0"><span class="nav-text">3.3.4.4 OSWorld Verified &#x2F; OSWorld
-2.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#agentbench"><span class="nav-text">3.3.4.5 AgentBench</span></a></li></ol></li></ol></li></ol></li></ol></div>
+2.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#agentbench"><span class="nav-text">3.3.4.5 AgentBench</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-agent"><span class="nav-text">3.4 Multi-agent</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,7 +220,7 @@ Verified</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" hre
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -226,7 +231,7 @@ Verified</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" hre
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -297,7 +302,7 @@ Verified</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" hre
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-08-26 19:48:09" itemprop="dateModified" datetime="2026-08-26T19:48:09+08:00">2026-08-26</time>
+      <time title="Modified: 2026-09-18 21:00:11" itemprop="dateModified" datetime="2026-09-18T21:00:11+08:00">2026-09-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -339,15 +344,37 @@ folder directly because the only thing it can do is output tokens.</p>
 <p>Now we have LLM to describe the workflow of a job. But we need to
 finish the workflow ourselves. <mark>Agent</mark> is the software that
 can resolve problems independently.</p>
-<p><mark>Agent</mark> is usually composed two parts: <mark>LLM</mark>
+<p><mark>Agent</mark> is usually composed of two parts: <mark>LLM</mark>
 and <mark>Harness</mark>.</p>
 <p><span class="math display">Agent ≈ LLM-based
 Policy + Harness</span></p>
-<p>The LLM provides the main reasoning/policy capability, while the
-Harness provides orchestration, state/context management, tools,
-environment interaction, execution, and runtime controls. e.g. LLM
-thought it needs to read a file, then the Harness part will read the
-file and return the result to LLM.</p>
+<p>The LLM provides the main <mark>reasoning</mark>/policy capability,
+while the Harness provides orchestration, state/context management,
+tools, environment interaction, execution, and runtime controls.</p>
+<p>e.g. LLM thought it needs to read a file, then the Harness part will
+read the file and return the result to LLM.</p>
+<p>But an Agent does not exist in a vacuum. <mark>An Agent is defined
+jointly with the environment it acts in.</mark> The Harness interacts
+with the environment through an <mark>Interface</mark>: it renders the
+environment’s state into observations the LLM can read, and translates
+the LLM’s decisions into actions the environment accepts.</p>
+<p><span
+class="math display">Interface:  <em>O</em> = <em>Φ</em>(<em>S</em>),   <em>A</em> ⊆ 𝒯</span></p>
+<p>So the well-known decomposition describes the Agent’s
+<em>capability</em>, while the <strong>environment class determines the
+<em>shape</em> of that capability</strong>:</p>
+<ul>
+<li>Different environments expose different <strong>observation</strong>
+formats → different Context &amp; Memory designs</li>
+<li>Different environments accept different <strong>action</strong>
+spaces → different Tools &amp; ACI designs</li>
+<li>Different environments offer different <strong>verification</strong>
+signals → different training methods available</li>
+</ul>
+<p>This is why <mark>SWE Agents</mark> and <mark>Web Agents</mark> look
+so different even when they share the same LLM: <strong>they are two
+extreme points of the same Interface design axis, not two unrelated
+species of Agent.</strong></p>
 <p>In Agent, LLM is more likely a role of “Brain”, and the Harness is
 the “Limb”.</p>
 <h1 id="agents-pursuit">2. Agent’s Pursuit</h1>
@@ -357,7 +384,7 @@ now is to improve Agent’s ability of solving problems.</p>
 problems in specific area like software engineering.</p>
 <h1 id="agent-area-panorama">3. Agent Area Panorama</h1>
 <p>Agent is composed of LLM and Harness.</p>
-<p>So it is obviously that we should enhance LLM’s performance in Agent
+<p>So it is obvious that we should enhance LLM’s performance in Agent
 area. And optimize the Harness part. Then we need benchmarks to judge
 the Agent’s performance.</p>
 <p>For this research map, the main research areas are divided into four
@@ -368,7 +395,11 @@ parts:</p>
 <li>Benchmark-related work</li>
 <li>Multi-agent work</li>
 </ul>
+<p>This is the original version of Agent Panorama:</p>
 <p><img data-src="/images/article_images/panorama%20of%20agent.png" /></p>
+<p>This is the second version which considering the relation between Env
+and Agent:</p>
+<p><img data-src="/images/article_images/panorama%20of%20agent%20v2.png" /></p>
 <h2 id="llm-tuning">3.1 LLM Tuning</h2>
 <p>In Agent area, the most popular post-training methods are:</p>
 <ul>
@@ -379,7 +410,7 @@ parts:</p>
 </ul>
 <h3 id="imitation-learning-sft">3.1.1 Imitation Learning (SFT)</h3>
 <p><span
-class="math display">ℒ<sub><em>S</em><em>F</em><em>T</em></sub> = −∑<sub><em>t</em></sub>log <em>P</em><em>θ</em>(token<em>t</em> ∣ token &lt; <em>t</em>)</span></p>
+class="math display">ℒ<sub>SFT</sub> = −∑<sub><em>t</em></sub>log <em>P</em><sub><em>θ</em></sub>(token<sub><em>t</em></sub> ∣ token<sub> &lt; <em>t</em></sub>)</span></p>
 <h4 id="trajectory-sft">3.1.1.1 Trajectory SFT</h4>
 <p>Core Process:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Expert Agent Trajectory</span><br><span class="line">        ↓</span><br><span class="line">Teacher Forcing</span><br><span class="line">        ↓</span><br><span class="line">Cross Entropy</span><br><span class="line">        ↓</span><br><span class="line">LLM</span><br></pre></td></tr></table></figure>
@@ -387,23 +418,32 @@ class="math display">ℒ<sub><em>S</em><em>F</em><em>T</em></sub> = −∑<s
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">task</span><br><span class="line">→ thought</span><br><span class="line">→ action</span><br><span class="line">→ observation</span><br><span class="line">→ action</span><br><span class="line">→ ...</span><br><span class="line">→ final answer</span><br></pre></td></tr></table></figure>
 <p>Relative papers:</p>
 <ul>
-<li>SWE-Gym (ICML 2025), Rejection Sampling / Self-Improvement</li>
-<li>SWE-Lego (arXiv:2601.01426, 2026)</li>
+<li><p>SWE-Gym (ICML 2025), Rejection Sampling /
+Self-Improvement</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2601.01426">SWE-Lego: Pushing the
+Limits of Supervised Fine-tuning for Software Issue Resolving</a>
+(arXiv:2601.01426, Jan 2026)</p>
+<p>Reports that SFT alone — with error masking and a difficulty-based
+curriculum over 32k task instances and 18k validated trajectories —
+reaches 52.6% on SWE-bench Verified (Qwen3-32B), rising to 58.8% with
+test-time scaling.</p></li>
 </ul>
 <h4 id="critical-step-sft">3.1.1.2 Critical-Step SFT</h4>
 <p>A trajectory includes many steps, but not all steps are necessary.
-There’s one way only to SFT the critical steps in trajectories.</p>
+One approach is to apply SFT only to the critical steps within a
+trajectory.</p>
 <ul>
 <li>ATLaS — (Findings ACL 2025), only train critical steps</li>
 </ul>
 <h4 id="synthetic-trajectory">3.1.1.3 Synthetic Trajectory</h4>
 <p>One problem of SFT is that high-quality training data is few, so
-there’s a research direction is to compose Synthetic Trajectory.</p>
+there is a research direction that aims to <mark>synthesize</mark>
+trajectories.</p>
 <ul>
-<li>SWE-smith, Synthetic Trajectory</li>
+<li>SWE-smith (NeurIPS 2025), Synthetic Trajectory</li>
 </ul>
 <h4 id="distillation">3.1.1.4 Distillation</h4>
-<p>Distillation is to extract <mark>reasoning trajectories</mark> form
+<p>Distillation is to extract <mark>reasoning trajectories</mark> from
 different teachers and distill into a student model.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Teacher A</span><br><span class="line">  │</span><br><span class="line">  ├── Tool-based reasoning</span><br><span class="line">  │</span><br><span class="line">Teacher B</span><br><span class="line">  │</span><br><span class="line">  └── Text reasoning</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">     Distill</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">Student Agent</span><br></pre></td></tr></table></figure>
 <ul>
@@ -422,8 +462,8 @@ because many engineering problems are verifiable.</p>
 </ul>
 <p>Process Reward Model(PRM) is another research roadmap; There are many
 steps in a trajectory. The traditional reward is trajectory-level, which
-means that LLM cannot distinguish if one certain step in a trajectory is
-important.</p>
+means thatthe LLM cannot tell <mark>which</mark> step in a trajectory
+matters.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Step 1</span><br><span class="line">Step 2</span><br><span class="line">Step 3</span><br><span class="line">...</span><br><span class="line">Step 50</span><br><span class="line"> ↓</span><br><span class="line">Success</span><br><span class="line"> ↓</span><br><span class="line">Reward = 1</span><br></pre></td></tr></table></figure>
 <ul>
 <li>LLM cannot know if step 3 is really important.</li>
@@ -470,15 +510,16 @@ Reward-Weighted Fine-Tuning for Conversation Optimization</li>
 <p>DPO (Direct Preference Optimization) is widely used in LLM
 post-training, but in Agent-specific post-training it is generally less
 dominant than SFT and online RL.</p>
-<p>SFT makes LLM realize what is right answer while Preference Learning
-just tells LLM: A is better than B.</p>
+<p>SFT teaches the LLM <strong>what</strong> the right answer is while
+Preference Learning just tells LLM: A is better than B.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Task</span><br><span class="line"></span><br><span class="line">Trajectory A -&gt; good</span><br><span class="line">Trajectory B -&gt; bad</span><br></pre></td></tr></table></figure>
 <p>Train:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">πθ(A|x) ↑</span><br><span class="line">πθ(B|x) ↓</span><br></pre></td></tr></table></figure>
 <p>Basic DPO process:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Prompt</span><br><span class="line"> ├── Chosen</span><br><span class="line"> └── Rejected</span><br><span class="line">       ↓</span><br><span class="line">      DPO</span><br><span class="line">       ↓</span><br><span class="line">      LLM</span><br></pre></td></tr></table></figure>
-<p>The traditional DPO compare different trajectories. Nowadays the
-tendency is to research which certain step makes trajectory better.</p>
+<p>Traditional DPO <mark>compares</mark> entire trajectories. Nowadays
+the tendency is to research which certain step makes trajectory
+better.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Trajectory-level</span><br><span class="line">       ↓</span><br><span class="line">Step-level</span><br><span class="line">       ↓</span><br><span class="line">Action-group level</span><br><span class="line">       ↓</span><br><span class="line">Critical-step preference</span><br></pre></td></tr></table></figure>
 <ul>
 <li>HPL (ICLR 2026): Solving the Granularity Mismatch: Hierarchical
@@ -487,6 +528,127 @@ Preference Learning for Long-Horizon LLM Agents</li>
 <li>SDPO (ACL 2025)</li>
 </ul>
 <h2 id="harness-structure">3.2 Harness Structure</h2>
+<h3 id="environment-classes-the-first-order-classification">3.2.1
+Environment Classes —— The First-Order Classification</h3>
+<p>Before listing the Harness layers, we must first answer: <mark>what
+kind of world does the Agent live in?</mark> This is the first-order
+classification of the field, because the environment class fixes three
+things at once.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Spectrum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Observability</strong>（观测形态）</td>
+<td>plain text tokens → structured tree (DOM / AX) → pixel screenshots →
+video / point cloud / proprioception</td>
+</tr>
+<tr>
+<td><strong>Action space</strong>（动作自由度）</td>
+<td>open primitives, new tools writable on the fly → closed enumerated
+actions → continuous motor control</td>
+</tr>
+<tr>
+<td><strong>Verifiability</strong>（可验证性）</td>
+<td>test pass/fail → state assertion → LLM judge → human rating</td>
+</tr>
+</tbody>
+</table>
+<p>The taxonomy induced by these three axes:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 21%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Environment Class</th>
+<th>Observability</th>
+<th>Action Space</th>
+<th>Verifiability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Classic / Text-World</strong><br>ALFWorld, WebShop</td>
+<td>text description</td>
+<td>few discrete text actions</td>
+<td>environment state</td>
+</tr>
+<tr>
+<td><strong>Software Engineering</strong><br>SWE-bench</td>
+<td>files, stdout, diff</td>
+<td>curated ACI + shell (<strong>open</strong>)</td>
+<td>test suite (pass/fail)</td>
+</tr>
+<tr>
+<td><strong>Tool / API / Enterprise</strong><br>BFCL, τ-bench,
+TheAgentCompany</td>
+<td>JSON tool returns</td>
+<td>tool calls (<strong>closed</strong>)</td>
+<td>state assertion + user simulator</td>
+</tr>
+<tr>
+<td><strong>Web / Browser</strong><br>WebArena, Mind2Web</td>
+<td>DOM / AX tree / screenshot</td>
+<td><code>click / type / scroll / goto</code>
+(<strong>closed</strong>)</td>
+<td>state assertion</td>
+</tr>
+<tr>
+<td><strong>Computer-Use / OS</strong><br>OSWorld</td>
+<td>screenshot (+ AX tree)</td>
+<td><code>click(x,y) / type / key</code> (<strong>closed</strong>)</td>
+<td>state assertion</td>
+</tr>
+<tr>
+<td><strong>Mobile</strong><br>AndroidWorld</td>
+<td>screenshot + view tree</td>
+<td><code>tap / swipe / back</code> (<strong>closed</strong>)</td>
+<td>state assertion</td>
+</tr>
+<tr>
+<td><strong>Deep Research</strong><br>BrowseComp</td>
+<td>web text</td>
+<td><code>search / fetch / synthesize</code></td>
+<td>LLM judge (<strong>weak</strong>)</td>
+</tr>
+<tr>
+<td><strong>Embodied</strong><br>ALFRED, Habitat</td>
+<td>video / point cloud / proprioception</td>
+<td>continuous motor primitives</td>
+<td>physical / simulator</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key observation — the action space and the environment class
+are two views of one thing.</strong> An environment <em>is</em> its
+action space generator: <span
+class="math display"><em>A</em><sub>env</sub> = ActionSpace(Environment)</span></p>
+<p>So “designing an Agent” and “designing an action space” are the same
+activity seen from two sides. <mark>SWE Agents</mark> collapse the
+action space into <em>one</em> escape hatch (a shell) plus a few curated
+commands; <mark>Web Agents</mark> are handed a <em>closed,
+enumerated</em> action set. This is not a difference in Agent
+architecture — <strong>it is a difference in what the environment chose
+to expose.</strong></p>
+<p><strong>Second observation — the available training method follows
+verification, not environment complexity.</strong> SWE has a free
+correctness signal (run the tests), which is why SWE-RL and SWE-Gym
+advanced fastest and why RLVR works there. Deep Research is a <em>far
+simpler</em> environment, yet there is no cheap ground truth, so the
+field is left with LLM-as-judge and weak process rewards (see 3.1.2.1
+and 3.1.2.2).</p>
 <p>For this research map, the Harness is organized into seven
 engineering-oriented layers. This is a practical taxonomy rather than a
 universally accepted academic standard, and the layers can overlap in
@@ -500,7 +662,7 @@ real systems.</p>
 <thead>
 <tr>
 <th>Part</th>
-<th>Abstruct</th>
+<th>Abstract</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -553,7 +715,7 @@ reliable, observable, recoverable, and economical?</td>
 </tbody>
 </table>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Agent</span><br><span class="line">│</span><br><span class="line">├── LLM</span><br><span class="line">│</span><br><span class="line">└── Harness</span><br><span class="line">    │</span><br><span class="line">    ├── 1. Orchestration</span><br><span class="line">    │      Loop / Planning / ReAct / Reflection / Verification</span><br><span class="line">    │</span><br><span class="line">    ├── 2. Context &amp; Memory</span><br><span class="line">    │      Context Management / Retrieval / Compression / Memory</span><br><span class="line">    │</span><br><span class="line">    ├── 3. Tools &amp; Actions</span><br><span class="line">    │      Tool Calling / Discovery / Selection / Code / Browser / Computer</span><br><span class="line">    │</span><br><span class="line">    ├── 4. ACI &amp; Environment</span><br><span class="line">    │      State / Action Space / Observation / Error / Feedback</span><br><span class="line">    │</span><br><span class="line">    ├── 5. Skills &amp; Composition</span><br><span class="line">    │      Skills / Workflow / Subagents / Agent-as-a-Tool</span><br><span class="line">    │</span><br><span class="line">    ├── 6. Protocol &amp; Interoperability</span><br><span class="line">    │      MCP / A2A / Agent API / Session Protocol</span><br><span class="line">    │</span><br><span class="line">    └── 7. Runtime &amp; Safety</span><br><span class="line">           Sandbox / Execution / Permission / Guardrail /</span><br><span class="line">           Reliability / Observability / Cost</span><br></pre></td></tr></table></figure>
-<h3 id="orchestration-control">3.2.1 Orchestration / Control</h3>
+<h3 id="orchestration-control">3.2.2 Orchestration / Control</h3>
 <p>Q: How should the Agent decide what to do?</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Orchestration</span><br><span class="line">├── Loop</span><br><span class="line">├── Planning</span><br><span class="line">├── ReAct</span><br><span class="line">├── Reflection</span><br><span class="line">└── Verification</span><br></pre></td></tr></table></figure>
 <p>Earlier Agent(Classic ReAct):</p>
@@ -565,13 +727,13 @@ recovery.</p>
 <ul>
 <li><p>PlanGEN (EMNLP 2025): This work combines <code>planning</code>
 and <code>iterative verification</code>.</p></li>
-<li><p>ReflAct (EMNLP 2025): The traditional ReAct sturcure will
+<li><p>ReflAct (EMNLP 2025): The traditional ReAct structure will
 accumulate little errors which will make agent drift from correct path.
 (ALFWorld + 27.7% than ReAct)</p></li>
 <li><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Current State</span><br><span class="line">      ↕</span><br><span class="line">Goal State</span><br><span class="line">      ↓</span><br><span class="line">Reflection</span><br><span class="line">      ↓</span><br><span class="line">Action</span><br></pre></td></tr></table></figure></li>
-<li><p>Metagent-P (ACL 2025)</p></li>
+<li><p>MetaAgent-P (ACL 2025)</p></li>
 </ul>
-<h3 id="context-memory-state">3.2.2 Context &amp; Memory / State</h3>
+<h3 id="context-memory-state">3.2.3 Context &amp; Memory / State</h3>
 <p>Q: What should the Agent know at the current moment, and what past
 information should be retained ?</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Orchestration</span><br><span class="line">    ↓</span><br><span class="line">“What should I <span class="keyword">do</span>?”</span><br><span class="line"></span><br><span class="line">Context &amp; Memory</span><br><span class="line">    ↓</span><br><span class="line">“What should I know?”</span><br></pre></td></tr></table></figure>
@@ -601,8 +763,8 @@ things.</p>
 <p>The agent will clearly exhibit “experience-following”: after
 retrieving historical experience from similar tasks, it is easy to
 reproduce similar behaviors. So if there exists wrong memory, the Agent
-are inclined to repeat the wrong operations.</p>
-<h3 id="tools-actions-action">3.2.3 Tools &amp; Actions / Action</h3>
+is inclined to repeat the wrong operations.</p>
+<h3 id="tools-actions-action">3.2.4 Tools &amp; Actions / Action</h3>
 <p>What can Agent do ?</p>
 <p>The tradition actions system is simply call tools like:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Search</span><br><span class="line">Code</span><br><span class="line">Database</span><br><span class="line">Browser</span><br><span class="line">Filesystem</span><br><span class="line">Shell</span><br><span class="line">Computer</span><br><span class="line">API</span><br></pre></td></tr></table></figure>
@@ -611,7 +773,8 @@ are inclined to repeat the wrong operations.</p>
 <ul>
 <li><p>LLM Agents Making Agent Tools，ACL 2025</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Paper + GitHub Code</span><br><span class="line">        ↓</span><br><span class="line">Agent</span><br><span class="line">        ↓</span><br><span class="line">Install dependencies</span><br><span class="line">        ↓</span><br><span class="line">Generate tool</span><br><span class="line">        ↓</span><br><span class="line">Execute</span><br><span class="line">        ↓</span><br><span class="line">Debug / Self-correct</span><br></pre></td></tr></table></figure>
-<p>This paper makes Agent generate create tools itself.</p></li>
+<p>In this work, the Agent <strong>creates its own
+tools</strong></p></li>
 <li><p>Adaptive Tool Use，ACL 2025</p>
 <p>More tools do not necessarily mean a better Agent. If one tool
 frequently returns errors, the Agent should realize that.</p></li>
@@ -621,7 +784,7 @@ frequently returns errors, the Agent should realize that.</p></li>
 <p>Solution:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Tool Merging</span><br><span class="line">+</span><br><span class="line">Tool Retrieval</span><br><span class="line">+</span><br><span class="line">Context-aware Filtering</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="aci-environment-interface">3.2.4 ACI &amp; Environment /
+<h3 id="aci-environment-interface">3.2.5 ACI &amp; Environment /
 Interface</h3>
 <p>Agent-Computer Interface.</p>
 <p>This part is to solve the problem: What form should the external
@@ -641,16 +804,17 @@ available to humans, such as GUI, CLI, and Web.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GUI</span><br><span class="line">CLI</span><br><span class="line">Web</span><br><span class="line">Mobile</span><br><span class="line">Desktop</span><br></pre></td></tr></table></figure></li>
 <li><p>OSWorld-Human, ICML 2025:</p>
 <p>To finish a certain task, the Agent takes more steps/operations than
-human. This work</p>
+human.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Agent Benchmark</span><br><span class="line">     ↓</span><br><span class="line">Can you finish?</span><br><span class="line">     +</span><br><span class="line">Can you finish efficiently?</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="skills-composition-capability">3.2.5 Skills &amp; Composition /
+<h3 id="skills-composition-capability">3.2.6 Skills &amp; Composition /
 Capability</h3>
 <p>How can we extract complex, repeatable capabilities from a specific
 agent and turn them into reusable, composable capabilities?</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Tool = an executable capability or interface <span class="keyword">for</span> an action</span><br><span class="line"></span><br><span class="line">Skill = reusable procedural knowledge or capability that can guide or execute a class of tasks.</span><br></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Tools → Atomic Capability</span><br><span class="line"></span><br><span class="line">Skills → procedural capability</span><br></pre></td></tr></table></figure>
-<p>Tendency: Skill are changing to software artifact from prompt.</p>
+<p>Tendency: Skills are evolving from prompts into software
+artifacts.</p>
 <p>The traditional Skill is a text:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">To finish ... task, you should:</span><br><span class="line">1. ...</span><br><span class="line">2. ...</span><br><span class="line">3. ...</span><br><span class="line">4. ...</span><br></pre></td></tr></table></figure>
 <p>It’s a stable text describing a fixed workflow.</p>
@@ -667,23 +831,38 @@ Agent when system starts:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Task</span><br><span class="line">↓</span><br><span class="line">Skill Retrieval</span><br><span class="line">↓</span><br><span class="line">Load Relative Skill, e.g. pdf-to-excel/SKILL.md</span><br></pre></td></tr></table></figure>
 <p>In Skill.md, there may exists content like:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">Run:</span><br><span class="line"></span><br><span class="line">python scripts/extract_table.py report.pdf</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>In fact the scripts are tools for skills.</p>
+<p>In effect, the scripts act as tools for skills.</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/anthropics/skills">GitHub -
 anthropics/skills: Public repository for Agent Skills ·
 GitHub</a></p></li>
 <li><p>SkillWeaver, arXiv:2504.07079</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Web Task</span><br><span class="line">   ↓</span><br><span class="line">Agent Exploration</span><br><span class="line">   ↓</span><br><span class="line">Successful Trajectory</span><br><span class="line">   ↓</span><br><span class="line">Skill Discovery</span><br><span class="line">   ↓</span><br><span class="line">Skill Synthesis</span><br><span class="line">   ↓</span><br><span class="line">Skill Practice / Debugging</span><br><span class="line">   ↓</span><br><span class="line">Reusable Skill API</span><br><span class="line">   ↓</span><br><span class="line">Skill Library</span><br><span class="line">   ↓</span><br><span class="line">Future Tasks</span><br></pre></td></tr></table></figure></li>
-<li><p>SkillRL (arXiv:2602.08234)</p>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2602.08234">SkillRL: Evolving
+Agents via Recursive Skill-Augmented Reinforcement Learning</a>
+(arXiv:2602.08234, Feb 2026)</p>
+<p>Distills raw experience into a hierarchical <code>SkillBank</code>,
+then lets the skill library co-evolve with the policy during RL, instead
+of storing raw trajectories.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Experience</span><br><span class="line">     ↓</span><br><span class="line">Skill Distillation</span><br><span class="line">     ↓</span><br><span class="line">Hierarchical SkillBank</span><br><span class="line">     ↓</span><br><span class="line">Retrieval</span><br><span class="line">     ↓</span><br><span class="line">RL Training</span><br><span class="line">     ↓</span><br><span class="line">Policy Improvement</span><br><span class="line">     ↓</span><br><span class="line">New Experience</span><br><span class="line">     ↓</span><br><span class="line">SkillBank Evolution</span><br></pre></td></tr></table></figure></li>
-<li><p>SkillCraft, (arXiv:2603.00718)</p>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.00718">SkillCraft: Can LLM
+Agents Learn to Use Tools Skillfully?</a> (arXiv:2603.00718, Feb
+2026)</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Task A</span><br><span class="line"> ↓</span><br><span class="line">Learn Skill</span><br><span class="line"> ↓</span><br><span class="line">Task B</span><br><span class="line"> ↓</span><br><span class="line">Reuse Skill</span><br><span class="line"> ↓</span><br><span class="line">Task C</span><br><span class="line"> ↓</span><br><span class="line">Reuse / Compose Skill</span><br></pre></td></tr></table></figure></li>
-<li><p>Generative Skill Composition for LLM Agents,
-(arXiv:2606.32025)</p>
-<p>How to compose skills.</p></li>
-<li><p>Agent Skills for Large Language Models: Architecture,
-Acquisition, Security, and the Path Forward, (arXiv:2602.12430)</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2606.32025">Generative Skill
+Composition for LLM Agents</a> (arXiv:2606.32025, Jun 2026)</p>
+<p>Formalizes <em>structured skill composition</em> — which skills, how
+many, and in what order — as task-conditioned skill sequence prediction,
+decoded jointly rather than by retrieval plus reranking.</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2602.12430">Agent Skills for Large
+Language Models: Architecture, Acquisition, Security, and the Path
+Forward</a> (arXiv:2602.12430, Feb 2026), Agent Skills ’26 Workshop @
+ACM CAAS 2026</p>
+<p>A survey of the skill abstraction layer, covering
+<code>SKILL.md</code>, progressive context loading, the complementary
+roles of Skills and MCP, and security (it reports that 26.1% of
+community-contributed skills contain vulnerabilities).</p></li>
 </ul>
-<h3 id="protocol-interoperability-interoperability">3.2.6 Protocol &amp;
+<h3 id="protocol-interoperability-interoperability">3.2.7 Protocol &amp;
 Interoperability / Interoperability</h3>
 <p>Solve the problems of communication between Agents, Tools, Data
 Source and Services.</p>
@@ -695,8 +874,7 @@ Source and Services.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Agent A ↔ Agent B</span><br></pre></td></tr></table></figure></li>
 <li><p>MCP-AgentBench, AAAI 2026</p></li>
 </ul>
-<h3 id="runtime-safety-runtime-governance">3.2.7 Runtime &amp; Safety ——
-Runtime &amp; Governance</h3>
+<h3 id="runtime-safety">3.2.8 Runtime &amp; Safety</h3>
 <p>Make the Agent actually run in a controlled, secure, observable, and
 recoverable environment.</p>
 <p>Traditional safety check:</p>
@@ -707,12 +885,13 @@ recoverable environment.</p>
 Action, Tool Call, State Transition and Permission.</p>
 <ul>
 <li><p>Task Shield，ACL 2025</p>
-<p>Does this Action is really relative to User’s task ?</p></li>
+<p>Is this action really <mark>relevant</mark> to the user’s
+task?</p></li>
 <li><p>IPIGuard，EMNLP 2025</p>
 <p>Create a <code>Tool Dependency Graph</code>, and limit the tool call
 by the dependency graph.</p></li>
 </ul>
-<h3 id="conclusion">3.2.8 Conclusion</h3>
+<h3 id="conclusion">3.2.9 Conclusion</h3>
 <table>
 <colgroup>
 <col style="width: 22%" />
@@ -747,7 +926,7 @@ use</strong></td>
 <td><strong>ACI &amp; Environment</strong></td>
 <td>Browser / GUI agents</td>
 <td><strong>Efficient action spaces、long-horizon computer
-interaction、安全 ACI</strong></td>
+interaction、Secure ACI</strong></td>
 </tr>
 <tr>
 <td><strong>Skills &amp; Composition</strong></td>
@@ -778,110 +957,104 @@ execution, tool use, environment interaction, efficiency, reliability,
 safety, and generalization.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Agent Evaluation</span><br><span class="line">│</span><br><span class="line">├── Effectiveness</span><br><span class="line">│   └── Did the task succeed?</span><br><span class="line">│</span><br><span class="line">├── Efficiency</span><br><span class="line">│   ├── Steps / Actions</span><br><span class="line">│   ├── Tokens</span><br><span class="line">│   ├── Time</span><br><span class="line">│   └── Cost</span><br><span class="line">│</span><br><span class="line">├── Reliability</span><br><span class="line">│   └── Can the agent succeed repeatedly?</span><br><span class="line">│</span><br><span class="line">├── Safety</span><br><span class="line">│   └── Did it violate constraints or permissions?</span><br><span class="line">│</span><br><span class="line">└── Generalization</span><br><span class="line">    └── Can it handle unseen tasks and environments?</span><br></pre></td></tr></table></figure>
 <h3 id="popular-categories">3.3.2 Popular Categories</h3>
+<p>The categories below follow directly from the environment classes
+defined in <strong>3.2.1</strong>. Each environment class induces its
+own benchmark family; multi-agent and safety are
+<strong>cross-environment</strong> concerns rather than environment
+classes of their own.</p>
+<h4 id="environment-classes-and-their-benchmarks">3.3.2.1 Environment
+Classes and Their Benchmarks</h4>
 <table>
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 28%" />
-<col style="width: 27%" />
-<col style="width: 28%" />
+<col style="width: 40%" />
+<col style="width: 59%" />
 </colgroup>
 <thead>
 <tr>
-<th>Category</th>
-<th>What it Evaluates</th>
+<th>Environment Class</th>
 <th>Representative Benchmarks</th>
-<th>Typical Agent Capability</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Generalist Agent</strong></td>
-<td>General-purpose agents that combine reasoning, search, tools, files,
-and multimodal capabilities</td>
-<td><strong>GAIA</strong></td>
-<td>General reasoning, tool use, information gathering, multi-step
-problem solving</td>
+<td><strong>Classic / Text-World</strong></td>
+<td>ALFWorld, WebShop</td>
 </tr>
 <tr>
-<td><strong>Long-Horizon / Real-World Agent</strong></td>
-<td>Agents performing complex, multi-step tasks in realistic
-environments</td>
-<td><strong>TheAgentCompany, AgencyBench</strong></td>
-<td>Planning, sustained interaction, task decomposition, long-horizon
-execution</td>
+<td><strong>Software Engineering</strong></td>
+<td>SWE-bench, SWE-bench Verified, SWE-Bench Pro</td>
 </tr>
 <tr>
-<td><strong>Computer-Use Agent</strong></td>
-<td>Agents operating computers through GUI, applications, filesystem,
-and terminal</td>
-<td><strong>OSWorld, OSWorld-Human</strong></td>
-<td>GUI grounding, computer control, application usage, visual
-interaction</td>
+<td><strong>Tool / API / Enterprise</strong></td>
+<td>BFCL, τ-bench / τ²-bench, TheAgentCompany, AgencyBench</td>
 </tr>
 <tr>
-<td><strong>Web / Browser Agent</strong></td>
-<td>Agents interacting with websites and browser-based environments</td>
-<td><strong>WebArena, Mind2Web</strong></td>
-<td>Web navigation, search, clicking, form filling, browser
-interaction</td>
+<td><strong>Web / Browser</strong></td>
+<td>WebArena, Mind2Web, TurkingBench, X-WebAgentBench</td>
 </tr>
 <tr>
-<td><strong>Software Engineering Agent</strong></td>
-<td>Agents solving real-world software engineering tasks in
-repositories</td>
-<td><strong>SWE-bench, SWE-bench Verified</strong></td>
-<td>Code understanding, debugging, code editing, testing,
-repository-level reasoning</td>
+<td><strong>Computer-Use / OS</strong></td>
+<td>OSWorld, OSWorld 2.0, OSWorld-Human, WindowsAgentArena</td>
 </tr>
 <tr>
-<td><strong>Tool-Using Agent</strong></td>
-<td>Agents that select, invoke, and coordinate external tools/APIs</td>
-<td><strong>BFCL, τ-bench / τ²-bench</strong></td>
-<td>Tool selection, function calling, argument generation, multi-step
-tool use</td>
+<td><strong>Mobile</strong></td>
+<td>AndroidWorld, MobileAgentBench</td>
 </tr>
 <tr>
-<td><strong>Deep Research / Research Agent</strong></td>
-<td>Agents conducting open-ended research over external information
-sources</td>
-<td><strong>BrowseComp, BrowseComp-Plus, MLR-Bench</strong></td>
-<td>Web search, information synthesis, source verification, long-horizon
-research</td>
+<td><strong>Deep Research</strong></td>
+<td>BrowseComp, BrowseComp-Plus, MLR-Bench</td>
 </tr>
 <tr>
-<td><strong>Multi-Agent</strong></td>
-<td>Multiple agents coordinating to solve tasks collaboratively</td>
-<td><strong>MultiAgentBench, AgentVerse-related benchmarks</strong></td>
-<td>Communication, coordination, delegation, negotiation,
-collaboration</td>
+<td><strong>Generalist / Cross-Environment</strong></td>
+<td>GAIA, CRAB</td>
 </tr>
 <tr>
-<td><strong>Agent Safety / Security</strong></td>
-<td>Agents operating under safety, permission, security, and adversarial
-constraints</td>
-<td><strong>Agent safety / tool-use security benchmarks</strong></td>
-<td>Policy compliance, permission management, robustness, safe tool
-use</td>
-</tr>
-<tr>
-<td><strong>Classic Agent Environments</strong></td>
-<td>Foundational controlled environments for interactive agent
-research</td>
-<td><strong>ALFWorld, WebShop, Mind2Web</strong></td>
-<td>Planning, instruction following, environment interaction, action
-execution</td>
-</tr>
-<tr>
-<td><strong>Benchmark Methodology</strong></td>
-<td>Reliability and validity of agent evaluation itself</td>
-<td><strong>BrowseComp-Plus and related benchmark methodology
-work</strong></td>
-<td>Contamination resistance, reproducibility, verifier quality,
-efficiency, cost, generalization</td>
+<td><strong>Embodied</strong></td>
+<td>ALFRED, Habitat, BEHAVIOR</td>
 </tr>
 </tbody>
 </table>
-<h4 id="generalist-agent-benchmark">3.3.2.1 Generalist Agent
+<h4 id="cross-environment-structures-and-evaluation-axes">3.3.2.2
+Cross-Environment Structures and Evaluation Axes</h4>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 10%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th>Category</th>
+<th>Kind</th>
+<th>Representative Benchmarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multi-Agent</strong></td>
+<td>structural axis — crosses every environment class</td>
+<td>MultiAgentBench, AgentVerse-related benchmarks</td>
+</tr>
+<tr>
+<td><strong>Agent Safety / Security</strong></td>
+<td>evaluation axis — crosses every environment class</td>
+<td>Agent safety / tool-use security benchmarks</td>
+</tr>
+<tr>
+<td><strong>Benchmark Methodology</strong></td>
+<td>meta-evaluation</td>
+<td>BrowseComp-Plus and related benchmark methodology work</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on Long-Horizon.</strong> Long-horizon execution is
+<strong>not</strong> an environment class — it is a <em>property</em>
+that every environment class can exhibit (SWE, Web, OS, and Deep
+Research all have long-horizon variants). It is therefore folded into
+each class above rather than listed as its own category.</p>
+</blockquote>
+<h4 id="generalist-agent-benchmark">3.3.2.3 Generalist Agent
 Benchmark</h4>
 <p>Generalist benchmarks evaluate whether an agent can combine
 reasoning, tool use, information gathering, and multi-step execution
@@ -893,8 +1066,17 @@ benchmark in this category.</p>
 correct.</p>
 <p>This research direction is about:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Can the Agent still complete the task after taking dozens, hundreds, or even thousands of actions?</span><br></pre></td></tr></table></figure>
-<h4 id="long-horizon-real-world-agent-benchmark">3.3.2.2 Long-Horizon /
+<h4 id="long-horizon-real-world-agent-benchmark">3.3.2.4 Long-Horizon /
 Real-World Agent Benchmark</h4>
+<blockquote>
+<p><strong>Long-horizon is a property, not an environment class</strong>
+(see the note in 3.3.2.2). This section is kept separate only because
+these benchmarks are usually discussed together, and because they are
+the clearest stress test of sustained execution. In terms of environment
+class they belong to <strong>Tool / API / Enterprise</strong>
+(TheAgentCompany, AgencyBench), and their distinguishing feature is the
+<em>horizon</em>, not the world they run in.</p>
+</blockquote>
 <p>These benchmarks emphasize sustained execution over many interacting
 steps, often across realistic workplace or application environments.</p>
 <ul>
@@ -903,7 +1085,7 @@ steps, often across realistic workplace or application environments.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Company Environment</span><br><span class="line">│</span><br><span class="line">├── Browser</span><br><span class="line">├── Code repository</span><br><span class="line">├── Terminal</span><br><span class="line">├── Internal websites</span><br><span class="line">├── Communication</span><br><span class="line">└── Coworkers</span><br></pre></td></tr></table></figure></li>
 <li><p>AgencyBench, ACL 2026</p></li>
 </ul>
-<h4 id="computer-use-gui-agent-benchmark">3.3.2.3 Computer-Use / GUI
+<h4 id="computer-use-gui-agent-benchmark">3.3.2.5 Computer-Use / GUI
 Agent Benchmark</h4>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Can an Agent really operate a computer instead of merely describing the operations?</span><br></pre></td></tr></table></figure>
 <ul>
@@ -920,15 +1102,14 @@ require 1.4–2.7× as many steps as humans.</p></li>
 <p>Thought: Benchmark should not be bound by certain
 environment.</p></li>
 </ul>
-<h4 id="tool-use-function-calling-mcp-benchmark">3.3.2.4 Tool Use /
+<h4 id="tool-use-function-calling-mcp-benchmark">3.3.2.6 Tool Use /
 Function Calling / MCP Benchmark</h4>
 <p>Tools Evaluation Process:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Function Calling</span><br><span class="line">      ↓</span><br><span class="line">Tool Use</span><br><span class="line">      ↓</span><br><span class="line">Stateful Tool Use</span><br><span class="line">      ↓</span><br><span class="line">Agentic Tool Use</span><br><span class="line">      ↓</span><br><span class="line">MCP / Interoperability</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>BFCL, ICML 2025</p>
-<p><a
-target="_blank" rel="noopener" href="https://gorilla.cs.berkeley.edu/leaderboard?utm_source=chatgpt.com">BFCL
-v4</a></p>
+<p><a target="_blank" rel="noopener" href="https://gorilla.cs.berkeley.edu/leaderboard">BFCL v4
+Leaderboard</a></p>
 <p>It judges:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Single-turn</span><br><span class="line">   ↓</span><br><span class="line">Multiple <span class="built_in">functions</span></span><br><span class="line">   ↓</span><br><span class="line">Parallel calls</span><br><span class="line">   ↓</span><br><span class="line">Multi-turn</span><br><span class="line">   ↓</span><br><span class="line">Memory</span><br><span class="line">   ↓</span><br><span class="line">Dynamic decision making</span><br><span class="line">   ↓</span><br><span class="line">Long-horizon agentic behavior</span><br></pre></td></tr></table></figure></li>
 <li><p>ToolSandbox, NAACL 2025 Findings</p></li>
@@ -936,12 +1117,12 @@ v4</a></p>
 <li><p>MCP-Bench, ICLR 2026</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Tool Discovery</span><br><span class="line">      ↓</span><br><span class="line">Tool Selection</span><br><span class="line">      ↓</span><br><span class="line">Parameter Control</span><br><span class="line">      ↓</span><br><span class="line">Multi-hop Planning</span><br><span class="line">      ↓</span><br><span class="line">Cross-tool Coordination</span><br><span class="line">      ↓</span><br><span class="line">Task Completion</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="software-engineering-agent-benchmark">3.3.2.5 Software
+<h4 id="software-engineering-agent-benchmark">3.3.2.7 Software
 Engineering Agent Benchmark</h4>
 <ul>
 <li><p>SWE-bench, ICLR 2024 Oral</p></li>
 <li><p>SWE-bench Multimodal, ICLR 2025</p></li>
-<li><p>SWE-Bench Pro, ICLR 2026 submission.</p>
+<li><p>SWE-Bench Pro, ICML 2026.</p>
 <p>For Long-Horizon software engineering.</p></li>
 </ul>
 <p>There’s a problem: <mark>Contamination</mark>.</p>
@@ -950,18 +1131,18 @@ may be affected by training data contamination:</p>
 <p><a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/2512.10218?utm_source=chatgpt.com"><strong>Does
 SWE-Bench-Verified Test Agent Ability or Model Memory?</strong></a></p>
-<h4 id="web-browser-agent-benchmark">3.3.2.6 Web / Browser Agent
+<h4 id="web-browser-agent-benchmark">3.3.2.8 Web / Browser Agent
 Benchmark</h4>
-<p>The core of Web Agent is not ‘Search’ but:
+<p>The core of Web Agent is not “Search” but:
 <code>The Agent observes webpages, plans, clicks, types, navigates, calls APIs, and ultimately completes tasks in real-world web environments.</code></p>
 <p>Classic workflow:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">User Goal</span><br><span class="line">   ↓</span><br><span class="line">Browser</span><br><span class="line">   ↓</span><br><span class="line">Observe webpage</span><br><span class="line">   ↓</span><br><span class="line">Plan</span><br><span class="line">   ↓</span><br><span class="line">Click / Type / Search</span><br><span class="line">   ↓</span><br><span class="line">New webpage</span><br><span class="line">   ↓</span><br><span class="line">Reason</span><br><span class="line">   ↓</span><br><span class="line">...</span><br><span class="line">   ↓</span><br><span class="line">Task Success</span><br></pre></td></tr></table></figure>
 <ul>
-<li>WebArena, ACL 2024</li>
-<li>TurkingBench, NAACL 2025</li>
+<li>WebArena, ICLR 2024.</li>
+<li>TurkingBench, NAACL 2025 Long.</li>
 <li>X-WebAgentBench, ACL 2025 Findings</li>
 </ul>
-<h4 id="deep-research-research-agent-benchmark">3.3.2.7 Deep Research /
+<h4 id="deep-research-research-agent-benchmark">3.3.2.9 Deep Research /
 Research Agent Benchmark</h4>
 <p>Normal Web Research:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Web Agent</span><br><span class="line"></span><br><span class="line">Goal</span><br><span class="line"> ↓</span><br><span class="line">Browse</span><br><span class="line"> ↓</span><br><span class="line">Action</span><br><span class="line"> ↓</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
@@ -974,13 +1155,19 @@ Research Agent Benchmark</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Web Research</span><br><span class="line">      ↓</span><br><span class="line">Deep Research</span><br><span class="line">      ↓</span><br><span class="line">Scientific Research Agent</span><br></pre></td></tr></table></figure>
 <p>Can AI do research itself?</p></li>
 </ul>
-<h4 id="multi-agent-benchmark">3.3.2.8 Multi-Agent Benchmark</h4>
+<h4 id="multi-agent-benchmark">3.3.2.10 Multi-Agent Benchmark</h4>
 <p>Multi-agent benchmarks evaluate coordination, communication, task
 decomposition, role assignment, negotiation, and collaborative problem
 solving among multiple agents. This is a distinct evaluation axis from
 single-agent capability.</p>
-<h4 id="agent-safety-security-benchmark">3.3.2.9 Agent Safety / Security
-Benchmark</h4>
+<blockquote>
+<p>Multi-Agent is a <strong>structural axis</strong>, not an environment
+class (see 3.3.2.2). Its benchmark family is therefore orthogonal to the
+environment classes above.</p>
+</blockquote>
+<p>To be added…</p>
+<h4 id="agent-safety-security-benchmark">3.3.2.11 Agent Safety /
+Security Benchmark</h4>
 <p>Agent safety benchmarks evaluate whether agents remain within task,
 permission, and security constraints while interacting with tools,
 external data, and stateful environments. Important dimensions include
@@ -999,14 +1186,19 @@ agents.</p>
 <h3 id="popular-benchmarks">3.3.4 Popular Benchmarks</h3>
 <h4 id="swe-bench-swe-bench-verified">3.3.4.1 SWE-bench / SWE-bench
 Verified</h4>
+<p>To be added.</p>
 <h4 id="gaia">3.3.4.2 GAIA</h4>
+<p>To be added.</p>
 <h4 id="webarena">3.3.4.3 WebArena</h4>
+<p>To be added.</p>
 <h4 id="osworld-verified-osworld-2.0">3.3.4.4 OSWorld Verified / OSWorld
 2.0</h4>
+<p>To be added.</p>
 <h4 id="agentbench">3.3.4.5 AgentBench</h4>
-<p>AgentBench is a <strong>multi-environment benchmark suite</strong>,
-rather than a single environment-specific benchmark. It includes:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AgentBench</span><br><span class="line">│</span><br><span class="line">├── OS</span><br><span class="line">├── Database</span><br><span class="line">├── Knowledge Graph</span><br><span class="line">├── Digital Card Game</span><br><span class="line">├── Lateral Thinking Puzzle</span><br><span class="line">├── ALFWorld</span><br><span class="line">├── WebShop</span><br><span class="line">└── Mind2Web</span><br></pre></td></tr></table></figure>
+<p>AgentBench (ICLR 2024) is a <strong>multi-environment benchmark
+suite</strong>, rather than a single environment-specific benchmark. It
+includes:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AgentBench</span><br><span class="line">│</span><br><span class="line">├── OS</span><br><span class="line">├── Database</span><br><span class="line">├── Knowledge Graph</span><br><span class="line">├── Digital Card Game</span><br><span class="line">├── Lateral Thinking Puzzle</span><br><span class="line">├── ALFWorld (ICLR 2021)</span><br><span class="line">├── WebShop (NeurIPS 2022)</span><br><span class="line">└── Mind2Web (NeurIPS 2023)</span><br></pre></td></tr></table></figure>
 <p><strong>Classic Agent Environments</strong></p>
 <p>ALFWorld, WebShop, and Mind2Web have an important historical role in
 LLM-agent research and should not be treated as merely implementation
@@ -1024,6 +1216,8 @@ websites and interaction trajectories.</li>
 <p>This distinction avoids mixing a benchmark suite (AgentBench) with
 individual environments (ALFWorld/WebShop/Mind2Web) at the same
 conceptual level.</p>
+<h2 id="multi-agent">3.4 Multi-agent</h2>
+<p>To be added.</p>
 
     </div>
 
@@ -1103,6 +1297,9 @@ conceptual level.</p>
               <a href="/tags/SWE-agent/" rel="tag"># SWE-agent</a>
               <a href="/tags/SWE/" rel="tag"># SWE</a>
               <a href="/tags/Model-Fine-Tuning/" rel="tag"># Model Fine-Tuning</a>
+              <a href="/tags/Bash/" rel="tag"># Bash</a>
+              <a href="/tags/Shell/" rel="tag"># Shell</a>
+              <a href="/tags/Skill/" rel="tag"># Skill</a>
           </div>
 
         

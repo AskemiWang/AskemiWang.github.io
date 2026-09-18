@@ -33,8 +33,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/polyskill_amazon_website.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/PolySkill_Mind2Web.png">
-<meta property="article:published_time" content="2026-08-04T10:11:35.000Z">
-<meta property="article:modified_time" content="2026-09-17T13:06:01.000Z">
+<meta property="og:image" content="https://wangyier.top/images/article_images/webagent_browsergym.png">
+<meta property="article:published_time" content="2026-09-16T11:06:01.000Z">
+<meta property="article:modified_time" content="2026-09-18T13:00:11.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Continual Learning">
@@ -190,7 +191,7 @@ Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" hre
 Polymorphic Skill Induction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-learning-on-unseen-websites"><span class="nav-text">3.3.3 Skill Learning on
 Unseen Websites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-setup"><span class="nav-text">3.4 Evaluation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-metrics"><span class="nav-text">3.5 Evaluation Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#success-rate"><span class="nav-text">3.5.1 Success Rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number-of-steps"><span class="nav-text">3.5.2 Number of Steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-reusability"><span class="nav-text">3.5.3 Skill Reusability:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-coverage-skill-adoption-rate"><span class="nav-text">3.5.4 Task Coverage &#x2F; Skill
 Adoption Rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-compositionality"><span class="nav-text">3.5.5 Skill Compositionality</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#experiments"><span class="nav-text">4. Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#standard-benchmark-evaluation"><span class="nav-text">4.1 Standard Benchmark
-Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-analysis"><span class="nav-text">5. Code Analysis</span></a></li></ol></div>
+Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#note"><span class="nav-text">Note</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-engineering"><span class="nav-text">5. Code &#x2F; Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#browsergym"><span class="nav-text">5.1 BrowserGym</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tool-action"><span class="nav-text">5.2 Tool &#x2F; Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-text">5.3</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,7 +206,7 @@ Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="n
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -216,7 +217,7 @@ Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="n
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -280,14 +281,14 @@ Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="n
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2026-08-04 18:11:35" itemprop="dateCreated datePublished" datetime="2026-08-04T18:11:35+08:00">2026-08-04</time>
+      <time title="Created: 2026-09-16 19:06:01" itemprop="dateCreated datePublished" datetime="2026-09-16T19:06:01+08:00">2026-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-17 21:06:01" itemprop="dateModified" datetime="2026-09-17T21:06:01+08:00">2026-09-17</time>
+      <time title="Modified: 2026-09-18 21:00:11" itemprop="dateModified" datetime="2026-09-18T21:00:11+08:00">2026-09-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -683,7 +684,161 @@ it to test the benchmark.</li>
 <li>Update: After training the skill library, use it to test benchmark,
 but do not frozen it, let it update during the test.</li>
 </ul>
-<h1 id="code-analysis">5. Code Analysis</h1>
+<h1 id="note">Note</h1>
+<p>A Web Agent’s tools act on the <strong>world state</strong> rather
+than <strong>return data</strong>, which is why the field speaks the
+language of RL/MDP (<strong>action space</strong>) rather than the
+language of function calling (<strong>tool set</strong>).</p>
+<p>Action Space is a tool</p>
+<h1 id="code-engineering">5. Code / Engineering</h1>
+<h2 id="browsergym">5.1 BrowserGym</h2>
+<p>BrowserGym is an interface between Agent and real website. It defines
+what Agent can see, what Agent can do and how to calculate reward.</p>
+<p><img data-src="/images/article_images/webagent_browsergym.png" /></p>
+<h2 id="tool-action">5.2 Tool / Action</h2>
+<p>In a web agent, the available actions is limited because of the
+environment. The environment is only a <mark>browser +
+website</mark>.</p>
+<p>The tool in this work is inherited from <mark>BrowserGym</mark>.</p>
+<p>The source code is at:</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ServiceNow/BrowserGym/blob/main/browsergym/core/src/browsergym/core/action/functions.py">BrowserGym/browsergym/core/src/browsergym/core/action/functions.py
+at main · ServiceNow/BrowserGym</a></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 13%" />
+<col style="width: 41%" />
+<col style="width: 40%" />
+<col style="width: 2%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Signature</th>
+<th>Description</th>
+<th>类别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>noop</code></td>
+<td><code>noop(wait_ms: float = 1000)</code></td>
+<td>Idle, do nothing, wait</td>
+<td>控制</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>scroll</code></td>
+<td><code>scroll(delta_x: float, delta_y: float)</code></td>
+<td>Scroll the page (in pixels; positive values = right/down)</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>keyboard_press</code></td>
+<td><code>keyboard_press(key: str)</code></td>
+<td>Press a key
+combination（<code>'Enter'</code>、<code>'ControlOrMeta+a'</code>）</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>click</code></td>
+<td><code>click(bid: str, button="left", modifiers=[])</code></td>
+<td>Click an element</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>fill</code></td>
+<td><code>fill(bid: str, value: str, enable_autocomplete_menu=False)</code></td>
+<td>Fill a form
+field（<code>&lt;input&gt;</code>/<code>&lt;textarea&gt;</code>/contenteditable）</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>hover</code></td>
+<td><code>hover(bid: str)</code></td>
+<td>Hover over an element</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>tab_focus</code></td>
+<td><code>tab_focus(index: int)</code></td>
+<td>Switch focus to a tab</td>
+<td>标签</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>new_tab</code></td>
+<td><code>new_tab()</code></td>
+<td>Open a new tab</td>
+<td>标签</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>go_back</code></td>
+<td><code>go_back()</code></td>
+<td>Go back (browser history)</td>
+<td>导航</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>go_forward</code></td>
+<td><code>go_forward()</code></td>
+<td>Go forward (browser history)</td>
+<td>导航</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>goto</code></td>
+<td><code>goto(url: str)</code></td>
+<td>Navigate to a URL</td>
+<td>导航</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>tab_close</code></td>
+<td><code>tab_close()</code></td>
+<td>Close the current tab</td>
+<td>标签</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>select_option</code></td>
+<td><code>select_option(bid: str, options: str | list[str])</code></td>
+<td>Select a dropdown option (by value or by label)</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>send_msg_to_user</code></td>
+<td><code>send_msg_to_user(text: str)</code></td>
+<td>Terminal action: report the answer to the user</td>
+<td>终止</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>report_infeasible</code></td>
+<td><code>report_infeasible(reason: str)</code></td>
+<td>Terminal action: declare the task infeasible</td>
+<td>终止</td>
+</tr>
+<tr>
+<td>16+</td>
+<td><strong>Skill Functions</strong></td>
+<td>Any</td>
+<td>composite skills abstracted from the primitive actions</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="section">5.3</h2>
 
     </div>
 
@@ -759,8 +914,8 @@ but do not frozen it, let it update during the test.</li>
               <a href="/tags/Agent/" rel="tag"># Agent</a>
               <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
-              <a href="/tags/Continual-Learning/" rel="tag"># Continual Learning</a>
               <a href="/tags/Skill/" rel="tag"># Skill</a>
+              <a href="/tags/Continual-Learning/" rel="tag"># Continual Learning</a>
               <a href="/tags/Skill-Induction/" rel="tag"># Skill Induction</a>
           </div>
 
@@ -768,13 +923,13 @@ but do not frozen it, let it update during the test.</li>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/paper-summary-SWE-smith/" rel="prev" title="Paper Summary – SWE-smith">
-                  <i class="fa fa-angle-left"></i> Paper Summary – SWE-smith
+                <a href="/os-&-shell-&terminal/" rel="prev" title="OS &amp; Bash &amp; Terminal">
+                  <i class="fa fa-angle-left"></i> OS & Bash & Terminal
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/model-post-training/" rel="next" title="Model Post-Training">
-                  Model Post-Training <i class="fa fa-angle-right"></i>
+                <a href="/latex/" rel="next" title="LaTex">
+                  LaTex <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
