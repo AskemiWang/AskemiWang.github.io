@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/PolySkill_Mind2Web.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/webagent_browsergym.png">
 <meta property="article:published_time" content="2026-09-16T11:06:01.000Z">
-<meta property="article:modified_time" content="2026-09-18T13:00:11.000Z">
+<meta property="article:modified_time" content="2026-09-20T13:00:10.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Continual Learning">
@@ -191,7 +191,7 @@ Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" hre
 Polymorphic Skill Induction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-learning-on-unseen-websites"><span class="nav-text">3.3.3 Skill Learning on
 Unseen Websites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-setup"><span class="nav-text">3.4 Evaluation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-metrics"><span class="nav-text">3.5 Evaluation Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#success-rate"><span class="nav-text">3.5.1 Success Rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number-of-steps"><span class="nav-text">3.5.2 Number of Steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-reusability"><span class="nav-text">3.5.3 Skill Reusability:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-coverage-skill-adoption-rate"><span class="nav-text">3.5.4 Task Coverage &#x2F; Skill
 Adoption Rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-compositionality"><span class="nav-text">3.5.5 Skill Compositionality</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#experiments"><span class="nav-text">4. Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#standard-benchmark-evaluation"><span class="nav-text">4.1 Standard Benchmark
-Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#note"><span class="nav-text">Note</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-engineering"><span class="nav-text">5. Code &#x2F; Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#browsergym"><span class="nav-text">5.1 BrowserGym</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tool-action"><span class="nav-text">5.2 Tool &#x2F; Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-text">5.3</span></a></li></ol></li></ol></div>
+Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#note"><span class="nav-text">Note</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-engineering"><span class="nav-text">5. Code &#x2F; Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#browsergym"><span class="nav-text">5.1 BrowserGym</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tool-action"><span class="nav-text">5.2 Tool &#x2F; Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-example"><span class="nav-text">5.3 Skill Example</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -217,7 +217,7 @@ Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="n
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -288,7 +288,7 @@ Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="n
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-18 21:00:11" itemprop="dateModified" datetime="2026-09-18T21:00:11+08:00">2026-09-18</time>
+      <time title="Modified: 2026-09-20 21:00:10" itemprop="dateModified" datetime="2026-09-20T21:00:10+08:00">2026-09-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -838,7 +838,11 @@ field（<code>&lt;input&gt;</code>/<code>&lt;textarea&gt;</code>/contenteditable
 </tr>
 </tbody>
 </table>
-<h2 id="section">5.3</h2>
+<h2 id="skill-example">5.3 Skill Example</h2>
+<p>ASI skill:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_product</span>(<span class="params">search_box_id: <span class="built_in">str</span>, query: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Examples: search_product(&#x27;595&#x27;, &#x27;sony bluetooth headphones&#x27;) &quot;&quot;&quot;</span></span><br><span class="line">    click(search_box_id); fill(search_box_id, query); keyboard_press(<span class="string">&#x27;Enter&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>PolySkill:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ① 领域抽象类：只写一次</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AbstractShoppingSite</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search_product</span>(<span class="params">self, query: <span class="built_in">str</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Searches for a product.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_to_cart</span>(<span class="params">self, item_id: <span class="built_in">str</span>, quantity: <span class="built_in">int</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Adds a specified item to the shopping cart.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkout</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Initiates the checkout process.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 组合式技能：只定义在这里，靠 self 派发</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">find_and_add_to_cart</span>(<span class="params">self, query: <span class="built_in">str</span>, item_id: <span class="built_in">str</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.search_product(query)</span><br><span class="line">        <span class="variable language_">self</span>.add_to_cart(item_id)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_item</span>(<span class="params">self, query: <span class="built_in">str</span>, item_id: <span class="built_in">str</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.find_and_add_to_cart(query, item_id)</span><br><span class="line">        <span class="variable language_">self</span>.checkout()</span><br><span class="line"></span><br><span class="line"><span class="comment"># ② 站点子类：只实现原子方法</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AmazonWebsite</span>(<span class="title class_ inherited__">AbstractShoppingSite</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search_product</span>(<span class="params">self, query: <span class="built_in">str</span></span>):</span><br><span class="line">        click(search_bar_id); fill(search_bar_id, query); keyboard_press(<span class="string">&quot;Enter&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_to_cart</span>(<span class="params">self, item_id: <span class="built_in">str</span>, quantity: <span class="built_in">int</span></span>):</span><br><span class="line">        click(add_to_cart_button_id)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkout</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.view_cart(); click(checkout_button_id)</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -915,8 +919,8 @@ field（<code>&lt;input&gt;</code>/<code>&lt;textarea&gt;</code>/contenteditable
               <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
               <a href="/tags/Skill/" rel="tag"># Skill</a>
-              <a href="/tags/Continual-Learning/" rel="tag"># Continual Learning</a>
               <a href="/tags/Skill-Induction/" rel="tag"># Skill Induction</a>
+              <a href="/tags/Continual-Learning/" rel="tag"># Continual Learning</a>
           </div>
 
         
