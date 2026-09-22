@@ -1,0 +1,37 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="YIsWVabu_c9i3rUwmghs">
+    <mxGraphModel dx="322" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-19" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-20" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-28" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-21" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Skill Maintenance:&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;LLM judge&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="230" x="1435" y="592.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-29" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-23" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Candidate Skill&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="320" x="1060" y="632.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-24" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Add&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="1760" y="512.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-25" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Merge&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="1760" y="627.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-27" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Drop&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="1760" y="742.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

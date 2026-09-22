@@ -1,0 +1,40 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="YIsWVabu_c9i3rUwmghs">
+    <mxGraphModel dx="1976" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-12" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-13" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-14" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-2" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Skill Extraction&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="230" x="370" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-7" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="mC2my1zKEV7Spkq0p4mR-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-5" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Single or a little set of related trajectory evidences&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="320" x="-20" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-6" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Evidence = Trajectory + Result + Context&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="460" x="-20" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-8" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Task-level Skill&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="670" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-9" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Event-driven Skill&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="670" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-11" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Skip&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="670" y="380" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
