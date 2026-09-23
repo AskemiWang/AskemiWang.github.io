@@ -1,0 +1,67 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="visccO6eeJ4WuspNnY1J">
+    <mxGraphModel dx="1976" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-1" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;font style=&quot;font-size: 43px;&quot;&gt;Skill Maintenance&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="560" x="414" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-10" edge="1" parent="1" source="VWuxMoT0lEHUrkCeL8ck-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="VWuxMoT0lEHUrkCeL8ck-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-6" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Skill Extraction Phase&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="230" x="-170" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-11" edge="1" parent="1" source="VWuxMoT0lEHUrkCeL8ck-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="VWuxMoT0lEHUrkCeL8ck-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-7" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Skill Evolution Phase&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="230" x="-170" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-14" edge="1" parent="1" source="VWuxMoT0lEHUrkCeL8ck-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="VWuxMoT0lEHUrkCeL8ck-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-8" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Reusable Skill&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="230" x="110" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-15" edge="1" parent="1" source="VWuxMoT0lEHUrkCeL8ck-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="VWuxMoT0lEHUrkCeL8ck-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-9" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Revised Skill&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="230" x="110" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-22" edge="1" parent="1" source="VWuxMoT0lEHUrkCeL8ck-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="VWuxMoT0lEHUrkCeL8ck-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-12" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;font style=&quot;font-size: 38px;&quot;&gt;Teacher&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 38px;&quot;&gt;Model&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="280" width="220" x="680" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-16" edge="1" parent="1" source="VWuxMoT0lEHUrkCeL8ck-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="VWuxMoT0lEHUrkCeL8ck-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-13" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Candidate Skill&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="230" x="390" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-17" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="" vertex="1">
+          <mxGeometry height="240" width="340" x="990" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-18" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;b style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 22px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;Operations for Candidate Skill&lt;/b&gt;" vertex="1">
+          <mxGeometry height="50" width="350" x="1000" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Add&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="186" x="1070" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Merge&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="186" x="1070" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Drop&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="186" x="1070" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="VWuxMoT0lEHUrkCeL8ck-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 30px;&quot;&gt;SFT Data for Skill Maintenance&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="547" x="420.5" y="680" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -32,8 +32,9 @@
 <meta property="og:description" content="Paper Summary of &quot;SWE-smith: Scaling Data for Software Engineering Agents&quot;.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/SWE-smith_generate_traj.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/SWE-smith_generate_traj.png">
 <meta property="article:published_time" content="2026-08-04T10:11:35.000Z">
-<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
+<meta property="article:modified_time" content="2026-09-23T13:00:15.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Data Generation">
@@ -200,7 +201,7 @@ Collect traj by Expert Model ( Rejection Sampling Fine-Tuning)
 (_gen_trajs.sh)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter-success-patches-swesmithharnesseval.py"><span class="nav-text">3.5 Filter
 Success Patches (swesmith&#x2F;harness&#x2F;eval.py)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trans-.traj-into-openai-messages"><span class="nav-text">3.6 Trans .traj into OpenAI
 messages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#full-tuning"><span class="nav-text">3.7 Full Tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#train_on_input-false"><span class="nav-text">3.7.1 train_on_input: False</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss-between-steps-teacher-forcing"><span class="nav-text">3.7.2 Loss Between Steps
-(Teacher Forcing)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed-false"><span class="nav-text">3.7.3 packed: False</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supplements"><span class="nav-text">4. Supplements</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flowchart"><span class="nav-text">4.1 Flowchart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swe"><span class="nav-text">4.2 SWE</span></a></li></ol></li></ol></div>
+(Teacher Forcing)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed-false"><span class="nav-text">3.7.3 packed: False</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supplements"><span class="nav-text">4. Supplements</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flowchart"><span class="nav-text">4.1 Flowchart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swe"><span class="nav-text">4.2 SWE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-review"><span class="nav-text">5. Quick Review</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -297,7 +298,7 @@ messages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" hre
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
+      <time title="Modified: 2026-09-23 21:00:15" itemprop="dateModified" datetime="2026-09-23T21:00:15+08:00">2026-09-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -781,6 +782,9 @@ one.</p>
 </tbody>
 </table>
 <p>Q: teacher sample 后, SFT自己, 会不会效果更好?</p>
+<h1 id="quick-review">5. Quick Review</h1>
+<p>Workflow:</p>
+<p><img data-src="/images/article_images/SWE-smith_generate_traj.png" /></p>
 
     </div>
 

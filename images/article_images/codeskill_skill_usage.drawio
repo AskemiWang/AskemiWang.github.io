@@ -1,0 +1,43 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="YIsWVabu_c9i3rUwmghs">
+    <mxGraphModel dx="525" dy="946" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-19" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-28" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-21" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Skill Match&lt;/span&gt;" vertex="1">
+          <mxGeometry height="260" width="230" x="1440" y="532.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-29" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mC2my1zKEV7Spkq0p4mR-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-23" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Task Solving:&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Retrieval Skill Bank&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="320" x="1060" y="607.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-32" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" target="mC2my1zKEV7Spkq0p4mR-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-24" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Task-level Skill&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="1760" y="512.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-33" edge="1" parent="1" source="mC2my1zKEV7Spkq0p4mR-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" target="mC2my1zKEV7Spkq0p4mR-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-27" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Event-driven Skill&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="1760" y="742.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-30" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Task Goal&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="2080" y="512.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mC2my1zKEV7Spkq0p4mR-31" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Agent&#39;s current&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;reasoning, observation&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="260" x="2080" y="742.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

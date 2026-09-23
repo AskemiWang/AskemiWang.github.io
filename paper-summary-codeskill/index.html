@@ -33,18 +33,25 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_operation_type.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_pipeline.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_skill_usage.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_operation_type.png">
 <meta property="article:published_time" content="2026-09-22T04:53:57.000Z">
-<meta property="article:modified_time" content="2026-09-22T13:00:21.000Z">
+<meta property="article:modified_time" content="2026-09-23T13:00:15.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
+<meta property="article:tag" content="GRPO">
 <meta property="article:tag" content="LLM">
+<meta property="article:tag" content="MSWEA">
 <meta property="article:tag" content="Paper Summary">
 <meta property="article:tag" content="Reinforcement Learning">
+<meta property="article:tag" content="SFT">
 <meta property="article:tag" content="SWE">
 <meta property="article:tag" content="SWE-bench">
+<meta property="article:tag" content="SWE-smith">
 <meta property="article:tag" content="Skill">
 <meta property="article:tag" content="Skill Extraction">
 <meta property="article:tag" content="Skill Induction">
+<meta property="article:tag" content="mini-swe-agent">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wangyier.top/images/article_images/codeskill_operation_type.png">
 
@@ -188,7 +195,14 @@
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#codeskill"><span class="nav-text">2. CODESKILL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-formalization"><span class="nav-text">2.1 Problem Formalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-management-loop"><span class="nav-text">2.2 Skill Management Loop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multi-granularity-skill-bank"><span class="nav-text">3.2.1 Multi-granularity Skill
-Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-bank-construction"><span class="nav-text">3.2.2 Skill Bank Construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-maintenance"><span class="nav-text">3.2.3 Skill Maintenance</span></a></li></ol></li></ol></li></ol></div>
+Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-bank-construction"><span class="nav-text">3.2.2 Skill Bank Construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-maintenance"><span class="nav-text">3.2.3 Skill Maintenance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-usage-skill-match"><span class="nav-text">3.2.4 Skill Usage (Skill Match)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-training"><span class="nav-text">2.3 Model Training</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sft"><span class="nav-text">2.3.1 SFT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#brief"><span class="nav-text">2.3.1.1 Brief</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trajectories-sources"><span class="nav-text">2.3.1.2 Trajectories Sources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#teacher-data-construction"><span class="nav-text">2.3.1.3 Teacher Data
+Construction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sft-training-setting"><span class="nav-text">2.3.1.4 SFT Training Setting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grpo"><span class="nav-text">2.2.2 GRPO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hybrid-reward-design"><span class="nav-text">2.2.2.1 Hybrid Reward Design</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#skill-quality-reward-by-llm-as-judge"><span class="nav-text">2.2.2.1.1 Skill Quality
+Reward by LLM-as-Judge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#execution-reward"><span class="nav-text">2.2.2.1.2 Execution Reward</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#training-settings-for-codeskill"><span class="nav-text">2.3.3 Training Settings for
+CODESKILL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#skill-examples-prompts"><span class="nav-text">3. Skill Examples &amp; Prompts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-examples"><span class="nav-text">3.1 Skill Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#task-level-skill-example"><span class="nav-text">3.1.1 Task-Level Skill Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#event-driven-skill-example"><span class="nav-text">3.1.2 Event-Driven Skill
+Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prompts"><span class="nav-text">3.2 Prompts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#task-level-skill-extraction-prompt"><span class="nav-text">3.2.1 Task-Level Skill
+Extraction Prompt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#event-driven-skill-extraction-prompt"><span class="nav-text">3.2.2 Event-Driven Skill
+Extraction Prompt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-evolution-prompt"><span class="nav-text">3.2.3 Skill Evolution Prompt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-bank-maintenance-prompt"><span class="nav-text">3.2.4 Skill-Bank Maintenance
+Prompt</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -277,9 +291,15 @@ Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2026-09-22 12:53:57 / Modified: 21:00:21" itemprop="dateCreated datePublished" datetime="2026-09-22T12:53:57+08:00">2026-09-22</time>
+      <time title="Created: 2026-09-22 12:53:57" itemprop="dateCreated datePublished" datetime="2026-09-22T12:53:57+08:00">2026-09-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-09-23 21:00:15" itemprop="dateModified" datetime="2026-09-23T21:00:15+08:00">2026-09-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -379,8 +399,8 @@ such as shell command.</li>
 <p>Goal is to learn from such trajectories <mark>without</mark> updating
 <span class="math inline"><em>π</em></span>.</p>
 <p>CODESKILL learns a policy <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> for managing
-a skill bank <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span> for
+<mark>managing</mark> a skill bank <span
 class="math inline">ℬ = {<em>s</em><sub><em>i</em></sub>}<sub><em>i</em> = 1</sub><sup><em>N</em></sup></span>
 where each skill <span
 class="math inline"><em>s</em><sub><em>i</em></sub></span> constrains
@@ -388,6 +408,14 @@ reusable procedural instructions that provide actionable guidance.</p>
 <p>Given trajectory evidence <span class="math inline"><em>τ</em></span>
 and relevant skill-bank context <span
 class="math inline">𝒞 ⊆ ℬ</span>.</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>Here the main LLM (Qwen3.5-35B-A3B) is frozen;</p>
+<p>There’s an additional LLM <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span> (Qwen3.5-4B)
+to maintain the skill bank. This work is to train the <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span>.</p>
+</blockquote>
 <p><span class="math inline"><em>M</em><sub><em>θ</em></sub></span>
 outputs an operation <span
 class="math inline"><em>u</em> = (<em>a</em>, <em>z</em>)</span>, where
@@ -467,6 +495,184 @@ redundant, weakly grounded, overly specific, or unlikely to
 transfer.</li>
 </ul>
 <p><img data-src="/images/article_images/codeskill_skill_maintenance.png" /></p>
+<h3 id="skill-usage-skill-match">3.2.4 Skill Usage (Skill Match)</h3>
+<p>For downstream task solving, relevant skills are retrieved from the
+updated skill bank and inserted into the prompt of the frozen coding
+policy as prior knowledge.</p>
+<p><mark>Retrieval</mark> is based on <mark>dense semantic
+similarity</mark>, matching task-level skills to the task goal and
+event-driven skills to the agent’s current reasoning and observation
+through their trigger conditions.</p>
+<p>The original task prompt and policy parameters remain unchanged.</p>
+<p><img data-src="/images/article_images/codeskill_skill_usage.png" /></p>
+<h2 id="model-training">2.3 Model Training</h2>
+<p>The authors first warm up <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span> on
+teacher-generated <mark>supervised</mark> data for skill extraction,
+evolution, and maintenance, and then optimize it with
+<mark>reinforcement learning</mark> using feedback from both
+rubric-based LLM-as-judge rewards and a frozen downstream coding
+policy.</p>
+<h3 id="sft">2.3.1 SFT</h3>
+<h4 id="brief">2.3.1.1 Brief</h4>
+<p>The SFT’s goal is to make <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span> learn basic
+skill bank operations.</p>
+<p><img data-src="/images/article_images/codeskill_operation_type.png" /></p>
+<p>As we mentioned earlier, the <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span> outputs three
+main operations.</p>
+<ul>
+<li>add</li>
+<li>merge</li>
+<li>drop</li>
+</ul>
+<p><mark>Operation</mark> <span class="math inline"><em>u</em></span>
+can be expressed as: <span
+class="math display"><em>u</em> = (<em>a</em>, <em>z</em>)</span></p>
+<ul>
+<li><span class="math inline"><em>a</em></span> denotes operation
+type</li>
+<li><span class="math inline"><em>z</em></span> denotes operation
+content.</li>
+</ul>
+<p>The <span class="math inline"><em>u</em></span> is goal of SFT.</p>
+<p>The <mark>teacher</mark> produces structured targets <span
+class="math inline"><em>u</em><sup>*</sup></span> for skill extraction,
+evolution, and maintenance: <span
+class="math display"><em>u</em><sup>*</sup> = (<em>a</em><sup>*</sup>, <em>z</em><sup>*</sup>)</span>
+Each SFT <mark>example</mark> is written as: <span
+class="math display">(<em>q</em>, <em>u</em><sup>*</sup>), <em>q</em> = (<em>τ</em>, <em>s̃</em>, 𝒞)</span></p>
+<ul>
+<li><span class="math inline"><em>τ</em></span> denotes trajectory
+evidence</li>
+<li><span class="math inline"><em>s̃</em></span> denotes an optional
+candidate or existing skill</li>
+<li><span class="math inline">𝒞</span> denotes retrieved similar
+skills</li>
+</ul>
+<p>SFT loss: <span
+class="math display">ℒ<sub>SFT</sub> = −𝔼<sub>(<em>q</em>, <em>u</em><sup>*</sup>)</sub>log <em>M</em><sub><em>θ</em></sub>(<em>u</em><sup>*</sup> ∣ <em>q</em>).</span></p>
+<h4 id="trajectories-sources">2.3.1.2 Trajectories Sources</h4>
+<p>The <mark>initial</mark> SWE-style trajectory pool is downloaded from
+publicly available <mark>mini-SWE-agent</mark> rollouts on
+<mark>SWE-smith</mark>, where Qwen330B is used as the coding agent.</p>
+<p>The authors additionally collect <mark>EnvBench</mark> trajectories
+using a ReAct-style agent.</p>
+<p>Since different sources use different logging formats, the authors
+<mark>normalize</mark> all trajectories into a unified representation
+containing:</p>
+<ul>
+<li>task context</li>
+<li>reasoning steps</li>
+<li>action steps</li>
+<li>observation steps</li>
+<li>final outcome information</li>
+</ul>
+<p><img data-src="/images/article_images/codeskill_SFT_trajecotries_normalize.png" /></p>
+<h4 id="teacher-data-construction">2.3.1.3 Teacher Data
+Construction</h4>
+<p>The SFT is to teach student 3 things: skill extraction, skill
+evolution and skill bank maintenance.</p>
+<ul>
+<li><p>For task-level and event-driven <mark>extraction</mark>:</p>
+<p>the teacher reads normalized trajectory evidence and outputs either a
+reusable skill or a skip decision.</p>
+<p><img data-src="/images/article_images/codeskill_SFT_skill_extraction.png" /></p></li>
+<li><p>For skill evolution:</p>
+<p>The authors <mark>synthesize</mark> <mark>training instances</mark>
+by retrieving an existing skill whose applicability condition or rules
+match a new trajectory, <mark>especially a failed or partially
+successful one</mark>.</p>
+<p>The paired trajectory is selected to expose <mark>missing
+conditions</mark>, <mark>better procedures</mark>, or <mark>failure
+modes</mark> not fully covered by the existing skill, and the teacher is
+asked to revise the skill or skip when no meaningful update is
+supported.</p>
+<p>This avoids collecting an additional round of skill-conditioned
+rollouts.</p>
+<p><img data-src="/images/article_images/codeskill_SFT_skill_evolution.png" /></p></li>
+<li><p>For Skill Maintenance:</p>
+<p>For skill-bank maintenance, each candidate skill is paired with
+retrieved similar skills from the bank, and the teacher outputs add,
+merge, or drop.</p>
+<p><img data-src="/images/article_images/codeskill_SFT_skill_maintenance.png" /></p></li>
+</ul>
+<h4 id="sft-training-setting">2.3.1.4 SFT Training Setting</h4>
+<p><a href="#2.3.3-training-settings-for-codeskill">2.3.3 Training
+Settings for CODESKILL</a></p>
+<h3 id="grpo">2.2.2 GRPO</h3>
+<h4 id="hybrid-reward-design">2.2.2.1 Hybrid Reward Design</h4>
+<h5 id="skill-quality-reward-by-llm-as-judge">2.2.2.1.1 Skill Quality
+Reward by LLM-as-Judge</h5>
+<p>To train <span
+class="math inline"><em>M</em><sub><em>θ</em></sub></span> with RL, the
+authors first introduce a <mark>rubric-based</mark>
+<mark>LLM-as-judge</mark> <mark>quality reward</mark> <span
+class="math inline"><em>R</em><sub><em>Q</em></sub> ∈ [0, 1]</span> to
+score each generated operation and its content.</p>
+<p>For skills, the rubric evaluates grounding, reusability, specificity,
+format, and actionability, with action-specific criteria.</p>
+<p><a href="#3.2-prompts">3.2 Prompts</a></p>
+<h5 id="execution-reward">2.2.2.1.2 Execution Reward</h5>
+<p>However, quality reward alone is not <mark>execution-grounded</mark>,
+since a skill may look plausible but remain unused or ineffective.</p>
+<p>The authors then define an <mark>execution reward</mark> by measuring
+the skill’s incremental effect on the frozen coding policy <span
+class="math inline"><em>π</em></span>.</p>
+<ul>
+<li><p>Select a valid <mark>skill</mark> <span
+class="math inline"><em>s</em><sub><em>u</em></sub></span> which only
+can be generated by operation <code>generate</code>, <code>add</code>
+and <code>drop</code>. By reverse retrieval, <span
+class="math inline"><em>x</em><sub><em>u</em></sub> ∼ TopK  (<em>s</em><sub><em>u</em></sub>, <em>D</em><sub>task</sub>)</span>,
+where the skill content retrieves task goals or baseline trajectories
+and <span class="math inline"><em>x</em><sub><em>u</em></sub></span> is
+a <mark>task</mark> sampled from the top <span
+class="math inline"><em>K</em></span> results.</p></li>
+<li><p>Calculate no-skill baseline of the selected task: <span
+class="math display">$$
+b_{\pi}(x_u) = \frac{1}{n}\sum_{i=1}^{n}
+V\!\left(\tau^{0}_{\pi,i}\right),
+\qquad
+\tau^{0}_{\pi,i} \sim \pi(\cdot \mid x_u)
+$$</span></p></li>
+<li><p>The authors then run a skill-conditioned rollout: <span
+class="math display"><em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup> ∼ <em>π</em>(⋅ ∣ <em>x</em><sub><em>u</em></sub>, <em>s</em><sub><em>u</em></sub>)</span></p></li>
+<li><p>The <mark>execution reward</mark>: <span
+class="math display"><em>R</em><sub><em>E</em></sub>(<em>u</em>; <em>x</em><sub><em>u</em></sub>, <em>π</em>) = <em>V</em> (<em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup>) − <em>b</em><sub><em>π</em></sub>(<em>x</em><sub><em>u</em></sub>)</span>
+Here <span
+class="math inline"><em>τ</em><sub><em>π</em>, <em>i</em></sub><sup>0</sup></span>
+is the <span class="math inline"><em>i</em></span>-th no-skill rollout,
+<span
+class="math inline"><em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup></span>
+is the rollout conditioned on the skill produced by <span
+class="math display"><em>u</em></span>, and <span
+class="math inline"><em>V</em>(<em>τ</em>) ∈ [0, 1]</span> is the task
+verifier score.</p></li>
+</ul>
+<h3 id="training-settings-for-codeskill">2.3.3 Training Settings for
+CODESKILL</h3>
+<p><img data-src="/images/article_images/codeskill_training_settings.png" /></p>
+<h1 id="skill-examples-prompts">3. Skill Examples &amp; Prompts</h1>
+<h2 id="skill-examples">3.1 Skill Examples</h2>
+<h3 id="task-level-skill-example">3.1.1 Task-Level Skill Example</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**Title**</span></span><br><span class="line">Diagnose Maven build failures via environment, config, and dependency resolution.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Granularity**</span></span><br><span class="line">general</span><br><span class="line"></span><br><span class="line"><span class="strong">**When to Apply**</span></span><br><span class="line">When a Java/Maven project fails to build and the cause may involve toolchain or wrapper configuration, repository settings, missing or stale dependencies, or build-phase ordering rather than source code errors.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Instructions**</span></span><br><span class="line">• Start by identifying the project type and build instructions from repository metadata such as the main build file and README before making changes.  </span><br><span class="line">• Run the build with the project’s Maven wrapper first, then capture both early and later output to distinguish dependency download progress from the actual failure.  </span><br><span class="line">• Use the first concrete failure message to distinguish network or repository issues, missing artifacts, and compilation errors before changing code.  </span><br><span class="line">• If the build fails in the enforcer or toolchain phase, use verbose output to identify the required Java and Maven versions before changing anything.  </span><br><span class="line">• Check the active Java and Maven toolchain versions in the shell and align them with the project’s documented requirements when needed.  </span><br><span class="line">• When a dependency cannot be resolved, check whether the missing artifact is generated later in the build, and verify whether the build phase order or plugin lifecycle is appropriate.  </span><br><span class="line">• Inspect local Maven settings and repository configuration before changing code; misconfigured mirrors or missing settings files can mask the real build problem.  </span><br><span class="line">• After adjusting toolchain, wrapper settings, repository configuration, or dependency versions, rerun the build and re-check the logs to confirm whether the failure mode has changed.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Provenance**</span></span><br><span class="line">This skill is an example from the maintained skill bank and was produced by a merge operation.</span><br></pre></td></tr></table></figure>
+<h3 id="event-driven-skill-example">3.1.2 Event-Driven Skill
+Example</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**Title**</span></span><br><span class="line">Handle missing Maven test-jar dependencies.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Granularity**</span></span><br><span class="line">event-driven</span><br><span class="line"></span><br><span class="line"><span class="strong">**When to Apply**</span></span><br><span class="line">When a Maven build fails with a dependency resolution error for a test-jar or similar scoped artifact that has not yet been produced or installed.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Instructions**</span></span><br><span class="line">• Inspect the failing module’s POM to confirm the dependency type and scope, for example a test-jar with compile scope.  </span><br><span class="line">• Check the producing module’s POM to see whether it already defines an execution for the required artifact via a plugin configuration.  </span><br><span class="line">• If the test jar is only generated when tests run, either run the tests or explicitly invoke the Maven test-jar goal to create the test artifact before rebuilding.  </span><br><span class="line">• If the artifact is missing, add or configure the appropriate plugin execution in the producing module’s POM to generate the required artifact, and place the new plugin configuration inside the correct parent element so the POM remains well formed.  </span><br><span class="line">• Do not simply retry the same Maven install command with tests skipped; skipping tests often prevents the test jar from being created.  </span><br><span class="line">• After generating or configuring the artifact, run a full install/build command so the artifact is generated and installed into the local repository; a compile-only run may not install the needed artifact. </span><br><span class="line">• Verify that the artifact is actually present in the local Maven repository before retrying the original failing command. </span><br><span class="line">• After the artifact is installed, rerun the original failing command to confirm that the dependency resolution error is resolved.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Provenance**</span></span><br><span class="line">This skill is an example from the maintained skill bank and was produced by a merge operation.</span><br></pre></td></tr></table></figure>
+<h2 id="prompts">3.2 Prompts</h2>
+<h3 id="task-level-skill-extraction-prompt">3.2.1 Task-Level Skill
+Extraction Prompt</h3>
+<p><img data-src="/images/article_images/codeskill_task_level_skill_quality_judge_prompt.png" /></p>
+<h3 id="event-driven-skill-extraction-prompt">3.2.2 Event-Driven Skill
+Extraction Prompt</h3>
+<p><img data-src="/images/article_images/codeskill_event_driven_skill_quality_judge_prompt.png" /></p>
+<h3 id="skill-evolution-prompt">3.2.3 Skill Evolution Prompt</h3>
+<p><img data-src="/images/article_images/codeskill_skill_evolution_quality_judge_prompt.png" /></p>
+<h3 id="skill-bank-maintenance-prompt">3.2.4 Skill-Bank Maintenance
+Prompt</h3>
+<p><img data-src="" /></p>
 
     </div>
 
@@ -544,10 +750,15 @@ transfer.</li>
               <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
               <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
+              <a href="/tags/SWE-smith/" rel="tag"># SWE-smith</a>
               <a href="/tags/SWE/" rel="tag"># SWE</a>
+              <a href="/tags/SFT/" rel="tag"># SFT</a>
+              <a href="/tags/GRPO/" rel="tag"># GRPO</a>
               <a href="/tags/Skill/" rel="tag"># Skill</a>
               <a href="/tags/Skill-Induction/" rel="tag"># Skill Induction</a>
               <a href="/tags/Skill-Extraction/" rel="tag"># Skill Extraction</a>
+              <a href="/tags/mini-swe-agent/" rel="tag"># mini-swe-agent</a>
+              <a href="/tags/MSWEA/" rel="tag"># MSWEA</a>
           </div>
 
         
