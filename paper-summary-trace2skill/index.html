@@ -26,38 +26,32 @@
 
     <meta name="description" content="Paper Summary of &quot;Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills&quot;.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Paper Summary – CODESKILL">
+<meta property="og:title" content="Paper Summary – Trace2Skill">
 <meta property="og:url" content="https://wangyier.top/paper-summary-trace2skill/index.html">
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="Paper Summary of &quot;Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills&quot;.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/trace2skill_applied_diff.png">
 <meta property="article:published_time" content="2026-09-27T08:44:23.000Z">
-<meta property="article:modified_time" content="2026-09-27T13:00:26.000Z">
+<meta property="article:modified_time" content="2026-09-28T13:00:11.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
-<meta property="article:tag" content="GRPO">
 <meta property="article:tag" content="LLM">
-<meta property="article:tag" content="MSWEA">
 <meta property="article:tag" content="Paper Summary">
-<meta property="article:tag" content="Reinforcement Learning">
-<meta property="article:tag" content="SFT">
-<meta property="article:tag" content="SWE">
-<meta property="article:tag" content="SWE-bench">
-<meta property="article:tag" content="SWE-smith">
 <meta property="article:tag" content="Skill">
 <meta property="article:tag" content="Skill Extraction">
 <meta property="article:tag" content="Skill Induction">
-<meta property="article:tag" content="mini-swe-agent">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/trace2skill_applied_diff.png">
 
 
 <link rel="canonical" href="https://wangyier.top/paper-summary-trace2skill/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-trace2skill/","path":"/paper-summary-trace2skill/","title":"Paper Summary – CODESKILL"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-trace2skill/","path":"/paper-summary-trace2skill/","title":"Paper Summary – Trace2Skill"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Paper Summary – CODESKILL | The Great Library</title>
+<title>Paper Summary – Trace2Skill | The Great Library</title>
   
 
 
@@ -191,9 +185,9 @@
         <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trace2skill"><span class="nav-text">2. Trace2Skill</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-problem-formalization"><span class="nav-text">2.1 Skill &amp; Problem
 Formalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-1-trajectory-generation"><span class="nav-text">2.2 Stage 1: Trajectory
-Generation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-2-parallel-patch-proposal"><span class="nav-text">2.2 Stage 2: Parallel Patch
-Proposal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-3-patch-consolidation"><span class="nav-text">2.3 Stage 3: Patch
-Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#patch-consolidation"><span class="nav-text">2.3.1 Patch Consolidation</span></a></li></ol></li></ol></li></ol></div>
+Generation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-2-parallel-patch-proposal"><span class="nav-text">2.3 Stage 2: Parallel Patch
+Proposal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-3-patch-consolidation"><span class="nav-text">2.4 Stage 3: Patch
+Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#patch-consolidation"><span class="nav-text">2.4.1 Patch Consolidation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#patch-application"><span class="nav-text">2.4.2 Patch Application</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">3. Conclusion</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,7 +202,7 @@ Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -219,7 +213,7 @@ Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -267,12 +261,12 @@ Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Paper Summary – CODESKILL | The Great Library">
+      <meta itemprop="name" content="Paper Summary – Trace2Skill | The Great Library">
       <meta itemprop="description" content="Paper Summary of &quot;Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills&quot;.">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Paper Summary – CODESKILL
+          Paper Summary – Trace2Skill
         </h1>
 
         <div class="post-meta-container">
@@ -282,9 +276,15 @@ Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2026-09-27 16:44:23 / Modified: 21:00:26" itemprop="dateCreated datePublished" datetime="2026-09-27T16:44:23+08:00">2026-09-27</time>
+      <time title="Created: 2026-09-27 16:44:23" itemprop="dateCreated datePublished" datetime="2026-09-27T16:44:23+08:00">2026-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-09-28 21:00:11" itemprop="dateModified" datetime="2026-09-28T21:00:11+08:00">2026-09-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -314,7 +314,7 @@ Consolidation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="introduction">1. Introduction</h1>
-<p>There used to have 2 ways of skill evolving:</p>
+<p>There have been two ways of skill evolving:</p>
 <ul>
 <li><mark>Sequential Skill Editing</mark>: Update/Edit Skill after each
 incoming trace.</li>
@@ -338,9 +338,8 @@ write compact procedures that are reusable across cases.</p>
 <p><img data-src="/images/article_images/trace2skill_three_stage_pipeline.png" /></p>
 <h2 id="skill-problem-formalization">2.1 Skill &amp; Problem
 Formalization</h2>
-<p>A skill directory <span
-class="math inline"><em>S</em> = (<em>M</em>, ℛ)</span>nowadays mainly
-consists of two parts:</p>
+<p>A skill <span class="math inline"><em>S</em> = (<em>M</em>, ℛ)</span>
+nowadays mainly consists of two parts:</p>
 <ul>
 <li>The root SKILL.md file, denoted as <span
 class="math inline"><em>M</em></span></li>
@@ -355,7 +354,7 @@ lower-frequency details.</p>
 be a fixed LLM agent using skill <span
 class="math inline"><em>S</em></span>.</p>
 <p>Let <span
-class="math inline">𝒫(<em>S</em>; <em>π</em><sub><em>t</em></sub><em>h</em><em>e</em><em>t</em><em>a</em>, 𝒟)</span>
+class="math inline">𝒫(<em>S</em>; <em>π</em><sub><em>θ</em></sub>, 𝒟)</span>
 denote the pass rate of that agent on task set <span
 class="math inline">𝒟</span>.</p>
 <p>An <mark>evolving set</mark> <span
@@ -364,13 +363,14 @@ and a disjoint test set <span
 class="math inline">𝒟<sub><em>t</em><em>e</em><em>s</em><em>t</em></sub></span>,
 skill evolution constructs a new skill from evolving-set trajectories
 without updating <span class="math inline"><em>θ</em></span>: <span
-class="math display"><em>S</em><sup>*</sup> = ℰ(<em>S</em><sub>0</sub>, <em>D</em><sub><em>e</em><em>v</em><em>o</em><em>l</em><em>v</em><em>e</em></sub>; <em>π</em><sub><em>θ</em></sub>),   <em>P</em>(<em>S</em><sup>*</sup>; <em>π</em><sub><em>θ</em></sub>, <em>D</em><sub><em>t</em><em>e</em><em>s</em><em>t</em></sub>) &gt; <em>P</em>(<em>S</em><sub>0</sub>; <em>π</em><sub><em>θ</em></sub>, <em>D</em><sub><em>t</em><em>e</em><em>s</em><em>t</em></sub>). </span></p>
+class="math display"><em>S</em><sup>*</sup> = ℰ(<em>S</em><sub>0</sub>, <em>D</em><sub><em>e</em><em>v</em><em>o</em><em>l</em><em>v</em><em>e</em></sub>; <em>π</em><sub><em>θ</em></sub>),   <em>P</em>(<em>S</em><sup>*</sup>; <em>π</em><sub><em>θ</em></sub>, <em>D</em><sub><em>t</em><em>e</em><em>s</em><em>t</em></sub>) &gt; <em>P</em>(<em>S</em><sub>0</sub>; <em>π</em><sub><em>θ</em></sub>, <em>D</em><sub><em>t</em><em>e</em><em>s</em><em>t</em></sub>).</span></p>
 <blockquote>
 <p>[!NOTE]</p>
 <p>The evolving set <span
 class="math inline">𝒟<sub><em>e</em><em>v</em><em>o</em><em>l</em><em>v</em><em>e</em></sub></span>
-is to evolve the skill; the <span class="math inline">𝒟</span> itself
-dose not change.</p>
+is to evolve the skill; the <span
+class="math inline">𝒟<sub><em>e</em><em>v</em><em>o</em><em>l</em><em>v</em><em>e</em></sub></span>
+itself does not change.</p>
 </blockquote>
 <p>The work evaluates two initializations for <span
 class="math inline"><em>S</em><sub>0</sub></span>:</p>
@@ -394,13 +394,14 @@ into:</p>
 <li>Successes $T^+ $</li>
 </ul>
 <p><img data-src="/images/article_images/trace2skill_trajectory_collection_prompt.png" /></p>
-<h2 id="stage-2-parallel-patch-proposal">2.2 Stage 2: Parallel Patch
+<h2 id="stage-2-parallel-patch-proposal">2.3 Stage 2: Parallel Patch
 Proposal</h2>
 <p>A group of analyst sub-agents independently proposes <mark>skill
 patches</mark> from individual trajectories.</p>
-<p>Failures are sent to an error <mark>analyst</mark> $A^- $ ,successes
-to a success analyst <span class="math inline">𝒜<sup>+</sup></span>.</p>
-<p>And analyst read <span class="math inline">𝒮<sub>0</sub></span> and
+<p>Failures are sent to an error <mark>analyst</mark> <span
+class="math inline">𝒜<sup>−</sup></span>, successes to a success analyst
+<span class="math inline">𝒜<sup>+</sup></span>.</p>
+<p>The analyst read <span class="math inline">𝒮<sub>0</sub></span> and
 propose a patch for it, leading to a <mark>patch pool</mark>. <span
 class="math display">𝒫 = 𝒫<sup>−</sup> ∪ 𝒫<sup>+</sup></span> The
 analyst roles are <mark>intentionally asymmetric</mark>.</p>
@@ -424,16 +425,16 @@ before proposing a patch.
 <li>Suppose a reason for the failure</li>
 <li>Write a minimal repair fix to verify the failure reason. If the
 reason is not correct , go back to step 2.</li>
-<li>If the reason confirmed, write a skill batch.</li>
+<li>If the reason confirmed, write a skill patch.</li>
 </ol></li>
 </ul>
-<p>In short, for failure trajectory, this stage need analyst to find out
-the reason.</p>
+<p>In short, for failure trajectory, this stage needs analyst to find
+out the reason.</p>
 <p><img data-src="/images/article_images/trace2skill_failure_analyst_prompt.png" /></p>
 <p><img data-src="/images/article_images/trace2skill_success_analyst_prompt.png" /></p>
 <p>Here’s a example of the skill patch:</p>
 <p><img data-src="/images/article_images/trace2skill_patch_example.png" /></p>
-<h2 id="stage-3-patch-consolidation">2.3 Stage 3: Patch
+<h2 id="stage-3-patch-consolidation">2.4 Stage 3: Patch
 Consolidation</h2>
 <p>In stage 2, the work produces many patches storing in a patch
 pool.</p>
@@ -461,7 +462,7 @@ guardrails:</p>
 <li>withhold line-range conflicts</li>
 <li>validate the updated skill format</li>
 </ul>
-<h3 id="patch-consolidation">2.3.1 Patch Consolidation</h3>
+<h3 id="patch-consolidation">2.4.1 Patch Consolidation</h3>
 <p>Now we have:</p>
 <ul>
 <li>Patch Pool: <span class="math inline"><em>P</em></span> = <span
@@ -483,14 +484,59 @@ batch size, how many patches can be merged in one round.</li>
 many patches need to be merged.</li>
 </ul>
 <p>e.g. 323 patches in patch pool, <span
-class="math inline"><em>B</em><sub>merge</sub></span> = 32.</p>
+class="math inline"><em>B</em><sub>merge</sub></span> = 5.</p>
 <ul>
-<li>Level 1: 11 merges, 10 time <span class="math inline">ℳ</span>
-(Merge Operator, the LLM itself) merges 32 patches, and 1 time <span
-class="math inline">ℳ</span> merge 3 patches; totally generate 11 new
-patches.</li>
-<li>Level 2: Merge 11 patches into one final patch.</li>
+<li><p>Level 1:</p>
+<p>$323 %  5 = 64 3 $; total 65 merges;</p>
+<p>In 64 times, <span class="math inline">ℳ</span> (Merge Operator, the
+LLM itself) merges 5 patches;</p>
+<p>And <span class="math inline">ℳ</span> merge last 3 patches in last
+round;</p>
+<p>Totally generate 65 new patches.</p></li>
+<li><p>Level 2:</p>
+<p>$65 %  5 = 13 $</p>
+<p>Merge 65 patches into 13 next level patches.</p></li>
+<li><p>Level 3:</p>
+<p>$13 %  5 = 2 3 $;</p>
+<p>Totally 3 next level patches.</p></li>
+<li><p>Level 4:</p>
+<p>Merge 3 patches into final patch <span
+class="math inline"><em>p</em><sup>*</sup></span>.</p></li>
 </ul>
+<p>What happens in a single <mark>merge operation</mark>: <span
+class="math display"><em>p</em><sup>(<em>ℓ</em> + 1)</sup> = ℳ(<em>π</em><sub><em>θ</em></sub>, <em>S</em><sub>0</sub>, {<em>p</em><sub>1</sub><sup>(<em>ℓ</em>)</sup>, …, <em>p</em><sub><em>B</em><sub>merge</sub></sub><sup>(<em>ℓ</em>)</sup>}),   <em>ℓ</em> = 0, …, <em>L</em> − 1</span></p>
+<ul>
+<li><span class="math inline">ℳ</span>: merge operation</li>
+<li><span class="math inline"><em>π</em><sub><em>θ</em></sub></span>:
+LLM</li>
+<li><span class="math inline"><em>S</em><sub>0</sub></span>: preliminary
+Skill</li>
+<li><span class="math inline"><em>p</em></span>: patch</li>
+</ul>
+<p><span class="math inline">ℳ</span> is instructed to <mark>prefer
+prevalent patterns</mark> and <mark>discard idiosyncratic edits</mark>,
+producing a compact skill that replaces <span
+class="math inline"><em>S</em><sub>0</sub></span> and is used directly
+at inference without retrieval.</p>
+<p><img data-src="/images/article_images/trace2skill_merge_system_prompt.png" /></p>
+<p>The final product of Patch Consolidation is a json-format patch
+likes:</p>
+<p><img data-src="/images/article_images/trace2skill_final_patch_output.png" /></p>
+<h3 id="patch-application">2.4.2 Patch Application</h3>
+<p>The merge operator <span class="math inline">ℳ</span> outputs
+<mark>JSON</mark> instead of a diff because diffs are made of <mark>line
+numbers</mark>, which <mark>LLMs handle poorly</mark>; JSON lets the
+model specify <em>what</em> to change using <mark>semantic
+anchors</mark> (<code>target_section</code>) while the program computes
+<em>where</em>.</p>
+<p>It also makes the patch mechanically validatable (missing files,
+overlapping line ranges, format) and leaves room for a
+<code>reasoning</code> trace and <code>changelog_entries</code> that a
+diff cannot hold.</p>
+<p>But in the end, we need a diff-format file to apply.</p>
+<p>So we need to transfer the JSON file into diff:</p>
+<p><img data-src="/images/article_images/trace2skill_applied_diff.png" /></p>
+<h1 id="conclusion">3. Conclusion</h1>
 
     </div>
 
@@ -565,18 +611,10 @@ patches.</li>
           <div class="post-tags">
               <a href="/tags/Agent/" rel="tag"># Agent</a>
               <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
-              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
-              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
-              <a href="/tags/SWE-smith/" rel="tag"># SWE-smith</a>
-              <a href="/tags/SWE/" rel="tag"># SWE</a>
-              <a href="/tags/SFT/" rel="tag"># SFT</a>
-              <a href="/tags/GRPO/" rel="tag"># GRPO</a>
               <a href="/tags/Skill/" rel="tag"># Skill</a>
               <a href="/tags/Skill-Induction/" rel="tag"># Skill Induction</a>
               <a href="/tags/Skill-Extraction/" rel="tag"># Skill Extraction</a>
-              <a href="/tags/mini-swe-agent/" rel="tag"># mini-swe-agent</a>
-              <a href="/tags/MSWEA/" rel="tag"># MSWEA</a>
           </div>
 
         
@@ -588,6 +626,9 @@ patches.</li>
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/pc-information/" rel="next" title="PC Information">
+                  PC Information <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
