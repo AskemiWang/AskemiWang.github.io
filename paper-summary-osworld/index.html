@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Paper Summary of &quot;OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments&quot;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Summary – OSWorld">
+<meta property="og:url" content="https://wangyier.top/paper-summary-osworld/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Paper Summary of &quot;OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments&quot;.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/osworld_task_example.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/a11y_tree.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/osworld_action_space.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/osworld_baseline_llm_vlm.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/osworld_workflow.png">
+<meta property="article:published_time" content="2026-09-27T08:44:23.000Z">
+<meta property="article:modified_time" content="2026-10-08T13:00:28.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Multimodal">
+<meta property="article:tag" content="OS">
+<meta property="article:tag" content="OSWorld">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="VLM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/osworld_task_example.png">
+
+
+<link rel="canonical" href="https://wangyier.top/paper-summary-osworld/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-osworld/","path":"/paper-summary-osworld/","title":"Paper Summary – OSWorld"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Paper Summary – OSWorld | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environment"><span class="nav-text">1.1 Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#benchmark"><span class="nav-text">1.2 Benchmark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#osworld-environment"><span class="nav-text">2. OSWorld Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#task-definition"><span class="nav-text">2.1 Task Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#real-computer-environment-infrastructure"><span class="nav-text">2.2 Real Computer
+Environment Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overview"><span class="nav-text">2.2.1 Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initial-task-environment-setup"><span class="nav-text">2.2.2 Initial Task Environment
+Setup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execution-based-evaluation"><span class="nav-text">2.2.3 Execution-Based
+Evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#observation-space"><span class="nav-text">2.3 Observation Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#action-space"><span class="nav-text">2.4 Action Space</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#osworld-benchmark"><span class="nav-text">3. OSWorld Benchmark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#operating-system-and-software-environments"><span class="nav-text">3.1 Operating System
+and Software Environments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tasks"><span class="nav-text">3.2 Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#task-instructions-and-scenarios"><span class="nav-text">3.2.1 Task instructions and
+scenarios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initial-state-setup-configs"><span class="nav-text">3.2.2 Initial state setup
+configs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execution-based-evaluation-1"><span class="nav-text">3.2.2 Execution-based
+evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stastics"><span class="nav-text">3.2.3 Stastics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#benchmarking-llm-and-vlm-agent-baselines"><span class="nav-text">3.3 Benchmarking LLM
+and VLM Agent Baselines</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#llm-and-vlm-agent-baselines"><span class="nav-text">3.3.1 LLM and VLM Agent
+Baselines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#results"><span class="nav-text">3.3.2 Results</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#workflow"><span class="nav-text">4. Workflow</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/paper-summary-osworld/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Paper Summary – OSWorld | The Great Library">
+      <meta itemprop="description" content="Paper Summary of &quot;OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments&quot;.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paper Summary – OSWorld
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-09-27 16:44:23" itemprop="dateCreated datePublished" datetime="2026-09-27T16:44:23+08:00">2026-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-10-08 21:00:28" itemprop="dateModified" datetime="2026-10-08T21:00:28+08:00">2026-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Paper Summary of "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments".</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="introduction">1. Introduction</h1>
+<p>Human interact with computer by:</p>
+<ul>
+<li>Graphic User Interface(<mark>GUI</mark>)</li>
+<li>Command Line Interface(<mark>CLI</mark>)</li>
+</ul>
+<p>Previous benchmarks provide datasets of demonstrations without
+executable environments. Their non-execution-based evaluation assumes a
+single solution for each task and <mark>wrongfully</mark> penalizes
+alternative correct solutions.</p>
+<p>Prior work that introduce executable environments
+<mark>simplify</mark> the <mark>observation</mark> and <mark>action
+spaces</mark> of human-computer interaction and limit task scope within
+<mark>specific</mark> applications or domains, such as web navigation in
+a few domains, coding and the combination.</p>
+<p>In short, he scenarios covered by previous benchmarks are all too
+specific. A web benchmark is to test web tasks, a SWE benchmark is to
+test SWE tasks. But the true scenario may include many different
+applications.</p>
+<h2 id="environment">1.1 Environment</h2>
+<p>The authors introduce <mark>OSWorld</mark>: a real <mark>Computer
+Environment</mark> and attached <mark>Benchmark</mark>.</p>
+<p>This executable environment allows input:</p>
+<ul>
+<li>free-form raw keyboard and mouse control of real computer
+applications</li>
+</ul>
+<p>Supports:</p>
+<ul>
+<li>Initial task state configuration</li>
+<li>Execution-based evaluation</li>
+<li>Interactive learning</li>
+</ul>
+<p>Including mainstream Operating System:</p>
+<ul>
+<li>Ubuntu</li>
+<li>Windows</li>
+<li>MacOS</li>
+</ul>
+<p>OSWORLD enables evaluation of open-ended computer tasks that involve
+<mark>arbitrary</mark> applications, ranging from image viewing to
+software functionality integration and programming.</p>
+<p><img data-src="/images/article_images/osworld_task_example.png" /></p>
+<h2 id="benchmark">1.2 Benchmark</h2>
+<p>The authors create a benchmark with 369 <mark>real-world computer
+tasks</mark> that involve widely-used web and desktop apps in open
+domains, OS file I/O, and multi-app workflows through both GUI and
+CLI.</p>
+<h1 id="osworld-environment">2. OSWorld Environment</h1>
+<h2 id="task-definition">2.1 Task Definition</h2>
+<p>An autonomous digital agent task can be formalized as a partially
+observable Markov decision process (POMDP) (<span
+class="math inline">𝒮, <em>O</em>, <em>A</em>, <em>T</em>, <em>R</em></span>)
+:</p>
+<ul>
+<li>State Space: <span class="math inline">𝒮</span></li>
+<li>Observation Space: <span class="math inline">𝒪</span> including
+natural language <span class="math inline">ℒ</span></li>
+<li>Action Space: <span class="math inline">𝒜</span></li>
+<li>Transition Function: <span
+class="math inline">𝒯 : 𝒮 × 𝒜 → 𝒮</span></li>
+<li>Reward Function: <span class="math inline">ℛ : 𝒮 × 𝒜→ℝ</span></li>
+</ul>
+<p>Observation <span
+class="math inline"><em>o</em><sub><em>t</em></sub> ∈ 𝒪</span>:</p>
+<ul>
+<li>Natural Language <mark>Instruction</mark>:</li>
+<li>Concrete <mark>Observation</mark>:
+<ul>
+<li>Screenshot</li>
+<li>A11y tree</li>
+<li>Combination</li>
+</ul></li>
+</ul>
+<p>Accessibility Tree (A11Y Tree) is a text expression of applications’
+GUI:</p>
+<p>e.g.:</p>
+<p><img data-src="/images/article_images/a11y_tree.png" /></p>
+<p>Given an <mark>Observation</mark> <span
+class="math inline"><em>o</em><sub><em>t</em></sub> ∈ 𝒪</span>, agent
+generates executable <mark>Action</mark> <span
+class="math inline"><em>a</em><sub><em>t</em></sub> ∈ 𝒜</span>, (e.g.,
+clicking on the certain pixel of the screen — .click(300, 540,
+button=‘right’), press key combination .hotkey(‘ctrl’, ‘alt’, ‘t’)),
+which results in a new <mark>State</mark> <span
+class="math inline"><em>s</em><sub><em>t</em> + 1</sub> ∈ <em>S</em></span>
+and a new partial <mark>Observation</mark> <span
+class="math inline"><em>o</em><sub><em>t</em> + 1</sub> ∈ 𝒪</span>.</p>
+<p>This ReAct loop won’t end till until the task is <mark>DONE</mark> or
+<mark>FAIL</mark>.</p>
+<p>Reward:</p>
+<ul>
+<li>Task Success / Partial Success: 1 or positive decimal under 1</li>
+<li>Task Failure: 0</li>
+</ul>
+<h2 id="real-computer-environment-infrastructure">2.2 Real Computer
+Environment Infrastructure</h2>
+<p>OSWorld is an executable and controllable <mark>environment</mark>
+using Virtual Machine technology.</p>
+<p>Virtual Machine offers:</p>
+<ul>
+<li>asafe isolated environment and prevents the agent resulting in
+irreversible damaging effect on the real host machine</li>
+<li>the snapshot feature enabling efficient reset of the virtual
+environment.</li>
+</ul>
+<p>The configuration file of OSWorld is used to:</p>
+<ul>
+<li>Initialization Phase: Interface initialization</li>
+<li>Evaluation Phase: Post-processing (activating certain windows,
+saving some files for easy retrieval of information …)</li>
+<li>Acquiring files and information for evaluation (such as the final
+spreadsheet file for spreadsheet tasks, cookies for Chrome tasks)</li>
+<li>Evaluation Functions</li>
+<li>Parameters</li>
+</ul>
+<p><img data-src="/images/article_images/osworld_overview_env_infrastructure.png" /></p>
+<h3 id="overview">2.2.1 Overview</h3>
+<p>OSWorld environment runs on the <mark>host machine</mark>.</p>
+<p>OSWorld:</p>
+<ul>
+<li><mark>Coordinator</mark>:
+<ul>
+<li>Accepts configuration file at the initialization of a computer
+task.</li>
+<li>Runs commands to create VM instance.</li>
+<li>Initializes the required state for the task through Task
+<mark>Manager</mark>.</li>
+</ul></li>
+<li>Configuration File:
+<ul>
+<li>Specifies the snapshot file of VM (vm.xml -&gt; vm.qcow2).</li>
+<li>Indicates the information needed for setup.</li>
+</ul></li>
+</ul>
+<p>Once the environment is set up, agents start to interact with the
+environment, receiving <mark>observations</mark> such as:</p>
+<ul>
+<li>Screenshots</li>
+<li>Accessibility (a11y) Tree</li>
+<li>Customized Streams Such as terminal outputs.</li>
+</ul>
+<p>Agents subsequently generate executable <mark>actions</mark> (e.g.,
+.click(300, 540)) that manipulate the keyboard and mouse.</p>
+<p>Each action of the agent is input into the environment as a code
+string, and the environment’s Simulator executes them in the virtual
+machine.</p>
+<p>After completion of a task, the Task Manager performs
+<mark>post-processing</mark> (file saving, reopening certain apps…)
+according to the task’s post-config, retrieves data to the <mark>host
+machine</mark> and runs <mark>evaluation scripts</mark>.</p>
+<p>Multiple virtual machines can run <mark>simultaneously</mark> on a
+single host machine, thereby <mark>parallelizing</mark> training and
+evaluation.</p>
+<h3 id="initial-task-environment-setup">2.2.2 Initial Task Environment
+Setup</h3>
+<p>Many real-world scenarios that needs assistance occur at the time of
+<mark>intermediate stages</mark>, such as when certain software is
+<mark>already open</mark> or the computer has <mark>experienced a
+crash</mark>.</p>
+<p>So the OSWorld wanna create a scenario at intermediate stages, there
+are two ways:</p>
+<ol type="1">
+<li><ul>
+<li>Create a VM</li>
+<li>Read the configuration file</li>
+<li>Run commands to reach the intermediate state</li>
+</ul></li>
+<li><ul>
+<li>Create a VM with a snapshot describing the intermediate state</li>
+</ul></li>
+</ol>
+<p>The second method looks more convenient, but it costs a lot extra
+storage. So the OSWorld takes the first method.</p>
+<p>The setup procedure is divided into 3 parts:</p>
+<ol type="1">
+<li>Start the VM emulator.</li>
+<li>Prepare files (download the files or scripts from the cloud, etc.
+optional).</li>
+<li>Execute reprocessing commands (open files or tabs, change the window
+size, etc. optional).</li>
+</ol>
+<h3 id="execution-based-evaluation">2.2.3 Execution-Based
+Evaluation</h3>
+<p>There are many different kinds of computer tasks, so it is impossible
+to evaluate them by a single metric.</p>
+<p>This work designs example-specific evaluation metrics including:</p>
+<ul>
+<li>pre-setup</li>
+<li>post-processing</li>
+<li>dedicated functions</li>
+</ul>
+<p>This involves interpreting the software’s internal files, utilizing
+specific packages, and <mark>preemptively</mark> setting up scaffolding
+based on the software’s permissions (e.g., opening remote debugging
+ports for Chrome and VLC, creating extensions for VS Code).</p>
+<p>As a result, the authors construct a vast collection of functions to
+evaluate:</p>
+<p><img data-src="/images/article_images/osworld_evaluation_scripts.png" /></p>
+<h2 id="observation-space">2.3 Observation Space</h2>
+<p>The <mark>observation space</mark> in OSWORLD contains:</p>
+<ul>
+<li>A complete <mark>screenshot</mark> of the desktop screen, including
+the <mark>mouse’s position</mark> and <mark>shape</mark>, various
+application windows, files, and folders that are opened in different
+sizes and orders, maintaining the same perception as a human.</li>
+<li>XML-format <mark>accessibility (a11y) tree</mark> (obtained via
+ATSPI 2 on Ubuntu, via PyWinAuto on Windows, etc.),</li>
+<li>Terminal output.</li>
+</ul>
+<h2 id="action-space">2.4 Action Space</h2>
+<p>Action space <span class="math inline">𝒜</span> in OSWorld
+encompasses all <mark>mouse</mark> and <mark>keyboard actions</mark>,
+including <mark>movement</mark>, <mark>clicks</mark> (left-key,
+right-key, multiple clicks), <mark>dragging</mark>,
+<mark>keystrokes</mark>, <mark>hotkeys</mark>, and others, covering all
+human-computer action space.</p>
+<p><img data-src="/images/article_images/osworld_action_space.png" /></p>
+<p>This work uses mouse and keyboard control library
+<mark>pyautogui3</mark> for our action space. Timing is very critical,
+so the authors add 3 special action: WAIT, FAIL and DONE.</p>
+<p>The prior works like WebArea didn’t model all the possible actions on
+a computer, leading a limitation when attempting actions like
+right-clicking and clicking with the <mark>ctrl</mark> key held to
+select items. This imposes an upper bound on agent learning
+capabilities.</p>
+<h1 id="osworld-benchmark">3. OSWorld Benchmark</h1>
+<p>The OSWorld Benchmark provides:</p>
+<ul>
+<li>369 real computing tasks defined and executed on
+<mark>Ubuntu</mark>.</li>
+<li>43 tasks for Windows</li>
+</ul>
+<h2 id="operating-system-and-software-environments">3.1 Operating System
+and Software Environments</h2>
+<p>Because of the VM, the OSWorld could define all kinds of computer
+tasks.</p>
+<p>But the authors mainly focus on eight representative applications as
+well as the basic ones system provide:</p>
+<ul>
+<li><mark>Chrome</mark> for web browsing</li>
+<li><mark>VLC</mark> for media playback</li>
+<li><mark>Thunderbird</mark> for email management</li>
+<li><mark>VS Code</mark> as a coding IDE</li>
+<li><mark>LibreOffice</mark> (Calc, Writer, and Impress) for handling
+spreadsheets, documents, and presentations</li>
+<li><mark>GIMP</mark> for image editing</li>
+<li>other basic OS apps like <mark>terminal</mark>, <mark>file
+manager</mark>, <mark>image viewer</mark>, and <mark>PDF
+viewer</mark></li>
+</ul>
+<h2 id="tasks">3.2 Tasks</h2>
+<p>The authors created the benchmark suite of 369 real-world computer
+tasks on Ubuntu environment from diverse sources.</p>
+<p>Each example is carefully annotated with:</p>
+<ul>
+<li>a natural language <mark>instruction</mark></li>
+<li>a setup <mark>configuration</mark> with corresponding files and
+setup actions for initialization of initial states upon provided VM
+image</li>
+<li>a manually crafted <mark>evaluation script</mark> to check if the
+task is successfully executed</li>
+</ul>
+<h3 id="task-instructions-and-scenarios">3.2.1 Task instructions and
+scenarios</h3>
+<p>The selected task are from official guidelines &amp; tutorials, video
+pieces giving tips and tutorials on the Internet (e.g., TikTok and
+YouTube), how-to websites (e.g., WikiHow), Q&amp;A forums (e.g., Reddit,
+Quora, Superuser, &amp; StackOverflow), formal video courses (e.g.,
+Coursera and Udemy), and publicly-available personal blogs &amp;
+guidelines.</p>
+<p>The examples are selected by judging their <mark>popularity</mark>,
+<mark>helpfulness</mark>, and <mark>diversity</mark>, revealed by the
+views and votes.</p>
+<p>And to authors combine some existing examples or drawing inspiration
+from daily-life scenarios, to compile the tasks.</p>
+<p>The <mark>instructions</mark> and <mark>task-related files</mark> are
+then crafted from these real-world guidelines and questions by the
+authors.</p>
+<p>The authors not only collect tasks that can be finished, but also
+collect the <mark>infeasible ones</mark> that are inherently impossible
+to be completed.</p>
+<p>Additionally, to demonstrate the unification ability of OSWORLD
+environment for the creation of open-ended computer tasks, the authors
+also integrate 84 examples from other benchmarks focusing on
+single-application or domain-specific environments such as NL2Bash,
+Mind2Web, SheetCopilot, PPTC, and GAIA.</p>
+<h3 id="initial-state-setup-configs">3.2.2 Initial state setup
+configs</h3>
+<p>For the initial state setup, the authors also developed some
+functions based on the APIs of software and OS to control the opening
+and resizing of software windows and reimplement some functions that are
+difficult to achieve with APIs using <code>pyautogui</code>.</p>
+<p>For different tasks, the authors write configs to set the files and
+initial steps in the virtual machine and verify them in the
+environment.</p>
+<h3 id="execution-based-evaluation-1">3.2.2 Execution-based
+evaluation</h3>
+<p>Configuration File:</p>
+<ul>
+<li><mark>getter function</mark>: used to extract key components (e.g.,
+the modified file, the text contents displayed in a window element) from
+the final state of the environment.</li>
+<li><mark>evaluator function</mark>: the evaluator function assesses
+success based on the extracted key components.</li>
+<li><mark>parameters</mark></li>
+</ul>
+<p>The authors implement nearly sample-specific executable evaluation
+scripts, resulting in a total of 134 unique evaluation functions for
+assessing functional correctness—significantly more than the previous
+benchmarks.</p>
+<h3 id="stastics">3.2.3 Stastics</h3>
+<p>The authors cluster the examples into the software categories.</p>
+<p>Specifically, these categories include <mark>OS</mark>, <mark>Office
+(LibreOffice Calc, Impress, Writer)</mark>, <mark>Daily (Chrome, VLC
+Player, Thunderbird)</mark>, <mark>Professional (VS Code and
+GIMP)</mark>, and <mark>Workflow</mark> (tasks involving multiple
+apps).</p>
+<p><img data-src="/images/article_images/osworld_task_distribution.png" /></p>
+<h2 id="benchmarking-llm-and-vlm-agent-baselines">3.3 Benchmarking LLM
+and VLM Agent Baselines</h2>
+<h3 id="llm-and-vlm-agent-baselines">3.3.1 LLM and VLM Agent
+Baselines</h3>
+<p>The authors implement 4 inputs:</p>
+<ul>
+<li>Accessibility Tree</li>
+<li>Screenshot</li>
+<li>Screenshot + Accessibility Tree</li>
+<li>Set-of-Marks(SoM)</li>
+</ul>
+<h3 id="results">3.3.2 Results</h3>
+<p><img data-src="/images/article_images/osworld_baseline_llm_vlm.png" /></p>
+<ul>
+<li>LLMs and VLMs are still far from being digital agents on real
+computers.</li>
+<li>Agent performance has much higher variance than human across
+different types of computer tasks.</li>
+<li>A11y tree and SoM’s effectiveness varies by models.</li>
+<li>VLM agents with screenshot-only setting show <mark>lower</mark>
+performance, <mark>but</mark> it should be the ultimate configuration in
+the long run.</li>
+</ul>
+<h1 id="workflow">4. Workflow</h1>
+<p><img data-src="/images/article_images/osworld_workflow.png" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/paper-summary-osworld/">https://wangyier.top/paper-summary-osworld/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- 加密文章解密后重新触发 lozad 懒加载。
+     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
+     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
+     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
+     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
+<script>
+  (function () {
+    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
+    if (!locked) return;   // 非加密文章
+
+    function refreshLazy() {
+      if (typeof window.lozad !== 'function') return;
+      var imgs = document.querySelectorAll('.post-body img[data-src]');
+      if (!imgs.length) return;
+      window.lozad('.post-body img').observe();
+    }
+
+    var body = document.querySelector('.post-body');
+    if (body && window.MutationObserver) {
+      var pending = null;
+      new MutationObserver(function () {
+        if (pending) return;
+        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
+      }).observe(body, { childList: true, subtree: true });
+    }
+
+    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
+        refreshLazy();
+        clearInterval(timer);
+      } else if (++tries > 150) {   // 最多约 60 秒
+        clearInterval(timer);
+      }
+    }, 400);
+  })();
+</script>
+          <div class="post-tags">
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
+              <a href="/tags/Agent/" rel="tag"># Agent</a>
+              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
+              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
+              <a href="/tags/OS/" rel="tag"># OS</a>
+              <a href="/tags/Multimodal/" rel="tag"># Multimodal</a>
+              <a href="/tags/VLM/" rel="tag"># VLM</a>
+              <a href="/tags/OSWorld/" rel="tag"># OSWorld</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/paper-summary-hugginggpt/" rel="prev" title="Paper Summary – HuggingGPT">
+                  <i class="fa fa-angle-left"></i> Paper Summary – HuggingGPT
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/anthropic-skill-paradigm/" rel="next" title="Anthropic Skill Paradigm">
+                  Anthropic Skill Paradigm <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
