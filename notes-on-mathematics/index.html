@@ -32,16 +32,17 @@
 <meta property="og:description" content="Notes on Mathematics">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-08-02T07:16:23.000Z">
-<meta property="article:modified_time" content="2026-09-30T13:00:11.000Z">
+<meta property="article:modified_time" content="2026-10-13T13:00:50.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Calculus">
 <meta property="article:tag" content="Linear Algebra">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Math">
-<meta property="article:tag" content="Numeral Analysis">
+<meta property="article:tag" content="Numerical Analysis">
 <meta property="article:tag" content="Optimization">
 <meta property="article:tag" content="Probability">
 <meta property="article:tag" content="Statistics">
+<meta property="article:tag" content="Stochastic Processes">
 <meta name="twitter:card" content="summary">
 
 
@@ -183,7 +184,12 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-text">0. References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#calculus"><span class="nav-text">1. Calculus</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan"><span class="nav-text">1.1 Plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra"><span class="nav-text">2. Linear Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan-1"><span class="nav-text">2.1 Plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#probability-statistics"><span class="nav-text">3. Probability &amp; Statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan-2"><span class="nav-text">3.1 Plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#statistics"><span class="nav-text">4. Statistics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numeral-analysis"><span class="nav-text">5. Numeral Analysis</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-text">0. References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#calculus"><span class="nav-text">1. Calculus</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan"><span class="nav-text">1.1 Plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra"><span class="nav-text">2. Linear Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan-1"><span class="nav-text">2.1 Plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#probability-statistics"><span class="nav-text">3. Probability &amp; Statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan-2"><span class="nav-text">3.1 Plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#statistics"><span class="nav-text">4. Statistics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numerical-analysis"><span class="nav-text">5. Numerical Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC"><span class="nav-text">5.1 拉格朗日插值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#newton-%E6%8F%92%E5%80%BC"><span class="nav-text">5.2 Newton 插值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stochastic-processes"><span class="nav-text">6. Stochastic Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#syllabus"><span class="nav-text">3.1 Syllabus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foundations-of-probability-theory"><span class="nav-text">3.2 Foundations of
+Probability Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-text">3.2.1 随机变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E7%A9%BA%E9%97%B4"><span class="nav-text">3.2.2 样本空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6"><span class="nav-text">3.3.3 随机事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F-1"><span class="nav-text">3.3.4 随机变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">3.3.5 事件间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%BF%90%E7%AE%97"><span class="nav-text">3.3.6 事件运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%9F%9F"><span class="nav-text">3.3.7 事件域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts-of-stochastic-processes"><span class="nav-text">3.3 Basic Concepts of
+Stochastic Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-of-stochastic-processes"><span class="nav-text">3.3.1 Definition of
+Stochastic Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-family-of-finite-dimensional-distribution-functions-of-a-stochastic-process"><span class="nav-text">3.3.2
+The family of finite-dimensional distribution functions of a stochastic
+process</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,7 +204,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -209,7 +215,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">93</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -280,7 +286,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-30 21:00:11" itemprop="dateModified" datetime="2026-09-30T21:00:11+08:00">2026-09-30</time>
+      <time title="Modified: 2026-10-13 21:00:50" itemprop="dateModified" datetime="2026-10-13T21:00:50+08:00">2026-10-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -342,7 +348,163 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/question/598963323/an
 <li></li>
 </ol>
 <h1 id="statistics">4. Statistics</h1>
-<h1 id="numeral-analysis">5. Numeral Analysis</h1>
+<h1 id="numerical-analysis">5. Numerical Analysis</h1>
+<h2 id="拉格朗日插值">5.1 拉格朗日插值</h2>
+<p>Lagrange</p>
+<p>Advantage</p>
+<p>Disadvantage</p>
+<h2 id="newton-插值">5.2 Newton 插值</h2>
+<p>引入均差的概念</p>
+<h1 id="stochastic-processes">6. Stochastic Processes</h1>
+<h2 id="syllabus">3.1 Syllabus</h2>
+<p>What’s the difference between the Stochastic Processes and the
+Probability ?</p>
+<p><mark>Stochastic Processes</mark> primarily study a family of
+infinitely many interrelated <mark>random variables</mark>.</p>
+<p>教材:</p>
+<ul>
+<li><p>《随机过程(第二版)》张卓奎 陈慧婵;
+西安电子科技大学出版社</p></li>
+<li><p>《随机过程同步学习指导》张卓奎 陈慧婵;
+西安电子科技大学出版社</p></li>
+</ul>
+<p>Reference:</p>
+<ol type="1">
+<li>《随机过程》毛用才胡奇英西安电子科技大学出版社</li>
+<li>《随机过程理论》周荫清电子工业出版社第二版</li>
+<li>Stochastic Processes Theory for Applications, R. G. Gallager,
+Cambridge University Press</li>
+<li>Probability and Random Processes, G. R. Grimmett and D. R.
+Stirzaker, Oxford University Press</li>
+</ol>
+<h2 id="foundations-of-probability-theory">3.2 Foundations of
+Probability Theory</h2>
+<ul>
+<li>概率空间</li>
+<li>随机变量及其分布</li>
+<li>随机变量的数字特征</li>
+<li>随机变量的特征函数</li>
+<li>n维正态随机变量</li>
+<li>条件数学期望</li>
+<li>随机变量序列的收敛性</li>
+</ul>
+<h3 id="随机变量">3.2.1 随机变量</h3>
+<p>现象:</p>
+<ul>
+<li>确定性现象;</li>
+<li>随机现象: 在一定的条件下,并不总出现相同结果的现象 (手性分子)
+<ul>
+<li>Feature 1: 结果不止一个</li>
+<li>Feature 2: 事先不知道出现哪一个</li>
+<li>统计规律: 符合统计规律</li>
+</ul></li>
+<li>随机试验: 在相同条件下可以重复的随机现象
+<ul>
+<li>随机性</li>
+<li>可重复性</li>
+<li>可观察性</li>
+<li>有些随机现象是不能重复的, 比如某场足球比赛的结果</li>
+</ul></li>
+</ul>
+<h3 id="样本空间">3.2.2 样本空间</h3>
+<ul>
+<li>样本点 (<span class="math inline"><em>ω</em></span>):
+随机试验的每一个可能的结果</li>
+<li>样本空间 (<span class="math inline"><em>Ω</em></span>): <span
+class="math inline"><em>Ω</em> = {<em>ω</em>}</span> ,
+是样本点构成的集合
+<ul>
+<li>e.g. Lifespan of a Television: <span
+class="math inline"><em>Ω</em> = {<em>t</em>, <em>t</em> &gt;  = 0}</span></li>
+</ul></li>
+<li>离散样本空间: 样本点连续, 克列</li>
+<li>连续样本空间: 样本点连续不可列个</li>
+</ul>
+<h3 id="随机事件">3.3.3 随机事件</h3>
+<ul>
+<li>随机事件: 某些样本点组成的集合, 是<span
+class="math inline"><em>Ω</em></span>的子集, 用 <span
+class="math inline"><em>A</em>, <em>B</em>, <em>C</em></span> 表示</li>
+<li>基本事件: <span class="math inline"><em>Ω</em></span> 的单点集</li>
+<li>必然事件: <span class="math inline"><em>Ω</em></span></li>
+<li>不可能事件: <span class="math inline"><em>Φ</em></span></li>
+<li>e.g. 掷1次骰子:
+<ul>
+<li>基本事件</li>
+<li>随机事件: <span
+class="math inline"><em>A</em> = {2, 4, 6}</span></li>
+<li>必然事件: <span class="math inline"><em>A</em> ≤ 6</span></li>
+<li>不可能事件: <span class="math inline"><em>A</em> &gt; 6</span></li>
+</ul></li>
+</ul>
+<h3 id="随机变量-1">3.3.4 随机变量</h3>
+<ul>
+<li>随机变量: 表示随机现象结果的变量, annotated as <span
+class="math inline"><em>X</em>, <em>Y</em>, <em>Z</em></span></li>
+</ul>
+<h3 id="事件间的关系">3.3.5 事件间的关系</h3>
+<ul>
+<li>包含: <span class="math inline"><em>A</em> ⊂ <em>B</em></span></li>
+<li>相等: <span
+class="math inline"><em>A</em> = <em>B</em> ↔︎ <em>A</em> ⊂ <em>B</em> &amp; <em>B</em> ⊂ <em>A</em></span></li>
+<li>互斥</li>
+</ul>
+<h3 id="事件运算">3.3.6 事件运算</h3>
+<ul>
+<li>并: <span class="math inline"><em>A</em> ∪ <em>B</em></span></li>
+<li>交: <span class="math inline"><em>A</em> ∩ <em>B</em></span></li>
+<li>差: <span class="math inline"><em>A</em> − <em>B</em></span></li>
+<li>对立: <span class="math inline">$\overline A$</span></li>
+<li>交换律</li>
+<li>结合律</li>
+<li>分配律</li>
+<li>对偶率</li>
+</ul>
+<h3 id="事件域">3.3.7 事件域</h3>
+<h2 id="basic-concepts-of-stochastic-processes">3.3 Basic Concepts of
+Stochastic Processes</h2>
+<h3 id="definition-of-stochastic-processes">3.3.1 Definition of
+Stochastic Processes</h3>
+<p>A <strong>stochastic process</strong> is a family of random variables
+indexed by time.</p>
+<ul>
+<li><p>Let <span
+class="math inline">(<em>Ω</em>, <em>F</em>, <em>P</em>)</span> be a
+<strong>probability space</strong> and <span
+class="math inline"><em>T</em></span> an <strong>index set</strong>.</p>
+<ul>
+<li><span class="math inline"><em>Ω</em></span>: Sample Space</li>
+<li><span class="math inline"><em>F</em></span>: Set of event. <span
+class="math inline"><em>F</em></span> is a subset of <span
+class="math inline"><em>Ω</em></span>.</li>
+<li><span class="math inline"><em>P</em></span>: A function defined on
+sample space <span class="math inline"><em>Ω</em></span>.</li>
+<li><span class="math inline"><em>T</em></span>: A parameter set. <span
+class="math inline"><em>T</em></span> is a subset of <span
+class="math inline"><em>R</em></span>.</li>
+</ul>
+<p>A <strong>stochastic process</strong> is a collection of random
+variables <span
+class="math inline">{<em>X</em><sub><em>t</em></sub> : <em>t</em> ∈ <em>T</em>}</span>
+defined on <span
+class="math inline">(<em>Ω</em>, <em>F</em>, <em>P</em>)</span>, where
+each <span class="math inline"><em>X</em><sub><em>t</em></sub></span>
+takes values in a state space <span
+class="math inline"><em>S</em></span>.</p></li>
+<li><p>From the view of mathematics, <span
+class="math inline">{<em>X</em><sub>(<em>ω</em>, <em>t</em>)</sub> : <em>t</em> ∈ <em>T</em>}</span>
+is a function defined on <span
+class="math inline"><em>Ω</em> × <em>T</em></span>.</p>
+<ul>
+<li>$$ is a sample point</li>
+<li>$tT $ is a parameter.</li>
+</ul></li>
+</ul>
+<h3
+id="the-family-of-finite-dimensional-distribution-functions-of-a-stochastic-process">3.3.2
+The family of finite-dimensional distribution functions of a stochastic
+process</h3>
+<p>有限维分布函数族能够描述随机过程的统计特性</p>
 
     </div>
 
@@ -422,7 +584,8 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/question/598963323/an
               <a href="/tags/Probability-Theory/" rel="tag"># Probability</a>
               <a href="/tags/Statistics/" rel="tag"># Statistics</a>
               <a href="/tags/Optimization/" rel="tag"># Optimization</a>
-              <a href="/tags/Numeral-Analysis/" rel="tag"># Numeral Analysis</a>
+              <a href="/tags/Numerical-Analysis/" rel="tag"># Numerical Analysis</a>
+              <a href="/tags/Stochastic-Processes/" rel="tag"># Stochastic Processes</a>
           </div>
 
         
