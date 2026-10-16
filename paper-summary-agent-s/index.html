@@ -34,9 +34,14 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_structure.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_3_parts.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_worker.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_memory_update.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_action_space.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_workflow.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/agent_s_action_space.png">
 <meta property="article:published_time" content="2026-10-13T07:31:52.000Z">
-<meta property="article:modified_time" content="2026-10-15T13:00:15.000Z">
+<meta property="article:modified_time" content="2026-10-16T13:00:13.000Z">
 <meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="A11y Tree">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Benchmark">
 <meta property="article:tag" content="LLM">
@@ -45,6 +50,7 @@
 <meta property="article:tag" content="OS">
 <meta property="article:tag" content="OSWorld">
 <meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="SoM">
 <meta property="article:tag" content="VLM">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wangyier.top/images/article_images/agent_s_structure.png">
@@ -195,7 +201,7 @@ Planning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" hre
 Worker: Learning from Subtask Experience and Trajectory Reflection
 (ReAct Loop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#self-evaluator-summarizing-experience-as-textual-rewards"><span class="nav-text">2.1.3
 Self-Evaluator: Summarizing Experience as Textual Rewards</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memory-construction-and-update"><span class="nav-text">2.2 Memory Construction and
-Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-computer-interface"><span class="nav-text">2.3 Agent-Computer Interface</span></a></li></ol></li></ol></div>
+Update</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#memory-initialization"><span class="nav-text">2.2.1 Memory Initialization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#memory-update"><span class="nav-text">2.2.2 Memory Update</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-computer-interface"><span class="nav-text">2.3 Agent-Computer Interface</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#workflow"><span class="nav-text">3. Workflow</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -210,7 +216,7 @@ Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href=
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -221,7 +227,7 @@ Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href=
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">93</span>
+        <span class="site-state-item-count">97</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -292,7 +298,7 @@ Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href=
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-15 21:00:15" itemprop="dateModified" datetime="2026-10-15T21:00:15+08:00">2026-10-15</time>
+      <time title="Modified: 2026-10-16 21:00:13" itemprop="dateModified" datetime="2026-10-16T21:00:13+08:00">2026-10-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -489,13 +495,87 @@ Manager.</li>
 </ol>
 <h2 id="memory-construction-and-update">2.2 Memory Construction and
 Update</h2>
+<h3 id="memory-initialization">2.2.1 Memory Initialization</h3>
 <p>The Narrative Memory <span
 class="math inline"><em>M</em><sub><em>n</em></sub></span> and Episodic
 Memory <span class="math inline"><em>M</em><sub><em>e</em></sub></span>
 should be initialized firstly.</p>
 <p>Agent S conducts <mark>self-supervised exploration</mark> on a set of
-synthetically generated tasks</p>
+synthetically generated tasks.</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Memory</th>
+<th>Key</th>
+<th>Retrieval Granularity</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Narrative Memory</strong> <span
+class="math inline"><em>M</em><sub><em>n</em></sub></span> (used by
+Manager)</td>
+<td><span class="math inline"><em>Q</em></span> (task-level query)</td>
+<td>task-level</td>
+<td>Full-task experience — abstractive summaries with specific actions
+removed (both successful and failed trajectories stored)</td>
+</tr>
+<tr>
+<td><strong>Episodic Memory</strong> <span
+class="math inline"><em>M</em><sub><em>e</em></sub></span> (used by
+Worker)</td>
+<td><span
+class="math inline">⟨<em>Q</em>, <em>s</em><sub><em>i</em></sub>, <em>C</em><sub><em>s</em><sub><em>i</em></sub></sub>⟩</span></td>
+<td>subtask-level</td>
+<td>Subtask step experience with specific grounding actions</td>
+</tr>
+</tbody>
+</table>
+<p><img data-src="/images/article_images/agent_s_memory_initialization.png" /></p>
+<h3 id="memory-update">2.2.2 Memory Update</h3>
+<p><img data-src="/images/article_images/agent_s_memory_update.png" /></p>
 <h2 id="agent-computer-interface">2.3 Agent-Computer Interface</h2>
+<p>As for Agent-Computer Interface, previous works have shown that
+<mark>grounding</mark> is a significant <mark>bottleneck</mark> in these
+agents.</p>
+<p>Desktop environments, however, provide an easily parable
+<mark>Accessibility Tree</mark> with coordinate information about almost
+every element in the UI.</p>
+<p>Dual-input strategy</p>
+<ul>
+<li>Image Input: used by the Agent to observe salient details about the
+environment—such as <mark>popups</mark>, <mark>button states</mark>,
+checking if a previous action worked, and reasoning about the next
+step.</li>
+<li>Accessibility Tree: input is used for reasoning about the next step
+and, <mark>more importantly</mark>, <mark>grounding</mark> specific
+elements in the environment.</li>
+</ul>
+<p><strong>The Accessibility Tree has limitations:</strong></p>
+<ol type="1">
+<li>Text is painted into images, canvas, WebGL, or custom controls and
+is never exposed to the accessibility API at all.</li>
+<li>Some applications do not implement accessibility correctly, so their
+elements never make it into the tree.</li>
+<li>Text that is visible on screen is missing from the DOM/a11y
+tree.</li>
+</ol>
+<p>So this work use OCR to recognize text in screenshot, then add those
+information into Accessibility Tree.</p>
+<p>Not like the <mark>Action Space</mark> in OSWorld (almost unlimited),
+the action space in Agent S is limited.</p>
+<p><img data-src="/images/article_images/agent_s_action_space.png" /></p>
+<h1 id="workflow">3. Workflow</h1>
+<p><img data-src="/images/article_images/agent_s_workflow.png" /></p>
+<p><img data-src="/images/article_images/agent_s_memory_initialization.png" /></p>
+<p><img data-src="/images/article_images/agent_s_action_space.png" /></p>
 
     </div>
 
@@ -568,15 +648,17 @@ synthetically generated tasks</p>
   })();
 </script>
           <div class="post-tags">
+              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
               <a href="/tags/Agent/" rel="tag"># Agent</a>
               <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
-              <a href="/tags/Benchmark/" rel="tag"># Benchmark</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
               <a href="/tags/OS/" rel="tag"># OS</a>
               <a href="/tags/Multimodal/" rel="tag"># Multimodal</a>
               <a href="/tags/VLM/" rel="tag"># VLM</a>
               <a href="/tags/MLLM/" rel="tag"># MLLM</a>
               <a href="/tags/OSWorld/" rel="tag"># OSWorld</a>
+              <a href="/tags/A11y-Tree/" rel="tag"># A11y Tree</a>
+              <a href="/tags/SoM/" rel="tag"># SoM</a>
           </div>
 
         
@@ -588,6 +670,9 @@ synthetically generated tasks</p>
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/paper-summary-vista/" rel="next" title="Paper Summary – VISTA">
+                  Paper Summary – VISTA <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
