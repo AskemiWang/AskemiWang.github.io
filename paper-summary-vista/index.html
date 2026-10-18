@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/vista_trajectories.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/vista_visual_inspection.png">
 <meta property="article:published_time" content="2026-10-16T11:24:25.000Z">
-<meta property="article:modified_time" content="2026-10-16T13:00:13.000Z">
+<meta property="article:modified_time" content="2026-10-18T13:00:11.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="ARC-AGI-3">
 <meta property="article:tag" content="Agent">
@@ -187,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vista"><span class="nav-text">2. VISTA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#components"><span class="nav-text">2.1 Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pipeline"><span class="nav-text">2.2 Pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tools"><span class="nav-text">2.3 Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-text">2.3.1 Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visual-memory"><span class="nav-text">2.3.2 Visual Memory</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vista"><span class="nav-text">2. VISTA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#components"><span class="nav-text">2.1 Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pipeline"><span class="nav-text">2.2 Pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tools"><span class="nav-text">2.3 Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-text">2.3.1 Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visual-memory"><span class="nav-text">2.3.2 Visual Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#inspect"><span class="nav-text">2.3.2.1 inspect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read_pixels"><span class="nav-text">2.3.2.2 read_pixels</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -276,9 +276,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2026-10-16 19:24:25 / Modified: 21:00:13" itemprop="dateCreated datePublished" datetime="2026-10-16T19:24:25+08:00">2026-10-16</time>
+      <time title="Created: 2026-10-16 19:24:25" itemprop="dateCreated datePublished" datetime="2026-10-16T19:24:25+08:00">2026-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-10-18 21:00:11" itemprop="dateModified" datetime="2026-10-18T21:00:11+08:00">2026-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -426,7 +432,65 @@ themselves:</p>
 </tbody>
 </table>
 <h3 id="visual-memory">2.3.2 Visual Memory</h3>
+<p>View is a retrieval request:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view = &#123;label, turn, frame=final, region=full&#125;</span><br></pre></td></tr></table></figure>
+<p>Parameters of <code>view</code>:</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 18%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Function</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>name the <code>view</code></td>
+<td><code>fireboy</code> <code>watergirl</code>…</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>turn_number</td>
+<td>66, 67 …</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>frame_number</td>
+<td>default: <code>full</code> or specify one.
+<br>e.g. <code>f27</code></td>
+</tr>
+<tr>
+<td>region</td>
+<td>crop area</td>
+<td>paras: <code>{x, y, w, h}</code> <br><code>x</code> and
+<code>y</code> are the top-left coordinates; <br><code>w</code> and
+<code>h</code> are the width and height</td>
+</tr>
+</tbody>
+</table>
+<h4 id="inspect">2.3.2.1 inspect</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inspect(question, views) -&gt; images</span><br></pre></td></tr></table></figure>
+<p>The function <code>inspect</code>: input a question and a views, then
+output an image:</p>
+<p>Input:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">inspect(</span><br><span class="line">    question=<span class="string">&quot;点击橙色 blob 之后，它和它下方那个方块各自变成了什么？&quot;</span>,</span><br><span class="line">    views=[</span><br><span class="line">        &#123;<span class="string">&quot;label&quot;</span>: <span class="string">&quot;before&quot;</span>, <span class="string">&quot;turn&quot;</span>: <span class="number">66</span>, <span class="string">&quot;frame&quot;</span>: <span class="number">27</span>,      <span class="string">&quot;region&quot;</span>: &#123;<span class="string">&quot;x&quot;</span>: <span class="number">240</span>, <span class="string">&quot;y&quot;</span>: <span class="number">300</span>, <span class="string">&quot;w&quot;</span>: <span class="number">140</span>, <span class="string">&quot;h&quot;</span>: <span class="number">90</span>&#125;&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;label&quot;</span>: <span class="string">&quot;start&quot;</span>,  <span class="string">&quot;turn&quot;</span>: <span class="number">67</span>, <span class="string">&quot;frame&quot;</span>: <span class="number">0</span>,       <span class="string">&quot;region&quot;</span>: &#123;<span class="string">&quot;x&quot;</span>: <span class="number">240</span>, <span class="string">&quot;y&quot;</span>: <span class="number">300</span>, <span class="string">&quot;w&quot;</span>: <span class="number">140</span>, <span class="string">&quot;h&quot;</span>: <span class="number">90</span>&#125;&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;label&quot;</span>: <span class="string">&quot;mid&quot;</span>,    <span class="string">&quot;turn&quot;</span>: <span class="number">67</span>, <span class="string">&quot;frame&quot;</span>: <span class="number">2</span>,       <span class="string">&quot;region&quot;</span>: &#123;<span class="string">&quot;x&quot;</span>: <span class="number">240</span>, <span class="string">&quot;y&quot;</span>: <span class="number">300</span>, <span class="string">&quot;w&quot;</span>: <span class="number">140</span>, <span class="string">&quot;h&quot;</span>: <span class="number">90</span>&#125;&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;label&quot;</span>: <span class="string">&quot;after&quot;</span>,  <span class="string">&quot;turn&quot;</span>: <span class="number">67</span>, <span class="string">&quot;frame&quot;</span>: <span class="string">&quot;final&quot;</span>, <span class="string">&quot;region&quot;</span>: &#123;<span class="string">&quot;x&quot;</span>: <span class="number">240</span>, <span class="string">&quot;y&quot;</span>: <span class="number">300</span>, <span class="string">&quot;w&quot;</span>: <span class="number">140</span>, <span class="string">&quot;h&quot;</span>: <span class="number">90</span>&#125;&#125;,</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Result of inspect · <span class="number">4</span> archived views</span><br><span class="line"></span><br><span class="line">[t66 f27] before   ← 原状：橙色实心方块</span><br><span class="line">[t67 f0]  start    ← 点击瞬间</span><br><span class="line">[t67 f2]  mid      ← 过渡中</span><br><span class="line">[t67 f5]  after    ← 结果：橙色 X 标记</span><br></pre></td></tr></table></figure>
+<h4 id="read_pixels">2.3.2.2 read_pixels</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read_pixels(question, views) -&gt; (palette, samples[])</span><br></pre></td></tr></table></figure>
+<p>The function <code>read_pixels</code>: input a question and a views,
+then output pixel values.</p>
+<p>e.g.</p>
+<p>Input:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">read_pixels(</span><br><span class="line">    question=<span class="string">&quot;这块 8×8 区域里，每一格的确切颜色索引是什么？青色和绿色的分界在哪一行？&quot;</span>,</span><br><span class="line">    views=[</span><br><span class="line">        &#123;<span class="string">&quot;label&quot;</span>: <span class="string">&quot;zone&quot;</span>, <span class="string">&quot;turn&quot;</span>: <span class="number">1</span>, <span class="string">&quot;frame&quot;</span>: <span class="string">&quot;final&quot;</span>,</span><br><span class="line">         <span class="string">&quot;region&quot;</span>: &#123;<span class="string">&quot;x&quot;</span>: <span class="number">320</span>, <span class="string">&quot;y&quot;</span>: <span class="number">256</span>, <span class="string">&quot;w&quot;</span>: <span class="number">64</span>, <span class="string">&quot;h&quot;</span>: <span class="number">64</span>&#125;&#125;,</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line">  palette = [<span class="string">&quot;#000000&quot;</span>, <span class="string">&quot;#0074D9&quot;</span>, <span class="string">&quot;#2ECC40&quot;</span>, <span class="string">&quot;#FF4136&quot;</span>],   <span class="comment"># 该区域出现的颜色表</span></span><br><span class="line"></span><br><span class="line">  samples = [</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],   <span class="comment"># 第 0 行：全青</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>],   <span class="comment"># ← 分界出现在第 2 行</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],   <span class="comment"># 黑色墙</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">  ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
     </div>
 
