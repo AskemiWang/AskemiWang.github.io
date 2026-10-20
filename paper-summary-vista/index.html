@@ -33,8 +33,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/vista_trajectories.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/vista_visual_inspection.png">
+<meta property="og:image" content="https://wangyier.top/images/article_images/vista_trajectories.png">
 <meta property="article:published_time" content="2026-10-16T11:24:25.000Z">
-<meta property="article:modified_time" content="2026-10-18T13:00:11.000Z">
+<meta property="article:modified_time" content="2026-10-20T12:48:36.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="ARC-AGI-3">
 <meta property="article:tag" content="Agent">
@@ -187,7 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vista"><span class="nav-text">2. VISTA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#components"><span class="nav-text">2.1 Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pipeline"><span class="nav-text">2.2 Pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tools"><span class="nav-text">2.3 Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-text">2.3.1 Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visual-memory"><span class="nav-text">2.3.2 Visual Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#inspect"><span class="nav-text">2.3.2.1 inspect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read_pixels"><span class="nav-text">2.3.2.2 read_pixels</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vista"><span class="nav-text">2. VISTA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#components"><span class="nav-text">2.1 Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pipeline"><span class="nav-text">2.2 Pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tools"><span class="nav-text">2.3 Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-text">2.3.1 Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visual-memory"><span class="nav-text">2.3.2 Visual Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#inspect"><span class="nav-text">2.3.2.1 inspect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read_pixels"><span class="nav-text">2.3.2.2 read_pixels</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">3. Conclusion</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,7 +203,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -213,7 +214,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-count">100</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -284,7 +285,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-18 21:00:11" itemprop="dateModified" datetime="2026-10-18T21:00:11+08:00">2026-10-18</time>
+      <time title="Modified: 2026-10-20 20:48:36" itemprop="dateModified" datetime="2026-10-20T20:48:36+08:00">2026-10-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -491,6 +492,14 @@ then output pixel values.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">read_pixels(</span><br><span class="line">    question=<span class="string">&quot;这块 8×8 区域里，每一格的确切颜色索引是什么？青色和绿色的分界在哪一行？&quot;</span>,</span><br><span class="line">    views=[</span><br><span class="line">        &#123;<span class="string">&quot;label&quot;</span>: <span class="string">&quot;zone&quot;</span>, <span class="string">&quot;turn&quot;</span>: <span class="number">1</span>, <span class="string">&quot;frame&quot;</span>: <span class="string">&quot;final&quot;</span>,</span><br><span class="line">         <span class="string">&quot;region&quot;</span>: &#123;<span class="string">&quot;x&quot;</span>: <span class="number">320</span>, <span class="string">&quot;y&quot;</span>: <span class="number">256</span>, <span class="string">&quot;w&quot;</span>: <span class="number">64</span>, <span class="string">&quot;h&quot;</span>: <span class="number">64</span>&#125;&#125;,</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>Output:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line">  palette = [<span class="string">&quot;#000000&quot;</span>, <span class="string">&quot;#0074D9&quot;</span>, <span class="string">&quot;#2ECC40&quot;</span>, <span class="string">&quot;#FF4136&quot;</span>],   <span class="comment"># 该区域出现的颜色表</span></span><br><span class="line"></span><br><span class="line">  samples = [</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],   <span class="comment"># 第 0 行：全青</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>],   <span class="comment"># ← 分界出现在第 2 行</span></span><br><span class="line">    [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],   <span class="comment"># 黑色墙</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">  ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="conclusion">3. Conclusion</h1>
+<p>This work stores all animation information.</p>
+<p>In tradition works, the Agent usually use one screenshot as the
+observation. VISTA stores all frames of animation of actions in a Visual
+Memory.</p>
+<p>And the Agent can extract some of the previous frames and observe
+them together to understand the detailed mechanism.</p>
+<p><img data-src="/images/article_images/vista_trajectories.png" /></p>
 
     </div>
 
