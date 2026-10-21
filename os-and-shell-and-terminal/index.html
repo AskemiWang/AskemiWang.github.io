@@ -24,34 +24,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="secret">
+    <meta name="description" content="The relationship between OS, Shell and Terminal.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SMAP &amp; L3_Cache">
-<meta property="og:url" content="https://wangyier.top/SMAP-&-L3_Cache/index.html">
+<meta property="og:title" content="OS and Bash and Terminal">
+<meta property="og:url" content="https://wangyier.top/os-and-shell-and-terminal/index.html">
 <meta property="og:site_name" content="The Great Library">
-<meta property="og:description" content="secret">
+<meta property="og:description" content="The relationship between OS, Shell and Terminal.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-06-26T12:08:45.000Z">
-<meta property="article:modified_time" content="2026-06-26T12:10:23.000Z">
+<meta property="og:image" content="https://wangyier.top/images/article_images/os-shell-terminal.png">
+<meta property="article:published_time" content="2026-09-13T06:27:53.000Z">
+<meta property="article:modified_time" content="2026-10-21T13:00:12.000Z">
 <meta property="article:author" content="Askemi Wang">
-<meta property="article:tag" content="Cache">
-<meta property="article:tag" content="Computer Science">
-<meta property="article:tag" content="Encrypted">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Memory">
-<meta property="article:tag" content="Operating System">
-<meta property="article:tag" content="Performance">
-<meta property="article:tag" content="SMAP">
+<meta property="article:tag" content="Bash">
+<meta property="article:tag" content="OS">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="Terminal">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/os-shell-terminal.png">
 
 
-<link rel="canonical" href="https://wangyier.top/SMAP-&-L3_Cache/">
+<link rel="canonical" href="https://wangyier.top/os-and-shell-and-terminal/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/SMAP-&-L3_Cache/","path":"/SMAP-&-L3_Cache/","title":"SMAP & L3_Cache"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/os-and-shell-and-terminal/","path":"/os-and-shell-and-terminal/","title":"OS and Bash and Terminal"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SMAP & L3_Cache | The Great Library</title>
+<title>OS and Bash and Terminal | The Great Library</title>
   
 
 
@@ -170,7 +168,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -183,6 +181,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#brief"><span class="nav-text">1. Brief</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#terminal"><span class="nav-text">2. Terminal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell"><span class="nav-text">3. Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bash"><span class="nav-text">4. Bash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coreutils"><span class="nav-text">5. Coreutils</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,7 +207,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">100</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -243,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/SMAP-&-L3_Cache/">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/os-and-shell-and-terminal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar/avatar.png">
@@ -256,12 +255,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="SMAP &amp; L3_Cache | The Great Library">
-      <meta itemprop="description" content="secret">
+      <meta itemprop="name" content="OS and Bash and Terminal | The Great Library">
+      <meta itemprop="description" content="The relationship between OS, Shell and Terminal.">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SMAP & L3_Cache
+          OS and Bash and Terminal
         </h1>
 
         <div class="post-meta-container">
@@ -271,9 +270,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2026-06-26 20:08:45 / Modified: 20:10:23" itemprop="dateCreated datePublished" datetime="2026-06-26T20:08:45+08:00">2026-06-26</time>
+      <time title="Created: 2026-09-13 14:27:53" itemprop="dateCreated datePublished" datetime="2026-09-13T14:27:53+08:00">2026-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-10-21 21:00:12" itemprop="dateModified" datetime="2026-10-21T21:00:12+08:00">2026-10-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,38 +300,100 @@
     </span>
 </div>
 
-            <div class="post-description">secret</div>
+            <div class="post-description">The relationship between OS, Shell and Terminal.</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><div class="hbe hbe-container" id="hexo-blog-encrypt"
-     data-hbe-format="4"
-     data-wpm="密码错误，请重新输入！"
-     data-whm="密码错误，请重新输入！"
-     data-salt="cd0f97f087eda590f8eda0b23e525fb297a1aec91afd9998c090f57537c3a532"
-     data-nonce="61982bed1cf42a940c97b233"
-     data-kdf-iterations="600000"
-     data-auto-save="false">
-  <script id="hbeData" type="hbeData">
-    0cc989f912b35a6e5c7980243f54fca957151500ecc77dbc8fe440dee88ec56cc1a12a581adc4527ff30bd143f3604fa2a8b1b7e4a6247becb0a7bcb9cfac18b0f6c7951d231ac8bf0bd21ba9ba72c8153ba1a8ecc0d7708df94ff334b1161fe38455c34c556f6f3395b0bfc207193d635215744e3f87b9e5aef7f795ac630f037d893f6a4e5c11a569f7513fa0c041ef45d7fabb27e2e9cda96e5afd9aeb9967d9e68d5a9d46bd580056fb6a55dc9d44d53b61c37d3e1c79817af24c4747d536f0d68913df438fa802425e32f2485b010beaaca15ce50c1d2247b431d789237cc29e8663365368d8887d8284942d0b0de3b2110b6e873800f439f09d45e02772bae667839e4856907506e96cd9b5573befd7a97950e2184cf00f666eddd86ed630b5be6e26bee7f9bfabc2c8d5947e9005d3a640cf1ece08b2a8dbf55db2c63d143a210b896ad9b00c69d8f8051b473f1e429026c79d7f238616dc3bf36321a25f3f505785f1229215f67d79b87c6a7c11b616f174f07a94c3566ad6ab092e0043794919e02ee9c08c9ea3785ed102841c64d699b8255cddd347623356beb0333e803916de31e1a60f658f611b7402d1b9783cf2f0c49b0d188e8d10abcb80dcad26a8263e443534ea894863b85e16cf7b50847dfe81540aed35b43d7cae74af2c330ba680695213bf42a1dcee97fee72d21530989d781a5421e78b092db3216d01553fccf323f1150389f1695920b1ed02201bfb536514036512b3a3a29f2dba492801ed1713cf1aaf917443229b3bdaa33e382ee942298040a64b1ab180fa18347b2d0110fe374c860adc1157e73d4bd8b9df574d48cf8e826375b7b1a7e3906d13b954674b843aa8199d3a4b143c61f6318c1eefc9b2b9df7142f73a748ff2102a42147eca8272cc83e9e4c7e5695339edbe3077dbcf58c27a35f87fca38f900ad0f798511b47b13fc6afb653cd61ad11e43539c2ba5ab52974928d87607798aad26c771ff530b490e15e62453e7e9d94385a9703a2b8d56883eb222b935b6529adaf3318ece58023ca0d4547740aa43fad61b86dfbdf2f97d8c3f09922553dd428700f11e546246d7f0d22efa80f3f32aebb99d4fba8980d603aed29d9284d62e1f47f6f17600ab10e051737a1738341fd0e8ab5d17457810774fb297cecb638e5e6126bb1ad23bdba8c3b6e151c860d8b1bc9f0f5a6e084c5204dee6960ee706c496801796c59a96e69f3bfd1655005686d76ccdd726677dd106015307abfeb0978a978d1db1644f5a2d0a6185c79910312720f01a87d931e4c49175a1c396d3835fe1765b806d4eb7faa5fdc6f63659012d0b7c03e03ddbfd15ff95ead6b9ee0c1a21afa543f8791206b7c190df42725513b97497b8f40197232342d47e1bda2a4e4987e302163c2e0a7814ead2d489e79cf1ea7f669850ff9e92c5bdd0d77d18f56d07567072785fa4f7f95c1639d29f06520f29ccecd8acad734a9457207a977746d81b9c6f4193128f9091f636e81b70d07b4780929f77241dbc090463663a188cc6c5b8509351a753c3ebe904004dc24c41c9020b93e7682acff917b6eb6ff678f0febf28d3dc8ab4ae94bc66f444b92db5390243fc9e6eb9dfbe62fe7e213ce448741bff14135b645d678988114c8c0044d209346aabfd61569c18b8f8dd698f3341aca2fa9f67c2e746df778034bc3cb99dc70aeea1d0d3a0a650b52aa5e220b686694e98218d9b4c87a467c6e8d2d085c3fd29129eb68d4bed7d0c99d27082087415d28b24f889eb8cf1d6c161dcbd6cc89333e665d73ecb0013d5da025dcc4a31e92360989ae69ec69e4ea8d88bffbb19dca0d58963e15a9fb639126f83b023fa9d71e4a5be00e86bdc9cabc8f95bd2d58e82a0de007e5610261c9bdcae6571566e0ed104dbfa1bdfd6b7ce569340ce388f5a38371e4cfa66d0c35846f392c1c58bc23a413b65a3d7266327589866bb7b62816cf6ad84c07d322a8c7e2f3a9392577dd575b1c2c0b87cdea3df0fdbc0e4023d25d7b0abbb7c1cd7e037b3e1158a1836072b2038126d5838b04a9c69ce2ddb218ca4c45cac7306c451a128db95d9f512881f9abe201c8074c604b53dd6203deaf960dda0fb9f426844df1ed8da531ee61607301dcf655977538a8f5fa56cfa1a30858a322d7f5128b1cf6324244f0600fec865550f8ab46752e2c08041be3492bf46a9c5655dede1d7ae50c96a182bf8e3eaf6b1c3ad7bc3a82bbde8c80625c0a02f8e42d53e0eaa044051feaad4f1db92106c932fa9257fc7bfb13f08cfb380618c5361408b80e15a25cfe22181b77d4d9750d4abcf643d711c0a488c54a6beb2dac2a14667c7ae7ec8ba4e908cae72c107b6bf5638709798093345f194edd2f053c339d67ccae147f91f301437190ac6b785d6e99569740eecdd7528cb7ee7f7b87bec844a50f16bf23d1aeafb6e6131039d297ea9695ec4a9f7fc630276fc47b3e228166a3101ecbe161ed3149597f85ed10ba74e5832c65dcd75c978dd39098f879532af5b5eeb0d3c3a53b005f70c8c8b5838c0a25ad2292bc88dc22a910b6eb508eb599b14fda05f5889228ac20f13b4318130f218da55a3ae7b6534fb66630054c21f2163a813ebe1f12de803f0fd8e7f48652b5452d70480febd362c1cc70f82e46461dba4922d72f2fcd9cfdbbe6ac3f0e3e0593b2c6454cb0ae804f0ca293ef19c4a5f707eb8578416c13f41caaab7dac0b014f72673fa5d0779506bef28a2693ae4adf3e864a22b9656959649f381a27de19c6ae9d5627ba1ef1705179bf5e32112f76a04de026abb055bf904baaddb5d22f34aab80d97503f9bfad7b419d2d4686249c1dbea7f241da4fb95068881e8546f6cc2487aa0ab231638aa552b8d69b913a908d09d9deb87e3c6c6b48f74258907edfbb797a9ec8801e2e59308941b850e0d200865206329e7690043249d1f702466eb304db0cbedab712704cc395ae7d6fb2807fcfcd6ebe0d3b9e3338a67c6fb40112aa16a43a139cf9527ef5fd5c55efdaf539183363fc3ed5d843adb2780d1dc1c5479f1316c69fe42bd8baa6be6fb9889a9146b02052ddcd9fe9f56c7e2bb619bd50a82125dd3840dbe45ca82737964159f1edf3910d3313f4ea84d5d92c11f8342ac98d8417d284c3df0339d0167824ddc661467fc81b5d4d821c968eadf6a98df4a4b732260e88c22b9615b6ec919c8ca4b45cd80c5012b146a0177f35ce7f821e8a287838011a3fe1eb4c5d63d87b682eaffd1c541c651f4c453ef838fa3dc818d2b2e603edc52ddf91a92c6abc00fd3f44274cbde5061fcbe441c37512f69db95a9c8a6bf06a4e8f8b2ba7983d8b26943c0fc1452775468a1e26a72909fc19049834f5b8badd85abe2bd9834450386baa574bd41776b3c28ae558b196638fd359b5ab0118eee2b69acfc39b4c761a8bc840e44be5e842c3d849c65d77af9d45e1b193c52e7bb13c7f0ea943756c06f2b36b1c37d31315f1d9918094886561dd09fe7e506c4b76a0b465937787a1ab82efaeebeeaef0734681ad0bccc3b8432d77e573aac6c0d7125470ed0eb21926b9cc31fb3f3484573ed8f25cde9e1c20c2d179bed232f90ed8a28b44f2d8ba4349cfa5b18f37be74e8266f19373cdcae24497e983602192009a48ee3e44766bf4d84b2e64380058b7fb5048d381c208608b1d98a5368a5a9c94c0e65ef27c5bfeac65d358f74f9ce3a8228f8638a032dacabc90c331d16e4242c7c135fadbe361b54fb15e4157ecd53980a5e794d99943bc00bb11494aa35b454665d2dabf5fcaf21d173ae2a6fb85e690b00da8e21e2db696ad497018e1ccc611e3a3246f5e79cb135c034e338d49409f896a76945d781d27d1b549374f57b31c38b7beec1cc59c9e97cd24efd25680de9cf3edd4e36d7d2cb15d39a64add4e1791c4385a1a695aeb4a03b41f3a0fc413fa54c3dc9a5417ed86f409132caf2804f970bb65ae87184cffe82a73e168bd4ba2b9437badb9c595a8fe2bc7a29c2a43f3dc541aef25749bf7416663f580437becf7e89ab7323d99be598154033a65a83e94c0b5db3c68e94b789d61a43da9be09a5b1230ae4335918b5f71925ec248aa67f2ff299024c30541ba2b2ae2d3ba4806a3cdde574cb3b8c115ff22d6f6f9190bf3dce8f580911c29b5a3c932199ed96dbd6ea9a360e4836f899dd9998cc05d62baa9dad35b4e086f017a126eff9a5a80a4c60e2b648dd5cbd5582c35248c7bef763fea9b9f4dbe860a03a0b4cf142afd4af4e7f9f76b32a12af61191dc6905b30970a4e4807430d22ca26e3890bcd0777d33154b481501e3de938a2e470886520f4b4f52fe155bb5e4d9da6e1a4e1d725e195f0f614951a6b2ecc651f341a820506663c3b3478021eb7c1423376bdec2ea7ac641bdea38ba1387cdf9806d30be56f115ce748eb2b089f6e73724f1f3949843158764ec170b33732abffbe8912c7695c7bc95ef8ab51315f1ec2fc8ac4afefa4100acbbe11345a7939b7c53b12771ff134fdf033aff878e92a89c0f6f55e7b5fc2ee78eadc0f06790215321ea77e7c5809d6d530b19453bb14e8833c8caa9e0928f3785c44c7b3d8a86654ee68c46b986372b81eb5940858641a2535bacd571472436953cf51742989f4d31baa86785f29ab56449b1808a4b43ab2e9067ecc1533ad24217937ce87753bfc84862b166b82051c2ce07a1beea21730fc397fb437a1ec9fb0b59cf395c5ccc4fc9df2cb48471ef98748c718674328c7c35b2d35c8d17258caf77d02a3bbd222d1a70122c10814ae9db09108cc3825a16e15b4ddd5c190209454ff364ae1f48f8b5dcb8cdb447a0834c5b641ae8a30a52a2fb3b4ebfbc224481aeab2c46190e62bd8bf4bf63b0d4f7cb70f20b8c93ad4db02806e190afd775d6da00c8a33a758674b0ac763be8f89958e75e8bb12efed4f6349cea78dbd2e28f6cb87e4b10d2de5478f2b39f34b9ccb053a3768aa559e464b1254f87045bf5533bdfffa436943e4804b6de0f25cd1ac9c8be9017390ab0fc1e08b4e2b3a47d5c9dce8c54d6102148a9c2ebaa9ac60df8a30d34801f26f40a81b4d5582601f5feb1865177ae8d3ff3f2a130c5e57166e8236e4be747d91d524a432cba3766bb85a326b5bc8eafe14d013130502b9e946bc3645f0751bf2925a95e0d3f2f4c14d5276b6377a8a3cfd6ea27f6a5109040b25ee69873555dd5cebbedd1d2acad39f569c2d86664e2e3e3c59018e2edcb0208e7c181072096a167774186b45c3e1dc5012dfd10561a106944e7e0d5259739d7990b13fac001b50d22ec711ab3175dae1f2c950349e357e878d3de549c13708431eb5c5edbc880e89d144a58eb21ad551976dbdacdbe0e3c80123bf5422efedec8653145113c2319225067f61dbae89c24e5f0db00705cfb4a5916447c3c061a04a08699fafef01f0d5961ec5735e50ae780a9ceff1314bc8494828a40cd088381e252420e44ac96d68ecfa923b9999054f46fb1fc77fb76cc53f05de0985258d568b36104d5471cf775a16fc9133c303140802d2490a420afec166c1a74a1b33ca616dee3a74b9a55761ab89916eaddf908402e2038511adb1f9c2b47c10a9b58f66d15d65c35132f2dac486a1925fd3ccd9300f56d0b2f4445e7d95fb5c3093bad372cf3f1301a0beb7f14eb8b62015e33e4c49d7a2e08978270f0d3e06bf4698326d78435e4e6f5d9d2ed5091a02b56d6589fe115e9a39a564ffc23d929d07f4dad383fcf98fa2741af3e6b1fad420b3289678a1393422ea983d4a572c5b49dbc6265a44a65728a14c41e7b420aab98e9404ba975e775b67ffe57a79d967efb1ccf18912c2cb01a7f46a96e0ae79a0b3fef4b6f7ac74216a4b742ebdfb5dc10b5110ec42e6cc1569200e05c2a8fc93b44f31788ee356d3f5752850b31939e5efe3194887dd990776429b1082edbe00bf9f61374209f7e534448957292a71398b4d6ee9eb60ef0254119f4c6e5a550968656942073bd4c5de6b07431fab6ab7e7176be2ea84558b90e57a960b3328a279c10c78aade8c2a5f6f22dbfa5c582891b3e58f71dca5690fa93c214aae2a9fb37d38ed5ac5976dc30fffe7e976757ac8981eaca691b0ace909c9f2118ca8cdd108ce73621748afe88352d4c22bec41824a36f84a5ab55879e28ad1cc4c27bb67dbb33b9933f5272d2f89f4ebcdada57af83edd18b3fc708f5d8ee05744fd9f9acdb1b2cdbf8f5bba59f4f9dddd06fec17c3df3bea090de98a1f1307e81d6aa6097051fc1c1f9cdd8502f37435115ab51a42a32e62dfcc40ae2916b6b7e7f4d33fd4c9b0466b369735fd058ce4dc7335a2f8e7f0183baafdf3253c2e2564d9a48eb5fb07f7f89f73d2b0acbecbd062095f432e95c8e7251dd80d813997049a27f28b4d1a70772ea358c45d9b044bbd4c34528d1fb75e2008b9ae8a729e0260ef0ae75050dc87ea7dd0c582db91887ee4da9e2ad550299f544998d3c34841f80fbeb8654849ea4409fc5c903739027720fb14e02f852c384ae26532489a82927ec1306653e740b3898a1e0e271712957f03119189316f39141d626a5d89ae25b11d7bb72ab2c82fd297955bf1a37bf3590bff76655717ed08bcfb83f7b7a92099e0e22ad6066384201aac0f569f6951a26ad04a9b1483f9e22e75db6736fd79ce9eebc2d950422148ff77acc26864304d9c190af29513bbf8c5c8d8c78d1c3b7e916610ab71b44977a6b19a282c6699af6a5b8d20a595e9f21619280de230c990e5a881e16e23be8a02060460af5225a5a0e0b4e12e2b3cdb92878b9d8ac32cbe0b5b6ac97696eef7fc929ae121c68062f458bd9726ed1938c1582660e7e0f838f7ad4f41732ee1efa0da1d9bdd5a6ab38876beb90ff80ce545fc6a99ca98af5596b1995ae531c5ca15f1a9fae1a9afb9434aea4576965f75aef6fdd1270347ed318a1ef3fd4f7d881b4591758132e287cfed188a683404665f74bc4efd55c3e643d8127f98817cbe8b01123cd31f38271563b38608b3a1feb285918113889564890888447f1b794cd635dc9bd1b98c17ba0ecd629eef5e672929a42897618947e83b2858923214abf4826c12f729ffbe962ecafa01b1d458185b297694618e37ad479e1d339d041568524b9482101c45af6b9ced26525d3b4f1446092ca14a7080e5e127f76bcfe45409806d1e5e01ef4ebb976774f4ff91d7f39142cce328344e61fbd526b963646a9434795db1936f86ce9bbc5fc7df06395321acd120f12513344801e21330d144bbe2868098e58fd4a2a0197968a548f486a9bda448366c637a12bd6698648614ed34924ff2bd283a5a8a28ebb7f3aa3313711c40f3ce1cd368e308d3518a914d37bc5d11389242958a4a7eb8799e92475f856f7347dde6aaf6a0393ab9fb5f97dc8c070f4df4ec972651222332329e57a084d287358cac1494a5e89e9af36d6815f39b9b234280072a38d468b9da4633926edb378d32c4f1f51c4c40be35a6f684f21b6f146f9dd3b96c350809b88f13b9442a6d0e149a5c243aa2f71d67f39cca01abe4e54afc409021d5932e3dadc711b1cb5c69054e87f5bb13f01ac23d35243d1babe0ef801046f13605b41c61f3d31b27a170b2b35342feb026229c91ecf00ec0fbb6ee4eeb382b9915786ad0544aab1ab01bd873086fd3067d4ce5e1504ec15ce33db5fd1995e30734cfd386c81e0de69868b239406af68cd014d7e0278508dcae159fccea44ce3d1d82485e88087963f5e9c4fb28d6511d4f766bddb5d6b4dfbf6a25244709fad9f09aae26dfd140adca3923c9a3a3c835b8b7135a72e7bca2bdadcdc9076ab01e57fd1c17923888af5eca891a56fdff518e68a53117e830d9bdc3bfb334b147b42b88a3a8b8ab34c079425d1f8cb54ae4292f06c5e3e79edd4ded1ba827e6a8388144eb1aed00ea9d74f4f5622163204e48d5adb9b6641392ef1737e6412240b7695a212b1f1b6cbe196e654ea30700049b7c6e60648c941a9b618cde00a9baf9716e3406ffc62fa6296f61006b6e4cdfc799b05fc9c0ee0ba926b5be0f5d7d0a196fb2774fbf5dc8d30ee244ccdf3aa51fd391f3084b84f38da5186af674f9153ef7ca591baaf9915ed0b4438a4bf87ff24247f938963f7d485144f6022b298a630930810e0963932a99bb9734c424deff57b638e0d4d440dfc7c30a735399e8540abd87fbb876626bda3c92441bc435e355650e96ffbb2858fdaf69cbc39598403db8c10a6bfc9e31b55ef12f5a41194287f2b20ab043c212c3d22d4a17cd1f2d5f61265981bb0acfae7f889a24d3bce2175918874242e5a0a58c5e5738e58237827f121b9fa1dfaaf635c75e3073439422420d4cd140fa18b5f4839a7ae6803eea0ef8b6d0ccb3a491d5d871a7c108cec29bc29829e184af10acfbc1e5df0539f4c0295f60d83170caeb45f44d29932b8bda0a07bbf2ccdc9bbfa36a4c0f333ba6d6d07a88381c8d8b49479c2b97b585953b919d2e03dcd9d04553780a3bbdc9ef788c87ba8867b09ff3a42b23fc9d82aaa1f69282603292a139250ef337a10885d4cccf14d3a5da8760786ffd729a7f67c7fc83731278ca8767e958079fd1a5fc4ba68a532b4f04d1c75f5350c214a00fdf6b8b7ddbc63c02515fc125fec699c7bb4baade9faf1ecb0df9cb3cb80985f3ed80f33d8f510d2e3a893d883ab0aa411d37d689a43c0a7ae7ec59f697976856ca759f7d3e9f5c461263d410814e6cda2588708a97d9f5ae3d02052728b6f623c390a250dfde26660f9e484d96092b045541c61af7f07e59e2b6a18611d87627a0b40506fd941
-  </script>
-  <div class="hbe hbe-content">
-    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
-      <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入访问密码：</span>
-      </label>
-    </div>
-      <button class="hbe hbe-button" type="submit">Decrypt</button>
-      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
-    </form>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    <div class="post-body" itemprop="articleBody"><h1 id="brief">1. Brief</h1>
+<p><img data-src="/images/article_images/os-shell-terminal.png" /></p>
+<p>We don’t control <mark>Operating System</mark> directly nowadays.
+There are many layers between User and OS. This article aims to clarify
+the relationship between the OS and the User.</p>
+<p>The OS manages the computer’s software and hardware resources.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  ┌──────────────────────┐</span><br><span class="line">  │		     OS          │</span><br><span class="line">  │                      │</span><br><span class="line">  └──────────────────────┘</span><br><span class="line">             │</span><br><span class="line">             │</span><br><span class="line">┌────────────▼─────────────┐</span><br><span class="line">│      CPU, Memory ...     │</span><br><span class="line">│ Keyboard, Mouse, Disk... │</span><br><span class="line">└──────────────────────────┘</span><br></pre></td></tr></table></figure>
+<p>The OS is usually divided into 2 parts: <mark>User Space</mark> and
+<mark>Kernel Space</mark>.</p>
+<p>CPU has privilege. A process with <mark>high privileges</mark> can
+execute all instructions and access all memory and hardware. A process
+with <mark>low privileges</mark>, by contrast, can execute only
+unprivileged instructions and cannot access hardware or other processes’
+memory.</p>
+<p>The distinction exists because user programs <mark>cannot</mark> be
+trusted. Were all programs able to access the disk directly, modify
+arbitrary memory, and disable interrupts, three classes of failure would
+follow:</p>
+<ul>
+<li>a single out-of-bounds write could overwrite operating-system data
+and crash the machine;</li>
+<li>a single non-terminating loop could monopolize the CPU and stall all
+other programs;</li>
+<li>and a single process could read another’s memory, exposing its
+passwords and cryptographic keys;</li>
+</ul>
+<p>The interface between User Space and Kernel Space is <mark>System
+Call Interface</mark>. If a User process needs a block of memory, it can
+only obtain it through the corresponding System Call.</p>
+<h1 id="terminal">2. Terminal</h1>
+<p>Terminal is a User Space process. It is a
+<mark>translator</mark>.</p>
+<p>It translate signal between hardware(Keyboard) and software.</p>
+<p>For example:</p>
+<ul>
+<li>Input: When you press key <code>A</code>, the kernel driver captures
+the <mark>interrupt</mark> and emits an input_event on
+<code>/dev/input/event*</code>; the display server reads it and routes
+it to the focused window as a <code>key event</code>, the terminal will
+receive the event and translate into a byte flow:
+<code>0x61</code>.</li>
+<li>Input : When you press key <code>⬆</code>, the terminal will
+translate into a byte flow: <code>ESC [ A  (0x1b 0x5b 0x41)</code>, the
+<code>ESC [ A</code> means the latter byte flow
+<code>0x1b 0x5b 0x41</code> is a command, and when <code>vim</code>
+reads the command, it knows that it means move the cursor above.</li>
+<li>Output: When the command <code>ls</code> writes a byte flow:
+<code>0x61 0x2e 0x74 0x78 0x74 0x0a</code>, the terminal translate it:
+<code>0x61= a</code>, <code>0x2e = .</code> …
+<code>0x0a = New Line</code>. Finally it means print:
+<code>a.txt</code>.</li>
+</ul>
+<h1 id="shell">3. Shell</h1>
+<p>Shell is a User Space process, it translate the text Instructions
+into System Calls. It do not do actual work, it just starts, connects
+and waits.</p>
+<p>e.g.</p>
+<p>text instruction:</p>
+<p><code>"ls -l | grep txt &gt; out.txt"</code></p>
+<p>Shell:</p>
+<ol type="1">
+<li><p>Tokenize:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;ls -l | grep txt &gt; out.txt&quot;</span></span><br><span class="line">   ↓</span><br><span class="line">[ WORD:<span class="built_in">ls</span> ]  [ WORD:-l ]  [ PIPE:| ]  [ WORD:grep ]  [ WORD:txt ]</span><br><span class="line">[ REDIR_OUT:&gt; ]  [ WORD:out.txt ]</span><br></pre></td></tr></table></figure></li>
+<li><p>Parse:</p>
+<p>This step is to parse the tokens from previous step. And organize
+them into a Abstract Syntax Tree(AST).</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      Pipeline</span><br><span class="line">     /        \</span><br><span class="line">Command       Command</span><br><span class="line"><span class="built_in">ls</span>  -l        grep txt</span><br><span class="line">                │</span><br><span class="line">            Redirection</span><br><span class="line">             stdout → out.txt</span><br></pre></td></tr></table></figure>
+<p>Each node in the AST maps to a set of System Call.</p></li>
+</ol>
+<h1 id="bash">4. Bash</h1>
+<p>What is bash? Bash is a <code>Concrete Implementation</code> of
+shell.</p>
+<h1 id="coreutils">5. Coreutils</h1>
+<p><strong>Coreutils</strong> (GNU Core Utilities) is a set of commonly
+used <mark>user-space</mark> utilities packaged and shipped by Linux
+distributions.</p>
+<p>Commonly used tools include:</p>
+<p><code>ls</code> <code>cp</code> <code>mv</code> <code>rm</code>
+<code>cat</code> <code>echo</code> <code>mkdir</code> <code>ln</code>
+<code>touch</code> <code>chmod</code> <code>chown</code> <code>dd</code>
+<code>df</code> <code>du</code> <code>sort</code> <code>uniq</code>
+<code>wc</code> <code>head</code> <code>tail</code> <code>cut</code>
+<code>tr</code> <code>seq</code> <code>date</code> <code>whoami</code>
+<code>id</code> <code>env</code> <code>sleep</code>
+<code>test</code></p>
+<p>…</p>
+
     </div>
 
     
@@ -334,7 +401,7 @@
     
 
     <footer class="post-footer"><div class="post-copyright">
-  <p><strong>本文链接：</strong><a href="https://wangyier.top/SMAP-&-L3_Cache/">https://wangyier.top/SMAP-&-L3_Cache/</a></p>
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/os-and-shell-and-terminal/">https://wangyier.top/os-and-shell-and-terminal/</a></p>
   <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
 </div>
 
@@ -398,27 +465,23 @@
   })();
 </script>
           <div class="post-tags">
-              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
-              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
-              <a href="/tags/Encrypted/" rel="tag"># Encrypted</a>
-              <a href="/tags/Linux/" rel="tag"># Linux</a>
-              <a href="/tags/Memory/" rel="tag"># Memory</a>
-              <a href="/tags/SMAP/" rel="tag"># SMAP</a>
-              <a href="/tags/Performance/" rel="tag"># Performance</a>
-              <a href="/tags/Cache/" rel="tag"># Cache</a>
+              <a href="/tags/OS/" rel="tag"># OS</a>
+              <a href="/tags/Bash/" rel="tag"># Bash</a>
+              <a href="/tags/Terminal/" rel="tag"># Terminal</a>
+              <a href="/tags/Shell/" rel="tag"># Shell</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/Typora-guide/" rel="prev" title="Typora Guide">
-                  <i class="fa fa-angle-left"></i> Typora Guide
+                <a href="/mini-swe-agent/" rel="prev" title="mini-swe-agent">
+                  <i class="fa fa-angle-left"></i> mini-swe-agent
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/POE-relative/" rel="next" title="POE Relative">
-                  POE Relative <i class="fa fa-angle-right"></i>
+                <a href="/paper-summary-poly-skill/" rel="next" title="Paper Summary – PolySkill">
+                  Paper Summary – PolySkill <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
