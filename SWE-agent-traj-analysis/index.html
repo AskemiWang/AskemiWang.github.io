@@ -32,7 +32,7 @@
 <meta property="og:description" content="A report of a traj file of SWE-agent.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-06-27T10:57:44.000Z">
-<meta property="article:modified_time" content="2026-09-13T14:48:28.000Z">
+<meta property="article:modified_time" content="2026-10-21T18:25:20.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Benchmark">
@@ -206,7 +206,7 @@ Python 代码（Step 24 ~ Step 26，共 3 步）</span></a></li><li class="nav-i
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -217,7 +217,7 @@ Python 代码（Step 24 ~ Step 26，共 3 步）</span></a></li><li class="nav-i
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">101</span>
+        <span class="site-state-item-count">103</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -288,7 +288,7 @@ Python 代码（Step 24 ~ Step 26，共 3 步）</span></a></li><li class="nav-i
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-13 22:48:28" itemprop="dateModified" datetime="2026-09-13T22:48:28+08:00">2026-09-13</time>
+      <time title="Modified: 2026-10-22 02:25:20" itemprop="dateModified" datetime="2026-10-22T02:25:20+08:00">2026-10-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -391,13 +391,17 @@ target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-lear
 URL 添加到 <code>linkcheck_ignore</code> 列表中：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/joblib/threadpoolctl/#setting-the-maximum-size-of-thread-pools</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><strong>背景说明</strong>： - scikit-learn 使用 Sphinx 构建文档 -
-Sphinx 的 <code>linkcheck</code> 功能会自动检查文档中外链的有效性 -
-但是有些链接在浏览器中可以正常打开，却因为各种原因被
-<code>linkcheck</code> 误报为”broken”（损坏的链接） -
-<code>linkcheck_ignore</code> 是一个配置列表，放在
-<code>doc/conf.py</code> 中，用来告诉 Sphinx “这些链接不用检查” - 这个
-PR 的目的就是把 threadpoolctl 的链接加入忽略列表</p>
+<p><strong>背景说明</strong>：</p>
+<ul>
+<li>scikit-learn 使用 Sphinx 构建文档</li>
+<li>Sphinx 的 <code>linkcheck</code>
+功能会自动检查文档中外链的有效性</li>
+<li>但是有些链接在浏览器中可以正常打开，却因为各种原因被
+<code>linkcheck</code> 误报为”broken”（损坏的链接）</li>
+<li><code>linkcheck_ignore</code> 是一个配置列表，放在
+<code>doc/conf.py</code> 中，用来告诉 Sphinx “这些链接不用检查”</li>
+<li>这个 PR 的目的就是把 threadpoolctl 的链接加入忽略列表</li>
+</ul>
 <p><strong>一句话总结</strong>：这个任务非常简单——找到配置文件，在已有的忽略列表里加一行
 URL。</p>
 <hr />
@@ -500,12 +504,16 @@ the specified URL to the <code>linkcheck_ignore</code> list…”</p>
 <h4 id="核心问题agent-在说但不在做">核心问题：Agent
 在”说”但不在”做”</h4>
 <p>Agent 的 <code>response</code> 和 <code>thought</code>
-中描述了要做的事情，但它的 <code>action</code> 从未跟进： - 它说”创建
-test_link.py”但从不执行 <code>echo '...' &gt; test_link.py</code> 或
-<code>cat &gt; test_link.py</code> - 它说”编辑 conf.py”但从不使用
-<code>str_replace_editor</code> 工具 - 它说了 24
-次”让我们找到配置文件”，但从未执行过 <code>find</code> 或
-<code>grep</code> 命令</p>
+中描述了要做的事情，但它的 <code>action</code> 从未跟进：</p>
+<ul>
+<li>它说”创建 test_link.py”但从不执行
+<code>echo '...' &gt; test_link.py</code> 或
+<code>cat &gt; test_link.py</code></li>
+<li>它说”编辑 conf.py”但从不使用 <code>str_replace_editor</code>
+工具</li>
+<li>它说了 24 次”让我们找到配置文件”，但从未执行过 <code>find</code> 或
+<code>grep</code> 命令</li>
+</ul>
 <h3
 id="阶段二尝试直接执行-python-代码step-24-step-26共-3-步">阶段二：尝试直接执行
 Python 代码（Step 24 ~ Step 26，共 3 步）</h3>
@@ -516,13 +524,20 @@ Python 代码（Step 24 ~ Step 26，共 3 步）</h3>
 命令执行</strong>。Bash 当然无法理解
 <code>import subprocess</code>，所以这次更是毫无效果。</p>
 <p><strong>关键观察</strong>：Step 24-26 的 <code>observation</code>
-都是<strong>空字符串</strong>，这说明命令可能： 1.
-根本没有被执行（因为格式错误被拦截） 2. 执行了但不产生任何输出（比如
-Python 解释器因为语法错误静默退出）</p>
+都是<strong>空字符串</strong>，这说明命令可能：</p>
+<ol type="1">
+<li>根本没有被执行（因为格式错误被拦截）</li>
+<li>执行了但不产生任何输出（比如 Python
+解释器因为语法错误静默退出）</li>
+</ol>
 <h3 id="阶段三终止step-27">阶段三：终止（Step 27）</h3>
-<p><strong>Step 27</strong>： - <code>action</code>: 空字符串 -
-<code>observation</code>: 空字符串 - <code>response</code>: “Exit due to
-repeated format/blocklist/bash syntax errors”</p>
+<p><strong>Step 27</strong>：</p>
+<ul>
+<li><code>action</code>: 空字符串</li>
+<li><code>observation</code>: 空字符串</li>
+<li><code>response</code>: “Exit due to repeated format/blocklist/bash
+syntax errors”</li>
+</ul>
 <p><strong>exit_status</strong> = <code>exit_format</code></p>
 <p>这表示 SWE-Agent 框架检测到 Agent
 一直在产生格式错误（也许是输出无法被正确解析为 “讨论+命令”
@@ -549,22 +564,29 @@ repeated format/blocklist/bash syntax errors”</p>
 <p>这是典型的 LLM Agent 失败模式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Agent 发现错误 → Agent 描述解决方案 → Agent 不执行方案 → 再次遇到同样错误 → 再次描述方案 → ...</span><br></pre></td></tr></table></figure>
 <p><strong>为什么会这样？</strong></p>
-<p>可能的原因： 1. <strong>模型能力不足</strong>：Qwen-local
-是开源小模型，工具调用能力远不如 GPT-4/Claude 2.
-<strong>上下文混乱</strong>：随着对话越来越长（52
-条消息），模型迷失在上下文中 3.
-<strong>缺乏工具使用训练</strong>：模型更擅长”解释怎么做”而不是”实际去做”
-4. <strong>框架格式限制</strong>：SWE-Agent 要求特定格式（DISCUSSION +
-代码块），模型可能无法稳定生成</p>
+<p>可能的原因：</p>
+<ol type="1">
+<li><strong>模型能力不足</strong>：Qwen-local
+是开源小模型，工具调用能力远不如 GPT-4/Claude</li>
+<li><strong>上下文混乱</strong>：随着对话越来越长（52
+条消息），模型迷失在上下文中</li>
+<li><strong>缺乏工具使用训练</strong>：模型更擅长”解释怎么做”而不是”实际去做”</li>
+<li><strong>框架格式限制</strong>：SWE-Agent 要求特定格式（DISCUSSION +
+代码块），模型可能无法稳定生成</li>
+</ol>
 <h3 id="问题三从未使用搜索工具">5.3 问题三：从未使用搜索工具</h3>
 <p>优秀的 SWE-Agent 执行流程应该是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. find / -name &quot;conf.py&quot;        ← 找到配置文件</span><br><span class="line">2. cat doc/conf.py                ← 读取文件内容</span><br><span class="line">3. grep &quot;linkcheck_ignore&quot; ...    ← 找到需要修改的位置</span><br><span class="line">4. str_replace_editor ...         ← 精确编辑</span><br><span class="line">5. python test_link.py            ← 验证修复</span><br></pre></td></tr></table></figure>
 <p>但本 Agent 的实际流程是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. python test_link.py  ← 跳过所有搜索，直接运行不存在的脚本</span><br><span class="line">2. python test_link.py  ← 重试</span><br><span class="line">3. python test_link.py  ← 重试 × 24</span><br></pre></td></tr></table></figure>
-<p><strong>Agent 从未执行过以下关键命令</strong>： - <code>find</code> —
-搜索文件 - <code>grep</code> — 搜索内容 - <code>ls</code> — 列出目录 -
-<code>cat</code> — 读取文件内容 - <code>str_replace_editor</code> —
-编辑文件</p>
+<p><strong>Agent 从未执行过以下关键命令</strong>：</p>
+<ul>
+<li><code>find</code> — 搜索文件</li>
+<li><code>grep</code> — 搜索内容</li>
+<li><code>ls</code> — 列出目录</li>
+<li><code>cat</code> — 读取文件内容</li>
+<li><code>str_replace_editor</code> — 编辑文件</li>
+</ul>
 <h3 id="问题四没有尝试写文件">5.4 问题四：没有尝试写文件</h3>
 <p>即使 Agent 知道要创建
 <code>test_link.py</code>，它从未执行过真正的文件创建操作，比如：</p>
@@ -749,10 +771,13 @@ repeated format/blocklist/bash syntax errors”</p>
 <p><strong>第一步：看概览</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统计总步数和 exit_status</span></span><br><span class="line">python3 -c <span class="string">&quot;import json; d=json.load(open(&#x27;xxx.traj&#x27;)); print(len(d[&#x27;trajectory&#x27;]), d[&#x27;info&#x27;][&#x27;exit_status&#x27;])&quot;</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>第二步：扫描步骤摘要</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 看每一步的 action 和 observation</span></span><br><span class="line">python3 -c <span class="string">&quot;</span></span><br><span class="line"><span class="string">import json</span></span><br><span class="line"><span class="string">d=json.load(open(&#x27;xxx.traj&#x27;))</span></span><br><span class="line"><span class="string">for i, s in enumerate(d[&#x27;trajectory&#x27;]):</span></span><br><span class="line"><span class="string">    print(f&#x27;Step &#123;i&#125;: &#123;s[\&quot;action\&quot;][:80]&#125; | &#123;s[\&quot;observation\&quot;][:80]&#125;&#x27;)</span></span><br><span class="line"><span class="string">&quot;</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>第三步：看关键信息</strong> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// info 中的关键字段</span></span><br><span class="line">exit_status<span class="punctuation">:</span>  <span class="string">&quot;exit_format&quot;</span> | <span class="string">&quot;exit_context&quot;</span> | <span class="string">&quot;exit_cost&quot;</span> | ...</span><br><span class="line">edited_files<span class="punctuation">:</span> 实际修改了哪些文件</span><br><span class="line">submission<span class="punctuation">:</span>   是否成功提交</span><br><span class="line">model_stats<span class="punctuation">:</span>  token 消耗和成本</span><br></pre></td></tr></table></figure></p>
-<p><strong>第四步：定位问题步骤</strong> - 如果发现连续的相同 action →
-可能陷入循环 - 如果发现 observation 为空 → 命令可能格式错误 - 如果发现
-action 中有 HTML 实体 → 存在编码问题 - 如果 response 和 action 不匹配 →
-模型执行能力差</p>
+<p><strong>第四步：定位问题步骤</strong></p>
+<ul>
+<li>如果发现连续的相同 action → 可能陷入循环</li>
+<li>如果发现 observation 为空 → 命令可能格式错误</li>
+<li>如果发现 action 中有 HTML 实体 → 存在编码问题</li>
+<li>如果 response 和 action 不匹配 → 模型执行能力差</li>
+</ul>
 <h3 id="正常-traj-vs-异常-traj">8.2 正常 Traj vs 异常 Traj</h3>
 <p><strong>正常的 Traj 特征</strong>： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Step 0:  action=find ... ; observation=找到多个文件</span><br><span class="line">Step 1:  action=cat /path/to/file ; observation=显示文件内容</span><br><span class="line">Step 2:  action=str_replace_editor ... ; observation=文件已修改</span><br><span class="line">Step 3:  action=python test.py ; observation=测试通过</span><br><span class="line">Step 4:  action=submit ; observation=提交成功</span><br></pre></td></tr></table></figure></p>
 <p><strong>异常的 Traj 特征</strong>（本次）： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Step 0:  action=python test.py ; observation=文件不存在</span><br><span class="line">Step 1:  action=python test.py ; observation=文件不存在</span><br><span class="line">...</span><br><span class="line">Step 23: action=python test.py ; observation=文件不存在  ← 重复24次！</span><br><span class="line">Step 27: action=&quot;&quot; ; exit_status=exit_format            ← 强制退出</span><br></pre></td></tr></table></figure></p>

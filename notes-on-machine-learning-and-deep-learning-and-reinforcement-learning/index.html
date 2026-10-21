@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_bellman_introduction.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/rl_state_value_example.png">
 <meta property="article:published_time" content="2026-07-27T05:56:56.000Z">
-<meta property="article:modified_time" content="2026-10-21T13:00:12.000Z">
+<meta property="article:modified_time" content="2026-10-21T18:25:20.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="Machine Learning">
@@ -210,7 +210,7 @@ Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -221,7 +221,7 @@ Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">101</span>
+        <span class="site-state-item-count">103</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -292,7 +292,7 @@ Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-21 21:00:12" itemprop="dateModified" datetime="2026-10-21T21:00:12+08:00">2026-10-21</time>
+      <time title="Modified: 2026-10-22 02:25:20" itemprop="dateModified" datetime="2026-10-22T02:25:20+08:00">2026-10-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -489,101 +489,126 @@ class="math inline">ℬ</span> from <span class="math inline">𝒜</span>
 (contains only those elements of <span class="math inline">𝒜</span> that
 do not belong to <span class="math inline">ℬ</span>)</li>
 </ul>
-<p><strong>Functions and Operators</strong> - <span
-class="math inline"><em>f</em>(⋅)</span>: a function - <span
-class="math inline">log (⋅)</span>: the natural logarithm (base <span
-class="math inline"><em>e</em></span>) - <span
-class="math inline">log<sub>2</sub>(⋅)</span>: logarithm to base 2 -
-<span class="math inline">exp (⋅)</span>: the exponential function -
-<span class="math inline"><strong>1</strong>(⋅)</span>: the indicator
-function; evaluates to 1 if the boolean argument is true, and 0
-otherwise - <span
+<p><strong>Functions and Operators</strong></p>
+<ul>
+<li><span class="math inline"><em>f</em>(⋅)</span>: a function</li>
+<li><span class="math inline">log (⋅)</span>: the natural logarithm
+(base <span class="math inline"><em>e</em></span>)</li>
+<li><span class="math inline">log<sub>2</sub>(⋅)</span>: logarithm to
+base 2</li>
+<li><span class="math inline">exp (⋅)</span>: the exponential
+function</li>
+<li><span class="math inline"><strong>1</strong>(⋅)</span>: the
+indicator function; evaluates to 1 if the boolean argument is true, and
+0 otherwise</li>
+<li><span
 class="math inline"><strong>1</strong><sub>𝒳</sub>(<em>z</em>)</span>:
 the set-membership indicator function; evaluates to 1 if the element
 <span class="math inline"><em>z</em></span> belongs to the set <span
-class="math inline">𝒳</span> and 0 otherwise - <span
-class="math inline">(⋅)<sup>⊤</sup></span>: transpose of a vector or a
-matrix - <span
-class="math inline"><strong>X</strong><sup>−1</sup></span>: inverse of
-matrix <span class="math inline"><strong>X</strong></span> - <span
-class="math inline">⊙</span>: Hadamard (elementwise) product - <span
-class="math inline">[⋅, ⋅]</span>: concatenation - <span
-class="math inline">∥ ⋅ ∥<sub><em>p</em></sub></span>: <span
-class="math inline"><em>ℓ</em><sub><em>p</em></sub></span> norm - <span
-class="math inline">∥⋅∥</span>: <span
-class="math inline"><em>ℓ</em><sub>2</sub></span> norm - <span
+class="math inline">𝒳</span> and 0 otherwise</li>
+<li><span class="math inline">(⋅)<sup>⊤</sup></span>: transpose of a
+vector or a matrix</li>
+<li><span class="math inline"><strong>X</strong><sup>−1</sup></span>:
+inverse of matrix <span
+class="math inline"><strong>X</strong></span></li>
+<li><span class="math inline">⊙</span>: Hadamard (elementwise)
+product</li>
+<li><span class="math inline">[⋅, ⋅]</span>: concatenation</li>
+<li><span class="math inline">∥ ⋅ ∥<sub><em>p</em></sub></span>: <span
+class="math inline"><em>ℓ</em><sub><em>p</em></sub></span> norm</li>
+<li><span class="math inline">∥⋅∥</span>: <span
+class="math inline"><em>ℓ</em><sub>2</sub></span> norm</li>
+<li><span
 class="math inline">⟨<strong>x</strong>, <strong>y</strong>⟩</span>:
 inner (dot) product of vectors <span
 class="math inline"><strong>x</strong></span> and <span
-class="math inline"><strong>y</strong></span> - <span
-class="math inline">∑</span>: summation over a collection of elements -
-<span class="math inline">∏</span>: product over a collection of
-elements - <span class="math inline">$\stackrel{\text{def}}{=}$</span>:
-an equality asserted as a definition of the symbol on the left-hand
-side</p>
-<p><strong>Calculus</strong> - <span
-class="math inline">$\frac{dy}{dx}$</span>: derivative of <span
-class="math inline"><em>y</em></span> with respect to <span
-class="math inline"><em>x</em></span> - <span
-class="math inline">$\frac{\partial y}{\partial x}$</span>: partial
-derivative of <span class="math inline"><em>y</em></span> with respect
-to <span class="math inline"><em>x</em></span> - <span
+class="math inline"><strong>y</strong></span></li>
+<li><span class="math inline">∑</span>: summation over a collection of
+elements</li>
+<li><span class="math inline">∏</span>: product over a collection of
+elements</li>
+<li><span class="math inline">$\stackrel{\text{def}}{=}$</span>: an
+equality asserted as a definition of the symbol on the left-hand
+side</li>
+</ul>
+<p><strong>Calculus</strong></p>
+<ul>
+<li><span class="math inline">$\frac{dy}{dx}$</span>: derivative of
+<span class="math inline"><em>y</em></span> with respect to <span
+class="math inline"><em>x</em></span></li>
+<li><span class="math inline">$\frac{\partial y}{\partial x}$</span>:
+partial derivative of <span class="math inline"><em>y</em></span> with
+respect to <span class="math inline"><em>x</em></span></li>
+<li><span
 class="math inline">∇<sub><strong>x</strong></sub><em>y</em></span>:
 gradient of <span class="math inline"><em>y</em></span> with respect to
-<span class="math inline"><strong>x</strong></span> - <span
+<span class="math inline"><strong>x</strong></span></li>
+<li><span
 class="math inline">∫<sub><em>a</em></sub><sup><em>b</em></sup><em>f</em>(<em>x</em>) <em>d</em><em>x</em></span>:
 definite integral of <span class="math inline"><em>f</em></span> from
 <span class="math inline"><em>a</em></span> to <span
 class="math inline"><em>b</em></span> with respect to <span
-class="math inline"><em>x</em></span> - <span
+class="math inline"><em>x</em></span></li>
+<li><span
 class="math inline">∫<em>f</em>(<em>x</em>) <em>d</em><em>x</em></span>:
 indefinite integral of <span class="math inline"><em>f</em></span> with
-respect to <span class="math inline"><em>x</em></span></p>
-<p><strong>Probability and Information Theory</strong> - <span
-class="math inline"><em>X</em></span>: a random variable - <span
-class="math inline"><em>P</em></span>: a probability distribution -
-<span class="math inline"><em>X</em> ∼ <em>P</em></span>: the random
+respect to <span class="math inline"><em>x</em></span></li>
+</ul>
+<p><strong>Probability and Information Theory</strong></p>
+<ul>
+<li><span class="math inline"><em>X</em></span>: a random variable</li>
+<li><span class="math inline"><em>P</em></span>: a probability
+distribution</li>
+<li><span class="math inline"><em>X</em> ∼ <em>P</em></span>: the random
 variable <span class="math inline"><em>X</em></span> follows
-distribution <span class="math inline"><em>P</em></span> - <span
+distribution <span class="math inline"><em>P</em></span></li>
+<li><span
 class="math inline"><em>P</em>(<em>X</em> = <em>x</em>)</span>: the
 probability assigned to the event where random variable <span
 class="math inline"><em>X</em></span> takes value <span
-class="math inline"><em>x</em></span> - <span
+class="math inline"><em>x</em></span></li>
+<li><span
 class="math inline"><em>P</em>(<em>X</em> ∣ <em>Y</em>)</span>: the
 conditional probability distribution of <span
 class="math inline"><em>X</em></span> given <span
-class="math inline"><em>Y</em></span> - <span
-class="math inline"><em>p</em>(⋅)</span>: a probability density function
-(PDF) associated with distribution <span
-class="math inline"><em>P</em></span> - <span
-class="math inline"><em>E</em>[<em>X</em>]</span>: expectation of a
-random variable <span class="math inline"><em>X</em></span> - <span
-class="math inline"><em>X</em> ⟂ <em>Y</em></span>: random variables
-<span class="math inline"><em>X</em></span> and <span
-class="math inline"><em>Y</em></span> are independent - <span
+class="math inline"><em>Y</em></span></li>
+<li><span class="math inline"><em>p</em>(⋅)</span>: a probability
+density function (PDF) associated with distribution <span
+class="math inline"><em>P</em></span></li>
+<li><span class="math inline"><em>E</em>[<em>X</em>]</span>: expectation
+of a random variable <span class="math inline"><em>X</em></span></li>
+<li><span class="math inline"><em>X</em> ⟂ <em>Y</em></span>: random
+variables <span class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span> are independent</li>
+<li><span
 class="math inline"><em>X</em> ⟂ <em>Y</em> ∣ <em>Z</em></span>: random
 variables <span class="math inline"><em>X</em></span> and <span
 class="math inline"><em>Y</em></span> are conditionally independent
-given <span class="math inline"><em>Z</em></span> - <span
-class="math inline"><em>σ</em><sub><em>X</em></sub></span>: standard
-deviation of random variable <span class="math inline"><em>X</em></span>
-- <span class="math inline">Var(<em>X</em>)</span>: variance of random
+given <span class="math inline"><em>Z</em></span></li>
+<li><span class="math inline"><em>σ</em><sub><em>X</em></sub></span>:
+standard deviation of random variable <span
+class="math inline"><em>X</em></span></li>
+<li><span class="math inline">Var(<em>X</em>)</span>: variance of random
 variable <span class="math inline"><em>X</em></span>, equal to <span
-class="math inline"><em>σ</em><sub><em>X</em></sub><sup>2</sup></span> -
-<span class="math inline">Cov(<em>X</em>, <em>Y</em>)</span>: covariance
-of random variables <span class="math inline"><em>X</em></span> and
-<span class="math inline"><em>Y</em></span> - <span
-class="math inline"><em>ρ</em>(<em>X</em>, <em>Y</em>)</span>: the
-Pearson correlation coefficient between <span
+class="math inline"><em>σ</em><sub><em>X</em></sub><sup>2</sup></span></li>
+<li><span class="math inline">Cov(<em>X</em>, <em>Y</em>)</span>:
+covariance of random variables <span
+class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span></li>
+<li><span class="math inline"><em>ρ</em>(<em>X</em>, <em>Y</em>)</span>:
+the Pearson correlation coefficient between <span
 class="math inline"><em>X</em></span> and <span
 class="math inline"><em>Y</em></span>, equals <span
-class="math inline">$\frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}$</span> -
-<span class="math inline"><em>H</em>(<em>X</em>)</span>: entropy of
-random variable <span class="math inline"><em>X</em></span> - <span
+class="math inline">$\frac{\text{Cov}(X,Y)}{\sigma_X
+\sigma_Y}$</span></li>
+<li><span class="math inline"><em>H</em>(<em>X</em>)</span>: entropy of
+random variable <span class="math inline"><em>X</em></span></li>
+<li><span
 class="math inline"><em>D</em><sub>KL</sub>(<em>P</em>∥<em>Q</em>)</span>:
 the KL-divergence (or relative entropy) from distribution <span
 class="math inline"><em>Q</em></span> to distribution <span
-class="math inline"><em>P</em></span></p>
+class="math inline"><em>P</em></span></li>
+</ul>
 <h2 id="preliminaries">2.2 Preliminaries</h2>
 <p>To prepare for your dive into deep learning, we will need a few
 survival skills:</p>
@@ -1814,9 +1839,9 @@ Equation: Solve the State Values</h4>
 </script>
           <div class="post-tags">
               <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
-              <a href="/tags/Python/" rel="tag"># Python</a>
               <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
               <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
           </div>
 
         

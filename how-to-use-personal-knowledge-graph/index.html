@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use Personal Knowledge Graph">
+<meta property="og:url" content="https://wangyier.top/how-to-use-personal-knowledge-graph/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-21T15:18:14.000Z">
+<meta property="article:modified_time" content="2026-10-21T16:23:21.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Knowledge Graph">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/how-to-use-personal-knowledge-graph/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/how-to-use-personal-knowledge-graph/","path":"/how-to-use-personal-knowledge-graph/","title":"How to Use Personal Knowledge Graph"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>How to Use Personal Knowledge Graph | The Great Library</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">1. 这是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C"><span class="nav-text">2. 目录与第一次运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-text">2.1 目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-text">2.2 依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%9D%A1%E5%91%BD%E4%BB%A4%E4%B8%89%E6%AD%A5"><span class="nav-text">2.3 一条命令,三步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B5-%E7%B1%BB%E8%8A%82%E7%82%B99-%E7%B1%BB%E8%BE%B9"><span class="nav-text">3. 数据模型:5 类节点,9 类边</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9"><span class="nav-text">3.1 节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9"><span class="nav-text">3.2 边</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E4%B8%80%E7%AF%87%E7%AC%94%E8%AE%B0"><span class="nav-text">4. 加一篇笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%A4%E6%96%AD%E8%AF%A5%E4%B8%8D%E8%AF%A5%E8%BF%9B"><span class="nav-text">4.1 先判断该不该进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-a%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-resource"><span class="nav-text">4.2 入口 A:博客文章 → Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-b%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AA-concept"><span class="nav-text">4.3 入口 B:自己写一个 Concept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-c%E4%B8%80%E4%B8%AA%E5%88%A4%E6%96%AD-claim"><span class="nav-text">4.4 入口 C:一个判断 → Claim</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E6%80%8E%E4%B9%88%E5%86%99%E6%89%8D%E4%B8%8D%E6%98%AF%E6%A0%87%E7%AD%BE%E5%A2%99"><span class="nav-text">5. 边怎么写才不是标签墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dash-%E5%BD%92%E4%B8%80%E5%8C%962026-10-21"><span class="nav-text">5.1 dash 归一化(2026-10-21)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%9B%BE%E8%83%BD%E5%9B%9E%E7%AD%94%E4%BB%80%E4%B9%88"><span class="nav-text">6. 查询:图能回答什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E8%BE%93%E5%87%BAe-%E5%BF%85%E4%BF%AEw-%E5%88%A4%E6%96%ADi-%E9%80%89%E9%A2%98"><span class="nav-text">7. 读输出:E 必修,W 判断,I 选题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#e%E9%98%BB%E6%96%AD"><span class="nav-text">7.1 E(阻断)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#w%E8%83%BD%E5%8F%91%E5%B8%83%E4%BD%86%E6%9C%89%E4%BB%A3%E4%BB%B7"><span class="nav-text">7.2 W(能发布,但有代价)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i%E4%B8%8D%E6%98%AF%E9%94%99%E8%AF%AF"><span class="nav-text">7.3 I(不是错误)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%92%8C%E5%8D%9A%E5%AE%A2%E7%BB%93%E5%90%88"><span class="nav-text">8. 和博客结合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E5%9C%A8%E6%80%8E%E4%B9%88%E6%8E%A5"><span class="nav-text">8.1 现在怎么接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kg-%E5%9D%97%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E"><span class="nav-text">8.2 kg 块:完整说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E9%A1%BA%E5%BA%8F"><span class="nav-text">8.2.1 读取顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E8%A1%A8"><span class="nav-text">8.2.2 字段表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E7%A7%8D%E8%8A%82%E7%82%B9"><span class="nav-text">8.2.3 五种节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9D%A1%E8%BE%B9%E7%9A%84%E5%AE%8C%E6%95%B4%E5%86%99%E6%B3%95"><span class="nav-text">8.2.4 一条边的完整写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BE%8B%E5%AD%90%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-%E4%B8%80%E4%B8%AA-resource-%E4%B8%80%E6%9D%A1%E8%BE%B9"><span class="nav-text">8.2.5
+完整例子:一篇博客文章 → 一个 Resource → 一条边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="nav-text">8.2.6 常见错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E7%9A%84-kg-%E5%9D%97"><span class="nav-text">8.2.7 空的 kg 块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9C%E9%97%B4%E7%AE%A1%E9%81%93%E7%9A%84%E4%B8%89%E4%B8%AA%E5%9D%91"><span class="nav-text">8.3 夜间管道的三个坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%A4%84%E7%90%86%E4%B8%80%E7%AF%87%E7%9A%84%E6%9C%80%E5%B0%8F%E6%AD%A5%E9%AA%A4"><span class="nav-text">8.4 手动处理一篇的最小步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E7%8E%B0%E5%9C%A8%E4%B8%8D%E5%81%9A%E7%9A%84%E4%BA%8B"><span class="nav-text">9. 边界:现在不做的事</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9F%E6%9F%A5"><span class="nav-text">10. 速查</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wangyier.top/how-to-use-personal-knowledge-graph/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/avatar.png">
+      <meta itemprop="name" content="Askemi Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Great Library">
+      <meta itemprop="description" content="Personal notes of everything.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="How to Use Personal Knowledge Graph | The Great Library">
+      <meta itemprop="description" content="A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How to Use Personal Knowledge Graph
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-10-21 23:18:14" itemprop="dateCreated datePublished" datetime="2026-10-21T23:18:14+08:00">2026-10-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-10-22 00:23:21" itemprop="dateModified" datetime="2026-10-22T00:23:21+08:00">2026-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="这是什么">1. 这是什么</h1>
+<p>把 <code>vault/</code> 里的 Markdown
+编译成一张有向图,然后回答两个问题:</p>
+<ul>
+<li><strong>我该先学什么?</strong></li>
+<li><strong>这个概念和我读过的哪篇东西有关?</strong></li>
+</ul>
+<p>它不是 RAG:没有向量、没有 embedding、没有”和我的笔记聊天”。
+它不是笔记软件:写作仍然在 Typora / Obsidian,它只读 <code>.md</code>。
+它不是自动抽取:边是手写的,不是模型猜的。</p>
+<blockquote>
+<p>一句话区别:RAG 的智力发生在提问时,这张图的智力发生在记录时。</p>
+</blockquote>
+<p>当前规模(2026-10-22):18 个节点、18 条边、26 条回归测试、0
+errors。</p>
+<h1 id="目录与第一次运行">2. 目录与第一次运行</h1>
+<h2 id="目录">2.1 目录</h2>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vault/</code></td>
+<td>人工维护的笔记,唯一真相源</td>
+</tr>
+<tr>
+<td><code>vault/10-concepts/</code></td>
+<td>概念</td>
+</tr>
+<tr>
+<td><code>vault/20-implementations/</code></td>
+<td>源码文件 / 函数</td>
+</tr>
+<tr>
+<td><code>vault/30-resources/</code></td>
+<td>论文、文档、博客文章</td>
+</tr>
+<tr>
+<td><code>vault/40-claims/</code></td>
+<td>技术判断</td>
+</tr>
+<tr>
+<td><code>vault/50-projects/</code></td>
+<td>项目</td>
+</tr>
+<tr>
+<td><code>ontology.yaml</code></td>
+<td>类型白名单</td>
+</tr>
+<tr>
+<td><code>tools/</code></td>
+<td>update / build_graph / check / graphify / kgify / viewer</td>
+</tr>
+<tr>
+<td><code>tests/selftest.py</code></td>
+<td>26 条回归测试</td>
+</tr>
+<tr>
+<td><code>graph/</code></td>
+<td>派生数据,可随时删掉重建,不进 git</td>
+</tr>
+<tr>
+<td><code>inbox/</code></td>
+<td>博客原文快照,不参与构建</td>
+</tr>
+<tr>
+<td><code>proposals/</code></td>
+<td>机器提出的候选边</td>
+</tr>
+</tbody>
+</table>
+<h2 id="依赖">2.2 依赖</h2>
+<p>Python 3.10+,以及两个包:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyyaml networkx</span><br></pre></td></tr></table></figure>
+<p>没有服务、没有数据库、没有网络、没有 API key。</p>
+<h2 id="一条命令三步">2.3 一条命令,三步</h2>
+<p>平时只需要:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;E:\Personal Knowledge Graph&quot;</span></span><br><span class="line">python tools/update.py</span><br></pre></td></tr></table></figure>
+<p>它把下面三步串起来,但顺序有一处不同:先体检、后发布。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python tools/build_graph.py      <span class="comment"># 编译 + 校验,有 E 就不写 graph/</span></span><br><span class="line">python tools/check.py            <span class="comment"># 语义检查:孤立点、成环、证据锚点</span></span><br><span class="line">python tools/graphify.py <span class="built_in">export</span>  <span class="comment"># 生成 graph/graph.html</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>手动跑这三条时,<code>build_graph.py</code> 会先写
+<code>graph/</code>,再跑 <code>check.py</code>;即使 check
+报错,文件已经更新了。<code>update.py</code>
+把发布放到体检之后,所以失败时 <code>graph/</code> 不动。</p>
+</blockquote>
+<p><strong><code>update.py</code>
+的编译或体检失败就停</strong>:编译失败不进入体检;体检发现 error
+在发布前停;两种情况 <code>graph/</code> 都保持上一次的内容。</p>
+<p>第一次跑应该看到类似:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[1/3] 编译  18 节点 / 18 边</span><br><span class="line">[2/3] 体检  0 errors / 0 warnings / 10 info</span><br><span class="line">[3/3] 出图  graph/graph.html (25 KB)</span><br><span class="line"></span><br><span class="line">✓ 完成。打开 .../graph/graph.html</span><br><span class="line">  10 条结构缺口 —— python tools/graphify.py gaps</span><br></pre></td></tr></table></figure>
+<p><code>info</code> 不是错误,是结构缺口,也就是下一篇的选题。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--open</code></td>
+<td>跑完用默认浏览器打开图</td>
+</tr>
+<tr>
+<td><code>-q</code> / <code>--quiet</code></td>
+<td>只打结论,不刷明细</td>
+</tr>
+<tr>
+<td><code>-v</code> / <code>--verbose</code></td>
+<td>把 I 类提示也打出来</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数据模型5-类节点9-类边">3. 数据模型:5 类节点,9 类边</h1>
+<h2 id="节点">3.1 节点</h2>
+<p>类型不是给”东西”分类,是给”你打算对它问的问题”分类。</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>你想问</th>
+<th>类型</th>
+<th>放哪</th>
+<th>额外必填</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>它是什么?学它之前要会什么?</td>
+<td><code>Concept</code></td>
+<td><code>10-concepts/</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>它怎么写的?在哪个文件?</td>
+<td><code>Implementation</code></td>
+<td><code>20-implementations/</code></td>
+<td><code>path</code></td>
+</tr>
+<tr>
+<td>它说了什么?出处在哪?</td>
+<td><code>Resource</code></td>
+<td><code>30-resources/</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>我信不信?谁支持/反驳?</td>
+<td><code>Claim</code></td>
+<td><code>40-claims/</code></td>
+<td><code>stance</code></td>
+</tr>
+<tr>
+<td>我做到哪了?用了什么?</td>
+<td><code>Project</code></td>
+<td><code>50-projects/</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>所有类型都必填 <code>id</code> 和 <code>name</code>。</p>
+<h2 id="边">3.2 边</h2>
+<table>
+<thead>
+<tr>
+<th>关系</th>
+<th>起点 → 终点</th>
+<th>读作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prerequisite_of</code></td>
+<td>Concept → Concept</td>
+<td>学 Y 之前先掌握 X</td>
+</tr>
+<tr>
+<td><code>part_of</code></td>
+<td>Concept/Implementation → Concept</td>
+<td>X 是 Y 的组成部分</td>
+</tr>
+<tr>
+<td><code>implemented_by</code></td>
+<td>Concept → Implementation</td>
+<td>X 由 Y 实现</td>
+</tr>
+<tr>
+<td><code>explained_by</code></td>
+<td>Concept/Claim → Resource</td>
+<td>X 的解释在 Y</td>
+</tr>
+<tr>
+<td><code>supports</code></td>
+<td>Resource/Claim → Claim</td>
+<td>X 支持 Y</td>
+</tr>
+<tr>
+<td><code>contradicts</code></td>
+<td>Resource/Claim → Claim</td>
+<td>X 与 Y 冲突</td>
+</tr>
+<tr>
+<td><code>about</code></td>
+<td>Claim → Concept/Implementation/Project</td>
+<td>主张讨论的对象</td>
+</tr>
+<tr>
+<td><code>applied_in</code></td>
+<td>Concept → Project</td>
+<td>X 用在 Y 里</td>
+</tr>
+<tr>
+<td><code>related_to</code></td>
+<td>任意 → 任意</td>
+<td>兜底,别滥用</td>
+</tr>
+</tbody>
+</table>
+<p>一条边还有三个属性:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>字段</th>
+<th>可选值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>verified</code> / <code>proposed</code> /
+<code>rejected</code></td>
+<td>默认 <code>verified</code>;查询只认 <code>verified</code></td>
+</tr>
+<tr>
+<td><code>evidence</code></td>
+<td><code>文件名.md#标题</code></td>
+<td>标题必须完整匹配</td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td><code>human</code> / <code>paper</code> / <code>source_code</code> /
+<code>doc</code> / <code>llm</code></td>
+<td>谁为这条边背书</td>
+</tr>
+</tbody>
+</table>
+<p>方向约定:边写在”本笔记”上,读作「本节点 —rel→
+目标」。反向边不要手写,查询会处理。</p>
+<h1 id="加一篇笔记">4. 加一篇笔记</h1>
+<h2 id="先判断该不该进">4.1 先判断该不该进</h2>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>适合吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原子概念笔记(200–800 字)</td>
+<td>✅ 最好的输入</td>
+</tr>
+<tr>
+<td>论文 / 文档摘要</td>
+<td>✅ 整篇导入</td>
+</tr>
+<tr>
+<td>几万字的大合集</td>
+<td>⚠️ 当 <code>Resource</code>,别当 <code>Concept</code></td>
+</tr>
+<tr>
+<td>日记、Todo、安装教程、空壳</td>
+<td>❌ 不进</td>
+</tr>
+</tbody>
+</table>
+<p>判据不是长度,是能不能给它一个”一句话定义”:</p>
+<ul>
+<li>一个都定义不了 → 不进</li>
+<li>定义得了一件事 → 一个节点</li>
+<li>定义得了一大堆 → 当 <code>Resource</code>,再逐个抽
+<code>Concept</code></li>
+</ul>
+<h2 id="入口-a博客文章-resource">4.2 入口 A:博客文章 → Resource</h2>
+<p><strong>一篇博客 ≠ 一个 Concept。</strong>
+文章本身是资料,文章里你读懂的那部分才是知识。</p>
+<p>以 <code>Paper Summary – OSWorld</code> 为例:</p>
+<ol type="1">
+<li>算身份:</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span></span><br></pre></td></tr></table></figure>
+<p>它只打印,不改文件。把建议的 <code>kg:</code> 块贴到博客 frontmatter
+末尾:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.paper-summary-osworld</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;OSWorld&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Paper Summary – OSWorld&quot;</span>]</span><br><span class="line">  <span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>复制进 vault,文件名用 slug:</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span> <span class="string">&quot;vault/30-resources/paper-summary-osworld.md&quot;</span></span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>边写在 Concept 上,不写在 Resource 上:</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">  <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-osworld]]&quot;</span></span><br><span class="line">  <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-osworld.md#1. Introduction&quot;</span></span><br><span class="line">  <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">  <span class="attr">source_type:</span> <span class="string">paper</span></span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>构建 + 体检 + 出图:</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py</span><br></pre></td></tr></table></figure>
+<p><code>evidence</code> 的 <code>#</code>
+后面必须是文件里真实存在的标题。改标题就会报
+<code>W003</code>——这是特性:它保证每条边都能点回原文。</p>
+<h2 id="入口-b自己写一个-concept">4.3 入口 B:自己写一个 Concept</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> vault/_templates/concept.md vault/10-concepts/agent-skill.md</span><br></pre></td></tr></table></figure>
+<p>填 <code>type/id/name/aliases/status</code>,然后按模板写:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 一句话定义</span></span><br><span class="line"><span class="section">## 为什么存在 / 解决什么问题</span></span><br><span class="line"><span class="section">## 前置知识</span></span><br><span class="line"><span class="section">## 实现</span></span><br><span class="line"><span class="section">## 我的理解(用自己的话,不许抄)</span></span><br><span class="line"><span class="section">## 未解决的问题</span></span><br></pre></td></tr></table></figure>
+<p>三个门槛,缺一不可:</p>
+<ol type="1">
+<li>能被一句话定义;</li>
+<li>能被反驳(「它和 X 有关」不是定义);</li>
+<li>至少接得上 3 个已有节点。</li>
+</ol>
+<h2 id="入口-c一个判断-claim">4.4 入口 C:一个判断 → Claim</h2>
+<ul>
+<li>必填 <code>stance</code>:<code>tentative</code> /
+<code>believed</code> / <code>doubted</code> /
+<code>retracted</code>;</li>
+<li><code>about</code> 指向概念 / 实现 / 项目;</li>
+<li>用 <code>supports</code> / <code>contradicts</code> 从 Resource
+或另一个 Claim 连过来;</li>
+<li>证据写真实标题。</li>
+</ul>
+<h1 id="边怎么写才不是标签墙">5. 边怎么写才不是标签墙</h1>
+<table>
+<thead>
+<tr>
+<th>你想说</th>
+<th>写这条</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B 之前要先会 A</td>
+<td><code>A --prerequisite_of--&gt; B</code></td>
+</tr>
+<tr>
+<td>它属于更大的概念</td>
+<td><code>X --part_of--&gt; Y</code></td>
+</tr>
+<tr>
+<td>出处是某篇资料</td>
+<td><code>X --explained_by--&gt; 资料</code></td>
+</tr>
+<tr>
+<td>由某段代码实现</td>
+<td><code>X --implemented_by--&gt; 实现</code></td>
+</tr>
+<tr>
+<td>用在某个项目里</td>
+<td><code>X --applied_in--&gt; 项目</code></td>
+</tr>
+<tr>
+<td>想不出精确关系</td>
+<td><code>related_to</code>(兜底)</td>
+</tr>
+</tbody>
+</table>
+<p>每写一条,问自己:<strong>这条边会被某个查询用到吗?</strong> 不会 →
+写在正文的普通链接里就够了,不要进 <code>relations</code>。</p>
+<p><code>related</code> 必须包含 <code>relations</code> 的所有目标。从
+2026-10-21 起,<code>W002</code> 比较的是<strong>解析后的节点
+id</strong>,所以:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">related:</span> [<span class="string">&quot;[[paper-summary-osworld]]&quot;</span>]      <span class="comment"># Obsidian 认文件名</span></span><br><span class="line"><span class="attr">relations:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">    <span class="attr">to:</span> <span class="string">&quot;[[res.paper-summary-osworld]]&quot;</span>     <span class="comment"># 机器读 id</span></span><br></pre></td></tr></table></figure>
+<p>两种写法指向同一个节点,不会误报。</p>
+<h2 id="dash-归一化2026-10-21">5.1 dash 归一化(2026-10-21)</h2>
+<p><code>–</code>(U+2013)和
+<code>-</code>(U+002D)看起来一样,字节不同。现在 <code>norm()</code>
+会把整个 dash 家族折叠成 ASCII <code>-</code>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Paper Summary – X  ==  Paper Summary - X</span><br></pre></td></tr></table></figure>
+<p>所以手写 <code>[[Paper Summary – Agent S]]</code>
+也能解析。代价:两个只差 dash 的节点会报
+<code>E010</code>——它们确实是同一个名字。</p>
+<h1 id="查询图能回答什么">6. 查询:图能回答什么</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>命令</th>
+<th>回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python tools/graphify.py stats</code></td>
+<td>有多少节点 / 边,按类型分布</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py explain &lt;id&gt;</code></td>
+<td>这个节点的全部出边和入边</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py prereq &lt;id&gt;</code></td>
+<td>学它之前要会什么(按层级)</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py order</code></td>
+<td>全局学习顺序 + 没声明依赖的概念</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py gaps</code></td>
+<td>结构缺口 = 待办</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py cycles</code></td>
+<td>前置关系成环</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py path &lt;a&gt; &lt;b&gt;</code></td>
+<td>两个节点之间的最短关联路径(无向)</td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py export</code></td>
+<td>生成可交互的 <code>graph/graph.html</code></td>
+</tr>
+<tr>
+<td><code>python tools/graphify.py ontology</code></td>
+<td>打印词汇表</td>
+</tr>
+</tbody>
+</table>
+<p>改完笔记先跑
+<code>python tools/update.py</code>;上面的命令都是查询,不改图。</p>
+<p>几个真实输出:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ python tools/graphify.py prereq concept.backpropagation</span><br><span class="line"></span><br><span class="line">concept.backpropagation (反向传播)</span><br><span class="line"></span><br><span class="line">  直接前置:concept.gradient-descent</span><br><span class="line"></span><br><span class="line">  全部前置(按依赖层级,先学下面的,不含自身):</span><br><span class="line">    L1: concept.linear-regression</span><br><span class="line">    L2: concept.gradient-descent</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python tools/graphify.py order</span><br><span class="line"></span><br><span class="line">依赖分层(同层之间无先后约束):</span><br><span class="line">  L1: concept.linear-regression, concept.virtual-memory</span><br><span class="line">  L2: concept.gradient-descent, concept.page-table</span><br><span class="line">  L3: concept.backpropagation</span><br></pre></td></tr></table></figure>
+<p><code>gaps</code> 里的每一条,都可以直接变成下一篇笔记的选题。</p>
+<p>所有 <code>graphify</code> 子命令加 <code>--all</code>,可把
+<code>proposed</code> 边也纳入查询。</p>
+<h1 id="读输出e-必修w-判断i-选题">7. 读输出:E 必修,W 判断,I 选题</h1>
+<h2 id="e阻断">7.1 E(阻断)</h2>
+<table>
+<thead>
+<tr>
+<th>码</th>
+<th>含义</th>
+<th>修法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E001</code></td>
+<td>断链 <code>[[不存在]]</code></td>
+<td>查拼写,或给目标加 <code>aliases</code></td>
+</tr>
+<tr>
+<td><code>E002</code></td>
+<td>类型 / 关系未定义</td>
+<td>查 <code>ontology.yaml</code></td>
+</tr>
+<tr>
+<td><code>E003</code></td>
+<td>关系起终点类型越界</td>
+<td>查关系表的 from/to</td>
+</tr>
+<tr>
+<td><code>E004</code></td>
+<td>同一条边写两次</td>
+<td>删一条</td>
+</tr>
+<tr>
+<td><code>E005</code></td>
+<td>少必填字段</td>
+<td>补 <code>name</code> / <code>path</code> / <code>stance</code></td>
+</tr>
+<tr>
+<td><code>E009</code></td>
+<td><code>prerequisite_of</code> 成环</td>
+<td>环意味着永远学不完</td>
+</tr>
+<tr>
+<td><code>E010</code></td>
+<td>两个节点抢同一个解析键</td>
+<td>改名或加别名</td>
+</tr>
+<tr>
+<td><code>E013</code></td>
+<td><code>status</code> / <code>stance</code> 不在枚举里</td>
+<td>查词汇表</td>
+</tr>
+<tr>
+<td><code>E014</code></td>
+<td><code>source_type: llm</code> 没标 <code>proposed</code></td>
+<td>人确认后改成 <code>human</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="w能发布但有代价">7.2 W(能发布,但有代价)</h2>
+<table>
+<thead>
+<tr>
+<th>码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W001</code></td>
+<td>孤立节点,一条边都没有</td>
+</tr>
+<tr>
+<td><code>W002</code></td>
+<td><code>related</code> 缺 <code>relations</code> 的目标</td>
+</tr>
+<tr>
+<td><code>W003</code></td>
+<td><code>evidence</code> 缺失 / 锚点标题不存在</td>
+</tr>
+<tr>
+<td><code>W006</code></td>
+<td><code>proposed</code> 边写进了 vault</td>
+</tr>
+<tr>
+<td><code>W007</code></td>
+<td><code>rejected</code> 边留在 vault 里</td>
+</tr>
+</tbody>
+</table>
+<h2 id="i不是错误">7.3 I(不是错误)</h2>
+<table>
+<thead>
+<tr>
+<th>码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>I001</code></td>
+<td>概念没有前置知识</td>
+</tr>
+<tr>
+<td><code>I002</code></td>
+<td>概念没连到任何代码实现</td>
+</tr>
+<tr>
+<td><code>I003</code></td>
+<td>主张没有任何证据支持</td>
+</tr>
+</tbody>
+</table>
+<p><strong>构建失败时 <code>graph/</code>
+一个字节都不会动</strong>——上一次可用的图保持原样。所以看到 E,不要拿旧的
+<code>graph/</code> 当新结果用。</p>
+<h1 id="和博客结合">8. 和博客结合</h1>
+<h2 id="现在怎么接">8.1 现在怎么接</h2>
+<p>博客文章只多一个 <code>kg:</code> 块,Hexo 完全不受影响:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.paper-summary-osworld</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;OSWorld&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Paper Summary – OSWorld&quot;</span>]</span><br><span class="line">  <span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
+<p><code>build_graph.py</code> 会把 <code>kg</code>
+里的键合并到顶层同名键上;没有 <code>kg</code> 块的老笔记行为不变。</p>
+<p>目前 vault 里已有 3 篇论文摘要(Agent S / VISTA /
+OSWorld-Human),它们被 <code>concept.computer-use-agent</code> 用
+<code>explained_by</code>
+连起来。下一批不按篇数,按簇:同一件事至少两篇,才长得出概念。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>簇</th>
+<th>论文</th>
+<th>新节点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill 蒸馏</td>
+<td>Trace2Skill、CODESKILL、PolySkill、NSI</td>
+<td><code>concept.agent-skill</code></td>
+</tr>
+<tr>
+<td>计算机操作</td>
+<td>Agent S、VISTA、OSWorld、OSWorld-Human、WebShop、ALFWorld</td>
+<td><code>concept.benchmark</code></td>
+</tr>
+<tr>
+<td>代码修复</td>
+<td>SWE-RL、SWE-smith、SWE-agent、SWE-bench、mini-swe-agent</td>
+<td><code>concept.swe-agent</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="kg-块完整说明">8.2 kg 块:完整说明</h2>
+<p><code>kg</code> 是 frontmatter 里的一个普通键。Hexo
+不认识它,图谱认识它。</p>
+<p>它存在的唯一原因:<strong>同一个 <code>.md</code> 既要被 Hexo
+发布,又要被图谱读取</strong>。如果直接把 <code>type/id/name</code>
+写在顶层,它们会和 Hexo/主题的字段名打架;塞进 <code>kg</code> 子键后,Hexo
+只多一个 <code>page.kg</code>,<code>type/id</code>
+不会和主题抢名字。</p>
+<h3 id="读取顺序">8.2.1 读取顺序</h3>
+<p><code>build_graph.py</code> 的 <code>read_note</code> 只做三件事:</p>
+<ol type="1">
+<li>解析整个 frontmatter;</li>
+<li>如果 <code>kg</code> 是 mapping,执行
+<code>meta.update(kg)</code>——<strong>kg
+里的键覆盖顶层同名键</strong>;</li>
+<li>没有 <code>kg</code> 块时,行为完全不变。</li>
+</ol>
+<p>所以三种写法都合法:</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>写法</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>纯 vault 笔记</td>
+<td>顶层 <code>type/id/name</code></td>
+<td>最简单,Obsidian 也能看</td>
+</tr>
+<tr>
+<td>Hexo 文章</td>
+<td>顶层 Hexo 字段 + <code>kg</code></td>
+<td>不和 Hexo/主题抢名字</td>
+</tr>
+<tr>
+<td>两者兼任</td>
+<td>顶层 Hexo + <code>kg</code></td>
+<td><code>kg</code> 覆盖顶层同名键</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字段表">8.2.2 字段表</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>字段</th>
+<th>必填</th>
+<th>适用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>✅</td>
+<td>全部</td>
+<td><code>Concept</code> / <code>Implementation</code> /
+<code>Resource</code> / <code>Claim</code> / <code>Project</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>✅</td>
+<td>全部</td>
+<td><code>&lt;前缀&gt;.&lt;slug&gt;</code>;前缀 <code>concept</code>
+<code>impl</code> <code>res</code> <code>claim</code>
+<code>proj</code>;<strong>冻结</strong>,别每次从 permalink 重算</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>✅</td>
+<td>全部</td>
+<td>显示名;中文放这里;含 <code>:</code> 时加引号</td>
+</tr>
+<tr>
+<td><code>aliases</code></td>
+<td>—</td>
+<td>全部</td>
+<td>链接解析用的别名;标题、缩写、permalink 都可以放;必须是列表</td>
+</tr>
+<tr>
+<td><code>related</code></td>
+<td>—</td>
+<td>全部</td>
+<td><code>relations</code> 的扁平投影;给 Obsidian
+看;必须覆盖所有目标;必须是列表</td>
+</tr>
+<tr>
+<td><code>relations</code></td>
+<td>—</td>
+<td>全部</td>
+<td>结构化边;图谱只读这里;必须是列表</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>✅</td>
+<td><code>Implementation</code></td>
+<td>源码路径;同时也是解析键(<code>[[eventpoll.c]]</code> 能命中)</td>
+</tr>
+<tr>
+<td><code>stance</code></td>
+<td>✅</td>
+<td><code>Claim</code></td>
+<td><code>tentative</code> / <code>believed</code> /
+<code>doubted</code> / <code>retracted</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>—</td>
+<td><code>Concept</code></td>
+<td><code>learning</code> / <code>understood</code> /
+<code>applied</code></td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>—</td>
+<td>Hexo</td>
+<td>图谱完全不读</td>
+</tr>
+</tbody>
+</table>
+<p>字段归属:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>谁读</th>
+<th>字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图谱</td>
+<td><code>type</code> <code>id</code> <code>name</code>
+<code>aliases</code> <code>related</code> <code>relations</code>
+<code>path</code> <code>stance</code> <code>status</code></td>
+</tr>
+<tr>
+<td>Hexo</td>
+<td><code>title</code> <code>date</code> <code>updated</code>
+<code>permalink</code> <code>categories</code> <code>tags</code>
+<code>password</code> <code>comments</code> <code>copyright</code>
+<code>top</code> <code>description</code> <code>keywords</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>tags</code> 是 Hexo 的,不是图谱的。把它放进 <code>kg</code>
+也不会被读。</p>
+<blockquote>
+<p>Resource / Concept / Claim 下面用 <code>kg:</code>
+展示;Implementation / Project 通常不写成博客文章,所以直接用顶层字段。纯
+vault 笔记把同样的键提到顶层即可(见 §8.2.1)。</p>
+</blockquote>
+<h3 id="五种节点">8.2.3 五种节点</h3>
+<p><strong>Resource</strong>:一般是博客里的论文/文档摘要。整篇导入,不拆。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.paper-summary-agent-s</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;Agent S&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Paper Summary – Agent S&quot;</span>, <span class="string">&quot;paper-summary-agent-s&quot;</span>]</span><br><span class="line">  <span class="attr">related:</span> []</span><br><span class="line">  <span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
+<p><strong>Concept</strong>:一个你能一句话定义的东西。边通常从它出发。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Concept</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">concept.computer-use-agent</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">计算机操作类</span> <span class="string">Agent</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">计算机操作类</span> <span class="string">Agent</span>, <span class="string">computer-use</span> <span class="string">agent</span>, <span class="string">GUI</span> <span class="string">agent</span>]</span><br><span class="line">  <span class="attr">status:</span> <span class="string">learning</span></span><br><span class="line">  <span class="attr">related:</span> [<span class="string">&quot;[[agent]]&quot;</span>, <span class="string">&quot;[[paper-summary-vista]]&quot;</span>, <span class="string">&quot;[[paper-summary-osworld-human]]&quot;</span>, <span class="string">&quot;[[paper-summary-agent-s]]&quot;</span>]</span><br><span class="line">  <span class="attr">relations:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">part_of</span></span><br><span class="line">      <span class="attr">to:</span> <span class="string">&quot;[[agent]]&quot;</span></span><br><span class="line">      <span class="attr">evidence:</span> <span class="string">&quot;agent.md#一句话定义&quot;</span></span><br><span class="line">      <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">      <span class="attr">source_type:</span> <span class="string">human</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">      <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-vista]]&quot;</span></span><br><span class="line">      <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-vista.md#1. Introduction&quot;</span></span><br><span class="line">      <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">      <span class="attr">source_type:</span> <span class="string">paper</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">      <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-osworld-human]]&quot;</span></span><br><span class="line">      <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-osworld-human.md#1. Introduction&quot;</span></span><br><span class="line">      <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">      <span class="attr">source_type:</span> <span class="string">paper</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">      <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-agent-s]]&quot;</span></span><br><span class="line">      <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-agent-s.md#1.1 Agent in OSWorld&quot;</span></span><br><span class="line">      <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">      <span class="attr">source_type:</span> <span class="string">paper</span></span><br></pre></td></tr></table></figure>
+<p><strong>Claim</strong>:一个技术判断。必填 <code>stance</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Claim</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">claim.epoll-o1-misleading</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;「epoll 是 O(1)」这个说法应该被限定&quot;</span></span><br><span class="line">  <span class="attr">stance:</span> <span class="string">believed</span></span><br><span class="line">  <span class="attr">related:</span> [<span class="string">&quot;[[epoll-is-o1]]&quot;</span>, <span class="string">&quot;[[epoll]]&quot;</span>]</span><br><span class="line">  <span class="attr">relations:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">contradicts</span></span><br><span class="line">      <span class="attr">to:</span> <span class="string">&quot;[[epoll-is-o1]]&quot;</span></span><br><span class="line">      <span class="attr">evidence:</span> <span class="string">&quot;epoll-is-o1.md#主张原文&quot;</span></span><br><span class="line">      <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">      <span class="attr">source_type:</span> <span class="string">human</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">about</span></span><br><span class="line">      <span class="attr">to:</span> <span class="string">&quot;[[epoll]]&quot;</span></span><br><span class="line">      <span class="attr">evidence:</span> <span class="string">&quot;epoll.md#常见的错误理解&quot;</span></span><br><span class="line">      <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">      <span class="attr">source_type:</span> <span class="string">human</span></span><br></pre></td></tr></table></figure>
+<p><strong>Implementation</strong>:源码文件或函数。必填
+<code>path</code>。通常不写成博客文章,所以直接用顶层字段:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">Implementation</span></span><br><span class="line"><span class="attr">id:</span> <span class="string">impl.fs.eventpoll.c</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">fs/eventpoll.c</span></span><br><span class="line"><span class="attr">path:</span> <span class="string">fs/eventpoll.c</span></span><br><span class="line"><span class="attr">aliases:</span> [<span class="string">fs/eventpoll.c</span>, <span class="string">eventpoll.c</span>]</span><br><span class="line"><span class="attr">related:</span> []</span><br><span class="line"><span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
+<p><strong>Project</strong>:项目本身。通常是 <code>applied_in</code>
+的终点,边写在 Concept 上,所以 <code>relations</code> 可以为空:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">Project</span></span><br><span class="line"><span class="attr">id:</span> <span class="string">proj.agent-runtime</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">Agent</span> <span class="string">执行环境</span></span><br><span class="line"><span class="attr">aliases:</span> [<span class="string">agent-runtime</span>]</span><br><span class="line"><span class="attr">related:</span> []</span><br><span class="line"><span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果 <code>Implementation</code> / <code>Project</code>
+也要发成博客文章,把上面这些键原样套进 <code>kg:</code> 即可。</p>
+</blockquote>
+<h3 id="一条边的完整写法">8.2.4 一条边的完整写法</h3>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">relations:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">    <span class="attr">to:</span> <span class="string">&quot;[[res.paper-summary-swe-rl]]&quot;</span></span><br><span class="line">    <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-swe-rl.md#2. Implementation&quot;</span></span><br><span class="line">    <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">    <span class="attr">source_type:</span> <span class="string">paper</span></span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>字段</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rel</code></td>
+<td>✅</td>
+<td>9 类之一,见 §3.2</td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td>✅</td>
+<td><code>[[...]]</code>;写 id、slug、文件名、别名都可以;大小写 / 空白 /
+dash 会折叠</td>
+</tr>
+<tr>
+<td><code>evidence</code></td>
+<td>—</td>
+<td><code>文件名.md#标题</code>;标题必须真实存在,否则
+<code>W003</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>—</td>
+<td><code>verified</code>(默认)/ <code>proposed</code> /
+<code>rejected</code>;查询只认 <code>verified</code></td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td>—</td>
+<td><code>human</code> / <code>paper</code> / <code>source_code</code> /
+<code>doc</code> / <code>llm</code>;<code>llm</code> 必须配
+<code>proposed</code>(<code>E014</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>四条规则:</p>
+<ol type="1">
+<li><strong>一条边只写一次。</strong> 同一对
+<code>(src, rel, dst)</code> 重复会 <code>E004</code>。</li>
+<li><strong>不写反向边。</strong>
+<code>A --prerequisite_of--&gt; B</code> 写在 A 里;反过来查由
+<code>graphify</code> 做。</li>
+<li><strong><code>related</code> 要同步。</strong> 它是
+<code>relations</code> 的扁平投影;缺了会 <code>W002</code>。</li>
+<li><strong><code>proposed</code> 不进 vault。</strong> 机器候选放
+<code>proposals/</code>;写进 vault 会 <code>W006</code>。</li>
+</ol>
+<h3 id="完整例子一篇博客文章-一个-resource-一条边">8.2.5
+完整例子:一篇博客文章 → 一个 Resource → 一条边</h3>
+<p>博客原文:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Paper</span> <span class="string">Summary</span> <span class="string">–</span> <span class="string">SWE-RL</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2026-08-04 23:25:58</span></span><br><span class="line"><span class="attr">updated:</span> <span class="number">2026-09-16 19:25:40</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">paper-summary-SWE-RL/</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">Agent</span>, <span class="string">LLM</span>, <span class="string">Reinforcement</span> <span class="string">Learning</span>]</span><br><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.paper-summary-swe-rl</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;SWE-RL&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Paper Summary – SWE-RL&quot;</span>, <span class="string">&quot;paper-summary-SWE-RL&quot;</span>]</span><br><span class="line">  <span class="attr">related:</span> []</span><br><span class="line">  <span class="attr">relations:</span> []</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>复制进 vault:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary – SWE-RL.md&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary – SWE-RL.md&quot;</span> <span class="string">&quot;vault/30-resources/paper-summary-swe-rl.md&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在 Concept 上加边:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">related:</span> [<span class="string">&quot;[[paper-summary-swe-rl]]&quot;</span>]</span><br><span class="line"><span class="attr">relations:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">    <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-swe-rl]]&quot;</span></span><br><span class="line">    <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-swe-rl.md#2. Implementation&quot;</span></span><br><span class="line">    <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">    <span class="attr">source_type:</span> <span class="string">paper</span></span><br></pre></td></tr></table></figure>
+<p>构建并验证:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py</span><br><span class="line">python tools/graphify.py explain res.paper-summary-swe-rl</span><br></pre></td></tr></table></figure>
+<h3 id="常见错误">8.2.6 常见错误</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因</th>
+<th>修法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>复制进 vault 后 <code>E002</code></td>
+<td>空 <code>kg</code> 且没有顶层 <code>type</code>;或根本没写
+<code>type</code></td>
+<td>补 <code>type</code> / <code>id</code> / <code>name</code></td>
+</tr>
+<tr>
+<td><code>E003</code></td>
+<td>关系起终点类型不对</td>
+<td>查 §3.2 的 from/to</td>
+</tr>
+<tr>
+<td><code>E004</code></td>
+<td>同一条边写两次</td>
+<td>删一条</td>
+</tr>
+<tr>
+<td><code>E005</code></td>
+<td>少了 <code>name</code> / <code>path</code> /
+<code>stance</code></td>
+<td>按类型补</td>
+</tr>
+<tr>
+<td><code>E009</code></td>
+<td><code>prerequisite_of</code> 成环</td>
+<td>环意味着永远学不完</td>
+</tr>
+<tr>
+<td><code>E001</code></td>
+<td>链接找不到</td>
+<td>用 id 或 slug;检查别名</td>
+</tr>
+<tr>
+<td><code>E010</code></td>
+<td>两个节点抢同一个解析键</td>
+<td>改名;或删掉重复别名</td>
+</tr>
+<tr>
+<td><code>W002</code></td>
+<td><code>related</code> 缺目标</td>
+<td>补 <code>related</code></td>
+</tr>
+<tr>
+<td><code>W003</code></td>
+<td>evidence 的标题不存在</td>
+<td>改成真实标题</td>
+</tr>
+<tr>
+<td><code>E014</code></td>
+<td><code>llm</code> 边没标 <code>proposed</code></td>
+<td>改 <code>proposed</code>,或人确认后改 <code>human</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="空的-kg-块">8.2.7 空的 kg 块</h3>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>它是<strong>惰性的</strong>:<code>build_graph.py</code> 会把它当空
+dict,merge 不到任何键;复制进 vault 仍然 <code>E002</code>。
+它只是占位符,不是”已导入”。不要在全部文章里批量加空块——用
+<code>scaffolds/post.md</code> 给新文章留槽位,或者按需填真实的
+<code>type/id/name</code>。</p>
+<p><code>kg: {}</code> 比 <code>kg:</code>(null)好一点:未来的模板里
+<code>page.kg</code> 是对象,不是 null。</p>
+<h2 id="夜间管道的三个坑">8.3 夜间管道的三个坑</h2>
+<p>博客每晚 21:00 有一条自动管道(压缩图片 → 转相对路径 → 高亮转换 → 刷新
+<code>updated</code> → 提交 → 部署 → 转回本地)。处理笔记时要注意:</p>
+<ol type="1">
+<li><strong>加 <code>kg</code> 块不会自动上线。</strong> 触发阈值是 500
+行;几篇笔记的 <code>kg</code> 块约 100 行,会判 SKIP。需要手动
+commit,或等下次实质更新一起带上。</li>
+<li><strong>手动跑 <code>--refresh-updated</code> 会把
+<code>updated</code> 刷成当天。</strong> 首页按 <code>updated</code>
+降序,顺序会变。要么接受,要么事后改回。</li>
+<li><strong>工作区在 local 模式时,图片是 <code>E:\myBlog\...</code>
+绝对路径。</strong> 直接复制会把这个路径带进副本;如果仓库要公开,从
+<code>HEAD</code> 取版本,或者把图片行删掉。</li>
+</ol>
+<p>另外:8 篇加密文章不要进图;<code>permalink</code> 大小写混用(如
+<code>paper-summary-SWE-RL/</code>)要原样保留,<code>id</code> 用全小写
+slug。</p>
+<h2 id="手动处理一篇的最小步骤">8.4 手动处理一篇的最小步骤</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在博客原文加 kg 块(kgify 只打印建议)</span></span><br><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 复制进 vault,文件名用 slug</span></span><br><span class="line"><span class="built_in">cp</span> <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span> <span class="string">&quot;vault/30-resources/paper-summary-osworld.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在 Concept 上加一条 explained_by,evidence 指向真实标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 构建 + 体检 + 出图</span></span><br><span class="line">python tools/update.py</span><br></pre></td></tr></table></figure>
+<p>手动导入一篇约 5–10 分钟;12 篇约 2 小时;55
+篇不值得。真正花时间的不是复制,是决定连哪条边。</p>
+<h1 id="边界现在不做的事">9. 边界:现在不做的事</h1>
+<table>
+<thead>
+<tr>
+<th>不做</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>把文章当 <code>Concept</code></td>
+<td>太大,问不出”它是什么”</td>
+</tr>
+<tr>
+<td>用 <code>related_to</code> 连一切</td>
+<td>标签墙,信息量为 0</td>
+</tr>
+<tr>
+<td>LLM 自动抽边进 <code>verified</code></td>
+<td><code>E014</code> 拦这个;要试只进 <code>proposals/</code></td>
+</tr>
+<tr>
+<td>图数据库 / 向量检索</td>
+<td>个人规模下 <code>networkx</code> 够用</td>
+</tr>
+<tr>
+<td>给 55 篇都建节点</td>
+<td>先做同簇的两三篇</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一个概念至少接 3 个已有节点。接不上的,现在还不是概念,是个标签。</p>
+</blockquote>
+<h1 id="速查">10. 速查</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py                      <span class="comment"># 编译 + 体检 + 出图</span></span><br><span class="line">python tools/build_graph.py                  <span class="comment"># 只编译</span></span><br><span class="line">python tools/check.py                        <span class="comment"># 只体检</span></span><br><span class="line">python tools/graphify.py stats               <span class="comment"># 统计</span></span><br><span class="line">python tools/graphify.py explain &lt;<span class="built_in">id</span>&gt;        <span class="comment"># 出边/入边</span></span><br><span class="line">python tools/graphify.py prereq &lt;<span class="built_in">id</span>&gt;         <span class="comment"># 前置链</span></span><br><span class="line">python tools/graphify.py order               <span class="comment"># 学习顺序</span></span><br><span class="line">python tools/graphify.py gaps                <span class="comment"># 结构缺口</span></span><br><span class="line">python tools/graphify.py <span class="built_in">export</span>              <span class="comment"># graph.html</span></span><br><span class="line">python tools/kgify.py &lt;博客文章&gt;              <span class="comment"># 算 id / kg 块(只打印)</span></span><br><span class="line">python tests/selftest.py                     <span class="comment"># 26 条测试</span></span><br></pre></td></tr></table></figure>
+<p>最小 <code>Concept</code> frontmatter:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">Concept</span></span><br><span class="line"><span class="attr">id:</span> <span class="string">concept.example</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">示例概念</span></span><br><span class="line"><span class="attr">aliases:</span> [<span class="string">示例概念</span>, <span class="string">example</span>]</span><br><span class="line"><span class="attr">status:</span> <span class="string">learning</span></span><br><span class="line"><span class="attr">related:</span> []</span><br><span class="line"><span class="attr">relations:</span> []</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>最小 <code>Resource</code> 的 <code>kg</code> 块:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.example</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;示例&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Example&quot;</span>]</span><br><span class="line">  <span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
+<hr />
+<p>项目地址:<a
+target="_blank" rel="noopener" href="https://github.com/AskemiWang/personal_knowledge_graph">personal_knowledge_graph</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-copyright">
+  <p><strong>本文链接：</strong><a href="https://wangyier.top/how-to-use-personal-knowledge-graph/">https://wangyier.top/how-to-use-personal-knowledge-graph/</a></p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
+</div>
+
+<style>
+  .post-copyright {
+    /* 使用半透明背景，完美适配亮色和暗色模式 */
+    background: rgba(150, 150, 150, 0.1); 
+    border-left: 4px solid #37c6c0;
+    padding: 1em 1.5em;
+    margin-top: 2em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+  }
+  .post-copyright a {
+    color: #37c6c0;
+    text-decoration: none;
+    font-weight: bold; /* 让链接更醒目一点 */
+  }
+  .post-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- 加密文章解密后重新触发 lozad 懒加载。
+     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
+     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
+     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
+     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
+<script>
+  (function () {
+    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
+    if (!locked) return;   // 非加密文章
+
+    function refreshLazy() {
+      if (typeof window.lozad !== 'function') return;
+      var imgs = document.querySelectorAll('.post-body img[data-src]');
+      if (!imgs.length) return;
+      window.lozad('.post-body img').observe();
+    }
+
+    var body = document.querySelector('.post-body');
+    if (body && window.MutationObserver) {
+      var pending = null;
+      new MutationObserver(function () {
+        if (pending) return;
+        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
+      }).observe(body, { childList: true, subtree: true });
+    }
+
+    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
+        refreshLazy();
+        clearInterval(timer);
+      } else if (++tries > 150) {   // 最多约 60 秒
+        clearInterval(timer);
+      }
+    }, 400);
+  })();
+</script>
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/paper-summary-vista/" rel="prev" title="Paper Summary – VISTA">
+                  <i class="fa fa-angle-left"></i> Paper Summary – VISTA
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

@@ -54,7 +54,7 @@
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_actor-critic.png">
 <meta property="og:image" content="https://wangyier.top/images/article_images/agent_Agent-as-a-tool.png">
 <meta property="article:published_time" content="2026-07-07T08:17:40.000Z">
-<meta property="article:modified_time" content="2026-09-14T01:25:09.000Z">
+<meta property="article:modified_time" content="2026-10-21T18:25:20.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="Deep Learning">
@@ -283,7 +283,7 @@ Passing Mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -294,7 +294,7 @@ Passing Mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">101</span>
+        <span class="site-state-item-count">103</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -365,7 +365,7 @@ Passing Mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-14 09:25:09" itemprop="dateModified" datetime="2026-09-14T09:25:09+08:00">2026-09-14</time>
+      <time title="Modified: 2026-10-22 02:25:20" itemprop="dateModified" datetime="2026-10-22T02:25:20+08:00">2026-10-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2421,11 +2421,14 @@ token. We should exploit token efficiently. The rule is
 </tr>
 </tbody>
 </table>
-<p>There are some common filler that wastes tokens: - Politeness
-padding: “I hope this message finds you well…” - Redundant
-acknowledgments: “Thank you for your query. I understand you want to…” -
-Repeated context: the same instruction appearing in system prompt AND
-user message</p>
+<p>There are some common filler that wastes tokens:</p>
+<ul>
+<li>Politeness padding: “I hope this message finds you well…”</li>
+<li>Redundant acknowledgments: “Thank you for your query. I understand
+you want to…”</li>
+<li>Repeated context: the same instruction appearing in system prompt
+AND user message</li>
+</ul>
 <h3 id="dynamic-context-allocation">4.4.8 Dynamic Context
 Allocation</h3>
 <p>A “check the weather” query doesn’t need the same context as “analyze
