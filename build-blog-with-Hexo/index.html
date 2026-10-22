@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/article_images/test.png">
 <meta property="article:published_time" content="2026-06-26T05:02:12.000Z">
-<meta property="article:modified_time" content="2026-10-22T14:31:24.000Z">
+<meta property="article:modified_time" content="2026-10-22T16:19:27.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -297,7 +297,7 @@ None</span></a></li></ol></li></ol></div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-22 22:31:24" itemprop="dateModified" datetime="2026-10-22T22:31:24+08:00">2026-10-22</time>
+      <time title="Modified: 2026-10-23 00:19:27" itemprop="dateModified" datetime="2026-10-23T00:19:27+08:00">2026-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1422,7 +1422,7 @@ PowerShell(不往脚本源码里拼字符串, 提交信息里带引号、反斜�
 <ol type="1">
 <li>在”检查改动规模”之前跑一次<code>python tools/update_graph.py -q</code>:
 它封装了两步——<code>kg/tools/update.py</code>(编译→体检→出图,
-读<code>kg/vault/</code>和<code>source/_posts</code>里<strong>带<code>kg:</code>块</strong>的文章)和<code>kg/tests/selftest.py</code>(33
+读<code>kg/vault/</code>和<code>source/_posts</code>里<strong>带<code>kg:</code>块</strong>的文章)和<code>kg/tests/selftest.py</code>(37
 条回归测试);</li>
 <li>把可复现的产物<code>kg/graph/graph.html</code>与<code>source/graph/.graph-hash</code>里记录的
 SHA1 比对,
@@ -1488,7 +1488,7 @@ matter不可见字符与top值/首页顺序预览/触发预览)</td>
 <tr>
 <td><code>tools/update_graph.py</code></td>
 <td>图谱封装脚本: 先跑 <code>kg/tools/update.py</code>(编译/体检/出图),
-再跑 <code>kg/tests/selftest.py</code>(33 条回归测试);
+再跑 <code>kg/tests/selftest.py</code>(37 条回归测试);
 自动流程通过它更新图谱</td>
 </tr>
 <tr>

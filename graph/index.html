@@ -1,494 +1,1755 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh" data-theme="light">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <title>知识图谱 · 47 节点 / 47 边</title>
 <style>
-  :root{--bg:#fcfcfd;--ink:#1b1b1f;--mute:#8b8b94;--line:#e7e7ec;--panel:#fff}
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);overflow:hidden;
-       font:13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-       display:grid;grid-template-rows:auto 1fr;height:100vh}
-  header{display:flex;align-items:baseline;gap:14px;padding:11px 18px;
-         border-bottom:1px solid var(--line);background:#fff;flex-wrap:wrap}
-  header h1{font-size:17px;font-weight:650;margin:0;letter-spacing:-.01em;white-space:nowrap}
-  .sub{color:var(--mute);font-size:12px;white-space:nowrap}
-  .grow{flex:1}
-  .legend{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-  .chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;
-        border:1px solid var(--line);background:#fff;cursor:pointer;user-select:none;
-        font-size:12px;font-weight:500;color:#3c3c44;transition:opacity .12s}
-  .chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
-  .chip b{font-weight:600;color:var(--ink)}
-  .chip[aria-pressed=false]{opacity:.34;text-decoration:line-through}
-  .chip:hover{border-color:#cfcfd8}
-  .relkey{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:#6b6b75;margin-left:2px}
-  .relkey s{display:inline-block;height:0;width:16px;border-top:2px solid #999;text-decoration:none}
-  button.plain{font:inherit;font-size:12px;font-weight:500;padding:4px 11px;border-radius:8px;
-               border:1px solid var(--line);background:#fff;cursor:pointer;color:#3c3c44}
-  button.plain:hover{background:#f4f4f8}
-  main{display:grid;grid-template-columns:1fr auto;min-height:0}
-  #stage{position:relative;overflow:hidden}
-  svg{display:block;width:100%;height:100%;cursor:grab;touch-action:none;user-select:none}
-  svg.panning{cursor:grabbing}
-  g[data-id]{cursor:pointer}
-  #panels rect{cursor:move}
-  #panels rect:hover{stroke:#d8d8e2}
-  .hint{position:absolute;right:14px;bottom:12px;color:#a2a2ab;font-size:11.5px;
-        pointer-events:none;text-align:right;line-height:1.6}
-  aside{width:312px;border-left:1px solid var(--line);background:var(--panel);
-        overflow:auto;padding:16px 18px;display:none}
-  aside.on{display:block}
-  aside .row{display:flex;align-items:flex-start;gap:8px}
-  aside h2{font-size:14px;font-weight:650;margin:0 0 3px;line-height:1.35;flex:1}
-  aside .x{border:0;background:none;font-size:16px;line-height:1;color:var(--mute);
-           cursor:pointer;padding:2px 4px;border-radius:6px}
-  aside .x:hover{background:#f0f0f4;color:var(--ink)}
-  aside .meta{color:var(--mute);font-size:11.5px;margin:0 0 12px;word-break:break-all}
-  aside .def{margin:0 0 12px;padding:7px 9px;background:#f6f7fa;border-left:2px solid #d8d8e2;
-             color:#3c3c44;font-size:12.5px;line-height:1.55;word-break:break-word}
-  aside .grp{color:#9a9aa3;font-size:11px;font-weight:600;letter-spacing:.04em;
-             text-transform:uppercase;margin:14px 0 5px}
-  aside ul{margin:0;padding-left:0;list-style:none}
-  aside li{padding:3px 0;border-bottom:1px solid #f3f3f6;font-size:12px;word-break:break-all}
-  aside li:last-child{border-bottom:0}
-  aside li em{font-style:normal;color:#b0b0b9;font-size:11px;margin-right:6px}
-  .kbd{border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:10.5px;color:#8b8b94}
+  /* ---------------------------------------------------------------- tokens */
+  :root{
+    color-scheme:light;
+    --bg:#f6f5f1;
+    --bg-2:#eeebe4;
+    --ink:#16171b;
+    --ink-2:#4c4e57;
+    --ink-3:#878993;
+    --line:rgba(22,23,27,.10);
+    --line-2:rgba(22,23,27,.16);
+    --glass:rgba(255,255,255,.74);
+    --glass-2:rgba(255,255,255,.9);
+    --hover:rgba(22,23,27,.055);
+    --accent:#2f4bd0;
+    --accent-soft:rgba(47,75,208,.1);
+    --canvas:var(--bg);
+    --shadow:0 1px 2px rgba(20,22,30,.04),0 10px 30px rgba(20,22,30,.08);
+    --shadow-lg:0 2px 10px rgba(20,22,30,.06),0 30px 70px rgba(20,22,30,.14);
+    --font:ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    --ease:cubic-bezier(.22,.8,.2,1);
+  }
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#0c0e12;
+    --bg-2:#12151b;
+    --ink:#eceef3;
+    --ink-2:#a9aeba;
+    --ink-3:#6e7482;
+    --line:rgba(255,255,255,.09);
+    --line-2:rgba(255,255,255,.17);
+    --glass:rgba(18,21,28,.72);
+    --glass-2:rgba(20,23,30,.92);
+    --hover:rgba(255,255,255,.06);
+    --accent:#93a6ff;
+    --accent-soft:rgba(147,166,255,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 34px rgba(0,0,0,.4);
+    --shadow-lg:0 2px 12px rgba(0,0,0,.4),0 34px 80px rgba(0,0,0,.55);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{
+    background:var(--bg);color:var(--ink);overflow:hidden;
+    font:13px/1.5 var(--font);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(1000px 640px at 10% -8%, rgba(255,255,255,.95), transparent 62%),
+      radial-gradient(900px 620px at 104% 108%, var(--accent-soft), transparent 60%),
+      var(--bg);
+  }
+  html[data-theme="dark"] body::before{
+    background:
+      radial-gradient(1000px 640px at 10% -8%, rgba(120,140,255,.10), transparent 62%),
+      radial-gradient(820px 560px at 104% 108%, rgba(120,140,255,.07), transparent 60%),
+      var(--bg);
+  }
+  #grid{
+    position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.55;
+    background-image:radial-gradient(circle at 1px 1px, rgba(22,23,27,.15) 1px, transparent 0);
+    background-size:28px 28px;
+    -webkit-mask-image:radial-gradient(ellipse 82% 72% at 50% 46%, #000 32%, transparent 100%);
+            mask-image:radial-gradient(ellipse 82% 72% at 50% 46%, #000 32%, transparent 100%);
+  }
+  html[data-theme="dark"] #grid{
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.14) 1px, transparent 0);
+  }
+
+  /* ---------------------------------------------------------------- stage */
+  #svg{
+    position:fixed;inset:0;z-index:2;width:100%;height:100%;display:block;
+    touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;
+  }
+  #svg.panning{cursor:grabbing}
+  #svg.dragging{cursor:grabbing}
+  .node{cursor:pointer}
+  .node .hit{fill:transparent}
+  .node .dot,.node .halo{transition:fill .2s ease,stroke .2s ease}
+  .edge{fill:none;stroke-linecap:round;transition:opacity .18s ease,stroke-width .18s ease}
+  #edges{mix-blend-mode:multiply}
+  html[data-theme="dark"] #edges{mix-blend-mode:screen}
+  .region .card{transition:fill .25s ease,stroke .25s ease}
+  .region{cursor:move}
+  .rlabel{cursor:pointer}
+  .nlbl{pointer-events:none;stroke-linejoin:round;paint-order:stroke;font-family:var(--font)}
+  .rtitle{fill:var(--ink-2);font-weight:600;letter-spacing:.01em}
+  .rmeta{fill:var(--ink-3);font-variant-numeric:tabular-nums}
+  .rindex{fill:var(--ink-3);font-family:var(--mono);letter-spacing:.08em;opacity:.7}
+
+  /* ---------------------------------------------------------------- chrome */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:30;height:72px;
+    display:flex;align-items:center;gap:16px;padding:0 20px;pointer-events:none;
+  }
+  .topbar>*{pointer-events:auto}
+  .brand{display:flex;align-items:center;gap:11px;flex:none}
+  .brand .mark{
+    width:34px;height:34px;border-radius:11px;flex:none;display:grid;place-items:center;
+    background:linear-gradient(145deg,#4a63e8,#7b5cff 70%);
+    box-shadow:0 6px 18px rgba(74,99,232,.32), inset 0 1px 0 rgba(255,255,255,.35);
+    color:#fff;
+  }
+  .brand .mark svg{display:block}
+  .brand h1{font-size:14.5px;font-weight:650;letter-spacing:-.01em;margin:0;white-space:nowrap}
+  .brand p{margin:1px 0 0;font-size:9.5px;font-weight:650;letter-spacing:.17em;
+           text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+  .stats{display:flex;align-items:center;gap:7px;color:var(--ink-3);font-size:11.5px;
+         font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:4px}
+  .stats b{color:var(--ink-2);font-weight:600}
+  .stats i{display:block;width:3px;height:3px;border-radius:50%;background:var(--line-2)}
+  .search{
+    position:relative;margin-left:auto;width:min(400px,32vw);flex:0 1 400px;
+    display:flex;align-items:center;gap:8px;height:38px;padding:0 10px 0 12px;
+    border:1px solid var(--line);border-radius:12px;background:var(--glass);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);
+    transition:border-color .18s,box-shadow .18s;
+  }
+  .search:focus-within{border-color:var(--line-2);box-shadow:var(--shadow),0 0 0 3px var(--accent-soft)}
+  .search svg{flex:none;color:var(--ink-3)}
+  .search input{
+    flex:1;min-width:0;border:0;outline:0;background:none;color:var(--ink);
+    font:inherit;font-size:13px;letter-spacing:.01em;
+  }
+  .search input::placeholder{color:var(--ink-3)}
+  .search kbd{
+    flex:none;font:600 10px/1 var(--mono);color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:3px 5px;background:var(--glass-2);
+  }
+  .results{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:35;
+    padding:6px;border:1px solid var(--line);border-radius:14px;
+    background:var(--glass-2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+    box-shadow:var(--shadow-lg);max-height:min(360px,60vh);overflow:auto;display:none;
+  }
+  .results.on{display:block}
+  .results button{
+    display:flex;align-items:center;gap:9px;width:100%;padding:8px 9px;border:0;border-radius:9px;
+    background:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer;
+  }
+  .results button[aria-selected="true"],.results button:hover{background:var(--hover)}
+  .results .rn{flex:1;min-width:0;font-size:12.5px;line-height:1.35;overflow:hidden;
+               text-overflow:ellipsis;white-space:nowrap}
+  .results .rm{flex:none;font-size:10.5px;color:var(--ink-3)}
+  .results .empty{padding:10px;color:var(--ink-3);font-size:12px}
+  .actions{display:flex;gap:8px;flex:none}
+  .iconbtn{
+    width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:var(--glass);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);
+    color:var(--ink-2);display:grid;place-items:center;cursor:pointer;
+    transition:color .16s,background .16s,transform .16s;
+  }
+  .iconbtn:hover{background:var(--glass-2);color:var(--ink)}
+  .iconbtn:active{transform:scale(.94)}
+  .iconbtn[aria-pressed="true"]{color:var(--accent);border-color:var(--accent-soft);background:var(--accent-soft)}
+  .iconbtn svg{display:block}
+
+  /* ---------------------------------------------------------------- rail */
+  .rail{
+    position:fixed;left:18px;top:88px;z-index:20;width:230px;max-height:calc(100vh - 118px);
+    padding:4px 16px 14px;overflow:auto;overscroll-behavior:contain;
+    border:1px solid var(--line);border-radius:18px;
+    background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    box-shadow:var(--shadow);
+    transition:opacity .22s var(--ease),transform .28s var(--ease);
+  }
+  .rail.hidden{opacity:0;transform:translateX(-14px);pointer-events:none}
+  .rail section{padding:13px 0;border-bottom:1px solid var(--line)}
+  .rail section:last-child{border-bottom:0;padding-bottom:2px}
+  .rail h3{
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    margin:0 0 9px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:650;
+  }
+  .rail h3 em{font-style:normal;font-size:9px;letter-spacing:.12em;opacity:.65}
+  .lay{
+    display:flex;align-items:center;gap:8px;width:100%;padding:6px 6px;margin:0 -6px;
+    border:0;border-radius:8px;background:none;font:inherit;font-size:12px;color:var(--ink);
+    cursor:pointer;text-align:left;transition:opacity .16s,background .16s;
+  }
+  .lay:hover{background:var(--hover)}
+  .lay[aria-pressed="false"]{opacity:.36}
+  .lay .dot{width:9px;height:9px;border-radius:50%;flex:none;box-shadow:0 0 0 2px var(--glass-2)}
+  .lay .dot.sq{border-radius:3px}
+  .lay .dot.di{transform:rotate(45deg);border-radius:2px}
+  .lay .lbl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lay .n{font-size:10.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .relrow{display:flex;align-items:center;gap:8px;width:100%;padding:5px 6px;margin:0 -6px;
+          border:0;border-radius:8px;background:none;font:inherit;font-size:11.5px;color:var(--ink-2);
+          cursor:pointer;text-align:left;transition:opacity .16s,background .16s}
+  .relrow:hover{background:var(--hover)}
+  .relrow[aria-pressed="false"]{opacity:.32}
+  .relrow s{display:block;width:18px;height:0;border-top:2px solid currentColor;flex:none;text-decoration:none;border-radius:2px}
+  .relrow .lbl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .relrow .n{font-size:10px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .reg{
+    display:flex;align-items:center;gap:8px;width:100%;padding:6px 6px;margin:0 -6px;
+    border:0;border-radius:8px;background:none;font:inherit;font-size:12px;color:var(--ink);
+    cursor:pointer;text-align:left;
+  }
+  .reg:hover{background:var(--hover)}
+  .reg .no{font:600 9.5px/1 var(--mono);color:var(--ink-3);letter-spacing:.06em;flex:none;width:16px}
+  .reg .lbl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .reg .n{font-size:10.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .reg .sw{width:3px;height:14px;border-radius:2px;flex:none}
+
+  /* ---------------------------------------------------------------- hud */
+  .hud{position:fixed;left:18px;bottom:18px;z-index:20;display:flex;flex-direction:column;gap:8px}
+  .hud .group{
+    display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    box-shadow:var(--shadow);
+  }
+  .hud button{
+    width:36px;height:36px;border:0;border-left:1px solid var(--line);background:none;
+    color:var(--ink-2);cursor:pointer;display:grid;place-items:center;
+    transition:background .15s,color .15s;
+  }
+  .hud button:first-child{border-left:0}
+  .hud button:hover{background:var(--hover);color:var(--ink)}
+  .hint{
+    position:fixed;left:50%;bottom:19px;transform:translateX(-50%);z-index:10;
+    color:var(--ink-3);font-size:11px;letter-spacing:.01em;white-space:nowrap;
+    pointer-events:none;user-select:none;
+  }
+  .hint kbd{font:600 9.5px/1 var(--mono);border:1px solid var(--line);border-radius:4px;
+            padding:2px 4px;background:var(--glass);color:var(--ink-3);margin:0 1px}
+
+  /* ---------------------------------------------------------------- drawer */
+  .drawer{
+    position:fixed;right:18px;top:88px;bottom:18px;z-index:40;width:min(364px,calc(100vw - 36px));
+    display:flex;flex-direction:column;overflow:hidden;
+    border:1px solid var(--line);border-radius:20px;
+    background:var(--glass-2);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    box-shadow:var(--shadow-lg);
+    transform:translateX(calc(100% + 26px));opacity:0;pointer-events:none;
+    transition:transform .4s var(--ease),opacity .28s ease;
+  }
+  .drawer.on{transform:none;opacity:1;pointer-events:auto}
+  .dscroll{padding:18px 20px 22px;overflow:auto;overscroll-behavior:contain;flex:1}
+  .dhead{display:flex;align-items:center;gap:8px}
+  .dtype{
+    display:inline-flex;align-items:center;gap:6px;padding:3px 8px 3px 7px;border-radius:999px;
+    border:1px solid var(--line);background:var(--glass);font-size:10.5px;font-weight:600;
+    letter-spacing:.04em;color:var(--ink-2);
+  }
+  .dtype i{width:7px;height:7px;border-radius:50%;flex:none}
+  .dclose{
+    margin-left:auto;width:28px;height:28px;border:0;border-radius:8px;background:none;
+    color:var(--ink-3);cursor:pointer;display:grid;place-items:center;font-size:16px;line-height:1;
+  }
+  .dclose:hover{background:var(--hover);color:var(--ink)}
+  .dtitle{font-size:19px;line-height:1.28;font-weight:650;letter-spacing:-.015em;margin:11px 0 5px;word-break:break-word}
+  .dmeta{font-size:11px;color:var(--ink-3);line-height:1.6;word-break:break-all}
+  .dmeta code{font-family:var(--mono);font-size:10.5px}
+  .dsum{
+    margin:14px 0 0;padding:11px 13px;border-radius:11px;
+    background:var(--hover);border-left:2px solid var(--accent);
+    font-size:12.5px;line-height:1.68;color:var(--ink-2);word-break:break-word;
+  }
+  .dalso{margin:10px 0 0;font-size:11px;line-height:1.6;color:var(--ink-3);word-break:break-word}
+  .dstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 2px}
+  .dstat{padding:8px 6px;border:1px solid var(--line);border-radius:10px;text-align:center}
+  .dstat b{display:block;font-size:15px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.3}
+  .dstat span{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+  .dgroup{margin-top:18px}
+  .dgroup h4{
+    display:flex;align-items:center;gap:7px;margin:0 0 7px;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:650;
+  }
+  .dgroup h4 i{width:5px;height:5px;border-radius:50%;background:var(--ink-3);opacity:.5}
+  .drel{
+    display:flex;align-items:center;gap:9px;width:100%;padding:7px 8px;margin:0 -8px;
+    border:0;border-radius:8px;background:none;font:inherit;color:var(--ink);
+    text-align:left;cursor:pointer;
+  }
+  .drel:hover{background:var(--hover)}
+  .drail{width:3px;height:22px;border-radius:2px;flex:none;opacity:.9}
+  .drel .r{flex:none;width:66px;font-size:10.5px;color:var(--ink-3);overflow:hidden;
+           text-overflow:ellipsis;white-space:nowrap}
+  .drel .t{flex:1;min-width:0;font-size:12px;line-height:1.35;overflow:hidden;
+           text-overflow:ellipsis;white-space:nowrap}
+  .drel .g{flex:none;color:var(--ink-3);font-size:11px}
+  .dfoot{display:flex;gap:8px;margin-top:20px}
+  .dbtn{
+    flex:1;height:36px;border:1px solid var(--line);border-radius:10px;background:var(--glass);
+    color:var(--ink-2);font:inherit;font-size:12px;font-weight:550;cursor:pointer;
+    transition:background .16s,color .16s,border-color .16s;
+  }
+  .dbtn:hover{background:var(--hover);color:var(--ink)}
+  .dbtn.primary{background:var(--accent);border-color:transparent;color:#fff}
+  .dbtn.primary:hover{filter:brightness(1.06)}
+  html[data-theme="dark"] .dbtn.primary{color:#0b0d11}
+
+  /* ---------------------------------------------------------------- tooltip */
+  .tip{
+    position:fixed;z-index:50;max-width:270px;padding:8px 10px;border:1px solid var(--line);
+    border-radius:10px;background:var(--glass-2);backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow-lg);
+    font-size:11.5px;line-height:1.5;color:var(--ink-2);
+    opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;
+    pointer-events:none;
+  }
+  .tip.on{opacity:1;transform:none}
+  .tip .th{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .tip .th i{width:7px;height:7px;border-radius:50%;flex:none}
+  .tip .tm{margin-top:3px;color:var(--ink-3);font-size:10.5px}
+  .tip .ts{margin-top:6px;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;
+           -webkit-box-orient:vertical;overflow:hidden}
+
+  .blank{
+    position:fixed;inset:0;z-index:12;display:none;place-items:center;pointer-events:none;
+  }
+  .blank.on{display:grid}
+  .blank div{pointer-events:auto;text-align:center;color:var(--ink-3);font-size:12.5px;
+             padding:22px 26px;border:1px solid var(--line);border-radius:16px;
+             background:var(--glass);backdrop-filter:blur(16px);box-shadow:var(--shadow)}
+  .blank b{display:block;color:var(--ink-2);font-size:14px;margin-bottom:4px}
+
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* scrollbars */
+  .rail::-webkit-scrollbar,.drawer ::-webkit-scrollbar,.results::-webkit-scrollbar{width:8px;height:8px}
+  .rail::-webkit-scrollbar-thumb,.drawer ::-webkit-scrollbar-thumb,.results::-webkit-scrollbar-thumb{
+    background:var(--line-2);border-radius:8px;border:2px solid transparent;background-clip:content-box}
+  .rail::-webkit-scrollbar-track,.drawer ::-webkit-scrollbar-track,.results::-webkit-scrollbar-track{background:transparent}
+
+  button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* entrance */
+  body:not(.ready) #world{opacity:0}
+  body.ready #world{opacity:1;transition:opacity .5s ease}
+  .node{animation:pop .5s var(--ease) backwards}
+  @keyframes pop{from{opacity:0}to{opacity:1}}
+
+  @media (max-width:980px){
+    .brand p,.stats{display:none}
+    .search{width:auto;flex:1;margin-left:8px}
+    .rail{width:206px}
+    .hint{display:block;bottom:66px;font-size:10.5px}
+    .drawer{top:78px}
+  }
+  @media (max-width:680px){
+    .brand h1,.brand p{display:none}
+    .brand .mark{width:32px;height:32px;border-radius:10px}
+    .topbar{gap:8px;padding:0 10px}
+    .iconbtn{width:34px;height:34px}
+    .search{height:36px;padding-left:10px}
+    .search kbd{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0ms!important;
+                         transition-duration:.001ms!important}
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>个人技术知识图谱</h1>
-  <span class="sub" id="stat"></span>
-  <span class="grow"></span>
-  <div class="legend" id="legend"></div>
-  <button class="plain" id="reset">重置视图</button>
-</header>
-<main>
-  <div id="stage">
-    <svg id="svg"><g id="world"><g id="panels"></g><g id="edges"></g><g id="nodes"></g></g></svg>
-    <div class="hint">滚轮缩放 · 拖空白平移 · 拖卡片移簇 · 拖节点微调 · 点击看详情 <span class="kbd">Esc</span> 关闭</div>
+<div id="err" hidden style="position:fixed;left:12px;bottom:64px;z-index:999;max-width:70vw;padding:8px 10px;border-radius:8px;background:#fff1f0;color:#a8071a;font:12px/1.5 monospace;box-shadow:0 6px 20px rgba(0,0,0,.15)"></div>
+<div id="grid" aria-hidden="true"></div>
+<svg id="svg" role="application" aria-label="知识图谱,可缩放、拖动、点击节点查看详情">
+  <defs id="defs"></defs>
+  <g id="world">
+    <g id="regions"></g>
+    <g id="edges"></g>
+    <g id="nodes"></g>
+    <g id="regionLabels"></g>
+  </g>
+</svg>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <circle cx="12" cy="5" r="2.1"/><circle cx="5" cy="18" r="2.1"/><circle cx="19" cy="18" r="2.1"/>
+        <path d="M10.6 6.8 6.4 16M13.4 6.8 17.6 16M7.1 18h9.8" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <div>
+      <h1>个人技术知识图谱</h1>
+      <p>Field Atlas</p>
+    </div>
   </div>
-  <aside id="panel"></aside>
-</main>
-<script>const DATA = {"title": "知识图谱 · 47 节点 / 47 边", "nodes": [{"id": "concept.agent", "label": "Agent", "full": "Agent", "type": "Concept", "summary": "Agent 可以广义定义为 LLM + Harness, 可以扩展LLM的能力边界", "deg": 5, "comp": 0, "align": "middle", "x": 0.3093, "y": 0.5207}, {"id": "concept.benchmark", "label": "Benchmark", "full": "Benchmark", "type": "Concept", "summary": "以不同metric测试Agent完成task的能力, 这类任务的合集, 现在大部分benchmark都会带上environment.", "deg": 5, "comp": 0, "align": "middle", "x": 0.437, "y": 0.4393}, {"id": "concept.computer-use-agent", "label": "Computer-Use Ag…", "full": "Computer-Use Agent", "type": "Concept", "summary": "主要重心为OS领域, 模拟人类工作行为的Agent", "deg": 2, "comp": 0, "align": "middle", "x": 0.4519, "y": 0.487}, {"id": "concept.deep-learning", "label": "Deep Learning", "full": "Deep Learning", "type": "Concept", "summary": "用多层神经网络学习表示的一类机器学习方法。", "deg": 2, "comp": 1, "align": "middle", "x": 0.6384, "y": 0.5043}, {"id": "concept.harness", "label": "Harness", "full": "Harness", "type": "Concept", "summary": "Harness 是 Agent 中除 LLM/VLM 之外的部分：控制循环、工具、上下文/记忆、技能加载和接口。", "deg": 4, "comp": 0, "align": "middle", "x": 0.235, "y": 0.5349}, {"id": "concept.llm-as-controller-agent", "label": "LLM as Controll…", "full": "LLM as Controller Agent", "type": "Concept", "summary": "以LLM+CV Experts为核心的多模态Agent, LLM并没有直接的多模态功能;", "deg": 2, "comp": 0, "align": "middle", "x": 0.4109, "y": 0.5252}, {"id": "concept.llm", "label": "LLM", "full": "LLM", "type": "Concept", "summary": "以文本 token 为输入输出的语言模型。", "deg": 3, "comp": 0, "align": "middle", "x": 0.3477, "y": 0.5627}, {"id": "concept.machine-learning", "label": "Machine Learning", "full": "Machine Learning", "type": "Concept", "summary": "从数据中学习规律并泛化到新样本的方法体系。", "deg": 3, "comp": 1, "align": "middle", "x": 0.6057, "y": 0.5775}, {"id": "concept.mathematics", "label": "Mathematics", "full": "Mathematics", "type": "Concept", "summary": "Agent / ML 背后的数学基础（微积分、线性代数、概率统计、优化等）。", "deg": 1, "comp": 2, "align": "middle", "x": 0.7922, "y": 0.5016}, {"id": "concept.model", "label": "Model", "full": "Model", "type": "Concept", "summary": "Agent 的基座模型部分：LLM 处理文本，VLM 处理多模态输入。", "deg": 3, "comp": 0, "align": "middle", "x": 0.3288, "y": 0.5432}, {"id": "concept.multimodal-agent", "label": "Multimodal Agent", "full": "Multimodal Agent", "type": "Concept", "summary": "以VLM 或者LLM+CV Experts为核心的Agent, 处理多模态问题.", "deg": 3, "comp": 0, "align": "middle", "x": 0.3761, "y": 0.5159}, {"id": "concept.post-training", "label": "Post Training", "full": "Post Training", "type": "Concept", "summary": "在预训练好的基座模型上, 再次进行微量的训练", "deg": 3, "comp": 0, "align": "middle", "x": 0.2801, "y": 0.4402}, {"id": "concept.python", "label": "Python", "full": "Python", "type": "Concept", "summary": "一种通用编程语言，是数据 / ML / Agent 工程的主要工具。", "deg": 1, "comp": 3, "align": "middle", "x": 0.9389, "y": 0.5016}, {"id": "concept.reinforcement-learning", "label": "Reinforcement L…", "full": "Reinforcement Learning", "type": "Concept", "summary": "通过与环境交互、根据奖励学习策略的一类方法。", "deg": 2, "comp": 1, "align": "middle", "x": 0.5733, "y": 0.4989}, {"id": "concept.skill-induction", "label": "Skill Induction", "full": "Skill Induction", "type": "Concept", "summary": "Agent天然的可以得到trajectory, 有trajectory, 就可以教会LLM做正确的事, 这是RL的经典方法; 但是Skill核心在于training-free;我们可以把trajectory总结成正确/错误的skill, 让LLM在不train的情况下表现更好.", "deg": 4, "comp": 0, "align": "middle", "x": 0.1082, "y": 0.5494}, {"id": "concept.skill-structure", "label": "Skill Structure", "full": "Skill Structure", "type": "Concept", "summary": "Skill Structure 是 skill 的表示与打包方式，规定它由哪些部分组成、如何被 agent 发现、加载和执行。", "deg": 3, "comp": 0, "align": "middle", "x": 0.1444, "y": 0.5656}, {"id": "concept.skill", "label": "Skill", "full": "Skill", "type": "Concept", "summary": "Skill是模型外的能力, 模型本身不具备的能力/本身做不好的事, 可以通过skill来做, 本质是一段类似于操作手册的文本", "deg": 3, "comp": 0, "align": "middle", "x": 0.1677, "y": 0.5483}, {"id": "concept.swe-agent", "label": "SWE Agent", "full": "SWE Agent", "type": "Concept", "summary": "Software Engineering 类的Agent, 是特化的针对Coding的Agent", "deg": 6, "comp": 0, "align": "middle", "x": 0.3303, "y": 0.4627}, {"id": "concept.text-only-agent", "label": "Text-only Agent", "full": "Text-only Agent", "type": "Concept", "summary": "以LLM为核心, 核心重点为纯文本领域的Agent, 比如SWE领域的Agent。", "deg": 2, "comp": 0, "align": "middle", "x": 0.3183, "y": 0.4915}, {"id": "concept.vlm-agent", "label": "VLM Agent", "full": "VLM Agent", "type": "Concept", "summary": "以VLM为核心的多模态Agent, 可以直接处理多模态信息.", "deg": 3, "comp": 0, "align": "middle", "x": 0.4247, "y": 0.5033}, {"id": "concept.vlm", "label": "VLM", "full": "VLM", "type": "Concept", "summary": "能同时处理图像/视频和文本输入的视觉语言模型。", "deg": 1, "comp": 0, "align": "middle", "x": 0.3324, "y": 0.5527}, {"id": "res.alfworld", "label": "ALFWorld", "full": "ALFWorld", "type": "Resource", "summary": "About ALFWorld Benchmark", "deg": 1, "comp": 0, "align": "middle", "x": 0.4365, "y": 0.4263}, {"id": "res.anthropic-skill-paradigm", "label": "Anthropic Skill…", "full": "Anthropic Skill Paradigm", "type": "Resource", "summary": "The paradigm of skill proposed by Anthropic.", "deg": 1, "comp": 0, "align": "middle", "x": 0.1403, "y": 0.5781}, {"id": "res.deepseek-harness", "label": "DeepSeek Harness", "full": "DeepSeek Harness", "type": "Resource", "summary": "Everything about DeepSeek Harness.", "deg": 1, "comp": 0, "align": "middle", "x": 0.2248, "y": 0.5441}, {"id": "res.mechanism-of-agent", "label": "Mechanism of Ag…", "full": "Mechanism of Agent", "type": "Resource", "summary": "Describe the mechanism of Agent architecture.", "deg": 1, "comp": 0, "align": "middle", "x": 0.2095, "y": 0.5315}, {"id": "res.mechanism-of-transformer", "label": "Mechanism of Tr…", "full": "Mechanism of Transformer", "type": "Resource", "summary": "Describe the mechanism of Transformer architecture.", "deg": 1, "comp": 0, "align": "middle", "x": 0.3699, "y": 0.5727}, {"id": "res.mini-swe-agent", "label": "mini-swe-agent", "full": "mini-swe-agent", "type": "Resource", "summary": "Introduction about mini-swe-agent.", "deg": 1, "comp": 0, "align": "middle", "x": 0.3502, "y": 0.4589}, {"id": "res.model-post-training", "label": "Model Post-Trai…", "full": "Model Post-Training", "type": "Resource", "summary": "Introducing Methods of Model Post-Training", "deg": 1, "comp": 0, "align": "middle", "x": 0.2603, "y": 0.4293}, {"id": "res.notes-on-llm", "label": "Notes on LLM", "full": "Notes on LLM", "type": "Resource", "summary": "Notes on LLM.", "deg": 1, "comp": 0, "align": "middle", "x": 0.3479, "y": 0.5757}, {"id": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "label": "Notes on Machin…", "full": "Notes on Machine Learning and Deep Learning and Reinforcement Learning", "type": "Resource", "summary": "Theory of Machine Learning & Deep Learning & Reinforcement Learning", "deg": 3, "comp": 1, "align": "middle", "x": 0.606, "y": 0.4257}, {"id": "res.notes-on-mathematics", "label": "Notes on Mathem…", "full": "Notes on Mathematics", "type": "Resource", "summary": "Notes on Mathematics", "deg": 1, "comp": 2, "align": "middle", "x": 0.7493, "y": 0.5025}, {"id": "res.notes-on-python", "label": "Notes on Python", "full": "Notes on Python", "type": "Resource", "summary": "Notes on Python.", "deg": 1, "comp": 3, "align": "middle", "x": 0.896, "y": 0.5016}, {"id": "res.panorama-of-agent", "label": "Panorama of Age…", "full": "Panorama of Agent", "type": "Resource", "summary": "This work describes the panorama of Agent area. It is suggested to review this article frequently.", "deg": 1, "comp": 0, "align": "middle", "x": 0.2874, "y": 0.5189}, {"id": "res.paper-summary-agent-s", "label": "Agent S", "full": "Agent S", "type": "Resource", "summary": "Paper Summary of \"Agent S: An Open Agentic Framework that Uses Computers Like a Human\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.4651, "y": 0.4701}, {"id": "res.paper-summary-hugginggpt", "label": "HuggingGPT", "full": "HuggingGPT", "type": "Resource", "summary": "Paper Summary of \"HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.4386, "y": 0.5322}, {"id": "res.paper-summary-osworld-human", "label": "OSWorld-Human", "full": "OSWorld-Human", "type": "Resource", "summary": "Paper Summary of \"OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.4573, "y": 0.4275}, {"id": "res.paper-summary-osworld", "label": "OSWorld", "full": "OSWorld", "type": "Resource", "summary": "Paper Summary of \"OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.46, "y": 0.4536}, {"id": "res.paper-summary-trace2skill", "label": "Trace2Skill", "full": "Trace2Skill", "type": "Resource", "summary": "Paper Summary of \"Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.0805, "y": 0.5428}, {"id": "res.paper-summary-vista", "label": "VISTA", "full": "VISTA", "type": "Resource", "summary": "Paper Summary of \"VISTA: A Visual Harness for Reasoning in an Interactive World\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.4567, "y": 0.5058}, {"id": "res.paper-summary-codeskill", "label": "CODESKILL", "full": "CODESKILL", "type": "Resource", "summary": "Paper Summary of \"CODESKILL: Learning Self-Evolving Skills for Coding Agents\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.0813, "y": 0.5573}, {"id": "res.paper-summary-nsi", "label": "NSI", "full": "NSI", "type": "Resource", "summary": "Paper Summary of \"Lifting Traces to Logic: Programmatic Skill Induction with Neuro-Symbolic Learning for Long-Horizon Agentic Tasks\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.1197, "y": 0.5745}, {"id": "res.paper-summary-poly-skill", "label": "PolySkill", "full": "PolySkill", "type": "Resource", "summary": "Paper Summary of \"PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.0718, "y": 0.5503}, {"id": "res.paper-summary-swe-rl", "label": "SWE-RL", "full": "SWE-RL", "type": "Resource", "summary": "Paper Summary of \"SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.2953, "y": 0.4523}, {"id": "res.paper-summary-swe-smith", "label": "SWE-smith", "full": "SWE-smith", "type": "Resource", "summary": "Paper Summary of \"SWE-smith: Scaling Data for Software Engineering Agents\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.3057, "y": 0.4484}, {"id": "res.swe-agent", "label": "SWE-agent", "full": "SWE-agent", "type": "Resource", "summary": "SWE-agent relative", "deg": 1, "comp": 0, "align": "middle", "x": 0.3302, "y": 0.4524}, {"id": "res.swe-bench", "label": "SWE-bench", "full": "SWE-bench", "type": "Resource", "summary": "Analysis of SWE-bench", "deg": 2, "comp": 0, "align": "middle", "x": 0.3842, "y": 0.4496}, {"id": "res.webshop", "label": "WebShop", "full": "WebShop", "type": "Resource", "summary": "About Webshop Benchmark", "deg": 1, "comp": 0, "align": "middle", "x": 0.4693, "y": 0.4339}], "edges": [{"s": "concept.agent", "t": "res.panorama-of-agent", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.paper-summary-osworld", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.alfworld", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.webshop", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.swe-bench", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.paper-summary-osworld-human", "rel": "explained_by"}, {"s": "concept.computer-use-agent", "t": "concept.vlm-agent", "rel": "part_of"}, {"s": "concept.computer-use-agent", "t": "res.paper-summary-agent-s", "rel": "explained_by"}, {"s": "concept.deep-learning", "t": "concept.machine-learning", "rel": "part_of"}, {"s": "concept.deep-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.harness", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.harness", "t": "res.mechanism-of-agent", "rel": "explained_by"}, {"s": "concept.harness", "t": "res.deepseek-harness", "rel": "explained_by"}, {"s": "concept.llm-as-controller-agent", "t": "concept.multimodal-agent", "rel": "part_of"}, {"s": "concept.llm-as-controller-agent", "t": "res.paper-summary-hugginggpt", "rel": "explained_by"}, {"s": "concept.llm", "t": "concept.model", "rel": "part_of"}, {"s": "concept.llm", "t": "res.notes-on-llm", "rel": "explained_by"}, {"s": "concept.llm", "t": "res.mechanism-of-transformer", "rel": "explained_by"}, {"s": "concept.machine-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.mathematics", "t": "res.notes-on-mathematics", "rel": "explained_by"}, {"s": "concept.model", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.multimodal-agent", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.post-training", "t": "res.paper-summary-swe-rl", "rel": "explained_by"}, {"s": "concept.post-training", "t": "res.paper-summary-swe-smith", "rel": "explained_by"}, {"s": "concept.post-training", "t": "res.model-post-training", "rel": "explained_by"}, {"s": "concept.python", "t": "res.notes-on-python", "rel": "explained_by"}, {"s": "concept.reinforcement-learning", "t": "concept.machine-learning", "rel": "part_of"}, {"s": "concept.reinforcement-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "concept.skill", "rel": "part_of"}, {"s": "concept.skill-induction", "t": "res.paper-summary-trace2skill", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "res.paper-summary-codeskill", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "res.paper-summary-poly-skill", "rel": "explained_by"}, {"s": "concept.skill-structure", "t": "concept.skill", "rel": "part_of"}, {"s": "concept.skill-structure", "t": "res.anthropic-skill-paradigm", "rel": "explained_by"}, {"s": "concept.skill-structure", "t": "res.paper-summary-nsi", "rel": "explained_by"}, {"s": "concept.skill", "t": "concept.harness", "rel": "part_of"}, {"s": "concept.swe-agent", "t": "concept.text-only-agent", "rel": "part_of"}, {"s": "concept.swe-agent", "t": "res.paper-summary-swe-rl", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.paper-summary-swe-smith", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.swe-agent", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.mini-swe-agent", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.swe-bench", "rel": "explained_by"}, {"s": "concept.text-only-agent", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.vlm-agent", "t": "concept.multimodal-agent", "rel": "part_of"}, {"s": "concept.vlm-agent", "t": "res.paper-summary-vista", "rel": "explained_by"}, {"s": "concept.vlm", "t": "concept.model", "rel": "part_of"}, {"s": "res.paper-summary-agent-s", "t": "res.paper-summary-osworld", "rel": "related_to"}], "clusters": [{"id": 0, "label": "SWE Agent", "n": 39}, {"id": 1, "label": "Machine Learning", "n": 4}, {"id": 2, "label": "Mathematics", "n": 2}, {"id": 3, "label": "Python", "n": 2}], "typeColor": {"Concept": "#2c7fb8", "Resource": "#41ab5d", "Implementation": "#f16913", "Claim": "#c51b8a", "Project": "#6a51a3"}, "relColor": {"prerequisite_of": {"c": "#d62728", "w": 2.6}, "implemented_by": {"c": "#f16913", "w": 2.0}, "applied_in": {"c": "#6a51a3", "w": 1.6}, "supports": {"c": "#41ab5d", "w": 1.6}, "contradicts": {"c": "#c51b8a", "w": 1.6}, "explained_by": {"c": "#2c7fb8", "w": 1.4}, "about": {"c": "#8c8c96", "w": 1.3}, "part_of": {"c": "#8c8c96", "w": 1.3}, "related_to": {"c": "#b4b4be", "w": 1.2}}, "relLabel": {"prerequisite_of": "前置依赖", "implemented_by": "由代码实现", "explained_by": "出处解释", "supports": "证据支持", "contradicts": "互相矛盾", "about": "讨论对象", "applied_in": "应用项目", "part_of": "组成部分", "related_to": "一般相关"}};</script>
+  <div class="stats" id="stats"></div>
+  <div class="search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4" stroke-linecap="round"/>
+    </svg>
+    <input id="q" type="search" placeholder="搜索节点…" autocomplete="off" spellcheck="false" aria-label="搜索节点">
+    <kbd>/</kbd>
+    <div class="results" id="results" role="listbox" aria-label="搜索结果"></div>
+  </div>
+  <div class="actions">
+    <button class="iconbtn" id="btnRail" aria-pressed="true" title="图层与区域 (L)" aria-label="图层与区域">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="m12 3 9 5-9 5-9-5 9-5Z" stroke-linejoin="round"/><path d="m3 13 9 5 9-5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="iconbtn" id="btnTheme" title="切换深色 / 浅色 (T)" aria-label="切换深浅色">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="ic-sun">
+        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<aside class="rail" id="rail" aria-label="图层、关系与区域">
+  <section>
+    <h3>图层 <em>Layers</em></h3>
+    <div id="typechips"></div>
+  </section>
+  <section>
+    <h3>关系 <em>Relations</em></h3>
+    <div id="relchips"></div>
+  </section>
+  <section>
+    <h3>区域 <em>Regions</em></h3>
+    <div id="regionlist"></div>
+  </section>
+</aside>
+
+<div class="hud" aria-label="缩放与视图">
+  <div class="group">
+    <button id="zoomOut" title="缩小 (-)" aria-label="缩小">
+      <svg width="15" height="15" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>
+    </button>
+    <button id="zoomIn" title="放大 (+)" aria-label="放大">
+      <svg width="15" height="15" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <button id="zoomFit" title="适应全图 (0)" aria-label="适应全图">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="hint">滚轮缩放 · 拖空白平移 · 双击归位 · <kbd>/</kbd> 搜索</div>
+
+<aside class="drawer" id="drawer" aria-label="节点详情" aria-live="polite"></aside>
+<div class="tip" id="tip" role="tooltip"></div>
+<div class="blank" id="blank"><div><b>没有可见节点</b>左侧图层全部被关掉了</div></div>
+
+<script>const DATA = {"title": "知识图谱 · 47 节点 / 47 边", "canvas": {"w": 1440.0, "h": 900.0}, "nodes": [{"id": "concept.agent", "label": "Agent", "full": "Agent", "aliases": ["Agent", "agent", "LLM Agent", "LLM agent", "智能体"], "type": "Concept", "summary": "Agent 可以广义定义为 LLM + Harness, 可以扩展LLM的能力边界", "deg": 5, "comp": 0, "align": "middle", "x": 0.4142, "y": 0.5987}, {"id": "concept.benchmark", "label": "Benchmark", "full": "Benchmark", "aliases": ["Benchmark", "benchmark", "Agent Benchmark", "agent benchmark", "agent-benchmark", "concept.agent-benchmark", "Agent 评测基准"], "type": "Concept", "summary": "以不同metric测试Agent完成task的能力, 这类任务的合集, 现在大部分benchmark都会带上environment.", "deg": 5, "comp": 0, "align": "middle", "x": 0.55287, "y": 0.17416}, {"id": "concept.computer-use-agent", "label": "Computer-Use Agent", "full": "Computer-Use Agent", "aliases": ["Computer-Use Agent", "computer-use agent", "CUA", "Computer Use Agent", "计算机使用 Agent"], "type": "Concept", "summary": "主要重心为OS领域, 模拟人类工作行为的Agent", "deg": 2, "comp": 0, "align": "middle", "x": 0.57728, "y": 0.41431}, {"id": "concept.deep-learning", "label": "Deep Learning", "full": "Deep Learning", "aliases": ["Deep Learning", "deep learning", "DL", "深度学习"], "type": "Concept", "summary": "用多层神经网络学习表示的一类机器学习方法。", "deg": 2, "comp": 1, "align": "middle", "x": 0.85121, "y": 0.35697}, {"id": "concept.harness", "label": "Harness", "full": "Harness", "aliases": ["Harness", "harness", "Agent Harness", "智能体 Harness"], "type": "Concept", "summary": "Harness 是 Agent 中除 LLM/VLM 之外的部分：控制循环、工具、上下文/记忆、技能加载和接口。", "deg": 4, "comp": 0, "align": "middle", "x": 0.32881, "y": 0.67758}, {"id": "concept.llm-as-controller-agent", "label": "Controller Agent", "full": "LLM as Controller Agent", "aliases": ["LLM as Controller Agent", "LLM-as-Controller", "LLM Controller Agent", "Controller Agent"], "type": "Concept", "summary": "以LLM+CV Experts为核心的多模态Agent, LLM并没有直接的多模态功能;", "deg": 2, "comp": 0, "align": "middle", "x": 0.53417, "y": 0.61046}, {"id": "concept.llm", "label": "LLM", "full": "LLM", "aliases": ["LLM", "Large Language Model", "大语言模型"], "type": "Concept", "summary": "以文本 token 为输入输出的语言模型。", "deg": 3, "comp": 0, "align": "middle", "x": 0.46878, "y": 0.8064}, {"id": "concept.machine-learning", "label": "Machine Learning", "full": "Machine Learning", "aliases": ["Machine Learning", "machine learning", "ML", "机器学习"], "type": "Concept", "summary": "从数据中学习规律并泛化到新样本的方法体系。", "deg": 3, "comp": 1, "align": "middle", "x": 0.77084, "y": 0.41391}, {"id": "concept.mathematics", "label": "Mathematics", "full": "Mathematics", "aliases": ["Mathematics", "mathematics", "Math", "数学"], "type": "Concept", "summary": "Agent / ML 背后的数学基础（微积分、线性代数、概率统计、优化等）。", "deg": 1, "comp": 2, "align": "middle", "x": 0.7882, "y": 0.71823}, {"id": "concept.model", "label": "Model", "full": "Model", "aliases": ["Model", "model", "基座模型"], "type": "Concept", "summary": "Agent 的基座模型部分：LLM 处理文本，VLM 处理多模态输入。", "deg": 3, "comp": 0, "align": "middle", "x": 0.4414, "y": 0.71073}, {"id": "concept.multimodal-agent", "label": "Multimodal Agent", "full": "Multimodal Agent", "aliases": ["Multimodal Agent", "multimodal agent", "MLLM Agent", "多模态 Agent"], "type": "Concept", "summary": "以VLM 或者LLM+CV Experts为核心的Agent, 处理多模态问题.", "deg": 3, "comp": 0, "align": "middle", "x": 0.4922, "y": 0.56763}, {"id": "concept.post-training", "label": "Post Training", "full": "Post Training", "aliases": ["Post Training", "Post-Training", "post-training", "后训练"], "type": "Concept", "summary": "在预训练好的基座模型上, 再次进行微量的训练", "deg": 3, "comp": 0, "align": "middle", "x": 0.36735, "y": 0.19441}, {"id": "concept.python", "label": "Python", "full": "Python", "aliases": ["Python", "python", "Python 语言"], "type": "Concept", "summary": "一种通用编程语言，是数据 / ML / Agent 工程的主要工具。", "deg": 1, "comp": 3, "align": "middle", "x": 0.77722, "y": 0.56656}, {"id": "concept.reinforcement-learning", "label": "强化学习", "full": "Reinforcement Learning", "aliases": ["Reinforcement Learning", "reinforcement learning", "RL", "强化学习"], "type": "Concept", "summary": "通过与环境交互、根据奖励学习策略的一类方法。", "deg": 2, "comp": 1, "align": "middle", "x": 0.69177, "y": 0.35247}, {"id": "concept.skill-induction", "label": "Skill Induction", "full": "Skill Induction", "aliases": ["Skill Induction", "skill induction", "技能归纳"], "type": "Concept", "summary": "Agent天然的可以得到trajectory, 有trajectory, 就可以教会LLM做正确的事, 这是RL的经典方法; 但是Skill核心在于training-free;我们可以把trajectory总结成正确/错误的skill, 让LLM在不train的情况下表现更好.", "deg": 4, "comp": 0, "align": "middle", "x": 0.18059, "y": 0.76308}, {"id": "concept.skill-structure", "label": "Skill Structure", "full": "Skill Structure", "aliases": ["Skill Structure", "skill structure", "Skill 结构"], "type": "Concept", "summary": "Skill Structure 是 skill 的表示与打包方式，规定它由哪些部分组成、如何被 agent 发现、加载和执行。", "deg": 3, "comp": 0, "align": "middle", "x": 0.22604, "y": 0.84144}, {"id": "concept.skill", "label": "Skill", "full": "Skill", "aliases": ["Skill", "skill", "Agent Skill", "agent skill", "agent-skill", "concept.agent-skill", "skills", "Agent 技能"], "type": "Concept", "summary": "Skill是模型外的能力, 模型本身不具备的能力/本身做不好的事, 可以通过skill来做, 本质是一段类似于操作手册的文本", "deg": 3, "comp": 0, "align": "middle", "x": 0.25089, "y": 0.75166}, {"id": "concept.swe-agent", "label": "SWE Agent", "full": "SWE Agent", "aliases": ["SWE Agent", "SWE agent", "代码修复 Agent"], "type": "Concept", "summary": "Software Engineering 类的Agent, 是特化的针对Coding的Agent", "deg": 6, "comp": 0, "align": "middle", "x": 0.43017, "y": 0.30337}, {"id": "concept.text-only-agent", "label": "Text-only Agent", "full": "Text-only Agent", "aliases": ["Text-only Agent", "text-only agent", "Text Agent", "纯文本 Agent"], "type": "Concept", "summary": "以LLM为核心, 核心重点为纯文本领域的Agent, 比如SWE领域的Agent。", "deg": 2, "comp": 0, "align": "middle", "x": 0.42064, "y": 0.45023}, {"id": "concept.vlm-agent", "label": "VLM Agent", "full": "VLM Agent", "aliases": ["VLM Agent", "Vision-Language Model Agent", "视觉语言 Agent"], "type": "Concept", "summary": "以VLM为核心的多模态Agent, 可以直接处理多模态信息.", "deg": 3, "comp": 0, "align": "middle", "x": 0.5477, "y": 0.49921}, {"id": "concept.vlm", "label": "VLM", "full": "VLM", "aliases": ["VLM", "Vision-Language Model", "视觉语言模型"], "type": "Concept", "summary": "能同时处理图像/视频和文本输入的视觉语言模型。", "deg": 1, "comp": 0, "align": "middle", "x": 0.44292, "y": 0.76075}, {"id": "res.alfworld", "label": "ALFWorld", "full": "ALFWorld", "aliases": ["ALFWorld"], "type": "Resource", "summary": "About ALFWorld Benchmark", "deg": 1, "comp": 0, "align": "middle", "x": 0.5503, "y": 0.10869}, {"id": "res.anthropic-skill-paradigm", "label": "Anthropic Skill Par…", "full": "Anthropic Skill Paradigm", "aliases": ["Anthropic Skill Paradigm"], "type": "Resource", "summary": "The paradigm of skill proposed by Anthropic.", "deg": 1, "comp": 0, "align": "middle", "x": 0.22303, "y": 0.9052}, {"id": "res.deepseek-harness", "label": "DeepSeek Harness", "full": "DeepSeek Harness", "aliases": ["DeepSeek Harness"], "type": "Resource", "summary": "Everything about DeepSeek Harness.", "deg": 1, "comp": 0, "align": "middle", "x": 0.31795, "y": 0.72525}, {"id": "res.mechanism-of-agent", "label": "Mechanism of Agent", "full": "Mechanism of Agent", "aliases": ["Mechanism of Agent"], "type": "Resource", "summary": "Describe the mechanism of Agent architecture.", "deg": 1, "comp": 0, "align": "middle", "x": 0.29767, "y": 0.66287}, {"id": "res.mechanism-of-transformer", "label": "Mechanism of Transf…", "full": "Mechanism of Transformer", "aliases": ["Mechanism of Transformer"], "type": "Resource", "summary": "Describe the mechanism of Transformer architecture.", "deg": 1, "comp": 0, "align": "middle", "x": 0.49743, "y": 0.85395}, {"id": "res.mini-swe-agent", "label": "mini-swe-agent", "full": "mini-swe-agent", "aliases": ["mini-swe-agent"], "type": "Resource", "summary": "Introduction about mini-swe-agent.", "deg": 1, "comp": 0, "align": "middle", "x": 0.45354, "y": 0.28365}, {"id": "res.model-post-training", "label": "Model Post-Training", "full": "Model Post-Training", "aliases": ["Model Post-Training"], "type": "Resource", "summary": "Introducing Methods of Model Post-Training", "deg": 1, "comp": 0, "align": "middle", "x": 0.34208, "y": 0.14169}, {"id": "res.notes-on-llm", "label": "Notes on LLM", "full": "Notes on LLM", "aliases": ["Notes on LLM"], "type": "Resource", "summary": "Notes on LLM.", "deg": 1, "comp": 0, "align": "middle", "x": 0.47217, "y": 0.87262}, {"id": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "label": "ML/DL/RL Notes", "full": "Notes on Machine Learning and Deep Learning and Reinforcement Learning", "aliases": ["ML/DL/RL Notes"], "type": "Resource", "summary": "Theory of Machine Learning & Deep Learning & Reinforcement Learning", "deg": 3, "comp": 1, "align": "middle", "x": 0.77214, "y": 0.29554}, {"id": "res.notes-on-mathematics", "label": "Notes on Mathematics", "full": "Notes on Mathematics", "aliases": ["Notes on Mathematics"], "type": "Resource", "summary": "Notes on Mathematics", "deg": 1, "comp": 2, "align": "middle", "x": 0.71834, "y": 0.71915}, {"id": "res.notes-on-python", "label": "Notes on Python", "full": "Notes on Python", "aliases": ["Notes on Python"], "type": "Resource", "summary": "Notes on Python.", "deg": 1, "comp": 3, "align": "middle", "x": 0.70736, "y": 0.56656}, {"id": "res.panorama-of-agent", "label": "Panorama of Agent", "full": "Panorama of Agent", "aliases": ["Panorama of Agent"], "type": "Resource", "summary": "This work describes the panorama of Agent area. It is suggested to review this article frequently.", "deg": 1, "comp": 0, "align": "middle", "x": 0.38811, "y": 0.59203}, {"id": "res.paper-summary-agent-s", "label": "Agent S", "full": "Agent S", "aliases": ["Paper Summary – Agent S"], "type": "Resource", "summary": "Paper Summary of \"Agent S: An Open Agentic Framework that Uses Computers Like a Human\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.59061, "y": 0.32768}, {"id": "res.paper-summary-hugginggpt", "label": "HuggingGPT", "full": "HuggingGPT", "aliases": ["Paper Summary – HuggingGPT"], "type": "Resource", "summary": "Paper Summary of \"HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.56805, "y": 0.64339}, {"id": "res.paper-summary-osworld-human", "label": "OSWorld-Human", "full": "OSWorld-Human", "aliases": ["Paper Summary – OSWorld-Human"], "type": "Resource", "summary": "Paper Summary of \"OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.57508, "y": 0.11269}, {"id": "res.paper-summary-osworld", "label": "OSWorld", "full": "OSWorld", "aliases": ["Paper Summary – OSWorld"], "type": "Resource", "summary": "Paper Summary of \"OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.58214, "y": 0.24446}, {"id": "res.paper-summary-trace2skill", "label": "Trace2Skill", "full": "Trace2Skill", "aliases": ["Paper Summary – Trace2Skill"], "type": "Resource", "summary": "Paper Summary of \"Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.14683, "y": 0.73222}, {"id": "res.paper-summary-vista", "label": "VISTA", "full": "VISTA", "aliases": ["Paper Summary – VISTA"], "type": "Resource", "summary": "Paper Summary of \"VISTA: A Visual Harness for Reasoning in an Interactive World\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.58579, "y": 0.50887}, {"id": "res.paper-summary-codeskill", "label": "CODESKILL", "full": "CODESKILL", "aliases": ["Paper Summary – CODESKILL"], "type": "Resource", "summary": "Paper Summary of \"CODESKILL: Learning Self-Evolving Skills for Coding Agents\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.14977, "y": 0.80544}, {"id": "res.paper-summary-nsi", "label": "NSI", "full": "NSI", "aliases": ["Paper Summary – NSI"], "type": "Resource", "summary": "Paper Summary of \"Lifting Traces to Logic: Programmatic Skill Induction with Neuro-Symbolic Learning for Long-Horizon Agentic Tasks\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.198, "y": 0.88878}, {"id": "res.paper-summary-poly-skill", "label": "PolySkill", "full": "PolySkill", "aliases": ["Paper Summary – PolySkill"], "type": "Resource", "summary": "Paper Summary of \"PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.13753, "y": 0.77046}, {"id": "res.paper-summary-swe-rl", "label": "SWE-RL", "full": "SWE-RL", "aliases": ["Paper Summary – SWE-RL"], "type": "Resource", "summary": "Paper Summary of \"SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.38732, "y": 0.25393}, {"id": "res.paper-summary-swe-smith", "label": "SWE-smith", "full": "SWE-smith", "aliases": ["Paper Summary – SWE-smith"], "type": "Resource", "summary": "Paper Summary of \"SWE-smith: Scaling Data for Software Engineering Agents\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.39906, "y": 0.23333}, {"id": "res.swe-agent", "label": "SWE-agent", "full": "SWE-agent", "aliases": ["SWE-agent"], "type": "Resource", "summary": "SWE-agent relative", "deg": 1, "comp": 0, "align": "middle", "x": 0.42915, "y": 0.25059}, {"id": "res.swe-bench", "label": "SWE-bench", "full": "SWE-bench", "aliases": ["SWE-bench"], "type": "Resource", "summary": "Analysis of SWE-bench", "deg": 2, "comp": 0, "align": "middle", "x": 0.49189, "y": 0.23168}, {"id": "res.webshop", "label": "WebShop", "full": "WebShop", "aliases": ["WebShop"], "type": "Resource", "summary": "About Webshop Benchmark", "deg": 1, "comp": 0, "align": "middle", "x": 0.59015, "y": 0.14412}], "edges": [{"s": "concept.agent", "t": "res.panorama-of-agent", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.paper-summary-osworld", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.alfworld", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.webshop", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.swe-bench", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.paper-summary-osworld-human", "rel": "explained_by"}, {"s": "concept.computer-use-agent", "t": "concept.vlm-agent", "rel": "part_of"}, {"s": "concept.computer-use-agent", "t": "res.paper-summary-agent-s", "rel": "explained_by"}, {"s": "concept.deep-learning", "t": "concept.machine-learning", "rel": "part_of"}, {"s": "concept.deep-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.harness", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.harness", "t": "res.mechanism-of-agent", "rel": "explained_by"}, {"s": "concept.harness", "t": "res.deepseek-harness", "rel": "explained_by"}, {"s": "concept.llm-as-controller-agent", "t": "concept.multimodal-agent", "rel": "part_of"}, {"s": "concept.llm-as-controller-agent", "t": "res.paper-summary-hugginggpt", "rel": "explained_by"}, {"s": "concept.llm", "t": "concept.model", "rel": "part_of"}, {"s": "concept.llm", "t": "res.notes-on-llm", "rel": "explained_by"}, {"s": "concept.llm", "t": "res.mechanism-of-transformer", "rel": "explained_by"}, {"s": "concept.machine-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.mathematics", "t": "res.notes-on-mathematics", "rel": "explained_by"}, {"s": "concept.model", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.multimodal-agent", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.post-training", "t": "res.paper-summary-swe-rl", "rel": "explained_by"}, {"s": "concept.post-training", "t": "res.paper-summary-swe-smith", "rel": "explained_by"}, {"s": "concept.post-training", "t": "res.model-post-training", "rel": "explained_by"}, {"s": "concept.python", "t": "res.notes-on-python", "rel": "explained_by"}, {"s": "concept.reinforcement-learning", "t": "concept.machine-learning", "rel": "part_of"}, {"s": "concept.reinforcement-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "concept.skill", "rel": "part_of"}, {"s": "concept.skill-induction", "t": "res.paper-summary-trace2skill", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "res.paper-summary-codeskill", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "res.paper-summary-poly-skill", "rel": "explained_by"}, {"s": "concept.skill-structure", "t": "concept.skill", "rel": "part_of"}, {"s": "concept.skill-structure", "t": "res.anthropic-skill-paradigm", "rel": "explained_by"}, {"s": "concept.skill-structure", "t": "res.paper-summary-nsi", "rel": "explained_by"}, {"s": "concept.skill", "t": "concept.harness", "rel": "part_of"}, {"s": "concept.swe-agent", "t": "concept.text-only-agent", "rel": "part_of"}, {"s": "concept.swe-agent", "t": "res.paper-summary-swe-rl", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.paper-summary-swe-smith", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.swe-agent", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.mini-swe-agent", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.swe-bench", "rel": "explained_by"}, {"s": "concept.text-only-agent", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.vlm-agent", "t": "concept.multimodal-agent", "rel": "part_of"}, {"s": "concept.vlm-agent", "t": "res.paper-summary-vista", "rel": "explained_by"}, {"s": "concept.vlm", "t": "concept.model", "rel": "part_of"}, {"s": "res.paper-summary-agent-s", "t": "res.paper-summary-osworld", "rel": "related_to"}], "clusters": [{"id": 0, "label": "SWE Agent", "full": "SWE Agent", "n": 39, "type": "Concept", "hub": "concept.swe-agent"}, {"id": 1, "label": "Machine Learning", "full": "Machine Learning", "n": 4, "type": "Concept", "hub": "concept.machine-learning"}, {"id": 2, "label": "Mathematics", "full": "Mathematics", "n": 2, "type": "Concept", "hub": "concept.mathematics"}, {"id": 3, "label": "Python", "full": "Python", "n": 2, "type": "Concept", "hub": "concept.python"}], "typeColor": {"Concept": "#3B5BDB", "Resource": "#0E9488", "Implementation": "#D97706", "Claim": "#C2255C", "Project": "#7048E8"}, "typeColorDark": {"Concept": "#7B93FF", "Resource": "#3DD6C0", "Implementation": "#F5B455", "Claim": "#FF7BAE", "Project": "#B197FC"}, "relColor": {"prerequisite_of": {"c": "#E03131", "w": 2.4}, "implemented_by": {"c": "#E8590C", "w": 1.8}, "applied_in": {"c": "#7048E8", "w": 1.6}, "supports": {"c": "#2F9E44", "w": 1.6}, "contradicts": {"c": "#C2255C", "w": 1.6}, "explained_by": {"c": "#3B5BDB", "w": 1.4}, "about": {"c": "#868E96", "w": 1.2}, "part_of": {"c": "#868E96", "w": 1.2}, "related_to": {"c": "#ADB5BD", "w": 1.1}}, "relColorDark": {"prerequisite_of": {"c": "#FF6B6B", "w": 2.4}, "implemented_by": {"c": "#FFA94D", "w": 1.8}, "applied_in": {"c": "#B197FC", "w": 1.6}, "supports": {"c": "#69DB7C", "w": 1.6}, "contradicts": {"c": "#FF7BAE", "w": 1.6}, "explained_by": {"c": "#7B93FF", "w": 1.4}, "about": {"c": "#868E96", "w": 1.2}, "part_of": {"c": "#868E96", "w": 1.2}, "related_to": {"c": "#6C7480", "w": 1.1}}, "relLabel": {"prerequisite_of": "前置依赖", "implemented_by": "由代码实现", "explained_by": "出处解释", "supports": "证据支持", "contradicts": "互相矛盾", "about": "讨论对象", "applied_in": "应用项目", "part_of": "组成部分", "related_to": "一般相关"}};</script>
 <script>
+// 出错时不要把「空白画布」当成正常结果 —— 至少让人看见是哪一行炸了。
+window.addEventListener("error", function (e) {
+  var el = document.getElementById("err");
+  if (el) { el.hidden = false; el.textContent = "渲染出错: " + (e.message || e.error); }
+});
+window.addEventListener("unhandledrejection", function (e) {
+  var el = document.getElementById("err");
+  if (el) { el.hidden = false; el.textContent = "渲染出错: " + (e.reason && e.reason.message || e.reason); }
+});
+</script>
+<script>
+"use strict";
+
+/* ------------------------------------------------------------------ 常量 */
 const NS = "http://www.w3.org/2000/svg";
-const svg = document.getElementById("svg");
-const world = document.getElementById("world");
-const gP = document.getElementById("panels");
-const gE = document.getElementById("edges");
-const gN = document.getElementById("nodes");
-const panel = document.getElementById("panel");
-const legend = document.getElementById("legend");
-const statEl = document.getElementById("stat");
+const CV = DATA.canvas || {w: 1440, h: 900};
+const CW = CV.w, CH = CV.h;
+const TYPE_LABEL = {Concept: "概念", Resource: "资料", Implementation: "实现", Claim: "主张", Project: "项目"};
+const GAP = 8;
+const PAD = 20, HEAD = 30;          // 与 graphify.card_box 同值
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const W = () => svg.clientWidth || 1200;
-const H = () => svg.clientHeight || 780;
-let k = 1, tx = 0, ty = 0, selected = null, hover = null;
-const hiddenTypes = new Set();
-const dragged = new Set();
+const $ = id => document.getElementById(id);
+const svg = $("svg"), world = $("world"), defs = $("defs");
+const gRegions = $("regions"), gEdges = $("edges"), gNodes = $("nodes"), gRegionLabels = $("regionLabels");
+const drawer = $("drawer"), tip = $("tip"), rail = $("rail");
+const resultsEl = $("results"), input = $("q"), statsEl = $("stats");
 
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const svgEl = (tag, attrs) => {
+  const e = document.createElementNS(NS, tag);
+  if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+};
+const dom = (tag, cls, text) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+};
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const hexRgb = h => {
+  h = String(h || "#888").replace("#", "");
+  if (h.length === 3) h = h.split("").map(c => c + c).join("");
+  const n = parseInt(h, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+};
+const rgba = (h, a) => { const c = hexRgb(h); return "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")"; };
 
-// 面积 ∝ 度数:必须是 sqrt,不能加常数,否则标度被压平
-const radius = d => Math.max(3.4, 3.1 * Math.sqrt(Math.max(1, d)));
+const state = {
+  theme: "light",
+  hiddenTypes: new Set(),
+  hiddenRels: new Set(),
+  hover: null,
+  selected: null,
+  focus: null,
+  dragging: false,
+  hasMoved: false,
+  resultIndex: 0,
+  searching: false
+};
+const cam = {x: 0, y: 0, k: 1};
+let anim = null;
 
-const nodes = DATA.nodes.map(d => Object.assign({}, d, { r: radius(d.deg) }));
-const byId = {};
-nodes.forEach(n => byId[n.id] = n);
-const edges = DATA.edges.filter(e => byId[e.s] && byId[e.t])
-                        .map(e => Object.assign({}, e, { a: byId[e.s], b: byId[e.t] }));
-const nb = {};
-nodes.forEach(n => nb[n.id] = new Set());
+const pal = () => state.theme === "dark"
+  ? {type: DATA.typeColorDark || DATA.typeColor, rel: DATA.relColorDark || DATA.relColor, dark: true}
+  : {type: DATA.typeColor, rel: DATA.relColor, dark: false};
+const typeColor = t => pal().type[t] || (pal().dark ? "#7c8494" : "#8a8d96");
+const relColor = r => pal().rel[r] || {c: pal().dark ? "#6c7480" : "#b4b7c0", w: 1.1};
+const relName = r => (DATA.relLabel && DATA.relLabel[r]) || r;
+const typeName = t => TYPE_LABEL[t] || t || "节点";
+
+// 区域是「地点」,颜色是地点的身份;节点颜色才是类型。两套编码不要互相冒充。
+// 用 hub id 做哈希,新增/删除别的区域不会让已有区域换色。
+const PLACE_LIGHT = ["#4C6EF5", "#0CA678", "#E8890C", "#D6336C", "#7048E8", "#5C6B7A"];
+const PLACE_DARK = ["#8DA2FF", "#38D9A9", "#FFB84D", "#FF8FB1", "#B197FC", "#93A1B5"];
+function placeColor(cl) {
+  const arr = state.theme === "dark" ? PLACE_DARK : PLACE_LIGHT;
+  const s = String(cl.hub || cl.label || cl.id);
+  let h = 7;
+  for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0;
+  return arr[h % arr.length];
+}
+
+/* ------------------------------------------------------------------ 模型 */
+const nodes = DATA.nodes.map((d, i) => {
+  const deg = Math.max(1, Number(d.deg) || 1);
+  return Object.assign({}, d, {
+    i,
+    deg,
+    px: d.x * CW,
+    py: d.y * CH,
+    r: Math.max(5, 3.4 * Math.sqrt(deg))
+  });
+});
+const byId = Object.create(null);
+nodes.forEach(n => { byId[n.id] = n; });
+
+const edges = DATA.edges
+  .filter(e => byId[e.s] && byId[e.t] && e.s !== e.t)
+  .map((e, i) => Object.assign({}, e, {a: byId[e.s], b: byId[e.t], i, curve: 0}));
+
+// 同一对节点之间的多条关系:给每条一个横向偏移,不要画成一条。
+const pairs = new Map();
+edges.forEach(e => {
+  const key = e.s < e.t ? e.s + "|" + e.t : e.t + "|" + e.s;
+  const arr = pairs.get(key) || [];
+  arr.push(e);
+  pairs.set(key, arr);
+});
+pairs.forEach(arr => {
+  arr.forEach((e, i) => { e.curve = (i - (arr.length - 1) / 2) * 24; });
+});
+
+const nb = Object.create(null);
+nodes.forEach(n => { nb[n.id] = new Set(); });
 edges.forEach(e => { nb[e.s].add(e.t); nb[e.t].add(e.s); });
 
-// ---- defs:每个关系一个自己的箭头,颜色跟着线走
-const defs = document.createElementNS(NS, "defs");
-Object.keys(DATA.relColor).forEach((rel, i) => {
-  defs.insertAdjacentHTML("beforeend",
-    '<marker id="arw-' + i + '" viewBox="0 0 10 10" refX="10" refY="5" ' +
-    'markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="7" orient="auto">' +
-    '<path d="M0,0 L10,5 L0,10 z" fill="' + DATA.relColor[rel].c + '"/></marker>');
-});
-svg.prepend(defs);
-const relIdx = {};
-Object.keys(DATA.relColor).forEach((r, i) => relIdx[r] = i);
-
-const tierOf = n => (n.deg >= 8 ? "major" : (n.type === "Concept" ? "concept" : "minor"));
-const labelStyle = {
-  major:   { size: 13,   weight: 650, fill: "#1b1b1f" },
-  concept: { size: 12.5, weight: 600, fill: "#2b2b31" },
-  minor:   { size: 11.5, weight: 400, fill: "#55555f" }
-};
-
-// ---- 边
-const lineEls = edges.map(e => {
-  const s = DATA.relColor[e.rel] || { c: "#d4d4dc", w: 1 };
-  const l = document.createElementNS(NS, "line");
-  l.setAttribute("stroke", s.c);
-  l.setAttribute("stroke-width", Math.max(1.1, s.w));
-  l.setAttribute("stroke-linecap", "round");
-  // 列表型叶子:13 条边语义相同、方向一致,箭头会在 hub 周围挤成一圈锯齿,所以不画
-  const stacked = e.s.align === "end" || e.t.align === "end" ||
-                  e.s.align === "start" || e.t.align === "start";
-  if (!stacked) l.setAttribute("marker-end", "url(#arw-" + (relIdx[e.rel] || 0) + ")");
-  else l.setAttribute("stroke-width", Math.min(1.2, s.w));
-  gE.append(l);
-  return l;
-});
-
-// ---- 节点
-const nodeEls = new Map();
+const clusters = (DATA.clusters || []).slice();
+const clusterById = new Map(clusters.map(c => [c.id, c]));
+const clusterOf = n => clusterById.get(n.comp);
+// 区域代表节点:缩得很小时,其余标签可以让位,但这几个名字必须留下。
+const hubIds = new Set(clusters.map(c => c.hub).filter(Boolean));
+const membersByComp = new Map();
 nodes.forEach(n => {
-  const g = document.createElementNS(NS, "g");
-  g.setAttribute("data-id", n.id);
-  const hit = document.createElementNS(NS, "circle");
-  hit.setAttribute("r", Math.max(n.r + 12, 18));
-  hit.setAttribute("fill", "transparent");
-  const ring = document.createElementNS(NS, "circle");
-  ring.setAttribute("r", n.r + 4.5);
-  ring.setAttribute("fill", "none");
-  ring.setAttribute("stroke", "#1b1b1f");
-  ring.setAttribute("stroke-width", "2");
-  ring.setAttribute("opacity", "0");
-  const c = document.createElementNS(NS, "circle");
-  c.setAttribute("r", n.r);
-  c.setAttribute("fill", DATA.typeColor[n.type] || "#8a8a8e");
-  c.setAttribute("stroke", "#fff");
-  c.setAttribute("stroke-width", "1.4");
-  const st = labelStyle[tierOf(n)];
-  const t = document.createElementNS(NS, "text");
-  t.textContent = n.label;
-  t.setAttribute("fill", st.fill);
-  t.setAttribute("font-weight", st.weight);
-  t.setAttribute("paint-order", "stroke");
-  t.setAttribute("stroke", "#fff");
-  t.setAttribute("stroke-linejoin", "round");
-  if (n.type === "Implementation") t.setAttribute("font-family", "ui-monospace,Consolas,monospace");
-  const title = document.createElementNS(NS, "title");
-  title.textContent = n.full || n.label;
-  g.append(hit, ring, c, t, title);
-  gN.append(g);
-  nodeEls.set(n.id, { g: g, t: t, ring: ring });
+  const arr = membersByComp.get(n.comp) || [];
+  arr.push(n);
+  membersByComp.set(n.comp, arr);
 });
 
-// ---- 簇底板
-const clusterEls = new Map();
-(DATA.clusters || []).forEach(cl => {
-  const r = document.createElementNS(NS, "rect");
-  r.setAttribute("rx", "16");
-  r.setAttribute("fill", "#f3f4f8");
-  r.setAttribute("stroke", "#e9e9f0");
-  r.setAttribute("stroke-width", "1");
-  r.setAttribute("data-comp", String(cl.id));
-  const t = document.createElementNS(NS, "text");
-  t.setAttribute("fill", "#a3a3ad");
-  t.setAttribute("font-weight", "500");
-  t.textContent = cl.n + " 个节点";
-  gP.append(r, t);
-  clusterEls.set(cl.id, { r: r, t: t, n: cl.n });
-});
+const counts = {type: {}, rel: {}};
+nodes.forEach(n => { counts.type[n.type] = (counts.type[n.type] || 0) + 1; });
+edges.forEach(e => { counts.rel[e.rel] = (counts.rel[e.rel] || 0) + 1; });
 
-function place() {
-  const w = W(), h = H();
-  nodes.forEach(n => {
-    if (dragged.has(n.id)) return;    // 手动拖过的节点不要被重排冲掉
-    n.px = n.x * w; n.py = n.y * h;
-  });
-}
-
-function camera() {
-  world.setAttribute("transform", "translate(" + tx + "," + ty + ") scale(" + k + ")");
-  // 箭头不能是恒定屏幕尺寸:节点随缩放变大,恒定的箭头放大后就成了一个小点。
-  // 让屏幕尺寸 = 7·√k —— 缩小时不至于消失,放大时跟得上节点。
-  const s = 7 / Math.sqrt(k);
-  defs.querySelectorAll("marker").forEach(m => {
-    m.setAttribute("markerWidth", s);
-    m.setAttribute("markerHeight", s);
-  });
-}
-
-function nodeBox(n) {
-  // 卡片必须覆盖「节点 ∪ 标签」。只算节点的话,卡片右缘会从文字中间穿过去。
-  const st = labelStyle[tierOf(n)];
-  const w = labelWidth(n.label, st.size);
-  const gap = 8;
-  let x1 = n.px - n.r, x2 = n.px + n.r, y1 = n.py - n.r, y2 = n.py + n.r;
-  let lx1, lx2, ly1, ly2;
-  if (n.align === "start") {
-    lx1 = n.px + n.r + gap; lx2 = lx1 + w;
-    ly1 = n.py - st.size * 0.8; ly2 = n.py + st.size * 0.3;
-  } else if (n.align === "end") {
-    lx2 = n.px - n.r - gap; lx1 = lx2 - w;
-    ly1 = n.py - st.size * 0.8; ly2 = n.py + st.size * 0.3;
-  } else {
-    lx1 = n.px - w / 2; lx2 = lx1 + w;
-    ly1 = n.py + n.r + gap * 0.6; ly2 = ly1 + st.size;
+/* ------------------------------------------------------------------ 造型 */
+// 形状也编码类型:资源是「文档」(方),概念是「概念」(圆),
+// 其余类型在放大后各有自己的轮廓 —— 不依赖颜色也能区分。
+function nodeShape(type, r) {
+  if (type === "Resource") {
+    const s = r * 1.62;
+    return svgEl("rect", {x: -s / 2, y: -s / 2, width: s, height: s, rx: r * .4, ry: r * .4});
   }
-  return { x1: Math.min(x1, lx1), y1: Math.min(y1, ly1),
-           x2: Math.max(x2, lx2), y2: Math.max(y2, ly2) };
+  if (type === "Implementation") {
+    const a = r * 1.28;
+    return svgEl("path", {d: "M0 " + (-a) + " L" + a + " 0 L0 " + a + " L" + (-a) + " 0 Z"});
+  }
+  if (type === "Claim") {
+    const a = r * 1.34;
+    return svgEl("path", {d: "M0 " + (-a) + " L" + (a * .92) + " " + (a * .74) + " L" + (-a * .92) + " " + (a * .74) + " Z"});
+  }
+  if (type === "Project") {
+    const a = r * 1.2, pts = [];
+    for (let i = 0; i < 6; i++) {
+      const ang = -Math.PI / 2 + i * Math.PI / 3;
+      pts.push((a * Math.cos(ang)).toFixed(2) + " " + (a * Math.sin(ang)).toFixed(2));
+    }
+    return svgEl("polygon", {points: pts.join(" ")});
+  }
+  return svgEl("circle", {r: r});
+}
+const shapeClass = t => t === "Resource" ? " sq" : (t === "Implementation" ? " di" : "");
+
+/* ------------------------------------------------------------------ SVG */
+const markerByRel = {};
+let markerIndex = 0;
+function buildDefs() {
+  defs.textContent = "";
+  markerIndex = 0;
+  const rels = Object.keys(pal().rel);
+  rels.forEach(rel => {
+    const id = "mk-" + (markerIndex++);
+    markerByRel[rel] = id;
+    const m = svgEl("marker", {
+      id: id, viewBox: "0 0 12 12", refX: 9.5, refY: 6,
+      markerUnits: "userSpaceOnUse", markerWidth: 9, markerHeight: 9, orient: "auto"
+    });
+    const p = svgEl("path", {d: "M1 1.5 L10 6 L1 10.5", fill: "none",
+                             "stroke-linecap": "round", "stroke-linejoin": "round"});
+    p.setAttribute("stroke-width", "1.8");
+    p.setAttribute("stroke", relColor(rel).c);
+    m.appendChild(p);
+    defs.appendChild(m);
+  });
 }
 
-function drawPanels() {
-  const PAD = 16, HEAD = 20;
-  const groups = {};
-  nodes.forEach(n => {
-    if (hiddenTypes.has(n.type)) return;
-    const b = groups[n.comp] || (groups[n.comp] = { x1: 1e9, y1: 1e9, x2: -1e9, y2: -1e9 });
-    const q = nodeBox(n);
-    b.x1 = Math.min(b.x1, q.x1); b.x2 = Math.max(b.x2, q.x2);
-    b.y1 = Math.min(b.y1, q.y1); b.y2 = Math.max(b.y2, q.y2);
-  });
-  clusterEls.forEach((el, id) => {
-    const b = groups[id];
-    if (!b) { el.r.style.display = "none"; el.t.style.display = "none"; return; }
-    el.r.style.display = ""; el.t.style.display = "";
-    // 每张卡贴合自己的内容。强行统一顶边会把矮簇的卡拉高,上半张全是空的 —— 更糟。
-    const y = b.y1 - PAD - HEAD;
-    el.r.setAttribute("x", b.x1 - PAD);
-    el.r.setAttribute("y", y);
-    el.r.setAttribute("width", Math.max(70, b.x2 - b.x1 + PAD * 2));
-    el.r.setAttribute("height", Math.max(50, b.y2 + PAD - y));
-    el.t.setAttribute("x", b.x1 - PAD + 12);
-    el.t.setAttribute("y", y + 15);
-    el.t.setAttribute("font-size", 10.5 / k);
+function buildRegions() {
+  clusters.forEach((cl, i) => {
+    const g = svgEl("g", {"data-comp": cl.id, class: "region"});
+    const rect = svgEl("rect", {class: "card", rx: 20});
+    g.appendChild(rect);
+    gRegions.appendChild(g);
+
+    const lg = svgEl("g", {"data-comp": cl.id, class: "rlabel"});
+    const dot = svgEl("circle", {class: "rdot"});
+    const title = svgEl("text", {class: "rtitle"});
+    const meta = svgEl("text", {class: "rmeta", "text-anchor": "end"});
+    const index = svgEl("text", {class: "rindex", "text-anchor": "end"});
+    index.textContent = String(i + 1).padStart(2, "0");
+    lg.append(dot, title, meta, index);
+    gRegionLabels.appendChild(lg);
+
+    cl.el = {g, rect, lg, dot, title, meta, index};
   });
 }
+
+function buildEdges() {
+  edges.forEach(e => {
+    const path = svgEl("path", {class: "edge", "data-rel": e.rel});
+    const rc = relColor(e.rel);
+    e.w = rc.w;
+    path.setAttribute("stroke", rc.c);
+    path.setAttribute("stroke-width", e.w);
+    path.setAttribute("opacity", "0.55");
+    const stacked = e.a.align === "start" || e.a.align === "end" ||
+                    e.b.align === "start" || e.b.align === "end";
+    const mk = markerByRel[e.rel];
+    e.arrow = !stacked && !!mk;
+    if (e.arrow) path.setAttribute("marker-end", "url(#" + mk + ")");
+    else path.setAttribute("stroke-width", Math.min(1.2, e.w));
+    gEdges.appendChild(path);
+    e.el = path;
+  });
+}
+
+function buildNodes() {
+  nodes.forEach(n => {
+    const g = svgEl("g", {class: "node", "data-id": n.id});
+    g.setAttribute("aria-label", n.full);
+    g.style.animationDelay = Math.min(n.i * 11, 420) + "ms";
+
+    const halo = nodeShape(n.type, n.r * 1.45);
+    halo.setAttribute("class", "halo");
+    halo.setAttribute("fill", "none");
+    halo.setAttribute("stroke", typeColor(n.type));
+    halo.setAttribute("stroke-width", "1.3");
+    halo.setAttribute("opacity", n.deg >= 4 ? ".32" : "0");
+
+    const hit = svgEl("circle", {class: "hit", r: Math.max(n.r + 11, 18)});
+    const dot = nodeShape(n.type, n.r);
+    dot.setAttribute("class", "dot");
+    dot.setAttribute("fill", typeColor(n.type));
+    dot.setAttribute("stroke", "var(--bg)");
+    dot.setAttribute("stroke-width", "1.6");
+
+    const ring = svgEl("circle", {class: "ring", r: n.r + 6, fill: "none",
+                                  stroke: "var(--accent)", "stroke-width": "2", opacity: "0"});
+    const label = svgEl("text", {class: "nlbl"});
+    label.textContent = n.label;
+
+    g.append(halo, dot, hit, ring, label);
+    gNodes.appendChild(g);
+    n.el = {g, dot, halo, ring, label, hit};
+  });
+}
+
+/* ------------------------------------------------------------------ 几何 */
+function tier(n) { return n.deg >= 8 ? 2 : (n.type === "Concept" ? 1 : 0); }
+function labelSize(n) { return n.deg >= 8 ? 13.5 : (n.type === "Concept" ? 12.5 : 11.5); }
+function labelWeight(n) { return n.deg >= 8 ? 650 : (n.type === "Concept" ? 550 : 450); }
+
+// 标签宽度用 canvas 实测,不再拿 0.55em 猜西文宽度 —— 猜窄了就会出现
+// "VLM AgentVISTA" 这种粘在一起的标签。中文、西文、字重都交给浏览器。
+const FONT_STACK = (() => {
+  try { return getComputedStyle(document.body).fontFamily || "system-ui, sans-serif"; }
+  catch (e) { return "system-ui, sans-serif"; }
+})();
+const _mctx = (() => {
+  try { return document.createElement("canvas").getContext("2d"); } catch (e) { return null; }
+})();
+const _mcache = new Map();
 
 function labelWidth(text, fs) {
-  // 中文按 1.0em,西文按 0.55em —— 0.62 的均值会低估中文 20% 以上
+  text = String(text);
+  const key = (Math.round(fs * 100) / 100) + "|" + text;
+  const hit = _mcache.get(key);
+  if (hit != null) return hit;
   let w = 0;
-  for (const ch of text) w += (ch.charCodeAt(0) > 0x2e80 ? 1.0 : 0.55) * fs;
+  if (_mctx) {
+    try {
+      _mctx.font = "500 " + fs + "px " + FONT_STACK;
+      w = _mctx.measureText(text).width;
+    } catch (e) { w = 0; }
+  }
+  if (!w || !isFinite(w)) {
+    for (const ch of text) w += (ch.codePointAt(0) > 0x2e80 ? 1.0 : 0.55) * fs;
+  } else {
+    w *= 1.03;   // 600 字重比 500 略宽,留一点余量
+  }
+  if (_mcache.size > 3000) _mcache.clear();
+  _mcache.set(key, w);
   return w;
 }
 
-function cullLabels() {
-  const boxes = [];
-  const order = nodes.slice().sort((a, b) => b.deg - a.deg);
-  order.forEach(n => {
-    const el = nodeEls.get(n.id);
-    const t = el.t;
-    if (hiddenTypes.has(n.type)) { t.style.display = "none"; return; }
-    const tier = tierOf(n);
-    if (k < 0.8 && tier === "minor") { t.style.display = "none"; return; }
-    const st = labelStyle[tier];
-    const fs = st.size / k;        // 世界坐标下的字号,屏幕上恒为 st.size
-    const gap = 6 / k;
-    t.setAttribute("font-size", fs);
-    // 标签在节点组内部,必须用相对偏移,不能用屏幕坐标
-    let anchor = "middle", dx = 0, dy = n.r + gap + fs * 0.85;
-    if (n.align === "end") { anchor = "end"; dx = -(n.r + gap); dy = fs * 0.34; }
-    else if (n.align === "start") { anchor = "start"; dx = n.r + gap; dy = fs * 0.34; }
-    t.setAttribute("text-anchor", anchor);
-    t.setAttribute("transform", "translate(" + dx + "," + dy + ")");
-
-    const sx = n.px * k + tx + dx * k;
-    const sy = n.py * k + ty + dy * k;
-    const w = labelWidth(n.label, st.size);
-    const x0 = anchor === "end" ? sx - w : (anchor === "middle" ? sx - w / 2 : sx);
-    const box = { x1: x0, y1: sy - st.size, x2: x0 + w, y2: sy + 4 };
-    let clash = false;
-    for (const b of boxes) {
-      if (!(box.x1 > b.x2 || box.x2 < b.x1 || box.y1 > b.y2 || box.y2 < b.y1)) { clash = true; break; }
-    }
-    if (clash) { t.style.display = "none"; }
-    else { t.style.display = ""; boxes.push(box); }
-  });
+// 标签几何:同一个节点允许放在下面或上面。默认在下面;下面挤了就翻到上面,
+// 比「隐藏一个名字」更保留信息。卡片会跟着 n.lbSide 把标签包进去。
+function labelGeom(n, side) {
+  const size = labelSize(n), fs = size / cam.k, gap = GAP / cam.k;
+  const w = labelWidth(n.label, size) / cam.k;
+  let dx = 0, dy, anchor = "middle";
+  if (n.align === "start") { anchor = "start"; dx = n.r + gap; dy = fs * .34; }
+  else if (n.align === "end") { anchor = "end"; dx = -(n.r + gap); dy = fs * .34; }
+  else if (side === "above") { dy = -(n.r + gap + fs * .22); }
+  else { dy = n.r + gap + fs * .82; }
+  let lx1, lx2;
+  if (anchor === "middle") { lx1 = n.px - w / 2; lx2 = n.px + w / 2; }
+  else { lx1 = n.px + dx - (anchor === "end" ? w : 0); lx2 = lx1 + w; }
+  const ly1 = n.py + dy - fs * .78, ly2 = ly1 + fs;
+  return {anchor, dx, dy, fs, w, lb: {x1: lx1, y1: ly1, x2: lx2, y2: ly2}};
 }
 
-function redraw() {
-  nodes.forEach(n => {
-    nodeEls.get(n.id).g.setAttribute("transform", "translate(" + n.px + "," + n.py + ")");
-  });
-  edges.forEach((e, i) => {
-    const l = lineEls[i];
-    const ax = e.a.px, ay = e.a.py, bx = e.b.px, by = e.b.py;
-    const dx = bx - ax, dy = by - ay, d = Math.hypot(dx, dy);
-    if (d < 1) { l.style.display = "none"; return; }
-    l.style.display = "";
-    const ux = dx / d, uy = dy / d;
-    const s1 = e.a.r + 2 / k, s2 = e.b.r + 2 / k;
-    if (d <= s1 + s2) {
-      l.setAttribute("x1", ax); l.setAttribute("y1", ay);
-      l.setAttribute("x2", bx); l.setAttribute("y2", by);
+// 节点的「占位」= 圆 + 标签。卡片按它算,所以卡片永远刚好包住文字。
+function nodeBox(n) {
+  const g = labelGeom(n, n.lbSide || "below");
+  return {x1: Math.min(n.px - n.r, g.lb.x1), y1: Math.min(n.py - n.r, g.lb.y1),
+          x2: Math.max(n.px + n.r, g.lb.x2), y2: Math.max(n.py + n.r, g.lb.y2),
+          anchor: g.anchor, dx: g.dx, dy: g.dy, fs: g.fs, w: g.w, lb: g.lb};
+}
+
+const regionBox = new Map();
+
+function drawRegions() {
+  // 卡片的 padding/head 用世界坐标(与布局同一套几何),不做屏幕最小值:
+  // 一旦屏幕最小值大于拼版留下的 38px 间隙,缩小后卡片就会互相压。
+  const pad = PAD, head = HEAD;
+  // 缩得很小时标签在世界上会变得很大,卡片不再包住文字;区域名交给 hub 标签。
+  const includeLabels = cam.k >= 0.8;
+  const showHeader = cam.k >= 0.65;
+  clusters.forEach(cl => {
+    const members = (membersByComp.get(cl.id) || []).filter(n => !state.hiddenTypes.has(n.type));
+    const el = cl.el;
+    if (!members.length) {
+      el.g.style.display = "none";
+      el.lg.style.display = "none";
+      regionBox.delete(cl.id);
       return;
     }
-    l.setAttribute("x1", ax + ux * s1); l.setAttribute("y1", ay + uy * s1);
-    l.setAttribute("x2", bx - ux * s2); l.setAttribute("y2", by - uy * s2);
+    el.g.style.display = "";
+    el.lg.style.display = showHeader ? "" : "none";
+    let x1 = 1e9, y1 = 1e9, x2 = -1e9, y2 = -1e9;
+    members.forEach(n => {
+      // 标签被 LOD/避让隐藏时,卡片不该再为它留位置 —— 否则缩小后卡片会越缩越大。
+      const b = (n.lbVisible && includeLabels) ? nodeBox(n)
+                            : {x1: n.px - n.r, y1: n.py - n.r, x2: n.px + n.r, y2: n.py + n.r};
+      if (b.x1 < x1) x1 = b.x1;
+      if (b.y1 < y1) y1 = b.y1;
+      if (b.x2 > x2) x2 = b.x2;
+      if (b.y2 > y2) y2 = b.y2;
+    });
+    const box = {x1: x1 - pad, y1: y1 - pad - (showHeader ? head : 0), x2: x2 + pad, y2: y2 + pad};
+    regionBox.set(cl.id, box);
+
+    const color = placeColor(cl);
+    el.rect.setAttribute("x", box.x1);
+    el.rect.setAttribute("y", box.y1);
+    el.rect.setAttribute("width", Math.max(70, box.x2 - box.x1));
+    el.rect.setAttribute("height", Math.max(56, box.y2 - box.y1));
+    el.rect.setAttribute("fill", rgba(color, pal().dark ? ".06" : ".043"));
+    el.rect.setAttribute("stroke", rgba(color, pal().dark ? ".30" : ".22"));
+    el.rect.setAttribute("stroke-width", "1");
+
+    const fs = 11.5 / cam.k, fsMeta = 10.5 / cam.k;
+    const bx = box.x1 + 16 / cam.k, by = box.y1 + 19 / cam.k;
+    el.dot.setAttribute("cx", bx);
+    el.dot.setAttribute("cy", by - fs * .28);
+    el.dot.setAttribute("r", 3.4 / cam.k);
+    el.dot.setAttribute("fill", color);
+
+    // 窄卡片(手机)先让出「N 节点」的位置,再降字号;否则标题只剩 "Machi…"。
+    let meta = members.length + " 节点";
+    let avail = (box.x2 - box.x1) - (26 / cam.k) - (labelWidth(meta, 10.5) / cam.k) - 24 / cam.k;
+    let titleFs = fs;
+    if (avail < 56 / cam.k) {
+      meta = "";
+      titleFs = 10 / cam.k;
+      avail = (box.x2 - box.x1) - (22 / cam.k) - 10 / cam.k;
+    }
+    el.title.setAttribute("x", bx + 10 / cam.k);
+    el.title.setAttribute("y", by);
+    el.title.setAttribute("font-size", titleFs);
+    el.title.textContent = fitText(cl.label, Math.max(avail, 30 / cam.k), titleFs);
+
+    el.meta.setAttribute("x", box.x2 - 14 / cam.k);
+    el.meta.setAttribute("y", by);
+    el.meta.setAttribute("font-size", fsMeta);
+    el.meta.textContent = meta;
+
+    el.index.setAttribute("x", box.x2 - 14 / cam.k);
+    el.index.setAttribute("y", box.y2 - 12 / cam.k);
+    el.index.setAttribute("font-size", 9.5 / cam.k);
   });
-  drawPanels();
-  camera();
-  cullLabels();
 }
 
-function applyFilter() {
+function fitText(text, maxW, fs) {
+  if (labelWidth(text, fs) <= maxW) return text;
+  let out = "";
+  for (const ch of String(text)) {
+    if (labelWidth(out + ch + "…", fs) > maxW) break;
+    out += ch;
+  }
+  return (out || String(text).slice(0, 1)) + "…";
+}
+
+function updateEdges() {
+  edges.forEach(e => {
+    const a = e.a, b = e.b;
+    const dx = b.px - a.px, dy = b.py - a.py;
+    const d = Math.hypot(dx, dy);
+    if (d < 1.5) { e.el.setAttribute("d", ""); return; }
+    const ux = dx / d, uy = dy / d;
+    const ra = a.r + 3, rb = b.r + 3;
+    const x1 = a.px + ux * ra, y1 = a.py + uy * ra;
+    const x2 = b.px - ux * rb, y2 = b.py - uy * rb;
+    const mx = (x1 + x2) / 2 - uy * e.curve;
+    const my = (y1 + y2) / 2 + ux * e.curve;
+    e.el.setAttribute("d", "M" + x1.toFixed(1) + " " + y1.toFixed(1) +
+                            " Q" + mx.toFixed(1) + " " + my.toFixed(1) +
+                            " " + x2.toFixed(1) + " " + y2.toFixed(1));
+  });
+}
+
+function placeLabels() {
+  // 缩小时至少留下「区域代表」的名字;其余按等级/度数/碰撞择优。
+  const minTier = cam.k < .78 ? 1 : 0;
+  const order = nodes.slice().sort((a, b) => b.deg - a.deg || (a.id < b.id ? -1 : 1));
+  const boxes = [];
+  const pinned = new Set([state.selected, state.focus].filter(Boolean));
+  const shown = new Set();
+  const attempted = new Set();
+  const pad = 6;                       // 屏幕像素:两个标签至少隔 6px 才不会「粘住」
+
+  // 节点也是障碍物:标签压到别的节点上比「少显示一个名字」更难看。
+  const obstacles = [];
   nodes.forEach(n => {
-    nodeEls.get(n.id).g.style.display = hiddenTypes.has(n.type) ? "none" : "";
+    if (state.hiddenTypes.has(n.type)) return;
+    const r = n.r * cam.k + 1.5;
+    const x = n.px * cam.k + cam.x, y = n.py * cam.k + cam.y;
+    obstacles.push({id: n.id, x1: x - r, y1: y - r, x2: x + r, y2: y + r});
   });
-  edges.forEach((e, i) => {
-    lineEls[i].style.display = (hiddenTypes.has(e.a.type) || hiddenTypes.has(e.b.type)) ? "none" : "";
+
+  const screenBox = lb => ({
+    x1: lb.x1 * cam.k + cam.x, y1: lb.y1 * cam.k + cam.y,
+    x2: lb.x2 * cam.k + cam.x, y2: lb.y2 * cam.k + cam.y
+  });
+  const hits = (a, b) => !(a.x1 - pad > b.x2 || a.x2 + pad < b.x1 ||
+                           a.y1 - pad > b.y2 || a.y2 + pad < b.y1);
+
+  const tryLabel = (n, force) => {
+    attempted.add(n.id);
+    if (state.hiddenTypes.has(n.type)) { n.el.label.style.display = "none"; n.lbVisible = false; return; }
+    const fixedSide = n.align === "start" || n.align === "end";
+    const sides = fixedSide ? [null] : ["below", "above"];
+    let chosen = null;
+    for (const side of sides) {
+      const g = labelGeom(n, side);
+      const box = screenBox(g.lb);
+      let bad = false;
+      for (const o of obstacles) {
+        if (o.id !== n.id && hits(box, o)) { bad = true; break; }
+      }
+      if (!bad) {
+        for (const q of boxes) {
+          if (hits(box, q)) { bad = true; break; }
+        }
+      }
+      if (!bad) { chosen = {side, g, box}; break; }
+    }
+    // 选中/悬停的标签必须可见:两侧都挤时让位,压在下侧。
+    if (!chosen && force) {
+      const side = fixedSide ? null : "below";
+      const g = labelGeom(n, side);
+      chosen = {side, g, box: screenBox(g.lb)};
+    }
+    if (!chosen) {
+      n.el.label.style.display = "none";
+      n.lbVisible = false;
+      return;
+    }
+    // 屏幕边缘的标签直接藏掉,而不是让它被裁掉半个字。
+    // 选中/悬停的标签例外:相机已经把它带到中心。
+    const vw = window.innerWidth, vh = window.innerHeight;
+    if (!force && (chosen.box.x1 < 4 || chosen.box.x2 > vw - 4 ||
+                   chosen.box.y1 < 76 || chosen.box.y2 > vh - 6)) {
+      n.el.label.style.display = "none";
+      n.lbVisible = false;
+      return;
+    }
+    const g = chosen.g;
+    n.lbSide = chosen.side || n.lbSide || "below";
+    n.lbVisible = true;
+    n.el.label.style.display = "";
+    n.el.label.setAttribute("font-size", g.fs);
+    n.el.label.setAttribute("font-weight", labelWeight(n));
+    n.el.label.setAttribute("text-anchor", g.anchor);
+    n.el.label.setAttribute("transform", "translate(" + g.dx + "," + g.dy + ")");
+    n.el.label.setAttribute("stroke", "var(--bg)");
+    n.el.label.setAttribute("stroke-width", (3.2 / cam.k) + "px");
+    n.el.label.setAttribute("fill", n.deg >= 8 ? "var(--ink)" : (n.type === "Concept" ? "var(--ink)" : "var(--ink-2)"));
+    boxes.push(chosen.box);
+    shown.add(n.id);
+  };
+
+  // 1) 选中的 / 悬停的:一定显示。2) 区域 hub:缩小时也不丢地名。
+  order.forEach(n => { if (pinned.has(n.id)) tryLabel(n, true); });
+  order.forEach(n => { if (!attempted.has(n.id) && hubIds.has(n.id)) tryLabel(n); });
+  // 3) 其余按度数择优;等级不够或预算用完就隐藏。
+  let budget = cam.k < .55 ? 90 : 400;
+  order.forEach(n => {
+    if (attempted.has(n.id)) return;
+    if (tier(n) < minTier) { n.el.label.style.display = "none"; n.lbVisible = false; return; }
+    if (budget-- <= 0) { n.el.label.style.display = "none"; n.lbVisible = false; return; }
+    tryLabel(n);
   });
 }
 
+function applyCamera() {
+  world.setAttribute("transform", "translate(" + cam.x.toFixed(2) + " " + cam.y.toFixed(2) + ") scale(" + cam.k.toFixed(4) + ")");
+}
+
+/* ------------------------------------------------------------------ 高亮 */
 function paint() {
+  const center = state.hover || state.focus || state.selected;
+  const ego = center && byId[center] ? new Set([center, ...nb[center]]) : null;
+
   nodes.forEach(n => {
-    const on = !hover || n.id === hover || nb[hover].has(n.id);
-    nodeEls.get(n.id).g.style.opacity = on ? "1" : "0.15";
+    const visible = !state.hiddenTypes.has(n.type);
+    n.el.g.style.display = visible ? "" : "none";
+    if (!visible) return;
+    const on = !ego || ego.has(n.id);
+    n.el.g.style.opacity = on ? "1" : (state.focus ? ".10" : ".20");
+    n.el.ring.setAttribute("opacity", n.id === state.selected ? "1" : "0");
+    n.el.ring.setAttribute("stroke", "var(--accent)");
+    n.el.ring.setAttribute("r", n.r + 6);
   });
-  edges.forEach((e, i) => {
-    const on = !hover || e.s === hover || e.t === hover;
-    lineEls[i].style.opacity = on ? "1" : "0.08";
+
+  edges.forEach(e => {
+    const visible = !state.hiddenRels.has(e.rel) &&
+                    !state.hiddenTypes.has(e.a.type) && !state.hiddenTypes.has(e.b.type);
+    e.el.style.display = visible ? "" : "none";
+    if (!visible) return;
+    const on = !ego || e.s === center || e.t === center;
+    e.el.style.opacity = on ? (ego ? ".95" : ".55") : ".07";
+    e.el.setAttribute("stroke-width", on && ego ? (e.w * 1.35).toFixed(2) : e.w);
   });
+
+  clusters.forEach(cl => {
+    const el = cl.el;
+    if (el.g.style.display === "none") return;
+    const members = (membersByComp.get(cl.id) || []).filter(n => !state.hiddenTypes.has(n.type));
+    const on = !ego || members.some(n => ego.has(n.id));
+    const o = on ? "1" : ".35";
+    el.lg.style.opacity = o;
+    el.rect.style.opacity = ego && !on ? ".4" : "1";
+  });
+
+  const vis = nodes.some(n => !state.hiddenTypes.has(n.type));
+  $("blank").classList.toggle("on", !vis);
 }
 
-function showPanel(id) {
+function drawAll() {
+  nodes.forEach(n => n.el.g.setAttribute("transform", "translate(" + n.px.toFixed(1) + " " + n.py.toFixed(1) + ")"));
+  placeLabels();          // 先定标签可见性,卡片才知道要不要给文字留位置
+  drawRegions();
+  updateEdges();
+  paint();
+  applyCamera();
+}
+
+/* ------------------------------------------------------------------ 相机 */
+function viewport() { return {w: window.innerWidth, h: window.innerHeight}; }
+
+function insets() {
+  const railOn = rail && !rail.classList.contains("hidden") && window.innerWidth > 980;
+  return {left: railOn ? 262 : 22, right: 22, top: 84, bottom: 66};
+}
+
+function fitBounds(b, padScreen) {
+  const vp = viewport(), ins = insets();
+  const pad = padScreen == null ? 0 : padScreen;
+  const L = ins.left + pad, R = vp.w - ins.right - pad;
+  const T = ins.top + pad, B = vp.h - ins.bottom - pad;
+  const k = clamp(Math.min((R - L) / Math.max(b.w, 1), (B - T) / Math.max(b.h, 1)), 0.08, 2.4);
+  const freeX = (R - L) - b.w * k, freeY = (B - T) - b.h * k;
+  // 整图适应时,宽扁的内容在竖屏上贴着页头放,而不是浮在正中留一圈空白。
+  const topBias = padScreen == null ? Math.min(freeY / 2, 24) : freeY / 2;
+  return {
+    k,
+    x: L + freeX / 2 - b.x * k,
+    y: T + topBias - b.y * k
+  };
+}
+
+// 适应视图用的包围盒:按 k=1 的标签尺寸量,不随当前缩放抖动。
+function fitBox() {
+  let x1 = 1e9, y1 = 1e9, x2 = -1e9, y2 = -1e9, any = false;
+  nodes.forEach(n => {
+    if (state.hiddenTypes.has(n.type)) return;
+    any = true;
+    const size = labelSize(n), w = labelWidth(n.label, size);
+    let lx1, lx2, ly1, ly2;
+    if (n.align === "start") { lx1 = n.px + n.r + GAP; lx2 = lx1 + w; ly1 = n.py - size * .8; ly2 = n.py + size * .3; }
+    else if (n.align === "end") { lx2 = n.px - n.r - GAP; lx1 = lx2 - w; ly1 = n.py - size * .8; ly2 = n.py + size * .3; }
+    else { lx1 = n.px - w / 2; lx2 = n.px + w / 2; ly1 = n.py + n.r + GAP; ly2 = ly1 + size; }
+    x1 = Math.min(x1, n.px - n.r, lx1); x2 = Math.max(x2, n.px + n.r, lx2);
+    y1 = Math.min(y1, n.py - n.r, ly1); y2 = Math.max(y2, n.py + n.r, ly2);
+  });
+  if (!any) return {x: 0, y: 0, w: CW, h: CH};
+  const pad = PAD + HEAD;
+  return {x: x1 - pad, y: y1 - pad, w: (x2 - x1) + pad * 2, h: (y2 - y1) + pad * 2};
+}
+
+function setCam(next) {
+  const changedK = Math.abs(next.k - cam.k) > 1e-4;
+  cam.x = next.x; cam.y = next.y; cam.k = next.k;
+  applyCamera();
+  if (changedK) { placeLabels(); drawRegions(); }
+}
+
+function animateTo(target, ms) {
+  if (anim) cancelAnimationFrame(anim.raf);
+  const from = {x: cam.x, y: cam.y, k: cam.k};
+  const dur = reduceMotion ? 0 : (ms == null ? 420 : ms);
+  const t0 = performance.now();
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  if (dur === 0) { setCam(target); animateFlush(); return; }
+  const step = now => {
+    const t = clamp((now - t0) / dur, 0, 1), e = ease(t);
+    setCam({x: from.x + (target.x - from.x) * e,
+            y: from.y + (target.y - from.y) * e,
+            k: from.k + (target.k - from.k) * e});
+    if (t < 1) anim = {raf: requestAnimationFrame(step)};
+    else { anim = null; animateFlush(); }
+  };
+  anim = {raf: requestAnimationFrame(step)};
+}
+function animateFlush() { placeLabels(); drawRegions(); }
+
+function boundsOfRegions() {
+  let x1 = 1e9, y1 = 1e9, x2 = -1e9, y2 = -1e9, any = false;
+  regionBox.forEach(b => {
+    any = true;
+    x1 = Math.min(x1, b.x1); y1 = Math.min(y1, b.y1);
+    x2 = Math.max(x2, b.x2); y2 = Math.max(y2, b.y2);
+  });
+  if (!any) return null;
+  const pad = 8;
+  return {x: x1 - pad, y: y1 - pad, w: x2 - x1 + pad * 2, h: y2 - y1 + pad * 2};
+}
+
+function fitAll(animate) {
+  // 标签在屏幕上是恒定字号,缩小时区域卡片会比 k=1 时更「胖」;而是否把标签
+  // 算进卡片又依赖 k —— 所以迭代两次让两边收敛,并留 28px 给边缘标签。
+  const from = {x: cam.x, y: cam.y, k: cam.k};
+  let target = fitBounds(fitBox());
+  setCam(target);
+  for (let i = 0; i < 2; i++) {
+    drawRegions();
+    const b = boundsOfRegions();
+    if (!b) break;
+    target = fitBounds(b, 28);
+    setCam(target);
+  }
+  if (animate === false) { drawAll(); return; }
+  // 迭代过程不展示:回到起点,再动画到最终视图。
+  cam.x = from.x; cam.y = from.y; cam.k = from.k;
+  applyCamera();
+  placeLabels();
+  drawRegions();
+  animateTo(target);
+}
+
+function zoomAt(factor, cx, cy) {
+  state.hasMoved = true;
+  const vp = viewport();
+  cx = cx == null ? vp.w / 2 : cx;
+  cy = cy == null ? vp.h / 2 : cy;
+  const k = clamp(cam.k * factor, 0.12, 6);
+  animateTo({k, x: cx - (cx - cam.x) * (k / cam.k), y: cy - (cy - cam.y) * (k / cam.k)}, 200);
+}
+
+function flyToNode(id, ms) {
   const n = byId[id];
-  const relName = r => (DATA.relLabel && DATA.relLabel[r]) ? DATA.relLabel[r] : r;
+  if (!n) return;
+  state.hasMoved = true;
+  const vp = viewport(), ins = insets();
+  const drawerW = drawer.classList.contains("on") ? 382 : 0;
+  const k = clamp(Math.max(cam.k, 1.15), 1.15, 1.9);
+  const cx = ins.left + (vp.w - ins.left - ins.right - drawerW) / 2;
+  const cy = ins.top + (vp.h - ins.top - ins.bottom) / 2;
+  animateTo({k, x: cx - n.px * k, y: cy - n.py * k}, ms == null ? 460 : ms);
+}
+
+function fitCluster(id) {
+  drawRegions();
+  const b = regionBox.get(id);
+  if (!b) return;
+  state.hasMoved = true;
+  const target = fitBounds({x: b.x1, y: b.y1, w: b.x2 - b.x1, h: b.y2 - b.y1}, 40);
+  animateTo(target);
+}
+
+/* ------------------------------------------------------------------ 详情 */
+function openPanel(id) {
+  const n = byId[id];
+  if (!n) return;
+  const seen = new Set([String(n.full || "").toLowerCase(),
+                        String(n.label || "").toLowerCase(),
+                        String(n.id || "").toLowerCase()]);
+  const color = typeColor(n.type);
   const outs = edges.filter(e => e.s === id);
   const ins = edges.filter(e => e.t === id);
-  const li = (e, dir) => '<li><em>' + esc(relName(e.rel)) + '</em>' +
-                          esc(dir === "out" ? (byId[e.t].full || e.t) : (byId[e.s].full || e.s)) + '</li>';
-  let h = '<div class="row"><h2>' + esc(n.full || n.label) + '</h2>' +
-          '<button class="x" onclick="closePanel()">×</button></div>' +
-          '<div class="meta">' + esc(n.type) + ' · 度数 ' + n.deg + '<br>' + esc(id) + '</div>';
-  if (n.summary) h += '<p class="def">' + esc(n.summary) + '</p>';
-  if (outs.length) h += '<div class="grp">出边 ' + outs.length + '</div><ul>' + outs.map(e => li(e, "out")).join("") + '</ul>';
-  if (ins.length) h += '<div class="grp">入边 ' + ins.length + '</div><ul>' + ins.map(e => li(e, "in")).join("") + '</ul>';
-  if (!outs.length && !ins.length) h += '<div class="grp">孤立节点</div>';
-  panel.innerHTML = h;
-  panel.classList.add("on");
-  selected = id;
-  nodes.forEach(m => { nodeEls.get(m.id).ring.setAttribute("opacity", m.id === id ? "1" : "0"); });
-  place(); redraw();
+  const cl = clusterOf(n);
+
+  drawer.textContent = "";
+  const scroll = dom("div", "dscroll");
+  const head = dom("div", "dhead");
+  const chip = dom("span", "dtype");
+  const chipDot = dom("i"); chipDot.style.background = color;
+  chip.append(chipDot, document.createTextNode(typeName(n.type)));
+  const close = dom("button", "dclose", "×");
+  close.type = "button";
+  close.setAttribute("aria-label", "关闭详情");
+  close.onclick = clearSelection;
+  head.append(chip, close);
+
+  const title = dom("h2", "dtitle", n.full || n.label);
+  const meta = dom("p", "dmeta");
+  const code = dom("code", null, n.id);
+  meta.append(code, document.createTextNode(cl ? " · " + cl.label + " 区域" : ""));
+
+  scroll.append(head, title, meta);
+
+  if (n.summary) scroll.append(dom("p", "dsum", n.summary));
+
+  const others = (n.aliases || []).filter(a => {
+    const s = String(a || "").trim();
+    const low = s.toLowerCase();
+    if (!s || s.length < 2 || s.includes(".") || seen.has(low)) return false;
+    seen.add(low);
+    return true;
+  }).slice(0, 4);
+  if (others.length) scroll.append(dom("p", "dalso", "又名 · " + others.join(" / ")));
+
+  const stats = dom("div", "dstats");
+  [["出边", outs.length], ["入边", ins.length], ["度数", n.deg]].forEach(([label, val]) => {
+    const c = dom("div", "dstat");
+    c.append(dom("b", null, String(val)), dom("span", null, label));
+    stats.appendChild(c);
+  });
+  scroll.append(stats);
+
+  const group = (label, list, dir) => {
+    if (!list.length) return;
+    const g = dom("div", "dgroup");
+    const h = dom("h4");
+    h.append(dom("i"), document.createTextNode(label + " · " + list.length));
+    g.appendChild(h);
+    list.forEach(e => {
+      const target = dir === "out" ? byId[e.t] : byId[e.s];
+      if (!target) return;
+      const b = dom("button", "drel");
+      b.type = "button";
+      const rc = relColor(e.rel).c;
+      const railEl = dom("span", "drail"); railEl.style.background = rc;
+      const r = dom("span", "r", relName(e.rel));
+      const t = dom("span", "t", target.full || target.label);
+      b.append(railEl, r, t);
+      b.onclick = () => selectNode(target.id);
+      g.appendChild(b);
+    });
+    scroll.appendChild(g);
+  };
+  group("出边", outs, "out");
+  group("入边", ins, "in");
+  if (!outs.length && !ins.length) {
+    const g = dom("div", "dgroup");
+    g.append(dom("h4", null, "孤立节点"));
+    g.appendChild(dom("p", "dmeta", "还没有任何关系连到这个节点"));
+    scroll.appendChild(g);
+  }
+
+  const foot = dom("div", "dfoot");
+  const focusBtn = dom("button", "dbtn" + (state.focus === id ? "" : " primary"),
+                       state.focus === id ? "退出聚焦" : "聚焦此节点");
+  focusBtn.type = "button";
+  focusBtn.onclick = () => toggleFocus(id);
+  const fitBtn = dom("button", "dbtn", "居中");
+  fitBtn.type = "button";
+  fitBtn.onclick = () => flyToNode(id, 360);
+  foot.append(focusBtn, fitBtn);
+  scroll.append(foot);
+
+  drawer.append(scroll);
+  drawer.classList.add("on");
 }
 
 function closePanel() {
-  panel.classList.remove("on");
-  panel.innerHTML = "";
-  selected = null;
-  nodes.forEach(m => nodeEls.get(m.id).ring.setAttribute("opacity", "0"));
-  place(); redraw();
+  drawer.classList.remove("on");
 }
-window.closePanel = closePanel;
 
-let drag = null, moved = false, pressedNode = null;
-svg.addEventListener("pointerdown", e => {
-  const g = e.target.closest("g[data-id]");
-  const card = e.target.closest("rect[data-comp]");
-  svg.setPointerCapture(e.pointerId);
-  moved = false;
-  pressedNode = g ? g.dataset.id : null;
-  if (g) {
-    drag = { type: "node", n: byId[g.dataset.id], ox: e.clientX, oy: e.clientY };
-  } else if (card) {
-    // 整张卡片拖动:把这一簇的节点作为一个整体平移
-    const id = +card.dataset.comp;
-    const members = nodes.filter(n => n.comp === id);
-    const r0 = svg.getBoundingClientRect();
-    drag = {
-      type: "card", members: members,
-      ox: ((e.clientX - r0.left) - tx) / k,
-      oy: ((e.clientY - r0.top) - ty) / k,
-      start: members.map(n => [n.px, n.py])
+function clearSelection() {
+  state.selected = null;
+  state.focus = null;
+  closePanel();
+  paint();
+  placeLabels();
+  drawRegions();
+}
+
+function toggleFocus(id) {
+  state.focus = state.focus === id ? null : id;
+  state.hasMoved = true;
+  paint();
+  placeLabels();
+  drawRegions();
+  if (state.focus) {
+    const ids = [id, ...nb[id]];
+    let x1 = 1e9, y1 = 1e9, x2 = -1e9, y2 = -1e9;
+    ids.forEach(i => {
+      const n = byId[i];
+      x1 = Math.min(x1, n.px - n.r); x2 = Math.max(x2, n.px + n.r);
+      y1 = Math.min(y1, n.py - n.r); y2 = Math.max(y2, n.py + n.r);
+    });
+    const pad = 90;
+    const b = {x: x1 - pad, y: y1 - pad, w: (x2 - x1) + pad * 2, h: (y2 - y1) + pad * 2};
+    animateTo(fitBounds(b));
+  }
+  if (state.selected === id) openPanel(id);
+}
+
+function selectNode(id, opts) {
+  if (!byId[id]) return;
+  state.hasMoved = true;
+  state.selected = id;
+  state.focus = null;
+  state.hover = null;      // 选中后详情里已经有全部信息,不要再挂一个悬停浮层
+  hideTip();
+  openPanel(id);
+  paint();
+  placeLabels();
+  drawRegions();
+  if (!opts || opts.fly !== false) flyToNode(id, 420);
+}
+
+/* ------------------------------------------------------------------ 搜索 */
+function search(q) {
+  q = q.trim().toLowerCase();
+  if (!q) return [];
+  const out = [];
+  nodes.forEach(n => {
+    const label = String(n.label || "").toLowerCase();
+    const full = String(n.full || "").toLowerCase();
+    const id = String(n.id).toLowerCase();
+    const aliases = (n.aliases || []).join(" ").toLowerCase();
+    let score = 0;
+    if (label === q || full === q) score = 100;
+    else if (label.startsWith(q)) score = 80;
+    else if (full.startsWith(q)) score = 70;
+    else if (label.includes(q)) score = 50;
+    else if (full.includes(q)) score = 40;
+    else if (aliases.includes(q)) score = 30;
+    else if (id.includes(q)) score = 20;
+    if (score) out.push({n, score});
+  });
+  out.sort((a, b) => b.score - a.score || b.n.deg - a.n.deg || (a.n.id < b.n.id ? -1 : 1));
+  return out.slice(0, 9).map(x => x.n);
+}
+
+function showResults(list) {
+  resultsEl.textContent = "";
+  state.resultIndex = 0;
+  if (!list.length) {
+    const e = dom("div", "empty", "没有匹配的节点");
+    resultsEl.appendChild(e);
+  }
+  list.forEach((n, i) => {
+    const b = dom("button");
+    b.type = "button";
+    b.setAttribute("role", "option");
+    b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    const dot = dom("i", "dot");
+    dot.style.cssText = "width:8px;height:8px;flex:none;border-radius:" + (n.type === "Resource" ? "3px" : "50%") +
+                        ";background:" + typeColor(n.type);
+    const name = dom("span", "rn", n.full || n.label);
+    const meta = dom("span", "rm", typeName(n.type) + " · " + n.deg);
+    b.append(dot, name, meta);
+    b.onclick = () => chooseResult(n);
+    b.onmouseenter = () => { setResultIndex(i); };
+    resultsEl.appendChild(b);
+  });
+  resultsEl.classList.add("on");
+  state.searching = true;
+}
+
+function setResultIndex(i) {
+  const items = resultsEl.querySelectorAll("button");
+  if (!items.length) return;
+  state.resultIndex = clamp(i, 0, items.length - 1);
+  items.forEach((el, j) => el.setAttribute("aria-selected", j === state.resultIndex ? "true" : "false"));
+}
+
+function chooseResult(n) {
+  resultsEl.classList.remove("on");
+  state.searching = false;
+  input.blur();
+  selectNode(n.id);
+}
+
+function hideResults() {
+  resultsEl.classList.remove("on");
+  state.searching = false;
+}
+
+/* ------------------------------------------------------------------ 图例 */
+function buildTypeChips() {
+  const box = $("typechips");
+  box.textContent = "";
+  Object.keys(counts.type).sort((a, b) => counts.type[b] - counts.type[a] || (a < b ? -1 : 1)).forEach(t => {
+    const b = dom("button", "lay");
+    b.type = "button";
+    b.setAttribute("aria-pressed", state.hiddenTypes.has(t) ? "false" : "true");
+    b.title = typeName(t) + " · " + t;
+    const dot = dom("i", "dot" + shapeClass(t));
+    dot.style.background = typeColor(t);
+    const label = dom("span", "lbl", typeName(t));
+    const n = dom("span", "n", String(counts.type[t]));
+    b.append(dot, label, n);
+    b.onclick = () => {
+      if (state.hiddenTypes.has(t)) state.hiddenTypes.delete(t); else state.hiddenTypes.add(t);
+      b.setAttribute("aria-pressed", state.hiddenTypes.has(t) ? "false" : "true");
+      drawAll();
     };
+    box.appendChild(b);
+  });
+}
+
+function buildRelChips() {
+  const box = $("relchips");
+  box.textContent = "";
+  Object.keys(counts.rel).sort((a, b) => counts.rel[b] - counts.rel[a] || (a < b ? -1 : 1)).forEach(r => {
+    const b = dom("button", "relrow");
+    b.type = "button";
+    b.setAttribute("aria-pressed", state.hiddenRels.has(r) ? "false" : "true");
+    b.title = r;
+    const s = dom("s");
+    s.style.borderColor = relColor(r).c;
+    const label = dom("span", "lbl", relName(r));
+    const n = dom("span", "n", String(counts.rel[r]));
+    b.append(s, label, n);
+    b.onclick = () => {
+      if (state.hiddenRels.has(r)) state.hiddenRels.delete(r); else state.hiddenRels.add(r);
+      b.setAttribute("aria-pressed", state.hiddenRels.has(r) ? "false" : "true");
+      paint();
+    };
+    box.appendChild(b);
+  });
+}
+
+function buildRegionList() {
+  const box = $("regionlist");
+  box.textContent = "";
+  const order = clusters.slice().sort((a, b) => b.n - a.n || (a.label < b.label ? -1 : 1));
+  order.forEach(cl => {
+    const b = dom("button", "reg");
+    b.type = "button";
+    const no = dom("span", "no", String(clusters.indexOf(cl) + 1).padStart(2, "0"));
+    const sw = dom("span", "sw");
+    sw.style.background = placeColor(cl);
+    const label = dom("span", "lbl", cl.label);
+    const n = dom("span", "n", String(cl.n));
+    b.append(no, sw, label, n);
+    b.title = cl.full || cl.label;
+    b.onclick = () => { selectNode(cl.hub); fitCluster(cl.id); };
+    box.appendChild(b);
+  });
+}
+
+/* ------------------------------------------------------------------ 主题 */
+function applyTheme(theme, save) {
+  state.theme = theme === "dark" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", state.theme);
+  if (save) { try { localStorage.setItem("kg-theme", state.theme); } catch (e) {} }
+  buildDefs();
+  nodes.forEach(n => {
+    n.el.dot.setAttribute("fill", typeColor(n.type));
+    n.el.halo.setAttribute("stroke", typeColor(n.type));
+  });
+  edges.forEach(e => {
+    const rc = relColor(e.rel);
+    e.el.setAttribute("stroke", rc.c);
+    e.el.setAttribute("stroke-width", e.w);
+    if (e.arrow) e.el.setAttribute("marker-end", "url(#" + markerByRel[e.rel] + ")");
+    else e.el.removeAttribute("marker-end");
+  });
+  buildTypeChips();
+  buildRelChips();
+  buildRegionList();
+  drawAll();
+  if (state.selected) openPanel(state.selected);
+  const sun = $("btnTheme").querySelector(".ic-sun");
+  if (sun) sun.style.opacity = state.theme === "dark" ? ".45" : "1";
+}
+
+/* ------------------------------------------------------------------ 交互 */
+let drag = null, moved = false, downX = 0, downY = 0, pressedNode = null, pressedHeader = null;
+
+function worldPoint(clientX, clientY) {
+  const r = svg.getBoundingClientRect();
+  return {x: (clientX - r.left - cam.x) / cam.k, y: (clientY - r.top - cam.y) / cam.k};
+}
+
+svg.addEventListener("pointerdown", ev => {
+  if (ev.button !== 0) return;
+  hideTip();
+  const nodeEl = ev.target.closest("g[data-id]");
+  const regionEl = ev.target.closest("[data-comp]");
+  downX = ev.clientX; downY = ev.clientY; moved = false;
+  pressedNode = nodeEl ? nodeEl.dataset.id : null;
+  pressedHeader = ev.target.closest("g.rlabel") ? Number(ev.target.closest("g.rlabel").dataset.comp) : null;
+  if (anim) { cancelAnimationFrame(anim.raf); anim = null; }
+
+  if (nodeEl) {
+    const n = byId[nodeEl.dataset.id];
+    drag = {type: "node", n, ox: ev.clientX, oy: ev.clientY};
+    svg.classList.add("dragging");
+  } else if (regionEl) {
+    const id = Number(regionEl.dataset.comp);
+    const members = nodes.filter(n => n.comp === id && !state.hiddenTypes.has(n.type));
+    const start = members.map(n => [n.px, n.py]);
+    const w = worldPoint(ev.clientX, ev.clientY);
+    drag = {type: "region", members, start, ox: w.x, oy: w.y};
+    svg.classList.add("dragging");
   } else {
-    drag = { type: "pan", ox: e.clientX, oy: e.clientY, tx: tx, ty: ty };
+    drag = {type: "pan", ox: ev.clientX, oy: ev.clientY, x: cam.x, y: cam.y};
     svg.classList.add("panning");
   }
+  svg.setPointerCapture(ev.pointerId);
 });
-svg.addEventListener("pointermove", e => {
-  if (!drag) return;
+
+let raf = 0;
+function schedule(fn) {
+  if (raf) return;
+  raf = requestAnimationFrame(() => { raf = 0; fn(); });
+}
+
+svg.addEventListener("pointermove", ev => {
+  if (!drag) {
+    if (ev.target.closest("g[data-id]")) {
+      const id = ev.target.closest("g[data-id]").dataset.id;
+      if (state.hover !== id) { state.hover = id; paint(); showTip(id, ev); }
+      else moveTip(ev);
+    } else if (state.hover) {
+      state.hover = null; hideTip(); paint();
+    }
+    return;
+  }
+  const dx = ev.clientX - downX, dy = ev.clientY - downY;
+  if (Math.hypot(dx, dy) > 3) moved = true;
+
   if (drag.type === "pan") {
-    tx = drag.tx + (e.clientX - drag.ox);
-    ty = drag.ty + (e.clientY - drag.oy);
-    moved = true;
-    camera(); cullLabels();
+    cam.x = drag.x + (ev.clientX - drag.ox);
+    cam.y = drag.y + (ev.clientY - drag.oy);
+    state.hasMoved = true;
+    applyCamera();
     return;
   }
-  const r = svg.getBoundingClientRect();
-  const wx = ((e.clientX - r.left) - tx) / k;
-  const wy = ((e.clientY - r.top) - ty) / k;
-  if (drag.type === "card") {
-    const dx = wx - drag.ox, dy = wy - drag.oy;
-    if (Math.abs(dx) > 0.6 || Math.abs(dy) > 0.6) moved = true;
+  if (drag.type === "node") {
+    const p = worldPoint(ev.clientX, ev.clientY);
+    drag.n.px = p.x; drag.n.py = p.y;
+    schedule(drawAll);
+    return;
+  }
+  if (drag.type === "region") {
+    const p = worldPoint(ev.clientX, ev.clientY);
+    const mx = p.x - drag.ox, my = p.y - drag.oy;
     drag.members.forEach((n, i) => {
-      n.px = drag.start[i][0] + dx;
-      n.py = drag.start[i][1] + dy;
-      dragged.add(n.id);
+      n.px = drag.start[i][0] + mx;
+      n.py = drag.start[i][1] + my;
     });
-    redraw();
-    return;
+    schedule(drawAll);
   }
-  drag.n.px = wx;
-  drag.n.py = wy;
-  if (Math.hypot(e.clientX - drag.ox, e.clientY - drag.oy) > 2) moved = true;
-  dragged.add(drag.n.id);
-  redraw();
 });
-const endDrag = () => {
-  if (drag && !moved && pressedNode) showPanel(pressedNode);
-  pressedNode = null;
+
+function endDrag(ev) {
+  if (!drag) return;
+  const kind = drag.type;
+  const clickEmpty = kind === "pan" && !moved;
   drag = null;
-  svg.classList.remove("panning");
-};
+  svg.classList.remove("panning", "dragging");
+  if (!moved && pressedNode) {
+    selectNode(pressedNode);
+  } else if (!moved && pressedHeader != null) {
+    fitCluster(pressedHeader);
+  } else if (clickEmpty) {
+    clearSelection();
+  } else {
+    drawAll();
+    if (kind !== "pan") state.hasMoved = true;
+  }
+  pressedNode = null;
+  pressedHeader = null;
+  try { svg.releasePointerCapture(ev.pointerId); } catch (e) {}
+}
 svg.addEventListener("pointerup", endDrag);
 svg.addEventListener("pointercancel", () => {
-  pressedNode = null;
-  drag = null;
-  svg.classList.remove("panning");
+  drag = null; pressedNode = null;
+  svg.classList.remove("panning", "dragging");
 });
 
-svg.addEventListener("wheel", e => {
-  e.preventDefault();
-  const r = svg.getBoundingClientRect();
-  const mx = e.clientX - r.left, my = e.clientY - r.top;
-  const nk = Math.min(6, Math.max(0.3, k * Math.exp(-e.deltaY * 0.0015)));
-  tx = mx - (mx - tx) * (nk / k);
-  ty = my - (my - ty) * (nk / k);
-  k = nk;
-  camera(); cullLabels();
-}, { passive: false });
-
-gN.addEventListener("pointerover", e => {
-  const g = e.target.closest("g[data-id]");
-  if (g) { hover = g.dataset.id; paint(); }
+svg.addEventListener("pointerleave", () => {
+  if (!drag && state.hover) { state.hover = null; hideTip(); paint(); }
 });
-gN.addEventListener("pointerout", () => { hover = null; paint(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape" && selected) closePanel(); });
 
-document.getElementById("reset").onclick = () => {
-  k = 1; tx = 0; ty = 0; place(); redraw();
+svg.addEventListener("wheel", ev => {
+  ev.preventDefault();
+  if (anim) { cancelAnimationFrame(anim.raf); anim = null; }
+  const f = Math.exp(-ev.deltaY * 0.0015 * (ev.ctrlKey ? 2.4 : 1));
+  const oldK = cam.k;
+  const k = clamp(oldK * f, 0.12, 6);
+  const ratio = k / oldK;
+  state.hasMoved = true;
+  cam.x = ev.clientX - (ev.clientX - cam.x) * ratio;
+  cam.y = ev.clientY - (ev.clientY - cam.y) * ratio;
+  cam.k = k;
+  applyCamera();
+  placeLabels();
+  drawRegions();
+}, {passive: false});
+
+svg.addEventListener("dblclick", ev => {
+  const regionEl = ev.target.closest("[data-comp]");
+  if (regionEl) { fitCluster(Number(regionEl.dataset.comp)); return; }
+  fitAll();
+});
+
+/* ------------------------------------------------------------------ tooltip */
+function showTip(id, ev) {
+  const n = byId[id];
+  if (!n || state.selected === id) { hideTip(); return; }
+  const cl = clusterOf(n);
+  tip.textContent = "";
+  const head = dom("div", "th");
+  const dot = dom("i");
+  dot.style.background = typeColor(n.type);
+  dot.style.borderRadius = n.type === "Resource" ? "3px" : "50%";
+  head.append(dot, document.createTextNode(n.full || n.label));
+  const meta = dom("div", "tm", typeName(n.type) + " · " + n.deg + " 条关系" + (cl ? " · " + cl.label : ""));
+  tip.append(head, meta);
+  if (n.summary) tip.append(dom("div", "ts", n.summary));
+  tip.classList.add("on");
+  moveTip(ev);
+}
+function moveTip(ev) {
+  const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = ev.clientX + 16, y = ev.clientY + 16;
+  if (x + w + pad > window.innerWidth) x = ev.clientX - w - 16;
+  if (y + h + pad > window.innerHeight) y = ev.clientY - h - 16;
+  tip.style.left = Math.max(pad, x) + "px";
+  tip.style.top = Math.max(pad, y) + "px";
+}
+function hideTip() { tip.classList.remove("on"); }
+
+/* ------------------------------------------------------------------ UI */
+function buildUI() {
+  statsEl.textContent = "";
+  const add = (b, t) => { statsEl.append(dom("b", null, b), document.createTextNode(" " + t)); };
+  add(String(nodes.length), "节点");
+  statsEl.append(dom("i"));
+  add(String(edges.length), "边");
+  statsEl.append(dom("i"));
+  add(String(clusters.length), "区域");
+
+  buildTypeChips();
+  buildRelChips();
+  buildRegionList();
+}
+
+$("btnTheme").onclick = () => applyTheme(state.theme === "dark" ? "light" : "dark", true);
+$("btnRail").onclick = () => {
+  rail.classList.toggle("hidden");
+  const on = !rail.classList.contains("hidden");
+  $("btnRail").setAttribute("aria-pressed", String(on));
+  // 图层栏占了左边一条,还没手动调整视图时重新居中;已经缩放过就保持原样。
+  if (!state.hasMoved) fitAll(true); else drawAll();
 };
+$("zoomIn").onclick = () => zoomAt(1.35);
+$("zoomOut").onclick = () => zoomAt(1 / 1.35);
+$("zoomFit").onclick = () => fitAll();
 
-// ---- 头部:类型图例 + 关系图例
-const counts = {};
-nodes.forEach(n => counts[n.type] = (counts[n.type] || 0) + 1);
-Object.keys(counts).sort((a, b) => counts[b] - counts[a]).forEach(t => {
-  const b = document.createElement("button");
-  b.className = "chip";
-  b.setAttribute("aria-pressed", "true");
-  b.innerHTML = '<i style="background:' + (DATA.typeColor[t] || "#888") + '"></i>' +
-                esc(t) + ' <b>' + counts[t] + '</b>';
-  b.onclick = () => {
-    if (hiddenTypes.has(t)) hiddenTypes.delete(t); else hiddenTypes.add(t);
-    b.setAttribute("aria-pressed", String(!hiddenTypes.has(t)));
-    applyFilter(); redraw();
-  };
-  legend.append(b);
+input.addEventListener("input", () => {
+  const list = search(input.value);
+  if (!input.value.trim()) { hideResults(); return; }
+  showResults(list);
 });
-const relKey = document.createElement("span");
-relKey.className = "relkey";
-relKey.innerHTML = '<s style="border-color:' + DATA.relColor.prerequisite_of.c + '"></s>前置依赖';
-legend.append(relKey);
-statEl.textContent = nodes.length + " 节点 · " + edges.length + " 边 · " +
-                     (DATA.clusters || []).length + " 个独立簇";
+input.addEventListener("focus", () => {
+  if (input.value.trim()) showResults(search(input.value));
+});
+input.addEventListener("keydown", ev => {
+  if (ev.key === "ArrowDown") { ev.preventDefault(); setResultIndex(state.resultIndex + 1); }
+  else if (ev.key === "ArrowUp") { ev.preventDefault(); setResultIndex(state.resultIndex - 1); }
+  else if (ev.key === "Enter") {
+    ev.preventDefault();
+    const list = search(input.value);
+    if (list.length) chooseResult(list[state.resultIndex] || list[0]);
+  } else if (ev.key === "Escape") {
+    ev.preventDefault();
+    hideResults();
+    input.blur();
+  }
+});
+document.addEventListener("pointerdown", ev => {
+  if (!ev.target.closest(".search")) hideResults();
+});
 
-window.addEventListener("resize", () => { place(); redraw(); });
-place();
-redraw();
+document.addEventListener("keydown", ev => {
+  const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement && document.activeElement.tagName);
+  if ((ev.key === "/" || ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === "k")) && !typing) {
+    ev.preventDefault();
+    input.focus();
+    input.select();
+    return;
+  }
+  if (typing) return;
+  if (ev.key === "Escape") {
+    if (state.searching) { hideResults(); input.blur(); }
+    else if (state.selected) clearSelection();
+  } else if (ev.key === "0") { fitAll(); }
+  else if (ev.key === "+" || ev.key === "=") { zoomAt(1.3); }
+  else if (ev.key === "-" || ev.key === "_") { zoomAt(1 / 1.3); }
+  else if (ev.key.toLowerCase() === "t") { applyTheme(state.theme === "dark" ? "light" : "dark", true); }
+  else if (ev.key.toLowerCase() === "l") { $("btnRail").click(); }
+});
+
+window.addEventListener("resize", () => {
+  if (!state.hasMoved) { fitAll(false); drawAll(); }
+  else { placeLabels(); drawRegions(); applyCamera(); }
+});
+
+/* ------------------------------------------------------------------ boot */
+(function boot() {
+  const params = new URLSearchParams(location.search);
+  const forced = params.get("theme");
+  let theme = forced === "dark" ? "dark" : "light";
+  if (!forced) {
+    try {
+      const saved = localStorage.getItem("kg-theme");
+      if (saved === "dark" || saved === "light") theme = saved;
+      else if (matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+    } catch (e) {
+      if (matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+    }
+  }
+  if (window.innerWidth < 980) {
+    rail.classList.add("hidden");
+    $("btnRail").setAttribute("aria-pressed", "false");
+  }
+
+  // 先按当前主题建元素(buildEdges 需要箭头 defs),再统一上色 + 画第一帧。
+  state.theme = theme;
+  document.documentElement.setAttribute("data-theme", theme);
+  buildDefs();
+  buildRegions();
+  buildEdges();
+  buildNodes();
+  buildUI();
+  applyTheme(theme, false);
+
+  const focusId = params.get("focus");
+  if (focusId && byId[focusId]) state.focus = focusId;
+  const start = params.get("node");
+  if (start && byId[start]) {
+    state.selected = start;
+    openPanel(start);
+    paint();
+    flyToNode(start, 0);
+  } else if (window.innerWidth < 700 && clusters.length > 1) {
+    // 竖屏整图 fit 只能得到一张很小的地图。默认聚焦最大区域,
+    // 其余区域用左下角「适应全图」或图层栏进入 —— 先给一张能读的图。
+    const main = clusters.reduce((a, b) => (b.n > a.n ? b : a));
+    drawRegions();
+    const rb = regionBox.get(main.id);
+    if (rb) {
+      setCam(fitBounds({x: rb.x1, y: rb.y1, w: rb.x2 - rb.x1, h: rb.y2 - rb.y1}, 40));
+      state.hasMoved = true;
+    } else {
+      fitAll(false);
+    }
+  } else {
+    fitAll(false);
+  }
+  if (window.innerWidth < 980) {
+    const hint = document.querySelector(".hint");
+    if (hint) hint.textContent = "拖拽平移 · 左下角「适应全图」· 顶部搜索";
+  }
+  drawAll();
+  requestAnimationFrame(() => document.body.classList.add("ready"));
+  // 后台标签页/无头截图里 rAF 可能不触发;给一个兜底,别永远停在透明画布。
+  setTimeout(() => document.body.classList.add("ready"), 700);
+})();
 </script>
 </body>
 </html>

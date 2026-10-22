@@ -32,7 +32,7 @@
 <meta property="og:description" content="A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-21T15:18:14.000Z">
-<meta property="article:modified_time" content="2026-10-22T14:05:14.000Z">
+<meta property="article:modified_time" content="2026-10-22T16:19:27.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Knowledge Graph">
@@ -276,7 +276,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-22 22:05:14" itemprop="dateModified" datetime="2026-10-22T22:05:14+08:00">2026-10-22</time>
+      <time title="Modified: 2026-10-23 00:19:27" itemprop="dateModified" datetime="2026-10-23T00:19:27+08:00">2026-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -318,7 +318,7 @@
 <blockquote>
 <p>一句话区别:RAG 的智力发生在提问时,这张图的智力发生在记录时。</p>
 </blockquote>
-<p>当前规模(2026-10-22):47 个节点、47 条边、33 条回归测试、0
+<p>当前规模(2026-10-22):47 个节点、47 条边、37 条回归测试、0
 errors。图谱已并入博客仓库的 <code>kg/</code>;<code>Resource</code>
 由博客文章的 <code>kg:</code> 块就地提供,<strong>不再复制进
 vault</strong>。</p>
@@ -372,7 +372,7 @@ vault</strong>。</p>
 </tr>
 <tr>
 <td><code>kg/tests/selftest.py</code></td>
-<td>33 条回归测试</td>
+<td>37 条回归测试</td>
 </tr>
 <tr>
 <td><code>kg/graph/</code></td>
@@ -1309,7 +1309,7 @@ slug。</p>
 <p>一个概念至少接 3 个已有节点。接不上的,现在还不是概念,是个标签。</p>
 </blockquote>
 <h1 id="速查">10. 速查</h1>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py                      <span class="comment"># 编译 + 体检 + 出图</span></span><br><span class="line">python tools/build_graph.py                  <span class="comment"># 只编译</span></span><br><span class="line">python tools/check.py                        <span class="comment"># 只体检</span></span><br><span class="line">python tools/graphify.py stats               <span class="comment"># 统计</span></span><br><span class="line">python tools/graphify.py explain &lt;<span class="built_in">id</span>&gt;        <span class="comment"># 出边/入边</span></span><br><span class="line">python tools/graphify.py prereq &lt;<span class="built_in">id</span>&gt;         <span class="comment"># 前置链</span></span><br><span class="line">python tools/graphify.py order               <span class="comment"># 学习顺序</span></span><br><span class="line">python tools/graphify.py gaps                <span class="comment"># 结构缺口</span></span><br><span class="line">python tools/graphify.py <span class="built_in">export</span>              <span class="comment"># graph.html</span></span><br><span class="line">python tools/kgify.py &lt;博客文章&gt;              <span class="comment"># 算 id / kg 块(只打印)</span></span><br><span class="line">python tests/selftest.py                     <span class="comment"># 33 条测试</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py                      <span class="comment"># 编译 + 体检 + 出图</span></span><br><span class="line">python tools/build_graph.py                  <span class="comment"># 只编译</span></span><br><span class="line">python tools/check.py                        <span class="comment"># 只体检</span></span><br><span class="line">python tools/graphify.py stats               <span class="comment"># 统计</span></span><br><span class="line">python tools/graphify.py explain &lt;<span class="built_in">id</span>&gt;        <span class="comment"># 出边/入边</span></span><br><span class="line">python tools/graphify.py prereq &lt;<span class="built_in">id</span>&gt;         <span class="comment"># 前置链</span></span><br><span class="line">python tools/graphify.py order               <span class="comment"># 学习顺序</span></span><br><span class="line">python tools/graphify.py gaps                <span class="comment"># 结构缺口</span></span><br><span class="line">python tools/graphify.py <span class="built_in">export</span>              <span class="comment"># graph.html</span></span><br><span class="line">python tools/kgify.py &lt;博客文章&gt;              <span class="comment"># 算 id / kg 块(只打印)</span></span><br><span class="line">python tests/selftest.py                     <span class="comment"># 37 条测试</span></span><br></pre></td></tr></table></figure>
 <p>最小 <code>Concept</code> frontmatter:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">Concept</span></span><br><span class="line"><span class="attr">id:</span> <span class="string">concept.example</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">示例概念</span></span><br><span class="line"><span class="attr">aliases:</span> [<span class="string">示例概念</span>, <span class="string">example</span>]</span><br><span class="line"><span class="attr">status:</span> <span class="string">learning</span></span><br><span class="line"><span class="attr">related:</span> []</span><br><span class="line"><span class="attr">relations:</span> []</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 <p>最小 <code>Resource</code> 的 <code>kg</code> 块:</p>
@@ -1390,8 +1390,8 @@ target="_blank" rel="noopener" href="https://github.com/AskemiWang/personal_know
 </script>
           <div class="post-tags">
               <a href="/tags/Python/" rel="tag"># Python</a>
-              <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
               <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
           </div>
 
         
