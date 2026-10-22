@@ -32,7 +32,7 @@
 <meta property="og:description" content="A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-21T15:18:14.000Z">
-<meta property="article:modified_time" content="2026-10-21T16:23:21.000Z">
+<meta property="article:modified_time" content="2026-10-22T14:05:14.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Knowledge Graph">
@@ -276,7 +276,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-22 00:23:21" itemprop="dateModified" datetime="2026-10-22T00:23:21+08:00">2026-10-22</time>
+      <time title="Modified: 2026-10-22 22:05:14" itemprop="dateModified" datetime="2026-10-22T22:05:14+08:00">2026-10-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -318,11 +318,17 @@
 <blockquote>
 <p>一句话区别:RAG 的智力发生在提问时,这张图的智力发生在记录时。</p>
 </blockquote>
-<p>当前规模(2026-10-22):18 个节点、18 条边、26 条回归测试、0
-errors。</p>
+<p>当前规模(2026-10-22):47 个节点、47 条边、33 条回归测试、0
+errors。图谱已并入博客仓库的 <code>kg/</code>;<code>Resource</code>
+由博客文章的 <code>kg:</code> 块就地提供,<strong>不再复制进
+vault</strong>。</p>
 <h1 id="目录与第一次运行">2. 目录与第一次运行</h1>
 <h2 id="目录">2.1 目录</h2>
 <table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr>
 <th>路径</th>
@@ -331,8 +337,9 @@ errors。</p>
 </thead>
 <tbody>
 <tr>
-<td><code>vault/</code></td>
-<td>人工维护的笔记,唯一真相源</td>
+<td><code>kg/vault/</code></td>
+<td>Concept / Claim 等知识节点(唯一真源);Resource 来自博客
+<code>_posts</code></td>
 </tr>
 <tr>
 <td><code>vault/10-concepts/</code></td>
@@ -343,8 +350,8 @@ errors。</p>
 <td>源码文件 / 函数</td>
 </tr>
 <tr>
-<td><code>vault/30-resources/</code></td>
-<td>论文、文档、博客文章</td>
+<td><code>kg/vault/30-resources/</code></td>
+<td>仅<strong>非博客来源</strong>的论文/文档;博客文章不复制</td>
 </tr>
 <tr>
 <td><code>vault/40-claims/</code></td>
@@ -355,24 +362,21 @@ errors。</p>
 <td>项目</td>
 </tr>
 <tr>
-<td><code>ontology.yaml</code></td>
-<td>类型白名单</td>
+<td><code>kg/ontology.yaml</code></td>
+<td>类型白名单 + <code>sources.posts</code>(指向博客
+<code>_posts</code>)</td>
 </tr>
 <tr>
-<td><code>tools/</code></td>
+<td><code>kg/tools/</code></td>
 <td>update / build_graph / check / graphify / kgify / viewer</td>
 </tr>
 <tr>
-<td><code>tests/selftest.py</code></td>
-<td>26 条回归测试</td>
+<td><code>kg/tests/selftest.py</code></td>
+<td>33 条回归测试</td>
 </tr>
 <tr>
-<td><code>graph/</code></td>
+<td><code>kg/graph/</code></td>
 <td>派生数据,可随时删掉重建,不进 git</td>
-</tr>
-<tr>
-<td><code>inbox/</code></td>
-<td>博客原文快照,不参与构建</td>
 </tr>
 <tr>
 <td><code>proposals/</code></td>
@@ -615,11 +619,11 @@ errors。</p>
 末尾:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.paper-summary-osworld</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;OSWorld&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Paper Summary – OSWorld&quot;</span>]</span><br><span class="line">  <span class="attr">relations:</span> []</span><br></pre></td></tr></table></figure>
 <ol start="2" type="1">
-<li>复制进 vault,文件名用 slug:</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span> <span class="string">&quot;vault/30-resources/paper-summary-osworld.md&quot;</span></span><br></pre></td></tr></table></figure>
-<ol start="3" type="1">
-<li>边写在 Concept 上,不写在 Resource 上:</li>
+<li><p><strong>不复制</strong>:文章留在
+<code>source/_posts/</code>。<code>kg/ontology.yaml</code> 的
+<code>sources.posts</code> 会就地读取带 <code>kg:</code> 块的文章(只允许
+<code>type: Resource</code>)。</p></li>
+<li><p>边写在 Concept 上,不写在 Resource 上:</p></li>
 </ol>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">  <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-osworld]]&quot;</span></span><br><span class="line">  <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-osworld.md#1. Introduction&quot;</span></span><br><span class="line">  <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">  <span class="attr">source_type:</span> <span class="string">paper</span></span><br></pre></td></tr></table></figure>
 <ol start="4" type="1">
@@ -1159,8 +1163,9 @@ dash 会折叠</td>
 完整例子:一篇博客文章 → 一个 Resource → 一条边</h3>
 <p>博客原文:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Paper</span> <span class="string">Summary</span> <span class="string">–</span> <span class="string">SWE-RL</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2026-08-04 23:25:58</span></span><br><span class="line"><span class="attr">updated:</span> <span class="number">2026-09-16 19:25:40</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">paper-summary-SWE-RL/</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">Agent</span>, <span class="string">LLM</span>, <span class="string">Reinforcement</span> <span class="string">Learning</span>]</span><br><span class="line"><span class="attr">kg:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">Resource</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">res.paper-summary-swe-rl</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&quot;SWE-RL&quot;</span></span><br><span class="line">  <span class="attr">aliases:</span> [<span class="string">&quot;Paper Summary – SWE-RL&quot;</span>, <span class="string">&quot;paper-summary-SWE-RL&quot;</span>]</span><br><span class="line">  <span class="attr">related:</span> []</span><br><span class="line">  <span class="attr">relations:</span> []</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<p>复制进 vault:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary – SWE-RL.md&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary – SWE-RL.md&quot;</span> <span class="string">&quot;vault/30-resources/paper-summary-swe-rl.md&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>不复制</strong>;只把 <code>kgify.py</code> 打印的
+<code>kg:</code> 块贴进文章 frontmatter:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary – SWE-RL.md&quot;</span></span><br></pre></td></tr></table></figure>
 <p>在 Concept 上加边:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">related:</span> [<span class="string">&quot;[[paper-summary-swe-rl]]&quot;</span>]</span><br><span class="line"><span class="attr">relations:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">rel:</span> <span class="string">explained_by</span></span><br><span class="line">    <span class="attr">to:</span> <span class="string">&quot;[[paper-summary-swe-rl]]&quot;</span></span><br><span class="line">    <span class="attr">evidence:</span> <span class="string">&quot;paper-summary-swe-rl.md#2. Implementation&quot;</span></span><br><span class="line">    <span class="attr">status:</span> <span class="string">verified</span></span><br><span class="line">    <span class="attr">source_type:</span> <span class="string">paper</span></span><br></pre></td></tr></table></figure>
 <p>构建并验证:</p>
@@ -1181,7 +1186,7 @@ dash 会折叠</td>
 </thead>
 <tbody>
 <tr>
-<td>复制进 vault 后 <code>E002</code></td>
+<td>加了 <code>kg:</code> 块后 <code>E002</code></td>
 <td>空 <code>kg</code> 且没有顶层 <code>type</code>;或根本没写
 <code>type</code></td>
 <td>补 <code>type</code> / <code>id</code> / <code>name</code></td>
@@ -1237,7 +1242,7 @@ dash 会折叠</td>
 <h3 id="空的-kg-块">8.2.7 空的 kg 块</h3>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kg:</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
 <p>它是<strong>惰性的</strong>:<code>build_graph.py</code> 会把它当空
-dict,merge 不到任何键;复制进 vault 仍然 <code>E002</code>。
+dict,merge 不到任何键;写进博客文章仍然 <code>E002</code>。
 它只是占位符,不是”已导入”。不要在全部文章里批量加空块——用
 <code>scaffolds/post.md</code> 给新文章留槽位,或者按需填真实的
 <code>type/id/name</code>。</p>
@@ -1247,21 +1252,26 @@ dict,merge 不到任何键;复制进 vault 仍然 <code>E002</code>。
 <p>博客每晚 21:00 有一条自动管道(压缩图片 → 转相对路径 → 高亮转换 → 刷新
 <code>updated</code> → 提交 → 部署 → 转回本地)。处理笔记时要注意:</p>
 <ol type="1">
-<li><strong>加 <code>kg</code> 块不会自动上线。</strong> 触发阈值是 500
-行;几篇笔记的 <code>kg</code> 块约 100 行,会判 SKIP。需要手动
-commit,或等下次实质更新一起带上。</li>
+<li><strong>加 <code>kg</code> 块不一定会自动上线。</strong> 触发阈值是
+500
+行(只统计实质改动;路径翻转/高亮/<code>updated</code>/<code>top</code>
+这类机械改动整篇不计入);几篇笔记的 <code>kg</code> 块约 100 行,可能判
+SKIP。但<strong>图谱产物有变化会单独触发</strong>——改了 <code>kg:</code>
+块、<code>summary</code> 或边,都会让 <code>/graph/</code>
+更新;要立刻生效也可以手动 commit。</li>
 <li><strong>手动跑 <code>--refresh-updated</code> 会把
 <code>updated</code> 刷成当天。</strong> 首页按 <code>updated</code>
 降序,顺序会变。要么接受,要么事后改回。</li>
 <li><strong>工作区在 local 模式时,图片是 <code>E:\myBlog\...</code>
-绝对路径。</strong> 直接复制会把这个路径带进副本;如果仓库要公开,从
-<code>HEAD</code> 取版本,或者把图片行删掉。</li>
+绝对路径。</strong>
+由于不再复制副本,这一条只影响”手动把文章复制到别处”的场景;仓库里的正式版本永远是
+<code>/images/...</code>。</li>
 </ol>
 <p>另外:8 篇加密文章不要进图;<code>permalink</code> 大小写混用(如
 <code>paper-summary-SWE-RL/</code>)要原样保留,<code>id</code> 用全小写
 slug。</p>
 <h2 id="手动处理一篇的最小步骤">8.4 手动处理一篇的最小步骤</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在博客原文加 kg 块(kgify 只打印建议)</span></span><br><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 复制进 vault,文件名用 slug</span></span><br><span class="line"><span class="built_in">cp</span> <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span> <span class="string">&quot;vault/30-resources/paper-summary-osworld.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在 Concept 上加一条 explained_by,evidence 指向真实标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 构建 + 体检 + 出图</span></span><br><span class="line">python tools/update.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在博客原文加 kg 块(kgify 只打印建议)</span></span><br><span class="line">python tools/kgify.py <span class="string">&quot;E:\myBlog\source\_posts\Paper Summary - OSWorld.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 不复制:把 kg 块贴进文章 frontmatter 即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在 Concept 上加一条 explained_by,evidence 指向真实标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 构建 + 体检 + 出图</span></span><br><span class="line">python tools/update.py</span><br></pre></td></tr></table></figure>
 <p>手动导入一篇约 5–10 分钟;12 篇约 2 小时;55
 篇不值得。真正花时间的不是复制,是决定连哪条边。</p>
 <h1 id="边界现在不做的事">9. 边界:现在不做的事</h1>
@@ -1299,7 +1309,7 @@ slug。</p>
 <p>一个概念至少接 3 个已有节点。接不上的,现在还不是概念,是个标签。</p>
 </blockquote>
 <h1 id="速查">10. 速查</h1>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py                      <span class="comment"># 编译 + 体检 + 出图</span></span><br><span class="line">python tools/build_graph.py                  <span class="comment"># 只编译</span></span><br><span class="line">python tools/check.py                        <span class="comment"># 只体检</span></span><br><span class="line">python tools/graphify.py stats               <span class="comment"># 统计</span></span><br><span class="line">python tools/graphify.py explain &lt;<span class="built_in">id</span>&gt;        <span class="comment"># 出边/入边</span></span><br><span class="line">python tools/graphify.py prereq &lt;<span class="built_in">id</span>&gt;         <span class="comment"># 前置链</span></span><br><span class="line">python tools/graphify.py order               <span class="comment"># 学习顺序</span></span><br><span class="line">python tools/graphify.py gaps                <span class="comment"># 结构缺口</span></span><br><span class="line">python tools/graphify.py <span class="built_in">export</span>              <span class="comment"># graph.html</span></span><br><span class="line">python tools/kgify.py &lt;博客文章&gt;              <span class="comment"># 算 id / kg 块(只打印)</span></span><br><span class="line">python tests/selftest.py                     <span class="comment"># 26 条测试</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python tools/update.py                      <span class="comment"># 编译 + 体检 + 出图</span></span><br><span class="line">python tools/build_graph.py                  <span class="comment"># 只编译</span></span><br><span class="line">python tools/check.py                        <span class="comment"># 只体检</span></span><br><span class="line">python tools/graphify.py stats               <span class="comment"># 统计</span></span><br><span class="line">python tools/graphify.py explain &lt;<span class="built_in">id</span>&gt;        <span class="comment"># 出边/入边</span></span><br><span class="line">python tools/graphify.py prereq &lt;<span class="built_in">id</span>&gt;         <span class="comment"># 前置链</span></span><br><span class="line">python tools/graphify.py order               <span class="comment"># 学习顺序</span></span><br><span class="line">python tools/graphify.py gaps                <span class="comment"># 结构缺口</span></span><br><span class="line">python tools/graphify.py <span class="built_in">export</span>              <span class="comment"># graph.html</span></span><br><span class="line">python tools/kgify.py &lt;博客文章&gt;              <span class="comment"># 算 id / kg 块(只打印)</span></span><br><span class="line">python tests/selftest.py                     <span class="comment"># 33 条测试</span></span><br></pre></td></tr></table></figure>
 <p>最小 <code>Concept</code> frontmatter:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">Concept</span></span><br><span class="line"><span class="attr">id:</span> <span class="string">concept.example</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">示例概念</span></span><br><span class="line"><span class="attr">aliases:</span> [<span class="string">示例概念</span>, <span class="string">example</span>]</span><br><span class="line"><span class="attr">status:</span> <span class="string">learning</span></span><br><span class="line"><span class="attr">related:</span> []</span><br><span class="line"><span class="attr">relations:</span> []</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 <p>最小 <code>Resource</code> 的 <code>kg</code> 块:</p>
@@ -1379,8 +1389,8 @@ target="_blank" rel="noopener" href="https://github.com/AskemiWang/personal_know
   })();
 </script>
           <div class="post-tags">
-              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
               <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
               <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
           </div>
 
