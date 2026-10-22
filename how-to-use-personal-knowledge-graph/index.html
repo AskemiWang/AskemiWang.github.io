@@ -32,7 +32,7 @@
 <meta property="og:description" content="A practical guide to my personal knowledge graph: notes, edges, evidence, queries, and how it connects to this blog.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-21T15:18:14.000Z">
-<meta property="article:modified_time" content="2026-10-22T16:19:27.000Z">
+<meta property="article:modified_time" content="2026-10-22T16:30:27.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Knowledge Graph">
@@ -178,7 +178,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">1. 这是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C"><span class="nav-text">2. 目录与第一次运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-text">2.1 目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-text">2.2 依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%9D%A1%E5%91%BD%E4%BB%A4%E4%B8%89%E6%AD%A5"><span class="nav-text">2.3 一条命令,三步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B5-%E7%B1%BB%E8%8A%82%E7%82%B99-%E7%B1%BB%E8%BE%B9"><span class="nav-text">3. 数据模型:5 类节点,9 类边</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9"><span class="nav-text">3.1 节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9"><span class="nav-text">3.2 边</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E4%B8%80%E7%AF%87%E7%AC%94%E8%AE%B0"><span class="nav-text">4. 加一篇笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%A4%E6%96%AD%E8%AF%A5%E4%B8%8D%E8%AF%A5%E8%BF%9B"><span class="nav-text">4.1 先判断该不该进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-a%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-resource"><span class="nav-text">4.2 入口 A:博客文章 → Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-b%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AA-concept"><span class="nav-text">4.3 入口 B:自己写一个 Concept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-c%E4%B8%80%E4%B8%AA%E5%88%A4%E6%96%AD-claim"><span class="nav-text">4.4 入口 C:一个判断 → Claim</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E6%80%8E%E4%B9%88%E5%86%99%E6%89%8D%E4%B8%8D%E6%98%AF%E6%A0%87%E7%AD%BE%E5%A2%99"><span class="nav-text">5. 边怎么写才不是标签墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dash-%E5%BD%92%E4%B8%80%E5%8C%962026-10-21"><span class="nav-text">5.1 dash 归一化(2026-10-21)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%9B%BE%E8%83%BD%E5%9B%9E%E7%AD%94%E4%BB%80%E4%B9%88"><span class="nav-text">6. 查询:图能回答什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E8%BE%93%E5%87%BAe-%E5%BF%85%E4%BF%AEw-%E5%88%A4%E6%96%ADi-%E9%80%89%E9%A2%98"><span class="nav-text">7. 读输出:E 必修,W 判断,I 选题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#e%E9%98%BB%E6%96%AD"><span class="nav-text">7.1 E(阻断)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#w%E8%83%BD%E5%8F%91%E5%B8%83%E4%BD%86%E6%9C%89%E4%BB%A3%E4%BB%B7"><span class="nav-text">7.2 W(能发布,但有代价)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i%E4%B8%8D%E6%98%AF%E9%94%99%E8%AF%AF"><span class="nav-text">7.3 I(不是错误)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%92%8C%E5%8D%9A%E5%AE%A2%E7%BB%93%E5%90%88"><span class="nav-text">8. 和博客结合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E5%9C%A8%E6%80%8E%E4%B9%88%E6%8E%A5"><span class="nav-text">8.1 现在怎么接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kg-%E5%9D%97%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E"><span class="nav-text">8.2 kg 块:完整说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E9%A1%BA%E5%BA%8F"><span class="nav-text">8.2.1 读取顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E8%A1%A8"><span class="nav-text">8.2.2 字段表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E7%A7%8D%E8%8A%82%E7%82%B9"><span class="nav-text">8.2.3 五种节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9D%A1%E8%BE%B9%E7%9A%84%E5%AE%8C%E6%95%B4%E5%86%99%E6%B3%95"><span class="nav-text">8.2.4 一条边的完整写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BE%8B%E5%AD%90%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-%E4%B8%80%E4%B8%AA-resource-%E4%B8%80%E6%9D%A1%E8%BE%B9"><span class="nav-text">8.2.5
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">1. 这是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C"><span class="nav-text">2. 目录与第一次运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-text">2.1 目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-text">2.2 依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%9D%A1%E5%91%BD%E4%BB%A4%E4%B8%89%E6%AD%A5"><span class="nav-text">2.3 一条命令,三步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8C%E7%94%A8%E8%BF%99%E5%BC%A0%E5%9B%BE"><span class="nav-text">2.4 在浏览器里用这张图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B5-%E7%B1%BB%E8%8A%82%E7%82%B99-%E7%B1%BB%E8%BE%B9"><span class="nav-text">3. 数据模型:5 类节点,9 类边</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9"><span class="nav-text">3.1 节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9"><span class="nav-text">3.2 边</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E4%B8%80%E7%AF%87%E7%AC%94%E8%AE%B0"><span class="nav-text">4. 加一篇笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%A4%E6%96%AD%E8%AF%A5%E4%B8%8D%E8%AF%A5%E8%BF%9B"><span class="nav-text">4.1 先判断该不该进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-a%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-resource"><span class="nav-text">4.2 入口 A:博客文章 → Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-b%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AA-concept"><span class="nav-text">4.3 入口 B:自己写一个 Concept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3-c%E4%B8%80%E4%B8%AA%E5%88%A4%E6%96%AD-claim"><span class="nav-text">4.4 入口 C:一个判断 → Claim</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E6%80%8E%E4%B9%88%E5%86%99%E6%89%8D%E4%B8%8D%E6%98%AF%E6%A0%87%E7%AD%BE%E5%A2%99"><span class="nav-text">5. 边怎么写才不是标签墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dash-%E5%BD%92%E4%B8%80%E5%8C%962026-10-21"><span class="nav-text">5.1 dash 归一化(2026-10-21)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%9B%BE%E8%83%BD%E5%9B%9E%E7%AD%94%E4%BB%80%E4%B9%88"><span class="nav-text">6. 查询:图能回答什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E8%BE%93%E5%87%BAe-%E5%BF%85%E4%BF%AEw-%E5%88%A4%E6%96%ADi-%E9%80%89%E9%A2%98"><span class="nav-text">7. 读输出:E 必修,W 判断,I 选题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#e%E9%98%BB%E6%96%AD"><span class="nav-text">7.1 E(阻断)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#w%E8%83%BD%E5%8F%91%E5%B8%83%E4%BD%86%E6%9C%89%E4%BB%A3%E4%BB%B7"><span class="nav-text">7.2 W(能发布,但有代价)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i%E4%B8%8D%E6%98%AF%E9%94%99%E8%AF%AF"><span class="nav-text">7.3 I(不是错误)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%92%8C%E5%8D%9A%E5%AE%A2%E7%BB%93%E5%90%88"><span class="nav-text">8. 和博客结合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E5%9C%A8%E6%80%8E%E4%B9%88%E6%8E%A5"><span class="nav-text">8.1 现在怎么接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kg-%E5%9D%97%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E"><span class="nav-text">8.2 kg 块:完整说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E9%A1%BA%E5%BA%8F"><span class="nav-text">8.2.1 读取顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E8%A1%A8"><span class="nav-text">8.2.2 字段表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E7%A7%8D%E8%8A%82%E7%82%B9"><span class="nav-text">8.2.3 五种节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9D%A1%E8%BE%B9%E7%9A%84%E5%AE%8C%E6%95%B4%E5%86%99%E6%B3%95"><span class="nav-text">8.2.4 一条边的完整写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BE%8B%E5%AD%90%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-%E4%B8%80%E4%B8%AA-resource-%E4%B8%80%E6%9D%A1%E8%BE%B9"><span class="nav-text">8.2.5
 完整例子:一篇博客文章 → 一个 Resource → 一条边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="nav-text">8.2.6 常见错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E7%9A%84-kg-%E5%9D%97"><span class="nav-text">8.2.7 空的 kg 块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9C%E9%97%B4%E7%AE%A1%E9%81%93%E7%9A%84%E4%B8%89%E4%B8%AA%E5%9D%91"><span class="nav-text">8.3 夜间管道的三个坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%A4%84%E7%90%86%E4%B8%80%E7%AF%87%E7%9A%84%E6%9C%80%E5%B0%8F%E6%AD%A5%E9%AA%A4"><span class="nav-text">8.4 手动处理一篇的最小步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E7%8E%B0%E5%9C%A8%E4%B8%8D%E5%81%9A%E7%9A%84%E4%BA%8B"><span class="nav-text">9. 边界:现在不做的事</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9F%E6%9F%A5"><span class="nav-text">10. 速查</span></a></li></ol></div>
         </div>
         <!--/noindex-->
@@ -276,7 +276,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-23 00:19:27" itemprop="dateModified" datetime="2026-10-23T00:19:27+08:00">2026-10-23</time>
+      <time title="Modified: 2026-10-23 00:30:27" itemprop="dateModified" datetime="2026-10-23T00:30:27+08:00">2026-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -427,6 +427,91 @@ vault</strong>。</p>
 </tr>
 </tbody>
 </table>
+<h2 id="在浏览器里用这张图">2.4 在浏览器里用这张图</h2>
+<p><code>update.py</code> 跑完后的 <code>kg/graph/graph.html</code>
+是一张<strong>单文件页面</strong>——直接双击就能看,不用起服务、不依赖网络;线上版是
+<a href="https://wangyier.top/graph/"
+class="uri">https://wangyier.top/graph/</a>(导航栏
+<code>Graph</code>)。</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左侧栏</td>
+<td>图层(节点类型)、关系类型、区域列表;点一项就开关/跳转</td>
+</tr>
+<tr>
+<td>顶部</td>
+<td>搜索框:名称、别名、id 都能搜</td>
+</tr>
+<tr>
+<td>中间</td>
+<td>舞台:滚轮缩放、拖空白平移、双击回到全图</td>
+</tr>
+<tr>
+<td>右侧</td>
+<td>点节点后打开:摘要、出边/入边、度数,以及「聚焦」「居中」</td>
+</tr>
+</tbody>
+</table>
+<p>常用操作:</p>
+<table>
+<thead>
+<tr>
+<th>想做什么</th>
+<th>怎么做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>找节点</td>
+<td><code>/</code> 或 <code>Ctrl/⌘ + K</code>,输入名字/别名/id</td>
+</tr>
+<tr>
+<td>看一个节点的关系</td>
+<td>单击节点;<code>Esc</code> 关闭</td>
+</tr>
+<tr>
+<td>只看它的一跳邻居</td>
+<td>详情里点「聚焦此节点」</td>
+</tr>
+<tr>
+<td>只看某一类节点</td>
+<td>左栏「图层」里点类型(再点一次恢复)</td>
+</tr>
+<tr>
+<td>跳到某个区域</td>
+<td>左栏「区域」列表</td>
+</tr>
+<tr>
+<td>切深浅色</td>
+<td>右上角按钮或 <code>T</code>;选择会被记住</td>
+</tr>
+<tr>
+<td>收起/展开左栏</td>
+<td><code>L</code> 或右上角按钮</td>
+</tr>
+<tr>
+<td>回到全图</td>
+<td><code>0</code> 或左下角「适应全图」</td>
+</tr>
+</tbody>
+</table>
+<p>几个容易误会的点:</p>
+<ul>
+<li><strong>标签不是一直都有</strong>:缩小时按等级隐藏次要标签,只留区域代表和高频节点;放大、搜索或聚焦都能找回来,不是数据丢了。</li>
+<li><strong>窄屏默认聚焦最大区域</strong>:手机竖屏整图太小,所以先落在最大的区;点「适应全图」看总览,右侧露出的卡片一角表示”还有别的区域”。</li>
+<li><strong>深链</strong>:<code>?node=&lt;id&gt;</code>
+直接打开节点,<code>?focus=&lt;id&gt;</code>
+聚焦,<code>?theme=dark</code> 指定深色——从笔记里互相链接很方便。</li>
+<li><strong>公开页只有名字、摘要和边</strong>:<code>evidence</code>、文件路径、<code>vault</code>
+正文不会出现在 <code>/graph/</code> 里。</li>
+</ul>
 <h1 id="数据模型5-类节点9-类边">3. 数据模型:5 类节点,9 类边</h1>
 <h2 id="节点">3.1 节点</h2>
 <p>类型不是给”东西”分类,是给”你打算对它问的问题”分类。</p>

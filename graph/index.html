@@ -573,8 +573,6 @@ edges.forEach(e => { nb[e.s].add(e.t); nb[e.t].add(e.s); });
 const clusters = (DATA.clusters || []).slice();
 const clusterById = new Map(clusters.map(c => [c.id, c]));
 const clusterOf = n => clusterById.get(n.comp);
-// 区域代表节点:缩得很小时,其余标签可以让位,但这几个名字必须留下。
-const hubIds = new Set(clusters.map(c => c.hub).filter(Boolean));
 const membersByComp = new Map();
 nodes.forEach(n => {
   const arr = membersByComp.get(n.comp) || [];
@@ -874,13 +872,30 @@ function updateEdges() {
 
 function placeLabels() {
   // 缩小时至少留下「区域代表」的名字;其余按等级/度数/碰撞择优。
-  const minTier = cam.k < .78 ? 1 : 0;
+  const visibleNodes = nodes.filter(n => !state.hiddenTypes.has(n.type));
+  let minTier = cam.k < .78 ? 1 : 0;
+  // 如果类型过滤后只剩 tier 0(例如只留 Resource),不能因为等级线把标签全杀光。
+  if (visibleNodes.length) {
+    const topTier = visibleNodes.reduce((m, n) => Math.max(m, tier(n)), -1);
+    if (topTier < minTier) minTier = Math.max(0, topTier);
+  }
   const order = nodes.slice().sort((a, b) => b.deg - a.deg || (a.id < b.id ? -1 : 1));
   const boxes = [];
   const pinned = new Set([state.selected, state.focus].filter(Boolean));
   const shown = new Set();
   const attempted = new Set();
   const pad = 6;                       // 屏幕像素:两个标签至少隔 6px 才不会「粘住」
+
+  // 区域代表:hub 被类型过滤掉时,退回到该区域可见节点里度数最高的那个,
+  // 保证「只显示 Resource」时每个区域仍然有名字。
+  const reps = new Set();
+  clusters.forEach(cl => {
+    const ms = (membersByComp.get(cl.id) || []).filter(n => !state.hiddenTypes.has(n.type));
+    if (!ms.length) return;
+    const hub = byId[cl.hub];
+    if (hub && !state.hiddenTypes.has(hub.type) && ms.indexOf(hub) >= 0) reps.add(hub.id);
+    else reps.add(ms.reduce((a, b) => (b.deg > a.deg ? b : a)).id);
+  });
 
   // 节点也是障碍物:标签压到别的节点上比「少显示一个名字」更难看。
   const obstacles = [];
@@ -953,9 +968,9 @@ function placeLabels() {
     shown.add(n.id);
   };
 
-  // 1) 选中的 / 悬停的:一定显示。2) 区域 hub:缩小时也不丢地名。
+  // 1) 选中的 / 悬停的:一定显示。2) 区域代表:缩小时也不丢地名。
   order.forEach(n => { if (pinned.has(n.id)) tryLabel(n, true); });
-  order.forEach(n => { if (!attempted.has(n.id) && hubIds.has(n.id)) tryLabel(n); });
+  order.forEach(n => { if (!attempted.has(n.id) && reps.has(n.id)) tryLabel(n); });
   // 3) 其余按度数择优;等级不够或预算用完就隐藏。
   let budget = cam.k < .55 ? 90 : 400;
   order.forEach(n => {
