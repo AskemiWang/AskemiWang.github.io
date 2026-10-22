@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
+  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
+  <link rel="manifest" href="/images/site/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="知识图谱 · 47 节点 &#x2F; 47 边    :root{--bg:#fcfcfd;--ink:#1b1b1f;--mute:#8b8b94;--line:#e7e7ec;--panel:#fff}   *{box-sizing:border-box}   html,body{height:100%}   body{margin:0;background:var(--bg);color:">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Great Library">
+<meta property="og:url" content="https://wangyier.top/graph/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="知识图谱 · 47 节点 &#x2F; 47 边    :root{--bg:#fcfcfd;--ink:#1b1b1f;--mute:#8b8b94;--line:#e7e7ec;--panel:#fff}   *{box-sizing:border-box}   html,body{height:100%}   body{margin:0;background:var(--bg);color:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-22T13:33:18.635Z">
+<meta property="article:modified_time" content="2026-10-22T13:33:18.635Z">
+<meta property="article:author" content="Askemi Wang">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyier.top/graph/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":true,"permalink":"https://wangyier.top/graph/index.html","path":"graph/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | The Great Library
+</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<!-- 页面点击小红心特效 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">The Great Library</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-graph"><a href="/graph/" rel="section"><i class="fa fa-project-diagram fa-fw"></i>Graph</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">个人技术知识图谱</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
+      src="/images/avatar/avatar.png">
+  <p class="site-author-name" itemprop="name">Askemi Wang</p>
+  <div class="site-description" itemprop="description">Personal notes of everything.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="en"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知识图谱 · 47 节点 / 47 边</title>
+<style>
+  :root{--bg:#fcfcfd;--ink:#1b1b1f;--mute:#8b8b94;--line:#e7e7ec;--panel:#fff}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);overflow:hidden;
+       font:13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+       display:grid;grid-template-rows:auto 1fr;height:100vh}
+  header{display:flex;align-items:baseline;gap:14px;padding:11px 18px;
+         border-bottom:1px solid var(--line);background:#fff;flex-wrap:wrap}
+  header h1{font-size:17px;font-weight:650;margin:0;letter-spacing:-.01em;white-space:nowrap}
+  .sub{color:var(--mute);font-size:12px;white-space:nowrap}
+  .grow{flex:1}
+  .legend{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;
+        border:1px solid var(--line);background:#fff;cursor:pointer;user-select:none;
+        font-size:12px;font-weight:500;color:#3c3c44;transition:opacity .12s}
+  .chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .chip b{font-weight:600;color:var(--ink)}
+  .chip[aria-pressed=false]{opacity:.34;text-decoration:line-through}
+  .chip:hover{border-color:#cfcfd8}
+  .relkey{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:#6b6b75;margin-left:2px}
+  .relkey s{display:inline-block;height:0;width:16px;border-top:2px solid #999;text-decoration:none}
+  button.plain{font:inherit;font-size:12px;font-weight:500;padding:4px 11px;border-radius:8px;
+               border:1px solid var(--line);background:#fff;cursor:pointer;color:#3c3c44}
+  button.plain:hover{background:#f4f4f8}
+  main{display:grid;grid-template-columns:1fr auto;min-height:0}
+  #stage{position:relative;overflow:hidden}
+  svg{display:block;width:100%;height:100%;cursor:grab;touch-action:none;user-select:none}
+  svg.panning{cursor:grabbing}
+  g[data-id]{cursor:pointer}
+  #panels rect{cursor:move}
+  #panels rect:hover{stroke:#d8d8e2}
+  .hint{position:absolute;right:14px;bottom:12px;color:#a2a2ab;font-size:11.5px;
+        pointer-events:none;text-align:right;line-height:1.6}
+  aside{width:312px;border-left:1px solid var(--line);background:var(--panel);
+        overflow:auto;padding:16px 18px;display:none}
+  aside.on{display:block}
+  aside .row{display:flex;align-items:flex-start;gap:8px}
+  aside h2{font-size:14px;font-weight:650;margin:0 0 3px;line-height:1.35;flex:1}
+  aside .x{border:0;background:none;font-size:16px;line-height:1;color:var(--mute);
+           cursor:pointer;padding:2px 4px;border-radius:6px}
+  aside .x:hover{background:#f0f0f4;color:var(--ink)}
+  aside .meta{color:var(--mute);font-size:11.5px;margin:0 0 12px;word-break:break-all}
+  aside .def{margin:0 0 12px;padding:7px 9px;background:#f6f7fa;border-left:2px solid #d8d8e2;
+             color:#3c3c44;font-size:12.5px;line-height:1.55;word-break:break-word}
+  aside .grp{color:#9a9aa3;font-size:11px;font-weight:600;letter-spacing:.04em;
+             text-transform:uppercase;margin:14px 0 5px}
+  aside ul{margin:0;padding-left:0;list-style:none}
+  aside li{padding:3px 0;border-bottom:1px solid #f3f3f6;font-size:12px;word-break:break-all}
+  aside li:last-child{border-bottom:0}
+  aside li em{font-style:normal;color:#b0b0b9;font-size:11px;margin-right:6px}
+  .kbd{border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:10.5px;color:#8b8b94}
+</style>
+</head>
+<body>
+<header>
+  <h1>个人技术知识图谱</h1>
+  <span class="sub" id="stat"></span>
+  <span class="grow"></span>
+  <div class="legend" id="legend"></div>
+  <button class="plain" id="reset">重置视图</button>
+</header>
+<main>
+  <div id="stage">
+    <svg id="svg"><g id="world"><g id="panels"></g><g id="edges"></g><g id="nodes"></g></g></svg>
+    <div class="hint">滚轮缩放 · 拖空白平移 · 拖卡片移簇 · 拖节点微调 · 点击看详情 <span class="kbd">Esc</span> 关闭</div>
+  </div>
+  <aside id="panel"></aside>
+</main>
+<script>const DATA = {"title": "知识图谱 · 47 节点 / 47 边", "nodes": [{"id": "concept.agent", "label": "Agent", "full": "Agent", "type": "Concept", "summary": "Agent 可以广义定义为 LLM + Harness, 可以扩展LLM的能力边界", "deg": 5, "comp": 0, "align": "middle", "x": 0.3093, "y": 0.5207}, {"id": "concept.benchmark", "label": "Benchmark", "full": "Benchmark", "type": "Concept", "summary": "以不同metric测试Agent完成task的能力, 这类任务的合集, 现在大部分benchmark都会带上environment.", "deg": 5, "comp": 0, "align": "middle", "x": 0.437, "y": 0.4393}, {"id": "concept.computer-use-agent", "label": "Computer-Use Ag…", "full": "Computer-Use Agent", "type": "Concept", "summary": "主要重心为OS领域, 模拟人类工作行为的Agent", "deg": 2, "comp": 0, "align": "middle", "x": 0.4519, "y": 0.487}, {"id": "concept.deep-learning", "label": "Deep Learning", "full": "Deep Learning", "type": "Concept", "summary": "用多层神经网络学习表示的一类机器学习方法。", "deg": 2, "comp": 1, "align": "middle", "x": 0.6384, "y": 0.5043}, {"id": "concept.harness", "label": "Harness", "full": "Harness", "type": "Concept", "summary": "Harness 是 Agent 中除 LLM/VLM 之外的部分：控制循环、工具、上下文/记忆、技能加载和接口。", "deg": 4, "comp": 0, "align": "middle", "x": 0.235, "y": 0.5349}, {"id": "concept.llm-as-controller-agent", "label": "LLM as Controll…", "full": "LLM as Controller Agent", "type": "Concept", "summary": "以LLM+CV Experts为核心的多模态Agent, LLM并没有直接的多模态功能;", "deg": 2, "comp": 0, "align": "middle", "x": 0.4109, "y": 0.5252}, {"id": "concept.llm", "label": "LLM", "full": "LLM", "type": "Concept", "summary": "以文本 token 为输入输出的语言模型。", "deg": 3, "comp": 0, "align": "middle", "x": 0.3477, "y": 0.5627}, {"id": "concept.machine-learning", "label": "Machine Learning", "full": "Machine Learning", "type": "Concept", "summary": "从数据中学习规律并泛化到新样本的方法体系。", "deg": 3, "comp": 1, "align": "middle", "x": 0.6057, "y": 0.5775}, {"id": "concept.mathematics", "label": "Mathematics", "full": "Mathematics", "type": "Concept", "summary": "Agent / ML 背后的数学基础（微积分、线性代数、概率统计、优化等）。", "deg": 1, "comp": 2, "align": "middle", "x": 0.7922, "y": 0.5016}, {"id": "concept.model", "label": "Model", "full": "Model", "type": "Concept", "summary": "Agent 的基座模型部分：LLM 处理文本，VLM 处理多模态输入。", "deg": 3, "comp": 0, "align": "middle", "x": 0.3288, "y": 0.5432}, {"id": "concept.multimodal-agent", "label": "Multimodal Agent", "full": "Multimodal Agent", "type": "Concept", "summary": "以VLM 或者LLM+CV Experts为核心的Agent, 处理多模态问题.", "deg": 3, "comp": 0, "align": "middle", "x": 0.3761, "y": 0.5159}, {"id": "concept.post-training", "label": "Post Training", "full": "Post Training", "type": "Concept", "summary": "在预训练好的基座模型上, 再次进行微量的训练", "deg": 3, "comp": 0, "align": "middle", "x": 0.2801, "y": 0.4402}, {"id": "concept.python", "label": "Python", "full": "Python", "type": "Concept", "summary": "一种通用编程语言，是数据 / ML / Agent 工程的主要工具。", "deg": 1, "comp": 3, "align": "middle", "x": 0.9389, "y": 0.5016}, {"id": "concept.reinforcement-learning", "label": "Reinforcement L…", "full": "Reinforcement Learning", "type": "Concept", "summary": "通过与环境交互、根据奖励学习策略的一类方法。", "deg": 2, "comp": 1, "align": "middle", "x": 0.5733, "y": 0.4989}, {"id": "concept.skill-induction", "label": "Skill Induction", "full": "Skill Induction", "type": "Concept", "summary": "Agent天然的可以得到trajectory, 有trajectory, 就可以教会LLM做正确的事, 这是RL的经典方法; 但是Skill核心在于training-free;我们可以把trajectory总结成正确/错误的skill, 让LLM在不train的情况下表现更好.", "deg": 4, "comp": 0, "align": "middle", "x": 0.1082, "y": 0.5494}, {"id": "concept.skill-structure", "label": "Skill Structure", "full": "Skill Structure", "type": "Concept", "summary": "Skill Structure 是 skill 的表示与打包方式，规定它由哪些部分组成、如何被 agent 发现、加载和执行。", "deg": 3, "comp": 0, "align": "middle", "x": 0.1444, "y": 0.5656}, {"id": "concept.skill", "label": "Skill", "full": "Skill", "type": "Concept", "summary": "Skill是模型外的能力, 模型本身不具备的能力/本身做不好的事, 可以通过skill来做, 本质是一段类似于操作手册的文本", "deg": 3, "comp": 0, "align": "middle", "x": 0.1677, "y": 0.5483}, {"id": "concept.swe-agent", "label": "SWE Agent", "full": "SWE Agent", "type": "Concept", "summary": "Software Engineering 类的Agent, 是特化的针对Coding的Agent", "deg": 6, "comp": 0, "align": "middle", "x": 0.3303, "y": 0.4627}, {"id": "concept.text-only-agent", "label": "Text-only Agent", "full": "Text-only Agent", "type": "Concept", "summary": "以LLM为核心, 核心重点为纯文本领域的Agent, 比如SWE领域的Agent。", "deg": 2, "comp": 0, "align": "middle", "x": 0.3183, "y": 0.4915}, {"id": "concept.vlm-agent", "label": "VLM Agent", "full": "VLM Agent", "type": "Concept", "summary": "以VLM为核心的多模态Agent, 可以直接处理多模态信息.", "deg": 3, "comp": 0, "align": "middle", "x": 0.4247, "y": 0.5033}, {"id": "concept.vlm", "label": "VLM", "full": "VLM", "type": "Concept", "summary": "能同时处理图像/视频和文本输入的视觉语言模型。", "deg": 1, "comp": 0, "align": "middle", "x": 0.3324, "y": 0.5527}, {"id": "res.alfworld", "label": "ALFWorld", "full": "ALFWorld", "type": "Resource", "summary": "About ALFWorld Benchmark", "deg": 1, "comp": 0, "align": "middle", "x": 0.4365, "y": 0.4263}, {"id": "res.anthropic-skill-paradigm", "label": "Anthropic Skill…", "full": "Anthropic Skill Paradigm", "type": "Resource", "summary": "The paradigm of skill proposed by Anthropic.", "deg": 1, "comp": 0, "align": "middle", "x": 0.1403, "y": 0.5781}, {"id": "res.deepseek-harness", "label": "DeepSeek Harness", "full": "DeepSeek Harness", "type": "Resource", "summary": "Everything about DeepSeek Harness.", "deg": 1, "comp": 0, "align": "middle", "x": 0.2248, "y": 0.5441}, {"id": "res.mechanism-of-agent", "label": "Mechanism of Ag…", "full": "Mechanism of Agent", "type": "Resource", "summary": "Describe the mechanism of Agent architecture.", "deg": 1, "comp": 0, "align": "middle", "x": 0.2095, "y": 0.5315}, {"id": "res.mechanism-of-transformer", "label": "Mechanism of Tr…", "full": "Mechanism of Transformer", "type": "Resource", "summary": "Describe the mechanism of Transformer architecture.", "deg": 1, "comp": 0, "align": "middle", "x": 0.3699, "y": 0.5727}, {"id": "res.mini-swe-agent", "label": "mini-swe-agent", "full": "mini-swe-agent", "type": "Resource", "summary": "Introduction about mini-swe-agent.", "deg": 1, "comp": 0, "align": "middle", "x": 0.3502, "y": 0.4589}, {"id": "res.model-post-training", "label": "Model Post-Trai…", "full": "Model Post-Training", "type": "Resource", "summary": "Introducing Methods of Model Post-Training", "deg": 1, "comp": 0, "align": "middle", "x": 0.2603, "y": 0.4293}, {"id": "res.notes-on-llm", "label": "Notes on LLM", "full": "Notes on LLM", "type": "Resource", "summary": "Notes on LLM.", "deg": 1, "comp": 0, "align": "middle", "x": 0.3479, "y": 0.5757}, {"id": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "label": "Notes on Machin…", "full": "Notes on Machine Learning and Deep Learning and Reinforcement Learning", "type": "Resource", "summary": "Theory of Machine Learning & Deep Learning & Reinforcement Learning", "deg": 3, "comp": 1, "align": "middle", "x": 0.606, "y": 0.4257}, {"id": "res.notes-on-mathematics", "label": "Notes on Mathem…", "full": "Notes on Mathematics", "type": "Resource", "summary": "Notes on Mathematics", "deg": 1, "comp": 2, "align": "middle", "x": 0.7493, "y": 0.5025}, {"id": "res.notes-on-python", "label": "Notes on Python", "full": "Notes on Python", "type": "Resource", "summary": "Notes on Python.", "deg": 1, "comp": 3, "align": "middle", "x": 0.896, "y": 0.5016}, {"id": "res.panorama-of-agent", "label": "Panorama of Age…", "full": "Panorama of Agent", "type": "Resource", "summary": "This work describes the panorama of Agent area. It is suggested to review this article frequently.", "deg": 1, "comp": 0, "align": "middle", "x": 0.2874, "y": 0.5189}, {"id": "res.paper-summary-agent-s", "label": "Agent S", "full": "Agent S", "type": "Resource", "summary": "Paper Summary of \"Agent S: An Open Agentic Framework that Uses Computers Like a Human\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.4651, "y": 0.4701}, {"id": "res.paper-summary-hugginggpt", "label": "HuggingGPT", "full": "HuggingGPT", "type": "Resource", "summary": "Paper Summary of \"HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.4386, "y": 0.5322}, {"id": "res.paper-summary-osworld-human", "label": "OSWorld-Human", "full": "OSWorld-Human", "type": "Resource", "summary": "Paper Summary of \"OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.4573, "y": 0.4275}, {"id": "res.paper-summary-osworld", "label": "OSWorld", "full": "OSWorld", "type": "Resource", "summary": "Paper Summary of \"OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.46, "y": 0.4536}, {"id": "res.paper-summary-trace2skill", "label": "Trace2Skill", "full": "Trace2Skill", "type": "Resource", "summary": "Paper Summary of \"Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.0805, "y": 0.5428}, {"id": "res.paper-summary-vista", "label": "VISTA", "full": "VISTA", "type": "Resource", "summary": "Paper Summary of \"VISTA: A Visual Harness for Reasoning in an Interactive World\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.4567, "y": 0.5058}, {"id": "res.paper-summary-codeskill", "label": "CODESKILL", "full": "CODESKILL", "type": "Resource", "summary": "Paper Summary of \"CODESKILL: Learning Self-Evolving Skills for Coding Agents\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.0813, "y": 0.5573}, {"id": "res.paper-summary-nsi", "label": "NSI", "full": "NSI", "type": "Resource", "summary": "Paper Summary of \"Lifting Traces to Logic: Programmatic Skill Induction with Neuro-Symbolic Learning for Long-Horizon Agentic Tasks\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.1197, "y": 0.5745}, {"id": "res.paper-summary-poly-skill", "label": "PolySkill", "full": "PolySkill", "type": "Resource", "summary": "Paper Summary of \"PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction (for Continual Learning)\".", "deg": 1, "comp": 0, "align": "middle", "x": 0.0718, "y": 0.5503}, {"id": "res.paper-summary-swe-rl", "label": "SWE-RL", "full": "SWE-RL", "type": "Resource", "summary": "Paper Summary of \"SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.2953, "y": 0.4523}, {"id": "res.paper-summary-swe-smith", "label": "SWE-smith", "full": "SWE-smith", "type": "Resource", "summary": "Paper Summary of \"SWE-smith: Scaling Data for Software Engineering Agents\".", "deg": 2, "comp": 0, "align": "middle", "x": 0.3057, "y": 0.4484}, {"id": "res.swe-agent", "label": "SWE-agent", "full": "SWE-agent", "type": "Resource", "summary": "SWE-agent relative", "deg": 1, "comp": 0, "align": "middle", "x": 0.3302, "y": 0.4524}, {"id": "res.swe-bench", "label": "SWE-bench", "full": "SWE-bench", "type": "Resource", "summary": "Analysis of SWE-bench", "deg": 2, "comp": 0, "align": "middle", "x": 0.3842, "y": 0.4496}, {"id": "res.webshop", "label": "WebShop", "full": "WebShop", "type": "Resource", "summary": "About Webshop Benchmark", "deg": 1, "comp": 0, "align": "middle", "x": 0.4693, "y": 0.4339}], "edges": [{"s": "concept.agent", "t": "res.panorama-of-agent", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.paper-summary-osworld", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.alfworld", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.webshop", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.swe-bench", "rel": "explained_by"}, {"s": "concept.benchmark", "t": "res.paper-summary-osworld-human", "rel": "explained_by"}, {"s": "concept.computer-use-agent", "t": "concept.vlm-agent", "rel": "part_of"}, {"s": "concept.computer-use-agent", "t": "res.paper-summary-agent-s", "rel": "explained_by"}, {"s": "concept.deep-learning", "t": "concept.machine-learning", "rel": "part_of"}, {"s": "concept.deep-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.harness", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.harness", "t": "res.mechanism-of-agent", "rel": "explained_by"}, {"s": "concept.harness", "t": "res.deepseek-harness", "rel": "explained_by"}, {"s": "concept.llm-as-controller-agent", "t": "concept.multimodal-agent", "rel": "part_of"}, {"s": "concept.llm-as-controller-agent", "t": "res.paper-summary-hugginggpt", "rel": "explained_by"}, {"s": "concept.llm", "t": "concept.model", "rel": "part_of"}, {"s": "concept.llm", "t": "res.notes-on-llm", "rel": "explained_by"}, {"s": "concept.llm", "t": "res.mechanism-of-transformer", "rel": "explained_by"}, {"s": "concept.machine-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.mathematics", "t": "res.notes-on-mathematics", "rel": "explained_by"}, {"s": "concept.model", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.multimodal-agent", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.post-training", "t": "res.paper-summary-swe-rl", "rel": "explained_by"}, {"s": "concept.post-training", "t": "res.paper-summary-swe-smith", "rel": "explained_by"}, {"s": "concept.post-training", "t": "res.model-post-training", "rel": "explained_by"}, {"s": "concept.python", "t": "res.notes-on-python", "rel": "explained_by"}, {"s": "concept.reinforcement-learning", "t": "concept.machine-learning", "rel": "part_of"}, {"s": "concept.reinforcement-learning", "t": "res.notes-on-machine-learning-and-deep-learning-and-reinforcement-learning", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "concept.skill", "rel": "part_of"}, {"s": "concept.skill-induction", "t": "res.paper-summary-trace2skill", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "res.paper-summary-codeskill", "rel": "explained_by"}, {"s": "concept.skill-induction", "t": "res.paper-summary-poly-skill", "rel": "explained_by"}, {"s": "concept.skill-structure", "t": "concept.skill", "rel": "part_of"}, {"s": "concept.skill-structure", "t": "res.anthropic-skill-paradigm", "rel": "explained_by"}, {"s": "concept.skill-structure", "t": "res.paper-summary-nsi", "rel": "explained_by"}, {"s": "concept.skill", "t": "concept.harness", "rel": "part_of"}, {"s": "concept.swe-agent", "t": "concept.text-only-agent", "rel": "part_of"}, {"s": "concept.swe-agent", "t": "res.paper-summary-swe-rl", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.paper-summary-swe-smith", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.swe-agent", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.mini-swe-agent", "rel": "explained_by"}, {"s": "concept.swe-agent", "t": "res.swe-bench", "rel": "explained_by"}, {"s": "concept.text-only-agent", "t": "concept.agent", "rel": "part_of"}, {"s": "concept.vlm-agent", "t": "concept.multimodal-agent", "rel": "part_of"}, {"s": "concept.vlm-agent", "t": "res.paper-summary-vista", "rel": "explained_by"}, {"s": "concept.vlm", "t": "concept.model", "rel": "part_of"}, {"s": "res.paper-summary-agent-s", "t": "res.paper-summary-osworld", "rel": "related_to"}], "clusters": [{"id": 0, "label": "SWE Agent", "n": 39}, {"id": 1, "label": "Machine Learning", "n": 4}, {"id": 2, "label": "Mathematics", "n": 2}, {"id": 3, "label": "Python", "n": 2}], "typeColor": {"Concept": "#2c7fb8", "Resource": "#41ab5d", "Implementation": "#f16913", "Claim": "#c51b8a", "Project": "#6a51a3"}, "relColor": {"prerequisite_of": {"c": "#d62728", "w": 2.6}, "implemented_by": {"c": "#f16913", "w": 2.0}, "applied_in": {"c": "#6a51a3", "w": 1.6}, "supports": {"c": "#41ab5d", "w": 1.6}, "contradicts": {"c": "#c51b8a", "w": 1.6}, "explained_by": {"c": "#2c7fb8", "w": 1.4}, "about": {"c": "#8c8c96", "w": 1.3}, "part_of": {"c": "#8c8c96", "w": 1.3}, "related_to": {"c": "#b4b4be", "w": 1.2}}, "relLabel": {"prerequisite_of": "前置依赖", "implemented_by": "由代码实现", "explained_by": "出处解释", "supports": "证据支持", "contradicts": "互相矛盾", "about": "讨论对象", "applied_in": "应用项目", "part_of": "组成部分", "related_to": "一般相关"}};</script>
+<script>
+const NS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("svg");
+const world = document.getElementById("world");
+const gP = document.getElementById("panels");
+const gE = document.getElementById("edges");
+const gN = document.getElementById("nodes");
+const panel = document.getElementById("panel");
+const legend = document.getElementById("legend");
+const statEl = document.getElementById("stat");
+
+const W = () => svg.clientWidth || 1200;
+const H = () => svg.clientHeight || 780;
+let k = 1, tx = 0, ty = 0, selected = null, hover = null;
+const hiddenTypes = new Set();
+const dragged = new Set();
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// 面积 ∝ 度数:必须是 sqrt,不能加常数,否则标度被压平
+const radius = d => Math.max(3.4, 3.1 * Math.sqrt(Math.max(1, d)));
+
+const nodes = DATA.nodes.map(d => Object.assign({}, d, { r: radius(d.deg) }));
+const byId = {};
+nodes.forEach(n => byId[n.id] = n);
+const edges = DATA.edges.filter(e => byId[e.s] && byId[e.t])
+                        .map(e => Object.assign({}, e, { a: byId[e.s], b: byId[e.t] }));
+const nb = {};
+nodes.forEach(n => nb[n.id] = new Set());
+edges.forEach(e => { nb[e.s].add(e.t); nb[e.t].add(e.s); });
+
+// ---- defs:每个关系一个自己的箭头,颜色跟着线走
+const defs = document.createElementNS(NS, "defs");
+Object.keys(DATA.relColor).forEach((rel, i) => {
+  defs.insertAdjacentHTML("beforeend",
+    '<marker id="arw-' + i + '" viewBox="0 0 10 10" refX="10" refY="5" ' +
+    'markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="7" orient="auto">' +
+    '<path d="M0,0 L10,5 L0,10 z" fill="' + DATA.relColor[rel].c + '"/></marker>');
+});
+svg.prepend(defs);
+const relIdx = {};
+Object.keys(DATA.relColor).forEach((r, i) => relIdx[r] = i);
+
+const tierOf = n => (n.deg >= 8 ? "major" : (n.type === "Concept" ? "concept" : "minor"));
+const labelStyle = {
+  major:   { size: 13,   weight: 650, fill: "#1b1b1f" },
+  concept: { size: 12.5, weight: 600, fill: "#2b2b31" },
+  minor:   { size: 11.5, weight: 400, fill: "#55555f" }
+};
+
+// ---- 边
+const lineEls = edges.map(e => {
+  const s = DATA.relColor[e.rel] || { c: "#d4d4dc", w: 1 };
+  const l = document.createElementNS(NS, "line");
+  l.setAttribute("stroke", s.c);
+  l.setAttribute("stroke-width", Math.max(1.1, s.w));
+  l.setAttribute("stroke-linecap", "round");
+  // 列表型叶子:13 条边语义相同、方向一致,箭头会在 hub 周围挤成一圈锯齿,所以不画
+  const stacked = e.s.align === "end" || e.t.align === "end" ||
+                  e.s.align === "start" || e.t.align === "start";
+  if (!stacked) l.setAttribute("marker-end", "url(#arw-" + (relIdx[e.rel] || 0) + ")");
+  else l.setAttribute("stroke-width", Math.min(1.2, s.w));
+  gE.append(l);
+  return l;
+});
+
+// ---- 节点
+const nodeEls = new Map();
+nodes.forEach(n => {
+  const g = document.createElementNS(NS, "g");
+  g.setAttribute("data-id", n.id);
+  const hit = document.createElementNS(NS, "circle");
+  hit.setAttribute("r", Math.max(n.r + 12, 18));
+  hit.setAttribute("fill", "transparent");
+  const ring = document.createElementNS(NS, "circle");
+  ring.setAttribute("r", n.r + 4.5);
+  ring.setAttribute("fill", "none");
+  ring.setAttribute("stroke", "#1b1b1f");
+  ring.setAttribute("stroke-width", "2");
+  ring.setAttribute("opacity", "0");
+  const c = document.createElementNS(NS, "circle");
+  c.setAttribute("r", n.r);
+  c.setAttribute("fill", DATA.typeColor[n.type] || "#8a8a8e");
+  c.setAttribute("stroke", "#fff");
+  c.setAttribute("stroke-width", "1.4");
+  const st = labelStyle[tierOf(n)];
+  const t = document.createElementNS(NS, "text");
+  t.textContent = n.label;
+  t.setAttribute("fill", st.fill);
+  t.setAttribute("font-weight", st.weight);
+  t.setAttribute("paint-order", "stroke");
+  t.setAttribute("stroke", "#fff");
+  t.setAttribute("stroke-linejoin", "round");
+  if (n.type === "Implementation") t.setAttribute("font-family", "ui-monospace,Consolas,monospace");
+  const title = document.createElementNS(NS, "title");
+  title.textContent = n.full || n.label;
+  g.append(hit, ring, c, t, title);
+  gN.append(g);
+  nodeEls.set(n.id, { g: g, t: t, ring: ring });
+});
+
+// ---- 簇底板
+const clusterEls = new Map();
+(DATA.clusters || []).forEach(cl => {
+  const r = document.createElementNS(NS, "rect");
+  r.setAttribute("rx", "16");
+  r.setAttribute("fill", "#f3f4f8");
+  r.setAttribute("stroke", "#e9e9f0");
+  r.setAttribute("stroke-width", "1");
+  r.setAttribute("data-comp", String(cl.id));
+  const t = document.createElementNS(NS, "text");
+  t.setAttribute("fill", "#a3a3ad");
+  t.setAttribute("font-weight", "500");
+  t.textContent = cl.n + " 个节点";
+  gP.append(r, t);
+  clusterEls.set(cl.id, { r: r, t: t, n: cl.n });
+});
+
+function place() {
+  const w = W(), h = H();
+  nodes.forEach(n => {
+    if (dragged.has(n.id)) return;    // 手动拖过的节点不要被重排冲掉
+    n.px = n.x * w; n.py = n.y * h;
+  });
+}
+
+function camera() {
+  world.setAttribute("transform", "translate(" + tx + "," + ty + ") scale(" + k + ")");
+  // 箭头不能是恒定屏幕尺寸:节点随缩放变大,恒定的箭头放大后就成了一个小点。
+  // 让屏幕尺寸 = 7·√k —— 缩小时不至于消失,放大时跟得上节点。
+  const s = 7 / Math.sqrt(k);
+  defs.querySelectorAll("marker").forEach(m => {
+    m.setAttribute("markerWidth", s);
+    m.setAttribute("markerHeight", s);
+  });
+}
+
+function nodeBox(n) {
+  // 卡片必须覆盖「节点 ∪ 标签」。只算节点的话,卡片右缘会从文字中间穿过去。
+  const st = labelStyle[tierOf(n)];
+  const w = labelWidth(n.label, st.size);
+  const gap = 8;
+  let x1 = n.px - n.r, x2 = n.px + n.r, y1 = n.py - n.r, y2 = n.py + n.r;
+  let lx1, lx2, ly1, ly2;
+  if (n.align === "start") {
+    lx1 = n.px + n.r + gap; lx2 = lx1 + w;
+    ly1 = n.py - st.size * 0.8; ly2 = n.py + st.size * 0.3;
+  } else if (n.align === "end") {
+    lx2 = n.px - n.r - gap; lx1 = lx2 - w;
+    ly1 = n.py - st.size * 0.8; ly2 = n.py + st.size * 0.3;
+  } else {
+    lx1 = n.px - w / 2; lx2 = lx1 + w;
+    ly1 = n.py + n.r + gap * 0.6; ly2 = ly1 + st.size;
+  }
+  return { x1: Math.min(x1, lx1), y1: Math.min(y1, ly1),
+           x2: Math.max(x2, lx2), y2: Math.max(y2, ly2) };
+}
+
+function drawPanels() {
+  const PAD = 16, HEAD = 20;
+  const groups = {};
+  nodes.forEach(n => {
+    if (hiddenTypes.has(n.type)) return;
+    const b = groups[n.comp] || (groups[n.comp] = { x1: 1e9, y1: 1e9, x2: -1e9, y2: -1e9 });
+    const q = nodeBox(n);
+    b.x1 = Math.min(b.x1, q.x1); b.x2 = Math.max(b.x2, q.x2);
+    b.y1 = Math.min(b.y1, q.y1); b.y2 = Math.max(b.y2, q.y2);
+  });
+  clusterEls.forEach((el, id) => {
+    const b = groups[id];
+    if (!b) { el.r.style.display = "none"; el.t.style.display = "none"; return; }
+    el.r.style.display = ""; el.t.style.display = "";
+    // 每张卡贴合自己的内容。强行统一顶边会把矮簇的卡拉高,上半张全是空的 —— 更糟。
+    const y = b.y1 - PAD - HEAD;
+    el.r.setAttribute("x", b.x1 - PAD);
+    el.r.setAttribute("y", y);
+    el.r.setAttribute("width", Math.max(70, b.x2 - b.x1 + PAD * 2));
+    el.r.setAttribute("height", Math.max(50, b.y2 + PAD - y));
+    el.t.setAttribute("x", b.x1 - PAD + 12);
+    el.t.setAttribute("y", y + 15);
+    el.t.setAttribute("font-size", 10.5 / k);
+  });
+}
+
+function labelWidth(text, fs) {
+  // 中文按 1.0em,西文按 0.55em —— 0.62 的均值会低估中文 20% 以上
+  let w = 0;
+  for (const ch of text) w += (ch.charCodeAt(0) > 0x2e80 ? 1.0 : 0.55) * fs;
+  return w;
+}
+
+function cullLabels() {
+  const boxes = [];
+  const order = nodes.slice().sort((a, b) => b.deg - a.deg);
+  order.forEach(n => {
+    const el = nodeEls.get(n.id);
+    const t = el.t;
+    if (hiddenTypes.has(n.type)) { t.style.display = "none"; return; }
+    const tier = tierOf(n);
+    if (k < 0.8 && tier === "minor") { t.style.display = "none"; return; }
+    const st = labelStyle[tier];
+    const fs = st.size / k;        // 世界坐标下的字号,屏幕上恒为 st.size
+    const gap = 6 / k;
+    t.setAttribute("font-size", fs);
+    // 标签在节点组内部,必须用相对偏移,不能用屏幕坐标
+    let anchor = "middle", dx = 0, dy = n.r + gap + fs * 0.85;
+    if (n.align === "end") { anchor = "end"; dx = -(n.r + gap); dy = fs * 0.34; }
+    else if (n.align === "start") { anchor = "start"; dx = n.r + gap; dy = fs * 0.34; }
+    t.setAttribute("text-anchor", anchor);
+    t.setAttribute("transform", "translate(" + dx + "," + dy + ")");
+
+    const sx = n.px * k + tx + dx * k;
+    const sy = n.py * k + ty + dy * k;
+    const w = labelWidth(n.label, st.size);
+    const x0 = anchor === "end" ? sx - w : (anchor === "middle" ? sx - w / 2 : sx);
+    const box = { x1: x0, y1: sy - st.size, x2: x0 + w, y2: sy + 4 };
+    let clash = false;
+    for (const b of boxes) {
+      if (!(box.x1 > b.x2 || box.x2 < b.x1 || box.y1 > b.y2 || box.y2 < b.y1)) { clash = true; break; }
+    }
+    if (clash) { t.style.display = "none"; }
+    else { t.style.display = ""; boxes.push(box); }
+  });
+}
+
+function redraw() {
+  nodes.forEach(n => {
+    nodeEls.get(n.id).g.setAttribute("transform", "translate(" + n.px + "," + n.py + ")");
+  });
+  edges.forEach((e, i) => {
+    const l = lineEls[i];
+    const ax = e.a.px, ay = e.a.py, bx = e.b.px, by = e.b.py;
+    const dx = bx - ax, dy = by - ay, d = Math.hypot(dx, dy);
+    if (d < 1) { l.style.display = "none"; return; }
+    l.style.display = "";
+    const ux = dx / d, uy = dy / d;
+    const s1 = e.a.r + 2 / k, s2 = e.b.r + 2 / k;
+    if (d <= s1 + s2) {
+      l.setAttribute("x1", ax); l.setAttribute("y1", ay);
+      l.setAttribute("x2", bx); l.setAttribute("y2", by);
+      return;
+    }
+    l.setAttribute("x1", ax + ux * s1); l.setAttribute("y1", ay + uy * s1);
+    l.setAttribute("x2", bx - ux * s2); l.setAttribute("y2", by - uy * s2);
+  });
+  drawPanels();
+  camera();
+  cullLabels();
+}
+
+function applyFilter() {
+  nodes.forEach(n => {
+    nodeEls.get(n.id).g.style.display = hiddenTypes.has(n.type) ? "none" : "";
+  });
+  edges.forEach((e, i) => {
+    lineEls[i].style.display = (hiddenTypes.has(e.a.type) || hiddenTypes.has(e.b.type)) ? "none" : "";
+  });
+}
+
+function paint() {
+  nodes.forEach(n => {
+    const on = !hover || n.id === hover || nb[hover].has(n.id);
+    nodeEls.get(n.id).g.style.opacity = on ? "1" : "0.15";
+  });
+  edges.forEach((e, i) => {
+    const on = !hover || e.s === hover || e.t === hover;
+    lineEls[i].style.opacity = on ? "1" : "0.08";
+  });
+}
+
+function showPanel(id) {
+  const n = byId[id];
+  const relName = r => (DATA.relLabel && DATA.relLabel[r]) ? DATA.relLabel[r] : r;
+  const outs = edges.filter(e => e.s === id);
+  const ins = edges.filter(e => e.t === id);
+  const li = (e, dir) => '<li><em>' + esc(relName(e.rel)) + '</em>' +
+                          esc(dir === "out" ? (byId[e.t].full || e.t) : (byId[e.s].full || e.s)) + '</li>';
+  let h = '<div class="row"><h2>' + esc(n.full || n.label) + '</h2>' +
+          '<button class="x" onclick="closePanel()">×</button></div>' +
+          '<div class="meta">' + esc(n.type) + ' · 度数 ' + n.deg + '<br>' + esc(id) + '</div>';
+  if (n.summary) h += '<p class="def">' + esc(n.summary) + '</p>';
+  if (outs.length) h += '<div class="grp">出边 ' + outs.length + '</div><ul>' + outs.map(e => li(e, "out")).join("") + '</ul>';
+  if (ins.length) h += '<div class="grp">入边 ' + ins.length + '</div><ul>' + ins.map(e => li(e, "in")).join("") + '</ul>';
+  if (!outs.length && !ins.length) h += '<div class="grp">孤立节点</div>';
+  panel.innerHTML = h;
+  panel.classList.add("on");
+  selected = id;
+  nodes.forEach(m => { nodeEls.get(m.id).ring.setAttribute("opacity", m.id === id ? "1" : "0"); });
+  place(); redraw();
+}
+
+function closePanel() {
+  panel.classList.remove("on");
+  panel.innerHTML = "";
+  selected = null;
+  nodes.forEach(m => nodeEls.get(m.id).ring.setAttribute("opacity", "0"));
+  place(); redraw();
+}
+window.closePanel = closePanel;
+
+let drag = null, moved = false, pressedNode = null;
+svg.addEventListener("pointerdown", e => {
+  const g = e.target.closest("g[data-id]");
+  const card = e.target.closest("rect[data-comp]");
+  svg.setPointerCapture(e.pointerId);
+  moved = false;
+  pressedNode = g ? g.dataset.id : null;
+  if (g) {
+    drag = { type: "node", n: byId[g.dataset.id], ox: e.clientX, oy: e.clientY };
+  } else if (card) {
+    // 整张卡片拖动:把这一簇的节点作为一个整体平移
+    const id = +card.dataset.comp;
+    const members = nodes.filter(n => n.comp === id);
+    const r0 = svg.getBoundingClientRect();
+    drag = {
+      type: "card", members: members,
+      ox: ((e.clientX - r0.left) - tx) / k,
+      oy: ((e.clientY - r0.top) - ty) / k,
+      start: members.map(n => [n.px, n.py])
+    };
+  } else {
+    drag = { type: "pan", ox: e.clientX, oy: e.clientY, tx: tx, ty: ty };
+    svg.classList.add("panning");
+  }
+});
+svg.addEventListener("pointermove", e => {
+  if (!drag) return;
+  if (drag.type === "pan") {
+    tx = drag.tx + (e.clientX - drag.ox);
+    ty = drag.ty + (e.clientY - drag.oy);
+    moved = true;
+    camera(); cullLabels();
+    return;
+  }
+  const r = svg.getBoundingClientRect();
+  const wx = ((e.clientX - r.left) - tx) / k;
+  const wy = ((e.clientY - r.top) - ty) / k;
+  if (drag.type === "card") {
+    const dx = wx - drag.ox, dy = wy - drag.oy;
+    if (Math.abs(dx) > 0.6 || Math.abs(dy) > 0.6) moved = true;
+    drag.members.forEach((n, i) => {
+      n.px = drag.start[i][0] + dx;
+      n.py = drag.start[i][1] + dy;
+      dragged.add(n.id);
+    });
+    redraw();
+    return;
+  }
+  drag.n.px = wx;
+  drag.n.py = wy;
+  if (Math.hypot(e.clientX - drag.ox, e.clientY - drag.oy) > 2) moved = true;
+  dragged.add(drag.n.id);
+  redraw();
+});
+const endDrag = () => {
+  if (drag && !moved && pressedNode) showPanel(pressedNode);
+  pressedNode = null;
+  drag = null;
+  svg.classList.remove("panning");
+};
+svg.addEventListener("pointerup", endDrag);
+svg.addEventListener("pointercancel", () => {
+  pressedNode = null;
+  drag = null;
+  svg.classList.remove("panning");
+});
+
+svg.addEventListener("wheel", e => {
+  e.preventDefault();
+  const r = svg.getBoundingClientRect();
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  const nk = Math.min(6, Math.max(0.3, k * Math.exp(-e.deltaY * 0.0015)));
+  tx = mx - (mx - tx) * (nk / k);
+  ty = my - (my - ty) * (nk / k);
+  k = nk;
+  camera(); cullLabels();
+}, { passive: false });
+
+gN.addEventListener("pointerover", e => {
+  const g = e.target.closest("g[data-id]");
+  if (g) { hover = g.dataset.id; paint(); }
+});
+gN.addEventListener("pointerout", () => { hover = null; paint(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && selected) closePanel(); });
+
+document.getElementById("reset").onclick = () => {
+  k = 1; tx = 0; ty = 0; place(); redraw();
+};
+
+// ---- 头部:类型图例 + 关系图例
+const counts = {};
+nodes.forEach(n => counts[n.type] = (counts[n.type] || 0) + 1);
+Object.keys(counts).sort((a, b) => counts[b] - counts[a]).forEach(t => {
+  const b = document.createElement("button");
+  b.className = "chip";
+  b.setAttribute("aria-pressed", "true");
+  b.innerHTML = '<i style="background:' + (DATA.typeColor[t] || "#888") + '"></i>' +
+                esc(t) + ' <b>' + counts[t] + '</b>';
+  b.onclick = () => {
+    if (hiddenTypes.has(t)) hiddenTypes.delete(t); else hiddenTypes.add(t);
+    b.setAttribute("aria-pressed", String(!hiddenTypes.has(t)));
+    applyFilter(); redraw();
+  };
+  legend.append(b);
+});
+const relKey = document.createElement("span");
+relKey.className = "relkey";
+relKey.innerHTML = '<s style="border-color:' + DATA.relColor.prerequisite_of.c + '"></s>前置依赖';
+legend.append(relKey);
+statEl.textContent = nodes.length + " 节点 · " + edges.length + " 边 · " +
+                     (DATA.clusters || []).length + " 个独立簇";
+
+window.addEventListener("resize", () => { place(); redraw(); });
+place();
+redraw();
+</script>
+</body>
+</html>
+
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><!-- 网站运行时间计数 -->
+<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
+  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
+</span>
+
+<script>
+  function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    
+    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
+    // 注意：月份是从 1 开始的，直接填数字即可
+    var BirthDay = new Date("2026/06/24 00:00:00"); 
+    
+    var today = new Date();
+    var timeold = (today.getTime() - BirthDay.getTime());
+    var msPerDay = 24 * 60 * 60 * 1000;
+    var e_daysold = timeold / msPerDay;
+    
+    var daysold = Math.floor(e_daysold);
+    var e_hrsold = (e_daysold - daysold) * 24;
+    var hrsold = Math.floor(e_hrsold);
+    var e_minsold = (e_hrsold - hrsold) * 60;
+    var minsold = Math.floor((e_hrsold - hrsold) * 60);
+    var seconds = Math.floor((e_minsold - minsold) * 60);
+    
+    // 将计算结果填入对应的 span 标签中
+    document.getElementById("runtime_days").innerHTML = daysold;
+    document.getElementById("runtime_hours").innerHTML = hrsold;
+    document.getElementById("runtime_mins").innerHTML = minsold;
+    document.getElementById("runtime_secs").innerHTML = seconds;
+  }
+  show_runtime();
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
