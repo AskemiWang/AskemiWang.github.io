@@ -31,8 +31,9 @@
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="This is an independent score computing method as a supplement to OSWorld. In this work, the authors design a brand new metric to evaluate agent&#39;s work efficiency.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/article_images/osworld_human_metric.png">
 <meta property="article:published_time" content="2026-09-27T08:44:23.000Z">
-<meta property="article:modified_time" content="2026-10-23T07:36:28.000Z">
+<meta property="article:modified_time" content="2026-10-23T13:00:11.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="A11y Tree">
 <meta property="article:tag" content="Agent">
@@ -48,6 +49,7 @@
 <meta property="article:tag" content="Set-of-Marks">
 <meta property="article:tag" content="VLM">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/article_images/osworld_human_metric.png">
 
 
 <link rel="canonical" href="https://wangyier.top/paper-summary-osworld-human/">
@@ -192,7 +194,7 @@
 GTA1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#osworld-human"><span class="nav-text">3. OSWorld-Human</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#human-trajectory-construction"><span class="nav-text">3.1 Human Trajectory
 Construction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#action-grouping"><span class="nav-text">3.2 Action Grouping</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#evaluation"><span class="nav-text">4. Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#textwes-weighted-efficiency-score"><span class="nav-text">4.1 WES+ ( Weighted Efficiency
 Score)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#textwes-i-object"><span class="nav-text">4.2 WES (I
-Object)</span></a></li></ol></li></ol></div>
+Object)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">5. Conclusion</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -289,7 +291,7 @@ Object)</span></a></li></ol></li></ol></div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-23 15:36:28" itemprop="dateModified" datetime="2026-10-23T15:36:28+08:00">2026-10-23</time>
+      <time title="Modified: 2026-10-23 21:00:11" itemprop="dateModified" datetime="2026-10-23T21:00:11+08:00">2026-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -712,19 +714,85 @@ Object)</h2>
 <p>To penalize agents that waste steps on failed tasks, we apply a
 <mark>global penalty multiplier</mark>.</p>
 <ul>
-<li><p>Average number of steps taken across all failed tasks: $t_{fail}
-$</p></li>
-<li><p>Maximum steps allowed: <span
-class="math inline"><em>S</em></span></p></li>
-<li><p>The extra penalty multiplier: <span
-class="math inline">$1-\frac{t_{fail}}{S}$</span> ranges from 0 to
-1.</p>
+<li>Average number of steps taken across all failed tasks: $t_{fail}
+$</li>
+<li>Maximum steps allowed: <span
+class="math inline"><em>S</em></span></li>
+<li>The extra penalty multiplier: <span
+class="math inline">$1-\frac{t_{fail}}{S}$</span> ranges from 0 to 1.
 <ul>
-<li>A multiplier of 1 means that the agent completes most tasks
-<mark>successfully</mark> or <mark>fails very quickly</mark>.</li>
-<li>Agent stops and output FAIL or</li>
+<li>Agent stops and outputs FAIL or DONE. If the stop condition is DONE
+but the answer is incorrect, the <span class="math inline">$1 - \frac
+{t_{fail}}{S}$</span> represent the extent of how many step is used in
+vain.</li>
+<li>A multiplier of <mark>1</mark> means that the agent completes most
+tasks <mark>successfully</mark> or <mark>fails very quickly</mark>.</li>
+<li>A multiplier <mark>approaching 0</mark> means the agent fails to
+complete most tasks and is very inefficient, exhausting its full step
+budget on failures.</li>
+</ul></li>
+<li><span class="math display">$$
+\text{WES} = \text{WES}^+ \cdot \left(1 - \frac{t_{fail}}{S}\right)
+$$</span></li>
+</ul>
+<blockquote>
+<p>[!NOTE]</p>
+<p>Personal Opinion:</p>
+<p>I agree with design of <span
+class="math inline">WES<sup>+</sup></span> which shows the efficiency of
+Agent but I disagree with the <span class="math inline">WES</span>,
+because the coefficient is to penalty the agent who fail the task and
+cost a lot. But what if a task is nearly completed but reaches the turn
+limits?</p>
+<p>I think the penalty coefficient can be more detailed.</p>
+</blockquote>
+<h1 id="conclusion">5. Conclusion</h1>
+<p><mark>Motivation</mark>:</p>
+<ul>
+<li>Using Agent to solve real problem is too slowly, for instance:
+<ul>
+<li>Changing the line spacing of two paragraphs in a document to
+double-spaced takes 12 minutes for a computer-use agent.</li>
+<li>However, for a human user with introductory computer experience,
+this task should take under 30 seconds.</li>
 </ul></li>
 </ul>
+<p><mark>Attribution</mark>:</p>
+<ol type="1">
+<li>Agent spends too many times on <code>Planning</code>,
+<code>Reflection</code> and <code>Judging</code>.</li>
+<li>As time goes by, the prompt is expanding which influence the
+latency.</li>
+<li>Observation is a influence factor but not the only one.</li>
+</ol>
+<p><mark>Metric</mark>:</p>
+<ol type="1">
+<li><p>Build a new metric to evaluate the agent’s efficiency.</p></li>
+<li><p><span class="math display">$$
+\begin{aligned}
+\text{WES}^+ &amp;= {\frac{1}{n}}\sum_{t}^n r_t \cdot
+\frac{t_{human}}{t_{agent}} \\
+\text{WES} &amp;= \text{WES}^+ \cdot \left(1 - \frac{t_{fail}}{S}\right)
+\end{aligned}
+$$</span></p></li>
+</ol>
+<p><mark>Work</mark>:</p>
+<ul>
+<li>Human Trajectory Construction (Single-Action &amp; Group Action);
+OSWorld-Human contains the same number of examples (369) as the original
+OSWorld.</li>
+<li>Action Grouping: The OSWorld-Human noticed that the phenomenon that
+some action combination is used frequently. So they introduce the
+concept of the <mark>grouped actions</mark>:
+<ul>
+<li>The action set that can be implemented in single Screenshot,
+e.g. <code>click on a text field</code>, <code>type text</code>, and
+<code>press &lt;enter&gt;</code>. This is a common action
+combination.</li>
+</ul></li>
+</ul>
+<p><mark>Evaluation</mark>:</p>
+<p><img data-src="/images/article_images/osworld_human_metric.png" /></p>
 
     </div>
 
@@ -802,13 +870,13 @@ class="math inline">$1-\frac{t_{fail}}{S}$</span> ranges from 0 to
               <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
               <a href="/tags/OS/" rel="tag"># OS</a>
-              <a href="/tags/VLM/" rel="tag"># VLM</a>
               <a href="/tags/Multimodal/" rel="tag"># Multimodal</a>
+              <a href="/tags/VLM/" rel="tag"># VLM</a>
               <a href="/tags/OSWorld/" rel="tag"># OSWorld</a>
+              <a href="/tags/A11y-Tree/" rel="tag"># A11y Tree</a>
               <a href="/tags/OSWorld-Human/" rel="tag"># OSWorld-Human</a>
               <a href="/tags/CUA/" rel="tag"># CUA</a>
               <a href="/tags/Screenshot/" rel="tag"># Screenshot</a>
-              <a href="/tags/A11y-Tree/" rel="tag"># A11y Tree</a>
               <a href="/tags/Set-of-Marks/" rel="tag"># Set-of-Marks</a>
           </div>
 
