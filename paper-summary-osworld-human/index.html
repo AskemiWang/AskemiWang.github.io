@@ -24,15 +24,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Paper Summary of &quot;OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents&quot;.">
+    <meta name="description" content="This is an independent score computing method as a supplement to OSWorld. In this work, the authors design a brand new metric to evaluate agent&#39;s work efficiency.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paper Summary – OSWorld-Human">
 <meta property="og:url" content="https://wangyier.top/paper-summary-osworld-human/index.html">
 <meta property="og:site_name" content="The Great Library">
-<meta property="og:description" content="Paper Summary of &quot;OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents&quot;.">
+<meta property="og:description" content="This is an independent score computing method as a supplement to OSWorld. In this work, the authors design a brand new metric to evaluate agent&#39;s work efficiency.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-09-27T08:44:23.000Z">
-<meta property="article:modified_time" content="2026-10-21T13:00:12.000Z">
+<meta property="article:modified_time" content="2026-10-23T07:36:28.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="A11y Tree">
 <meta property="article:tag" content="Agent">
@@ -188,7 +188,11 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#methodology"><span class="nav-text">2. Methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-s2"><span class="nav-text">2.1 Agent S2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gta1"><span class="nav-text">2.2 GTA1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task-latency-analysis"><span class="nav-text">2.3 Task Latency Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-call-analysis"><span class="nav-text">2.4 Model Call Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#observation-types-analysis"><span class="nav-text">2.5 Observation Types Analysis</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis"><span class="nav-text">2. Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-s2"><span class="nav-text">2.1 Agent S2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gta1"><span class="nav-text">2.2 GTA1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task-latency-analysis"><span class="nav-text">2.3 Task Latency Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-call-analysis"><span class="nav-text">2.4 Model Call Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#observation-types-analysis"><span class="nav-text">2.5 Observation Types Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#detailed-cost-analysis-on-gta1"><span class="nav-text">2.6 Detailed Cost Analysis on
+GTA1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#osworld-human"><span class="nav-text">3. OSWorld-Human</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#human-trajectory-construction"><span class="nav-text">3.1 Human Trajectory
+Construction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#action-grouping"><span class="nav-text">3.2 Action Grouping</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#evaluation"><span class="nav-text">4. Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#textwes-weighted-efficiency-score"><span class="nav-text">4.1 WES+ ( Weighted Efficiency
+Score)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#textwes-i-object"><span class="nav-text">4.2 WES (I
+Object)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -263,7 +267,7 @@
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="Paper Summary – OSWorld-Human | The Great Library">
-      <meta itemprop="description" content="Paper Summary of &quot;OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents&quot;.">
+      <meta itemprop="description" content="This is an independent score computing method as a supplement to OSWorld. In this work, the authors design a brand new metric to evaluate agent&#39;s work efficiency.">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -285,7 +289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-21 21:00:12" itemprop="dateModified" datetime="2026-10-21T21:00:12+08:00">2026-10-21</time>
+      <time title="Modified: 2026-10-23 15:36:28" itemprop="dateModified" datetime="2026-10-23T15:36:28+08:00">2026-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,7 +311,7 @@
     </span>
 </div>
 
-            <div class="post-description">Paper Summary of "OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents".</div>
+            <div class="post-description">This is an independent score computing method as a supplement to OSWorld. In this work, the authors design a brand new metric to evaluate agent's work efficiency.</div>
         </div>
       </header>
 
@@ -338,7 +342,7 @@ total task time, respectively.</li>
 <li>Agent S2</li>
 <li>GTA1</li>
 </ul>
-<h1 id="methodology">2. Methodology</h1>
+<h1 id="analysis">2. Analysis</h1>
 <p>Collect detailed timing and token traces.</p>
 <table>
 <colgroup>
@@ -523,13 +527,204 @@ pattern.</li>
 </ul>
 <p><img data-src="/images/article_images/osworld_human_a11ytree_influence.png" /></p>
 <ul>
-<li>Dashed box: Screenshot as observation</li>
+<li>Dashed box: Screenshot as only observation</li>
 <li>Grey bar and Red bar, case mixing the screenshot and a11y tree:</li>
-<li>Grey bar:</li>
-<li>Red ba</li>
+<li>Grey bar: Latency cost of LLM.</li>
+<li>Red bar: Latency cost of a11y tree.</li>
 </ul>
 <p>By and large, inclusion of the A11y tree drastically increases the
 per-task latency for two reasons:</p>
+<ul>
+<li>First, generating the tree itself takes time and is dependent on the
+elements that exist in the current window, including hidden and visible
+elements.
+<ul>
+<li>Applications that have <mark>more elements</mark>, such as the
+LibreOffice suite, incur a much <mark>higher latenc</mark>y from
+generating the tree.</li>
+</ul></li>
+<li>Second, the tokenized tree is <mark>included</mark> in each prompt
+to the model, which can be thousands more tokens per step.</li>
+</ul>
+<p>The work also study on the number of steps taken for each task across
+observation types:</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>SS</th>
+<th>SS+A11y</th>
+<th>SS+A11y+SoM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>8</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Thunderbird</td>
+<td>14</td>
+<td>20</td>
+<td>8</td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td>9</td>
+<td>13</td>
+<td>16</td>
+</tr>
+<tr>
+<td>LibreOffice Writer</td>
+<td>21</td>
+<td>50</td>
+<td>16</td>
+</tr>
+<tr>
+<td>VLC</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>GIMP</td>
+<td>49</td>
+<td>17</td>
+<td>12</td>
+</tr>
+<tr>
+<td>LibreOffice Impress</td>
+<td>32</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>11</td>
+<td>8</td>
+<td>17</td>
+</tr>
+<tr>
+<td>LibreOffice Calc</td>
+<td>14</td>
+<td>50</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Adding A11y trees to screenshots (SS) <mark>increases</mark> the
+number of steps for most applications. <mark>Visually rich
+applications</mark> like the LibreOffice Suite see a particularly high
+increase because trees can contain thousands of nodes for such
+applications.</li>
+<li>Adding A11y tree <mark>decreases</mark> the number of steps for OS,
+GIMP (The GIMP Development Team, 1995), and Chrome (The Chromium
+Project, 2008), because either the application contains fewer distinct
+visual elements or the tree assists the CUA in completing the task
+faster.</li>
+</ul>
+<h2 id="detailed-cost-analysis-on-gta1">2.6 Detailed Cost Analysis on
+GTA1</h2>
+<h1 id="osworld-human">3. OSWorld-Human</h1>
+<p>The team constructed <mark>OSWorld-Human</mark>, a manually annotated
+version of OSWorld that lists the minimal humanly-perceived steps
+required to successfully complete a task.</p>
+<h2 id="human-trajectory-construction">3.1 Human Trajectory
+Construction</h2>
+<p>The original task OSWorld only validates the results.</p>
+<p>This work build <mark>Human Trajectory</mark> including necessary
+steps.</p>
+<p>For all applications besides OS, the authors <mark>refrain
+from</mark> using any programmatic methods (unless mentioned in the
+source method) solve the task because the Human user won’t work in this
+way. Additionally, the steps including some application-specific
+information such as keyboard shortcuts.</p>
+<p>OSWorld-Human contains the same number of examples (369) as the
+original OSWorld.</p>
+<h2 id="action-grouping">3.2 Action Grouping</h2>
+<p>The authors find that multiple actions can often be <mark>performed
+consecutively</mark> in sequence without any change in observation or
+prediction in between.</p>
+<p>e.g. <code>click on a text field</code>, <code>type text</code>, and
+<code>press &lt;enter&gt;</code>. This is a common action
+combination.</p>
+<p>This means <code>CUA systems</code> can potentially perform one
+observation and model call for <mark>a group of actions</mark>.</p>
+<p>The authors construct a <mark>single-action trajectory</mark> as well
+as a <mark>grouped-action trajectory</mark> for each task in
+OSWorld-Human.</p>
+<p>These actions can be <mark>grouped</mark> together because the UI
+elements (and the coordinates) needed for all actions are present in a
+single screenshot.</p>
+<p>Overall, all applications benefit from grouping;</p>
+<h1 id="evaluation">4. Evaluation</h1>
+<h2 id="textwes-weighted-efficiency-score">4.1 <span
+class="math inline">WES<sup>+</sup></span> ( Weighted Efficiency
+Score)</h2>
+<p>The OSWorld-Human’s goal is to evaluate CUA systems’ temporal
+performance.</p>
+<p>The authors want to approximate end-to-end latency by measuring how
+closely an agent performs compared to <mark>ground-truth human
+trajectories</mark>.</p>
+<p>An easy way to measure this is to compare the minimum expected,
+human-performed number of steps across all possible trajectories (<span
+class="math inline"><em>t</em><sub><em>h</em><em>u</em><em>m</em><em>a</em><em>n</em></sub></span>)
+to the actual, agent-generated number of steps (<span
+class="math inline"><em>t</em><sub><em>a</em><em>g</em><em>e</em><em>n</em><em>t</em></sub></span>)
+for a task.</p>
+<p>Only looking at efficiency favors an agent that fails a task with
+fewer steps over one that succeeds with more steps.</p>
+<p>The authors propose a <mark>new metric</mark> for evaluating CUAs:
+Weighted Efficiency Score (WES):</p>
+<ul>
+<li>For a task <span class="math inline"><em>t</em></span> that was
+completed <mark>successfully</mark> (<span
+class="math inline"><em>r</em><sub><em>t</em></sub> = 1</span>), we
+weight the result based on its <mark>efficiency</mark> (i.e. <span
+class="math inline">$\frac{t_{human}}{t_{agent}}$</span>). This is based
+on the <mark>premise</mark> that a success in fewer steps is strictly
+preferable to a success that takes more steps.</li>
+<li>For a task <span class="math inline"><em>t</em></span> that was
+completed <mark>unsuccessful</mark> (<span
+class="math inline"><em>r</em><sub><em>t</em></sub> = 0</span>), , this
+efficiency term is zero.</li>
+</ul>
+<p>We compute the per-task efficiency over all n tasks in the dataset to
+obtain <span class="math inline">WES<sup>+</sup></span>: <span
+class="math display">$$
+\text{WES}^+ = {\frac{1}{n}}\sum_{t}^n r_t \cdot
+\frac{t_{human}}{t_{agent}}
+$$</span> <span class="math inline">WES<sup>+</sup></span> typically
+ranges from 0 to 1, though it is possible for an agent to complete a
+task faster than a human (i.e. by leveraging its latent capabilities
+instead of performing actions on-screen).</p>
+<ul>
+<li><p>A score of <mark>0</mark> can mean an agent fails to complete
+most tasks or it is very inefficient.</p></li>
+<li><p>An agent that scores <mark>closer to 1</mark> is both successful
+and efficient.</p></li>
+</ul>
+<h2 id="textwes-i-object">4.2 <span class="math inline">WES</span> (I
+Object)</h2>
+<p>To penalize agents that waste steps on failed tasks, we apply a
+<mark>global penalty multiplier</mark>.</p>
+<ul>
+<li><p>Average number of steps taken across all failed tasks: $t_{fail}
+$</p></li>
+<li><p>Maximum steps allowed: <span
+class="math inline"><em>S</em></span></p></li>
+<li><p>The extra penalty multiplier: <span
+class="math inline">$1-\frac{t_{fail}}{S}$</span> ranges from 0 to
+1.</p>
+<ul>
+<li>A multiplier of 1 means that the agent completes most tasks
+<mark>successfully</mark> or <mark>fails very quickly</mark>.</li>
+<li>Agent stops and output FAIL or</li>
+</ul></li>
+</ul>
 
     </div>
 
@@ -607,13 +802,13 @@ per-task latency for two reasons:</p>
               <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
               <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
               <a href="/tags/OS/" rel="tag"># OS</a>
-              <a href="/tags/Multimodal/" rel="tag"># Multimodal</a>
               <a href="/tags/VLM/" rel="tag"># VLM</a>
+              <a href="/tags/Multimodal/" rel="tag"># Multimodal</a>
               <a href="/tags/OSWorld/" rel="tag"># OSWorld</a>
-              <a href="/tags/A11y-Tree/" rel="tag"># A11y Tree</a>
               <a href="/tags/OSWorld-Human/" rel="tag"># OSWorld-Human</a>
               <a href="/tags/CUA/" rel="tag"># CUA</a>
               <a href="/tags/Screenshot/" rel="tag"># Screenshot</a>
+              <a href="/tags/A11y-Tree/" rel="tag"># A11y Tree</a>
               <a href="/tags/Set-of-Marks/" rel="tag"># Set-of-Marks</a>
           </div>
 
