@@ -951,3 +951,20 @@ html[data-theme="dark"] .relatedPosts .pagination-related {
     display: none;
   }
 }
+
+/* --------------------------------------------------------------------------
+   /tags/: cloudTags 的原始跨度只有 1.2–1.5em；tag-cloud.js 会按原始比例
+   重映射到 0.95–2.15em，并给前 25% 加 tag-hot。
+   -------------------------------------------------------------------------- */
+.tag-cloud-list a {
+  transition: font-size .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.tag-cloud-list a.tag-hot {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.tag-cloud-list a.tag-hot:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .08);
+}
