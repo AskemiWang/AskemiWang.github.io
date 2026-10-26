@@ -862,9 +862,21 @@ html[data-theme="dark"] #footer a:hover {
 
 #pagination.pagination-post .pagination-related,
 .relatedPosts .pagination-related {
-  background: var(--tgl-surface-2);
-  border: 1px solid var(--tgl-border);
+  background: var(--tgl-surface);
+  border: 1px solid var(--tgl-border-strong);
   border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(31, 33, 38, .05);
+}
+
+html[data-theme="dark"] #pagination.pagination-post .pagination-related,
+html[data-theme="dark"] .relatedPosts .pagination-related {
+  background: var(--tgl-elevated);
+  box-shadow: none;
+}
+
+#pagination.pagination-post .pagination-related:hover,
+.relatedPosts .pagination-related:hover {
+  border-color: var(--tgl-accent);
 }
 
 #pagination.pagination-post .pagination-related .cover,
@@ -881,6 +893,7 @@ html[data-theme="dark"] #footer a:hover {
 #pagination.pagination-post .pagination-related .info-1 .info-item-2,
 .relatedPosts .pagination-related .info-1 .info-item-2 {
   color: var(--tgl-text);
+  font-weight: 600;
 }
 
 #pagination.pagination-post .pagination-related .info-2 .info-item-1,
