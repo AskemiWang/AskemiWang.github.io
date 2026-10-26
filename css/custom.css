@@ -900,3 +900,54 @@ html[data-theme="dark"] .relatedPosts .pagination-related {
 .relatedPosts .pagination-related .info-2 .info-item-1 {
   color: var(--tgl-text-2);
 }
+
+/* --------------------------------------------------------------------------
+   TOC card: whole-card collapse on desktop (button is injected by
+   source/js/toc-collapse.js; mobile keeps the native TOC button).
+   -------------------------------------------------------------------------- */
+#card-toc .item-headline {
+  position: relative;
+}
+
+#card-toc .toc-collapse {
+  float: right;
+  margin-right: 4px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--tgl-meta);
+  font-size: 1em;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+#card-toc .toc-collapse:hover {
+  color: var(--tgl-accent);
+}
+
+#card-toc .toc-collapse:focus-visible {
+  outline: 2px solid var(--tgl-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (min-width: 901px) {
+  #card-toc .toc-content {
+    transition: max-height .25s ease;
+  }
+
+  #card-toc.is-collapsed .toc-content {
+    max-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #card-toc.is-collapsed .toc-percentage {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  #card-toc .toc-collapse {
+    display: none;
+  }
+}
