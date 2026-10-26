@@ -103,3 +103,25 @@ html[data-theme="dark"] #hexo-blog-encrypt .hbe-error:not(:empty) {
 html[data-theme="dark"] {
   --card-meta: #9AA1AD;
 }
+
+/* ==========================================
+   P1: 桌面端显示首屏社交图标、图片圆角、卡片 hover
+   ========================================== */
+@media (min-width: 768px) {
+  #page-header #site_social_icons {
+    display: block;
+  }
+}
+
+#article-container img {
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(20, 22, 30, 0.08);
+}
+
+#recent-posts .recent-post-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#recent-posts .recent-post-item:hover {
+  transform: translateY(-4px);
+}
