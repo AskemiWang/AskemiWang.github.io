@@ -1,11 +1,753 @@
-/* ==========================================
-   hexo-blog-encrypt v4 输入框样式（Butterfly）
-   保留插件 default 主题的淡入 + label 上浮动画，
-   只覆盖颜色/宽度/暗色，不再使用旧的 .hbe-input-container 类。
-   ========================================== */
+/* ==========================================================================
+   The Great Library — reading theme
+   Light: paper & ink   |   Dark: night reading (low glare, warm text)
+   Loaded from source/css/custom.css, after /css/index.css.
+   All changes are variable/selector overrides; themes/butterfly is untouched.
+   ========================================================================== */
 
-/* 1. 容器：只作用于「未解锁」状态
-   解密成功后 class 变成 hbe-decrypted-content，但 id 仍是 hexo-blog-encrypt */
+/* --------------------------------------------------------------------------
+   1. Design tokens — light (paper & ink)
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --tgl-canvas: #F4F0E5;        /* page — warm paper */
+  --tgl-surface: #FFFDF7;       /* cards / article */
+  --tgl-surface-2: #FAF6EC;     /* table head, quote, sub-blocks */
+  --tgl-elevated: #FFFFFF;      /* popovers, mobile TOC */
+
+  /* lines */
+  --tgl-border: #E3DCCA;        /* card hairline */
+  --tgl-border-strong: #D2C8B2;
+  --tgl-control-border: #8E8574;/* 3.59:1 vs surface — inputs, pagination */
+
+  /* text */
+  --tgl-text: #1F2126;          /* 15.8:1 on surface */
+  --tgl-text-2: #464A52;        /* 8.7:1  */
+  --tgl-meta: #63676F;          /* 5.4:1  */
+  --tgl-heading: #1B1D22;       /* 16.6:1 */
+
+  /* ink blue */
+  --tgl-accent: #2F4BD0;        /* brand, 6.8:1 on surface */
+  --tgl-accent-strong: #22379F;
+  --tgl-accent-contrast: #FFFFFF;
+  --tgl-accent-soft: #E8EBF7;
+  --tgl-link: #2A3EB8;          /* 8.3:1 */
+  --tgl-link-hover: #1B2A80;    /* 11.6:1 */
+
+  /* buttons */
+  --tgl-btn-bg: #2F4BD0;
+  --tgl-btn-bg-hover: #22379F;
+  --tgl-btn-text: #FFFFFF;
+
+  /* code */
+  --tgl-code-bg: #EFEADB;
+  --tgl-code-tools: #E5DECD;
+  --tgl-code-border: #DCD3BF;
+  --tgl-code-text: #26282D;
+  --tgl-code-gutter: #8A8477;   /* 3.1:1 — decorative line numbers */
+  --tgl-code-expand: linear-gradient(180deg, rgba(239, 234, 219, .65), rgba(239, 234, 219, .97));
+  --tgl-code-scroll: #8A8477;
+  --tgl-inline-bg: #EBE4D2;
+  --tgl-inline-text: #8A3A2C;   /* 6.3:1 */
+  --tgl-inline-border: #DED5C0;
+
+  /* quotes / tables */
+  --tgl-quote-bg: #EFEADC;
+  --tgl-quote-text: #41454D;
+  --tgl-quote-border: #2F4BD0;
+  --tgl-table-border: #DCD3BF;
+  --tgl-thead-bg: #F2EDE0;
+
+  /* selection / scrollbar */
+  --tgl-selection-bg: #2F4BD0;
+  --tgl-selection-text: #FFFFFF;
+  --tgl-scroll: #8E8574;
+  --tgl-scroll-hover: #6F6759;
+
+  /* depth */
+  --tgl-shadow: 0 1px 2px rgba(38, 31, 16, .05), 0 12px 28px -18px rgba(38, 31, 16, .35);
+  --tgl-shadow-hover: 0 2px 4px rgba(38, 31, 16, .06), 0 20px 40px -22px rgba(38, 31, 16, .42);
+  --tgl-shadow-code: 0 1px 2px rgba(38, 31, 16, .06);
+
+  /* footer (colophon) */
+  --tgl-footer-bg: #1B1E24;
+  --tgl-footer-text: #CFC9BA;
+  --tgl-footer-link: #F2EEE3;
+  --tgl-footer-border: transparent;
+
+  /* text on the ink hero */
+  --tgl-on-ink-text: #F6F5F1;
+  --tgl-on-ink-2: #E9E6DF;
+
+  /* mark / error */
+  --tgl-mark: rgba(47, 75, 208, .10);
+  --tgl-danger: #A4262C;
+  --tgl-danger-bg: rgba(164, 38, 44, .08);
+
+  /* syntax — paper inks */
+  --tgl-syn-comment: #62656D;
+  --tgl-syn-keyword: #6E3FA3;
+  --tgl-syn-string: #3E6A3D;
+  --tgl-syn-number: #9A4B1E;
+  --tgl-syn-function: #2A3EB8;
+  --tgl-syn-variable: #A33939;
+  --tgl-syn-builtin: #7E5C12;
+  --tgl-syn-tag: #356B72;
+  --tgl-syn-attr: #6B3FA0;
+  --tgl-syn-meta: #5F6470;
+  --tgl-syn-added: #2F6B4F;
+  --tgl-syn-deleted: #A33939;
+}
+
+/* --------------------------------------------------------------------------
+   2. Design tokens — dark (night reading)
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --tgl-canvas: #14161B;
+  --tgl-surface: #1D2128;
+  --tgl-surface-2: #21252D;
+  --tgl-elevated: #262B34;
+
+  --tgl-border: #333945;
+  --tgl-border-strong: #424A58;
+  --tgl-control-border: #6F7888; /* 3.63:1 vs surface */
+
+  --tgl-text: #C9C7C2;           /* 9.6:1  */
+  --tgl-text-2: #A5A8B0;         /* 6.8:1  */
+  --tgl-meta: #8F939C;           /* 5.3:1  */
+  --tgl-heading: #E9E6DF;        /* 13.4:1 */
+
+  --tgl-accent: #8FA5FF;
+  --tgl-accent-strong: #AFC0FF;
+  --tgl-accent-contrast: #14161B;
+  --tgl-accent-soft: #232B45;
+  --tgl-link: #9DB2FF;           /* 7.9:1 on surface, 8.4:1 on code */
+  --tgl-link-hover: #C2CFFF;
+
+  --tgl-btn-bg: #3B4FBF;
+  --tgl-btn-bg-hover: #4A5FD8;
+  --tgl-btn-text: #F7F8FC;
+
+  --tgl-code-bg: #181B21;
+  --tgl-code-tools: #262B34;
+  --tgl-code-border: #2C323C;
+  --tgl-code-text: #CFD2D8;
+  --tgl-code-gutter: #707784;    /* 3.8:1 */
+  --tgl-code-expand: linear-gradient(180deg, rgba(24, 27, 33, .65), rgba(24, 27, 33, .97));
+  --tgl-code-scroll: #5F6775;
+  --tgl-inline-bg: #2A2F38;
+  --tgl-inline-text: #E7B3A3;    /* 7.3:1 */
+  --tgl-inline-border: #353B46;
+
+  --tgl-quote-bg: #20242C;
+  --tgl-quote-text: #C0C3CA;
+  --tgl-quote-border: #8FA5FF;
+  --tgl-table-border: #343A46;
+  --tgl-thead-bg: #262B34;
+
+  --tgl-selection-bg: #3C4E9E;
+  --tgl-selection-text: #F5F6FA;
+  --tgl-scroll: #5F6775;
+  --tgl-scroll-hover: #79818F;
+
+  --tgl-shadow: 0 1px 0 rgba(255, 255, 255, .03) inset, 0 16px 36px -24px #000;
+  --tgl-shadow-hover: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 22px 44px -26px #000;
+  --tgl-shadow-code: 0 8px 22px -16px #000;
+
+  --tgl-footer-bg: #0F1115;
+  --tgl-footer-text: #9EA2AA;
+  --tgl-footer-link: #C9C7C2;
+  --tgl-footer-border: #262B34;
+
+  --tgl-on-ink-text: #F6F5F1;
+  --tgl-on-ink-2: #E9E6DF;
+
+  --tgl-mark: rgba(143, 165, 255, .14);
+  --tgl-danger: #FFA198;
+  --tgl-danger-bg: rgba(255, 161, 152, .10);
+
+  --tgl-syn-comment: #8B929E;
+  --tgl-syn-keyword: #B9A7F2;
+  --tgl-syn-string: #9BC98F;
+  --tgl-syn-number: #E0A878;
+  --tgl-syn-function: #9DB4FF;
+  --tgl-syn-variable: #E69A9A;
+  --tgl-syn-builtin: #E3C27A;
+  --tgl-syn-tag: #8FC6C9;
+  --tgl-syn-attr: #C3A6EE;
+  --tgl-syn-meta: #9AA0AB;
+  --tgl-syn-added: #9BC98F;
+  --tgl-syn-deleted: #E69A9A;
+}
+
+/* --------------------------------------------------------------------------
+   3. Map Butterfly's global variables onto the tokens
+   (single block: the var() values resolve per theme)
+   -------------------------------------------------------------------------- */
+:root {
+  --global-bg: var(--tgl-canvas);
+  --card-bg: var(--tgl-surface);
+  --font-color: var(--tgl-text);
+  --text-highlight-color: var(--tgl-heading);
+  --card-meta: var(--tgl-meta);
+
+  --toc-link-color: var(--tgl-text-2);
+
+  --btn-bg: var(--tgl-btn-bg);
+  --btn-color: var(--tgl-btn-text);
+  --btn-hover-color: var(--tgl-btn-bg-hover);
+  --pseudo-hover: var(--tgl-accent);
+
+  --scrollbar-color: var(--tgl-scroll);
+  --card-box-shadow: var(--tgl-shadow);
+  --card-hover-box-shadow: var(--tgl-shadow-hover);
+
+  --blockquote-color: var(--tgl-quote-text);
+  --blockquote-bg: var(--tgl-quote-bg);
+  --hr-border: var(--tgl-border-strong);
+  --hr-before-color: var(--tgl-meta);
+
+  --search-bg: var(--tgl-surface);
+  --search-input-color: var(--tgl-text);
+  --search-a-color: var(--tgl-text-2);
+  --sidebar-bg: var(--tgl-surface);
+  --sidebar-menu-bg: var(--tgl-elevated);
+  --timeline-bg: var(--tgl-surface-2);
+
+  /* code blocks */
+  --hl-bg: var(--tgl-code-bg);
+  --hl-color: var(--tgl-code-text);
+  --hltools-bg: var(--tgl-code-tools);
+  --hltools-color: var(--tgl-text-2);
+  --hlnumber-bg: var(--tgl-code-bg);
+  --hlnumber-color: var(--tgl-code-gutter);
+  --hlscrollbar-bg: var(--tgl-code-scroll);
+  --hlexpand-bg: var(--tgl-code-expand);
+}
+
+/* --------------------------------------------------------------------------
+   4. Base typography, selection, focus, scrollbar
+   -------------------------------------------------------------------------- */
+body {
+  background: var(--tgl-canvas);
+  color: var(--tgl-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection,
+*::selection {
+  background: var(--tgl-selection-bg);
+  color: var(--tgl-selection-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--tgl-accent);
+  outline-offset: 2px;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--tgl-scroll);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--tgl-scroll-hover);
+}
+
+@-moz-document url-prefix() {
+  * {
+    scrollbar-color: var(--tgl-scroll) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+/* Heading anchors must clear the fixed nav when reached from the TOC */
+#article-container :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--tgl-heading);
+  scroll-margin-top: 84px;
+}
+
+#article-container p,
+#article-container li {
+  color: var(--tgl-text);
+}
+
+/* Body links: printed-ink blue instead of the 2.7:1 dark-mode brand blue */
+#article-container a {
+  color: var(--tgl-link);
+  text-decoration-color: color-mix(in srgb, var(--tgl-link) 45%, transparent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+#article-container a:hover {
+  color: var(--tgl-link-hover);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   5. Cards, images, hero, footer
+   -------------------------------------------------------------------------- */
+.layout > div:first-child:not(.nc),
+#recent-posts .recent-post-item,
+#aside-content .card-widget,
+.layout .pagination > *:not(.space),
+#article-container .shuoshuo-item {
+  background: var(--tgl-surface);
+  border: 1px solid var(--tgl-border);
+  box-shadow: var(--tgl-shadow);
+}
+
+.layout > div:first-child:not(.nc):hover,
+#recent-posts .recent-post-item:hover,
+#aside-content .card-widget:hover {
+  border-color: var(--tgl-border-strong);
+  box-shadow: var(--tgl-shadow-hover);
+}
+
+#recent-posts .recent-post-item {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+#recent-posts .recent-post-item:hover {
+  transform: translateY(-2px);
+}
+
+#recent-posts .recent-post-item .article-title:hover,
+#aside-content .aside-list .title:hover,
+#aside-content .card-tag-cloud a:hover,
+.site-data a:hover div {
+  color: var(--tgl-accent) !important;
+}
+
+.article-meta-wrap,
+.article-meta-wrap a,
+#card-toc .toc-percentage,
+.img-alt {
+  color: var(--tgl-meta);
+}
+
+.article-meta-wrap a:hover {
+  color: var(--tgl-accent);
+}
+
+/* Match the theme's nested specificity so dark-mode hovers do not fall back
+   to the 2.71:1 brand blue. */
+#recent-posts .recent-post-item > .recent-post-info > .article-meta-wrap a:hover {
+  color: var(--tgl-accent);
+}
+
+#aside-content .site-data a:hover div {
+  color: var(--tgl-accent) !important;
+}
+
+#article-container img {
+  border: 1px solid var(--tgl-border);
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: 0 2px 10px -4px rgba(38, 31, 16, .18);
+}
+
+html[data-theme="dark"] #article-container img:not(.cover) {
+  filter: brightness(.92) contrast(1.02);
+  border-color: var(--tgl-border);
+  box-shadow: 0 10px 24px -18px #000;
+}
+
+#page-header {
+  background-color: #0C0E12;
+}
+
+#page-header.full_page {
+  border-bottom: 1px solid var(--tgl-border);
+}
+
+/* Dark hero secondary copy: rgba(255,255,255,.7) is only 4.24:1 on brand blue */
+html[data-theme="dark"] #page-header #site-subtitle,
+html[data-theme="dark"] #page-header #site_social_icons .social-icon,
+html[data-theme="dark"] #post-info #post-meta,
+html[data-theme="dark"] #post-info #post-meta a {
+  color: var(--tgl-on-ink-2);
+}
+
+#post-info #post-meta a:hover {
+  color: #FFFFFF;
+}
+
+/* Hero social icons otherwise inherit the brand colours from _config (#24292e
+   GitHub is invisible on the ink hero) — unify them as paper-white marks. */
+#page-header #site_social_icons .social-icon {
+  color: var(--tgl-on-ink-2) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .28);
+}
+
+#page-header #site_social_icons .social-icon i {
+  color: var(--tgl-on-ink-2) !important;
+}
+
+#page-header #site_social_icons .social-icon:hover,
+#page-header #site_social_icons .social-icon:hover i {
+  color: #FFFFFF !important;
+}
+
+#page-header #site-title,
+#post-info .post-title {
+  color: var(--tgl-on-ink-text);
+}
+
+/* Frosted nav follows the theme surface instead of literal black/white */
+#page-header.nav-fixed #nav {
+  background: rgba(255, 253, 247, .86);
+  box-shadow: 0 1px 0 var(--tgl-border), 0 8px 24px -20px rgba(38, 31, 16, .5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme="dark"] #page-header.nav-fixed #nav {
+  background: rgba(20, 22, 27, .86);
+  box-shadow: 0 1px 0 var(--tgl-border), 0 8px 24px -20px #000;
+}
+
+#nav .site-page:not(.child):after {
+  background-color: var(--tgl-accent);
+}
+
+html[data-theme="dark"] #page-header.nav-fixed #nav a:hover,
+html[data-theme="dark"] #page-header.nav-fixed #nav span.site-page:hover,
+html[data-theme="dark"] #page-header.nav-fixed #nav #blog-info:hover {
+  color: var(--tgl-accent);
+}
+
+/* Footer as a colophon: ink in light, near-black in dark — never a blue glow */
+#footer {
+  background-color: var(--tgl-footer-bg);
+  border-top: 1px solid var(--tgl-footer-border);
+}
+
+#footer,
+#footer > *,
+#footer .footer-flex a {
+  color: var(--tgl-footer-text);
+}
+
+#footer a {
+  color: var(--tgl-footer-link);
+}
+
+#footer a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html[data-theme="dark"] #footer a:hover {
+  color: var(--tgl-accent-strong);
+}
+
+/* --------------------------------------------------------------------------
+   6. TOC
+   -------------------------------------------------------------------------- */
+#aside-content #card-toc .toc-content .toc-link {
+  color: var(--tgl-text-2);
+}
+
+#aside-content #card-toc .toc-content .toc-link:hover {
+  color: var(--tgl-accent);
+  background: var(--tgl-accent-soft);
+}
+
+#aside-content #card-toc .toc-content .toc-link.active {
+  background: var(--tgl-accent-soft);
+  color: var(--tgl-accent-strong);
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--tgl-accent);
+}
+
+#aside-content #card-toc .toc-content > * > .toc-item > .toc-child {
+  border-left-color: var(--tgl-border);
+}
+
+@media (max-width: 900px) {
+  #aside-content #card-toc {
+    background: var(--tgl-elevated);
+    border: 1px solid var(--tgl-border);
+    box-shadow: var(--tgl-shadow-hover);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Prose components: quote, inline code, tables, copyright, tags
+   -------------------------------------------------------------------------- */
+#article-container blockquote {
+  border-left: 3px solid var(--tgl-quote-border);
+  background: var(--tgl-quote-bg);
+  color: var(--tgl-quote-text);
+}
+
+#article-container blockquote p,
+#article-container blockquote li {
+  color: var(--tgl-quote-text);
+}
+
+#article-container :not(pre) > code {
+  padding: 1px 6px;
+  border: 1px solid var(--tgl-inline-border);
+  border-radius: 4px;
+  background: var(--tgl-inline-bg);
+  color: var(--tgl-inline-text);
+  overflow-wrap: anywhere;
+}
+
+#article-container > table,
+#article-container .table-wrap > table {
+  border-color: var(--tgl-table-border);
+}
+
+#article-container > table th,
+#article-container > table td,
+#article-container .table-wrap > table th,
+#article-container .table-wrap > table td {
+  border-color: var(--tgl-table-border);
+}
+
+#article-container > table thead,
+#article-container .table-wrap > table thead {
+  background: var(--tgl-thead-bg);
+}
+
+#article-container > table th,
+#article-container .table-wrap > table th {
+  color: var(--tgl-heading);
+  font-weight: 600;
+}
+
+#post .post-copyright {
+  border-color: var(--tgl-border);
+  background: var(--tgl-surface-2);
+  box-shadow: none;
+}
+
+#post .post-copyright:hover {
+  box-shadow: var(--tgl-shadow);
+}
+
+#post .post-copyright:before {
+  color: var(--tgl-accent);
+}
+
+#post > #post-info .post-title {
+  border-bottom-color: var(--tgl-border);
+}
+
+#article-container li::marker {
+  color: var(--tgl-accent);
+}
+
+#post .post-copyright .post-copyright-meta {
+  color: var(--tgl-accent);
+}
+
+#post .tag_share .post-meta__tags {
+  border-color: var(--tgl-link);
+  color: var(--tgl-link);
+}
+
+#post .tag_share .post-meta__tags:hover {
+  border-color: var(--tgl-accent);
+  background: var(--tgl-accent-soft);
+  color: var(--tgl-accent-strong);
+}
+
+/* --------------------------------------------------------------------------
+   8. Buttons, pagination, rightside
+   -------------------------------------------------------------------------- */
+#aside-content .card-info #card-info-btn {
+  border: 1px solid var(--tgl-accent);
+  background: transparent;
+  color: var(--tgl-accent);
+}
+
+#aside-content .card-info #card-info-btn:hover {
+  border-color: var(--tgl-accent-strong);
+  background: var(--tgl-accent-strong);
+  color: var(--tgl-accent-contrast);
+}
+
+#pagination .page-number.current {
+  background: var(--tgl-accent-soft);
+  color: var(--tgl-accent-strong);
+  border-color: var(--tgl-accent);
+  font-weight: 600;
+}
+
+.layout .pagination > *:not(.space) {
+  border: 1px solid var(--tgl-border);
+  color: var(--tgl-text-2);
+  box-shadow: none;
+}
+
+.layout .pagination > *:not(.space):hover {
+  background: var(--tgl-accent-soft);
+  border-color: var(--tgl-accent);
+  color: var(--tgl-accent-strong);
+}
+
+#rightside > div > button,
+#rightside > div > a {
+  background-color: var(--tgl-elevated);
+  border: 1px solid var(--tgl-border);
+  color: var(--tgl-text-2);
+  box-shadow: var(--tgl-shadow);
+}
+
+#rightside > div > button:hover,
+#rightside > div > a:hover {
+  background-color: var(--tgl-accent-soft);
+  border-color: var(--tgl-accent);
+  color: var(--tgl-accent-strong);
+}
+
+/* --------------------------------------------------------------------------
+   9. Code blocks: shell, toolbar, line numbers, syntax per theme
+   -------------------------------------------------------------------------- */
+.container figure.highlight {
+  border: 1px solid var(--tgl-code-border);
+  box-shadow: var(--tgl-shadow-code);
+}
+
+.container figure.highlight .highlight-tools {
+  border-bottom: 1px solid var(--tgl-code-border);
+  color: var(--tgl-text-2);
+}
+
+.container figure.highlight .highlight-tools .code-lang {
+  color: var(--tgl-text-2);
+  letter-spacing: .04em;
+}
+
+.container figure.highlight .highlight-tools i:hover {
+  color: var(--tgl-accent);
+}
+
+.container figure.highlight .gutter pre {
+  color: var(--tgl-code-gutter);
+}
+
+.container .code-expand-btn i {
+  color: var(--tgl-meta);
+}
+
+.container .code-expand-btn {
+  background: var(--tgl-code-expand);
+}
+
+.container .copy-notice {
+  border: 1px solid var(--tgl-code-border);
+  background: var(--tgl-code-tools);
+  color: var(--tgl-text-2);
+}
+
+.container figure.highlight .line.marked {
+  background-color: var(--tgl-mark);
+}
+
+/* Syntax: one role per group, mapped to light "paper inks" / dark "night inks" */
+.container figure.highlight pre .comment {
+  color: var(--tgl-syn-comment);
+  font-style: italic;
+}
+
+.container figure.highlight pre .variable,
+.container figure.highlight pre .attribute,
+.container figure.highlight pre .regexp,
+.container figure.highlight pre .ruby .constant,
+.container figure.highlight pre .xml .tag .title,
+.container figure.highlight pre .xml .pi,
+.container figure.highlight pre .xml .doctype,
+.container figure.highlight pre .html .doctype,
+.container figure.highlight pre .css .id,
+.container figure.highlight pre .tag .name,
+.container figure.highlight pre .css .class,
+.container figure.highlight pre .css .pseudo {
+  color: var(--tgl-syn-variable);
+}
+
+.container figure.highlight pre .keyword,
+.container figure.highlight pre .title,
+.container figure.highlight pre .css .hexcolor {
+  color: var(--tgl-syn-keyword);
+}
+
+.container figure.highlight pre .tag {
+  color: var(--tgl-syn-tag);
+}
+
+.container figure.highlight pre .number,
+.container figure.highlight pre .preprocessor,
+.container figure.highlight pre .literal,
+.container figure.highlight pre .params,
+.container figure.highlight pre .constant,
+.container figure.highlight pre .command {
+  color: var(--tgl-syn-number);
+}
+
+.container figure.highlight pre .built_in {
+  color: var(--tgl-syn-builtin);
+}
+
+.container figure.highlight pre .ruby .class .title,
+.container figure.highlight pre .css .rules .attribute,
+.container figure.highlight pre .string,
+.container figure.highlight pre .value,
+.container figure.highlight pre .inheritance,
+.container figure.highlight pre .header,
+.container figure.highlight pre .ruby .symbol,
+.container figure.highlight pre .xml .cdata,
+.container figure.highlight pre .special,
+.container figure.highlight pre .formula {
+  color: var(--tgl-syn-string);
+}
+
+.container figure.highlight pre .function,
+.container figure.highlight pre .python .decorator,
+.container figure.highlight pre .python .title,
+.container figure.highlight pre .ruby .function .title,
+.container figure.highlight pre .ruby .title .keyword,
+.container figure.highlight pre .perl .sub,
+.container figure.highlight pre .javascript .title,
+.container figure.highlight pre .coffeescript .title {
+  color: var(--tgl-syn-function);
+}
+
+.container figure.highlight pre .tag .attr,
+.container figure.highlight pre .javascript .function {
+  color: var(--tgl-syn-attr);
+}
+
+.container figure.highlight pre .meta {
+  color: var(--tgl-syn-meta);
+}
+
+.container figure.highlight pre .deletion {
+  color: var(--tgl-syn-deleted);
+}
+
+.container figure.highlight pre .addition {
+  color: var(--tgl-syn-added);
+}
+
+/* --------------------------------------------------------------------------
+   10. Encrypted posts (hexo-blog-encrypt v4)
+   -------------------------------------------------------------------------- */
 #hexo-blog-encrypt:not(.hbe-decrypted-content),
 .hbe-container {
   text-align: center;
@@ -13,85 +755,59 @@
   margin: 2em auto;
 }
 
-/* 解密后的正文恢复常规排版 */
 #hexo-blog-encrypt.hbe-decrypted-content {
   text-align: left;
   padding: 0;
   margin: 0;
 }
 
-/* 2. 输入区宽度（v4 的真实类名是 .hbe-input） */
 #hexo-blog-encrypt .hbe-input {
   width: 300px;
   max-width: 100%;
   margin: 0 auto;
 }
 
-/* 3. 输入框文字/背景
-   不要设置 opacity：插件 default 主题故意用 opacity:0 + focus/filled 变 1
-   来做淡入动画，覆盖它会破坏 label 上浮效果。 */
 #hexo-blog-encrypt input#hbePass {
-  color: #333;
+  color: var(--tgl-text);
   background: transparent;
-  caret-color: #2F4BD0;
+  caret-color: var(--tgl-accent);
 }
 
-/* 4. label 与下划线颜色 */
 #hexo-blog-encrypt .hbe-input-label {
-  color: #696969;
+  color: var(--tgl-text-2);
 }
 
 #hexo-blog-encrypt .hbe-input-label-default::before {
-  background: rgba(47, 75, 208, 0.10);
+  background: var(--tgl-accent-soft);
 }
 
 #hexo-blog-encrypt .hbe-input-label-default::after {
-  background: #2F4BD0;
+  background: var(--tgl-accent);
 }
 
-/* 5. 按钮 */
 #hexo-blog-encrypt .hbe-button {
-  background: #2F4BD0;
+  min-height: 40px;
+  padding: 0 18px;
+  background: var(--tgl-btn-bg);
+  color: var(--tgl-btn-text);
 }
 
 #hexo-blog-encrypt .hbe-button:hover,
 #hexo-blog-encrypt .hbe-button:focus {
-  background: #1F37A8;
+  background: var(--tgl-btn-bg-hover);
 }
 
-/* 6. 错误提示 */
 #hexo-blog-encrypt .hbe-error {
-  color: #b00020;
+  color: var(--tgl-danger);
 }
 
 #hexo-blog-encrypt .hbe-error:not(:empty) {
-  background: rgba(176, 0, 32, 0.08);
+  background: var(--tgl-danger-bg);
 }
 
-/* 7. 暗色模式
-   HBE 自带 CSS 用 @media (prefers-color-scheme: dark) 只看系统；
-   Butterfly 用 html[data-theme="dark"]，这里用更高特异性覆盖，避免系统暗/主题亮错配。 */
-html[data-theme="dark"] #hexo-blog-encrypt input#hbePass {
-  color: #e6e6e6;
-  background: transparent;
-}
-
-html[data-theme="dark"] #hexo-blog-encrypt .hbe-input-label {
-  color: #cfd6e4;
-}
-
-html[data-theme="dark"] #hexo-blog-encrypt .hbe-error {
-  color: #ff7a7a;
-}
-
-html[data-theme="dark"] #hexo-blog-encrypt .hbe-error:not(:empty) {
-  background: rgba(255, 122, 122, 0.12);
-}
-
-/* ==========================================
-   P0: 首页卡片摘要最多 3 行（method: 2 的 description 不截断，用 CSS 兜住）
-   必须用与主题相同特异性的选择器，否则会被主题的 2 行规则覆盖。
-   ========================================== */
+/* --------------------------------------------------------------------------
+   11. Homepage excerpt clamp (kept from the current custom.css)
+   -------------------------------------------------------------------------- */
 #recent-posts .recent-post-item > .recent-post-info > .content {
   display: -webkit-box !important;
   -webkit-box-orient: vertical !important;
@@ -99,29 +815,38 @@ html[data-theme="dark"] #hexo-blog-encrypt .hbe-error:not(:empty) {
   overflow: hidden !important;
 }
 
-/* 暗色下提亮 meta（#6E7482 在 #121212 上约 4.0:1，偏低） */
-html[data-theme="dark"] {
-  --card-meta: #9AA1AD;
-}
-
-/* ==========================================
-   P1: 桌面端显示首屏社交图标、图片圆角、卡片 hover
-   ========================================== */
+/* Desktop hero social icons (kept) */
 @media (min-width: 768px) {
   #page-header #site_social_icons {
     display: block;
   }
 }
 
-#article-container img {
-  border-radius: 10px;
-  box-shadow: 0 4px 18px rgba(20, 22, 30, 0.08);
+/* Smaller hero on phones so the first card is visible without a long swipe */
+@media (max-width: 768px) {
+  #page-header.full_page {
+    height: 62vh;
+    background-attachment: scroll;
+  }
+
+  #page-header.full_page #site-info {
+    top: 32%;
+  }
 }
 
-#recent-posts .recent-post-item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
 
-#recent-posts .recent-post-item:hover {
-  transform: translateY(-4px);
-}
+
