@@ -1,0 +1,86 @@
+/* ==========================================
+   hexo-blog-encrypt v4 输入框样式（Butterfly）
+   保留插件 default 主题的淡入 + label 上浮动画，
+   只覆盖颜色/宽度/暗色，不再使用旧的 .hbe-input-container 类。
+   ========================================== */
+
+/* 1. 容器：只作用于「未解锁」状态
+   解密成功后 class 变成 hbe-decrypted-content，但 id 仍是 hexo-blog-encrypt */
+#hexo-blog-encrypt:not(.hbe-decrypted-content),
+.hbe-container {
+  text-align: center;
+  padding: 2em 0;
+  margin: 2em auto;
+}
+
+/* 解密后的正文恢复常规排版 */
+#hexo-blog-encrypt.hbe-decrypted-content {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+/* 2. 输入区宽度（v4 的真实类名是 .hbe-input） */
+#hexo-blog-encrypt .hbe-input {
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* 3. 输入框文字/背景
+   不要设置 opacity：插件 default 主题故意用 opacity:0 + focus/filled 变 1
+   来做淡入动画，覆盖它会破坏 label 上浮效果。 */
+#hexo-blog-encrypt input#hbePass {
+  color: #333;
+  background: transparent;
+  caret-color: #37c6c0;
+}
+
+/* 4. label 与下划线颜色 */
+#hexo-blog-encrypt .hbe-input-label {
+  color: #696969;
+}
+
+#hexo-blog-encrypt .hbe-input-label-default::before,
+#hexo-blog-encrypt .hbe-input-label-default::after {
+  background: #37c6c0;
+}
+
+/* 5. 按钮 */
+#hexo-blog-encrypt .hbe-button {
+  background: #37c6c0;
+}
+
+#hexo-blog-encrypt .hbe-button:hover,
+#hexo-blog-encrypt .hbe-button:focus {
+  background: #2fb3ad;
+}
+
+/* 6. 错误提示 */
+#hexo-blog-encrypt .hbe-error {
+  color: #b00020;
+}
+
+#hexo-blog-encrypt .hbe-error:not(:empty) {
+  background: rgba(176, 0, 32, 0.08);
+}
+
+/* 7. 暗色模式
+   HBE 自带 CSS 用 @media (prefers-color-scheme: dark) 只看系统；
+   Butterfly 用 html[data-theme="dark"]，这里用更高特异性覆盖，避免系统暗/主题亮错配。 */
+html[data-theme="dark"] #hexo-blog-encrypt input#hbePass {
+  color: #e6e6e6;
+  background: transparent;
+}
+
+html[data-theme="dark"] #hexo-blog-encrypt .hbe-input-label {
+  color: #cfd6e4;
+}
+
+html[data-theme="dark"] #hexo-blog-encrypt .hbe-error {
+  color: #ff7a7a;
+}
+
+html[data-theme="dark"] #hexo-blog-encrypt .hbe-error:not(:empty) {
+  background: rgba(255, 122, 122, 0.12);
+}

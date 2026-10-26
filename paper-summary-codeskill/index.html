@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
-  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
-  <link rel="manifest" href="/images/site/site.webmanifest">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="Paper Summary of &quot;CODESKILL: Learning Self-Evolving Skills for Coding Agents&quot;.">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Paper Summary – CODESKILL | The Great Library</title><meta name="author" content="Askemi Wang"><meta name="copyright" content="Askemi Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Paper Summary of &quot;CODESKILL: Learning Self-Evolving Skills for Coding Agents&quot;.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paper Summary – CODESKILL">
 <meta property="og:url" content="https://wangyier.top/paper-summary-codeskill/index.html">
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="Paper Summary of &quot;CODESKILL: Learning Self-Evolving Skills for Coding Agents&quot;.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_operation_type.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_pipeline.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_skill_usage.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_operation_type.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/codeskill_conclusion.png">
+<meta property="og:image" content="https://wangyier.top/images/avatar/avatar.png">
 <meta property="article:published_time" content="2026-09-22T04:53:57.000Z">
 <meta property="article:modified_time" content="2026-09-27T13:00:26.000Z">
 <meta property="article:author" content="Askemi Wang">
@@ -54,287 +24,197 @@
 <meta property="article:tag" content="Skill Induction">
 <meta property="article:tag" content="mini-swe-agent">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wangyier.top/images/article_images/codeskill_operation_type.png">
+<meta name="twitter:image" content="https://wangyier.top/images/avatar/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paper Summary – CODESKILL",
+  "url": "https://wangyier.top/paper-summary-codeskill/",
+  "image": "https://wangyier.top/images/avatar/avatar.png",
+  "datePublished": "2026-09-22T04:53:57.000Z",
+  "dateModified": "2026-09-27T13:00:26.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Askemi Wang",
+      "url": "https://wangyier.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/site/favicon.ico"><link rel="canonical" href="https://wangyier.top/paper-summary-codeskill/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
 
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
 
-<link rel="canonical" href="https://wangyier.top/paper-summary-codeskill/">
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
 
+        try {
+          const data = JSON.parse(itemStr)
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/paper-summary-codeskill/","path":"/paper-summary-codeskill/","title":"Paper Summary – CODESKILL"}</script>
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Paper Summary – CODESKILL | The Great Library</title>
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
 
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
-<script src="/js/third-party/search/local-search.js" defer></script>
-
-
-
-
-  <script src="/js/third-party/fancybox.js" defer></script>
-
-  <script src="/js/third-party/pace.js" defer></script>
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js" defer></script>
-
-
-<!-- 页面点击小红心特效 -->
-<script type="text/javascript" src="/js/love.js"></script>
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">The Great Library</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-graph"><a href="/graph/" rel="section"><i class="fa fa-project-diagram fa-fw"></i>Graph</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-      <div class="search-header">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="search-input-container">
-          <input autocomplete="off" autocapitalize="off" maxlength="80"
-                placeholder="Searching..." spellcheck="false"
-                type="search" class="search-input">
-        </div>
-        <span class="popup-btn-close" role="button">
-          <i class="fa fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="search-result-container">
-        <div class="search-result-icon">
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</header>
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#codeskill"><span class="nav-text">2. CODESKILL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-formalization"><span class="nav-text">2.1 Problem Formalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-management-loop"><span class="nav-text">2.2 Skill Management Loop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multi-granularity-skill-bank"><span class="nav-text">3.2.1 Multi-granularity Skill
-Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-bank-construction"><span class="nav-text">3.2.2 Skill Bank Construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-maintenance"><span class="nav-text">3.2.3 Skill Maintenance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-usage-skill-match"><span class="nav-text">3.2.4 Skill Usage (Skill Match)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-training"><span class="nav-text">2.3 Model Training</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sft"><span class="nav-text">2.3.1 SFT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#brief"><span class="nav-text">2.3.1.1 Brief</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trajectories-sources"><span class="nav-text">2.3.1.2 Trajectories Sources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#teacher-data-construction"><span class="nav-text">2.3.1.3 Teacher Data
-Construction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sft-training-setting"><span class="nav-text">2.3.1.4 SFT Training Setting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grpo"><span class="nav-text">2.2.2 GRPO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hybrid-reward-design"><span class="nav-text">2.2.2.1 Hybrid Reward Design</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#skill-quality-reward-by-llm-as-judge"><span class="nav-text">2.2.2.1.1 Skill Quality
-Reward by LLM-as-Judge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#execution-reward"><span class="nav-text">2.2.2.1.2 Execution Reward</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#policy-optimization-loop"><span class="nav-text">2.2.2.2 Policy Optimization Loop</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#training-settings-for-codeskill"><span class="nav-text">2.3.3 Training Settings for
-CODESKILL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#skill-examples-prompts"><span class="nav-text">3. Skill Examples &amp; Prompts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#skill-examples"><span class="nav-text">3.1 Skill Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#task-level-skill-example"><span class="nav-text">3.1.1 Task-Level Skill Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#event-driven-skill-example"><span class="nav-text">3.1.2 Event-Driven Skill
-Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prompts"><span class="nav-text">3.2 Prompts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#skill-operation-prompts"><span class="nav-text">3.2.1 Skill Operation Prompts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#task-level-skill-extraction-prompt"><span class="nav-text">3.2.1.1 Task-Level Skill
-Extraction Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#event-driven-skill-extraction-prompt"><span class="nav-text">3.2.1.2 Event-Driven Skill
-Extraction Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skill-evolution-prompt"><span class="nav-text">3.2.1.3 Skill Evolution Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skill-bank-maintenance-prompt"><span class="nav-text">3.2.1.4 Skill-Bank Maintenance
-Prompt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#judge-prompts"><span class="nav-text">3.2.2 Judge Prompts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#task-level-skill-quality-judge-prompt"><span class="nav-text">3.2.2.1 Task-Level Skill
-Quality Judge Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#event-driven-skill-quality-judge"><span class="nav-text">3.2.2.2 Event-Driven Skill
-Quality Judge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skill-evolution-quality-judge-skill"><span class="nav-text">3.2.2.3 Skill Evolution
-Quality Judge Skill</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skill-bank-maintenance-merge-judge-prompt"><span class="nav-text">3.2.2.4 Skill-Bank
-Maintenance Merge Judge Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#behavior-alignment-judge-prompt"><span class="nav-text">3.2.2.5 Behavior Alignment
-Judge Prompt</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">4. Conclusion</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
-      src="/images/avatar/avatar.png">
-  <p class="site-author-name" itemprop="name">Askemi Wang</p>
-  <div class="site-description" itemprop="description">Personal notes of everything.</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">57</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">106</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
-
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/paper-summary-codeskill/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar/avatar.png">
-      <meta itemprop="name" content="Askemi Wang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The Great Library">
-      <meta itemprop="description" content="Personal notes of everything.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Paper Summary – CODESKILL | The Great Library">
-      <meta itemprop="description" content="Paper Summary of &quot;CODESKILL: Learning Self-Evolving Skills for Coding Agents&quot;.">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Paper Summary – CODESKILL
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2026-09-22 12:53:57" itemprop="dateCreated datePublished" datetime="2026-09-22T12:53:57+08:00">2026-09-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-09-27 21:00:26" itemprop="dateModified" datetime="2026-09-27T21:00:26+08:00">2026-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-            <div class="post-description">Paper Summary of "CODESKILL: Learning Self-Evolving Skills for Coding Agents".</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="introduction">1. Introduction</h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Paper Summary – CODESKILL',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Paper Summary – CODESKILL</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Paper Summary – CODESKILL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-09-22T04:53:57.000Z" title="Created 2026-09-22 12:53:57">2026-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-09-27T13:00:26.000Z" title="Updated 2026-09-27 21:00:26">2026-09-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/tech/">Tech</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="introduction">1. Introduction</h1>
 <p>SWE agents can produce rich trajectories.</p>
 <p>To reuse the experience, one appoach is to use <mark>memory
 mechanism</mark> to store those information. Another way is to distill
@@ -393,66 +273,63 @@ with informative supervision when task success is sparse.</li>
 <h2 id="problem-formalization">2.1 Problem Formalization</h2>
 <ul>
 <li>A frozen downstream coding policy <span
-class="math inline"><em>π</em></span></li>
-<li>SWE task <span class="math inline"><em>x</em> ∈ 𝒳</span></li>
-<li>Rollout trajectory <span
-class="math inline"><em>τ</em> = (<em>o</em><sub>1</sub>, <em>a</em><sub>1</sub>, <em>o</em><sub>2</sub>, <em>a</em><sub>2</sub>…<em>o</em><sub><em>T</em></sub>, <em>a</em><sub><em>T</em></sub>, <em>y</em>)</span>
-where <span class="math inline"><em>o</em><sub><em>t</em></sub></span>
-is an observation, <span
-class="math inline"><em>a</em><sub><em>t</em></sub></span> is an action
-such as shell command.</li>
+class="math inline">\(\pi\)</span></li>
+<li>SWE task <span class="math inline">\(x \in \mathcal{X}\)</span></li>
+<li>Rollout trajectory <span class="math inline">\(\tau = \left(o_1,
+a_1, o_2, a_2 \dots o_T, a_T, y\right)\)</span> where <span
+class="math inline">\(o_t\)</span> is an observation, <span
+class="math inline">\(a_t\)</span> is an action such as shell
+command.</li>
 </ul>
 <p>Goal is to learn from such trajectories <mark>without</mark> updating
-<span class="math inline"><em>π</em></span>.</p>
+<span class="math inline">\(\pi\)</span>.</p>
 <p>CODESKILL learns a policy <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> for
-<mark>managing</mark> a skill bank <span
-class="math inline">ℬ = {<em>s</em><sub><em>i</em></sub>}<sub><em>i</em> = 1</sub><sup><em>N</em></sup></span>
-where each skill <span
-class="math inline"><em>s</em><sub><em>i</em></sub></span> constrains
-reusable procedural instructions that provide actionable guidance.</p>
-<p>Given trajectory evidence <span class="math inline"><em>τ</em></span>
-and relevant skill-bank context <span
-class="math inline">𝒞 ⊆ ℬ</span>.</p>
+class="math inline">\({M_\theta}\)</span> for <mark>managing</mark> a
+skill bank <span class="math inline">\(\mathcal{B} =
+\{s_i\}_{i=1}^{N}\)</span> where each skill <span
+class="math inline">\(s_i\)</span> constrains reusable procedural
+instructions that provide actionable guidance.</p>
+<p>Given trajectory evidence <span class="math inline">\(\tau\)</span>
+and relevant skill-bank context <span class="math inline">\(\mathcal{C
+\subseteq B}\)</span>.</p>
 <blockquote>
 <p>[!NOTE]</p>
 <p>Here the main LLM (Qwen3.5-35B-A3B) is frozen;</p>
 <p>There’s an additional LLM <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> (Qwen3.5-4B)
-to maintain the skill bank. This work is to train the <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span>.</p>
+class="math inline">\(M_\theta\)</span> (Qwen3.5-4B) to maintain the
+skill bank. This work is to train the <span
+class="math inline">\(M_\theta\)</span>.</p>
 </blockquote>
-<p><span class="math inline"><em>M</em><sub><em>θ</em></sub></span>
-outputs an operation <span
-class="math inline"><em>u</em> = (<em>a</em>, <em>z</em>)</span>, where
-<span class="math inline"><em>a</em> ∈ 𝒜</span> denotes the
+<p><span class="math inline">\(M_\theta\)</span> outputs an operation
+<span class="math inline">\(u = (a,z)\)</span>, where <span
+class="math inline">\(a \in \mathcal{A}\)</span> denotes the
 <mark>operation type</mark>, such as generation, evolution, or
-maintenance. And <span class="math inline"><em>z</em></span> denotes the
+maintenance. And <span class="math inline">\(z\)</span> denotes the
 <mark>operation content</mark>, such as a generated skill or a
 maintenance decision.</p>
-<p><img data-src="/images/article_images/codeskill_operation_type.png" /></p>
-<p>Applying <span class="math inline"><em>u</em></span> to produces an
+<p><img src="/images/article_images/codeskill_operation_type.png" /></p>
+<p>Applying <span class="math inline">\(u\)</span> to produces an
 <mark>updated</mark> skill bank <span
-class="math inline">ℬ<sup>′</sup> = Update (ℬ, <em>u</em>)</span>.</p>
+class="math inline">\(\mathcal{B}&#39; =
+\operatorname{Update}(\mathcal{B}, u)\)</span>.</p>
 <p>The <mark>objective</mark> is to optimize <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> so that the
-updated skill bank improves the downstream performance of the
-<mark>frozen policy</mark> <span class="math inline"><em>π</em></span>
-when used as prior knowledge.</p>
-<p><span class="math display">$$
+class="math inline">\(M_\theta\)</span> so that the updated skill bank
+improves the downstream performance of the <mark>frozen policy</mark>
+<span class="math inline">\(\pi\)</span> when used as prior
+knowledge.</p>
+<p><span class="math display">\[
 \begin{aligned}
 &amp;\max_{\theta}\
-\mathbb{E}_{\tau,\,x'}\left[R_{\mathrm{task}}\left(\pi(x' \mid
-\mathcal{B}')\right)\right], \\
-&amp;\quad\ u = M_{\theta}(\tau, \mathcal{C}), \quad \mathcal{B}' =
+\mathbb{E}_{\tau,\,x&#39;}\left[R_{\mathrm{task}}\left(\pi(x&#39; \mid
+\mathcal{B}&#39;)\right)\right], \\
+&amp;\quad\ u = M_{\theta}(\tau, \mathcal{C}), \quad \mathcal{B}&#39; =
 \operatorname{Update}(\mathcal{B}, u).
 \end{aligned}
-$$</span> <span
-class="math inline"><em>R</em><sub><em>t</em><em>a</em><em>s</em><em>k</em></sub></span>
-denotes the downstream task performance on future task <span
-class="math inline"><em>x</em><sup>′</sup></span>.</p>
+\]</span> <span class="math inline">\(R_{task}\)</span> denotes the
+downstream task performance on future task <span
+class="math inline">\(x&#39;\)</span>.</p>
 <h2 id="skill-management-loop">2.2 Skill Management Loop</h2>
-<p><img data-src="/images/article_images/codeskill_pipeline.png" /></p>
+<p><img src="/images/article_images/codeskill_pipeline.png" /></p>
 <p>Figure 1 provides an overview of the skill-management framework of
 <mark>CODESKILL</mark>. In this section, we describe how CODESKILL
 organizes the skill bank and manages it through three major components,
@@ -477,18 +354,20 @@ software-engineering problems.</li>
 <p>An <mark>evidence</mark> is a combination of <mark>trajectory, result
 and context</mark>.</p>
 <p>Skill Extraction:</p>
-<p><img data-src="/images/article_images/codeskill_skill_extraction.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_extraction.png" /></p>
 <p>Skill Evolution:</p>
-<p><img data-src="/images/article_images/codeskill_skill_evolution.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_evolution.png" /></p>
 <h3 id="skill-maintenance">3.2.3 Skill Maintenance</h3>
 <p>The skill library should keep compact.</p>
 <p>Each newly extracted or evolved candidate skill is further passed to
 a <mark>maintenance stage</mark>.</p>
 <p>Similar skills are retrieved from the current bank and provided to
-<span class="math inline"><em>M</em><sub><em>θ</em></sub></span>
-together with the candidate. Based on this context, <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> outputs 3
-maintenance operations: add, merge and drop.</p>
+<span class="math inline">\(M_\theta\)</span> together with the
+candidate. Based on this context, <span
+class="math inline">\(M_\theta\)</span> outputs 3 maintenance
+operations: add, merge and drop.</p>
 <ul>
 <li><mark>Add</mark>: The add operation inserts the candidate as a new
 skill when it provides useful knowledge not covered by existing
@@ -500,7 +379,8 @@ guidance.</li>
 redundant, weakly grounded, overly specific, or unlikely to
 transfer.</li>
 </ul>
-<p><img data-src="/images/article_images/codeskill_skill_maintenance.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_maintenance.png" /></p>
 <h3 id="skill-usage-skill-match">3.2.4 Skill Usage (Skill Match)</h3>
 <p>For downstream task solving, relevant skills are retrieved from the
 updated skill bank and inserted into the prompt of the frozen coding
@@ -510,55 +390,59 @@ similarity</mark>, matching task-level skills to the task goal and
 event-driven skills to the agent’s current reasoning and observation
 through their trigger conditions.</p>
 <p>The original task prompt and policy parameters remain unchanged.</p>
-<p><img data-src="/images/article_images/codeskill_skill_usage.png" /></p>
+<p><img src="/images/article_images/codeskill_skill_usage.png" /></p>
 <h2 id="model-training">2.3 Model Training</h2>
 <p>The authors first warm up <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> on
-teacher-generated <mark>supervised</mark> data for skill extraction,
-evolution, and maintenance, and then optimize it with
-<mark>reinforcement learning</mark> using feedback from both
-rubric-based LLM-as-judge rewards and a frozen downstream coding
-policy.</p>
+class="math inline">\(M_\theta\)</span> on teacher-generated
+<mark>supervised</mark> data for skill extraction, evolution, and
+maintenance, and then optimize it with <mark>reinforcement
+learning</mark> using feedback from both rubric-based LLM-as-judge
+rewards and a frozen downstream coding policy.</p>
 <h3 id="sft">2.3.1 SFT</h3>
 <h4 id="brief">2.3.1.1 Brief</h4>
 <p>The SFT’s goal is to make <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> learn basic
-skill bank operations.</p>
-<p><img data-src="/images/article_images/codeskill_operation_type.png" /></p>
+class="math inline">\(M_\theta\)</span> learn basic skill bank
+operations.</p>
+<p><img src="/images/article_images/codeskill_operation_type.png" /></p>
 <p>As we mentioned earlier, the <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> outputs three
-main operations.</p>
+class="math inline">\(M_\theta\)</span> outputs three main
+operations.</p>
 <ul>
 <li>add</li>
 <li>merge</li>
 <li>drop</li>
 </ul>
-<p><mark>Operation</mark> <span class="math inline"><em>u</em></span>
-can be expressed as: <span
-class="math display"><em>u</em> = (<em>a</em>, <em>z</em>)</span></p>
+<p><mark>Operation</mark> <span class="math inline">\(u\)</span> can be
+expressed as: <span class="math display">\[
+u = (a,z)
+\]</span></p>
 <ul>
-<li><span class="math inline"><em>a</em></span> denotes operation
-type</li>
-<li><span class="math inline"><em>z</em></span> denotes operation
+<li><span class="math inline">\(a\)</span> denotes operation type</li>
+<li><span class="math inline">\(z\)</span> denotes operation
 content.</li>
 </ul>
-<p>The <span class="math inline"><em>u</em></span> is goal of SFT.</p>
+<p>The <span class="math inline">\(u\)</span> is goal of SFT.</p>
 <p>The <mark>teacher</mark> produces structured targets <span
-class="math inline"><em>u</em><sup>*</sup></span> for skill extraction,
-evolution, and maintenance: <span
-class="math display"><em>u</em><sup>*</sup> = (<em>a</em><sup>*</sup>, <em>z</em><sup>*</sup>)</span>
-Each SFT <mark>example</mark> is written as: <span
-class="math display">(<em>q</em>, <em>u</em><sup>*</sup>), <em>q</em> = (<em>τ</em>, <em>s̃</em>, 𝒞)</span></p>
+class="math inline">\(u^*\)</span> for skill extraction, evolution, and
+maintenance: <span class="math display">\[
+u^* = (a^*, z^*)
+\]</span> Each SFT <mark>example</mark> is written as: <span
+class="math display">\[
+(q, u^*), \
+q= \left(\tau, \tilde s, \mathcal C \right)
+\]</span></p>
 <ul>
-<li><span class="math inline"><em>τ</em></span> denotes trajectory
+<li><span class="math inline">\(\tau\)</span> denotes trajectory
 evidence</li>
-<li><span class="math inline"><em>s̃</em></span> denotes an optional
+<li><span class="math inline">\(\tilde s\)</span> denotes an optional
 candidate or existing skill</li>
-<li><span class="math inline">𝒞</span> denotes retrieved similar
-skills</li>
+<li><span class="math inline">\(\mathcal C\)</span> denotes retrieved
+similar skills</li>
 </ul>
-<p>SFT loss: <span
-class="math display">ℒ<sub>SFT</sub> = −𝔼<sub>(<em>q</em>, <em>u</em><sup>*</sup>)</sub>log <em>M</em><sub><em>θ</em></sub>(<em>u</em><sup>*</sup> ∣ <em>q</em>).</span></p>
+<p>SFT loss: <span class="math display">\[
+\mathcal{L}_{\mathrm{SFT}} = -\mathbb{E}_{(q,u^*)}\log M_\theta(u^* \mid
+q).
+\]</span></p>
 <h4 id="trajectories-sources">2.3.1.2 Trajectories Sources</h4>
 <p>The <mark>initial</mark> SWE-style trajectory pool is downloaded from
 publicly available <mark>mini-SWE-agent</mark> rollouts on
@@ -575,7 +459,8 @@ containing:</p>
 <li>observation steps</li>
 <li>final outcome information</li>
 </ul>
-<p><img data-src="/images/article_images/codeskill_SFT_trajecotries_normalize.png" /></p>
+<p><img
+src="/images/article_images/codeskill_SFT_trajecotries_normalize.png" /></p>
 <h4 id="teacher-data-construction">2.3.1.3 Teacher Data
 Construction</h4>
 <p>The SFT is to teach student 3 things: skill extraction, skill
@@ -584,7 +469,8 @@ evolution and skill bank maintenance.</p>
 <li><p>For task-level and event-driven <mark>extraction</mark>:</p>
 <p>the teacher reads normalized trajectory evidence and outputs either a
 reusable skill or a skip decision.</p>
-<p><img data-src="/images/article_images/codeskill_SFT_skill_extraction.png" /></p></li>
+<p><img
+src="/images/article_images/codeskill_SFT_skill_extraction.png" /></p></li>
 <li><p>For skill evolution:</p>
 <p>The authors <mark>synthesize</mark> <mark>training instances</mark>
 by retrieving an existing skill whose applicability condition or rules
@@ -597,12 +483,14 @@ asked to revise the skill or skip when no meaningful update is
 supported.</p>
 <p>This avoids collecting an additional round of skill-conditioned
 rollouts.</p>
-<p><img data-src="/images/article_images/codeskill_SFT_skill_evolution.png" /></p></li>
+<p><img
+src="/images/article_images/codeskill_SFT_skill_evolution.png" /></p></li>
 <li><p>For Skill Maintenance:</p>
 <p>For skill-bank maintenance, each candidate skill is paired with
 retrieved similar skills from the bank, and the teacher outputs add,
 merge, or drop.</p>
-<p><img data-src="/images/article_images/codeskill_SFT_skill_maintenance.png" /></p></li>
+<p><img
+src="/images/article_images/codeskill_SFT_skill_maintenance.png" /></p></li>
 </ul>
 <h4 id="sft-training-setting">2.3.1.4 SFT Training Setting</h4>
 <p><a href="#2.3.3-training-settings-for-codeskill">2.3.3 Training
@@ -611,12 +499,11 @@ Settings for CODESKILL</a></p>
 <h4 id="hybrid-reward-design">2.2.2.1 Hybrid Reward Design</h4>
 <h5 id="skill-quality-reward-by-llm-as-judge">2.2.2.1.1 Skill Quality
 Reward by LLM-as-Judge</h5>
-<p>To train <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> with RL, the
+<p>To train <span class="math inline">\(M_\theta\)</span> with RL, the
 authors first introduce a <mark>rubric-based</mark>
 <mark>LLM-as-judge</mark> <mark>quality reward</mark> <span
-class="math inline"><em>R</em><sub><em>Q</em></sub> ∈ [0, 1]</span> to
-score each generated operation and its content.</p>
+class="math inline">\(R_Q \in [0,1]\)</span> to score each generated
+operation and its content.</p>
 <p>For skills, the rubric evaluates grounding, reusability, specificity,
 format, and actionability, with action-specific criteria.</p>
 <p><a href="#3.2-prompts">3.2 Prompts</a></p>
@@ -625,36 +512,36 @@ format, and actionability, with action-specific criteria.</p>
 since a skill may look plausible but remain unused or ineffective.</p>
 <p>The authors then define an <mark>execution reward</mark> by measuring
 the skill’s incremental effect on the frozen coding policy <span
-class="math inline"><em>π</em></span>.</p>
+class="math inline">\(π\)</span>.</p>
 <ul>
 <li><p>Select a valid <mark>skill</mark> <span
-class="math inline"><em>s</em><sub><em>u</em></sub></span> which only
-can be generated by operation <code>generate</code>, <code>add</code>
-and <code>drop</code>. By reverse retrieval, <span
-class="math inline"><em>x</em><sub><em>u</em></sub> ∼ TopK  (<em>s</em><sub><em>u</em></sub>, <em>D</em><sub>task</sub>)</span>,
+class="math inline">\(s_u\)</span> which only can be generated by
+operation <code>generate</code>, <code>add</code> and <code>drop</code>.
+By reverse retrieval, <span class="math inline">\(x_u \sim
+\operatorname{TopK}\!\left(s_u,\ D_{\mathrm{task}}\right)\)</span>,
 where the skill content retrieves task goals or baseline trajectories
-and <span class="math inline"><em>x</em><sub><em>u</em></sub></span> is
-a <mark>task</mark> sampled from the top <span
-class="math inline"><em>K</em></span> results.</p></li>
+and <span class="math inline">\(x_u\)</span> is a <mark>task</mark>
+sampled from the top <span class="math inline">\(K\)</span>
+results.</p></li>
 <li><p>Calculate no-skill baseline of the selected task: <span
-class="math display">$$
+class="math display">\[
 b_{\pi}(x_u) = \frac{1}{n}\sum_{i=1}^{n}
 V\!\left(\tau^{0}_{\pi,i}\right),
 \qquad
 \tau^{0}_{\pi,i} \sim \pi(\cdot \mid x_u)
-$$</span></p></li>
+\]</span></p></li>
 <li><p>The authors then run a skill-conditioned rollout: <span
-class="math display"><em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup> ∼ <em>π</em>(⋅ ∣ <em>x</em><sub><em>u</em></sub>, <em>s</em><sub><em>u</em></sub>)</span></p></li>
+class="math display">\[
+\tau^{u}_{\pi} \sim \pi(\cdot \mid x_u,\ s_u)
+\]</span></p></li>
 <li><p>The <mark>execution improvement</mark>: <span
-class="math display"><em>R</em><sub><em>E</em></sub>(<em>u</em>; <em>x</em><sub><em>u</em></sub>, <em>π</em>) = <em>V</em> (<em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup>) − <em>b</em><sub><em>π</em></sub>(<em>x</em><sub><em>u</em></sub>)</span>
-Here <span
-class="math inline"><em>τ</em><sub><em>π</em>, <em>i</em></sub><sup>0</sup></span>
-is the <span class="math inline"><em>i</em></span>-th no-skill rollout,
-<span
-class="math inline"><em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup></span>
-is the rollout conditioned on the skill produced by <span
-class="math display"><em>u</em></span>, and <span
-class="math inline"><em>V</em>(<em>τ</em>) ∈ [0, 1]</span> is the task
+class="math display">\[
+R_E(u;\, x_u, \pi) = V\!\left(\tau^{u}_{\pi}\right) - b_{\pi}(x_u)
+\]</span> Here <span class="math inline">\(\tau^{0}_{\pi,i}\)</span> is
+the <span class="math inline">\(i\)</span>-th no-skill rollout, <span
+class="math inline">\(\tau^{u}_{\pi}\)</span> is the rollout conditioned
+on the skill produced by <span class="math display">\[u\]</span>, and
+<span class="math inline">\(V(\tau) \in [0,1]\)</span> is the task
 verifier score.</p></li>
 <li><p>Execution improvement alone has an <mark>attribution
 problem</mark>. The coding agent may solve the task for reasons
@@ -662,54 +549,50 @@ problem</mark>. The coding agent may solve the task for reasons
 skill because of <mark>other errors</mark> in the long-horizon
 rollout.</p></li>
 <li><p>The authors then use an <mark>alignment factor</mark> <span
-class="math inline"><em>R</em><sub><em>A</em></sub> (<em>u</em>; <em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup>) ∈ [0, 1]</span>
-to judge whether the rollout actually matches the skill trigger
-condition and follows its workflow or constraints. The final reward for
-skill-output operations is <span
-class="math display"><em>R</em>(<em>u</em>; <em>q</em>) = <em>λ</em> <em>R</em><sub><em>Q</em></sub>(<em>u</em>; <em>q</em>) + <em>R</em><sub><em>A</em></sub> (<em>u</em>; <em>τ</em><sub><em>π</em></sub><sup><em>u</em></sup>) <em>R</em><sub><em>E</em></sub>(<em>u</em>; <em>x</em><sub><em>u</em></sub>, <em>π</em>)</span></p>
+class="math inline">\(R_A\!\left(u;\, \tau^{u}_{\pi}\right) \in [0,
+1]\)</span> to judge whether the rollout actually matches the skill
+trigger condition and follows its workflow or constraints. The final
+reward for skill-output operations is <span class="math display">\[
+R(u; q) = \lambda\, R_Q(u; q)
+        + R_A\!\left(u; \tau^{u}_{\pi}\right)\, R_E(u;\, x_u, \pi)
+\]</span></p>
 <ul>
-<li><span class="math inline"><em>R</em><sub><em>Q</em></sub></span>:
-Quality reward by LLM-as-Judge</li>
-<li><span class="math inline"><em>λ</em></span>: 0.25 according to
+<li><span class="math inline">\(R_Q\)</span>: Quality reward by
+LLM-as-Judge</li>
+<li><span class="math inline">\(\lambda\)</span>: 0.25 according to
 training settings.</li>
-<li><span class="math inline"><em>R</em><sub><em>A</em></sub></span>:
-alignment factor</li>
-<li><span class="math inline"><em>R</em><sub><em>E</em></sub></span>:
-execution reward</li>
+<li><span class="math inline">\(R_A\)</span>: alignment factor</li>
+<li><span class="math inline">\(R_E\)</span>: execution reward</li>
 </ul></li>
 </ul>
 <h4 id="policy-optimization-loop">2.2.2.2 Policy Optimization Loop</h4>
 <ul>
-<li><p>For each prompt <span class="math inline"><em>q</em></span>, we
-sample a group of <span class="math inline"><em>G</em></span> operations
-<span
-class="math inline">{<em>u</em><sub><em>j</em></sub>}<sub><em>j</em> = 1</sub><sup><em>G</em></sup></span>
-from the old policy <span
-class="math inline"><em>M</em><sub><em>θ</em><sub>old</sub></sub></span>.</p></li>
-<li><p>Advantages: <span class="math display">$$
+<li><p>For each prompt <span class="math inline">\(q\)</span>, we sample
+a group of <span class="math inline">\(G\)</span> operations <span
+class="math inline">\(\{ u_j \}_{j=1}^G\)</span> from the old policy
+<span class="math inline">\(M_{\theta_{\text{old}}}\)</span>.</p></li>
+<li><p>Advantages: <span class="math display">\[
 \hat{A}_j = \frac{R_j - \mu_R}{\sigma_R + \epsilon_A},
 \qquad j = 1, \dots, G
-$$</span></p>
+\]</span></p>
 <ul>
-<li><span class="math inline"><em>R</em><sub><em>j</em></sub></span>:
-reward of the <span class="math inline"><em>j</em></span>-th
-operation.</li>
-<li><span class="math inline"><em>μ</em><sub><em>R</em></sub></span>:
-average of all Rewards of group <span
-class="math inline"><em>G</em></span>.</li>
-<li><span class="math inline"><em>σ</em><sub><em>R</em></sub></span>:
-standard deviation, normalization</li>
-<li><span class="math inline"><em>ϵ</em><sub><em>A</em></sub></span>:
-avoid division by zero</li>
+<li><span class="math inline">\(R_j\)</span>: reward of the <span
+class="math inline">\(j\)</span>-th operation.</li>
+<li><span class="math inline">\(\mu_R\)</span>: average of all Rewards
+of group <span class="math inline">\(G\)</span>.</li>
+<li><span class="math inline">\(\sigma_R\)</span>: standard deviation,
+normalization</li>
+<li><span class="math inline">\(\epsilon_A\)</span>: avoid division by
+zero</li>
 </ul></li>
-<li><p>Update <span
-class="math inline"><em>M</em><sub><em>θ</em></sub></span> by
+<li><p>Update <span class="math inline">\(M_\theta\)</span> by
 advantage:</p>
 <p>…</p></li>
 </ul>
 <h3 id="training-settings-for-codeskill">2.3.3 Training Settings for
 CODESKILL</h3>
-<p><img data-src="/images/article_images/codeskill_training_settings.png" /></p>
+<p><img
+src="/images/article_images/codeskill_training_settings.png" /></p>
 <h1 id="skill-examples-prompts">3. Skill Examples &amp; Prompts</h1>
 <h2 id="skill-examples">3.1 Skill Examples</h2>
 <h3 id="task-level-skill-example">3.1.1 Task-Level Skill Example</h3>
@@ -721,31 +604,40 @@ Example</h3>
 <h3 id="skill-operation-prompts">3.2.1 Skill Operation Prompts</h3>
 <h4 id="task-level-skill-extraction-prompt">3.2.1.1 Task-Level Skill
 Extraction Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_task_level_extraction_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_task_level_extraction_prompt.png" /></p>
 <h4 id="event-driven-skill-extraction-prompt">3.2.1.2 Event-Driven Skill
 Extraction Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_event_driven_skill_extraction_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_event_driven_skill_extraction_prompt.png" /></p>
 <h4 id="skill-evolution-prompt">3.2.1.3 Skill Evolution Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_skill_evolution_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_evolution_prompt.png" /></p>
 <h4 id="skill-bank-maintenance-prompt">3.2.1.4 Skill-Bank Maintenance
 Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_skill_bank_maintenance_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_bank_maintenance_prompt.png" /></p>
 <h3 id="judge-prompts">3.2.2 Judge Prompts</h3>
 <h4 id="task-level-skill-quality-judge-prompt">3.2.2.1 Task-Level Skill
 Quality Judge Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_task_level_skill_quality_judge_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_task_level_skill_quality_judge_prompt.png" /></p>
 <h4 id="event-driven-skill-quality-judge">3.2.2.2 Event-Driven Skill
 Quality Judge</h4>
-<p><img data-src="/images/article_images/codeskill_event_driven_skill_quality_judge_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_event_driven_skill_quality_judge_prompt.png" /></p>
 <h4 id="skill-evolution-quality-judge-skill">3.2.2.3 Skill Evolution
 Quality Judge Skill</h4>
-<p><img data-src="/images/article_images/codeskill_skill_evolution_quiality_judge_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_evolution_quiality_judge_prompt.png" /></p>
 <h4 id="skill-bank-maintenance-merge-judge-prompt">3.2.2.4 Skill-Bank
 Maintenance Merge Judge Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_skill_bank_mainetance_merge_judge_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_skill_bank_mainetance_merge_judge_prompt.png" /></p>
 <h4 id="behavior-alignment-judge-prompt">3.2.2.5 Behavior Alignment
 Judge Prompt</h4>
-<p><img data-src="/images/article_images/codeskill_behavior_alignment_judge_prompt.png" /></p>
+<p><img
+src="/images/article_images/codeskill_behavior_alignment_judge_prompt.png" /></p>
 <h1 id="conclusion">4. Conclusion</h1>
 <p>This work introduce an LLM to manage Skill Moduel of Agent.</p>
 <p>The <mark>Skill Moduel</mark>, also known as <mark>Skill Bank</mark>,
@@ -762,207 +654,517 @@ to manage the Skill Bank.</p>
 <li>Skill Evolution</li>
 <li>Skill Maintenance</li>
 </ul>
-<p><img data-src="/images/article_images/codeskill_conclusion.png" /></p>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer"><div class="post-copyright">
-  <p><strong>本文链接：</strong><a href="https://wangyier.top/paper-summary-codeskill/">https://wangyier.top/paper-summary-codeskill/</a></p>
-  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
-</div>
-
-<style>
-  .post-copyright {
-    /* 使用半透明背景，完美适配亮色和暗色模式 */
-    background: rgba(150, 150, 150, 0.1); 
-    border-left: 4px solid #37c6c0;
-    padding: 1em 1.5em;
-    margin-top: 2em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+<p><img src="/images/article_images/codeskill_conclusion.png" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/paper-summary-codeskill/">https://wangyier.top/paper-summary-codeskill/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/Large-Language-Model/">LLM</a><a class="post-meta__tags" href="/tags/Reinforcement-Learning/">Reinforcement Learning</a><a class="post-meta__tags" href="/tags/Paper-Summary/">Paper Summary</a><a class="post-meta__tags" href="/tags/Skill/">Skill</a><a class="post-meta__tags" href="/tags/SWE-bench/">SWE-bench</a><a class="post-meta__tags" href="/tags/SWE/">SWE</a><a class="post-meta__tags" href="/tags/Skill-Induction/">Skill Induction</a><a class="post-meta__tags" href="/tags/Skill-Extraction/">Skill Extraction</a><a class="post-meta__tags" href="/tags/SFT/">SFT</a><a class="post-meta__tags" href="/tags/GRPO/">GRPO</a><a class="post-meta__tags" href="/tags/SWE-smith/">SWE-smith</a><a class="post-meta__tags" href="/tags/mini-swe-agent/">mini-swe-agent</a><a class="post-meta__tags" href="/tags/MSWEA/">MSWEA</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/anthropic-skill-paradigm/" title="Anthropic Skill Paradigm"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Anthropic Skill Paradigm</div></div><div class="info-2"><div class="info-item-1">The paradigm of skill proposed by Anthropic.</div></div></div></a><a class="pagination-related" href="/paper-summary-nsi/" title="Paper Summary – NSI"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Paper Summary – NSI</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "Lifting Traces to Logic: Programmatic Skill Induction with Neuro-Symbolic Learning for Long-Horizon Agentic Tasks".</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/model-post-training/" title="Model Post-Training"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-04</div><div class="info-item-2">Model Post-Training</div></div><div class="info-2"><div class="info-item-1">Introducing Methods of Model Post-Training</div></div></div></a><a class="pagination-related" href="/paper-summary-SWE-smith/" title="Paper Summary – SWE-smith"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-04</div><div class="info-item-2">Paper Summary – SWE-smith</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "SWE-smith: Scaling Data for Software Engineering Agents".</div></div></div></a><a class="pagination-related" href="/panorama-of-agent/" title="Panorama of Agent"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-18</div><div class="info-item-2">Panorama of Agent</div></div><div class="info-2"><div class="info-item-1">This work describes the panorama of Agent area. It is suggested to review this article frequently.</div></div></div></a><a class="pagination-related" href="/paper-summary-nsi/" title="Paper Summary – NSI"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-20</div><div class="info-item-2">Paper Summary – NSI</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "Lifting Traces to Logic: Programmatic Skill Induction with Neuro-Symbolic Learning for Long-Horizon Agentic Tasks".</div></div></div></a><a class="pagination-related" href="/paper-summary-sample-efficient-learning-from-agent-experience/" title="Paper Summary – Sample-Efficient Learning from Agent Experience"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-31</div><div class="info-item-2">Paper Summary – Sample-Efficient Learning from Agent Experience</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "Sample-Efficient Learning from Agent Experience".</div></div></div></a><a class="pagination-related" href="/paper-summary-SWE-RL/" title="Paper Summary – SWE-RL"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-04</div><div class="info-item-2">Paper Summary – SWE-RL</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution".</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text">1. Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#codeskill"><span class="toc-text">2. CODESKILL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-formalization"><span class="toc-text">2.1 Problem Formalization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skill-management-loop"><span class="toc-text">2.2 Skill Management Loop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#multi-granularity-skill-bank"><span class="toc-text">3.2.1 Multi-granularity Skill
+Bank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skill-bank-construction"><span class="toc-text">3.2.2 Skill Bank Construction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skill-maintenance"><span class="toc-text">3.2.3 Skill Maintenance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skill-usage-skill-match"><span class="toc-text">3.2.4 Skill Usage (Skill Match)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#model-training"><span class="toc-text">2.3 Model Training</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sft"><span class="toc-text">2.3.1 SFT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#brief"><span class="toc-text">2.3.1.1 Brief</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#trajectories-sources"><span class="toc-text">2.3.1.2 Trajectories Sources</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#teacher-data-construction"><span class="toc-text">2.3.1.3 Teacher Data
+Construction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sft-training-setting"><span class="toc-text">2.3.1.4 SFT Training Setting</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grpo"><span class="toc-text">2.2.2 GRPO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hybrid-reward-design"><span class="toc-text">2.2.2.1 Hybrid Reward Design</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#skill-quality-reward-by-llm-as-judge"><span class="toc-text">2.2.2.1.1 Skill Quality
+Reward by LLM-as-Judge</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#execution-reward"><span class="toc-text">2.2.2.1.2 Execution Reward</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#policy-optimization-loop"><span class="toc-text">2.2.2.2 Policy Optimization Loop</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#training-settings-for-codeskill"><span class="toc-text">2.3.3 Training Settings for
+CODESKILL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#skill-examples-prompts"><span class="toc-text">3. Skill Examples &amp; Prompts</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#skill-examples"><span class="toc-text">3.1 Skill Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#task-level-skill-example"><span class="toc-text">3.1.1 Task-Level Skill Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#event-driven-skill-example"><span class="toc-text">3.1.2 Event-Driven Skill
+Example</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prompts"><span class="toc-text">3.2 Prompts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#skill-operation-prompts"><span class="toc-text">3.2.1 Skill Operation Prompts</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#task-level-skill-extraction-prompt"><span class="toc-text">3.2.1.1 Task-Level Skill
+Extraction Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#event-driven-skill-extraction-prompt"><span class="toc-text">3.2.1.2 Event-Driven Skill
+Extraction Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#skill-evolution-prompt"><span class="toc-text">3.2.1.3 Skill Evolution Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#skill-bank-maintenance-prompt"><span class="toc-text">3.2.1.4 Skill-Bank Maintenance
+Prompt</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#judge-prompts"><span class="toc-text">3.2.2 Judge Prompts</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#task-level-skill-quality-judge-prompt"><span class="toc-text">3.2.2.1 Task-Level Skill
+Quality Judge Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#event-driven-skill-quality-judge"><span class="toc-text">3.2.2.2 Event-Driven Skill
+Quality Judge</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#skill-evolution-quality-judge-skill"><span class="toc-text">3.2.2.3 Skill Evolution
+Quality Judge Skill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#skill-bank-maintenance-merge-judge-prompt"><span class="toc-text">3.2.2.4 Skill-Bank
+Maintenance Merge Judge Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#behavior-alignment-judge-prompt"><span class="toc-text">3.2.2.5 Behavior Alignment
+Judge Prompt</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conclusion"><span class="toc-text">4. Conclusion</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s2/" title="Paper Summary - Agent S2">Paper Summary - Agent S2</a><time datetime="2026-10-24T06:04:19.000Z" title="Created 2026-10-24 14:04:19">2026-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/how-to-use-personal-knowledge-graph/" title="How to Use Personal Knowledge Graph">How to Use Personal Knowledge Graph</a><time datetime="2026-10-21T15:18:14.000Z" title="Created 2026-10-21 23:18:14">2026-10-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-vista/" title="Paper Summary – VISTA">Paper Summary – VISTA</a><time datetime="2026-10-16T11:24:25.000Z" title="Created 2026-10-16 19:24:25">2026-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s/" title="Paper Summary – Agent S">Paper Summary – Agent S</a><time datetime="2026-10-13T07:31:52.000Z" title="Created 2026-10-13 15:31:52">2026-10-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my_retrospective/" title="My Retrospective">My Retrospective</a><time datetime="2026-10-05T08:22:49.000Z" title="Created 2026-10-05 16:22:49">2026-10-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
   }
-  .post-copyright a {
-    color: #37c6c0;
-    text-decoration: none;
-    font-weight: bold; /* 让链接更醒目一点 */
-  }
-  .post-copyright a:hover {
-    text-decoration: underline;
-  }
-</style>
 
-<!-- 加密文章解密后重新触发 lozad 懒加载。
-     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
-     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
-     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
-     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
-<script>
-  (function () {
-    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
-    if (!locked) return;   // 非加密文章
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
 
-    function refreshLazy() {
-      if (typeof window.lozad !== 'function') return;
-      var imgs = document.querySelectorAll('.post-body img[data-src]');
-      if (!imgs.length) return;
-      window.lozad('.post-body img').observe();
-    }
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-    var body = document.querySelector('.post-body');
-    if (body && window.MutationObserver) {
-      var pending = null;
-      new MutationObserver(function () {
-        if (pending) return;
-        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
-      }).observe(body, { childList: true, subtree: true });
-    }
-
-    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
-    var tries = 0;
-    var timer = setInterval(function () {
-      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
-        refreshLazy();
-        clearInterval(timer);
-      } else if (++tries > 150) {   // 最多约 60 秒
-        clearInterval(timer);
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
       }
-    }, 400);
-  })();
-</script>
-          <div class="post-tags">
-              <a href="/tags/Agent/" rel="tag"># Agent</a>
-              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
-              <a href="/tags/Skill/" rel="tag"># Skill</a>
-              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
-              <a href="/tags/Paper-Summary/" rel="tag"># Paper Summary</a>
-              <a href="/tags/SWE-bench/" rel="tag"># SWE-bench</a>
-              <a href="/tags/SWE-smith/" rel="tag"># SWE-smith</a>
-              <a href="/tags/SWE/" rel="tag"># SWE</a>
-              <a href="/tags/SFT/" rel="tag"># SFT</a>
-              <a href="/tags/GRPO/" rel="tag"># GRPO</a>
-              <a href="/tags/Skill-Induction/" rel="tag"># Skill Induction</a>
-              <a href="/tags/Skill-Extraction/" rel="tag"># Skill Extraction</a>
-              <a href="/tags/mini-swe-agent/" rel="tag"># mini-swe-agent</a>
-              <a href="/tags/MSWEA/" rel="tag"># MSWEA</a>
-          </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/paper-summary-nsi/" rel="prev" title="Paper Summary – NSI">
-                  <i class="fa fa-angle-left"></i> Paper Summary – NSI
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/paper-summary-trace2skill/" rel="next" title="Paper Summary – Trace2Skill">
-                  Paper Summary – Trace2Skill <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-    <div class="comments utterances-container"></div>
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
-  </div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div><!-- 网站运行时间计数 -->
-<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
-  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
-</span>
-
-<script>
-  function show_runtime() {
-    window.setTimeout("show_runtime()", 1000);
-    
-    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
-    // 注意：月份是从 1 开始的，直接填数字即可
-    var BirthDay = new Date("2026/06/24 00:00:00"); 
-    
-    var today = new Date();
-    var timeold = (today.getTime() - BirthDay.getTime());
-    var msPerDay = 24 * 60 * 60 * 1000;
-    var e_daysold = timeold / msPerDay;
-    
-    var daysold = Math.floor(e_daysold);
-    var e_hrsold = (e_daysold - daysold) * 24;
-    var hrsold = Math.floor(e_hrsold);
-    var e_minsold = (e_hrsold - hrsold) * 60;
-    var minsold = Math.floor((e_hrsold - hrsold) * 60);
-    var seconds = Math.floor((e_minsold - minsold) * 60);
-    
-    // 将计算结果填入对应的 span 标签中
-    document.getElementById("runtime_days").innerHTML = daysold;
-    document.getElementById("runtime_hours").innerHTML = hrsold;
-    document.getElementById("runtime_mins").innerHTML = minsold;
-    document.getElementById("runtime_secs").innerHTML = seconds;
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
   }
-  show_runtime();
-</script>
 
-    </div>
-  </footer>
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax
+    ? loadMathjax()
+    : (document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', loadMathjax)
+        : loadMathjax())
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
 
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
+
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
+
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
+
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
+
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
+
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
+
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
+
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
+
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
+
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
+
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'AskemiWang/AskemiWang.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
-<script src="/js/third-party/comments/utterances.js" defer></script>
-
-</body>
-</html>
+  if ('Utterances' === 'Utterances' || !true) {
+    if (true) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/runtime.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>

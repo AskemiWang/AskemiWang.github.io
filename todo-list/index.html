@@ -1,316 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
-  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
-  <link rel="manifest" href="/images/site/site.webmanifest">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="todo list">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Todo List | The Great Library</title><meta name="author" content="Askemi Wang"><meta name="copyright" content="Askemi Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="todo list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Todo List">
 <meta property="og:url" content="https://wangyier.top/todo-list/index.html">
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="todo list">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/avatar/avatar.png">
 <meta property="article:published_time" content="2026-06-28T06:37:57.000Z">
 <meta property="article:modified_time" content="2026-07-15T07:53:54.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Encrypted">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/avatar/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Todo List",
+  "url": "https://wangyier.top/todo-list/",
+  "image": "https://wangyier.top/images/avatar/avatar.png",
+  "datePublished": "2026-06-28T06:37:57.000Z",
+  "dateModified": "2026-07-15T07:53:54.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Askemi Wang",
+      "url": "https://wangyier.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/site/favicon.ico"><link rel="canonical" href="https://wangyier.top/todo-list/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
 
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
 
-<link rel="canonical" href="https://wangyier.top/todo-list/">
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
 
+        try {
+          const data = JSON.parse(itemStr)
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/todo-list/","path":"/todo-list/","title":"Todo List"}</script>
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Todo List | The Great Library</title>
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
 
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
-<script src="/js/third-party/search/local-search.js" defer></script>
-
-
-
-
-  <script src="/js/third-party/fancybox.js" defer></script>
-
-  <script src="/js/third-party/pace.js" defer></script>
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js" defer></script>
-
-
-<!-- 页面点击小红心特效 -->
-<script type="text/javascript" src="/js/love.js"></script>
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">The Great Library</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-graph"><a href="/graph/" rel="section"><i class="fa fa-project-diagram fa-fw"></i>Graph</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-      <div class="search-header">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="search-input-container">
-          <input autocomplete="off" autocapitalize="off" maxlength="80"
-                placeholder="Searching..." spellcheck="false"
-                type="search" class="search-input">
-        </div>
-        <span class="popup-btn-close" role="button">
-          <i class="fa fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="search-result-container">
-        <div class="search-result-icon">
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</header>
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
-      src="/images/avatar/avatar.png">
-  <p class="site-author-name" itemprop="name">Askemi Wang</p>
-  <div class="site-description" itemprop="description">Personal notes of everything.</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">57</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">106</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
-
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/todo-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar/avatar.png">
-      <meta itemprop="name" content="Askemi Wang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The Great Library">
-      <meta itemprop="description" content="Personal notes of everything.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Todo List | The Great Library">
-      <meta itemprop="description" content="todo list">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Todo List
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2026-06-28 14:37:57" itemprop="dateCreated datePublished" datetime="2026-06-28T14:37:57+08:00">2026-06-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-07-15 15:53:54" itemprop="dateModified" datetime="2026-07-15T15:53:54+08:00">2026-07-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">Life</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-            <div class="post-description">todo list</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><div class="hbe hbe-container" id="hexo-blog-encrypt"
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Todo List',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Todo List</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Todo List</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-28T06:37:57.000Z" title="Created 2026-06-28 14:37:57">2026-06-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-15T07:53:54.000Z" title="Updated 2026-07-15 15:53:54">2026-07-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/life/">Life</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt"
      data-hbe-format="4"
      data-wpm="密码错误，请重新输入！"
      data-whm="密码错误，请重新输入！"
-     data-salt="8adec4aeebf16dcbb3523920e12c1c54e2ce52c5002f7f981d1bbbdbf5cf0c8b"
-     data-nonce="85106679656cee414d04994c"
+     data-salt="6887bd339e2fde410537fa45cc110b985d0c6ade889d38707d727136b6d5a551"
+     data-nonce="9dbe1b90e9cfa9e2b00022e1"
      data-kdf-iterations="600000"
      data-auto-save="false">
   <script id="hbeData" type="hbeData">
-    3463e4ff2923272f92da27b29538c03409e8450b5c926d854e9e607c8b4d2261c5884273df4842e611a826bf55af790081437aca242f0d5d5b9887e4d5fc5381e71d29906040e7811a3bfb3a7126306dba13f912b8a209b3e56af8f69d58103ecb06fbf4ccdcc6c01ca609a12e4a5c2f12e03cac610f54da018ce4c46f7cbfb377ca45f3da7d44866b8841062dddc08607ed107d9ad105bc64c55eec639ae27b58288b4bbf44668aba2abcedf491adf96fdee12aff3a1c247fb1d0a65f8cfcb1484117545c521b6580c6b8495145813085606f20cf75dd3fffd3ede48606c590f9f9a32fc049ac03fee4a610a5b02a1ba33853a76a942ba18047342a92316f4fe242657a46a9139307af6c2683045ae5b09a36ea5dd9031b26d607a19f56d91a626ccac3581ad8182e0fd56873c03ba15f7079dbecba6e66fb46cf70ca7d62c31a6b685f4afefdb7373509b72f7dcb5cd63adfcaf19dcd6442013abd1948451efe5106fdc42dcccc4b995b07b1f4c50f027f69e5f747d5dcda4bd0e044cbd2c7ad0d1895bce82ba0c946c35ae4c929b0c0d75c1fa983e71c33c36231fa840124fe6b3c44915ae1394b382ef55573bd15ee06ee0ab5b4821f9e969ce0dc2aa6db57179e75f3a4e56b06a53bd8c76c745c1def8a916e45db66637bb5fdd5759cb9ae5a3fe2729d6468f04b7ca6cc8d3b391fd5ea1d52fa280b9d375eea85a42100436e27be21fad1350ba2d5dacede2b017f9fcd6992ba3a60c9bc8c5da8527e9f0fec4749f495e2233e84a3e34e79f5fbd03cf88aa38864e20915038880d7ac57976728685c437ea1b85a857c65197ecaed010ae57e45328ac2120db3258a487371a3a129ce82c565f0dc605f4a119832f8c3d1d73b088cf2d317c35229db5109ae6a8e7fd40f9795c9893fd9b31fde88c7ffe3d60885c6790190b506412cb9eb307c5aad7fa7f846c0536fe1056fe4012997fb3ba89a700e67b2495fa59e837e0306fda94ebcf2913571fec744616a8a1e7991b9a611f53294229c35937d9c765c0f783ee9eaa959a46b8937ff922c3f30b9224b704ea2d7da0d9c81f70373c23c015383b0b8ff2fe9ac13910aa59ef3d1e1f407dd82a52d35b6b0740072b81d6c10b1815404a2bc9cb292d4dc7a68dfce343aee266fc21479185c41d4c9e2ca3e1fae101f64866042812ec0562f59e213c71d36438b61fa2f087f448284b070611aadd96693b34ad5754e16cc69f6c63e13b86318383356835ac58318851d649dd6be491df78451a99fbeab93af162a241fb1af3999dc388ded53f794f6d65af9270df2f413fb1fd894b3b5c8614caadfc9d6e213bd1439aefb600fa2dd94b52ee509b3d89cdf949e8c1004ee72b71b9aa20454f67934dc2e65dcc0554fce522d613e2752c457cdfc8f5a7f260d1583b9e30c6b25bcdfb768a7cc0ae6a380d521eb56be89eb69aed732214e06cb89bd88e7a7106409f1dbe455b439e9182e46f81af701a63d627b5ed80b2cd39640f22847f674b5239725778514bfbe4ab05f5a39ac730e2e2d1f55717ca18d475e09c0c5eae3257f875483ea3106f052008f65213c822fc29c6854d8c18cbe125763e54bf73e0250299539b0065cc59972cfe45a56c4ff0db0934c1e1079445574feabb31dea2a103afcd9424a73dba1af9815b018f0cd5839da0aff0c2ca8e2af4c8accc40be74f501512843e4114440d7dc16c1e91723e5636dc5c65e380485bf06fbf4609cca5fd5c0853450036fd1b39703bd9229b769a1d4a1f758c7328f6fb3b60fce14d2f98533e8f87aa877d90b789f81c39d00fab1403c22c4bb72e19684f620f79cfae5131075d61d5fe0d0fd582d1b2554792017a158310a5b9c1531ae94fa22ed4847126e5b6d5068a6c71e6eeecbac367d582c8c266ca0deeb95d30fc49a4dd805ccfa7ae0f664d1360a8bf8cf4f3b4ac425d518e95828362bec1cd66d87476558a06f55626980eea474bd447ccebebfac2f58fbb9612f6a4cd055044f2a2d06aef371667490111d4bb1a3560ae7cd1f306813b3527980c3160ebb3851ddc23bec5524d57aa7c3ffeec4478e15a6239a1d84c89f181170004d436915442deefa5df2ed58aacf00423e85bf50c2ded4b7b3ac62d165d8bd98d876fb3f1b028e2ae7d54a9f91930906ab85aca72fc29a107d79c1b37254374d5bf856b84a7c15faa7f62a1994c40b9733f1c2cc220afcbbb10f9001ee05596bec3c005a8b4b4eeb13744b0f6681279e2180712afa72d3f11b0bfcb78c80efd4945ce56f3863f5bd45c3f7b365736fb09732f52738be94bc475f0d28e863092661bb3a7e0c66d0d27131a26df484ac3f644097b1c01ca9a8ca3416976441352cb2dc9806a7d3a8bdf35b223bcc496ee2bc3033fc5c863f144d96886b4daebe983
+    e600ff4ecb8a16ad445d26239a097720df86cb2a18c9b0ebc61dfeda527b88911a9ac70874306534d1dbe858005fe31d59aac3f781a2ef1a7bbc5e18b6aaf54abc63bb2ff86226da5e84bbd9f98fcb1f3e7586553312fafcb85446bf62b72901d1cd8e50884e5d2cb126f85ed52048c976249b9bed69032a9d2356c17d4bc484d15fd96d01ae0791f79b50831a3798fc1887f778471bbab4f8bd789804a9e2d05591095cfe2e15f3e3a0c228fbff65786a6c2a000b31a063db198946be40f147a23b77a4a01220d2d0d38d4b1c78919bb726401caefeea6eb59fd64226c6a1026a83b8a22b2fc70ad0bd58c5ff3e8d5b3c2c715678f1919a1d798d0221b8a0c29ae82c5ce8178437ee4aa1f7f6dfc2ef1e55fb49308e0a004ef2069e3d57df9c95d7f8dfb12b23369c29f49bc7e89412538eceabd425dcdfcab05de14f2cffeb4bdac54937b1860af06afd25e9bbffd812cf6ede05a9b41df538cf1430731ac0c5f2d1d4349db301dc521e6a3ce8159dd7d6b1d125a332fae30a6131989a727dc50c735aee0b917513db950bca05fb2d7e59f087753cf3df0ffe33a48702ed5d67caf3ca456cd1d89df104560607ca18843b6bb97d3ab442ec50da9cbfe0b84ab6a4eada0115116222be9ac94d0f054c8aa56b8978f43660f9945d86b1762c55ef2abeefd6c9a6c343c9df27d08a6270b806bc010f29880d7a95b9554e173813f1c4194563511ea6a0459ca6e97d030ab9e77a7d998287662821c2220737e8b0353614ffd75fb737ca50dd88148850bb7be61f45e0a003ffa2660631e0fee47a1838f013dfb4aa50e1d392512b7846c9dcdebd0fffc6cfba991f26b8596a7a6370a2292bc7a8f13dbc58ff22d431b5329ac04e1dcd71d0e7ea6b9a58345b595ea32063cc735251b94dcf99dbc5a985654118b9b62c4bbdba9413493f5befed15a7f19ae969ba0118080979735bc3280f7c7b2e3a11af3106b35f036244075b508b7914c7cec4e6b0fe9844768a72b13a58dff657348237bddb7a8527669d656772cb9106833b5f471e443eb76d3dce6a9b88b19deb148c95956b64b2837556b25847bc4925b5c8e3fe6b56403bb97825e34b3acb9ac5d9b68cced776a03f94fcfebcb40cf04e2b242af7ffabc7c528f8131913da186273e5c1a69017e9cff53ec463db28bed522fa01bca13aecbd4298895e08e7767eb05c18d82aadffe6abd72be697ec97b8ed66c7e9d9d037bf41516de2c8093ebb2ae531414cd32c7e8a02af9dffb936ea40dc53b4f4861584bf3508133cf9660eeba933712242717c22513a2139456417f8a9b876f5f5ba1522e8e0cd001eb69bd1660b8333a817bdcd669f24e419ccc4031644d367484bea65c2a30b2466f5090ddbd363101c587e20a966a54277b64bd9ee3294844fff7773c21619ee1c76b7355ea04157a0793dfc75af004b5b716bd26bc6eafd77a54b02e28ea53d8b904945d8d48ec74ca97b7d5f53d1b3b4fb3298acfaaa36fe70f609e94355e1611059b05484aeadcf686c4489b34400c971cd6476c7dde08c409d143174bf87ef0d64c14db218a24d9ab456eea1d9ef223547d8d30e408ddf49004afc8410ef2618cc788fc963ccd9ced7095bc877493d0108e72b479a2c29ecfeddfb5893ef886f45cddeb098f0ee04a255a69b2fd3798dfc177af6521455efe47d0c628d76d3a60dbd9a83f0501412f0ba39478868cfa5b11a9e5d1e01560a33646afd7f64065bc618e32d685073952d1be259301f1b0cf15370dd7c25e2ecefc82344c4dffc654d6acda99c5d53a1183483411a60ada05d4c6955a810dc8d93dc931786c88144959c8aa1587c074c32d01cfc49603be2fbf460296519de720999d1e7262e911fd1ed8acb95700b8207d18ff820c3ddf1aba33d9ba9de2302005733a430596ce4aaaefb268a4481fbc7d5d27211828a49787fe95ae1291b1a21520fa45f86f9813ee0483c3eddb7458d24b0b4e55c981143b4f6de5b5c4a2d7d8e340c10975524e55de033820acf37455dd929757a8523e9cf3a66ad4a08a8c2d988454b751163950f21284d731a92dea6fc2413fce8590c43bd73cb3246c3d6bc9408781b333b9429ac4ed73c06003385290cd85ca6b54f363780f08507335b576ddcefdea1db49e30cde2190b3af776af81bc88d55f1752c6d1ad0471cf723c974f9e277d0a29599a855a66a99b73e5edcaebd4747f1105cb7f5cd168916279e17e8a4290acbc74240078cdfbd630b95ba764535586d5a5b2a22cb80b902a8703ed9791ca5abd225c9ccf2f8ad2d06de2e8b2df535443938be57389629dac2e72f9e965cf966857591531e7fe1b2bbdbdfc05025e63fc3c6fa41945b670d60d5e15a179effa0bd6788319448fe39d7a6d249a4fa8a4ab6058603c6ddc6a4
   </script>
   <div class="hbe hbe-content">
     <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
@@ -325,193 +225,447 @@
     </form>
   </div>
 </div>
-<script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer"><div class="post-copyright">
-  <p><strong>本文链接：</strong><a href="https://wangyier.top/todo-list/">https://wangyier.top/todo-list/</a></p>
-  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
-</div>
-
-<style>
-  .post-copyright {
-    /* 使用半透明背景，完美适配亮色和暗色模式 */
-    background: rgba(150, 150, 150, 0.1); 
-    border-left: 4px solid #37c6c0;
-    padding: 1em 1.5em;
-    margin-top: 2em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+<script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/todo-list/">https://wangyier.top/todo-list/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Encrypted/">Encrypted</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/some-info/" title="Information"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Information</div></div><div class="info-2"><div class="info-item-1">some info...</div></div></div></a><a class="pagination-related" href="/SWE-agent-traj-analysis/" title="SWE-agent Traj Analysis"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SWE-agent Traj Analysis</div></div><div class="info-2"><div class="info-item-1">A report of a traj file of SWE-agent.</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/back-to-school-todo/" title="Grad Life Journal"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-15</div><div class="info-item-2">Grad Life Journal</div></div><div class="info-2"><div class="info-item-1">This is</div></div></div></a><a class="pagination-related" href="/about-mentors/" title="About Mentors"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">About Mentors</div></div><div class="info-2"><div class="info-item-1">You Know.</div></div></div></a><a class="pagination-related" href="/some-info/" title="Information"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-28</div><div class="info-item-2">Information</div></div><div class="info-2"><div class="info-item-1">some info...</div></div></div></a><a class="pagination-related" href="/my_retrospective/" title="My Retrospective"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-10-05</div><div class="info-item-2">My Retrospective</div></div><div class="info-2"><div class="info-item-1">Recoding my study & work retrospective.</div></div></div></a><a class="pagination-related" href="/SMAP-and-L3_Cache/" title="SMAP and L3_Cache"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">SMAP and L3_Cache</div></div><div class="info-2"><div class="info-item-1">secret</div></div></div></a><a class="pagination-related" href="/labs-server-instruction/" title="Lab&#39;s Server Instruction"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-01</div><div class="info-item-2">Lab&#39;s Server Instruction</div></div><div class="info-2"><div class="info-item-1">Some info of using lab's server.</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s2/" title="Paper Summary - Agent S2">Paper Summary - Agent S2</a><time datetime="2026-10-24T06:04:19.000Z" title="Created 2026-10-24 14:04:19">2026-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/how-to-use-personal-knowledge-graph/" title="How to Use Personal Knowledge Graph">How to Use Personal Knowledge Graph</a><time datetime="2026-10-21T15:18:14.000Z" title="Created 2026-10-21 23:18:14">2026-10-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-vista/" title="Paper Summary – VISTA">Paper Summary – VISTA</a><time datetime="2026-10-16T11:24:25.000Z" title="Created 2026-10-16 19:24:25">2026-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s/" title="Paper Summary – Agent S">Paper Summary – Agent S</a><time datetime="2026-10-13T07:31:52.000Z" title="Created 2026-10-13 15:31:52">2026-10-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my_retrospective/" title="My Retrospective">My Retrospective</a><time datetime="2026-10-05T08:22:49.000Z" title="Created 2026-10-05 16:22:49">2026-10-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
   }
-  .post-copyright a {
-    color: #37c6c0;
-    text-decoration: none;
-    font-weight: bold; /* 让链接更醒目一点 */
-  }
-  .post-copyright a:hover {
-    text-decoration: underline;
-  }
-</style>
 
-<!-- 加密文章解密后重新触发 lozad 懒加载。
-     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
-     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
-     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
-     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
-<script>
-  (function () {
-    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
-    if (!locked) return;   // 非加密文章
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
 
-    function refreshLazy() {
-      if (typeof window.lozad !== 'function') return;
-      var imgs = document.querySelectorAll('.post-body img[data-src]');
-      if (!imgs.length) return;
-      window.lozad('.post-body img').observe();
-    }
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-    var body = document.querySelector('.post-body');
-    if (body && window.MutationObserver) {
-      var pending = null;
-      new MutationObserver(function () {
-        if (pending) return;
-        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
-      }).observe(body, { childList: true, subtree: true });
-    }
-
-    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
-    var tries = 0;
-    var timer = setInterval(function () {
-      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
-        refreshLazy();
-        clearInterval(timer);
-      } else if (++tries > 150) {   // 最多约 60 秒
-        clearInterval(timer);
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
       }
-    }, 400);
-  })();
-</script>
-          <div class="post-tags">
-              <a href="/tags/Encrypted/" rel="tag"># Encrypted</a>
-          </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/Pro-Tips-and-Commands-for-Essential-Software-and-Tools/" rel="prev" title="Pro Tips and Commands for Essential Software and Tools">
-                  <i class="fa fa-angle-left"></i> Pro Tips and Commands for Essential Software and Tools
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/some-info/" rel="next" title="Information">
-                  Information <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-    <div class="comments utterances-container"></div>
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
-  </div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div><!-- 网站运行时间计数 -->
-<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
-  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
-</span>
-
-<script>
-  function show_runtime() {
-    window.setTimeout("show_runtime()", 1000);
-    
-    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
-    // 注意：月份是从 1 开始的，直接填数字即可
-    var BirthDay = new Date("2026/06/24 00:00:00"); 
-    
-    var today = new Date();
-    var timeold = (today.getTime() - BirthDay.getTime());
-    var msPerDay = 24 * 60 * 60 * 1000;
-    var e_daysold = timeold / msPerDay;
-    
-    var daysold = Math.floor(e_daysold);
-    var e_hrsold = (e_daysold - daysold) * 24;
-    var hrsold = Math.floor(e_hrsold);
-    var e_minsold = (e_hrsold - hrsold) * 60;
-    var minsold = Math.floor((e_hrsold - hrsold) * 60);
-    var seconds = Math.floor((e_minsold - minsold) * 60);
-    
-    // 将计算结果填入对应的 span 标签中
-    document.getElementById("runtime_days").innerHTML = daysold;
-    document.getElementById("runtime_hours").innerHTML = hrsold;
-    document.getElementById("runtime_mins").innerHTML = minsold;
-    document.getElementById("runtime_secs").innerHTML = seconds;
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
   }
-  show_runtime();
-</script>
 
-    </div>
-  </footer>
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax
+    ? loadMathjax()
+    : (document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', loadMathjax)
+        : loadMathjax())
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
 
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
-<script src="/js/third-party/comments/utterances.js" defer></script>
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
 
-</body>
-</html>
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
+
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
+
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
+
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
+
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
+
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
+
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
+
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
+
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
+
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
+
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="/js/runtime.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>

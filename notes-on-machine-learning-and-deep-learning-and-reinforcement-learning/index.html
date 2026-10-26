@@ -1,44 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
-  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
-  <link rel="manifest" href="/images/site/site.webmanifest">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Notes on Machine Learning and Deep Learning and Reinforcement Learning | The Great Library</title><meta name="author" content="Askemi Wang"><meta name="copyright" content="Askemi Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes on Machine Learning and Deep Learning and Reinforcement Learning">
 <meta property="og:url" content="https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/index.html">
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_grid_world.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_deterministic_policy.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_traj_from_policy.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_stochastic_policy.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_two_trajectories.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_returns_example.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_bellman_introduction.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/rl_state_value_example.png">
+<meta property="og:image" content="https://wangyier.top/images/avatar/avatar.png">
 <meta property="article:published_time" content="2026-07-27T05:56:56.000Z">
 <meta property="article:modified_time" content="2026-10-21T18:25:20.000Z">
 <meta property="article:author" content="Askemi Wang">
@@ -47,281 +14,197 @@
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Reinforcement Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wangyier.top/images/article_images/rl_grid_world.png">
+<meta name="twitter:image" content="https://wangyier.top/images/avatar/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Notes on Machine Learning and Deep Learning and Reinforcement Learning",
+  "url": "https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/",
+  "image": "https://wangyier.top/images/avatar/avatar.png",
+  "datePublished": "2026-07-27T05:56:56.000Z",
+  "dateModified": "2026-10-21T18:25:20.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Askemi Wang",
+      "url": "https://wangyier.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/site/favicon.ico"><link rel="canonical" href="https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
 
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
 
-<link rel="canonical" href="https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/">
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
 
+        try {
+          const data = JSON.parse(itemStr)
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/","path":"/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/","title":"Notes on Machine Learning and Deep Learning and Reinforcement Learning"}</script>
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Notes on Machine Learning and Deep Learning and Reinforcement Learning | The Great Library</title>
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
 
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
-<script src="/js/third-party/search/local-search.js" defer></script>
-
-
-
-
-  <script src="/js/third-party/fancybox.js" defer></script>
-
-  <script src="/js/third-party/pace.js" defer></script>
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js" defer></script>
-
-
-<!-- 页面点击小红心特效 -->
-<script type="text/javascript" src="/js/love.js"></script>
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">The Great Library</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-graph"><a href="/graph/" rel="section"><i class="fa fa-project-diagram fa-fw"></i>Graph</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-      <div class="search-header">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="search-input-container">
-          <input autocomplete="off" autocapitalize="off" maxlength="80"
-                placeholder="Searching..." spellcheck="false"
-                type="search" class="search-input">
-        </div>
-        <span class="popup-btn-close" role="button">
-          <i class="fa fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="search-result-container">
-        <div class="search-result-icon">
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</header>
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#reference-notice"><span class="nav-text">0. Reference &amp; Notice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-text">0.1 References</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repository"><span class="nav-text">0.2 Repository</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#machine-learning"><span class="nav-text">1. Machine Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning"><span class="nav-text">2. Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#preparation"><span class="nav-text">2.1 Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-miniconda"><span class="nav-text">2.1.1 Install MiniConda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#install-for-windows"><span class="nav-text">2.1.1.1 Install for Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configuration-for-gitbash"><span class="nav-text">2.1.1.2 Configuration for
-GitBash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#initialize-a-new-env"><span class="nav-text">2.1.2.3 Initialize a New Env</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-a-deep-learning-framework"><span class="nav-text">2.1.2 Install a Deep Learning
-Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ideal-installation-of-d2l-package"><span class="nav-text">2.1.2.1 Ideal Installation of
-d2l package</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actual-installation"><span class="nav-text">2.1.2.2 Actual Installation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-the-notebook"><span class="nav-text">2.1.3 Open the Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notational-conventions"><span class="nav-text">2.1.4 Notational Conventions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#preliminaries"><span class="nav-text">2.2 Preliminaries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-manipulation"><span class="nav-text">2.2.1 Data Manipulation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#start-with-tensor"><span class="nav-text">2.2.1.1 Start with Tensor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-processing"><span class="nav-text">2.2.2 Data Processing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-algebra"><span class="nav-text">2.2.3 Linear Algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calculus"><span class="nav-text">2.2.4 Calculus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#probability-and-statistics"><span class="nav-text">2.2.5 Probability and
-Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#documentation"><span class="nav-text">2.2.6 Documentation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reinforcement-learning"><span class="nav-text">3. Reinforcement Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#preparation-1"><span class="nav-text">3.1 Preparation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts"><span class="nav-text">3.2 Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-grid-world-example"><span class="nav-text">3.2.1 A Grid World Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-action"><span class="nav-text">3.2.2 State &amp; Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-transition"><span class="nav-text">3.2.3 State Transition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#policy"><span class="nav-text">3.2.4 Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reward"><span class="nav-text">3.2.5 Reward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trajectories-returns-and-episodes"><span class="nav-text">3.2.6 Trajectories, Returns
-and Episodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markov-decision-processes"><span class="nav-text">3.2.7 Markov Decision Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qa"><span class="nav-text">3.2.8 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-equation"><span class="nav-text">3.3 Bellman Equation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#returns"><span class="nav-text">3.3.1 returns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calculate-returns"><span class="nav-text">3.3.2 Calculate Returns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state-value"><span class="nav-text">3.3.3 State Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bellman-equation-1"><span class="nav-text">3.3.4 Bellman Equation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bellman-equation-derive"><span class="nav-text">3.3.4.1 Bellman Equation: Derive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bellman-equation-matrix-vector-form"><span class="nav-text">3.3.4.2 Bellman Equation:
-Matrix-Vector Form</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bellman-equation-solve-the-state-values"><span class="nav-text">3.3.4.3 Bellman
-Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
-      src="/images/avatar/avatar.png">
-  <p class="site-author-name" itemprop="name">Askemi Wang</p>
-  <div class="site-description" itemprop="description">Personal notes of everything.</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">57</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">106</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
-
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar/avatar.png">
-      <meta itemprop="name" content="Askemi Wang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The Great Library">
-      <meta itemprop="description" content="Personal notes of everything.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Notes on Machine Learning and Deep Learning and Reinforcement Learning | The Great Library">
-      <meta itemprop="description" content="Theory of Machine Learning &amp; Deep Learning &amp; Reinforcement Learning">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Notes on Machine Learning and Deep Learning and Reinforcement Learning
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2026-07-27 13:56:56" itemprop="dateCreated datePublished" datetime="2026-07-27T13:56:56+08:00">2026-07-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-22 02:25:20" itemprop="dateModified" datetime="2026-10-22T02:25:20+08:00">2026-10-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-            <div class="post-description">Theory of Machine Learning & Deep Learning & Reinforcement Learning</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="reference-notice">0. Reference &amp; Notice</h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Notes on Machine Learning and Deep Learning and Reinforcement Learning',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Notes on Machine Learning and Deep Learning and Reinforcement Learning</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Notes on Machine Learning and Deep Learning and Reinforcement Learning</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-27T05:56:56.000Z" title="Created 2026-07-27 13:56:56">2026-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-10-21T18:25:20.000Z" title="Updated 2026-10-22 02:25:20">2026-10-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/tech/">Tech</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="reference-notice">0. Reference &amp; Notice</h1>
 <h2 id="references">0.1 References</h2>
 <p>Learning Path Reference: <a
 target="_blank" rel="noopener" href="https://www.zhihu.com/question/667435151/answer/1935385587625465167">Machine
@@ -445,169 +328,161 @@ exit the environment, run <code>conda deactivate</code>.</p></li>
 <h3 id="notational-conventions">2.1.4 Notational Conventions</h3>
 <p><strong>Numerical Objects</strong></p>
 <ul>
-<li><span class="math inline"><em>x</em></span>: a scalar</li>
-<li><span class="math inline"><strong>x</strong></span>: a vector</li>
-<li><span class="math inline"><strong>X</strong></span>: a matrix</li>
-<li><span class="math inline">X</span>: a general tensor</li>
-<li><span class="math inline"><strong>I</strong></span>: the identity
-matrix (of some given dimension), i.e., a square matrix with 1 on all
-diagonal entries and 0 on all off-diagonals</li>
-<li><span
-class="math inline"><em>x</em><sub><em>i</em></sub>, [<strong>x</strong>]<sub><em>i</em></sub></span>:
-the <span class="math inline"><em>i</em><sup>th</sup></span> element of
-vector <span class="math inline"><strong>x</strong></span></li>
-<li><span
-class="math inline"><em>x</em><sub><em>i</em><em>j</em></sub>, <em>x</em><sub><em>i</em>, <em>j</em></sub>, [<strong>X</strong>]<sub><em>i</em><em>j</em></sub>, [<strong>X</strong>]<sub><em>i</em>, <em>j</em></sub></span>:
-the element of matrix <span
-class="math inline"><strong>X</strong></span> at row <span
-class="math inline"><em>i</em></span> and column <span
-class="math inline"><em>j</em></span>.</li>
+<li><span class="math inline">\(x\)</span>: a scalar</li>
+<li><span class="math inline">\(\mathbf{x}\)</span>: a vector</li>
+<li><span class="math inline">\(\mathbf{X}\)</span>: a matrix</li>
+<li><span class="math inline">\(\mathsf{X}\)</span>: a general
+tensor</li>
+<li><span class="math inline">\(\mathbf{I}\)</span>: the identity matrix
+(of some given dimension), i.e., a square matrix with 1 on all diagonal
+entries and 0 on all off-diagonals</li>
+<li><span class="math inline">\(x_i, [\mathbf{x}]_i\)</span>: the <span
+class="math inline">\(i^{\text{th}}\)</span> element of vector <span
+class="math inline">\(\mathbf{x}\)</span></li>
+<li><span class="math inline">\(x_{ij}, x_{i,j}, [\mathbf{X}]_{ij},
+[\mathbf{X}]_{i,j}\)</span>: the element of matrix <span
+class="math inline">\(\mathbf{X}\)</span> at row <span
+class="math inline">\(i\)</span> and column <span
+class="math inline">\(j\)</span>.</li>
 </ul>
 <p><strong>Set Theory</strong></p>
 <ul>
-<li><span class="math inline">𝒳</span>: a set</li>
-<li><span class="math inline">ℤ</span>: the set of integers</li>
-<li><span class="math inline">ℤ<sup>+</sup></span>: the set of positive
+<li><span class="math inline">\(\mathcal{X}\)</span>: a set</li>
+<li><span class="math inline">\(\mathbb{Z}\)</span>: the set of
 integers</li>
-<li><span class="math inline">ℝ</span>: the set of real numbers</li>
-<li><span class="math inline">ℝ<sup><em>n</em></sup></span>: the set of
-<span class="math inline"><em>n</em></span>-dimensional vectors of real
+<li><span class="math inline">\(\mathbb{Z}^+\)</span>: the set of
+positive integers</li>
+<li><span class="math inline">\(\mathbb{R}\)</span>: the set of real
 numbers</li>
-<li><span
-class="math inline">ℝ<sup><em>a</em> × <em>b</em></sup></span>: The set
-of matrices of real numbers with <span
-class="math inline"><em>a</em></span> rows and <span
-class="math inline"><em>b</em></span> columns</li>
-<li><span class="math inline">|𝒳|</span>: cardinality (number of
-elements) of set <span class="math inline">𝒳</span></li>
-<li><span class="math inline">𝒜 ∪ ℬ</span>: union of sets <span
-class="math inline">𝒜</span> and <span class="math inline">ℬ</span></li>
-<li><span class="math inline">𝒜 ∩ ℬ</span>: intersection of sets <span
-class="math inline">𝒜</span> and <span class="math inline">ℬ</span></li>
-<li><span class="math inline">𝒜 \ ℬ</span>: set subtraction of <span
-class="math inline">ℬ</span> from <span class="math inline">𝒜</span>
-(contains only those elements of <span class="math inline">𝒜</span> that
-do not belong to <span class="math inline">ℬ</span>)</li>
+<li><span class="math inline">\(\mathbb{R}^n\)</span>: the set of <span
+class="math inline">\(n\)</span>-dimensional vectors of real
+numbers</li>
+<li><span class="math inline">\(\mathbb{R}^{a \times b}\)</span>: The
+set of matrices of real numbers with <span
+class="math inline">\(a\)</span> rows and <span
+class="math inline">\(b\)</span> columns</li>
+<li><span class="math inline">\(|\mathcal{X}|\)</span>: cardinality
+(number of elements) of set <span
+class="math inline">\(\mathcal{X}\)</span></li>
+<li><span class="math inline">\(\mathcal{A} \cup \mathcal{B}\)</span>:
+union of sets <span class="math inline">\(\mathcal{A}\)</span> and <span
+class="math inline">\(\mathcal{B}\)</span></li>
+<li><span class="math inline">\(\mathcal{A} \cap \mathcal{B}\)</span>:
+intersection of sets <span class="math inline">\(\mathcal{A}\)</span>
+and <span class="math inline">\(\mathcal{B}\)</span></li>
+<li><span class="math inline">\(\mathcal{A} \setminus
+\mathcal{B}\)</span>: set subtraction of <span
+class="math inline">\(\mathcal{B}\)</span> from <span
+class="math inline">\(\mathcal{A}\)</span> (contains only those elements
+of <span class="math inline">\(\mathcal{A}\)</span> that do not belong
+to <span class="math inline">\(\mathcal{B}\)</span>)</li>
 </ul>
 <p><strong>Functions and Operators</strong></p>
 <ul>
-<li><span class="math inline"><em>f</em>(⋅)</span>: a function</li>
-<li><span class="math inline">log (⋅)</span>: the natural logarithm
-(base <span class="math inline"><em>e</em></span>)</li>
-<li><span class="math inline">log<sub>2</sub>(⋅)</span>: logarithm to
+<li><span class="math inline">\(f(\cdot)\)</span>: a function</li>
+<li><span class="math inline">\(\log(\cdot)\)</span>: the natural
+logarithm (base <span class="math inline">\(e\)</span>)</li>
+<li><span class="math inline">\(\log_2(\cdot)\)</span>: logarithm to
 base 2</li>
-<li><span class="math inline">exp (⋅)</span>: the exponential
+<li><span class="math inline">\(\exp(\cdot)\)</span>: the exponential
 function</li>
-<li><span class="math inline"><strong>1</strong>(⋅)</span>: the
+<li><span class="math inline">\(\mathbf{1}(\cdot)\)</span>: the
 indicator function; evaluates to 1 if the boolean argument is true, and
 0 otherwise</li>
-<li><span
-class="math inline"><strong>1</strong><sub>𝒳</sub>(<em>z</em>)</span>:
+<li><span class="math inline">\(\mathbf{1}_{\mathcal{X}}(z)\)</span>:
 the set-membership indicator function; evaluates to 1 if the element
-<span class="math inline"><em>z</em></span> belongs to the set <span
-class="math inline">𝒳</span> and 0 otherwise</li>
-<li><span class="math inline">(⋅)<sup>⊤</sup></span>: transpose of a
+<span class="math inline">\(z\)</span> belongs to the set <span
+class="math inline">\(\mathcal{X}\)</span> and 0 otherwise</li>
+<li><span class="math inline">\((\cdot)^\top\)</span>: transpose of a
 vector or a matrix</li>
-<li><span class="math inline"><strong>X</strong><sup>−1</sup></span>:
-inverse of matrix <span
-class="math inline"><strong>X</strong></span></li>
-<li><span class="math inline">⊙</span>: Hadamard (elementwise)
+<li><span class="math inline">\(\mathbf{X}^{-1}\)</span>: inverse of
+matrix <span class="math inline">\(\mathbf{X}\)</span></li>
+<li><span class="math inline">\(\odot\)</span>: Hadamard (elementwise)
 product</li>
-<li><span class="math inline">[⋅, ⋅]</span>: concatenation</li>
-<li><span class="math inline">∥ ⋅ ∥<sub><em>p</em></sub></span>: <span
-class="math inline"><em>ℓ</em><sub><em>p</em></sub></span> norm</li>
-<li><span class="math inline">∥⋅∥</span>: <span
-class="math inline"><em>ℓ</em><sub>2</sub></span> norm</li>
-<li><span
-class="math inline">⟨<strong>x</strong>, <strong>y</strong>⟩</span>:
-inner (dot) product of vectors <span
-class="math inline"><strong>x</strong></span> and <span
-class="math inline"><strong>y</strong></span></li>
-<li><span class="math inline">∑</span>: summation over a collection of
-elements</li>
-<li><span class="math inline">∏</span>: product over a collection of
-elements</li>
-<li><span class="math inline">$\stackrel{\text{def}}{=}$</span>: an
+<li><span class="math inline">\([\cdot, \cdot]\)</span>:
+concatenation</li>
+<li><span class="math inline">\(\| \cdot \|_p\)</span>: <span
+class="math inline">\(\ell_p\)</span> norm</li>
+<li><span class="math inline">\(\| \cdot \|\)</span>: <span
+class="math inline">\(\ell_2\)</span> norm</li>
+<li><span class="math inline">\(\langle \mathbf{x}, \mathbf{y}
+\rangle\)</span>: inner (dot) product of vectors <span
+class="math inline">\(\mathbf{x}\)</span> and <span
+class="math inline">\(\mathbf{y}\)</span></li>
+<li><span class="math inline">\(\sum\)</span>: summation over a
+collection of elements</li>
+<li><span class="math inline">\(\prod\)</span>: product over a
+collection of elements</li>
+<li><span class="math inline">\(\stackrel{\text{def}}{=}\)</span>: an
 equality asserted as a definition of the symbol on the left-hand
 side</li>
 </ul>
 <p><strong>Calculus</strong></p>
 <ul>
-<li><span class="math inline">$\frac{dy}{dx}$</span>: derivative of
-<span class="math inline"><em>y</em></span> with respect to <span
-class="math inline"><em>x</em></span></li>
-<li><span class="math inline">$\frac{\partial y}{\partial x}$</span>:
-partial derivative of <span class="math inline"><em>y</em></span> with
-respect to <span class="math inline"><em>x</em></span></li>
-<li><span
-class="math inline">∇<sub><strong>x</strong></sub><em>y</em></span>:
-gradient of <span class="math inline"><em>y</em></span> with respect to
-<span class="math inline"><strong>x</strong></span></li>
-<li><span
-class="math inline">∫<sub><em>a</em></sub><sup><em>b</em></sup><em>f</em>(<em>x</em>) <em>d</em><em>x</em></span>:
-definite integral of <span class="math inline"><em>f</em></span> from
-<span class="math inline"><em>a</em></span> to <span
-class="math inline"><em>b</em></span> with respect to <span
-class="math inline"><em>x</em></span></li>
-<li><span
-class="math inline">∫<em>f</em>(<em>x</em>) <em>d</em><em>x</em></span>:
-indefinite integral of <span class="math inline"><em>f</em></span> with
-respect to <span class="math inline"><em>x</em></span></li>
+<li><span class="math inline">\(\frac{dy}{dx}\)</span>: derivative of
+<span class="math inline">\(y\)</span> with respect to <span
+class="math inline">\(x\)</span></li>
+<li><span class="math inline">\(\frac{\partial y}{\partial x}\)</span>:
+partial derivative of <span class="math inline">\(y\)</span> with
+respect to <span class="math inline">\(x\)</span></li>
+<li><span class="math inline">\(\nabla_{\mathbf{x}} y\)</span>: gradient
+of <span class="math inline">\(y\)</span> with respect to <span
+class="math inline">\(\mathbf{x}\)</span></li>
+<li><span class="math inline">\(\int_{a}^{b} f(x) \, dx\)</span>:
+definite integral of <span class="math inline">\(f\)</span> from <span
+class="math inline">\(a\)</span> to <span
+class="math inline">\(b\)</span> with respect to <span
+class="math inline">\(x\)</span></li>
+<li><span class="math inline">\(\int f(x) \, dx\)</span>: indefinite
+integral of <span class="math inline">\(f\)</span> with respect to <span
+class="math inline">\(x\)</span></li>
 </ul>
 <p><strong>Probability and Information Theory</strong></p>
 <ul>
-<li><span class="math inline"><em>X</em></span>: a random variable</li>
-<li><span class="math inline"><em>P</em></span>: a probability
+<li><span class="math inline">\(X\)</span>: a random variable</li>
+<li><span class="math inline">\(P\)</span>: a probability
 distribution</li>
-<li><span class="math inline"><em>X</em> ∼ <em>P</em></span>: the random
-variable <span class="math inline"><em>X</em></span> follows
-distribution <span class="math inline"><em>P</em></span></li>
-<li><span
-class="math inline"><em>P</em>(<em>X</em> = <em>x</em>)</span>: the
-probability assigned to the event where random variable <span
-class="math inline"><em>X</em></span> takes value <span
-class="math inline"><em>x</em></span></li>
-<li><span
-class="math inline"><em>P</em>(<em>X</em> ∣ <em>Y</em>)</span>: the
-conditional probability distribution of <span
-class="math inline"><em>X</em></span> given <span
-class="math inline"><em>Y</em></span></li>
-<li><span class="math inline"><em>p</em>(⋅)</span>: a probability
-density function (PDF) associated with distribution <span
-class="math inline"><em>P</em></span></li>
-<li><span class="math inline"><em>E</em>[<em>X</em>]</span>: expectation
-of a random variable <span class="math inline"><em>X</em></span></li>
-<li><span class="math inline"><em>X</em> ⟂ <em>Y</em></span>: random
-variables <span class="math inline"><em>X</em></span> and <span
-class="math inline"><em>Y</em></span> are independent</li>
-<li><span
-class="math inline"><em>X</em> ⟂ <em>Y</em> ∣ <em>Z</em></span>: random
-variables <span class="math inline"><em>X</em></span> and <span
-class="math inline"><em>Y</em></span> are conditionally independent
-given <span class="math inline"><em>Z</em></span></li>
-<li><span class="math inline"><em>σ</em><sub><em>X</em></sub></span>:
-standard deviation of random variable <span
-class="math inline"><em>X</em></span></li>
-<li><span class="math inline">Var(<em>X</em>)</span>: variance of random
-variable <span class="math inline"><em>X</em></span>, equal to <span
-class="math inline"><em>σ</em><sub><em>X</em></sub><sup>2</sup></span></li>
-<li><span class="math inline">Cov(<em>X</em>, <em>Y</em>)</span>:
-covariance of random variables <span
-class="math inline"><em>X</em></span> and <span
-class="math inline"><em>Y</em></span></li>
-<li><span class="math inline"><em>ρ</em>(<em>X</em>, <em>Y</em>)</span>:
-the Pearson correlation coefficient between <span
-class="math inline"><em>X</em></span> and <span
-class="math inline"><em>Y</em></span>, equals <span
-class="math inline">$\frac{\text{Cov}(X,Y)}{\sigma_X
-\sigma_Y}$</span></li>
-<li><span class="math inline"><em>H</em>(<em>X</em>)</span>: entropy of
-random variable <span class="math inline"><em>X</em></span></li>
-<li><span
-class="math inline"><em>D</em><sub>KL</sub>(<em>P</em>∥<em>Q</em>)</span>:
-the KL-divergence (or relative entropy) from distribution <span
-class="math inline"><em>Q</em></span> to distribution <span
-class="math inline"><em>P</em></span></li>
+<li><span class="math inline">\(X \sim P\)</span>: the random variable
+<span class="math inline">\(X\)</span> follows distribution <span
+class="math inline">\(P\)</span></li>
+<li><span class="math inline">\(P(X=x)\)</span>: the probability
+assigned to the event where random variable <span
+class="math inline">\(X\)</span> takes value <span
+class="math inline">\(x\)</span></li>
+<li><span class="math inline">\(P(X \mid Y)\)</span>: the conditional
+probability distribution of <span class="math inline">\(X\)</span> given
+<span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(p(\cdot)\)</span>: a probability density
+function (PDF) associated with distribution <span
+class="math inline">\(P\)</span></li>
+<li><span class="math inline">\(E[X]\)</span>: expectation of a random
+variable <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(X \perp Y\)</span>: random variables
+<span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> are independent</li>
+<li><span class="math inline">\(X \perp Y \mid Z\)</span>: random
+variables <span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> are conditionally independent given
+<span class="math inline">\(Z\)</span></li>
+<li><span class="math inline">\(\sigma_X\)</span>: standard deviation of
+random variable <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(\text{Var}(X)\)</span>: variance of
+random variable <span class="math inline">\(X\)</span>, equal to <span
+class="math inline">\(\sigma_X^2\)</span></li>
+<li><span class="math inline">\(\text{Cov}(X, Y)\)</span>: covariance of
+random variables <span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(\rho(X, Y)\)</span>: the Pearson
+correlation coefficient between <span class="math inline">\(X\)</span>
+and <span class="math inline">\(Y\)</span>, equals <span
+class="math inline">\(\frac{\text{Cov}(X,Y)}{\sigma_X
+\sigma_Y}\)</span></li>
+<li><span class="math inline">\(H(X)\)</span>: entropy of random
+variable <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(D_{\text{KL}}(P \| Q)\)</span>: the
+KL-divergence (or relative entropy) from distribution <span
+class="math inline">\(Q\)</span> to distribution <span
+class="math inline">\(P\)</span></li>
 </ul>
 <h2 id="preliminaries">2.2 Preliminaries</h2>
 <p>To prepare for your dive into deep learning, we will need a few
@@ -658,11 +533,9 @@ array of numerical values.</p>
 the data, a <strong>tensor</strong> is called a
 <strong><em>vector</em></strong>. With two axes, a tensor is called a
 <strong><em>matrix</em></strong>.</p>
-<p>With <span class="math inline"><em>K</em> &gt; 2</span> axes, we drop
-the specialized names and just refer to the object as a</p>
-<p><span
-class="math inline"><em>K</em><sup><em>t</em><em>h</em></sup> − <em>o</em><em>r</em><em>d</em><em>e</em><em>r</em></span>
-tensor.</p>
+<p>With <span class="math inline">\(K &gt; 2\)</span> axes, we drop the
+specialized names and just refer to the object as a</p>
+<p><span class="math inline">\(K^{th}-order\)</span> tensor.</p>
 <p>PyTorch provides a variety of functions for creating new tensors
 prepopulated with values.</p>
 <p>For example, by invoking <code>arange(n)</code>, we can create a
@@ -721,7 +594,7 @@ cells are <mark>forbidden</mark>.</p>
 <p>There is a <mark>target</mark> cell that the robot would like to
 reach. We will use such grid world examples throughout this book since
 they are intuitive for illustrating new concepts and algorithms.</p>
-<p><img data-src="/images/article_images/rl_grid_world.png" /></p>
+<p><img src="/images/article_images/rl_grid_world.png" /></p>
 <p>The ultimate <mark>goal</mark> of the agent is to find a “good”
 policy that enables it to reach the target cell when starting from any
 initial cell.</p>
@@ -743,13 +616,14 @@ rest of the chapter are necessary.</p>
 environment.</p>
 <p>In the grid world example, the state corresponds to the agent’s
 location. Since there are nine cells, there are nine states as well.</p>
-<p>They are indexed as <span
-class="math inline"><em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub>9</sub></span></p>
+<p>They are indexed as <span class="math inline">\(s_1, s_2, . . . ,
+s_9\)</span></p>
 <p>The set of all the states is called the <mark>State Space</mark>,
 denoted as:</p>
-<p><span
-class="math inline">𝒮 = {<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub>9</sub>}</span></p>
-<p><img data-src="/images/article_images/rl_state_&amp;_action_state.png" /></p>
+<p><span class="math inline">\(\mathcal{S} = \{s_1,s_2, . . . ,
+s_9\}\)</span></p>
+<p><img
+src="/images/article_images/rl_state_&amp;_action_state.png" /></p>
 <p>For each state, the agent can take five possible
 <mark>Actions</mark>:</p>
 <ol type="1">
@@ -759,70 +633,68 @@ class="math inline">𝒮 = {<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>
 <li>moving leftward</li>
 <li>staying still</li>
 </ol>
-<p>These five actions are denoted as <span
-class="math inline"><em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a</em><sub>5</sub></span></p>
+<p>These five actions are denoted as <span class="math inline">\(a_1,
+a_2, . . . ,a_5\)</span></p>
 <p>The set of all actions is called the <mark>Action Space</mark>,
 denoted as:</p>
-<p><span
-class="math inline">𝒜 = {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ..., <em>a</em><sub>5</sub>}</span></p>
+<p><span class="math inline">\(\mathcal{A} = \{a_1,a_2, . . . ,
+a_5\}\)</span></p>
 <p>Different states can have different action spaces.</p>
-<p><img data-src="/images/article_images/rl_state_&amp;_action_action.png" /></p>
+<p><img
+src="/images/article_images/rl_state_&amp;_action_action.png" /></p>
 <p>For instance, considering that taking <span
-class="math inline"><em>a</em><sub>1</sub></span> or <span
-class="math inline"><em>a</em><sub>4</sub></span> in state <span
-class="math inline"><em>s</em><sub>1</sub></span> would lead to a
-collision with the boundary, we can set the action space for state <span
-class="math inline"><em>s</em><sub>1</sub></span> as:</p>
-<p><span
-class="math inline">𝒜<sub>(<em>s</em><sub>1</sub>)</sub> = {<em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>, <em>a</em><sub>5</sub>}</span></p>
+class="math inline">\(a_1\)</span> or <span
+class="math inline">\(a_4\)</span> in state <span
+class="math inline">\(s_1\)</span> would lead to a collision with the
+boundary, we can set the action space for state <span
+class="math inline">\(s_1\)</span> as:</p>
+<p><span class="math inline">\(\mathcal{A}_{(s_1)} = \{a_2, a_3,
+a_5\}\)</span></p>
 <p>It is considered as the most general case for all <span
-class="math inline"><em>i</em></span> :</p>
-<p><span
-class="math inline">𝒜<sub>(<em>s</em><sub><em>i</em></sub>)</sub> = {<em>a</em><sub>1</sub>, ...<em>a</em><sub>5</sub>}</span></p>
+class="math inline">\(i\)</span> :</p>
+<p><span class="math inline">\(\mathcal{A}_{(s_i)} = \{a_1,...
+a_5\}\)</span></p>
 <h3 id="state-transition">3.2.3 State Transition</h3>
 <p>When taking an action, the agent may move from one state to
 another.</p>
 <p>Such a process is called <mark>State Transition</mark>.</p>
 <p>For example, if the agent is in state <span
-class="math inline"><em>s</em><sub>1</sub></span> and selects action
-<span class="math inline"><em>a</em><sub>2</sub></span> (that is, moving
-rightward), then the agent moves to state <span
-class="math inline"><em>s</em><sub>2</sub></span>. Such a process can be
-expressed as:</p>
-<p><span class="math inline">$s_1 \overset{a_2}\rightarrow
-s_2$</span></p>
+class="math inline">\(s_1\)</span> and selects action <span
+class="math inline">\(a_2\)</span> (that is, moving rightward), then the
+agent moves to state <span class="math inline">\(s_2\)</span>. Such a
+process can be expressed as:</p>
+<p><span class="math inline">\(s_1 \overset{a_2}\rightarrow
+s_2\)</span></p>
 <p>2 important examples:</p>
 <ol type="1">
 <li><p>What’s the next <mark>state</mark> when when the agent attempts
 to go beyond the boundary, for example, taking action <span
-class="math inline"><em>a</em><sub>1</sub></span> in state <span
-class="math inline"><em>s</em><sub>1</sub></span>?</p>
+class="math inline">\(a_1\)</span> in state <span
+class="math inline">\(s_1\)</span>?</p>
 <p>The answer is that the agent will be bounced back because it is
 impossible for the agent to exit the state space. Hence, we have:</p>
-<p><span class="math inline">$s_1 \overset{a_1}\rightarrow
-s_1$</span></p></li>
+<p><span class="math inline">\(s_1 \overset{a_1}\rightarrow
+s_1\)</span></p></li>
 <li><p>What is the next state when the agent attempts to enter a
 <mark>forbidden cell</mark>, for example, taking action <span
-class="math inline"><em>a</em><sub>2</sub></span> in state <span
-class="math inline"><em>s</em><sub>5</sub></span>?</p>
+class="math inline">\(a_2\)</span> in state <span
+class="math inline">\(s_5\)</span>?</p>
 <p>Two different scenarios may be encountered.</p>
 <ul>
-<li><p>Scenario 1: Although <span
-class="math inline"><em>s</em><sub>6</sub></span> is forbidden, it is
-still accessible.</p>
+<li><p>Scenario 1: Although <span class="math inline">\(s_6\)</span> is
+forbidden, it is still accessible.</p>
 <p>In this case, the next state is <span
-class="math inline"><em>s</em><sub>6</sub></span>; hence, the state
-transition process is:</p>
-<p><span class="math inline">$s_5 \overset{a_2}\rightarrow
-s_6$</span></p></li>
-<li><p>Scenario 2: <span
-class="math inline"><em>s</em><sub>6</sub></span> is <mark>not
+class="math inline">\(s_6\)</span>; hence, the state transition process
+is:</p>
+<p><span class="math inline">\(s_5 \overset{a_2}\rightarrow
+s_6\)</span></p></li>
+<li><p>Scenario 2: <span class="math inline">\(s_6\)</span> is <mark>not
 accessible</mark> because, for example, it is surrounded by walls.</p>
 <p>In this case, the agent is bounced back to <span
-class="math inline"><em>s</em><sub>5</sub></span> if it attempts to move
-rightward; hence, the state transition process is:</p>
-<p><span class="math inline">$s_5 \overset{a_2}\rightarrow
-s_5$</span></p></li>
+class="math inline">\(s_5\)</span> if it attempts to move rightward;
+hence, the state transition process is:</p>
+<p><span class="math inline">\(s_5 \overset{a_2}\rightarrow
+s_5\)</span></p></li>
 </ul></li>
 </ol>
 <p>Which scenario should we consider? The answer depends on the physical
@@ -848,100 +720,94 @@ state.</p>
 <thead>
 <tr>
 <th></th>
-<th><span
-class="math inline"><em>a</em><sub>1</sub>(<em>u</em><em>p</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>2</sub>(<em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>3</sub>(<em>d</em><em>o</em><em>w</em><em>n</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>4</sub>(<em>l</em><em>e</em><em>f</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</em><em>l</em>)</span></th>
+<th><span class="math inline">\(a_1(upward)\)</span></th>
+<th><span class="math inline">\(a_2(rightward)\)</span></th>
+<th><span class="math inline">\(a_3(downward)\)</span></th>
+<th><span class="math inline">\(a_4(leftward)\)</span></th>
+<th><span class="math inline">\(a_5(still)\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline">\(s_1\)</span></td>
+<td><span class="math inline">\(s_1\)</span></td>
+<td><span class="math inline">\(s_2\)</span></td>
+<td><span class="math inline">\(s_4\)</span></td>
+<td><span class="math inline">\(s_1\)</span></td>
+<td><span class="math inline">\(s_1\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline">\(s_2\)</span></td>
+<td><span class="math inline">\(s_2\)</span></td>
+<td><span class="math inline">\(s_3\)</span></td>
+<td><span class="math inline">\(s_5\)</span></td>
+<td><span class="math inline">\(s_1\)</span></td>
+<td><span class="math inline">\(s_2\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline">\(s_3\)</span></td>
+<td><span class="math inline">\(s_3\)</span></td>
+<td><span class="math inline">\(s_3\)</span></td>
+<td><span class="math inline">\(s_6\)</span></td>
+<td><span class="math inline">\(s_2\)</span></td>
+<td><span class="math inline">\(s_3\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline">\(s_4\)</span></td>
+<td><span class="math inline">\(s_1\)</span></td>
+<td><span class="math inline">\(s_5\)</span></td>
+<td><span class="math inline">\(s_7\)</span></td>
+<td><span class="math inline">\(s_4\)</span></td>
+<td><span class="math inline">\(s_4\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline">\(s_5\)</span></td>
+<td><span class="math inline">\(s_2\)</span></td>
+<td><span class="math inline">\(s_6\)</span></td>
+<td><span class="math inline">\(s_8\)</span></td>
+<td><span class="math inline">\(s_4\)</span></td>
+<td><span class="math inline">\(s_5\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline">\(s_6\)</span></td>
+<td><span class="math inline">\(s_3\)</span></td>
+<td><span class="math inline">\(s_6\)</span></td>
+<td><span class="math inline">\(s_9\)</span></td>
+<td><span class="math inline">\(s_5\)</span></td>
+<td><span class="math inline">\(s_6\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline">\(s_7\)</span></td>
+<td><span class="math inline">\(s_4\)</span></td>
+<td><span class="math inline">\(s_8\)</span></td>
+<td><span class="math inline">\(s_7\)</span></td>
+<td><span class="math inline">\(s_7\)</span></td>
+<td><span class="math inline">\(s_7\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline">\(s_8\)</span></td>
+<td><span class="math inline">\(s_5\)</span></td>
+<td><span class="math inline">\(s_9\)</span></td>
+<td><span class="math inline">\(s_8\)</span></td>
+<td><span class="math inline">\(s_7\)</span></td>
+<td><span class="math inline">\(s_8\)</span></td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline">\(s_9\)</span></td>
+<td><span class="math inline">\(s_6\)</span></td>
+<td><span class="math inline">\(s_9\)</span></td>
+<td><span class="math inline">\(s_9\)</span></td>
+<td><span class="math inline">\(s_8\)</span></td>
+<td><span class="math inline">\(s_9\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>Mathematically, the state transition process can be described by
 <mark>conditional probabilities</mark>.</p>
-<p>For example, for <span
-class="math inline"><em>s</em><sub>1</sub></span> and <span
-class="math inline"><em>a</em><sub>2</sub></span>, the conditional
-probability distribution is:</p>
-<p><span class="math display">$$
+<p>For example, for <span class="math inline">\(s_1\)</span> and <span
+class="math inline">\(a_2\)</span>, the conditional probability
+distribution is:</p>
+<p><span class="math display">\[
 \begin{aligned}
 p(s_1\mid s_1, a_2) = 0 \\
 p(s_2\mid s_1, a_2) = 1 \\
@@ -949,19 +815,18 @@ p(s_3\mid s_1, a_2) = 0 \\
 p(s_4\mid s_1, a_2) = 0 \\
 p(s_5\mid s_1, a_2) = 0 \\
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>The tabular representation is only able to describe
 <mark>deterministic</mark> state transitions.</p>
 <p>In general, state transitions can be <mark>stochastic</mark> and must
 be described by conditional probability distributions.</p>
 <p>For instance, when random wind gusts are applied across the grid, if
-taking action <span class="math inline"><em>a</em><sub>2</sub></span> at
-<span class="math inline"><em>s</em><sub>1</sub></span>, the agent may
-be blown to <span class="math inline"><em>s</em><sub>5</sub></span>
-instead of <span class="math inline"><em>s</em><sub>2</sub></span>.</p>
-<p>We have <span
-class="math inline"><em>p</em>(<em>s</em><sub>5</sub> ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>2</sub>) &gt; 0</span>
-in this case.</p>
+taking action <span class="math inline">\(a_2\)</span> at <span
+class="math inline">\(s_1\)</span>, the agent may be blown to <span
+class="math inline">\(s_5\)</span> instead of <span
+class="math inline">\(s_2\)</span>.</p>
+<p>We have <span class="math inline">\(p(s_5\mid s_1, a_2) &gt;
+0\)</span> in this case.</p>
 <p>Nevertheless, we merely consider <mark>deterministic state</mark>
 transitions in the grid world examples for simplicity in this book.</p>
 <h3 id="policy">3.2.4 Policy</h3>
@@ -969,17 +834,16 @@ transitions in the grid world examples for simplicity in this book.</p>
 state.</p>
 <p>Intuitively, policies can be depicted as arrows. Following a policy,
 the agent can generate a trajectory starting from an initial state.</p>
-<p><img data-src="/images/article_images/rl_deterministic_policy.png" /></p>
-<p><img data-src="/images/article_images/rl_traj_from_policy.png" /></p>
+<p><img src="/images/article_images/rl_deterministic_policy.png" /></p>
+<p><img src="/images/article_images/rl_traj_from_policy.png" /></p>
 <p>Mathematically, policies can be described by conditional
 probabilities.</p>
-<p>Denote the policy as <span
-class="math inline"><em>π</em>(<em>a</em> ∣ <em>s</em>)</span>, which is
-a conditional probability distribution function defined for every
-state.</p>
-<p>For example, the policy for <span
-class="math inline"><em>s</em><sub>1</sub></span> is:</p>
-<p><span class="math display">$$
+<p>Denote the policy as <span class="math inline">\(\pi (a\mid
+s)\)</span>, which is a conditional probability distribution function
+defined for every state.</p>
+<p>For example, the policy for <span class="math inline">\(s_1\)</span>
+is:</p>
+<p><span class="math display">\[
 \begin{aligned}
 \pi (a_1\mid s_1)= 0 \\
 \pi (a_2\mid s_1)= 1 \\
@@ -987,17 +851,17 @@ class="math inline"><em>s</em><sub>1</sub></span> is:</p>
 \pi (a_4\mid s_1)= 0 \\
 \pi (a_5\mid s_1)= 0 \\
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>The above policy is <mark>deterministic</mark>. Policies may be
 <mark>stochastic</mark> in general.</p>
 <p>For example, the policy shown is stochastic: in state <span
-class="math inline"><em>s</em><sub>1</sub></span>, the agent may take
-actions to go either rightward or downward. The probabilities of taking
-these two actions are the same (both are 0.5).</p>
-<p><img data-src="/images/article_images/rl_stochastic_policy.png" /></p>
-<p>In this case, the policy for <span
-class="math inline"><em>s</em><sub>1</sub></span> is:</p>
-<p><span class="math display">$$
+class="math inline">\(s_1\)</span>, the agent may take actions to go
+either rightward or downward. The probabilities of taking these two
+actions are the same (both are 0.5).</p>
+<p><img src="/images/article_images/rl_stochastic_policy.png" /></p>
+<p>In this case, the policy for <span class="math inline">\(s_1\)</span>
+is:</p>
+<p><span class="math display">\[
 \begin{aligned}
 &amp;\pi (a_1\mid s_1)= 0 \\
 &amp;\pi (a_2\mid s_1)= 0.5 \\
@@ -1005,7 +869,7 @@ class="math inline"><em>s</em><sub>1</sub></span> is:</p>
 &amp;\pi (a_4\mid s_1)= 0 \\
 &amp;\pi (a_5\mid s_1)= 0
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>Policies represented by conditional probabilities can be stored as
 tables.</p>
 <p>Table represents the stochastic policy depicted in the figure
@@ -1022,21 +886,16 @@ above.</p>
 <thead>
 <tr>
 <th></th>
-<th><span
-class="math inline"><em>a</em><sub>1</sub>(<em>u</em><em>p</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>2</sub>(<em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>3</sub>(<em>d</em><em>o</em><em>w</em><em>n</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>4</sub>(<em>l</em><em>e</em><em>f</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</em><em>l</em>)</span></th>
+<th><span class="math inline">\(a_1(upward)\)</span></th>
+<th><span class="math inline">\(a_2(rightward)\)</span></th>
+<th><span class="math inline">\(a_3(downward)\)</span></th>
+<th><span class="math inline">\(a_4(leftward)\)</span></th>
+<th><span class="math inline">\(a_5(still)\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
+<td><span class="math inline">\(s_1\)</span></td>
 <td>0</td>
 <td>0.5</td>
 <td>0.5</td>
@@ -1044,7 +903,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
+<td><span class="math inline">\(s_2\)</span></td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -1052,7 +911,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
+<td><span class="math inline">\(s_3\)</span></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -1060,7 +919,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
+<td><span class="math inline">\(s_4\)</span></td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -1068,7 +927,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
+<td><span class="math inline">\(s_5\)</span></td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -1076,7 +935,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline">\(s_6\)</span></td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -1084,7 +943,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
+<td><span class="math inline">\(s_7\)</span></td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -1092,7 +951,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
+<td><span class="math inline">\(s_8\)</span></td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -1100,7 +959,7 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
+<td><span class="math inline">\(s_9\)</span></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -1113,14 +972,13 @@ class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</
 <p><mark>Reward</mark> is one of the most unique concepts in
 reinforcement learning.</p>
 <p>After executing an action at a state, the agent obtains a
-<mark>reward</mark>, denoted as <span
-class="math inline"><em>r</em></span>, as <mark>feedback</mark> from the
-environment.</p>
+<mark>reward</mark>, denoted as <span class="math inline">\(r\)</span>,
+as <mark>feedback</mark> from the environment.</p>
 <p>The reward is a function of the <mark>state</mark> <span
-class="math inline"><em>s</em></span> and <mark>action</mark> <span
-class="math inline"><em>a</em></span>.</p>
-<p>Hence, it is also denoted as <span
-class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>.</p>
+class="math inline">\(s\)</span> and <mark>action</mark> <span
+class="math inline">\(a\)</span>.</p>
+<p>Hence, it is also denoted as <span class="math inline">\(r(s,
+a)\)</span>.</p>
 <p>Its value can be a <mark>positive</mark> or <mark>negative</mark>
 real number or <mark>zero</mark>.</p>
 <p>Generally speaking, with a <mark>positive</mark> reward, we
@@ -1130,30 +988,27 @@ from taking that action.</p>
 <p>In the grid world example, the rewards are designed as follows:</p>
 <ul>
 <li>If the agent attempts to exit the boundary, <span
-class="math inline"><em>r</em><sub>boundary</sub> = −1</span></li>
+class="math inline">\(r_{\text{boundary}} = -1\)</span></li>
 <li>If the agent attempts to enter a forbidden cell, <span
-class="math inline"><em>r</em><sub>forbidden</sub> = −1</span></li>
+class="math inline">\(r_{\text{forbidden}} = -1\)</span></li>
 <li>If the agent reaches the target state, <span
-class="math inline"><em>r</em><sub>target</sub> = 1</span></li>
+class="math inline">\(r_{\text{target}} = 1\)</span></li>
 <li>Otherwise, the agent obtains a reward of <span
-class="math inline"><em>r</em><sub>other</sub> = 0</span></li>
+class="math inline">\(r_{\text{other}} = 0\)</span></li>
 </ul>
 <p>Special attention should be given to the target state <span
-class="math inline"><em>s</em><sub>9</sub></span>.</p>
+class="math inline">\(s_9\)</span>.</p>
 <p>The reward process does not have to terminate after the agent reaches
 s9.</p>
 <ul>
-<li>If the agent takes action <span
-class="math inline"><em>a</em><sub>5</sub></span> at <span
-class="math inline"><em>s</em><sub>9</sub></span>, the next state is
-again <span class="math inline"><em>s</em><sub>9</sub></span>, and the
-reward is <span
-class="math inline"><em>r</em><sub>target</sub> = +1</span> .</li>
-<li>If the agent takes action <span
-class="math inline"><em>a</em><sub>2</sub></span>, the next state is
-also <span class="math inline"><em>s</em><sub>9</sub></span>, but the
-reward is <span
-class="math inline"><em>r</em><sub>boundary</sub> = −1</span>.</li>
+<li>If the agent takes action <span class="math inline">\(a_5\)</span>
+at <span class="math inline">\(s_9\)</span>, the next state is again
+<span class="math inline">\(s_9\)</span>, and the reward is <span
+class="math inline">\(r_{\text{target}} = +1\)</span> .</li>
+<li>If the agent takes action <span class="math inline">\(a_2\)</span>,
+the next state is also <span class="math inline">\(s_9\)</span>, but the
+reward is <span class="math inline">\(r_{\text{boundary}} =
+-1\)</span>.</li>
 </ul>
 <p>A reward can be interpreted as a <mark>human-machine
 interface</mark>, with which we can guide the agent to behave as we
@@ -1180,17 +1035,16 @@ must consider the <mark>total reward</mark> obtained in the long
 run.</p>
 <p>An action with the greatest <mark>immediate reward</mark> may not
 lead to the greatest <mark>total reward</mark>.</p>
-<p><span class="math inline">Local Optimum ≠ Global Optimum</span></p>
+<p><span class="math inline">\(\text{Local Optimum} \neq \text{Global
+Optimum}\)</span></p>
 <p>Although intuitive, the <mark>tabular representation</mark> is only
 able to describe <mark>deterministic</mark> reward processes. A more
 general approach is to use conditional probabilities <span
-class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>
-to describe reward processes. For example, for state <span
-class="math inline"><em>s</em><sub>1</sub></span>, we have:</p>
-<p><span
-class="math inline"><em>p</em>(<em>r</em> = −1 ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>1</sub>) = 1</span></p>
-<p><span
-class="math inline"><em>p</em>(<em>r</em> ≠ −1 ∣ <em>s</em><sub>1</sub>, <em>a</em><sub>1</sub>) = 0</span></p>
+class="math inline">\(p(r\mid s, a)\)</span> to describe reward
+processes. For example, for state <span
+class="math inline">\(s_1\)</span>, we have:</p>
+<p><span class="math inline">\(p(r = -1\mid s_1, a_1)=1\)</span></p>
+<p><span class="math inline">\(p(r \neq -1\mid s_1, a_1)=0\)</span></p>
 <table>
 <colgroup>
 <col style="width: 4%" />
@@ -1203,90 +1057,85 @@ class="math inline"><em>p</em>(<em>r</em> ≠ −1 ∣ <em>s</em><sub>1<
 <thead>
 <tr>
 <th></th>
-<th><span
-class="math inline"><em>a</em><sub>1</sub>(<em>u</em><em>p</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>2</sub>(<em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>3</sub>(<em>d</em><em>o</em><em>w</em><em>n</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>4</sub>(<em>l</em><em>e</em><em>f</em><em>t</em><em>w</em><em>a</em><em>r</em><em>d</em>)</span></th>
-<th><span
-class="math inline"><em>a</em><sub>5</sub>(<em>s</em><em>t</em><em>i</em><em>l</em><em>l</em>)</span></th>
+<th><span class="math inline">\(a_1(upward)\)</span></th>
+<th><span class="math inline">\(a_2(rightward)\)</span></th>
+<th><span class="math inline">\(a_3(downward)\)</span></th>
+<th><span class="math inline">\(a_4(leftward)\)</span></th>
+<th><span class="math inline">\(a_5(still)\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline"><em>s</em><sub>1</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline">\(s_1\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
 <td>0</td>
 <td>0</td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td>0</td>
-</tr>
-<tr>
-<td><span class="math inline"><em>s</em><sub>2</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>3</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
+<td><span class="math inline">\(s_2\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
 <td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td><span class="math inline"><em>s</em><sub>4</sub></span></td>
-<td>0</td>
-<td>0</td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td>0</td>
-</tr>
-<tr>
-<td><span class="math inline"><em>s</em><sub>5</sub></span></td>
-<td>0</td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>6</sub></span></td>
+<td><span class="math inline">\(s_3\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
 <td>0</td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>target</sub></span></td>
-<td>0</td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
-</tr>
-<tr>
-<td><span class="math inline"><em>s</em><sub>7</sub></span></td>
-<td>0</td>
-<td>0</td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
-</tr>
-<tr>
-<td><span class="math inline"><em>s</em><sub>8</sub></span></td>
-<td>0</td>
-<td><span class="math inline"><em>r</em><sub>target</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
 <td>0</td>
 </tr>
 <tr>
-<td><span class="math inline"><em>s</em><sub>9</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>forbidden</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
-<td><span class="math inline"><em>r</em><sub>boundary</sub></span></td>
+<td><span class="math inline">\(s_4\)</span></td>
 <td>0</td>
-<td><span class="math inline"><em>r</em><sub>target</sub></span></td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline">\(s_5\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline">\(s_6\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{target}}\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(s_7\)</span></td>
+<td>0</td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(s_8\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{target}}\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="math inline">\(s_9\)</span></td>
+<td><span class="math inline">\(r_{\text{forbidden}}\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td><span class="math inline">\(r_{\text{boundary}}\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(r_{\text{target}}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1300,27 +1149,28 @@ and Episodes</h3>
 <p>A trajectory is a <mark>state-action-reward</mark> chain.</p>
 <p>Trajectories obtained by following two policies. The trajectories are
 indicated by red dashed lines.</p>
-<p><img data-src="/images/article_images/rl_two_trajectories.png" /></p>
+<p><img src="/images/article_images/rl_two_trajectories.png" /></p>
 <p>For example, given the policy shown in Figure (a), the agent can move
 along a trajectory as follows:</p>
-<p><span class="math inline">$s_1 \xrightarrow[r_0]{a_1} s_2
+<p><span class="math inline">\(s_1 \xrightarrow[r_0]{a_1} s_2
 \xrightarrow[r_0]{a_3} s_5 \xrightarrow[r_0]{a_3} s_8
-\xrightarrow[r_{target}]{a_2} s_9$</span></p>
+\xrightarrow[r_{target}]{a_2} s_9\)</span></p>
 <p><mark>Return</mark>:</p>
 <p>Returns are also called <strong>total rewards</strong> or cumulative
 rewards.</p>
 <p>Ther return of the trajectory above is:</p>
-<p><span class="math inline">return = 0 + 0 + 0 + 1 = 1</span></p>
+<p><span class="math inline">\(\text{return} = 0+0+0+1 = 1\)</span></p>
 <p>Returns can be used to <mark>evaluate</mark> policies.</p>
 <p>For example, we can evaluate the two policies in Figure by comparing
 their returns.</p>
 <ul>
 <li><p>Left policy: 1</p></li>
 <li><p>Right policy:</p>
-<p><span class="math inline">$s_1 \xrightarrow[r_0]{a_3} s_4
+<p><span class="math inline">\(s_1 \xrightarrow[r_0]{a_3} s_4
 \xrightarrow[{r=-1}]{a_3} s_7 \xrightarrow[r_0]{a_2} s_8
-\xrightarrow[r_{target}]{a_2} s_9$</span></p>
-<p><span class="math inline">return = 0 − 1 + 0 + 1 = 0</span></p></li>
+\xrightarrow[r_{target}]{a_2} s_9\)</span></p>
+<p><span class="math inline">\(\text{return} = 0 - 1 + 0 +1 =
+0\)</span></p></li>
 </ul>
 <p>The returns in (1.1) and (1.2) indicate that the left policy is
 better than the right one since its return is greater.</p>
@@ -1335,29 +1185,28 @@ immediate reward to avoid short-sighted decisions.</p>
 <p>Return can also be defined for <mark>infinitely long
 trajectories</mark>.</p>
 <p>For example, the trajectory in Figure stops after reaching <span
-class="math inline"><em>s</em><sub>9</sub></span>. Since the policy is
-well defined for <span
-class="math inline"><em>s</em><sub>9</sub></span>, the process does not
-have to stop after the agent reaches <span
-class="math inline"><em>s</em><sub>9</sub></span>.</p>
+class="math inline">\(s_9\)</span>. Since the policy is well defined for
+<span class="math inline">\(s_9\)</span>, the process does not have to
+stop after the agent reaches <span
+class="math inline">\(s_9\)</span>.</p>
 <p>We can design a policy so that the agent stays still after reaching
-<span class="math inline"><em>s</em><sub>9</sub></span>. Then, the
-policy would generate the following infinitely long trajectory:</p>
-<p><span class="math inline">$s_1 \xrightarrow[r_0]{a_1} s_2
+<span class="math inline">\(s_9\)</span>. Then, the policy would
+generate the following infinitely long trajectory:</p>
+<p><span class="math inline">\(s_1 \xrightarrow[r_0]{a_1} s_2
 \xrightarrow[r_0]{a_3} s_5 \xrightarrow[r_0]{a_3} s_8
 \xrightarrow[r_{target}]{a_2} s_9 \xrightarrow[{r=1}]{a_5}s_9
-\xrightarrow[{r=1}]{a_5}s_9...$</span></p>
+\xrightarrow[{r=1}]{a_5}s_9...\)</span></p>
 <p>The direct sum of the rewards along this trajectory is:</p>
-<p><span
-class="math inline"><em>r</em><em>e</em><em>t</em><em>u</em><em>r</em><em>n</em> = 0 + 0 + 0 + 1 + 1 + 1... = ∞</span></p>
+<p><span class="math inline">\(return = 0 + 0+0+1+1+1...=
+\infty\)</span></p>
 <p>Therefore, we must introduce the <mark>discounted return</mark>
 concept for infinitely long trajectories. In particular, the discounted
 return is the sum of the discounted rewards:</p>
 <p><mark>Discount Rate</mark>, <span
-class="math inline"><em>γ</em></span>:</p>
-<p><span class="math inline"><em>γ</em> ∈ (0, 1)</span></p>
+class="math inline">\(\gamma\)</span>:</p>
+<p><span class="math inline">\(\gamma \in (0,1)\)</span></p>
 <p><mark>Discounted Return</mark>:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{aligned}
 \text{Return} =&amp; \ 0 + 0 + 0 + 1 + 1 + 1 +... \\
 \text{Discounted Return} =&amp; \gamma^0\cdot0 + \gamma^1\cdot0 +
@@ -1365,24 +1214,25 @@ class="math inline"><em>γ</em></span>:</p>
 =&amp; \gamma^3(1+\gamma+\gamma^2+...)\\
 =&amp; \gamma^3\frac{1}{1-\gamma}
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>By introduce <mark>Dicounted Rate</mark>, we make the return become
 <mark>finite</mark>.</p>
 <p>And we can <mark>balance</mark> the far rewards and near rewards:</p>
-<p><span class="math inline">Discounted
-Return = <em>γ</em><sup>0</sup> ⋅ 0 + <em>γ</em><sup>1</sup> ⋅ 0 + <em>γ</em><sup>2</sup> ⋅ 0 + <em>γ</em><sup>3</sup> ⋅ 1 + <em>γ</em><sup>4</sup> ⋅ 1 + <em>γ</em><sup>5</sup> ⋅ 1 + ...</span></p>
+<p><span class="math inline">\(\text{Discounted Return} = \gamma^0\cdot0
++ \gamma^1\cdot0 + \gamma^2\cdot0 + \gamma^3\cdot1+\gamma^4\cdot1 +
+\gamma^5\cdot1+...\)</span></p>
 <ol type="1">
-<li><span class="math inline"><em>γ</em></span> is close to <span
-class="math inline">0</span>: the high-order terms like(<span
-class="math inline"><em>γ</em><sup>5</sup>, <em>γ</em><sup>6</sup>...</span>)
-will converge rapidly.</li>
-<li><span class="math inline"><em>γ</em></span> is close to <span
-class="math inline">1</span>: the high-order terms like(<span
-class="math inline"><em>γ</em><sup>5</sup>, <em>γ</em><sup>6</sup>...</span>)
-will accumulate more, and the weights will increase.</li>
+<li><span class="math inline">\(\gamma\)</span> is close to <span
+class="math inline">\(0\)</span>: the high-order terms like(<span
+class="math inline">\(\gamma^5, \gamma^6...\)</span>) will converge
+rapidly.</li>
+<li><span class="math inline">\(\gamma\)</span> is close to <span
+class="math inline">\(1\)</span>: the high-order terms like(<span
+class="math inline">\(\gamma^5, \gamma^6...\)</span>) will accumulate
+more, and the weights will increase.</li>
 </ol>
 <p>In a nutshell:</p>
-<p>By control the <span class="math inline"><em>γ</em></span>, we can
+<p>By control the <span class="math inline">\(\gamma\)</span>, we can
 determine the agent is more short-sight or long-sight</p>
 <p>Now let’s talk about Episodes:</p>
 <p>When interacting with the environment by following a policy, the
@@ -1409,31 +1259,26 @@ agent stays in this state forever. Such states are called
 <mark>absorbing states</mark>, meaning that the agent never leaves a
 state once reached.</p>
 <p>For example, for the target state <span
-class="math inline"><em>s</em><sub>9</sub></span>, we can specify <span
-class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>5</sub>}</span>
-or set <span
-class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>1</sub>, ..., <em>a</em><sub>5</sub>}
-with
-<em>p</em>(<em>s</em><sub>9</sub>|<em>s</em><sub>9</sub>, <em>a</em><sub><em>i</em></sub>) = 1
-for all i = 1,...,5</span></p></li>
+class="math inline">\(s_9\)</span>, we can specify <span
+class="math inline">\(\mathcal A(s_9)=\{a_5\}\)</span> or set <span
+class="math inline">\(\mathcal A(s_9)=\{a_1,...,a_5\}\text{ with
+}p(s_9|s_9,a_i)=1\text{ for all i = 1,...,5}\)</span></p></li>
 <li><p>Second, if we treat the terminal state as a normal state, we can
 simply set its action space to the same as the other states, and the
 agent may leave the state and come back again.</p>
-<p>Since a positive reward of <span
-class="math inline"><em>r</em> = 1</span> can be obtained every time
-<span class="math inline"><em>s</em><sub>9</sub></span> is reached, the
-agent will eventually learn to stay at <span
-class="math inline"><em>s</em><sub>9</sub></span> forever to collect
-more rewards.</p>
+<p>Since a positive reward of <span class="math inline">\(r = 1\)</span>
+can be obtained every time <span class="math inline">\(s_9\)</span> is
+reached, the agent will eventually learn to stay at <span
+class="math inline">\(s_9\)</span> forever to collect more rewards.</p>
 <p>Notably, when an episode is infinitely long and the reward received
-for staying at <span class="math inline"><em>s</em><sub>9</sub></span>
-is positive, a <mark>discount rate</mark> must be used to calculate the
+for staying at <span class="math inline">\(s_9\)</span> is positive, a
+<mark>discount rate</mark> must be used to calculate the
 <mark>discounted return</mark> to avoid
 <mark>divergence</mark>.</p></li>
 </ol>
 <p>In this book, we consider the <mark>second scenario</mark> where the
 target state is treated as a normal state whose action space is <span
-class="math inline">𝒜(<em>s</em><sub>9</sub>) = {<em>a</em><sub>1</sub>, ..., <em>a</em><sub>5</sub>}</span>.</p>
+class="math inline">\(\mathcal A(s_9)=\{a_1,...,a_5\}\)</span>.</p>
 <h3 id="markov-decision-processes">3.2.7 Markov Decision Processes</h3>
 <p><mark>Markov Decision Processes</mark> is a general framework for
 describing <mark>stochastic dynamical systems</mark>. The key
@@ -1441,54 +1286,48 @@ ingredients of an MDP are listed below:</p>
 <p><mark>Sets</mark>:</p>
 <ul>
 <li>State Space: the set of all states, denoted as <span
-class="math inline">𝒮</span>.</li>
+class="math inline">\(\mathcal S\)</span>.</li>
 <li>Action Space: a set of actions, denoted as <span
-class="math inline">𝒜(<em>s</em>)</span>, associated with each state
-<span class="math inline"><em>s</em> ∈ <em>S</em></span>.</li>
+class="math inline">\(\mathcal A(s)\)</span>, associated with each state
+<span class="math inline">\(s\in S\)</span>.</li>
 <li>Reward Set: a set of rewards, denoted as <span
-class="math inline">ℛ(<em>s</em>, <em>a</em>)</span>, associated with
-each state-action pair <span
-class="math inline">(<em>s</em>, <em>a</em>)</span></li>
+class="math inline">\(\mathcal R(s, a)\)</span>, associated with each
+state-action pair <span class="math inline">\((s,a)\)</span></li>
 </ul>
 <p><mark>Model</mark>:</p>
 <ul>
 <li>State transition probability: In state s, when taking action a, the
 probability of transitioning to state <span
-class="math inline"><em>s</em><sup>′</sup></span> is <span
-class="math inline"><em>p</em>(<em>s</em> ∣ <em>s</em>, <em>a</em>)</span>.
-It holds that <span
-class="math inline">∑<sub><em>s</em><sup>′</sup> ∈ 𝒮</sub><em>p</em>(<em>s</em><sup>′</sup> ∣ <em>s</em>, <em>a</em>) = 1</span>
-for any <span class="math inline">(<em>s</em>, <em>a</em>)</span>.</li>
+class="math inline">\(s&#39;\)</span> is <span
+class="math inline">\(p(s\mid s, a)\)</span>. It holds that <span
+class="math inline">\(\sum_{s&#39;\in\mathcal S}p(s&#39;\mid
+s,a)=1\)</span> for any <span class="math inline">\((s,a)\)</span>.</li>
 <li>Reward probability: In state s, when taking action a, the
-probability of obtaining reward <span
-class="math inline"><em>r</em></span> is <span
-class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>.
-It holds that <span
-class="math inline">∑<sub><em>r</em> ∈ ℛ</sub><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>) = 1</span>
-for any <span class="math inline">(<em>s</em>, <em>a</em>)</span>.</li>
+probability of obtaining reward <span class="math inline">\(r\)</span>
+is <span class="math inline">\(p(r\mid s, a)\)</span>. It holds that
+<span class="math inline">\(\sum_{r\in\mathcal R}p(r\mid s,a)=1\)</span>
+for any <span class="math inline">\((s,a)\)</span>.</li>
 </ul>
 <p><mark>Markov Property</mark>: The Markov Property refers to the
 <mark>memoryless</mark> property of a stochastic process.
 Mathematically, it means that:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{aligned}
 p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(s_{t+1}|s_t,a_t)\\
 p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},...,s_0,a_0) = p(r_{t+1}|s_t,a_t)
 \end{aligned}
-$$</span></p>
-<p>Where <span class="math inline"><em>t</em></span> represents the
-current time step and <span class="math inline"><em>t</em> + 1</span>
-represents the next time step. The next state or reward depends
-<mark>merely</mark> on the current state and action and is independent
-of the previous ones.</p>
+\]</span></p>
+<p>Where <span class="math inline">\(t\)</span> represents the current
+time step and <span class="math inline">\(t + 1\)</span> represents the
+next time step. The next state or reward depends <mark>merely</mark> on
+the current state and action and is independent of the previous
+ones.</p>
 <p>The Markov property is important for deriving the fundamental
 <mark>Bellman equation of MDPs</mark>.</p>
-<p>Here, <span
-class="math inline"><em>p</em>(<em>s</em>′ ∣ <em>s</em>, <em>a</em>)</span>
-and <span
-class="math inline"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>)</span>
-for all <span class="math inline">(<em>s</em>, <em>a</em>)</span> are
-called the <mark>model</mark> or <mark>dynamics</mark></p>
+<p>Here, <span class="math inline">\(p(s′\mid s, a)\)</span> and <span
+class="math inline">\(p(r\mid s, a)\)</span> for all <span
+class="math inline">\((s, a)\)</span> are called the <mark>model</mark>
+or <mark>dynamics</mark></p>
 <p>The model can be either <mark>stationary</mark> or
 <mark>nonstationary</mark> (or in other words, time-invariant or
 time-variant).</p>
@@ -1511,76 +1350,74 @@ positive?</p>
 <p><mark>A</mark>: In fact, it is the <mark>relative</mark> reward
 values instead of the <mark>absolute</mark> values that determine
 encouragement or discouragement. More specifically, we set:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{aligned}
 r_\text{boundary} =&amp; -1 \\
 r_\text{forbidden} =&amp; -1 \\
 r_\text{target} =&amp; +1 \\
 r_\text{other} =&amp; 0
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>We can also add a common value to all these values without changing
 the resulting optimal policy. For example, we can add <span
-class="math inline">−2</span> to all the rewards to obtain:</p>
-<p><span class="math display">$$
+class="math inline">\(−2\)</span> to all the rewards to obtain:</p>
+<p><span class="math display">\[
 \begin{aligned}
 r_\text{boundary} =&amp; -3 \\
 r_\text{forbidden} =&amp; -3 \\
 r_\text{target} =&amp; -1 \\
 r_\text{other} =&amp; -2
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>Although the rewards are all negative, the resulting optimal policy
 is unchanged. That is because optimal policies are
 <mark>invariant</mark> to affine transformations of the rewards.</p>
 <p><mark>Q</mark>: Is the <mark>reward</mark> a function of the next
 state?</p>
 <p><mark>A</mark>: We mentioned that the reward <span
-class="math inline"><em>r</em></span> depends only on <span
-class="math inline"><em>s</em></span> and a but not the next state <span
-class="math inline"><em>s</em><sup>′</sup></span>. However, this may be
+class="math inline">\(r\)</span> depends only on <span
+class="math inline">\(s\)</span> and a but not the next state <span
+class="math inline">\(s&#39;\)</span>. However, this may be
 <strong>counterintuitive</strong> since it is the <mark>next
 state</mark> that determines the reward in many cases.</p>
 <p>For example, the reward is <mark>positive</mark> when the next state
 is the <mark>target state</mark>. As a result, a question that naturally
 follows is whether a reward should depend on the next state.</p>
 <p>A mathematical rephrasing of this question is whether we should use
-<span
-class="math inline"><em>p</em>(<em>r</em>|<em>s</em>, <em>a</em>, <em>s</em>′)</span>
-where <span class="math inline"><em>s</em>′</span> is the next state
-rather than <span
-class="math inline"><em>p</em>(<em>r</em>|<em>s</em>, <em>a</em></span>).</p>
-<p>The answer is that <span class="math inline"><em>r</em></span>
-depends on <span class="math inline"><em>s</em></span>, <span
-class="math inline"><em>a</em></span>, and <span
-class="math inline"><em>s</em>′</span>.</p>
-<p>However, since <span class="math inline"><em>s</em>′</span> also
-depends on <span class="math inline"><em>s</em></span> and <span
-class="math inline"><em>a</em></span>, we can equivalently write <span
-class="math inline"><em>r</em></span> as a function of <span
-class="math inline"><em>s</em></span> and <span
-class="math inline"><em>a</em></span>:</p>
-<p><span
-class="math display"><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>) = ∑<sub><em>s</em><sup>′</sup></sub><em>p</em>(<em>r</em> ∣ <em>s</em>, <em>a</em>, <em>s</em><sup>′</sup>) <em>p</em>(<em>s</em><sup>′</sup> ∣ <em>s</em>, <em>a</em>)</span></p>
+<span class="math inline">\(p(r|s, a, s′)\)</span> where <span
+class="math inline">\(s′\)</span> is the next state rather than <span
+class="math inline">\(p(r|s, a\)</span>).</p>
+<p>The answer is that <span class="math inline">\(r\)</span> depends on
+<span class="math inline">\(s\)</span>, <span
+class="math inline">\(a\)</span>, and <span
+class="math inline">\(s′\)</span>.</p>
+<p>However, since <span class="math inline">\(s′\)</span> also depends
+on <span class="math inline">\(s\)</span> and <span
+class="math inline">\(a\)</span>, we can equivalently write <span
+class="math inline">\(r\)</span> as a function of <span
+class="math inline">\(s\)</span> and <span
+class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[
+p(r \mid s, a) = \sum_{s&#39;} p(r \mid s, a, s&#39;) \, p(s&#39; \mid
+s, a)
+\]</span></p>
 <p>In a stochastic environment, specified <span
-class="math inline"><em>s</em></span> and <span
-class="math inline"><em>a</em></span> might induce different <span
-class="math inline"><em>s</em><sup>′</sup></span>; The final reward is
-dependent on the previous <span
-class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em></span>
-and <span
-class="math inline"><em>a</em><em>c</em><em>t</em><em>i</em><em>o</em><em>n</em></span>
-by <mark>Total Probability Theorem</mark>.</p>
+class="math inline">\(s\)</span> and <span
+class="math inline">\(a\)</span> might induce different <span
+class="math inline">\(s&#39;\)</span>; The final reward is dependent on
+the previous <span class="math inline">\(state\)</span> and <span
+class="math inline">\(action\)</span> by <mark>Total Probability
+Theorem</mark>.</p>
 <h2 id="bellman-equation">3.3 Bellman Equation</h2>
 <h3 id="returns">3.3.1 returns</h3>
 <p>In fact, returns play a fundamental role in reinforcement learning
 since they can <mark>evaluate</mark> whether a policy is good or not.
 This is demonstrated by the following examples.</p>
-<p><img data-src="/images/article_images/rl_returns_example.png" /></p>
+<p><img src="/images/article_images/rl_returns_example.png" /></p>
 <p>There are three policies shown above. We can use <span
-class="math inline">𝓇ℯ𝓉𝓊𝓇𝓃𝓈</span> to evaluate the policies’
-quality.</p>
-<p><span class="math display">$$
+class="math inline">\(\mathcal{returns}\)</span> to evaluate the
+policies’ quality.</p>
+<p><span class="math display">\[
 \begin{align*}
 \text{return}_1 &amp;= 0+\gamma\cdot 1+\gamma^2\cdot 1+\gamma^3\cdot
 1+\cdots \\
@@ -1592,16 +1429,17 @@ quality.</p>
                  +0.5 \left(\frac{\gamma}{1-\gamma}-1\right) \\
                &amp;= \frac{\gamma}{1-\gamma}-0.5
 \end{align*}
-$$</span></p>
+\]</span></p>
 <p>So it is obviously that the qualities are:</p>
-<p><span
-class="math display">return<sub>1</sub> &gt; return<sub>3</sub> &gt; return<sub>2</sub></span></p>
+<p><span class="math display">\[
+\text{return}_1 &gt; \text{return}_3 &gt; \text{return}_2
+\]</span></p>
 <h3 id="calculate-returns">3.3.2 Calculate Returns</h3>
 <p>Here’s a state transition illustration:</p>
-<p><img data-src="/images/article_images/rl_bellman_introduction.png" /></p>
+<p><img src="/images/article_images/rl_bellman_introduction.png" /></p>
 <p>The returns from different start position can are denoted as <span
-class="math inline"><em>v</em><sub><em>i</em></sub></span>:</p>
-<p><span class="math display">$$
+class="math inline">\(v_i\)</span>:</p>
+<p><span class="math display">\[
 \begin{aligned}
 v_1 &amp;= r_1 + \gamma \cdot r_2 + \gamma^2 \cdot r_3 + \gamma^3 \cdot
 r_4 + \cdots \\
@@ -1612,9 +1450,9 @@ r_2 + \cdots \\
 v_4 &amp;= r_4 + \gamma \cdot r_1 + \gamma^2 \cdot r_2 + \gamma^3 \cdot
 r_3 + \cdots
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>Obviously, the equation can be written as:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{align*}
 v_1 &amp;= r_1 + \gamma \cdot r_2 + \gamma ^2 \cdot r_3 + \gamma ^3
 \cdot r_4 + \dots = r_1 + \gamma \left(v_2\right) \\
@@ -1625,9 +1463,9 @@ v_3 &amp;= r_3 + \gamma \cdot r_4 + \gamma ^2 \cdot r_1 + \gamma ^3
 v_4 &amp;= r_4 + \gamma \cdot r_1 + \gamma ^2 \cdot r_2 + \gamma ^3
 \cdot r_3 + \dots = r_4 + \gamma \left(v_1\right) \\
 \end{align*}
-$$</span></p>
+\]</span></p>
 <p>We can transform the equation into a matrix-vector format:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{aligned}
 \begin{pmatrix}v_1\\v_2\\v_3\\v_4\end{pmatrix}
 &amp;= \begin{pmatrix}r_1\\r_2\\r_3\\r_4\end{pmatrix}
@@ -1642,9 +1480,9 @@ $$</span></p>
 \end{pmatrix}
 \begin{pmatrix}v_1\\v_2\\v_3\\v_4\end{pmatrix}
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <p>Denote:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \Pi =
 \begin{pmatrix}
 0&amp;1&amp;0&amp;0\\
@@ -1652,104 +1490,93 @@ $$</span></p>
 0&amp;0&amp;0&amp;1\\
 1&amp;0&amp;0&amp;0
 \end{pmatrix}
-$$</span></p>
+\]</span></p>
 <p>Then we have:</p>
-<p><span
-class="math display"><strong>v</strong> = <strong>r</strong> + <em>γ</em> <em>Π</em> <strong>v</strong></span></p>
+<p><span class="math display">\[
+\mathbf{v}=\mathbf{r}+\gamma\,\Pi\,\mathbf{v}
+\]</span></p>
 <p>This is the basic bellman equation.</p>
 <p>Solution:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{aligned}
 \mathbf{v}&amp;=\mathbf{r}+\gamma\,\Pi\,\mathbf{v} \\
 \left(\mathbf{E}-\gamma\,\Pi\right)\,\mathbf{v} &amp;= \mathbf{r}\\
 \mathbf{v} &amp;= \mathbf{r}\,\left(\mathbf{E}-\gamma\,\Pi\right)^{-1}
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <h3 id="state-value">3.3.3 State Value</h3>
 <p>Consider a single-step process:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 S_t \xrightarrow{A_t} R_{t+1},S_{t+1}
-$$</span></p>
+\]</span></p>
 <ul>
-<li><span class="math inline"><em>t</em>, <em>t</em> + 1</span>:
-discrete time instances</li>
-<li><span class="math inline"><em>S</em><sub><em>t</em></sub></span>:
-State at time <span class="math inline"><em>t</em></span></li>
-<li><span class="math inline"><em>A</em><sub><em>t</em></sub></span>:
-Action at time <span class="math inline"><em>t</em></span></li>
-<li><span
-class="math inline"><em>R</em><sub><em>t</em> + 1</sub></span>: Reward
-obtained after taking action <span
-class="math inline"><em>A</em><sub><em>t</em></sub></span></li>
-<li><span
-class="math inline"><em>S</em><sub><em>t</em> + 1</sub></span>: State
-transited after taking action <span
-class="math inline"><em>A</em><sub><em>t</em></sub></span></li>
+<li><span class="math inline">\(t, t+1\)</span>: discrete time
+instances</li>
+<li><span class="math inline">\(S_t\)</span>: State at time <span
+class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(A_t\)</span>: Action at time <span
+class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(R_{t+1}\)</span>: Reward obtained after
+taking action <span class="math inline">\(A_t\)</span></li>
+<li><span class="math inline">\(S_{t+1}\)</span>: State transited after
+taking action <span class="math inline">\(A_t\)</span></li>
 </ul>
-<p>Note: the <span
-class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em> + 1</sub>, <em>S</em><sub><em>t</em> + 1</sub></span>
-are all <mark>random variables</mark>.</p>
+<p>Note: the <span class="math inline">\(S_t, A_t, R_{t+1},
+S_{t+1}\)</span> are all <mark>random variables</mark>.</p>
 <p>This step is governed by the following <mark>probability
 distribution</mark>:</p>
 <ul>
-<li><span
-class="math inline"><em>S</em><sub><em>t</em></sub> → <em>A</em><sub><em>t</em></sub></span>
-is governed by <span
-class="math inline"><em>π</em>(<em>A</em><sub><em>t</em></sub> = <em>a</em> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>)</span></li>
-<li><span
-class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub> → <em>R</em><sub><em>t</em> + 1</sub></span>
-is governed by <span
-class="math inline"><em>p</em>(<em>R</em><sub><em>t</em> + 1</sub> = <em>r</em> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>t</em>)</span></li>
-<li><span
-class="math inline"><em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub> → <em>S</em><sub><em>t</em> + 1</sub></span>
-is governed by <span
-class="math inline"><em>p</em>(<em>S</em><sub><em>t</em> + 1</sub> = <em>s</em><sup>′</sup> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>t</em>)</span></li>
+<li><span class="math inline">\(S_t\rightarrow A_t\)</span> is governed
+by <span class="math inline">\(\pi(A_t = a\mid S_t = s)\)</span></li>
+<li><span class="math inline">\(S_t, A_t\rightarrow R_{t+1}\)</span> is
+governed by <span class="math inline">\(p(R_{t+1} = r\mid S_t = s, A_t =
+t)\)</span></li>
+<li><span class="math inline">\(S_t, A_t\rightarrow S_{t+1}\)</span> is
+governed by <span class="math inline">\(p(S_{t+1} = s&#39;\mid S_t = s,
+A_t = t)\)</span></li>
 </ul>
 <p>For a multi-step trajectory:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 S_t \xrightarrow {A_t}R_{t+1}, S_{t+1}\xrightarrow {A_{t+1}}R_{t+2},
 S_{t+2}\xrightarrow {A_{t+2}}R_{t+3}, S_{t+3} \cdots
-$$</span></p>
+\]</span></p>
 <p>The discounted return is:</p>
-<p><span
-class="math display"><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em> + 1</sub> + <em>γ</em> <em>R</em><sub><em>t</em> + 2</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em> + 3</sub>…</span></p>
+<p><span class="math display">\[
+G_t = R_{t+1} + \gamma\,R_{t+2} + \gamma^2\,R_{t+3} \dots
+\]</span></p>
 <ul>
-<li><span class="math inline"><em>γ</em> ∈ (0, 1)</span> is a discount
-rate.</li>
-<li><span class="math inline"><em>G</em><sub><em>t</em></sub></span> is
-also a random variable since <span
-class="math inline"><em>R</em><sub><em>t</em> + 1</sub>, <em>R</em><sub><em>t</em> + 2</sub></span>
-are random variables.</li>
+<li><span class="math inline">\(\gamma\in\left(0,1\right)\)</span> is a
+discount rate.</li>
+<li><span class="math inline">\(G_t\)</span> is also a random variable
+since <span class="math inline">\(R_{t+1}, R_{t+2}\)</span> are random
+variables.</li>
 </ul>
 <p>The <mark>expectation</mark> ( or called expected value or mean ) of
-<span class="math inline"><em>G</em><sub><em>t</em></sub></span> is
-defined as the state-value function or simply <span
-class="math inline"><em>s</em><em>t</em><em>a</em><em>t</em><em>e</em> <em>v</em><em>a</em><em>l</em><em>u</em><em>e</em></span>:</p>
-<p><span
-class="math display"><em>v</em><sub><em>π</em></sub>(<em>s</em>) = 𝔼[<em>G</em><sub><em>t</em></sub> ∣ <em>S</em><sub><em>t</em></sub> = <em>s</em>]</span></p>
+<span class="math inline">\(G_t\)</span> is defined as the state-value
+function or simply <span class="math inline">\(state\
+value\)</span>:</p>
+<p><span class="math display">\[
+v_{\pi}(s) = \mathbb{E}\left[G_t\mid S_t=s\right]
+\]</span></p>
 <ul>
-<li>It is a function of <span class="math inline"><em>s</em></span>. It
-is a conditional expectation with the condition that the state starts
-from <span class="math inline"><em>s</em></span>.</li>
-<li>It is based on policy <span class="math inline"><em>π</em></span>.
-The <span
-class="math inline"><em>v</em><sub><em>π</em></sub>(<em>s</em>)</span>
-also can be written as <span
-class="math inline"><em>v</em>(<em>π</em>, <em>s</em>)</span>.</li>
+<li>It is a function of <span class="math inline">\(s\)</span>. It is a
+conditional expectation with the condition that the state starts from
+<span class="math inline">\(s\)</span>.</li>
+<li>It is based on policy <span class="math inline">\(\pi\)</span>. The
+<span class="math inline">\(v_{\pi}(s)\)</span> also can be written as
+<span class="math inline">\(v(\pi,s)\)</span>.</li>
 </ul>
 <p>Q: What is the difference between return and state value?</p>
 <p>A: return is result of a single trajectory, while the state value is
 a expectation of many different trajectories. If everything including
-<span
-class="math inline"><em>π</em>(<em>a</em> ∣ <em>s</em>), <em>p</em>(<em>r</em> ∣ <em>a</em>, <em>s</em>), <em>p</em>(<em>s</em><sup>′</sup> ∣ <em>a</em>, <em>s</em>)</span>
-us <mark>deterministic</mark>, the state value is the same as the
-return.</p>
-<p><img data-src="/images/article_images/rl_state_value_example.png" /></p>
+<span class="math inline">\(\pi(a\mid s), p(r\mid a, s), p(s&#39;\mid
+a,s)\)</span> us <mark>deterministic</mark>, the state value is the same
+as the return.</p>
+<p><img src="/images/article_images/rl_state_value_example.png" /></p>
 <p>The three pictures have corresponding policies <span
-class="math inline"><em>π</em><sub>1</sub>, <em>π</em><sub>2</sub>, and
-<em>π</em><sub>3</sub></span>.</p>
+class="math inline">\(\pi_1, \pi_2, \text{and }\pi_3\)</span>.</p>
 <p>The corresponding state values are:</p>
-<p><span class="math display">$$
+<p><span class="math display">\[
 \begin{aligned}
 v_{\pi}(s_1) &amp;= 0 + \gamma\cdot1+\gamma^2\cdot1\dots =
 \gamma\left(1+1^2+\dots\right) = \gamma\,\frac{1-\gamma^n}{1-\gamma} =
@@ -1759,203 +1586,517 @@ v_{\pi}(s_2) &amp;= -1 + \gamma\cdot1+\gamma^2\cdot1\dots = -1
 v_{\pi}(s_3) &amp;= 0.5 \times\frac{\gamma}{1-\gamma}+0.5 \times
 \left(\frac{\gamma}{1-\gamma}-1\right) = \frac{\gamma}{1-\gamma}-0.5
 \end{aligned}
-$$</span></p>
+\]</span></p>
 <h3 id="bellman-equation-1">3.3.4 Bellman Equation</h3>
 <h4 id="bellman-equation-derive">3.3.4.1 Bellman Equation: Derive</h4>
 <h4 id="bellman-equation-matrix-vector-form">3.3.4.2 Bellman Equation:
 Matrix-Vector Form</h4>
 <h4 id="bellman-equation-solve-the-state-values">3.3.4.3 Bellman
 Equation: Solve the State Values</h4>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer"><div class="post-copyright">
-  <p><strong>本文链接：</strong><a href="https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/">https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/</a></p>
-  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
-</div>
-
-<style>
-  .post-copyright {
-    /* 使用半透明背景，完美适配亮色和暗色模式 */
-    background: rgba(150, 150, 150, 0.1); 
-    border-left: 4px solid #37c6c0;
-    padding: 1em 1.5em;
-    margin-top: 2em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/">https://wangyier.top/notes-on-machine-learning-and-deep-learning-and-reinforcement-learning/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Reinforcement-Learning/">Reinforcement Learning</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a><a class="post-meta__tags" href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/in-context-learning/" title="In-Context Learning(ICL)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">In-Context Learning(ICL)</div></div><div class="info-2"><div class="info-item-1">In-Context Learning</div></div></div></a><a class="pagination-related" href="/swe-bench/" title="SWE-bench"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SWE-bench</div></div><div class="info-2"><div class="info-item-1">Analysis of SWE-bench</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/model-post-training/" title="Model Post-Training"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-04</div><div class="info-item-2">Model Post-Training</div></div><div class="info-2"><div class="info-item-1">Introducing Methods of Model Post-Training</div></div></div></a><a class="pagination-related" href="/from-neural-network-to-ai/" title="From Neural Network to AI"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">From Neural Network to AI</div></div><div class="info-2"><div class="info-item-1">This document records the main procedure of AI development, from neural network to CNN to RNN to Transformer to LLM to agent...</div></div></div></a><a class="pagination-related" href="/notes-on-LLM/" title="Notes on LLM"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">Notes on LLM</div></div><div class="info-2"><div class="info-item-1">Notes on LLM.</div></div></div></a><a class="pagination-related" href="/in-context-learning/" title="In-Context Learning(ICL)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-31</div><div class="info-item-2">In-Context Learning(ICL)</div></div><div class="info-2"><div class="info-item-1">In-Context Learning</div></div></div></a><a class="pagination-related" href="/mechanism-of-agent/" title="Mechanism of Agent"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-07</div><div class="info-item-2">Mechanism of Agent</div></div><div class="info-2"><div class="info-item-1">Describe the mechanism of Agent architecture.</div></div></div></a><a class="pagination-related" href="/mechanism-of-transformer/" title="Mechanism of Transformer"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-30</div><div class="info-item-2">Mechanism of Transformer</div></div><div class="info-2"><div class="info-item-1">Describe the mechanism of Transformer architecture.</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#reference-notice"><span class="toc-text">0. Reference &amp; Notice</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text">0.1 References</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#repository"><span class="toc-text">0.2 Repository</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#machine-learning"><span class="toc-text">1. Machine Learning</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deep-learning"><span class="toc-text">2. Deep Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#preparation"><span class="toc-text">2.1 Preparation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-miniconda"><span class="toc-text">2.1.1 Install MiniConda</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#install-for-windows"><span class="toc-text">2.1.1.1 Install for Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#configuration-for-gitbash"><span class="toc-text">2.1.1.2 Configuration for
+GitBash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#initialize-a-new-env"><span class="toc-text">2.1.2.3 Initialize a New Env</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-a-deep-learning-framework"><span class="toc-text">2.1.2 Install a Deep Learning
+Framework</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ideal-installation-of-d2l-package"><span class="toc-text">2.1.2.1 Ideal Installation of
+d2l package</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#actual-installation"><span class="toc-text">2.1.2.2 Actual Installation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#open-the-notebook"><span class="toc-text">2.1.3 Open the Notebook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#notational-conventions"><span class="toc-text">2.1.4 Notational Conventions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#preliminaries"><span class="toc-text">2.2 Preliminaries</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#data-manipulation"><span class="toc-text">2.2.1 Data Manipulation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#start-with-tensor"><span class="toc-text">2.2.1.1 Start with Tensor</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-processing"><span class="toc-text">2.2.2 Data Processing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linear-algebra"><span class="toc-text">2.2.3 Linear Algebra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#calculus"><span class="toc-text">2.2.4 Calculus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#probability-and-statistics"><span class="toc-text">2.2.5 Probability and
+Statistics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#documentation"><span class="toc-text">2.2.6 Documentation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reinforcement-learning"><span class="toc-text">3. Reinforcement Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#preparation-1"><span class="toc-text">3.1 Preparation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-concepts"><span class="toc-text">3.2 Basic Concepts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-grid-world-example"><span class="toc-text">3.2.1 A Grid World Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#state-action"><span class="toc-text">3.2.2 State &amp; Action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#state-transition"><span class="toc-text">3.2.3 State Transition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#policy"><span class="toc-text">3.2.4 Policy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reward"><span class="toc-text">3.2.5 Reward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trajectories-returns-and-episodes"><span class="toc-text">3.2.6 Trajectories, Returns
+and Episodes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#markov-decision-processes"><span class="toc-text">3.2.7 Markov Decision Processes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#qa"><span class="toc-text">3.2.8 Q&amp;A</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bellman-equation"><span class="toc-text">3.3 Bellman Equation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#returns"><span class="toc-text">3.3.1 returns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#calculate-returns"><span class="toc-text">3.3.2 Calculate Returns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#state-value"><span class="toc-text">3.3.3 State Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bellman-equation-1"><span class="toc-text">3.3.4 Bellman Equation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bellman-equation-derive"><span class="toc-text">3.3.4.1 Bellman Equation: Derive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bellman-equation-matrix-vector-form"><span class="toc-text">3.3.4.2 Bellman Equation:
+Matrix-Vector Form</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bellman-equation-solve-the-state-values"><span class="toc-text">3.3.4.3 Bellman
+Equation: Solve the State Values</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s2/" title="Paper Summary - Agent S2">Paper Summary - Agent S2</a><time datetime="2026-10-24T06:04:19.000Z" title="Created 2026-10-24 14:04:19">2026-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/how-to-use-personal-knowledge-graph/" title="How to Use Personal Knowledge Graph">How to Use Personal Knowledge Graph</a><time datetime="2026-10-21T15:18:14.000Z" title="Created 2026-10-21 23:18:14">2026-10-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-vista/" title="Paper Summary – VISTA">Paper Summary – VISTA</a><time datetime="2026-10-16T11:24:25.000Z" title="Created 2026-10-16 19:24:25">2026-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s/" title="Paper Summary – Agent S">Paper Summary – Agent S</a><time datetime="2026-10-13T07:31:52.000Z" title="Created 2026-10-13 15:31:52">2026-10-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my_retrospective/" title="My Retrospective">My Retrospective</a><time datetime="2026-10-05T08:22:49.000Z" title="Created 2026-10-05 16:22:49">2026-10-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
   }
-  .post-copyright a {
-    color: #37c6c0;
-    text-decoration: none;
-    font-weight: bold; /* 让链接更醒目一点 */
-  }
-  .post-copyright a:hover {
-    text-decoration: underline;
-  }
-</style>
 
-<!-- 加密文章解密后重新触发 lozad 懒加载。
-     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
-     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
-     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
-     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
-<script>
-  (function () {
-    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
-    if (!locked) return;   // 非加密文章
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
 
-    function refreshLazy() {
-      if (typeof window.lozad !== 'function') return;
-      var imgs = document.querySelectorAll('.post-body img[data-src]');
-      if (!imgs.length) return;
-      window.lozad('.post-body img').observe();
-    }
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-    var body = document.querySelector('.post-body');
-    if (body && window.MutationObserver) {
-      var pending = null;
-      new MutationObserver(function () {
-        if (pending) return;
-        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
-      }).observe(body, { childList: true, subtree: true });
-    }
-
-    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
-    var tries = 0;
-    var timer = setInterval(function () {
-      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
-        refreshLazy();
-        clearInterval(timer);
-      } else if (++tries > 150) {   // 最多约 60 秒
-        clearInterval(timer);
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
       }
-    }, 400);
-  })();
-</script>
-          <div class="post-tags">
-              <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
-              <a href="/tags/Python/" rel="tag"># Python</a>
-              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
-              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
-          </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/back-to-school-todo/" rel="prev" title="Grad Life Journal">
-                  <i class="fa fa-angle-left"></i> Grad Life Journal
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/in-context-learning/" rel="next" title="In-Context Learning(ICL)">
-                  In-Context Learning(ICL) <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-    <div class="comments utterances-container"></div>
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
-  </div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div><!-- 网站运行时间计数 -->
-<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
-  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
-</span>
-
-<script>
-  function show_runtime() {
-    window.setTimeout("show_runtime()", 1000);
-    
-    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
-    // 注意：月份是从 1 开始的，直接填数字即可
-    var BirthDay = new Date("2026/06/24 00:00:00"); 
-    
-    var today = new Date();
-    var timeold = (today.getTime() - BirthDay.getTime());
-    var msPerDay = 24 * 60 * 60 * 1000;
-    var e_daysold = timeold / msPerDay;
-    
-    var daysold = Math.floor(e_daysold);
-    var e_hrsold = (e_daysold - daysold) * 24;
-    var hrsold = Math.floor(e_hrsold);
-    var e_minsold = (e_hrsold - hrsold) * 60;
-    var minsold = Math.floor((e_hrsold - hrsold) * 60);
-    var seconds = Math.floor((e_minsold - minsold) * 60);
-    
-    // 将计算结果填入对应的 span 标签中
-    document.getElementById("runtime_days").innerHTML = daysold;
-    document.getElementById("runtime_hours").innerHTML = hrsold;
-    document.getElementById("runtime_mins").innerHTML = minsold;
-    document.getElementById("runtime_secs").innerHTML = seconds;
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
   }
-  show_runtime();
-</script>
 
-    </div>
-  </footer>
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax
+    ? loadMathjax()
+    : (document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', loadMathjax)
+        : loadMathjax())
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
 
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
+
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
+
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
+
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
+
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
+
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
+
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
+
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
+
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
+
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
+
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'AskemiWang/AskemiWang.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
-<script src="/js/third-party/comments/utterances.js" defer></script>
-
-</body>
-</html>
+  if ('Utterances' === 'Utterances' || !true) {
+    if (true) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/runtime.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>

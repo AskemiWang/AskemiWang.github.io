@@ -1,58 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/site/favicon.ico">
-  <link rel="mask-icon" href="/images/site/favicon.svg" color="#222">
-  <link rel="manifest" href="/images/site/site.webmanifest">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/pink/pace-theme-minimal.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyier.top","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="Describe the mechanism of Agent architecture.">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Mechanism of Agent | The Great Library</title><meta name="author" content="Askemi Wang"><meta name="copyright" content="Askemi Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Describe the mechanism of Agent architecture.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mechanism of Agent">
 <meta property="og:url" content="https://wangyier.top/mechanism-of-agent/index.html">
 <meta property="og:site_name" content="The Great Library">
 <meta property="og:description" content="Describe the mechanism of Agent architecture.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://wangyier.top/images/article_images/Reasoner&amp;Actor.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_tool_definition.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_tool_description.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_tool_registry.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_retry_strategies.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_memory_system.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_memory_roles.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_memory_truncate.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_RAG_pipeline.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_vec-mem_re-ranking.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_RAG_re-write.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_cost_of_context.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_lost_in_the_middle.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_assemble_algorithm.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_P&amp;E_ReAct.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_P&amp;E.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_executor_iterate.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_P&amp;E_workflow.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_task_decomposition.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_self-reflection.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_actor-critic.png">
-<meta property="og:image" content="https://wangyier.top/images/article_images/agent_Agent-as-a-tool.png">
+<meta property="og:image" content="https://wangyier.top/images/avatar/avatar.png">
 <meta property="article:published_time" content="2026-07-07T08:17:40.000Z">
 <meta property="article:modified_time" content="2026-10-21T18:25:20.000Z">
 <meta property="article:author" content="Askemi Wang">
@@ -61,340 +14,197 @@
 <meta property="article:tag" content="LLM">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wangyier.top/images/article_images/Reasoner&amp;Actor.png">
+<meta name="twitter:image" content="https://wangyier.top/images/avatar/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mechanism of Agent",
+  "url": "https://wangyier.top/mechanism-of-agent/",
+  "image": "https://wangyier.top/images/avatar/avatar.png",
+  "datePublished": "2026-07-07T08:17:40.000Z",
+  "dateModified": "2026-10-21T18:25:20.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Askemi Wang",
+      "url": "https://wangyier.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/site/favicon.ico"><link rel="canonical" href="https://wangyier.top/mechanism-of-agent/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
 
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
 
-<link rel="canonical" href="https://wangyier.top/mechanism-of-agent/">
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
 
+        try {
+          const data = JSON.parse(itemStr)
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://wangyier.top/mechanism-of-agent/","path":"/mechanism-of-agent/","title":"Mechanism of Agent"}</script>
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Mechanism of Agent | The Great Library</title>
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
 
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
-<script src="/js/third-party/search/local-search.js" defer></script>
-
-
-
-
-  <script src="/js/third-party/fancybox.js" defer></script>
-
-  <script src="/js/third-party/pace.js" defer></script>
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js" defer></script>
-
-
-<!-- 页面点击小红心特效 -->
-<script type="text/javascript" src="/js/love.js"></script>
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">The Great Library</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Better to have a bad pencil than a good memory.</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-graph"><a href="/graph/" rel="section"><i class="fa fa-project-diagram fa-fw"></i>Graph</a></li><li class="menu-item menu-item-github"><a href="https://github.com/AskemiWang" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-      <div class="search-header">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="search-input-container">
-          <input autocomplete="off" autocapitalize="off" maxlength="80"
-                placeholder="Searching..." spellcheck="false"
-                type="search" class="search-input">
-        </div>
-        <span class="popup-btn-close" role="button">
-          <i class="fa fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="search-result-container">
-        <div class="search-result-icon">
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</header>
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#short-introduction"><span class="nav-text">1. Short Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#core-loop-of-agent-react"><span class="nav-text">1.1 Core Loop of Agent (ReAct)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo-code"><span class="nav-text">1.2 Demo Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo-code-explain"><span class="nav-text">1.3 Demo Code Explain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tools-field"><span class="nav-text">1.3.1 Tools Field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function-begin"><span class="nav-text">1.3.2 Function Begin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-post-processing-phase"><span class="nav-text">1.3.3 The Post-Processing Phase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#process-msg"><span class="nav-text">1.3.4 Process msg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#append-context-example"><span class="nav-text">1.3.5 Append Context Example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#architecture"><span class="nav-text">2. Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#loop-of-agent"><span class="nav-text">2.1 Loop of Agent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pre-process-phase"><span class="nav-text">2.1.1 Pre-Process phase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#context-assembly"><span class="nav-text">2.1.2 Context Assembly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#llm-inference"><span class="nav-text">2.1.3 LLM Inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parse-route"><span class="nav-text">2.1.4 Parse &amp; Route</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#validate-authz"><span class="nav-text">2.1.5 Validate &amp; AuthZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execute-observe"><span class="nav-text">2.1.6 Execute &amp; Observe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-text">2.1.7 Finalize</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#single-agent-architecture-pattern"><span class="nav-text">2.2. Single-Agent
-architecture pattern</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#react-architecture"><span class="nav-text">2.2.1 ReAct Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#plan-execute-architecture"><span class="nav-text">2.2.2 Plan-Execute Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reasoner-actor-architecture"><span class="nav-text">2.2.3 Reasoner-Actor
-Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cot-tool-architecture"><span class="nav-text">2.2.4 CoT + Tool Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">2.2.5 Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-prompt-engineering"><span class="nav-text">2.3. Agent Prompt Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#role-definition"><span class="nav-text">2.3.1 Role Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tool-guide"><span class="nav-text">2.3.2 Tool Guide</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output-format-instruction"><span class="nav-text">2.3.3 Output Format Instruction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#behavior-constrains"><span class="nav-text">2.3.4 Behavior Constrains</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#few-shot-example"><span class="nav-text">2.3.5 Few-shot Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#safety-guardrails-and-termination-conditions"><span class="nav-text">2.4 Safety
-Guardrails and Termination Conditions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#layer_1-auto-stop-conditions"><span class="nav-text">2.4.1 Layer_1: Auto-Stop
-Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layer_2-tool-permission-grading"><span class="nav-text">2.4.2 Layer_2: Tool Permission
-Grading</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layer_3-human-in-the-loop"><span class="nav-text">2.4.3 Layer_3 Human-in-the-Loop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tool"><span class="nav-text">3. Tool</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tool-definition-schema-design"><span class="nav-text">3.1 Tool Definition &amp; Schema
-Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#anatomy-of-a-tool-definition"><span class="nav-text">3.1.1 Anatomy of a Tool
-Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-description-matters"><span class="nav-text">3.1.2 Why Description Matters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-type-system"><span class="nav-text">3.1.3 Parameter Type System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#good-schema-vs-bad-schema"><span class="nav-text">3.1.4 Good Schema vs Bad Schema</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#comparison-of-two-prevailing-tool-definition"><span class="nav-text">3.1.5 Comparison
-of Two Prevailing Tool Definition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tool-registry-discovery"><span class="nav-text">3.2 Tool Registry &amp; Discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-a-registry"><span class="nav-text">3.2.1 Why a Registry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#namespace"><span class="nav-text">3.2.2 Namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-registration-discover"><span class="nav-text">3.2.3 Dynamic Registration &amp;
-Discover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tool-selection-strategies"><span class="nav-text">3.2.3 Tool Selection Strategies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tool-metadata"><span class="nav-text">3.2.4 Tool Metadata</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#execution-orchestration-parallel-execution"><span class="nav-text">3.3 Execution
-Orchestration &amp; Parallel Execution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sequential-vs-parallel"><span class="nav-text">3.3.1 Sequential vs Parallel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dependency-graph"><span class="nav-text">3.3.2 Dependency Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#three-execution-modes"><span class="nav-text">3.3.3 Three Execution Modes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#race-pattern-and-all-pattern"><span class="nav-text">3.3.4 Race Pattern and All
-Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timeout-management"><span class="nav-text">3.3.5 Timeout Management</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-handling-retry-strategies"><span class="nav-text">3.4 Error Handling &amp; Retry
-Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#error-classification"><span class="nav-text">3.4.1 Error Classification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retry-strategies-comparison"><span class="nav-text">3.4.2 Retry Strategies
-Comparison</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-as-llm-feedback"><span class="nav-text">3.4.3 Error as LLM Feedback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#graceful-degrading"><span class="nav-text">3.4.4 Graceful Degrading</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#end-to-end-error-handling-flow"><span class="nav-text">3.5 End-to-End Error Handling
-Flow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memory"><span class="nav-text">4. Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conversation-history-short-term-memory"><span class="nav-text">4.1 Conversation History
-&amp; Short-term Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#memory-taxonomy-a-three-layer-model"><span class="nav-text">4.1.1. Memory Taxonomy: A
-Three-Layer Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-message-list-carrier-of-short-term-memory"><span class="nav-text">4.1.2 The Message
-List: Carrier of Short-term Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#truncation-strategies-when-the-conversation-gets-too-long"><span class="nav-text">4.1.3
-Truncation Strategies: When the Conversation Gets Too Long</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary-compression"><span class="nav-text">4.1.4 Summary Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-complete-workflow-from-add-to-trim"><span class="nav-text">4.1.5 A Complete Workflow
-from Add to Trim</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector-memory-long-term-storage"><span class="nav-text">4.2 Vector Memory &amp;
-Long-term Storage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-we-need-long-term-memory"><span class="nav-text">4.2.1 Why we need long-term
-memory?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#complete-vector-memory-example"><span class="nav-text">4.2.2 Complete Vector Memory
-Example</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#when-to-extract-facts"><span class="nav-text">4.2.2.1 When to extract facts?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#what-do-llm-extract"><span class="nav-text">4.2.2.2 What do LLM extract?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is-embedding"><span class="nav-text">4.2.2.3 What is embedding?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-to-use-the-vector-info"><span class="nav-text">4.2.2.4 How to use the vector
-info?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-not-just-keyword-search"><span class="nav-text">4.2.3 Why Not Just Keyword
-Search?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read-and-write-of-vector-memory"><span class="nav-text">4.2.4 Read and Write of Vector
-Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#demo-of-vector-memory-rw-operation"><span class="nav-text">4.2.4.1 Demo of Vector
-Memory R&#x2F;W Operation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crud-operations"><span class="nav-text">4.2.4.2 CRUD Operations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#episodic-vs-semantic-memory"><span class="nav-text">4.2.5 Episodic vs Semantic
-Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#features"><span class="nav-text">4.2.5.1 Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-need-this-classification"><span class="nav-text">4.2.5.2 Why Need This
-Classification ?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-retrieval-augmented-loop"><span class="nav-text">4.2.6 The Retrieval-Augmented
-Loop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rag-retrieval-augment-generate"><span class="nav-text">4.3 RAG (Retrieval Augment
-Generate)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-of-rag"><span class="nav-text">4.3.1 Intro of RAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-full-pipeline-step-by-step"><span class="nav-text">4.3.2 The Full Pipeline: Step by
-Step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retrieve-stage"><span class="nav-text">4.3.3 Retrieve Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#intro"><span class="nav-text">4.3.3.1 Intro</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rewrite-query"><span class="nav-text">4.3.3.2 Rewrite Query</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-ranking"><span class="nav-text">4.3.3.3 Re-Ranking</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#augment-stage"><span class="nav-text">4.3.4 Augment Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#augmentation-pattern"><span class="nav-text">4.3.4.1 Augmentation Pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#context-window-budgeting"><span class="nav-text">4.3.4.2 Context Window Budgeting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-citation"><span class="nav-text">4.3.4.3 Source Citation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-stage"><span class="nav-text">4.3.5 Generate Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#how-context-reduces-hallucination"><span class="nav-text">4.3.5.1 How Context Reduces
-Hallucination</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#instruction-design-for-grounded-generation"><span class="nav-text">4.3.5.2 Instruction
-Design for Grounded Generation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-memory-write-back-loop"><span class="nav-text">4.3.6 The Memory Write-back
-Loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#practical-considerations"><span class="nav-text">4.3.7 Practical Considerations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#context-window-optimization"><span class="nav-text">4.4 Context Window
-Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-1"><span class="nav-text">4.4.1 Intro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#structured-context-assembly"><span class="nav-text">4.4.2 Structured Context
-Assembly</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#the-priority-ladder-of-context"><span class="nav-text">4.4.2.1 The Priority Ladder of
-Context</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assembly-algorithm"><span class="nav-text">4.4.2.2 Assembly Algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summarization-context"><span class="nav-text">4.4.3 Summarization Context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tool-result-compression"><span class="nav-text">4.4.4 Tool Result Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relevance-based-retention"><span class="nav-text">4.4.5 Relevance-Based Retention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache-aware-context-design"><span class="nav-text">4.4.6 Cache-Aware Context
-Design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#how-llm-prompt-caching-works"><span class="nav-text">4.4.6.1 How LLM Prompt Caching
-Works</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#design-for-cacheability"><span class="nav-text">4.4.6.2 Design for Cacheability</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#token-efficient-formatting"><span class="nav-text">4.4.7 Token-Efficient
-Formatting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-context-allocation"><span class="nav-text">4.4.8 Dynamic Context
-Allocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization-checklist"><span class="nav-text">4.4.9 Optimization Checklist</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#plan"><span class="nav-text">5. Plan</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plan-execute"><span class="nav-text">5.1 Plan &amp; Execute</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-2"><span class="nav-text">5.1.1 Intro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#architecture-1"><span class="nav-text">5.1.2 Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#plan-representation"><span class="nav-text">5.1.3 Plan Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#planner-desgin"><span class="nav-text">5.1.4 Planner Desgin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-design"><span class="nav-text">5.1.5 Executor Design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replanning"><span class="nav-text">5.1.6 Replanning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#complete-work-flow"><span class="nav-text">5.1.7 Complete Work Flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task-decomposition"><span class="nav-text">5.2 Task Decomposition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-3"><span class="nav-text">5.2.1 Intro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#four-fundamental-decomposition-strategies"><span class="nav-text">5.2.2 Four
-Fundamental Decomposition Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#linear-sequential-decomposition"><span class="nav-text">5.2.2.1 Linear (Sequential)
-Decomposition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hierarchical-tree-decomposition"><span class="nav-text">5.2.2.2 Hierarchical (Tree)
-Decomposition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dependency-aware-dag-decomposition"><span class="nav-text">5.2.2.3 Dependency-Aware
-(DAG) Decomposition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#llm-driven-decomposition"><span class="nav-text">5.2.2.4 LLM-Driven Decomposition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-granularity-problem"><span class="nav-text">5.2.3 The Granularity Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dependency-detection"><span class="nav-text">5.2.4 Dependency Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parallelism"><span class="nav-text">5.2.5 Parallelism</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#common-failure-problems"><span class="nav-text">5.2.6 Common Failure Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#over-decomposition"><span class="nav-text">5.2.6.1 Over-Decomposition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#missing-dependencies"><span class="nav-text">5.2.6.2 Missing Dependencies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#phantom-dependencies"><span class="nav-text">5.2.6.3 Phantom Dependencies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-mega-task"><span class="nav-text">5.2.6.4 The Mega-Task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assuming-the-llm-will-figure-it-out"><span class="nav-text">5.2.6.5 Assuming the LLM
-Will Figure It Out</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#implementation"><span class="nav-text">5.2.7 Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#the-task-graph-data-structure"><span class="nav-text">5.2.7.1 The Task Graph Data
-Structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-decomposer-prompt-template"><span class="nav-text">5.2.7.2 The Decomposer Prompt
-Template</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-full-decomposition-execution-pipeline"><span class="nav-text">5.2.7.3 The Full
-Decomposition → Execution Pipeline</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#self-reflection"><span class="nav-text">5.3 Self-Reflection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-agent-needs-self-reflection"><span class="nav-text">5.3.1 Why Agent needs
-Self-Reflection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#three-reflection-patterns"><span class="nav-text">5.3.2 Three Reflection Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reflexion-post-execution"><span class="nav-text">5.3.2.1 Reflexion
-(Post-Execution)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#self-critique-pre-execution"><span class="nav-text">5.3.2.2 Self-Critique
-(Pre-Execution)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actor-critic-continuous"><span class="nav-text">5.3.2.3 Actor-Critic (Continuous)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-reflection-prompt"><span class="nav-text">5.3.3 The Reflection Prompt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#critic-prompt"><span class="nav-text">5.3.3.1 Critic Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#refinement-prompt"><span class="nav-text">5.3.3.2 Refinement Prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reflection-termination-condition"><span class="nav-text">5.3.3.3 Reflection Termination
-Condition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-reflection-helps-or-not"><span class="nav-text">5.3.4 When Reflection Helps or
-Not</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#connection-to-multi-agent-systems"><span class="nav-text">5.3.5 Connection to
-Multi-Agent Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#implementation-1"><span class="nav-text">5.3.6 Implementation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multi-agent"><span class="nav-text">6. Multi-Agent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-as-a-tool"><span class="nav-text">6.1 Agent-as-a-Tool</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-4"><span class="nav-text">6.1.1 Intro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#architecture-2"><span class="nav-text">6.1.2 Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#the-wrapper"><span class="nav-text">6.1.2.1 The Wrapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-orchestrators-view"><span class="nav-text">6.1.2.2 The Orchestrator’s View</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-specialist-agents-view"><span class="nav-text">6.1.2.3 The Specialist Agent’s
-View</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#common-patterns"><span class="nav-text">6.1.3 Common Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reviewer-pattern"><span class="nav-text">6.1.3.4 Reviewer Pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#verifier-pattern"><span class="nav-text">6.1.3.5 Verifier Pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delegation-pattern"><span class="nav-text">6.1.3.6 Delegation Pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#debate-pattern"><span class="nav-text">6.1.3.7 Debate Pattern</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#design-decisions"><span class="nav-text">6.1.4 Design Decisions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#how-much-context-to-pass"><span class="nav-text">6.1.4.1 How Much Context to Pass?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#structured-output"><span class="nav-text">6.1.4.2 Structured Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#timeout-and-cost-control"><span class="nav-text">6.1.4.3 Timeout and Cost Control</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#communication-between-agents"><span class="nav-text">6.2 Communication between
-Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-text">6.2.1 Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#problem-discription"><span class="nav-text">6.2.1.1 Problem Discription</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#three-dimensions-of-communication"><span class="nav-text">6.2.1.1 Three Dimensions of
-Communication</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message"><span class="nav-text">6.2.2 Message</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#the-message-data-model"><span class="nav-text">6.2.2.1 The Message Data Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#separation-of-content-and-data"><span class="nav-text">6.2.2.2 Separation of
-content and
-data</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#five-topologies"><span class="nav-text">6.2.3 Five Topologies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#point-to-point"><span class="nav-text">6.2.3.1 Point-to-Point</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hub-and-spoke"><span class="nav-text">6.2.3.2 Hub-and-Spoke</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#broadcast"><span class="nav-text">6.2.3.3 Broadcast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mesh"><span class="nav-text">6.2.3.4 Mesh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shared-blackboard"><span class="nav-text">6.2.3.5 Shared Blackboard</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#topology-comparison"><span class="nav-text">6.2.3.6 Topology Comparison</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message-passing-mechanisms"><span class="nav-text">6.2.4 Message Passing
-Mechanisms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#direct-invocation-synchronous-blocking"><span class="nav-text">6.2.4.1 Direct
-Invocation (Synchronous, Blocking)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#message-queue-asynchronous-non-blocking"><span class="nav-text">6.2.4.2 Message Queue
-(Asynchronous, Non-Blocking)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shared-memory-communication-through-memory"><span class="nav-text">6.2.4.3 Shared
-Memory (Communication Through Memory)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#event-driven-publish-subscribe"><span class="nav-text">6.2.4.4 Event-Driven
-(Publish-Subscribe)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mechanism-comparison"><span class="nav-text">6.2.4.5 Mechanism Comparison</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handoff-patterns"><span class="nav-text">6.2.5 Handoff Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#delegation"><span class="nav-text">6.2.5.1 Delegation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#escalation"><span class="nav-text">6.2.5.2 Escalation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#consultation"><span class="nav-text">6.2.5.3 Consultation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#notification"><span class="nav-text">6.2.5.4 Notification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#handoff-comparison"><span class="nav-text">6.2.5.5 Handoff Comparison</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#combination"><span class="nav-text">6.2.6 Combination</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#choose-a-topology"><span class="nav-text">6.2.6.1 Choose a Topology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#choose-a-message-passing-mechanism"><span class="nav-text">6.2.6.2 Choose a Message
-Passing Mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#choose-a-handoff"><span class="nav-text">6.2.6.3 Choose a Handoff</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#concrete-combination"><span class="nav-text">6.2.6.4 Concrete Combination</span></a></li></ol></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Askemi Wang"
-      src="/images/avatar/avatar.png">
-  <p class="site-author-name" itemprop="name">Askemi Wang</p>
-  <div class="site-description" itemprop="description">Personal notes of everything.</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">57</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">106</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/AskemiWang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AskemiWang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=askemi.wang%40gmail.com" title="E-Mail → https:&#x2F;&#x2F;mail.google.com&#x2F;mail&#x2F;?view&#x3D;cm&amp;fs&#x3D;1&amp;to&#x3D;askemi.wang@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
-
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wangyier.top/mechanism-of-agent/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar/avatar.png">
-      <meta itemprop="name" content="Askemi Wang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The Great Library">
-      <meta itemprop="description" content="Personal notes of everything.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Mechanism of Agent | The Great Library">
-      <meta itemprop="description" content="Describe the mechanism of Agent architecture.">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Mechanism of Agent
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2026-07-07 16:17:40" itemprop="dateCreated datePublished" datetime="2026-07-07T16:17:40+08:00">2026-07-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-10-22 02:25:20" itemprop="dateModified" datetime="2026-10-22T02:25:20+08:00">2026-10-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-            <div class="post-description">Describe the mechanism of Agent architecture.</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="short-introduction">1. Short Introduction</h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Mechanism of Agent',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Mechanism of Agent</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Mechanism of Agent</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-07T08:17:40.000Z" title="Created 2026-07-07 16:17:40">2026-07-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-10-21T18:25:20.000Z" title="Updated 2026-10-22 02:25:20">2026-10-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/tech/">Tech</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="short-introduction">1. Short Introduction</h1>
 <h2 id="core-loop-of-agent-react">1.1 Core Loop of Agent (ReAct)</h2>
 <p>The core concept of Agent is: LLM + Tools + Loop.</p>
 <ul>
@@ -771,7 +581,7 @@ the plan→ Regenerate Plan</p>
 Architecture</h3>
 <p>Let the smartest model think, and let the cheapest model do the
 work.</p>
-<p><img data-src="/images/article_images/Reasoner&amp;Actor.png" /></p>
+<p><img src="/images/article_images/Reasoner&amp;Actor.png" /></p>
 <table>
 <colgroup>
 <col style="width: 52%" />
@@ -873,7 +683,8 @@ get it wrong will continue to make mistakes, and may even get further
 and further astray.</p>
 <p>So it is necessary for us to build a guardrails for Agent:</p>
 <p>The three-layer guardrails model is like this :</p>
-<p><img data-src="/images/article_images/three-layer%20guardrails%20model.png" /></p>
+<p><img
+src="/images/article_images/three-layer%20guardrails%20model.png" /></p>
 <h3 id="layer_1-auto-stop-conditions">2.4.1 Layer_1: Auto-Stop
 Conditions</h3>
 <p>The design principle is: An agent that terminates early with clear
@@ -931,14 +742,14 @@ name</td>
 <p>- <code>returns_description</code> — Tells LLM what to expect
 back</p>
 <p>- <code>deprecated</code> — Flags outdated tools</p>
-<p><img data-src="/images/article_images/agent_tool_definition.png" /></p>
+<p><img src="/images/article_images/agent_tool_definition.png" /></p>
 <h3 id="why-description-matters">3.1.2 Why Description Matters</h3>
 <p>LLMs route by <strong><code>description</code></strong>, not
 <strong><code>name</code></strong>. Two tools with similar names —
 description clarity directly impacts selection accuracy.</p>
 <p><strong>Key Principle</strong>: Write descriptions as an “operation
 manual for the LLM,” not an “API doc for developers.</p>
-<p><img data-src="/images/article_images/agent_tool_description.png" /></p>
+<p><img src="/images/article_images/agent_tool_description.png" /></p>
 <h3 id="parameter-type-system">3.1.3 Parameter Type System</h3>
 <table>
 <colgroup>
@@ -1061,7 +872,7 @@ it.</strong></p>
 <li>Metadata: <code>permission</code>, <code>version</code> and
 <code>cost estimate</code></li>
 </ul>
-<p><img data-src="/images/article_images/agent_tool_registry.png" /></p>
+<p><img src="/images/article_images/agent_tool_registry.png" /></p>
 <h3 id="namespace">3.2.2 Namespace</h3>
 <p>Flat naming breaks down around 15+ tools.</p>
 <p>So it is necessary to introduce namespaces:</p>
@@ -1120,7 +931,8 @@ Discover</h3>
 ?” Then find ‘email.send’</p>
 <p>The namespace makes <code>Batch Management</code> possible.</p></li>
 </ol>
-<p><img data-src="/images/article_images/agent_dynamic_register_tool.png" /></p>
+<p><img
+src="/images/article_images/agent_dynamic_register_tool.png" /></p>
 <h3 id="tool-selection-strategies">3.2.3 Tool Selection Strategies</h3>
 <p>Core Problem: Agent has 50 tools. Before call LLM, Agent should put
 which tool-definition into prompt ?</p>
@@ -1267,10 +1079,12 @@ understanding dependencies maximizes parallelism.</strong></p>
 <h3 id="sequential-vs-parallel">3.3.1 Sequential vs Parallel</h3>
 <p>If the tools have no dependency, they can be called individually
 :</p>
-<p><img data-src="/images/article_images/agent_subquential_parallel_too_call.png" /></p>
+<p><img
+src="/images/article_images/agent_subquential_parallel_too_call.png" /></p>
 <p><code>get_weather</code> is a tool definition, but it supports
 parallel call. The call parameters of each time are different:</p>
-<p><img data-src="/images/article_images/agent_parallel_call_example.png" /></p>
+<p><img
+src="/images/article_images/agent_parallel_call_example.png" /></p>
 <p>Sequential: <code>total_time = Σ(t_i)</code></p>
 <p>Parallel (no deps): <code>total_time = max(t_i)</code></p>
 <h3 id="dependency-graph">3.3.2 Dependency Graph</h3>
@@ -1281,7 +1095,8 @@ if their dependences have conflicts.</p>
 <p>e.g. Use plan a trip to Japan Trip in Chinese (规划日本旅行):</p>
 <p>Plan Japan trip → search cities → parallel weather + attractions →
 translate</p>
-<p><img data-src="/images/article_images/agent_tool_call_DAG_example.png" /></p>
+<p><img
+src="/images/article_images/agent_tool_call_DAG_example.png" /></p>
 <p>In this example, the translate tool_call is dependent on the the
 others, so it can only be called at last.</p>
 <h3 id="three-execution-modes">3.3.3 Three Execution Modes</h3>
@@ -1323,9 +1138,11 @@ serialism</td>
 </tbody>
 </table>
 <p>Sequential and Parallel work flow is as follows:</p>
-<p><img data-src="/images/article_images/agent_sequential&amp;paralle_tool_call.png" /></p>
+<p><img
+src="/images/article_images/agent_sequential&amp;paralle_tool_call.png" /></p>
 <p>The dependency_aware structure is like this:</p>
-<p><img data-src="/images/article_images/agent_dependency_aware_tool_call.png" /></p>
+<p><img
+src="/images/article_images/agent_dependency_aware_tool_call.png" /></p>
 <h3 id="race-pattern-and-all-pattern">3.3.4 Race Pattern and All
 Pattern</h3>
 <p><code>Race Pattern</code> and <code>All Pattern</code> define “when
@@ -1356,7 +1173,8 @@ is it done”:</p>
 </tr>
 </tbody>
 </table>
-<p><img data-src="/images/article_images/agent_race&amp;all_pattern.png" /></p>
+<p><img
+src="/images/article_images/agent_race&amp;all_pattern.png" /></p>
 <h3 id="timeout-management">3.3.5 Timeout Management</h3>
 <p>Their are two types of timeout to distinguish:</p>
 <table>
@@ -1390,13 +1208,16 @@ is it done”:</p>
 Strategies</h2>
 <h3 id="error-classification">3.4.1 Error Classification</h3>
 <p>Not all errors should be retried. Classify first, then decide:</p>
-<p><img data-src="/images/article_images/agent_tool_error_taxonomy.png" /></p>
-<p>The detailed explain of these strategies: <img data-src="/images/article_images/agent_tool_call_error_type_strategy.png" /></p>
+<p><img
+src="/images/article_images/agent_tool_error_taxonomy.png" /></p>
+<p>The detailed explain of these strategies: <img
+src="/images/article_images/agent_tool_call_error_type_strategy.png" /></p>
 <h3 id="retry-strategies-comparison">3.4.2 Retry Strategies
 Comparison</h3>
-<p><img data-src="/images/article_images/agent_error_retry_strategies.png" /></p>
+<p><img
+src="/images/article_images/agent_error_retry_strategies.png" /></p>
 <p>the detailed info:</p>
-<p><img data-src="/images/article_images/agent_retry_strategies.png" /></p>
+<p><img src="/images/article_images/agent_retry_strategies.png" /></p>
 <p>What is <code>Thundering Herd</code> ?</p>
 <p>For example, 1000 visit the server at the same time, and they will
 meet the <code>rate limit error</code> at the same time because of the
@@ -1407,7 +1228,8 @@ all at exactly 1s. So the server won’t overload.</p>
 <h3 id="error-as-llm-feedback">3.4.3 Error as LLM Feedback</h3>
 <p>In an Agent, tool errors aren’t “exceptions” — they’re “signals.”</p>
 <p>Error message quality determines if the LLM can self-correct.</p>
-<p><img data-src="/images/article_images/agent_error_message_example.png" /></p>
+<p><img
+src="/images/article_images/agent_error_message_example.png" /></p>
 <p>Good error message = tells the LLM three things:</p>
 <ol type="1">
 <li>What happened — specific error code + description</li>
@@ -1417,7 +1239,8 @@ all at exactly 1s. So the server won’t overload.</p>
 <h3 id="graceful-degrading">3.4.4 Graceful Degrading</h3>
 <p>When a tool keeps failing, stubbornly retrying the same call is a bad
 strategy. We have some other strategies:</p>
-<p><img data-src="/images/article_images/agent_tool_call_degrading_strategy.png" /></p>
+<p><img
+src="/images/article_images/agent_tool_call_degrading_strategy.png" /></p>
 <h2 id="end-to-end-error-handling-flow">3.5 End-to-End Error Handling
 Flow</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1. Tool call</span><br><span class="line">   ↓</span><br><span class="line">2. Exception raised</span><br><span class="line">   ↓</span><br><span class="line">3. ErrorHandler.classify_error() — Classify</span><br><span class="line">   ↓</span><br><span class="line">4. Retryable?</span><br><span class="line">   ├─ YES → Exponential backoff retry</span><br><span class="line">   │        ├─ Success -&gt; Return result</span><br><span class="line">   │        └─ Max retries exceeded → degrade</span><br><span class="line">   └─ NO → ErrorHandler.format_error_for_llm() → Let LLM Decide</span><br><span class="line">            ├─ Fix args → Retry</span><br><span class="line">            ├─ Switch tool → Degrade</span><br><span class="line">            └─ Give up → Tell User</span><br></pre></td></tr></table></figure>
@@ -1470,7 +1293,7 @@ Three-Layer Model</h3>
 </tr>
 </tbody>
 </table>
-<p><img data-src="/images/article_images/agent_memory_system.png" /></p>
+<p><img src="/images/article_images/agent_memory_system.png" /></p>
 <p>The reason why <code>Conversation History</code> cannot be omitted is
 that each round of Agent’s ReAct Loop dependents on the
 <code>Observation</code> of the previous round.</p>
@@ -1526,7 +1349,7 @@ these but does not generate them</td>
 </tbody>
 </table>
 <p>example:</p>
-<p><img data-src="/images/article_images/agent_memory_roles.png" /></p>
+<p><img src="/images/article_images/agent_memory_roles.png" /></p>
 <h3 id="truncation-strategies-when-the-conversation-gets-too-long">4.1.3
 Truncation Strategies: When the Conversation Gets Too Long</h3>
 <p>Context windows are finite (4K / 8K / 32K / 128K / 200K tokens).
@@ -1573,7 +1396,7 @@ History <strong>will</strong> overflow. What do we cut?</p>
 </tr>
 </tbody>
 </table>
-<p><img data-src="/images/article_images/agent_memory_truncate.png" /></p>
+<p><img src="/images/article_images/agent_memory_truncate.png" /></p>
 <p>The deeper operation of truncation is :
 <code>Token-Aware Trimming</code> which means regarding token as the
 basic counting unit instead of <code>message</code> or
@@ -1617,7 +1440,8 @@ all, the bias is very huge</td>
 <p>The most practical compression strategy is a “reservoir” model: a
 summary of old conversation at the bottom, raw recent messages at the
 top:</p>
-<p><img data-src="/images/article_images/agent_memory_reservoir_model.png" /></p>
+<p><img
+src="/images/article_images/agent_memory_reservoir_model.png" /></p>
 <p>Workflow:</p>
 <ol type="1">
 <li>Trigger compression when total tokens exceed the threshold.</li>
@@ -1672,7 +1496,8 @@ layer”).</li>
 </table>
 <h3 id="a-complete-workflow-from-add-to-trim">4.1.5 A Complete Workflow
 from Add to Trim</h3>
-<p><img data-src="/images/article_images/agent_conversation_history_full_workflow.png" /></p>
+<p><img
+src="/images/article_images/agent_conversation_history_full_workflow.png" /></p>
 <h2 id="vector-memory-long-term-storage">4.2 Vector Memory &amp;
 Long-term Storage</h2>
 <h3 id="why-we-need-long-term-memory">4.2.1 Why we need long-term
@@ -1687,7 +1512,8 @@ cleaned.</p>
 <p>Long-term memory bridges this gap by storing knowledge in a way that
 survives sessions. In a nutshell , the agent will extract info from
 conversation history into long-term history.</p>
-<p><img data-src="/images/article_images/agent_long-term_memory_example.png" /></p>
+<p><img
+src="/images/article_images/agent_long-term_memory_example.png" /></p>
 <h3 id="complete-vector-memory-example">4.2.2 Complete Vector Memory
 Example</h3>
 <p>The training objective of the embedding model is to ensure that texts
@@ -1806,7 +1632,8 @@ Memory R/W Operation</h4>
 <p>The core concept of two common operations of Vector Memory are Read
 and Before. Like the example listed before, they main steps are as
 follows:</p>
-<p><img data-src="/images/article_images/agent_vector_mem_Read&amp;Write_path.png" /></p>
+<p><img
+src="/images/article_images/agent_vector_mem_Read&amp;Write_path.png" /></p>
 <p>A real item of Vector Memory’s full structure like this:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Vector Memory Entry<span class="punctuation">:</span></span><br><span class="line">	id<span class="punctuation">:</span> <span class="string">&quot;abc123def4&quot;</span></span><br><span class="line">	text<span class="punctuation">:</span> <span class="string">&quot;User lives in Tokyo&quot;</span></span><br><span class="line">	vector<span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0.023</span><span class="punctuation">,</span> <span class="number">-0.041</span><span class="punctuation">,</span> <span class="number">0.087</span><span class="punctuation">,</span> ...<span class="punctuation">]</span></span><br><span class="line">	</span><br><span class="line">	metadata<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1750723200</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user_stated&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;location&quot;</span><span class="punctuation">,</span> <span class="string">&quot;personal&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;session_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sess_42&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;confidence&quot;</span><span class="punctuation">:</span> <span class="number">0.95</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <h4 id="crud-operations">4.2.4.2 CRUD Operations</h4>
@@ -1928,13 +1755,15 @@ used the SQL tool to generate it”</td>
 </tr>
 </tbody>
 </table>
-<p><img data-src="/images/article_images/agent_episodic&amp;semantic_mem.png" /></p>
+<p><img
+src="/images/article_images/agent_episodic&amp;semantic_mem.png" /></p>
 <h3 id="the-retrieval-augmented-loop">4.2.6 The Retrieval-Augmented
 Loop</h3>
 <p>The Agent <strong>retrieves before reasoning</strong> — injecting
 relevant long-term context into the LLM’s prompt before the LLM decides
 what to do. This is the foundation of RAG.</p>
-<p><img data-src="/images/article_images/agent_retrieval_augmented_loop.png" /></p>
+<p><img
+src="/images/article_images/agent_retrieval_augmented_loop.png" /></p>
 <h2 id="rag-retrieval-augment-generate">4.3 RAG (Retrieval Augment
 Generate)</h2>
 <h3 id="intro-of-rag">4.3.1 Intro of RAG</h3>
@@ -1943,7 +1772,7 @@ Generate)</h2>
 grounds LLM responses in retrieved external knowledge. In the Agent
 context, it is the <strong>runtime integration of long-term memory into
 the decision loop</strong>.</p>
-<p><img data-src="/images/article_images/agent_RAG_pipeline.png" /></p>
+<p><img src="/images/article_images/agent_RAG_pipeline.png" /></p>
 <p><strong>Why it matters for Agents:</strong> An Agent without RAG is
 an amnesiac — it can only reason with what’s in the conversation. RAG
 makes the Agent’s memory <em>actionable</em>.</p>
@@ -1984,7 +1813,8 @@ history handles the immediate reasoning chain, and RAG brings in
 cross-session context.</p>
 <h3 id="the-full-pipeline-step-by-step">4.3.2 The Full Pipeline: Step by
 Step</h3>
-<p><img data-src="/images/article_images/agent_RAG_detailed_workflow.png" /></p>
+<p><img
+src="/images/article_images/agent_RAG_detailed_workflow.png" /></p>
 <h3 id="retrieve-stage">4.3.3 Retrieve Stage</h3>
 <h4 id="intro">4.3.3.1 Intro</h4>
 <p>The retrieval stage takes a user query and returns a ranked list of
@@ -2046,7 +1876,7 @@ abstract queries)</li>
 <p>A <strong>re-ranker</strong> (cross-encoder) reads the query and each
 candidate document <em>together</em>, scoring relevance more accurately
 — at the cost of being slower.</p>
-<p><img data-src="/images/article_images/agent_vec-mem_re-ranking.png" /></p>
+<p><img src="/images/article_images/agent_vec-mem_re-ranking.png" /></p>
 <p><strong>When to re-rank:</strong></p>
 <ul>
 <li>When precision matters more than latency</li>
@@ -2136,7 +1966,7 @@ Design for Grounded Generation</h4>
 Loop</h3>
 <p>RAG isn’t just read — it’s <strong>read + write</strong>. After
 generating, the Agent should store new knowledge:</p>
-<p><img data-src="/images/article_images/agent_RAG_re-write.png" /></p>
+<p><img src="/images/article_images/agent_RAG_re-write.png" /></p>
 <p><strong>Write-back triggers:</strong></p>
 <ol type="1">
 <li>Explicit user correction: “Actually, I prefer X not Y”</li>
@@ -2244,11 +2074,11 @@ Optimization</h2>
 <h3 id="intro-1">4.4.1 Intro</h3>
 <p>Every token in the context window has a cost, both financial and
 cognitive:</p>
-<p><img data-src="/images/article_images/agent_cost_of_context.png" /></p>
+<p><img src="/images/article_images/agent_cost_of_context.png" /></p>
 <p>The “lost in the middle” problem: LLMs pay most attention to the
 <strong>beginning</strong> and <strong>end</strong> of the context.
 Information in the middle gets ignored.</p>
-<p><img data-src="/images/article_images/agent_lost_in_the_middle.png" /></p>
+<p><img src="/images/article_images/agent_lost_in_the_middle.png" /></p>
 <p>There are many ways try to solve the problem:</p>
 <table>
 <colgroup>
@@ -2288,7 +2118,7 @@ Context</h4>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Priority 1 (ALWAYS KEEP):</span><br><span class="line">  ├── System prompt (role, safety rules, tool instructions)</span><br><span class="line">  ├── The current user query</span><br><span class="line">  └── Active tool call + its result</span><br><span class="line"></span><br><span class="line">Priority 2 (KEEP IF SPACE):</span><br><span class="line">  ├── Recent conversation turns (last 3-5 exchanges)</span><br><span class="line">  ├── RAG-retrieved documents (top-3 by relevance)</span><br><span class="line">  └── Critical memory items (user identity, ongoing task)</span><br><span class="line"></span><br><span class="line">Priority 3 (SUMMARIZE BEFORE DROPPING):</span><br><span class="line">  ├── Older conversation turns</span><br><span class="line">  └── Past tool call results</span><br><span class="line"></span><br><span class="line">Priority 4 (DROP FIRST):</span><br><span class="line">  ├── Verbose raw outputs already summarized</span><br><span class="line">  ├── Redundant system reminders</span><br><span class="line">  └── Failed/retracted tool calls</span><br></pre></td></tr></table></figure>
 <h4 id="assembly-algorithm">4.4.2.2 Assembly Algorithm</h4>
 <p>A exemplary algorithm is as follows:</p>
-<p><img data-src="/images/article_images/agent_assemble_algorithm.png" /></p>
+<p><img src="/images/article_images/agent_assemble_algorithm.png" /></p>
 <h3 id="summarization-context">4.4.3 Summarization Context</h3>
 <p>Progressive summarization is an important rule.</p>
 <p>Don’t just summarize once. Summarize in layers, each more
@@ -2331,7 +2161,8 @@ time.</p>
 <p>We should sort the messages by relevance. Then in the sliding window,
 drop the least relevant message. This is called Relevance-Based
 retention.</p>
-<p><img data-src="/images/article_images/agent_relevance_based_retention.png" /></p>
+<p><img
+src="/images/article_images/agent_relevance_based_retention.png" /></p>
 <p>But only the relevance is not enough for ranking. Some message has
 less relevance but more importance. We include a comprehensive score to
 evaluate the degree of “if message should be kept.”</p>
@@ -2510,14 +2341,14 @@ context which makes the context window bloat fast.</p></li>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">User: <span class="string">&quot;Plan a trip to Tokyo: find flights, book hotel, create itinerary&quot;</span></span><br><span class="line"></span><br><span class="line">ReAct (interleaved):</span><br><span class="line">  Think: I need to find flights. → search_flights(<span class="string">&quot;Tokyo&quot;</span>)</span><br><span class="line">  Think: Got flights. Now hotel. → search_hotels(<span class="string">&quot;Tokyo&quot;</span>)</span><br><span class="line">  Think: Hmm, I should<span class="string">&#x27;ve checked the budget first...</span></span><br><span class="line"><span class="string">  → Already wasted 2 tool calls without understanding constraints.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Plan-and-Execute:</span></span><br><span class="line"><span class="string">  Plan:</span></span><br><span class="line"><span class="string">    1. Ask user for budget and dates</span></span><br><span class="line"><span class="string">    2. Search flights within budget</span></span><br><span class="line"><span class="string">    3. Search hotels near flight arrival area</span></span><br><span class="line"><span class="string">    4. Create itinerary matching hotel location</span></span><br><span class="line"><span class="string">  Execute: step 1 → step 2 → ... (each step informs the next)</span></span><br></pre></td></tr></table></figure>
 <p>The plan acts as a <strong>global constraint</strong> — a roadmap
 that prevents the Agent from wandering off.</p>
-<p><img data-src="/images/article_images/agent_P&amp;E_ReAct.png" /></p>
+<p><img src="/images/article_images/agent_P&amp;E_ReAct.png" /></p>
 <h3 id="architecture-1">5.1.2 Architecture</h3>
 <p>P&amp;E is not a substitute of ReAct, in fact, it’s a shell of
 ReAct.</p>
 <p>The architecture of P&amp;E and be divided into 3 pieces:</p>
 <p><code>Plan</code> ➡ <code>Execute</code> ➡
 <code>Replan(If Execution Fails)</code></p>
-<p><img data-src="/images/article_images/agent_P&amp;E.png" /></p>
+<p><img src="/images/article_images/agent_P&amp;E.png" /></p>
 <p>There are three main components of this structure:</p>
 <table>
 <colgroup>
@@ -2589,7 +2420,7 @@ free. Bugs caught at execution time cost tool calls.</strong></p>
 <h3 id="executor-design">5.1.5 Executor Design</h3>
 <p>Each step receives the results of all previous steps as context:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">execute_step</span>(<span class="params">step: Step, previous_results: <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="type">Any</span>]</span>) -&gt; StepResult:</span><br><span class="line">    context = format_context(previous_results)</span><br><span class="line">    prompt = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Execute this step: <span class="subst">&#123;step.description&#125;</span></span></span><br><span class="line"><span class="string">    Expected output: <span class="subst">&#123;step.expected_output&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Context from previous steps:</span></span><br><span class="line"><span class="string">    <span class="subst">&#123;context&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use available tools to complete this step.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = agent.run(prompt)  <span class="comment"># Full ReAct loop for this single step</span></span><br><span class="line">    <span class="keyword">return</span> StepResult(step_id=step.<span class="built_in">id</span>, success=<span class="literal">True</span>, output=result)</span><br></pre></td></tr></table></figure>
-<p><img data-src="/images/article_images/agent_executor_iterate.png" /></p>
+<p><img src="/images/article_images/agent_executor_iterate.png" /></p>
 <p>In fact, the ReAct is within the P&amp;E loop.</p>
 <p>Plan-and-Execute doesn’t replace ReAct — it <strong>wraps</strong>
 it. The outer loop is P&amp;E (sequential steps), but each step
@@ -2641,7 +2472,7 @@ provides flexibility within that structure.</strong></p>
 <p>Replanning Prompt:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">The following step FAILED:</span><br><span class="line">  Step &#123;<span class="built_in">id</span>&#125;: &#123;description&#125;</span><br><span class="line">  Error: &#123;error&#125;</span><br><span class="line"></span><br><span class="line">Remaining steps that depend on this step:</span><br><span class="line">  &#123;dependent_steps&#125;</span><br><span class="line"></span><br><span class="line">Original goal: &#123;goal&#125;</span><br><span class="line"></span><br><span class="line">Generate a NEW plan <span class="keyword">for</span> the remaining work. You can:</span><br><span class="line">1. Replace the failed step with an alternative approach</span><br><span class="line">2. Reorder remaining steps</span><br><span class="line">3. Add new steps to recover</span><br><span class="line">4. Remove steps that are now irrelevant</span><br><span class="line"></span><br><span class="line">Output as a JSON array of revised steps.</span><br></pre></td></tr></table></figure>
 <h3 id="complete-work-flow">5.1.7 Complete Work Flow</h3>
-<p><img data-src="/images/article_images/agent_P&amp;E_workflow.png" /></p>
+<p><img src="/images/article_images/agent_P&amp;E_workflow.png" /></p>
 <h2 id="task-decomposition">5.2 Task Decomposition</h2>
 <h3 id="intro-3">5.2.1 Intro</h3>
 <p><strong>You can’t eat an elephant in one bite.
@@ -2659,7 +2490,7 @@ that an Agent can execute with its available tools.</p>
 performing order is always not linear.</p>
 <p>e.g.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Query: <span class="string">&quot;Analyze customer churn and recommend retention actions&quot;</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="/images/article_images/agent_task_decomposition.png" /></p>
+<p><img src="/images/article_images/agent_task_decomposition.png" /></p>
 <p>A task graph encodes:</p>
 <ul>
 <li><strong>What</strong> needs to happen (tasks)</li>
@@ -2670,7 +2501,8 @@ parallel)</li>
 <h3 id="four-fundamental-decomposition-strategies">5.2.2 Four
 Fundamental Decomposition Strategies</h3>
 <p>There are four fundamental decomposition strategies:</p>
-<p><img data-src="/images/article_images/agent_decomposition_strategies_comparison.png" /></p>
+<p><img
+src="/images/article_images/agent_decomposition_strategies_comparison.png" /></p>
 <h4 id="linear-sequential-decomposition">5.2.2.1 Linear (Sequential)
 Decomposition</h4>
 <p>The simplest strategy — break the goal into a sequence of steps where
@@ -2867,7 +2699,7 @@ before delivering to the user.</p>
 generating.</strong> Given an answer, an LLM can spot flaws more
 reliably than it can avoid making those flaws in the first place.
 Reflection exploits this asymmetry.</p>
-<p><img data-src="/images/article_images/agent_self-reflection.png" /></p>
+<p><img src="/images/article_images/agent_self-reflection.png" /></p>
 <p>Comparison:</p>
 <table>
 <colgroup>
@@ -2926,7 +2758,7 @@ generates, one “Critic” evaluates — continuously.</p>
 <p>This is the bridge to multi-agent systems. The Actor and Critic are
 two different “personas” — same LLM, different prompts:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Actor prompt:  <span class="string">&quot;You are a software engineer. Solve this problem.&quot;</span></span><br><span class="line">Critic prompt: <span class="string">&quot;You are a code reviewer. Find every flaw in this solution. Be harsh. Be specific. Suggest concrete fixes.&quot;</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="/images/article_images/agent_actor-critic.png" /></p>
+<p><img src="/images/article_images/agent_actor-critic.png" /></p>
 <p>Comparison:</p>
 <table style="width:100%;">
 <colgroup>
@@ -3118,7 +2950,7 @@ feedback.</p>
 <p><strong>Agent-as-a-Tool</strong> is the simplest multi-agent pattern:
 wrap a specialized Agent behind a tool interface so that another Agent
 can call it as part of its tool-calling loop.</p>
-<p><img data-src="/images/article_images/agent_Agent-as-a-tool.png" /></p>
+<p><img src="/images/article_images/agent_Agent-as-a-tool.png" /></p>
 <p>Why should separate the agents?</p>
 <p>Advantages:</p>
 <table>
@@ -3921,7 +3753,8 @@ no leader - whoever finds a clue speaks up.</p>
 expert needs different things → “Do you need direct collaboration?” →
 Yes → Mesh</p></li>
 </ol>
-<p><img data-src="/images/article_images/agent_communication_choose_topology.png" /></p>
+<p><img
+src="/images/article_images/agent_communication_choose_topology.png" /></p>
 <h4 id="choose-a-message-passing-mechanism">6.2.6.2 Choose a Message
 Passing Mechanism</h4>
 <p><strong><code>Decision Tree</code></strong> first question: Does the
@@ -3944,7 +3777,8 @@ subscriber is important.</p>
 <li><p><strong><code>Message Queue (Asynic)</code></strong>: Simple
 async fallback. Send now, poll later.</p></li>
 </ol>
-<p><img data-src="/images/article_images/agent_communication_choose_meg_mechanism.png" /></p>
+<p><img
+src="/images/article_images/agent_communication_choose_meg_mechanism.png" /></p>
 <h4 id="choose-a-handoff">6.2.6.3 Choose a Handoff</h4>
 <p>Core question:</p>
 <p>Who should be responsible for the sub_task when message arrives ?</p>
@@ -4042,196 +3876,569 @@ Reviewer。Orchestrator 仍然是整个部署流程的 owner。</p>
 <p>问题：加第 5 个 agent 增加 8 条新路径。谁记得住？</p>
 <p>正确：Hub-and-Spoke。4 条路径（Hub ↔︎ 每个 spoke）。除非有明确需求的
 agent pair，才开放临时 Mesh。</p>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer"><div class="post-copyright">
-  <p><strong>本文链接：</strong><a href="https://wangyier.top/mechanism-of-agent/">https://wangyier.top/mechanism-of-agent/</a></p>
-  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyier.top">The Great Library</a>！</p>
-</div>
-
-<style>
-  .post-copyright {
-    /* 使用半透明背景，完美适配亮色和暗色模式 */
-    background: rgba(150, 150, 150, 0.1); 
-    border-left: 4px solid #37c6c0;
-    padding: 1em 1.5em;
-    margin-top: 2em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    /* 删除了写死的 color: #555; 让它自动继承 Next 主题在亮/暗模式下的默认文字颜色 */
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/mechanism-of-agent/">https://wangyier.top/mechanism-of-agent/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/Large-Language-Model/">LLM</a><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a><a class="post-meta__tags" href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/git-with-proxy/" title="Git with Proxy"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Git with Proxy</div></div><div class="info-2"><div class="info-item-1">When enable the proxy, git operations sometimes fail. This article solves the problem.</div></div></div></a><a class="pagination-related" href="/SWE-bench-test/" title="SWE-bench test"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SWE-bench test</div></div><div class="info-2"><div class="info-item-1">Info of running SWE-bench.</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/model-post-training/" title="Model Post-Training"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-04</div><div class="info-item-2">Model Post-Training</div></div><div class="info-2"><div class="info-item-1">Introducing Methods of Model Post-Training</div></div></div></a><a class="pagination-related" href="/mechanism-of-transformer/" title="Mechanism of Transformer"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-30</div><div class="info-item-2">Mechanism of Transformer</div></div><div class="info-2"><div class="info-item-1">Describe the mechanism of Transformer architecture.</div></div></div></a><a class="pagination-related" href="/from-neural-network-to-ai/" title="From Neural Network to AI"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">From Neural Network to AI</div></div><div class="info-2"><div class="info-item-1">This document records the main procedure of AI development, from neural network to CNN to RNN to Transformer to LLM to agent...</div></div></div></a><a class="pagination-related" href="/paper-summary-agent-s2/" title="Paper Summary - Agent S2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-10-24</div><div class="info-item-2">Paper Summary - Agent S2</div></div><div class="info-2"><div class="info-item-1">Agent S2 uses an expert model for grounding and replans once each subgoal is completed.</div></div></div></a><a class="pagination-related" href="/notes-on-LLM/" title="Notes on LLM"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">Notes on LLM</div></div><div class="info-2"><div class="info-item-1">Notes on LLM.</div></div></div></a><a class="pagination-related" href="/paper-summary-SWE-RL/" title="Paper Summary – SWE-RL"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-04</div><div class="info-item-2">Paper Summary – SWE-RL</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution".</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">106</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#short-introduction"><span class="toc-text">1. Short Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#core-loop-of-agent-react"><span class="toc-text">1.1 Core Loop of Agent (ReAct)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo-code"><span class="toc-text">1.2 Demo Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo-code-explain"><span class="toc-text">1.3 Demo Code Explain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tools-field"><span class="toc-text">1.3.1 Tools Field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#function-begin"><span class="toc-text">1.3.2 Function Begin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-post-processing-phase"><span class="toc-text">1.3.3 The Post-Processing Phase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#process-msg"><span class="toc-text">1.3.4 Process msg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#append-context-example"><span class="toc-text">1.3.5 Append Context Example</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#architecture"><span class="toc-text">2. Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#loop-of-agent"><span class="toc-text">2.1 Loop of Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pre-process-phase"><span class="toc-text">2.1.1 Pre-Process phase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#context-assembly"><span class="toc-text">2.1.2 Context Assembly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#llm-inference"><span class="toc-text">2.1.3 LLM Inference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parse-route"><span class="toc-text">2.1.4 Parse &amp; Route</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#validate-authz"><span class="toc-text">2.1.5 Validate &amp; AuthZ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#execute-observe"><span class="toc-text">2.1.6 Execute &amp; Observe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finalize"><span class="toc-text">2.1.7 Finalize</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-agent-architecture-pattern"><span class="toc-text">2.2. Single-Agent
+architecture pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#react-architecture"><span class="toc-text">2.2.1 ReAct Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plan-execute-architecture"><span class="toc-text">2.2.2 Plan-Execute Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reasoner-actor-architecture"><span class="toc-text">2.2.3 Reasoner-Actor
+Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cot-tool-architecture"><span class="toc-text">2.2.4 CoT + Tool Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">2.2.5 Example</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#agent-prompt-engineering"><span class="toc-text">2.3. Agent Prompt Engineering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#role-definition"><span class="toc-text">2.3.1 Role Definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tool-guide"><span class="toc-text">2.3.2 Tool Guide</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output-format-instruction"><span class="toc-text">2.3.3 Output Format Instruction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#behavior-constrains"><span class="toc-text">2.3.4 Behavior Constrains</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#few-shot-example"><span class="toc-text">2.3.5 Few-shot Example</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#safety-guardrails-and-termination-conditions"><span class="toc-text">2.4 Safety
+Guardrails and Termination Conditions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#layer_1-auto-stop-conditions"><span class="toc-text">2.4.1 Layer_1: Auto-Stop
+Conditions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layer_2-tool-permission-grading"><span class="toc-text">2.4.2 Layer_2: Tool Permission
+Grading</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layer_3-human-in-the-loop"><span class="toc-text">2.4.3 Layer_3 Human-in-the-Loop</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tool"><span class="toc-text">3. Tool</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tool-definition-schema-design"><span class="toc-text">3.1 Tool Definition &amp; Schema
+Design</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#anatomy-of-a-tool-definition"><span class="toc-text">3.1.1 Anatomy of a Tool
+Definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-description-matters"><span class="toc-text">3.1.2 Why Description Matters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parameter-type-system"><span class="toc-text">3.1.3 Parameter Type System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#good-schema-vs-bad-schema"><span class="toc-text">3.1.4 Good Schema vs Bad Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comparison-of-two-prevailing-tool-definition"><span class="toc-text">3.1.5 Comparison
+of Two Prevailing Tool Definition</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tool-registry-discovery"><span class="toc-text">3.2 Tool Registry &amp; Discovery</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-a-registry"><span class="toc-text">3.2.1 Why a Registry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#namespace"><span class="toc-text">3.2.2 Namespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dynamic-registration-discover"><span class="toc-text">3.2.3 Dynamic Registration &amp;
+Discover</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tool-selection-strategies"><span class="toc-text">3.2.3 Tool Selection Strategies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tool-metadata"><span class="toc-text">3.2.4 Tool Metadata</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#execution-orchestration-parallel-execution"><span class="toc-text">3.3 Execution
+Orchestration &amp; Parallel Execution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sequential-vs-parallel"><span class="toc-text">3.3.1 Sequential vs Parallel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dependency-graph"><span class="toc-text">3.3.2 Dependency Graph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#three-execution-modes"><span class="toc-text">3.3.3 Three Execution Modes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#race-pattern-and-all-pattern"><span class="toc-text">3.3.4 Race Pattern and All
+Pattern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timeout-management"><span class="toc-text">3.3.5 Timeout Management</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#error-handling-retry-strategies"><span class="toc-text">3.4 Error Handling &amp; Retry
+Strategies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#error-classification"><span class="toc-text">3.4.1 Error Classification</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retry-strategies-comparison"><span class="toc-text">3.4.2 Retry Strategies
+Comparison</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#error-as-llm-feedback"><span class="toc-text">3.4.3 Error as LLM Feedback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#graceful-degrading"><span class="toc-text">3.4.4 Graceful Degrading</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#end-to-end-error-handling-flow"><span class="toc-text">3.5 End-to-End Error Handling
+Flow</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#memory"><span class="toc-text">4. Memory</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#conversation-history-short-term-memory"><span class="toc-text">4.1 Conversation History
+&amp; Short-term Memory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#memory-taxonomy-a-three-layer-model"><span class="toc-text">4.1.1. Memory Taxonomy: A
+Three-Layer Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-message-list-carrier-of-short-term-memory"><span class="toc-text">4.1.2 The Message
+List: Carrier of Short-term Memory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#truncation-strategies-when-the-conversation-gets-too-long"><span class="toc-text">4.1.3
+Truncation Strategies: When the Conversation Gets Too Long</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#summary-compression"><span class="toc-text">4.1.4 Summary Compression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-complete-workflow-from-add-to-trim"><span class="toc-text">4.1.5 A Complete Workflow
+from Add to Trim</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vector-memory-long-term-storage"><span class="toc-text">4.2 Vector Memory &amp;
+Long-term Storage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-we-need-long-term-memory"><span class="toc-text">4.2.1 Why we need long-term
+memory?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#complete-vector-memory-example"><span class="toc-text">4.2.2 Complete Vector Memory
+Example</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#when-to-extract-facts"><span class="toc-text">4.2.2.1 When to extract facts?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#what-do-llm-extract"><span class="toc-text">4.2.2.2 What do LLM extract?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#what-is-embedding"><span class="toc-text">4.2.2.3 What is embedding?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#how-to-use-the-vector-info"><span class="toc-text">4.2.2.4 How to use the vector
+info?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-not-just-keyword-search"><span class="toc-text">4.2.3 Why Not Just Keyword
+Search?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read-and-write-of-vector-memory"><span class="toc-text">4.2.4 Read and Write of Vector
+Memory</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#demo-of-vector-memory-rw-operation"><span class="toc-text">4.2.4.1 Demo of Vector
+Memory R&#x2F;W Operation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#crud-operations"><span class="toc-text">4.2.4.2 CRUD Operations</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#episodic-vs-semantic-memory"><span class="toc-text">4.2.5 Episodic vs Semantic
+Memory</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#features"><span class="toc-text">4.2.5.1 Features</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#why-need-this-classification"><span class="toc-text">4.2.5.2 Why Need This
+Classification ?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-retrieval-augmented-loop"><span class="toc-text">4.2.6 The Retrieval-Augmented
+Loop</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rag-retrieval-augment-generate"><span class="toc-text">4.3 RAG (Retrieval Augment
+Generate)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#intro-of-rag"><span class="toc-text">4.3.1 Intro of RAG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-full-pipeline-step-by-step"><span class="toc-text">4.3.2 The Full Pipeline: Step by
+Step</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retrieve-stage"><span class="toc-text">4.3.3 Retrieve Stage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#intro"><span class="toc-text">4.3.3.1 Intro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rewrite-query"><span class="toc-text">4.3.3.2 Rewrite Query</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#re-ranking"><span class="toc-text">4.3.3.3 Re-Ranking</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#augment-stage"><span class="toc-text">4.3.4 Augment Stage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#augmentation-pattern"><span class="toc-text">4.3.4.1 Augmentation Pattern</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#context-window-budgeting"><span class="toc-text">4.3.4.2 Context Window Budgeting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#source-citation"><span class="toc-text">4.3.4.3 Source Citation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-stage"><span class="toc-text">4.3.5 Generate Stage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-context-reduces-hallucination"><span class="toc-text">4.3.5.1 How Context Reduces
+Hallucination</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#instruction-design-for-grounded-generation"><span class="toc-text">4.3.5.2 Instruction
+Design for Grounded Generation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-memory-write-back-loop"><span class="toc-text">4.3.6 The Memory Write-back
+Loop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#practical-considerations"><span class="toc-text">4.3.7 Practical Considerations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#context-window-optimization"><span class="toc-text">4.4 Context Window
+Optimization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#intro-1"><span class="toc-text">4.4.1 Intro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#structured-context-assembly"><span class="toc-text">4.4.2 Structured Context
+Assembly</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-priority-ladder-of-context"><span class="toc-text">4.4.2.1 The Priority Ladder of
+Context</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#assembly-algorithm"><span class="toc-text">4.4.2.2 Assembly Algorithm</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#summarization-context"><span class="toc-text">4.4.3 Summarization Context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tool-result-compression"><span class="toc-text">4.4.4 Tool Result Compression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#relevance-based-retention"><span class="toc-text">4.4.5 Relevance-Based Retention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cache-aware-context-design"><span class="toc-text">4.4.6 Cache-Aware Context
+Design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-llm-prompt-caching-works"><span class="toc-text">4.4.6.1 How LLM Prompt Caching
+Works</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#design-for-cacheability"><span class="toc-text">4.4.6.2 Design for Cacheability</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#token-efficient-formatting"><span class="toc-text">4.4.7 Token-Efficient
+Formatting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dynamic-context-allocation"><span class="toc-text">4.4.8 Dynamic Context
+Allocation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#optimization-checklist"><span class="toc-text">4.4.9 Optimization Checklist</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#plan"><span class="toc-text">5. Plan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#plan-execute"><span class="toc-text">5.1 Plan &amp; Execute</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#intro-2"><span class="toc-text">5.1.1 Intro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecture-1"><span class="toc-text">5.1.2 Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plan-representation"><span class="toc-text">5.1.3 Plan Representation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#planner-desgin"><span class="toc-text">5.1.4 Planner Desgin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#executor-design"><span class="toc-text">5.1.5 Executor Design</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replanning"><span class="toc-text">5.1.6 Replanning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#complete-work-flow"><span class="toc-text">5.1.7 Complete Work Flow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#task-decomposition"><span class="toc-text">5.2 Task Decomposition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#intro-3"><span class="toc-text">5.2.1 Intro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#four-fundamental-decomposition-strategies"><span class="toc-text">5.2.2 Four
+Fundamental Decomposition Strategies</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linear-sequential-decomposition"><span class="toc-text">5.2.2.1 Linear (Sequential)
+Decomposition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hierarchical-tree-decomposition"><span class="toc-text">5.2.2.2 Hierarchical (Tree)
+Decomposition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dependency-aware-dag-decomposition"><span class="toc-text">5.2.2.3 Dependency-Aware
+(DAG) Decomposition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#llm-driven-decomposition"><span class="toc-text">5.2.2.4 LLM-Driven Decomposition</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-granularity-problem"><span class="toc-text">5.2.3 The Granularity Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dependency-detection"><span class="toc-text">5.2.4 Dependency Detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parallelism"><span class="toc-text">5.2.5 Parallelism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common-failure-problems"><span class="toc-text">5.2.6 Common Failure Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#over-decomposition"><span class="toc-text">5.2.6.1 Over-Decomposition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#missing-dependencies"><span class="toc-text">5.2.6.2 Missing Dependencies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#phantom-dependencies"><span class="toc-text">5.2.6.3 Phantom Dependencies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#the-mega-task"><span class="toc-text">5.2.6.4 The Mega-Task</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#assuming-the-llm-will-figure-it-out"><span class="toc-text">5.2.6.5 Assuming the LLM
+Will Figure It Out</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implementation"><span class="toc-text">5.2.7 Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-task-graph-data-structure"><span class="toc-text">5.2.7.1 The Task Graph Data
+Structure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#the-decomposer-prompt-template"><span class="toc-text">5.2.7.2 The Decomposer Prompt
+Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#the-full-decomposition-execution-pipeline"><span class="toc-text">5.2.7.3 The Full
+Decomposition → Execution Pipeline</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#self-reflection"><span class="toc-text">5.3 Self-Reflection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-agent-needs-self-reflection"><span class="toc-text">5.3.1 Why Agent needs
+Self-Reflection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#three-reflection-patterns"><span class="toc-text">5.3.2 Three Reflection Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reflexion-post-execution"><span class="toc-text">5.3.2.1 Reflexion
+(Post-Execution)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#self-critique-pre-execution"><span class="toc-text">5.3.2.2 Self-Critique
+(Pre-Execution)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#actor-critic-continuous"><span class="toc-text">5.3.2.3 Actor-Critic (Continuous)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-reflection-prompt"><span class="toc-text">5.3.3 The Reflection Prompt</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#critic-prompt"><span class="toc-text">5.3.3.1 Critic Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#refinement-prompt"><span class="toc-text">5.3.3.2 Refinement Prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reflection-termination-condition"><span class="toc-text">5.3.3.3 Reflection Termination
+Condition</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#when-reflection-helps-or-not"><span class="toc-text">5.3.4 When Reflection Helps or
+Not</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#connection-to-multi-agent-systems"><span class="toc-text">5.3.5 Connection to
+Multi-Agent Systems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implementation-1"><span class="toc-text">5.3.6 Implementation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#multi-agent"><span class="toc-text">6. Multi-Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#agent-as-a-tool"><span class="toc-text">6.1 Agent-as-a-Tool</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#intro-4"><span class="toc-text">6.1.1 Intro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecture-2"><span class="toc-text">6.1.2 Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-wrapper"><span class="toc-text">6.1.2.1 The Wrapper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#the-orchestrators-view"><span class="toc-text">6.1.2.2 The Orchestrator’s View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#the-specialist-agents-view"><span class="toc-text">6.1.2.3 The Specialist Agent’s
+View</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common-patterns"><span class="toc-text">6.1.3 Common Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reviewer-pattern"><span class="toc-text">6.1.3.4 Reviewer Pattern</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#verifier-pattern"><span class="toc-text">6.1.3.5 Verifier Pattern</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delegation-pattern"><span class="toc-text">6.1.3.6 Delegation Pattern</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#debate-pattern"><span class="toc-text">6.1.3.7 Debate Pattern</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#design-decisions"><span class="toc-text">6.1.4 Design Decisions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-much-context-to-pass"><span class="toc-text">6.1.4.1 How Much Context to Pass?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#structured-output"><span class="toc-text">6.1.4.2 Structured Output</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#timeout-and-cost-control"><span class="toc-text">6.1.4.3 Timeout and Cost Control</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#communication-between-agents"><span class="toc-text">6.2 Communication between
+Agents</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem"><span class="toc-text">6.2.1 Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#problem-discription"><span class="toc-text">6.2.1.1 Problem Discription</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#three-dimensions-of-communication"><span class="toc-text">6.2.1.1 Three Dimensions of
+Communication</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#message"><span class="toc-text">6.2.2 Message</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-message-data-model"><span class="toc-text">6.2.2.1 The Message Data Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#separation-of-content-and-data"><span class="toc-text">6.2.2.2 Separation of
+content and
+data</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#five-topologies"><span class="toc-text">6.2.3 Five Topologies</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#point-to-point"><span class="toc-text">6.2.3.1 Point-to-Point</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hub-and-spoke"><span class="toc-text">6.2.3.2 Hub-and-Spoke</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#broadcast"><span class="toc-text">6.2.3.3 Broadcast</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mesh"><span class="toc-text">6.2.3.4 Mesh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shared-blackboard"><span class="toc-text">6.2.3.5 Shared Blackboard</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#topology-comparison"><span class="toc-text">6.2.3.6 Topology Comparison</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#message-passing-mechanisms"><span class="toc-text">6.2.4 Message Passing
+Mechanisms</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#direct-invocation-synchronous-blocking"><span class="toc-text">6.2.4.1 Direct
+Invocation (Synchronous, Blocking)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#message-queue-asynchronous-non-blocking"><span class="toc-text">6.2.4.2 Message Queue
+(Asynchronous, Non-Blocking)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shared-memory-communication-through-memory"><span class="toc-text">6.2.4.3 Shared
+Memory (Communication Through Memory)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#event-driven-publish-subscribe"><span class="toc-text">6.2.4.4 Event-Driven
+(Publish-Subscribe)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mechanism-comparison"><span class="toc-text">6.2.4.5 Mechanism Comparison</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#handoff-patterns"><span class="toc-text">6.2.5 Handoff Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#delegation"><span class="toc-text">6.2.5.1 Delegation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#escalation"><span class="toc-text">6.2.5.2 Escalation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#consultation"><span class="toc-text">6.2.5.3 Consultation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#notification"><span class="toc-text">6.2.5.4 Notification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#handoff-comparison"><span class="toc-text">6.2.5.5 Handoff Comparison</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#combination"><span class="toc-text">6.2.6 Combination</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#choose-a-topology"><span class="toc-text">6.2.6.1 Choose a Topology</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#choose-a-message-passing-mechanism"><span class="toc-text">6.2.6.2 Choose a Message
+Passing Mechanism</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#choose-a-handoff"><span class="toc-text">6.2.6.3 Choose a Handoff</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#concrete-combination"><span class="toc-text">6.2.6.4 Concrete Combination</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s2/" title="Paper Summary - Agent S2">Paper Summary - Agent S2</a><time datetime="2026-10-24T06:04:19.000Z" title="Created 2026-10-24 14:04:19">2026-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/how-to-use-personal-knowledge-graph/" title="How to Use Personal Knowledge Graph">How to Use Personal Knowledge Graph</a><time datetime="2026-10-21T15:18:14.000Z" title="Created 2026-10-21 23:18:14">2026-10-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-vista/" title="Paper Summary – VISTA">Paper Summary – VISTA</a><time datetime="2026-10-16T11:24:25.000Z" title="Created 2026-10-16 19:24:25">2026-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s/" title="Paper Summary – Agent S">Paper Summary – Agent S</a><time datetime="2026-10-13T07:31:52.000Z" title="Created 2026-10-13 15:31:52">2026-10-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my_retrospective/" title="My Retrospective">My Retrospective</a><time datetime="2026-10-05T08:22:49.000Z" title="Created 2026-10-05 16:22:49">2026-10-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
   }
-  .post-copyright a {
-    color: #37c6c0;
-    text-decoration: none;
-    font-weight: bold; /* 让链接更醒目一点 */
-  }
-  .post-copyright a:hover {
-    text-decoration: underline;
-  }
-</style>
 
-<!-- 加密文章解密后重新触发 lozad 懒加载。
-     原因: hexo-blog-encrypt 是"点击解密后才把正文插入页面", 而 NexT 的 lozad 只在页面启动时
-     执行一次 window.lozad('.post-body img').observe(); 解密内容里的 <img data-src="...">
-     因此永远不会被换成真正的 src(图片显示为空白/不加载)。
-     这里在解密容器被替换后重新 observe 一次; 非加密文章直接返回, 不做任何事。 -->
-<script>
-  (function () {
-    var locked = document.querySelector('#hexo-blog-encrypt:not(.hbe-decrypted-content)');
-    if (!locked) return;   // 非加密文章
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
 
-    function refreshLazy() {
-      if (typeof window.lozad !== 'function') return;
-      var imgs = document.querySelectorAll('.post-body img[data-src]');
-      if (!imgs.length) return;
-      window.lozad('.post-body img').observe();
-    }
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-    var body = document.querySelector('.post-body');
-    if (body && window.MutationObserver) {
-      var pending = null;
-      new MutationObserver(function () {
-        if (pending) return;
-        pending = setTimeout(function () { pending = null; refreshLazy(); }, 200);
-      }).observe(body, { childList: true, subtree: true });
-    }
-
-    // 兜底: 万一替换动作发生在观察器建立之前(理论上不会), 短时间内轮询一次
-    var tries = 0;
-    var timer = setInterval(function () {
-      if (document.querySelector('#hexo-blog-encrypt.hbe-decrypted-content')) {
-        refreshLazy();
-        clearInterval(timer);
-      } else if (++tries > 150) {   // 最多约 60 秒
-        clearInterval(timer);
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
       }
-    }, 400);
-  })();
-</script>
-          <div class="post-tags">
-              <a href="/tags/Agent/" rel="tag"># Agent</a>
-              <a href="/tags/Large-Language-Model/" rel="tag"># LLM</a>
-              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
-              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
-          </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/SWE-bench-test/" rel="prev" title="SWE-bench test">
-                  <i class="fa fa-angle-left"></i> SWE-bench test
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/git-with-proxy/" rel="next" title="Git with Proxy">
-                  Git with Proxy <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-    <div class="comments utterances-container"></div>
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Askemi Wang</span>
-  </div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div><!-- 网站运行时间计数 -->
-<span id="runtime_span" style="margin-left: 10px; font-size: 14px;">
-  🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒
-</span>
-
-<script>
-  function show_runtime() {
-    window.setTimeout("show_runtime()", 1000);
-    
-    // 【⚠️ 重要】请修改为你真实的建站日期 (年/月/日 时:分:秒)
-    // 注意：月份是从 1 开始的，直接填数字即可
-    var BirthDay = new Date("2026/06/24 00:00:00"); 
-    
-    var today = new Date();
-    var timeold = (today.getTime() - BirthDay.getTime());
-    var msPerDay = 24 * 60 * 60 * 1000;
-    var e_daysold = timeold / msPerDay;
-    
-    var daysold = Math.floor(e_daysold);
-    var e_hrsold = (e_daysold - daysold) * 24;
-    var hrsold = Math.floor(e_hrsold);
-    var e_minsold = (e_hrsold - hrsold) * 60;
-    var minsold = Math.floor((e_hrsold - hrsold) * 60);
-    var seconds = Math.floor((e_minsold - minsold) * 60);
-    
-    // 将计算结果填入对应的 span 标签中
-    document.getElementById("runtime_days").innerHTML = daysold;
-    document.getElementById("runtime_hours").innerHTML = hrsold;
-    document.getElementById("runtime_mins").innerHTML = minsold;
-    document.getElementById("runtime_secs").innerHTML = seconds;
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
   }
-  show_runtime();
-</script>
 
-    </div>
-  </footer>
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax
+    ? loadMathjax()
+    : (document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', loadMathjax)
+        : loadMathjax())
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
 
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
+
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
+
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
+
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
+
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
+
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
+
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
+
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
+
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
+
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
+
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'AskemiWang/AskemiWang.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"AskemiWang/AskemiWang.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
-<script src="/js/third-party/comments/utterances.js" defer></script>
-
-</body>
-</html>
+  if ('Utterances' === 'Utterances' || !true) {
+    if (true) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/runtime.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>
