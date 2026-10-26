@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ink wash and paper texture">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0e12"/>
+      <stop offset="0.52" stop-color="#151d3f"/>
+      <stop offset="1" stop-color="#2f4bd0"/>
+    </linearGradient>
+    <radialGradient id="paperGlow" cx="0.18" cy="0.24" r="0.72">
+      <stop offset="0" stop-color="#f6f5f1" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#f6f5f1" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#f6f5f1" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#f6f5f1" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c0e12" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#0c0e12" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#ink)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect width="1600" height="900" fill="url(#paperGlow)"/>
+
+  <g fill="none" stroke="#f6f5f1" stroke-opacity="0.10">
+    <circle cx="1280" cy="190" r="360" stroke-width="1.2"/>
+    <circle cx="1280" cy="190" r="258" stroke-width="1"/>
+    <circle cx="1280" cy="190" r="150" stroke-width="0.8" stroke-opacity="0.06"/>
+    <path d="M-80 760C260 600 520 860 860 680S1380 520 1700 640" stroke-width="1.4"/>
+    <path d="M-80 812C300 660 560 900 900 730S1400 580 1700 700" stroke-width="1" stroke-opacity="0.07"/>
+  </g>
+
+  <g fill="#f6f5f1" fill-opacity="0.05">
+    <rect x="110" y="650" width="12" height="180" rx="2"/>
+    <rect x="130" y="670" width="12" height="160" rx="2"/>
+    <rect x="150" y="640" width="12" height="190" rx="2"/>
+    <rect x="170" y="685" width="12" height="145" rx="2"/>
+  </g>
+
+  <rect width="1600" height="900" fill="url(#fade)"/>
+</svg>

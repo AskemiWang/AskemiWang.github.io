@@ -33,7 +33,7 @@
 #hexo-blog-encrypt input#hbePass {
   color: #333;
   background: transparent;
-  caret-color: #37c6c0;
+  caret-color: #2F4BD0;
 }
 
 /* 4. label 与下划线颜色 */
@@ -41,19 +41,22 @@
   color: #696969;
 }
 
-#hexo-blog-encrypt .hbe-input-label-default::before,
+#hexo-blog-encrypt .hbe-input-label-default::before {
+  background: rgba(47, 75, 208, 0.10);
+}
+
 #hexo-blog-encrypt .hbe-input-label-default::after {
-  background: #37c6c0;
+  background: #2F4BD0;
 }
 
 /* 5. 按钮 */
 #hexo-blog-encrypt .hbe-button {
-  background: #37c6c0;
+  background: #2F4BD0;
 }
 
 #hexo-blog-encrypt .hbe-button:hover,
 #hexo-blog-encrypt .hbe-button:focus {
-  background: #2fb3ad;
+  background: #1F37A8;
 }
 
 /* 6. 错误提示 */
@@ -83,4 +86,20 @@ html[data-theme="dark"] #hexo-blog-encrypt .hbe-error {
 
 html[data-theme="dark"] #hexo-blog-encrypt .hbe-error:not(:empty) {
   background: rgba(255, 122, 122, 0.12);
+}
+
+/* ==========================================
+   P0: 首页卡片摘要最多 3 行（method: 2 的 description 不截断，用 CSS 兜住）
+   必须用与主题相同特异性的选择器，否则会被主题的 2 行规则覆盖。
+   ========================================== */
+#recent-posts .recent-post-item > .recent-post-info > .content {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+}
+
+/* 暗色下提亮 meta（#6E7482 在 #121212 上约 4.0:1，偏低） */
+html[data-theme="dark"] {
+  --card-meta: #9AA1AD;
 }
