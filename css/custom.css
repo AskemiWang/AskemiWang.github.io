@@ -968,3 +968,11 @@ html[data-theme="dark"] .relatedPosts .pagination-related {
 .tag-cloud-list a.tag-hot:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .08);
 }
+
+/* P1: keep line-number gutter, but wrap long code lines. Butterfly disables
+   wordWrap when highlight.line_number is true, so enforce it on the code cell. */
+#article-container figure.highlight .code pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

@@ -35,12 +35,21 @@
     const hi = Math.max(...values)
     const max = getMax()
 
+    // top 25% by tag count (the original em value is proportional to count)
+    const hotCount = Math.max(1, Math.ceil(links.length * 0.25))
+    const hotSet = new Set(
+      links
+        .slice()
+        .sort((a, b) => parseFloat(b.dataset.tagEm || '') - parseFloat(a.dataset.tagEm || ''))
+        .slice(0, hotCount)
+    )
+
     links.forEach(a => {
       const em = parseFloat(a.dataset.tagEm || '')
       if (Number.isNaN(em)) return
       const t = hi === lo ? 0.5 : (em - lo) / (hi - lo)
       a.style.fontSize = (MIN + t * (max - MIN)).toFixed(2) + 'em'
-      a.classList.toggle('tag-hot', t >= 0.75)
+      a.classList.toggle('tag-hot', hotSet.has(a))
     })
   }
 
