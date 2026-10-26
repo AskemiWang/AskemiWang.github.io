@@ -849,4 +849,41 @@ html[data-theme="dark"] #footer a:hover {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Previous / Next + Related cards: replace the saturated blue cover blocks
+   with the paper/night surface system. The theme paints .cover with
+   --default-bg-color (brand blue) at 40% opacity on black; here the card
+   surface carries the color and .cover becomes a faint accent wash.
+   -------------------------------------------------------------------------- */
+#pagination.pagination-post {
+  gap: 12px;
+  background: transparent;
+}
 
+#pagination.pagination-post .pagination-related,
+.relatedPosts .pagination-related {
+  background: var(--tgl-surface-2);
+  border: 1px solid var(--tgl-border);
+  border-radius: 10px;
+}
+
+#pagination.pagination-post .pagination-related .cover,
+.relatedPosts .pagination-related .cover {
+  background: var(--tgl-accent-soft) !important;
+  opacity: .28;
+}
+
+#pagination.pagination-post .pagination-related .info-1 .info-item-1,
+.relatedPosts .pagination-related .info-1 .info-item-1 {
+  color: var(--tgl-meta);
+}
+
+#pagination.pagination-post .pagination-related .info-1 .info-item-2,
+.relatedPosts .pagination-related .info-1 .info-item-2 {
+  color: var(--tgl-text);
+}
+
+#pagination.pagination-post .pagination-related .info-2 .info-item-1,
+.relatedPosts .pagination-related .info-2 .info-item-1 {
+  color: var(--tgl-text-2);
+}
