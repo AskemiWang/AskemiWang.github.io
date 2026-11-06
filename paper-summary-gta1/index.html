@@ -1,0 +1,941 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Paper Summary - OSWorld-G | The Great Library</title><meta name="author" content="Askemi Wang"><meta name="copyright" content="Askemi Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#F4F0E5"><meta name="description" content="Placeholder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Summary - OSWorld-G">
+<meta property="og:url" content="https://wangyier.top/paper-summary-gta1/index.html">
+<meta property="og:site_name" content="The Great Library">
+<meta property="og:description" content="Placeholder">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://wangyier.top/images/avatar/avatar.png">
+<meta property="article:published_time" content="2026-11-05T06:30:17.000Z">
+<meta property="article:modified_time" content="2026-11-06T13:00:25.000Z">
+<meta property="article:author" content="Askemi Wang">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="CUA">
+<meta property="article:tag" content="GRPO">
+<meta property="article:tag" content="GTA1">
+<meta property="article:tag" content="Grounding">
+<meta property="article:tag" content="IoU">
+<meta property="article:tag" content="JEDI">
+<meta property="article:tag" content="Multimodal">
+<meta property="article:tag" content="OSWorld">
+<meta property="article:tag" content="OSWorld-G">
+<meta property="article:tag" content="Paper Summary">
+<meta property="article:tag" content="SFT">
+<meta property="article:tag" content="ScreenSpot-Pro">
+<meta property="article:tag" content="ScreenSpot-V2">
+<meta property="article:tag" content="VLM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyier.top/images/avatar/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paper Summary - OSWorld-G",
+  "url": "https://wangyier.top/paper-summary-gta1/",
+  "image": "https://wangyier.top/images/avatar/avatar.png",
+  "datePublished": "2026-11-05T06:30:17.000Z",
+  "dateModified": "2026-11-06T13:00:25.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Askemi Wang",
+      "url": "https://wangyier.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/site/favicon.ico"><link rel="canonical" href="https://wangyier.top/paper-summary-gta1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#14161B')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#F4F0E5')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Paper Summary - OSWorld-G',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css?v=20261030"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">60</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">115</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/images/site/post-bg.svg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Paper Summary - OSWorld-G</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Paper Summary - OSWorld-G</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-11-05T06:30:17.000Z" title="Created 2026-11-05 14:30:17">2026-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-11-06T13:00:25.000Z" title="Updated 2026-11-06 21:00:25">2026-11-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/tech/">Tech</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="introduction">1. Introduction</h1>
+<p>This work aims to solve two challenges: <mark>Planning</mark> and
+<mark>Grounding</mark>.</p>
+<h2 id="planning">1.2 Planning</h2>
+<p>Existing work (Aria-ui, OSWorld-G, Agent S, Agent S2, Aguvis) often
+pair a GUI <mark>grounding model</mark> with a <mark>planner</mark>. The
+planner determines an action proposal at each step, while the grounding
+model locates the target interface elements for interactions (e.g.,
+click areas).</p>
+<h2 id="grounding-training-problems">1.2 Grounding Training
+Problems</h2>
+<h3 id="sft-drawback">1.2.1 SFT Drawback</h3>
+<p>Existing grounding models (Aria-ui, JEDI, Os-altlas, Seeclick)
+predominantly rely on <mark>SFT</mark>, , which trains models to predict
+the exact center of target interface elements. This method struggles to
+generalize to complex and high-resolution scenarios.</p>
+<p>Fundamentally, <mark>SFT</mark> introduces a
+<mark>misalignment</mark> with the task itself: any coordinate within
+the target element constitutes a valid interaction, yet <mark>SFT</mark>
+<mark>penalizes</mark> deviations from the center. It limits model
+flexibility, reduces robustness, and preventing the model from
+perceiving appropriate supervision signals.</p>
+<p>Some recent works also use <mark>GRPO</mark> to train grounding
+model:</p>
+<h3 id="grpo-method">1.2.2 GRPO Method</h3>
+<ol type="1">
+<li><p>Let grounding model output answer of input (screenshot &amp;
+instruction). e.g.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">thinking</span>&gt;</span></span><br><span class="line">The user wants to filter search results. The search bar is at the top right,</span><br><span class="line">and there is a funnel-shaped icon immediately to its right.</span><br><span class="line"><span class="tag">&lt;/<span class="name">thinking</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">answer</span>&gt;</span>(1436, 340)<span class="tag">&lt;/<span class="name">answer</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Score with rules:</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr>
+<th>Reward</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>format reward</strong></td>
+<td>Is output legal? Is format correct?</td>
+</tr>
+<tr>
+<td><strong>click reward</strong></td>
+<td>Is the output coordinate inside the golden bounding box?</td>
+</tr>
+<tr>
+<td><strong>IoU reward</strong></td>
+<td>How much a predicted <strong>bounding box (bbox)</strong> overlaps
+golden <strong>bbox</strong>;</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>GRPO Update</p></li>
+</ol>
+<h3 id="grpo-drawback">1.2.3 GRPO Drawback</h3>
+<ol type="1">
+<li><mark>format reward</mark> may be useless in sta, only the
+<code>thinking</code> label will be calculated in reward. So the content
+of thinking is meaningless even empty.</li>
+<li><mark>bbox reward</mark> may be useless</li>
+</ol>
+<h2 id="experiment-settings">1.3 Experiment Settings</h2>
+<p><strong>Planner Experiment</strong></p>
+<p>The traditional planner only predicts the next one step; This work’s
+solution: let <mark>planner</mark> generate k candidate actions and let
+<mark>judge</mark> select one to execute.</p>
+<table>
+<thead>
+<tr>
+<th>K（Candidate Num）</th>
+<th>OSWorld SR (50 step)</th>
+<th>OSWorld SR (100 step)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>41.3%</td>
+<td>43.4%</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>43.4%</td>
+<td>45.2%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Grounding Experiment</strong></p>
+<p>Training grounding model by GRPO only with click reward.</p>
+<p>Benchmark: ScreenSpot-Pro / ScreenSpot-V2 / OSWorld-G</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 23%" />
+<col style="width: 22%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Reward</th>
+<th>ScreenSpot-Pro</th>
+<th>ScreenSpot-V2</th>
+<th>OSWorld-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>click</strong></td>
+<td><strong><mark>50.1</mark></strong></td>
+<td>92.4</td>
+<td><strong><mark>67.7</mark></strong></td>
+</tr>
+<tr>
+<td>click + format</td>
+<td>46.9</td>
+<td><strong><mark>93.2</mark></strong></td>
+<td>67.0</td>
+</tr>
+<tr>
+<td>click + IoU</td>
+<td>42.2</td>
+<td>89.2</td>
+<td>59.2</td>
+</tr>
+<tr>
+<td>click + format + IoU</td>
+<td>44.5</td>
+<td>89.3</td>
+<td>59.9</td>
+</tr>
+</tbody>
+</table>
+<h1 id="multimodal-agent-category">2. Multimodal Agent Category</h1>
+<h2 id="two-stage-gui-agent">2.1. Two-stage GUI Agent</h2>
+<ul>
+<li>Use advanced reasoning models as <mark>planner</mark></li>
+<li>A separate grounding module</li>
+</ul>
+<h2 id="native-gui-agent">2.2 Native GUI Agent</h2>
+<ul>
+<li><p>A native GUI agent completes user tasks in an end-to-end
+manner.</p>
+<p>Four main aspects are studied (Ui-tars):</p>
+<ul>
+<li><ol type="i">
+<li><mark>perception</mark>, interpreting the user interface to
+understand the current state;</li>
+</ol></li>
+<li><ol start="2" type="i">
+<li><mark>memory</mark>, storing knowledge and historical experiences to
+support making decisions;</li>
+</ol></li>
+<li><ol start="3" type="i">
+<li><mark>planning</mark>, analyzing the task and reflecting on progress
+to generate action proposals;</li>
+</ol></li>
+<li><ol start="4" type="i">
+<li><mark>action</mark>, performing atomic operations based on the
+action proposal to effectively progress toward the task goal.</li>
+</ol></li>
+</ul></li>
+</ul>
+<h1 id="gta1">3. GTA1</h1>
+<p>This work adopts a two-stage GUI agent framework composed of a
+<mark>planner</mark> and a <mark>grounding model</mark>.</p>
+<h2 id="planning-1">3.1 Planning</h2>
+<ol type="1">
+<li><p>At each step of executing user instructions, sample <mark>K
+candidate action proposals</mark>, denoted as <span
+class="math inline">\(\{p_k\}_{k=1}^K\)</span> where <span
+class="math inline">\(p_k\)</span> presents a corresponding action.
+(e.g., clicking ‘the blue button’ or performing a keystroke).</p></li>
+<li><p>Use a VLM as judge to evaluate the <span
+class="math inline">\(K\)</span> candidates <span
+class="math inline">\(\{p_k\}_{k=1}^K\)</span> based on their alignment
+with the <mark>user intent</mark> and the <mark>current GUI
+state</mark>.</p>
+<p>The judge, which can be the planner model itself, picks the best
+candidate action proposal <span
+class="math inline">\(p_{k^*}\)</span></p></li>
+<li><p>Grounding model takes the best candidate action proposal <span
+class="math inline">\(p_{k^*}\)</span> and current screenshot <span
+class="math inline">\(s\)</span> as input. Then grounding model outputs
+coordinates.</p>
+<p>For non-coordinate-based actions (e.g., key presses or text input),
+the action can be executed directly without grounding.</p></li>
+</ol>
+<p><img src="/images/article_images/gta1_plan.png" / loading='lazy'></p>
+<p><img src="/images/article_images/gta1_plan_example.png" / loading='lazy'></p>
+<h2 id="grounding">3.2 Grounding</h2>
+<h3 id="data-preparation">3.2.1 Data Preparation</h3>
+<p>Prepare training data:</p>
+<ol type="1">
+<li>Collect open-source datasets to train our model, e.g., the Aria-UI
+collection.</li>
+<li>These dataset’s bbox information comes from <mark>A11y or HTML
+parsers</mark> which may introduce noise.</li>
+<li>Cleanup the dataset: Using <mark>OmniParser</mark>, denoted as <span
+class="math inline">\(\mathcal M (\cdot)\)</span>, to detect all
+<mark>UI elements</mark> in screenshot <span
+class="math inline">\(s\)</span>, , resulting in a set of bounding boxes
+<span class="math inline">\(\{b_i\} = \{\mathcal M(s)\}\)</span>. Each
+<span class="math inline">\(b_i\)</span> represents the bounding box of
+a detected UI element.</li>
+<li>Calculate the IoU of <span class="math inline">\(b_i\)</span> and
+annotated bbox value. Drop the invalid entry.</li>
+</ol>
+<p><img src="/images/article_images/gta1_data_cleanup.png" / loading='lazy'></p>
+<h3 id="grpo">3.3.2 GRPO</h3>
+<p>Base model comes from UI-TARS-7B and OpenCUA-32B.</p>
+<h1 id="conclusion">4. Conclusion</h1>
+<ol type="1">
+<li>In two-stage GUI agent (separate planner and grounding model), the
+tradition agent structure only let ask planner rollout 1 next step
+action. GTA1 let planner generate 8 candidate actions.</li>
+<li>GTA1 is trained by GRPO with single <code>click reward</code> and
+outperform other models.</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/paper-summary-gta1/">https://wangyier.top/paper-summary-gta1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/Paper-Summary/">Paper Summary</a><a class="post-meta__tags" href="/tags/SFT/">SFT</a><a class="post-meta__tags" href="/tags/GRPO/">GRPO</a><a class="post-meta__tags" href="/tags/VLM/">VLM</a><a class="post-meta__tags" href="/tags/GTA1/">GTA1</a><a class="post-meta__tags" href="/tags/OSWorld/">OSWorld</a><a class="post-meta__tags" href="/tags/Multimodal/">Multimodal</a><a class="post-meta__tags" href="/tags/Grounding/">Grounding</a><a class="post-meta__tags" href="/tags/CUA/">CUA</a><a class="post-meta__tags" href="/tags/JEDI/">JEDI</a><a class="post-meta__tags" href="/tags/ScreenSpot-Pro/">ScreenSpot-Pro</a><a class="post-meta__tags" href="/tags/ScreenSpot-V2/">ScreenSpot-V2</a><a class="post-meta__tags" href="/tags/OSWorld-G/">OSWorld-G</a><a class="post-meta__tags" href="/tags/IoU/">IoU</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="x,wechat"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/paper-summary-osworld-g/" title="Paper Summary - OSWorld-G"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Paper Summary - OSWorld-G</div></div><div class="info-2"><div class="info-item-1">This work introduces a grounding benchmark OSWorld-G and a training dataset JEDI. Tasks of OSWorld-G come from trajectories of OSWorld. Training data of JEDI is synthesized.</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/paper-summary-osworld-g/" title="Paper Summary - OSWorld-G"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-02</div><div class="info-item-2">Paper Summary - OSWorld-G</div></div><div class="info-2"><div class="info-item-1">This work introduces a grounding benchmark OSWorld-G and a training dataset JEDI. Tasks of OSWorld-G come from trajectories of OSWorld. Training data of JEDI is synthesized.</div></div></div></a><a class="pagination-related" href="/paper-summary-osworld-human/" title="Paper Summary – OSWorld-Human"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-27</div><div class="info-item-2">Paper Summary – OSWorld-Human</div></div><div class="info-2"><div class="info-item-1">This is an independent score computing method as a supplement to OSWorld. In this work, the authors design a brand new metric to evaluate agent's work efficiency.</div></div></div></a><a class="pagination-related" href="/paper-summary-agent-s/" title="Paper Summary – Agent S"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-10-13</div><div class="info-item-2">Paper Summary – Agent S</div></div><div class="info-2"><div class="info-item-1">Paper Summary of "Agent S: An Open Agentic Framework that Uses Computers Like a Human".</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">60</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">115</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text">1. Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#planning"><span class="toc-text">1.2 Planning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grounding-training-problems"><span class="toc-text">1.2 Grounding Training
+Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sft-drawback"><span class="toc-text">1.2.1 SFT Drawback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grpo-method"><span class="toc-text">1.2.2 GRPO Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grpo-drawback"><span class="toc-text">1.2.3 GRPO Drawback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#experiment-settings"><span class="toc-text">1.3 Experiment Settings</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#multimodal-agent-category"><span class="toc-text">2. Multimodal Agent Category</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#two-stage-gui-agent"><span class="toc-text">2.1. Two-stage GUI Agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#native-gui-agent"><span class="toc-text">2.2 Native GUI Agent</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gta1"><span class="toc-text">3. GTA1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#planning-1"><span class="toc-text">3.1 Planning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grounding"><span class="toc-text">3.2 Grounding</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#data-preparation"><span class="toc-text">3.2.1 Data Preparation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grpo"><span class="toc-text">3.3.2 GRPO</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conclusion"><span class="toc-text">4. Conclusion</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-gta1/" title="Paper Summary - OSWorld-G">Paper Summary - OSWorld-G</a><time datetime="2026-11-05T06:30:17.000Z" title="Created 2026-11-05 14:30:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-osworld-g/" title="Paper Summary - OSWorld-G">Paper Summary - OSWorld-G</a><time datetime="2026-11-02T04:56:19.000Z" title="Created 2026-11-02 12:56:19">2026-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/experiments/" title="Experiments">Experiments</a><time datetime="2026-10-28T13:07:49.000Z" title="Created 2026-10-28 21:07:49">2026-10-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-agent-s2/" title="Paper Summary - Agent S2">Paper Summary - Agent S2</a><time datetime="2026-10-24T06:04:19.000Z" title="Created 2026-10-24 14:04:19">2026-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/how-to-use-personal-knowledge-graph/" title="How to Use Personal Knowledge Graph">How to Use Personal Knowledge Graph</a><time datetime="2026-10-21T15:18:14.000Z" title="Created 2026-10-21 23:18:14">2026-10-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-flex"><div class="footer-flex-items" style="flex-grow:2"><div class="footer-flex-item"><div class="footer-flex-title">The Great Library</div><div class="footer-flex-content"><a href="/about/" target="_blank" title="About">About</a><a href="/graph/" target="_blank" title="Knowledge Graph">Knowledge Graph</a></div></div></div><div class="footer-flex-items" style="flex-grow:1"><div class="footer-flex-item"><div class="footer-flex-title">Browse</div><div class="footer-flex-content"><a href="/archives/" target="_blank" title="Archives">Archives</a><a href="/tags/" target="_blank" title="Tags">Tags</a><a href="/categories/" target="_blank" title="Categories">Categories</a></div></div></div><div class="footer-flex-items" style="flex-grow:1"><div class="footer-flex-item"><div class="footer-flex-title">Elsewhere</div><div class="footer-flex-content"><a href="https://github.com/AskemiWang" target="_blank" title="GitHub">GitHub</a><a href="mailto:askemi.wang@gmail.com" target="_blank" title="Email">Email</a></div></div></div></div><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span class="footer-separator">|</span><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
+  }
+
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
+
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax
+    ? loadMathjax()
+    : (document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', loadMathjax)
+        : loadMathjax())
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
+
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
+
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
+
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
+
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
+
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
+
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
+
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
+
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
+
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
+
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'AskemiWang/AskemiWang.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !true) {
+    if (true) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/runtime.js"></script><script src="/js/toc-collapse.js?v=20261028"></script><script src="/js/tag-cloud.js?v=20261030"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>

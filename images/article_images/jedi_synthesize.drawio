@@ -1,0 +1,45 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="Kp7vpJE1F9yXrlnauO5B">
+    <mxGraphModel dx="3104" dy="2075" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p18vvq4nWOLC2H_fKk03-3" edge="1" parent="1" source="p18vvq4nWOLC2H_fKk03-1" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;defaultLabelBackgroundColor=page;endArrow=classic;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="p18vvq4nWOLC2H_fKk03-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Ground-truth source&lt;br&gt;(Elements to be grounded)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="370" x="170" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-18" edge="1" parent="1" source="p18vvq4nWOLC2H_fKk03-5" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;defaultLabelBackgroundColor=page;endArrow=classic;" target="p18vvq4nWOLC2H_fKk03-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Full Picture&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="300" x="690" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-14" edge="1" parent="1" source="p18vvq4nWOLC2H_fKk03-7" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;defaultLabelBackgroundColor=page;endArrow=classic;" target="p18vvq4nWOLC2H_fKk03-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Element Process:&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Sample / Render / Synthesize&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="370" x="170" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-15" edge="1" parent="1" source="p18vvq4nWOLC2H_fKk03-10" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;defaultLabelBackgroundColor=page;endArrow=classic;" target="p18vvq4nWOLC2H_fKk03-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Semantic text&lt;/span&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;appearance / functionality /&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;&amp;nbsp; action description&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="300" x="690" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-16" edge="1" parent="1" source="p18vvq4nWOLC2H_fKk03-11" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;defaultLabelBackgroundColor=page;endArrow=classic;" target="p18vvq4nWOLC2H_fKk03-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Grounding Elements&#39;&lt;/span&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Appearance&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="300" x="690" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="p18vvq4nWOLC2H_fKk03-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;JEDI Entry&lt;br&gt;(Conversation Form)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="300" x="1230" y="660" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
