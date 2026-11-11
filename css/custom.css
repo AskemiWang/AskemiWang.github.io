@@ -976,3 +976,7 @@ html[data-theme="dark"] .relatedPosts .pagination-related {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+
+.tag-cloud-list a[hidden] {
+  display: none !important;
+}
