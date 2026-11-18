@@ -7,7 +7,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://wangyier.top/images/avatar/avatar.png">
 <meta property="article:published_time" content="2026-11-14T08:10:34.000Z">
-<meta property="article:modified_time" content="2026-11-14T08:10:34.000Z">
+<meta property="article:modified_time" content="2026-11-18T13:00:15.000Z">
 <meta property="article:author" content="Askemi Wang">
 <meta property="article:tag" content="Data Encoding">
 <meta property="article:tag" content="Data Representation">
@@ -20,7 +20,7 @@
   "url": "https://wangyier.top/data-representation/",
   "image": "https://wangyier.top/images/avatar/avatar.png",
   "datePublished": "2026-11-14T08:10:34.000Z",
-  "dateModified": "2026-11-14T08:10:34.000Z",
+  "dateModified": "2026-11-18T13:00:15.000Z",
   "author": [
     {
       "@type": "Person",
@@ -203,293 +203,650 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css?v=20261111"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">121</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/images/site/post-bg.svg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Data Representation</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Data Representation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-11-14T08:10:34.000Z" title="Created 2026-11-14 16:10:34">2026-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-11-14T08:10:34.000Z" title="Updated 2026-11-14 16:10:34">2026-11-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/tech/">Tech</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="introduction">1. Introduction</h1>
-<p>In computer science area, we can deem that the basic information
-component is the <mark>bit streams</mark> representing by 0, 1 string.
-Based on 0 and 1 bit streams, we have developed <mark>information
-patterns</mark> such as text, images, videos, and audio that can be
-intuitively understood by humans.</p>
+}</script><script src="/js/love.js"></script><link rel="stylesheet" href="/css/custom.css?v=20261111"><link rel="icon" type="image/png" sizes="96x96" href="/images/site/favicon-96x96.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/site/apple-touch-icon.png"><link rel="mask-icon" href="/images/site/favicon.svg" color="#5bbad5"><link rel="manifest" href="/images/site/site.webmanifest"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">121</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/images/site/post-bg.svg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Great Library</span></a><a class="nav-page-title" href="/"><span class="site-name">Data Representation</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/graph/"><i class="fa-fw fas fa-project-diagram"></i><span> Graph</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fa-fw fab fa-github"></i><span> Github</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Data Representation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-11-14T08:10:34.000Z" title="Created 2026-11-14 16:10:34">2026-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-11-18T13:00:15.000Z" title="Updated 2026-11-18 21:00:15">2026-11-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/tech/">Tech</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="introduction">Introduction</h1>
+<p>Computers represent data using <mark>bits</mark>, commonly written as
+0 and 1. By organizing and interpreting these bits according to agreed
+rules, we can represent text, images, video, and audio.</p>
+<p>This article follows those rules from basic values to complete
+representations, beginning with images.</p>
 <h1 id="text">Text</h1>
 <h1 id="image">Image</h1>
-<h2 id="rgb-principal">1. RGB Principal</h2>
-<h3
-id="the-visual-mechanism-of-the-human-eye-provides-a-basis-for-describing-color-using-three-quantities.">1.
-The visual mechanism of the human eye provides a basis for describing
-color using three quantities.</h3>
+<h2 id="rgb-and-color-representation">1. RGB and Color
+Representation</h2>
+<h3 id="light-and-human-color-vision">1.1 Light and Human Color
+Vision</h3>
 <p>Light possesses various <mark>spectral</mark> compositions. Upon
 entering the eye, light stimulates <mark>photoreceptor cells</mark>, and
-the visual system subsequently generates the <mark>perception</mark> of
-color based on these stimuli.</p>
-<p>In humans with normal vision, photopic (daylight) vision relies
-primarily on <mark>three types of cone cells</mark>, each exhibiting a
-distinct response to different ranges of light wavelengths.
-Consequently, under specific viewing conditions, the stimulation of
-these three types of cells by a given light source can be characterized
-by three distinct quantities.</p>
-<p>This implies that <mark>even if two light sources have different
-spectral compositions</mark>, they can still <mark>be perceived as the
-same color</mark>, provided they elicit identical levels of stimulation
-across these three types of cone cells.</p>
-<p>This principle serves as the foundation for display devices to
-reproduce a wide range of colors using only a limited number of light
-sources.</p>
-<h3
-id="a-specific-range-of-colors-can-be-reproduced-by-adjusting-red-green-and-blue-light.">2.
-A specific range of colors can be reproduced by adjusting red, green,
-and blue light.</h3>
-<p>By selecting red, green, and blue as primary colors and independently
-controlling the intensity of each, display devices can generate a
-diverse array of color perceptions.</p>
+the visual system generates the <mark>perception</mark> of color based
+on these stimuli.</p>
+<p>In humans with normal color vision, photopic (daylight) vision relies
+primarily on <mark>three types of cone cells</mark>, each with a
+distinct response to different ranges of light wavelengths. Under
+specified viewing conditions, the stimulation of these three types of
+cells by a given light source can be characterized by three
+quantities.</p>
+<p>This implies that <mark>two light sources with different spectral
+compositions</mark> can still <mark>be perceived as the same
+color</mark>, provided they elicit the same responses in the three cone
+types under the same viewing conditions.</p>
+<p>This principle provides a basis for display devices to reproduce a
+wide range of colors using a limited number of light sources.</p>
+<h3 id="rgb-and-color-gamut">1.2 RGB and Color Gamut</h3>
+<p>By selecting red, green, and blue as primary lights and independently
+controlling their intensities, display devices can generate a range of
+color perceptions.</p>
 <p>For instance, an appropriate mixture of red and green light is
-perceived by the human eye as yellow.</p>
-<p>Thus, any color that can be reproduced using this set of primary
-colors can be described by three individual components:</p>
+perceived as yellow.</p>
+<p>A color reproducible using this set of primary lights can be
+described by three components:</p>
 <ul>
 <li><mark>Red Component</mark></li>
 <li><mark>Green Component</mark></li>
 <li><mark>Blue Component</mark></li>
 </ul>
-<h3 id="color-representation-in-space-distribution">3. Color
-Representation in Space Distribution</h3>
-<p>A picture in computer can be divided into the minimized unit: Pixel.
-We can simply deem a pixel is a point.</p>
-<p>A picture is composed of many pixels.</p>
-<p>We need to describe two things:</p>
+<p>The range of colors that a device can reproduce is its <mark>Color
+Gamut</mark>. A fixed set of three real primary lights cannot reproduce
+every color visible to the human eye through non-negative mixtures.</p>
+<h3 id="channels-and-bit-depth">1.3 Channels and Bit Depth</h3>
+<p>The R, G, and B components are stored as three <mark>Channels</mark>.
+To store their values using finite space, we choose a <mark>Bit
+Depth</mark> for each Channel.</p>
+<p>In <mark>RGB8</mark>, each Channel uses 8 bits, giving 256 encoded
+values from 0 to 255:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R: 0 ... 255</span><br><span class="line">G: 0 ... 255</span><br><span class="line">B: 0 ... 255</span><br></pre></td></tr></table></figure>
+<p>A color can then be represented as:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(255, 0, 0)</span><br></pre></td></tr></table></figure>
+<p>In a specified RGB Color Space using this 8-bit representation, 255
+is the maximum encoded value for a Channel, and 0 is the minimum. The
+range 0 to 255 is a choice of representation, rather than a universal
+requirement for all images.</p>
+<h3 id="from-color-values-to-bits">1.4 From Color Values to Bits</h3>
+<p>Eight bits can represent an unsigned integer from 0 to 255. For
+example:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R          G          B</span><br><span class="line">255        0          0           (Decimal)</span><br><span class="line">11111111   00000000   00000000    (Binary)</span><br></pre></td></tr></table></figure>
+<p>Therefore, one RGB8 color uses 24 bits, or 3 bytes.</p>
+<h2 id="raster-image">2. Raster Image</h2>
+<h3 id="pixels-and-the-2d-grid">2.1 Pixels and the 2D Grid</h3>
+<p>A <mark>Raster Image</mark> is a two-dimensional grid of
+<mark>Pixels</mark>. Each grid position has a color.</p>
+<p>To describe the image, we need to describe both the positions of its
+Pixels and the colors at those positions.</p>
+<p>For example, six Pixels named A through F can be arranged in three
+columns and two rows:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A  B  C</span><br><span class="line">D  E  F</span><br></pre></td></tr></table></figure>
+<p>Each letter represents a Pixel with its own RGB value. Changing the
+arrangement can change the image, even if the set of colors stays the
+same.</p>
+<h3 id="width-height-and-coordinates">2.2 Width, Height, and
+Coordinates</h3>
+<p>The number of columns is the <mark>Width</mark>, and the number of
+rows is the <mark>Height</mark>.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">            x -&gt;</span><br><span class="line">         0     1     2</span><br><span class="line">      +-----+-----+-----+</span><br><span class="line">    0 |  A  |  B  |  C  |</span><br><span class="line">y     +-----+-----+-----+</span><br><span class="line">|   1 |  D  |  E  |  F  |</span><br><span class="line">v     +-----+-----+-----+</span><br><span class="line"></span><br><span class="line">      Width  = 3 pixels</span><br><span class="line">      Height = 2 pixels</span><br></pre></td></tr></table></figure>
+<p>Common <mark>conventions</mark> used here are:</p>
 <ul>
-<li>Pixel Location</li>
-<li>Pixel Color</li>
+<li>The upper-left corner is the <mark>Origin</mark>, with Coordinates
+<code>(0, 0)</code>.</li>
+<li>x increases to the right.</li>
+<li>y increases downward.</li>
+<li>x ranges from 0 to <code>Width - 1</code>.</li>
+<li>y ranges from 0 to <code>Height - 1</code>.</li>
 </ul>
-<p>So a picture can be described as Pixel Location and Color
-information.</p>
-<h3 id="color-component-precision">4. Color Component Precision</h3>
-<p>We have discussed above that three basic color components R, G and B
-can be used to compose different other colors. For each color component,
-there is a difference in <mark>color degree</mark>. For example, there
-is a difference between <mark>light red</mark> and dark red. In the
-computer, we divide the degree of distinction of each color component
-into an interval from 0 to 255.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R: 0 ~ 255</span><br><span class="line">G: 0 ~ 255</span><br><span class="line">B: 0 ~ 255</span><br></pre></td></tr></table></figure>
-<p>Now a pixel’s color can represent as:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(255, 0, 0)</span><br></pre></td></tr></table></figure>
-<p>In a given RGB color space, <mark>255</mark> represents the
-<mark>maximum</mark> encoded value for a channel, while <mark>0</mark>
-represents a value of <mark>zero</mark> for that channel.</p>
-<h3 id="color-precision-represented-by-bit">5. Color Precision
-Represented by Bit</h3>
-<p>Obviously, we can use 8 bits to represent 0 ~ 255.</p>
-<p>e.g.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R          G          B</span><br><span class="line">255        0          0           (Decimal)</span><br><span class="line">11111111   00000000   00000000    (Binary)</span><br></pre></td></tr></table></figure>
-<h2 id="from-pixel-to-image-raster-image">2. From Pixel to Image (Raster
-Image)</h2>
-<p>We have discussed the RGB principle and the image’s basic unit:
-pixel.</p>
-<p>An image is in fact a 2-dimension pixel grid.</p>
-<p>e.g. There are 6 pixels from A to F with corresponding RGB value
-arranging in 3 columns and 2 rows.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">            x →</span><br><span class="line">         0     1     2</span><br><span class="line">      +-----+-----+-----+</span><br><span class="line">y   0 |  A  |  B  |  C  |</span><br><span class="line">↓     +-----+-----+-----+</span><br><span class="line">    1 |  D  |  E  |  F  |</span><br><span class="line">      +-----+-----+-----+</span><br><span class="line"></span><br><span class="line">      Width  = 3 pixels</span><br><span class="line">      Height = 2 pixels</span><br></pre></td></tr></table></figure>
-<p>Common Conventions:</p>
-<ul>
-<li>The upper left corner is the <mark>origin</mark></li>
-<li>x increases to the right</li>
-<li>y increases downward</li>
-</ul>
-<p>So the pixel E with coordinates (1, 1).</p>
-<p>This image described by 2-dimensions pixel grid is called
-<mark>Raster Image</mark>.</p>
-<p>So each pixel contains two information entry, the
-<mark>position</mark> and <mark>color</mark>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Position: (x, y)</span><br><span class="line">Color:    (R, G, B)</span><br></pre></td></tr></table></figure>
-<h2 id="image-storage">3. Image Storage</h2>
-<h3 id="from-image-to-bits">3.1 From Image to Bits</h3>
-<p>How to store an image in the computer?</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">          x →</span><br><span class="line">       0     1     2</span><br><span class="line">    +-----+-----+-----+</span><br><span class="line">  0 |  A  |  B  |  C  |</span><br><span class="line">y   +-----+-----+-----+</span><br><span class="line">↓ 1 |  D  |  E  |  F  |</span><br><span class="line">    +-----+-----+-----+</span><br></pre></td></tr></table></figure>
-<p>A common way is: from left to right in each row, and from top to
-bottom between rows. This is called <mark>row-major order</mark>.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2D Image:          Pixel Sequence:</span><br><span class="line"></span><br><span class="line">A  B  C            A → B → C → D → E → F</span><br><span class="line">D  E  F</span><br></pre></td></tr></table></figure>
-<p>Assume that each pixel has three color channels (RGB) and each
-channel takes 8 bits. So a single pixel needs 3B space. 6 pixels take 3
-* 6 = 18B in total.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Pixel:    A           B           C</span><br><span class="line">Bytes:    R_A G_A B_A R_B G_B B_B R_C G_C B_C</span><br><span class="line">Offset:   0   1   2   3   4   5   6   7   8</span><br><span class="line"></span><br><span class="line">Pixel:    D           E           F</span><br><span class="line">Bytes:    R_D G_D B_D R_E G_E B_E R_F G_F B_F</span><br><span class="line">Offset:   9   10  11  12  13  14  15  16  17</span><br></pre></td></tr></table></figure>
-<p>Offset refers to the byte offset relative to the start of this pixel
-data, starting from 0.</p>
-<p>So if we have the image’s binary information . If we want to know the
-5th pixel’s color, we can infer that the 5th pixel’s offset number is 3
-* (5 - 1) = 12.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5th Pixel(E):</span><br><span class="line"></span><br><span class="line">Offset:  12   13   14</span><br><span class="line">Channel: R    G    B</span><br></pre></td></tr></table></figure>
-<p><mark>General Formula for Row-Majored Order</mark>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pixel index = y × Width + x</span><br><span class="line"></span><br><span class="line">Byte offset = Pixel index × 3</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">                  x</span><br><span class="line">            0     1     2</span><br><span class="line">         +-----+-----+-----+</span><br><span class="line">       0 |  A  |  B  |  C  |</span><br><span class="line">   y     +-----+-----+-----+</span><br><span class="line">       1 |  D  |  E  |  F  |</span><br><span class="line">         +-----+-----+-----+</span><br><span class="line"></span><br><span class="line">         Width  = 3</span><br><span class="line">         Height = 2</span><br><span class="line"></span><br><span class="line">Pixel:    A   B   C   D   E   F</span><br><span class="line">Index:    0   1   2   3   4   5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>X-Coordinate starts from zero (0, 1, 2 … width - 1)</li>
-<li>Y-Coordinate starts from zero (0, 1, 2 … height - 1)</li>
-</ul>
-<p>Pixel A:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = 0</span><br><span class="line">y = 0</span><br><span class="line">width = 3</span><br><span class="line"></span><br><span class="line">Pixel index = y × Width + x = 0 × 3 + 0 = 0</span><br><span class="line"></span><br><span class="line">Byte offset = Pixel index × 3 = 0 × 3 = 0</span><br></pre></td></tr></table></figure>
-<p>Pixel E:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = 1</span><br><span class="line">y = 1</span><br><span class="line">width = 3</span><br><span class="line"></span><br><span class="line">Pixel index = y × Width + x = 1 × 3 + 1 = 4</span><br><span class="line"></span><br><span class="line">Byte offset = Pixel index × 3 = 4 × 3 = 12</span><br></pre></td></tr></table></figure>
-<h3 id="from-bits-to-image">3.2 From Bits to Image</h3>
-<p>Suppose that we have a string of RGB bitstreams:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B_0 B_1 B_2 ... B_12 B_13 B_14 B_15</span><br></pre></td></tr></table></figure>
-<p>Can we restore the image ? Of course not, because</p>
-<ol type="1">
-<li><p>We do not know the space information of the image. e.g. 6 pixels
-can be arranged as 3 * 2 or 2 * 3.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Width = 3, Height = 2</span><br><span class="line"></span><br><span class="line">A  B  C</span><br><span class="line">D  E  F</span><br><span class="line"></span><br><span class="line">Width = 2, Height = 3</span><br><span class="line"></span><br><span class="line">A  B</span><br><span class="line">C  D</span><br><span class="line">E  F</span><br></pre></td></tr></table></figure></li>
-<li><p>We don’t know the RGB rule. The three color bytes can be
-described into different rules</p></li>
-</ol>
-<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">255, 0, 0</span><br></pre></td></tr></table></figure></p>
-<p>RGB rule:</p>
-<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R = 255</span><br><span class="line">G = 0</span><br><span class="line">B = 0</span><br></pre></td></tr></table></figure></p>
-<p>BGR rule:</p>
-<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B = 255</span><br><span class="line">G = 0</span><br><span class="line">R = 0</span><br></pre></td></tr></table></figure></p>
-<p>So we need extra information to record full information:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Image description:</span><br><span class="line">    Width:           3</span><br><span class="line">    Height:          2</span><br><span class="line">    Channel order:   RGB</span><br><span class="line">    Bits per channel: 8</span><br><span class="line">    Pixel order:     Row-major</span><br><span class="line">    Packing:         Tightly packed</span><br><span class="line"></span><br><span class="line">Pixel data:</span><br><span class="line">    R_A G_A B_A R_B G_B B_B ... R_F G_F B_F</span><br></pre></td></tr></table></figure>
-<h3 id="stride">3.3 Stride</h3>
-<p>For a 3 * 3 image:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Row 0:  [ A ][ B ][ C ]</span><br><span class="line">Row 1:  [ D ][ E ][ F ]</span><br><span class="line"></span><br><span class="line">Pixel:    A   B   C</span><br><span class="line">Offset:   0   3   6</span><br><span class="line"></span><br><span class="line">Pixel:    D   E   F</span><br><span class="line">Offset:   9  12  15</span><br></pre></td></tr></table></figure>
-<p>The gap of the offset of each line is 9 which is called
-<mark>Stride</mark>.</p>
-<p>However some hardware or image processing interfaces require row data
-to <mark>be aligned to</mark> specific byte boundaries.</p>
-<p>Suppose each row is required to take up space <mark>in multiples of 4
-bytes</mark>. A row of color data has 9 bytes, so you can add 3 bytes at
-the end to make it 12 bytes:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">         Pixel data       Padding</span><br><span class="line">       +---+---+---+----------------+</span><br><span class="line">Row 0: | A | B | C |     3 bytes    |</span><br><span class="line">       +---+---+---+----------------+</span><br><span class="line">Row 1: | D | E | F |     3 bytes    |</span><br><span class="line">       +---+---+---+----------------+</span><br><span class="line"></span><br><span class="line">Pixel:    A   B   C</span><br><span class="line">Offset:   0   3   6</span><br><span class="line"></span><br><span class="line">Pixel:    D   E   F</span><br><span class="line">Offset:   12  15  18</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pixel data per row = 9 bytes</span><br><span class="line">Padding per row    = 3 bytes</span><br><span class="line">Stride             = 12 bytes</span><br></pre></td></tr></table></figure>
-<p><mark>Formula for Row-Majored Order with Stride</mark>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Byte offset = y × Stride + x × Bytes per pixel</span><br></pre></td></tr></table></figure>
-<p>e.g. the pixel E (1,1)’s offset:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">offset = 1 * 12 + 1 * 3 = 15</span><br></pre></td></tr></table></figure>
-<h3 id="rgba-transparency">3.4 RGBA (Transparency)</h3>
-<p>RGBA is an extension format of RGB with an extra channer Alpha to
-describe the transparency.</p>
-<p>Why we need Alpha to describe the transparency?</p>
-<p>Suppose we want to place a red icon on a blue background. The icon
-might have areas that completely cover the background, or it might have
-<mark>transparent</mark> or <mark>semi-transparent</mark> areas.</p>
-<p>RGB can only describe the color of a pixel; it can’t tell us
-<mark>how</mark> it should <mark>blend with</mark> the background on its
-own.</p>
+<p>Pixel E has Coordinates <code>(1, 1)</code>: the second column and
+the second row.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pixel Count = Width * Height</span><br><span class="line">            = 3 * 2</span><br><span class="line">            = 6</span><br></pre></td></tr></table></figure>
+<p>Conceptually, each Pixel has a position and a color:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Position: (x, y)</span><br><span class="line">Color:    (R, G, B)</span><br></pre></td></tr></table></figure>
+<p>In the layout used below, Coordinates are <mark>inferred</mark> from
+the ordering and image dimensions; they are not stored separately for
+every Pixel.</p>
+<h3 id="pixel-index-and-zero-based-indexing">2.3 Pixel Index and
+Zero-Based Indexing</h3>
+<p>If we enumerate Pixels from left to right in each row, and from top
+to bottom between rows, the sequence is:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pixel:    A   B   C   D   E   F</span><br><span class="line">Index:    0   1   2   3   4   5</span><br></pre></td></tr></table></figure>
+<p>The <mark>Pixel Index</mark> starts at 0. It equals the number of
+Pixels that precede the selected Pixel in this sequence.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pixel Index = y * Width + x</span><br></pre></td></tr></table></figure>
+<p>For Pixel A:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = 0</span><br><span class="line">y = 0</span><br><span class="line">Width = 3</span><br><span class="line"></span><br><span class="line">Pixel Index = 0 * 3 + 0 = 0</span><br></pre></td></tr></table></figure>
+<p>For Pixel E:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = 1</span><br><span class="line">y = 1</span><br><span class="line">Width = 3</span><br><span class="line"></span><br><span class="line">Pixel Index = 1 * 3 + 1 = 4</span><br></pre></td></tr></table></figure>
+<p>The everyday ordinal number starts at 1:</p>
 <table>
 <thead>
 <tr>
-<th>Alpha Value</th>
+<th>Pixel</th>
+<th>Coordinates</th>
+<th style="text-align: right;">Pixel Index</th>
+<th style="text-align: right;">Ordinal Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>(0, 0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>B</td>
+<td>(1, 0)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>C</td>
+<td>(2, 0)</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>D</td>
+<td>(0, 1)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>E</td>
+<td>(1, 1)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>F</td>
+<td>(2, 1)</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ordinal Number = Pixel Index + 1</span><br></pre></td></tr></table></figure>
+<h2 id="raw-image-storage">3. Raw Image Storage</h2>
+<h3 id="row-major-layout-and-byte-offsets">3.1 Row-Major Layout and Byte
+Offsets</h3>
+<p>To store the two-dimensional grid in memory, we need a layout. The
+left-to-right, top-to-bottom ordering used above is called
+<mark>Row-Major Order</mark>.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2D Image:          Pixel Sequence:</span><br><span class="line"></span><br><span class="line">A  B  C            A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; F</span><br><span class="line">D  E  F</span><br></pre></td></tr></table></figure>
+<p>Assume RGB8, with the R, G, and B bytes of each Pixel stored together
+in that order. Each Pixel occupies 3 bytes. Assume the rows are
+<mark>Tightly Packed</mark>, with no extra bytes between rows.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Pixel:    A           B           C</span><br><span class="line">Bytes:    R_A G_A B_A R_B G_B B_B R_C G_C B_C</span><br><span class="line">Offset:   0   1   2   3   4   5   6   7   8</span><br><span class="line"></span><br><span class="line">Pixel:    D           E           F</span><br><span class="line">Bytes:    R_D G_D B_D R_E G_E B_E R_F G_F B_F</span><br><span class="line">Offset:   9   10  11  12  13  14  15  16  17</span><br></pre></td></tr></table></figure>
+<p>A <mark>Byte Offset</mark> measures the distance in bytes from the
+start of the Pixel Data. It starts at 0, just like Pixel Index, but uses
+a different unit.</p>
+<p>For this tightly packed RGB8 layout:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Bytes per Pixel = 3</span><br><span class="line"></span><br><span class="line">Byte Offset = Pixel Index * Bytes per Pixel</span><br><span class="line">            = (y * Width + x) * 3</span><br></pre></td></tr></table></figure>
+<p>Pixel E is the fifth Pixel, with Pixel Index 4:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Byte Offset = 4 * 3 = 12</span><br><span class="line"></span><br><span class="line">Offset:   12   13   14</span><br><span class="line">Channel:   R    G    B</span><br></pre></td></tr></table></figure>
+<h3 id="image-description">3.2 Image Description</h3>
+<p>Suppose we receive a sequence of 18 bytes:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Byte_0 Byte_1 Byte_2 ... Byte_15 Byte_16 Byte_17</span><br></pre></td></tr></table></figure>
+<p>The bytes alone do not tell us how to interpret them as an image.
+Even if we know that they represent six RGB8 Pixels, we still need the
+dimensions:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Width = 3, Height = 2</span><br><span class="line"></span><br><span class="line">A  B  C</span><br><span class="line">D  E  F</span><br><span class="line"></span><br><span class="line">Width = 2, Height = 3</span><br><span class="line"></span><br><span class="line">A  B</span><br><span class="line">C  D</span><br><span class="line">E  F</span><br></pre></td></tr></table></figure>
+<p>We also need the <mark>Channel Order</mark>. The same three bytes
+have different meanings under RGB and BGR:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Bytes: 255, 0, 0</span><br><span class="line"></span><br><span class="line">RGB:</span><br><span class="line">    R = 255</span><br><span class="line">    G = 0</span><br><span class="line">    B = 0</span><br><span class="line">    Color = Red</span><br><span class="line"></span><br><span class="line">BGR:</span><br><span class="line">    B = 255</span><br><span class="line">    G = 0</span><br><span class="line">    R = 0</span><br><span class="line">    Color = Blue</span><br></pre></td></tr></table></figure>
+<p>For the simple layout introduced here, an Image Description can
+specify:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Image Description:</span><br><span class="line">    Width:            3</span><br><span class="line">    Height:           2</span><br><span class="line">    Channel Order:    RGB</span><br><span class="line">    Bits per Channel: 8</span><br><span class="line">    Pixel Order:      Row-major</span><br><span class="line">    Packing:          Tightly packed</span><br><span class="line"></span><br><span class="line">Pixel Data:</span><br><span class="line">    R_A G_A B_A R_B G_B B_B ... R_F G_F B_F</span><br></pre></td></tr></table></figure>
+<p>The Pixel Data provides the values. The Image Description provides
+the rules for interpreting their layout and Channels. These rules may be
+provided separately by a program rather than stored inside the Pixel
+Data itself.</p>
+<h3 id="stride-and-padding">3.3 Stride and Padding</h3>
+<p>For the tightly packed <code>3 * 2</code> RGB8 image:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Row 0: [ A ][ B ][ C ]</span><br><span class="line">Row 1: [ D ][ E ][ F ]</span><br><span class="line"></span><br><span class="line">Pixel:    A   B   C   D   E   F</span><br><span class="line">Offset:   0   3   6   9  12  15</span><br></pre></td></tr></table></figure>
+<p>The first row starts at Byte Offset 0, and the second starts at Byte
+Offset 9. The distance between the starts of consecutive rows is the
+<mark>Stride</mark>, measured in bytes.</p>
+<p>Some hardware or image-processing interfaces require rows to
+<mark>align to specific byte boundaries</mark>.</p>
+<p>For example, suppose each row must occupy a multiple of 4 bytes. The
+Pixel Data in a row occupies 9 bytes, so we can add 3 bytes of
+<mark>Padding</mark> to make the Stride 12 bytes:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">           Pixel Data          Padding</span><br><span class="line">       +-----+-----+-----+---------------+</span><br><span class="line">Row 0: |  A  |  B  |  C  |    3 bytes    |</span><br><span class="line">       +-----+-----+-----+---------------+</span><br><span class="line">Row 1: |  D  |  E  |  F  |    3 bytes    |</span><br><span class="line">       +-----+-----+-----+---------------+</span><br><span class="line"></span><br><span class="line">Pixel:    A   B   C   D   E   F</span><br><span class="line">Offset:   0   3   6  12  15  18</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pixel Data per Row = 9 bytes</span><br><span class="line">Padding per Row    = 3 bytes</span><br><span class="line">Stride             = 12 bytes</span><br></pre></td></tr></table></figure>
+<p>Padding occupies memory but does not represent additional Pixels.
+Whether Padding is present depends on the layout; it cannot be assumed
+from Width alone.</p>
+<p>For the row-major layout used here, with each Pixel’s Channels stored
+together:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Byte Offset = y * Stride + x * Bytes per Pixel</span><br></pre></td></tr></table></figure>
+<p>For Pixel E at <code>(1, 1)</code>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Byte Offset = 1 * 12 + 1 * 3</span><br><span class="line">            = 15</span><br></pre></td></tr></table></figure>
+<p>For tightly packed rows,
+<code>Stride = Width * Bytes per Pixel</code>, which gives the earlier
+formula.</p>
+<h3 id="rgba8-and-alpha">3.4 RGBA8 and Alpha</h3>
+<p>RGB describes a Pixel’s color. When placing an image over a
+background, we may also need to describe how opaque each Pixel is.
+<mark>RGBA</mark> adds an <mark>Alpha</mark> Channel for that
+purpose.</p>
+<p>For example, a red icon on a blue background may have fully opaque,
+partially transparent, and fully transparent areas.</p>
+<p>In <mark>RGBA8</mark>, each of the four Channels uses 8 bits:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Alpha Value</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>255</td>
+<td style="text-align: right;">255</td>
 <td>Completely Opaque</td>
 </tr>
 <tr>
-<td>128</td>
-<td>Half Opaque</td>
+<td style="text-align: right;">128</td>
+<td>Approximately 50% Opaque</td>
 </tr>
 <tr>
-<td>0</td>
+<td style="text-align: right;">0</td>
 <td>Completely Transparent</td>
 </tr>
 </tbody>
 </table>
-<p>For instance, a red pixel can have different alpha value:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(255, 0, 0, 255)   Fully opaque</span><br><span class="line">(255, 0, 0, 128)   Partially transparent</span><br><span class="line">(255, 0, 0,   0)   Fully transparent</span><br></pre></td></tr></table></figure>
-<p>Place the <mark>red</mark> pixels on a <mark>blue</mark> background:
-- Alpha 255: The spot shows the foreground <mark>red</mark>, completely
-covering the background. - Alpha 128: The foreground red and background
-blue <mark>both</mark> affect the final color. - Alpha 0: The foreground
-doesn’t contribute color, so the spot shows the background
-<mark>blue</mark>.</p>
-<p>With an extra channel, the pixel’s color information will increase
-from 3 to 4 bytes.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">RGB pixel:</span><br><span class="line">+---+---+---+</span><br><span class="line">| R | G | B |   3 bytes</span><br><span class="line">+---+---+---+</span><br><span class="line"></span><br><span class="line">RGBA pixel:</span><br><span class="line">+---+---+---+---+</span><br><span class="line">| R | G | B | A |   4 bytes</span><br><span class="line">+---+---+---+---+</span><br></pre></td></tr></table></figure>
-<p>So the formula for RGBA8 (8 for 8 bits):</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bytes per pixel = 4</span><br><span class="line">Byte offset = (y × Width + x) × 4</span><br></pre></td></tr></table></figure>
-<p>If the stride is known:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Byte offset = y × Stride + x × 4</span><br></pre></td></tr></table></figure>
-<h3 id="grayscale-image">3.5 Grayscale Image</h3>
-<p>As we said above, we can use RGB combination to illustrate a specific
-range of colors. There’s a phenomenon: when R = G = B, we will get
-black, white and gray.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(255, 0, 0, 255)   Fully opaque</span><br><span class="line">(255, 0, 0, 128)   Partially transparent</span><br><span class="line">(255, 0, 0,   0)   Fully transparent</span><br></pre></td></tr></table></figure>
+<p>Placed on an opaque blue background:</p>
+<ul>
+<li>Alpha 255: the foreground red completely covers the background.</li>
+<li>Alpha 128: both foreground red and background blue affect the final
+color.</li>
+<li>Alpha 0: the foreground contributes no color, so the background blue
+is visible.</li>
+</ul>
+<p>These examples describe the RGB color separately from Alpha. Alpha
+expresses opacity; it is not another color component.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">RGB8 Pixel:</span><br><span class="line">+---+---+---+</span><br><span class="line">| R | G | B |   3 bytes</span><br><span class="line">+---+---+---+</span><br><span class="line"></span><br><span class="line">RGBA8 Pixel:</span><br><span class="line">+---+---+---+---+</span><br><span class="line">| R | G | B | A |   4 bytes</span><br><span class="line">+---+---+---+---+</span><br></pre></td></tr></table></figure>
+<p>For tightly packed RGBA8:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bytes per Pixel = 4</span><br><span class="line">Byte Offset = (y * Width + x) * 4</span><br></pre></td></tr></table></figure>
+<p>If the actual Stride is given:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Byte Offset = y * Stride + x * 4</span><br></pre></td></tr></table></figure>
+<h3 id="gray8">3.5 Gray8</h3>
+<p>Pixel Formats depend on the information we need to represent. RGB
+describes color, and RGBA adds opacity. If we only need
+<mark>black-to-white levels</mark>, a single Channel can describe each
+Pixel.</p>
+<p>In common RGB representations, equal R, G, and B values produce
+black, white, or a <mark>neutral gray</mark>:</p>
 <table>
 <thead>
 <tr>
-<th>RGB value</th>
+<th>RGB Value</th>
 <th>Appearance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>(0, 0, 0)</code></td>
+<td>(0, 0, 0)</td>
 <td>Black</td>
 </tr>
 <tr>
-<td><code>(64, 64, 64)</code></td>
+<td>(64, 64, 64)</td>
 <td>Darker Gray</td>
 </tr>
 <tr>
-<td><code>(128, 128, 128)</code></td>
+<td>(128, 128, 128)</td>
 <td>Gray</td>
 </tr>
 <tr>
-<td><code>(192, 192, 192)</code></td>
+<td>(192, 192, 192)</td>
 <td>Lighter Gray</td>
 </tr>
 <tr>
-<td><code>(255, 255, 255)</code></td>
-<td>white</td>
+<td>(255, 255, 255)</td>
+<td>White</td>
 </tr>
 </tbody>
 </table>
-<p>For this kind image, we can use single-channel to represent the color
-instead of using three kinds.</p>
-<p>Grayscale pixels usually only keep one <mark>gray value</mark>.</p>
-<p>Using the common 8-bit grayscale format, usually called
-<mark>Gray8</mark>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Gray value:  0 ........ 128 ........ 255</span><br><span class="line">            Black      Gray        White</span><br></pre></td></tr></table></figure>
-<p>Each pixel only includes a gray value:</p>
-<ul>
-<li><mark>0</mark> for black</li>
-<li><mark>255</mark> for white</li>
-<li><mark>middle values</mark> indicate different shades of gray</li>
-</ul>
+<p>For such a black-to-white representation, we can store one <mark>Gray
+Value</mark> per Pixel instead of three color components.</p>
+<p>In <mark>Gray8</mark>, the Channel uses 8 bits, so each Pixel
+occupies 1 byte:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Gray Value:  0 ........ 128 ........ 255</span><br><span class="line">            Black      Gray        White</span><br></pre></td></tr></table></figure>
+<p>Intermediate values indicate different gray levels. These are encoded
+values; they are not necessarily proportional to physical light
+output.</p>
+<h3 id="raw-data-size">3.6 Raw Data Size</h3>
+<p>For the 8-bit-per-Channel formats discussed above:</p>
+<table>
+<thead>
+<tr>
+<th>Pixel Format</th>
+<th>Channels</th>
+<th style="text-align: right;">Bytes per Pixel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gray8</td>
+<td>Gray</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>RGB8</td>
+<td>R, G, B</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>RGBA8</td>
+<td>R, G, B, A</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+<p>For tightly packed rows:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pixel Count = Width * Height</span><br><span class="line"></span><br><span class="line">Raw Data Size = Width * Height * Bytes per Pixel</span><br></pre></td></tr></table></figure>
+<p>For example:</p>
+<table>
+<thead>
+<tr>
+<th>Pixel Format</th>
+<th>Pixel Dimensions</th>
+<th style="text-align: right;">Raw Data Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gray8</td>
+<td>1920 * 1080</td>
+<td style="text-align: right;">2,073,600 bytes</td>
+</tr>
+<tr>
+<td>RGB8</td>
+<td>1920 * 1080</td>
+<td style="text-align: right;">6,220,800 bytes</td>
+</tr>
+<tr>
+<td>RGBA8</td>
+<td>1920 * 1080</td>
+<td style="text-align: right;">8,294,400 bytes</td>
+</tr>
+</tbody>
+</table>
+<p>If every row, including the last, is allocated a complete Stride of
+storage:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Allocated Size = Stride * Height</span><br></pre></td></tr></table></figure>
+<p>For the padded <code>3 * 2</code> RGB8 example:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pixel Data = 3 * 2 * 3 = 18 bytes</span><br><span class="line">Padding    = 3 * 2     =  6 bytes</span><br><span class="line">Total      = 12 * 2    = 24 bytes</span><br></pre></td></tr></table></figure>
+<p>Some interfaces do not require complete trailing Padding after the
+last row, so the allocation must follow the actual interface’s
+requirements.</p>
+<p>These calculations describe Raw Pixel Data or its memory allocation.
+An encoded image file can have a different size.</p>
 <h2 id="image-compression">4. Image Compression</h2>
 <h3 id="redundancy">4.1 Redundancy</h3>
-<p>Suppose an image’s specification is 1 * 8, and each pixel is red.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Width = 8</span><br><span class="line">Height = 1</span><br><span class="line">Pixel Format = RGB8</span><br><span class="line"></span><br><span class="line">[Red][Red][Red][Red][Red][Red][Red][Red]</span><br></pre></td></tr></table></figure>
-<p>So each pixel’s RGB value is: <code>(255, 0, 0)</code>. Totally cost
-<code>3 * 8 = 24 Bytes</code></p>
-<p>We can use one sentence to describe these pixels:
-<code>Reapt Red 8 times</code>. This rule includes following
-information:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Color: (255, 0, 0)</span><br><span class="line">Count: 8</span><br></pre></td></tr></table></figure>
-<p><code>Reapt Red 8 times</code> is said for human. In computer, we can
-use the following <mark>format</mark> data to record consecutive
-identical value:</p>
-<ul>
-<li><p>Format:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+---------------+--------------+--------------+-----------+</span><br><span class="line">| Count: 1 byte | R Value: 1B | G Value: 1B | B Value: 1B |</span><br><span class="line">+---------------+--------------+--------------+-----------+</span><br></pre></td></tr></table></figure></li>
-<li><p>Example:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Count    R     G     B</span><br><span class="line">  8     255    0     0</span><br></pre></td></tr></table></figure>
-<p>This record only takes 4B space comparing with the original
-24B.</p></li>
-</ul>
-<p>Decompress:</p>
-<p>When the image dealing process read: <code>(8, 255, 0, 0)</code>, it
-knows that there are 8 consecutive (255, 0, 0)</p>
+<p>Suppose an image has Pixel Dimensions <code>8 * 1</code>, and every
+Pixel is red:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Width = 8</span><br><span class="line">Height = 1</span><br><span class="line">Pixel Format = RGB8</span><br><span class="line"></span><br><span class="line">[Red][Red][Red][Red][Red][Red][Red][Red]</span><br></pre></td></tr></table></figure>
+<p>Each Pixel has RGB value <code>(255, 0, 0)</code>. Tightly packed Raw
+Pixel Data occupies <code>8 * 3 = 24 bytes</code>.</p>
+<p>We can describe the same sequence as <mark>Repeat Red 8 times</mark>.
+This uses two pieces of information:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Color: (255, 0, 0)</span><br><span class="line">Count: 8</span><br></pre></td></tr></table></figure>
+<p>This repeated content is a simple example of exploitable
+<mark>Redundancy</mark>.</p>
+<p>To store the rule, define a simple teaching format:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Record Format:</span><br><span class="line">+---------------+-------+-------+-------+</span><br><span class="line">| Count: 1 byte | R: 1B | G: 1B | B: 1B |</span><br><span class="line">+---------------+-------+-------+-------+</span><br><span class="line"></span><br><span class="line">Count    R     G     B</span><br><span class="line">  8     255    0     0</span><br></pre></td></tr></table></figure>
+<p>The Record occupies 4 bytes, compared with the original 24 bytes.
+This comparison counts only the Record and Raw Pixel Data, excluding
+other description information; the reader must already know the Encoding
+rule.</p>
+<p>During <mark>Decoding</mark>, the reader interprets
+<code>(8, 255, 0, 0)</code> as eight consecutive Pixels with RGB value
+<code>(255, 0, 0)</code>.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Raw Pixel Data</span><br><span class="line">      | Encoding</span><br><span class="line">      v</span><br><span class="line">Compact Representation</span><br><span class="line">      | Decoding</span><br><span class="line">      v</span><br><span class="line">Original Pixel Data</span><br></pre></td></tr></table></figure>
+<p>The Pixel Count and RGB values are preserved. The representation uses
+fewer bytes.</p>
+<h3 id="lossless-compression-rle">4.2 Lossless Compression: RLE</h3>
+<p>The previous example introduces the idea behind <mark>Run-Length
+Encoding (RLE)</mark>. Now consider multiple colors:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Red][Red][Red][Blue][Blue][Green][Green][Green]</span><br></pre></td></tr></table></figure>
+<p>A <mark>Run</mark> is a consecutive sequence of Pixels with the same
+color:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Run 1: Red   * 3</span><br><span class="line">Run 2: Blue  * 2</span><br><span class="line">Run 3: Green * 3</span><br></pre></td></tr></table></figure>
+<p>Each Run has a corresponding <mark>Record</mark>. Using the same
+4-byte Record Format:</p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th style="text-align: right;">Count</th>
+<th style="text-align: right;">R</th>
+<th style="text-align: right;">G</th>
+<th style="text-align: right;">B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">255</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>In this teaching format, Count uses values from 1 to 255. A longer
+Run can be split across multiple Records.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Raw Data Size = 8 * 3 = 24 bytes</span><br><span class="line">Encoded Size  = 3 * 4 = 12 bytes</span><br></pre></td></tr></table></figure>
+<p>To Decode the Records:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Record 1 -&gt; Red Red Red</span><br><span class="line">Record 2 -&gt; Blue Blue</span><br><span class="line">Record 3 -&gt; Green Green Green</span><br><span class="line"></span><br><span class="line">Result:</span><br><span class="line">Red Red Red Blue Blue Green Green Green</span><br></pre></td></tr></table></figure>
+<p>Every original Pixel Value is recovered exactly. This is
+<mark>Lossless Compression</mark>.</p>
+<p>However, RLE can increase the size when Runs are short. For
+example:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Red Green Red Green Red Green Red Green</span><br><span class="line"></span><br><span class="line">Raw Data Size = 8 * 3 = 24 bytes</span><br><span class="line">Encoded Size  = 8 * 4 = 32 bytes</span><br></pre></td></tr></table></figure>
+<p>Although each color appears repeatedly, no adjacent Pixels have the
+same color. Each Run has Count 1, so each Pixel gains an extra Count
+byte.</p>
+<p>RLE’s effectiveness <mark>depends on the length of consecutive
+repetition</mark>, rather than just the total number of appearances of a
+color. This is a limitation of this RLE scheme, not of every Lossless
+Compression method.</p>
+<h3 id="lossy-compression-quantization">4.3 Lossy Compression:
+Quantization</h3>
+<p>The RLE scheme above benefits from identical neighboring Pixel
+Values. If neighboring colors are close but not identical, we can ask
+what happens if we allow some differences to be discarded.</p>
+<p>Consider eight RGB8 Pixels:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Pixel:  A    B    C    D    E    F    G    H</span><br><span class="line"></span><br><span class="line">R:     248  249  250  251  248  249  250  251</span><br><span class="line">G:       0    0    0    0    0    0    0    0</span><br><span class="line">B:       0    0    0    0    0    0    0    0</span><br></pre></td></tr></table></figure>
+<p>These Pixels form eight Runs in the RLE scheme. Their colors are
+close, although whether differences are noticeable depends on the
+content and viewing conditions.</p>
+<p><mark>If we represent these similar colors using a common value, can
+we obtain a longer Run?</mark></p>
+<p>For each Channel independently, group the original values into groups
+of eight adjacent values and choose the first value as the
+representative. This is a simple example of
+<mark>Quantization</mark>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Original Channel Values    Group Index    Quantized Channel Value</span><br><span class="line"></span><br><span class="line">  0 ...   7                    0                    0</span><br><span class="line">  8 ...  15                    1                    8</span><br><span class="line"> 16 ...  23                    2                   16</span><br><span class="line"> ...</span><br><span class="line">248 ... 255                   31                  248</span><br></pre></td></tr></table></figure>
+<p>The rule maps multiple Channel Values to one representative value.
+Applied to the example:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Pixel:  A    B    C    D    E    F    G    H</span><br><span class="line"></span><br><span class="line">R:     248  248  248  248  248  248  248  248</span><br><span class="line">G:       0    0    0    0    0    0    0    0</span><br><span class="line">B:       0    0    0    0    0    0    0    0</span><br></pre></td></tr></table></figure>
+<p>If we still store every Pixel as RGB8, Quantization alone does not
+reduce the byte count. But the resulting single Run can now be
+represented by one RLE Record:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Count    R     G     B</span><br><span class="line">  8     248    0     0</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th style="text-align: right;">Data Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original RGB8</td>
+<td style="text-align: right;">24 bytes</td>
+</tr>
+<tr>
+<td>Original RGB8 + RLE</td>
+<td style="text-align: right;">32 bytes</td>
+</tr>
+<tr>
+<td>Quantized RGB8</td>
+<td style="text-align: right;">24 bytes</td>
+</tr>
+<tr>
+<td>Quantized RGB8 + RLE</td>
+<td style="text-align: right;">4 bytes</td>
+</tr>
+</tbody>
+</table>
+<p>The smaller result comes from <mark>Quantization + RLE</mark>.
+Quantization changes the values; RLE then represents the repeated result
+compactly.</p>
+<p>After Decoding, all eight R values are 248:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Original R:</span><br><span class="line">248 249 250 251 248 249 250 251</span><br><span class="line"></span><br><span class="line">Decoded R:</span><br><span class="line">248 248 248 248 248 248 248 248</span><br></pre></td></tr></table></figure>
+<p>A decoded value of 248 no longer identifies which original value
+produced it. Information has been lost, making this a teaching example
+of <mark>Lossy Compression</mark>.</p>
+<p>Lossy Compression does not guarantee that the changes are invisible.
+Whether the loss is acceptable depends on the image and its intended
+use.</p>
+<h3 id="encoded-size-and-quality">4.4 Encoded Size and Quality</h3>
+<p>The previous example reduces <mark>Encoded Size</mark> while keeping
+the same number of Pixels. Several different properties must therefore
+be distinguished:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Property</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pixel Dimensions</td>
+<td>Width and Height in pixels</td>
+</tr>
+<tr>
+<td>Raw Data Size</td>
+<td>Bytes used by the chosen raw Pixel Format and layout</td>
+</tr>
+<tr>
+<td>Encoded Data Size</td>
+<td>Bytes used by the encoded representation</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>Fidelity to the original content and the resulting visual
+appearance</td>
+</tr>
+</tbody>
+</table>
+<p>For the eight-Pixel example from Section 4.3:</p>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Pixel Dimensions</th>
+<th style="text-align: right;">Data Size</th>
+<th>Exact Recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw RGB8</td>
+<td>8 * 1</td>
+<td style="text-align: right;">24 bytes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>RLE</td>
+<td>8 * 1</td>
+<td style="text-align: right;">32 bytes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Quantization + RLE</td>
+<td>8 * 1</td>
+<td style="text-align: right;">4 bytes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The RLE representation is larger than Raw RGB8 but recovers exactly
+the same content. More bytes do not necessarily mean higher Quality.</p>
+<p>The <mark>Quantization + RLE</mark> representation keeps the same
+Width and Height <mark>but</mark> changes Pixel Values. Equal Pixel
+Dimensions do not guarantee equal Quality.</p>
+<p>When the 4-byte representation is decoded into tightly packed RGB8,
+it again requires <code>8 * 3 = 24 bytes</code> to hold the eight
+decoded Pixels. Encoded Data Size and decoded Raw Data Size describe
+different representations.</p>
+<p>The comparisons above count the data representation itself. Image
+files also need a defined way to organize their information, which is
+the next topic.</p>
 <h2 id="image-file-formats">5. Image File Formats</h2>
+<h3 id="raw-pixel-data-vs-image-files">5.1 Raw Pixel Data vs Image
+Files</h3>
+<p>A 8 consecutive red pixel in RLE record:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Count    R     G     B</span><br><span class="line">  8     255    0     0</span><br></pre></td></tr></table></figure>
+<p>If a image process application get the data, it doesn’t know what it
+is.</p>
+<ul>
+<li>What are the four numbers?</li>
+<li>The format is <code>8 * 1</code> or <code>4 * 2</code>?</li>
+<li></li>
+</ul>
+<h3 id="file-structure-and-metadata">5.2 File Structure and
+Metadata</h3>
+<h3 id="png">5.3 PNG</h3>
+<h3 id="jpeg">5.4 JPEG</h3>
+<h3 id="the-encoding-and-decoding-pipeline">5.5 The Encoding and
+Decoding Pipeline</h3>
 <h2 id="image-processing">6. Image Processing</h2>
+<h3 id="crop">6.1 Crop</h3>
+<h3 id="resize">6.2 Resize</h3>
+<h3 id="interpolation">6.3 Interpolation</h3>
+<h3 id="color-operations">6.4 Color Operations</h3>
 <h2 id="image-display">7. Image Display</h2>
+<h3 id="image-pixels-and-display-pixels">7.1 Image Pixels and Display
+Pixels</h3>
+<h3 id="framebuffer-and-compositing">7.2 Framebuffer and
+Compositing</h3>
+<h3 id="color-management-and-transfer-functions">7.3 Color Management
+and Transfer Functions</h3>
+<h3 id="display-hardware">7.4 Display Hardware</h3>
 <h1 id="audio">Audio</h1>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/data-representation/">https://wangyier.top/data-representation/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Data-Encoding/">Data Encoding</a><a class="post-meta__tags" href="/tags/Data-Representation/">Data Representation</a><a class="post-meta__tags" href="/tags/RGB/">RGB</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="x,wechat"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/paper-summary-no-long-context/" title="Paper Summary - No Long Context"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Paper Summary - No Long Context</div></div><div class="info-2"><div class="info-item-1">This paper concludes two context compaction methods: end-of-conversation compaction (EoCC) and Single-Action Compaction. According to benchmarking long context and compacted context, the authors believe that there is no need to use long context window, and the model should be trained towards the compaction way.</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">121</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text">1. Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#text"><span class="toc-text">Text</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#image"><span class="toc-text">Image</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rgb-principal"><span class="toc-text">1. RGB Principal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-visual-mechanism-of-the-human-eye-provides-a-basis-for-describing-color-using-three-quantities."><span class="toc-text">1.
-The visual mechanism of the human eye provides a basis for describing
-color using three quantities.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-specific-range-of-colors-can-be-reproduced-by-adjusting-red-green-and-blue-light."><span class="toc-text">2.
-A specific range of colors can be reproduced by adjusting red, green,
-and blue light.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#color-representation-in-space-distribution"><span class="toc-text">3. Color
-Representation in Space Distribution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#color-component-precision"><span class="toc-text">4. Color Component Precision</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#color-precision-represented-by-bit"><span class="toc-text">5. Color Precision
-Represented by Bit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#from-pixel-to-image-raster-image"><span class="toc-text">2. From Pixel to Image (Raster
-Image)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-storage"><span class="toc-text">3. Image Storage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#from-image-to-bits"><span class="toc-text">3.1 From Image to Bits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#from-bits-to-image"><span class="toc-text">3.2 From Bits to Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stride"><span class="toc-text">3.3 Stride</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rgba-transparency"><span class="toc-text">3.4 RGBA (Transparency)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grayscale-image"><span class="toc-text">3.5 Grayscale Image</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-compression"><span class="toc-text">4. Image Compression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redundancy"><span class="toc-text">4.1 Redundancy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-file-formats"><span class="toc-text">5. Image File Formats</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-processing"><span class="toc-text">6. Image Processing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-display"><span class="toc-text">7. Image Display</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#audio"><span class="toc-text">Audio</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/data-representation/" title="Data Representation">Data Representation</a><time datetime="2026-11-14T08:10:34.000Z" title="Created 2026-11-14 16:10:34">2026-11-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-no-long-context/" title="Paper Summary - No Long Context">Paper Summary - No Long Context</a><time datetime="2026-11-10T13:55:44.000Z" title="Created 2026-11-10 21:55:44">2026-11-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-gta1/" title="Paper Summary - GTA1">Paper Summary - GTA1</a><time datetime="2026-11-05T06:30:17.000Z" title="Created 2026-11-05 14:30:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-osworld-g/" title="Paper Summary - OSWorld-G">Paper Summary - OSWorld-G</a><time datetime="2026-11-02T04:56:19.000Z" title="Created 2026-11-02 12:56:19">2026-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/experiments/" title="Experiments">Experiments</a><time datetime="2026-10-28T13:07:49.000Z" title="Created 2026-10-28 21:07:49">2026-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-flex"><div class="footer-flex-items" style="flex-grow:2"><div class="footer-flex-item"><div class="footer-flex-title">The Great Library</div><div class="footer-flex-content"><a href="/about/" target="_blank" title="About">About</a><a href="/graph/" target="_blank" title="Knowledge Graph">Knowledge Graph</a></div></div></div><div class="footer-flex-items" style="flex-grow:1"><div class="footer-flex-item"><div class="footer-flex-title">Browse</div><div class="footer-flex-content"><a href="/archives/" target="_blank" title="Archives">Archives</a><a href="/tags/" target="_blank" title="Tags">Tags</a><a href="/categories/" target="_blank" title="Categories">Categories</a></div></div></div><div class="footer-flex-items" style="flex-grow:1"><div class="footer-flex-item"><div class="footer-flex-title">Elsewhere</div><div class="footer-flex-content"><a href="https://github.com/AskemiWang" target="_blank" title="GitHub">GitHub</a><a href="mailto:askemi.wang@gmail.com" target="_blank" title="Email">Email</a></div></div></div></div><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span class="footer-separator">|</span><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+<h1 id="video">Video</h1>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://wangyier.top">Askemi Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://wangyier.top/data-representation/">https://wangyier.top/data-representation/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Data-Encoding/">Data Encoding</a><a class="post-meta__tags" href="/tags/Data-Representation/">Data Representation</a><a class="post-meta__tags" href="/tags/RGB/">RGB</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar/avatar.png" data-sites="x,wechat"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/paper-summary-no-long-context/" title="Paper Summary - No Long Context"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Paper Summary - No Long Context</div></div><div class="info-2"><div class="info-item-1">This paper concludes two context compaction methods: end-of-conversation compaction (EoCC) and Single-Action Compaction. According to benchmarking long context and compacted context, the authors believe that there is no need to use long context window, and the model should be trained towards the compaction way.</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">Askemi Wang</div><div class="author-info-description">Personal notes of everything.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">121</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AskemiWang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/AskemiWang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:askemi.wang@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#text"><span class="toc-text">Text</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#image"><span class="toc-text">Image</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rgb-and-color-representation"><span class="toc-text">1. RGB and Color
+Representation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#light-and-human-color-vision"><span class="toc-text">1.1 Light and Human Color
+Vision</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rgb-and-color-gamut"><span class="toc-text">1.2 RGB and Color Gamut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#channels-and-bit-depth"><span class="toc-text">1.3 Channels and Bit Depth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#from-color-values-to-bits"><span class="toc-text">1.4 From Color Values to Bits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#raster-image"><span class="toc-text">2. Raster Image</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pixels-and-the-2d-grid"><span class="toc-text">2.1 Pixels and the 2D Grid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#width-height-and-coordinates"><span class="toc-text">2.2 Width, Height, and
+Coordinates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pixel-index-and-zero-based-indexing"><span class="toc-text">2.3 Pixel Index and
+Zero-Based Indexing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#raw-image-storage"><span class="toc-text">3. Raw Image Storage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#row-major-layout-and-byte-offsets"><span class="toc-text">3.1 Row-Major Layout and Byte
+Offsets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image-description"><span class="toc-text">3.2 Image Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stride-and-padding"><span class="toc-text">3.3 Stride and Padding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rgba8-and-alpha"><span class="toc-text">3.4 RGBA8 and Alpha</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gray8"><span class="toc-text">3.5 Gray8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#raw-data-size"><span class="toc-text">3.6 Raw Data Size</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-compression"><span class="toc-text">4. Image Compression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redundancy"><span class="toc-text">4.1 Redundancy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lossless-compression-rle"><span class="toc-text">4.2 Lossless Compression: RLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lossy-compression-quantization"><span class="toc-text">4.3 Lossy Compression:
+Quantization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#encoded-size-and-quality"><span class="toc-text">4.4 Encoded Size and Quality</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-file-formats"><span class="toc-text">5. Image File Formats</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#raw-pixel-data-vs-image-files"><span class="toc-text">5.1 Raw Pixel Data vs Image
+Files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-structure-and-metadata"><span class="toc-text">5.2 File Structure and
+Metadata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#png"><span class="toc-text">5.3 PNG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jpeg"><span class="toc-text">5.4 JPEG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-encoding-and-decoding-pipeline"><span class="toc-text">5.5 The Encoding and
+Decoding Pipeline</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-processing"><span class="toc-text">6. Image Processing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#crop"><span class="toc-text">6.1 Crop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resize"><span class="toc-text">6.2 Resize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#interpolation"><span class="toc-text">6.3 Interpolation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#color-operations"><span class="toc-text">6.4 Color Operations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-display"><span class="toc-text">7. Image Display</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#image-pixels-and-display-pixels"><span class="toc-text">7.1 Image Pixels and Display
+Pixels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#framebuffer-and-compositing"><span class="toc-text">7.2 Framebuffer and
+Compositing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#color-management-and-transfer-functions"><span class="toc-text">7.3 Color Management
+and Transfer Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#display-hardware"><span class="toc-text">7.4 Display Hardware</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#audio"><span class="toc-text">Audio</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#video"><span class="toc-text">Video</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/data-representation/" title="Data Representation">Data Representation</a><time datetime="2026-11-14T08:10:34.000Z" title="Created 2026-11-14 16:10:34">2026-11-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-no-long-context/" title="Paper Summary - No Long Context">Paper Summary - No Long Context</a><time datetime="2026-11-10T13:55:44.000Z" title="Created 2026-11-10 21:55:44">2026-11-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-gta1/" title="Paper Summary - GTA1">Paper Summary - GTA1</a><time datetime="2026-11-05T06:30:17.000Z" title="Created 2026-11-05 14:30:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/paper-summary-osworld-g/" title="Paper Summary - OSWorld-G">Paper Summary - OSWorld-G</a><time datetime="2026-11-02T04:56:19.000Z" title="Created 2026-11-02 12:56:19">2026-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/experiments/" title="Experiments">Experiments</a><time datetime="2026-10-28T13:07:49.000Z" title="Created 2026-10-28 21:07:49">2026-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-flex"><div class="footer-flex-items" style="flex-grow:2"><div class="footer-flex-item"><div class="footer-flex-title">The Great Library</div><div class="footer-flex-content"><a href="/about/" target="_blank" title="About">About</a><a href="/graph/" target="_blank" title="Knowledge Graph">Knowledge Graph</a></div></div></div><div class="footer-flex-items" style="flex-grow:1"><div class="footer-flex-item"><div class="footer-flex-title">Browse</div><div class="footer-flex-content"><a href="/archives/" target="_blank" title="Archives">Archives</a><a href="/tags/" target="_blank" title="Tags">Tags</a><a href="/categories/" target="_blank" title="Categories">Categories</a></div></div></div><div class="footer-flex-items" style="flex-grow:1"><div class="footer-flex-item"><div class="footer-flex-title">Elsewhere</div><div class="footer-flex-content"><a href="https://github.com/AskemiWang" target="_blank" title="GitHub">GitHub</a><a href="mailto:askemi.wang@gmail.com" target="_blank" title="Email">Email</a></div></div></div></div><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Askemi Wang</span><span class="framework-info"><span class="footer-separator">|</span><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div><div class="footer_custom_text"><span id="runtime_span" style="margin-left:10px;font-size:14px;">🕒 本站已运行 <span id="runtime_days"></span> 天 <span id="runtime_hours"></span> 小时 <span id="runtime_mins"></span> 分 <span id="runtime_secs"></span> 秒</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const changeScriptToMath = article => {
     article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
       const display = /mode=display/.test(el.type)
